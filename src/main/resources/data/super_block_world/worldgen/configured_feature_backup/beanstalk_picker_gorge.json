@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.25,
+        "feature": "super_block_world:beanstalk_not_budding"
+      },
+      {
+        "chance": 0.25,
+        "feature": "super_block_world:beanstalk_budding_tall"
+      }
+    ],
+    "default": "super_block_world:beanstalk_budding"
+  }
+}

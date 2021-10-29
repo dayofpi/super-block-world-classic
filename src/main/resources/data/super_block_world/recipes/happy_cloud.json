@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:cloud_puff"
+    }
+  },
+  "result": {
+    "item": "super_block_world:happy_cloud",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "super_block_world:block/crystal_bricks",
+    "top": "super_block_world:block/crystal_bricks",
+    "side": "super_block_world:block/crystal_bricks"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "super_block_world",
+  "version": "${version}",
+
+  "name": "Super Block World",
+  "description": "",
+  "authors": [
+    "@dayofpi ~ Code, art, direction",
+    "@TRoboknight ~ Art, structures",
+    "@EnvisionRebbi ~ Audio editing, concepts",
+    "@KatieCake1118 ~ Art",
+    "@OrbyyNew ~ Art",
+    "@owoirisowo ~ Art",
+    "Models made with Blockbench"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/super_block_world/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.dayofpi.sbw_main.Main"
+    ],
+    "client": [
+      "com.dayofpi.sbw_main.Client"
+    ]
+  },
+  "mixins": [
+    "super-block-world.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": ">=1.18-alpha.21.37.a",
+    "java": ">=16"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

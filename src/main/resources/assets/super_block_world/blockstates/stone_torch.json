@@ -1,0 +1,28 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "lit": "true"
+      },
+      "apply": {
+        "model": "super_block_world:block/stone_torch_fire"
+      }
+    },
+    {
+      "when": {
+        "lit": "true"
+      },
+      "apply": {
+        "model": "super_block_world:block/stone_torch"
+      }
+    },
+    {
+      "when": {
+        "lit": "false"
+      },
+      "apply": {
+        "model": "super_block_world:block/stone_torch"
+      }
+    }
+  ]
+}

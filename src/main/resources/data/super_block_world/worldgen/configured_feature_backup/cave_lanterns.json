@@ -1,0 +1,92 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:count_extra",
+      "config": {
+        "count": 1,
+        "extra_count": 6,
+        "extra_chance": 0.2
+      }
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:square",
+          "config": {}
+        },
+        "feature": {
+          "type": "minecraft:decorated",
+          "config": {
+            "decorator": {
+              "type": "minecraft:range",
+              "config": {
+                "height": {
+                  "type": "minecraft:uniform",
+                  "min_inclusive": {
+                    "absolute": -40
+                  },
+                  "max_inclusive": {
+                    "absolute": 60
+                  }
+                }
+              }
+            },
+            "feature": {
+              "type": "minecraft:decorated",
+              "config": {
+                "decorator": {
+                  "type": "minecraft:cave_surface",
+                  "config": {
+                    "surface": "ceiling",
+                    "floor_to_ceiling_search_range": 12
+                  }
+                },
+                "feature": {
+                  "type": "minecraft:growing_plant",
+                  "config": {
+                    "direction": "down",
+                    "allow_water": false,
+                    "height_distribution": [
+                      {
+                        "weight": 1,
+                        "data": {
+                          "type": "minecraft:uniform",
+                          "value": {
+                            "min_inclusive": 1,
+                            "max_inclusive": 3
+                          }
+                        }
+                      }
+                    ],
+                    "body_provider": {
+                      "type": "minecraft:simple_state_provider",
+                      "state": {
+                        "Name": "minecraft:chain",
+                        "Properties": {
+                          "axis": "y",
+                          "waterlogged": "false"
+                        }
+                      }
+                    },
+                    "head_provider": {
+                      "type": "minecraft:simple_state_provider",
+                      "state": {
+                        "Name": "minecraft:lantern",
+                        "Properties": {
+                          "hanging": "true",
+                          "waterlogged": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "super_block_world:block/amanita_carpet"
+      },
+      {
+        "model": "super_block_world:block/amanita_carpet",
+        "y": 90
+      },
+      {
+        "model": "super_block_world:block/amanita_carpet",
+        "y": 180
+      },
+      {
+        "model": "super_block_world:block/amanita_carpet",
+        "y": 270
+      }
+    ]
+  }
+}

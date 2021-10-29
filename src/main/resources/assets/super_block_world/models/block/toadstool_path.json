@@ -1,0 +1,9 @@
+{
+  "parent": "block/dirt_path",
+  "textures": {
+    "particle": "super_block_world:block/toadstool_path",
+    "top": "super_block_world:block/toadstool_path",
+    "side": "super_block_world:block/toadstool_grass",
+    "bottom": "super_block_world:block/toadstool_soil_top"
+  }
+}

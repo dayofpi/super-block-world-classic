@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "super_block_world:block/seastone_brick_slab"
+    },
+    "type=double": {
+      "model": "super_block_world:block/seastone_bricks"
+    },
+    "type=top": {
+      "model": "super_block_world:block/seastone_brick_slab_top"
+    }
+  }
+}

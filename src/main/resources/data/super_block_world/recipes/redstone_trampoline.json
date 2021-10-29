@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "super_block_world:mushroom_caps"
+    },
+    "X": [
+      {
+        "item": "minecraft:redstone"
+      }
+    ]
+  },
+  "result": {
+    "item": "super_block_world:redstone_trampoline",
+    "count": 4
+  }
+}

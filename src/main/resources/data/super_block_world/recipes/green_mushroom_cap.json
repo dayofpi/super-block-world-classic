@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "mushroom_caps",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:green_mushroom"
+    }
+  },
+  "result": {
+    "item": "super_block_world:green_mushroom_cap",
+    "count": 1
+  }
+}

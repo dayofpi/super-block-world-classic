@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "super_block_world:block/stripped_amanita_log_top",
+    "side": "super_block_world:block/stripped_amanita_log"
+  }
+}

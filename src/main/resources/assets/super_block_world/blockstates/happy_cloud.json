@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,sad=false": {
+      "model": "super_block_world:block/happy_cloud",
+      "y": 90
+    },
+    "facing=north,sad=false": {
+      "model": "super_block_world:block/happy_cloud"
+    },
+    "facing=south,sad=false": {
+      "model": "super_block_world:block/happy_cloud",
+      "y": 180
+    },
+    "facing=west,sad=false": {
+      "model": "super_block_world:block/happy_cloud",
+      "y": 270
+    },
+    "facing=east,sad=true": {
+      "model": "super_block_world:block/sad_cloud",
+      "y": 90
+    },
+    "facing=north,sad=true": {
+      "model": "super_block_world:block/sad_cloud"
+    },
+    "facing=south,sad=true": {
+      "model": "super_block_world:block/sad_cloud",
+      "y": 180
+    },
+    "facing=west,sad=true": {
+      "model": "super_block_world:block/sad_cloud",
+      "y": 270
+    }
+  }
+}

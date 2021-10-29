@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "super_block_world:block/gritzy_sandstone_bottom",
+    "top": "super_block_world:block/gritzy_sandstone_top",
+    "side": "super_block_world:block/chiseled_gritzy_sandstone"
+  }
+}

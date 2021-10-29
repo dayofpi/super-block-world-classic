@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "super_block_world:amanita_logs"
+    }
+  ],
+  "result": {
+    "item": "super_block_world:amanita_planks",
+    "count": 4
+  }
+}

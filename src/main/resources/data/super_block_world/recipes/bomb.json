@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "#O#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:buzzy_shell_piece"
+    },
+    "X": {
+      "item": "minecraft:string"
+    },
+    "O": {
+      "item": "minecraft:gunpowder"
+    }
+  },
+  "result": {
+    "item": "super_block_world:bomb",
+    "count": 1
+  }
+}

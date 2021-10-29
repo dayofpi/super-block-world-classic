@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:toadstone_bricks"
+    },
+    "title": {
+      "translate": "advancements.sbw.root.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.root.description"
+    },
+    "background": "super_block_world:textures/block/toadstone_bricks.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_dimension": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "super_block_world:mushroom_kingdom"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_dimension"
+    ]
+  ]
+}

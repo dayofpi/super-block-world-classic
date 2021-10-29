@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "super_block_world:cloud_block"
+    }
+  ],
+  "result": {
+    "item": "super_block_world:cloud_puff",
+    "count": 9
+  }
+}

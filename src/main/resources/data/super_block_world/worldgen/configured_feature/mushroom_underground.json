@@ -1,0 +1,125 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:count",
+      "config": {
+        "count": 2
+      }
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:decorated",
+          "config": {
+            "outer": {
+              "type": "minecraft:square",
+              "config": {}
+            },
+            "inner": {
+              "type": "minecraft:range",
+              "config": {
+                "height": {
+                  "type": "minecraft:uniform",
+                  "min_inclusive": {
+                    "above_bottom": 0
+                  },
+                  "max_inclusive": {
+                    "below_top": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 64,
+            "xz_spread": 7,
+            "y_spread": 3,
+            "only_in_air": true,
+            "feature": {
+              "type": "minecraft:decorated",
+              "config": {
+                "decorator": {
+                  "type": "minecraft:block_filter",
+                  "config": {
+                    "predicate": {
+                      "predicates": [
+                        {
+                          "type": "minecraft:matching_blocks",
+                          "blocks": [
+                            "minecraft:air"
+                          ]
+                        },
+                        {
+                          "type": "minecraft:matching_blocks",
+                          "offset": [
+                            0,
+                            -1,
+                            0
+                          ],
+                          "blocks": [
+                            "super_block_world:vanillate",
+                            "super_block_world:frosty_vanillate",
+                            "super_block_world:topped_vanillate",
+                            "super_block_world:frosty_topped_vanillate",
+                            "super_block_world:toadstone",
+                            "super_block_world:gloomstone"
+                          ]
+                        }
+                      ],
+                      "type": "minecraft:all_of"
+                    }
+                  }
+                },
+                "feature": {
+                  "type": "minecraft:simple_block",
+                  "config": {
+                    "to_place": {
+                      "type": "minecraft:weighted_state_provider",
+                      "entries": [
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "minecraft:red_mushroom"
+                          }
+                        },
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "minecraft:brown_mushroom"
+                          }
+                        },
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "super_block_world:yellow_mushroom"
+                          }
+                        },
+                        {
+                          "weight": 2,
+                          "data": {
+                            "Name": "super_block_world:cave_mushrooms"
+                          }
+                        },
+                        {
+                          "weight": 3,
+                          "data": {
+                            "Name": "super_block_world:green_mushroom"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "leather",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:troop_hide"
+    }
+  },
+  "result": {
+    "item": "minecraft:leather"
+  }
+}

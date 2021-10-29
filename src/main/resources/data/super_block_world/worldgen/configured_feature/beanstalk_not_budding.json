@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:block_column",
+  "config": {
+    "direction": "up",
+    "allowed_placement": {
+      "blocks": [
+        "minecraft:air"
+      ],
+      "type": "matching_blocks"
+    },
+    "prioritize_tip": true,
+    "layers": [
+      {
+        "height": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": 0,
+            "max_inclusive": 15
+          }
+        },
+        "provider": {
+          "state": {
+            "Properties": {
+              "budding": "true"
+            },
+            "Name": "super_block_world:beanstalk_plant"
+          },
+          "type": "minecraft:simple_state_provider"
+        }
+      },
+      {
+        "height": 1,
+        "provider": {
+          "state": {
+            "Properties": {
+              "age": "5"
+            },
+            "Name": "super_block_world:beanstalk"
+          },
+          "type": "minecraft:simple_state_provider"
+        }
+      }
+    ]
+  }
+}

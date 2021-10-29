@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:strawberry_coral"
+    }
+  },
+  "result": {
+    "item": "super_block_world:strawberry_coral_block",
+    "count": 1
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "super_block_world:block/hardstone_pillar_top",
+    "side": "super_block_world:block/hardstone_pillar"
+  }
+}

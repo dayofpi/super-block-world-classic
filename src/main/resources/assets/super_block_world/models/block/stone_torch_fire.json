@@ -1,0 +1,65 @@
+{
+	"textures": {
+		"6": "super_block_world:block/stone_torch_fire",
+		"particle": "super_block_world:block/stone_torch_sides"
+	},
+	"ambientocclusion": false,
+	"elements": [
+		{
+			"name": "fire1",
+			"from": [2, 13, 3],
+			"to": [14, 23, 3],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"east": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"south": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"west": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#6"}
+			}
+		},
+		{
+			"name": "fire2",
+			"from": [2, 13, 13],
+			"to": [14, 23, 13],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"east": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"south": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"west": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#6"}
+			}
+		},
+		{
+			"name": "fire3",
+			"from": [3, 13, 2],
+			"to": [3, 23, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 18, 13]},
+			"faces": {
+				"north": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"east": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"south": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"west": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#6"}
+			}
+		},
+		{
+			"name": "fire4",
+			"from": [13, 13, 2],
+			"to": [13, 23, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 18, 13]},
+			"faces": {
+				"north": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"east": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"south": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"west": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#6"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#6"}
+			}
+		}
+	]
+}

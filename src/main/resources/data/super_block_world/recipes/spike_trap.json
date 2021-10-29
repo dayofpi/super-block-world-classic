@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "XOX",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:bronze_ingot"
+    },
+    "X": {
+      "item": "super_block_world:spike"
+    },
+    "O": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "super_block_world:spike_trap",
+    "count": 1
+  }
+}

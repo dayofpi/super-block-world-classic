@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:vanillate"
+    }
+  },
+  "result": {
+    "item": "super_block_world:vanillate_slab",
+    "count": 6
+  }
+}

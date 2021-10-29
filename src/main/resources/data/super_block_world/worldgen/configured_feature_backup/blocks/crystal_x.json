@@ -1,0 +1,64 @@
+{
+  "type": "super_block_world:random_patch",
+  "config": {
+    "can_replace": false,
+    "project": false,
+    "need_water": false,
+    "xspread": 2,
+    "yspread": 0,
+    "zspread": 0,
+    "tries": 16,
+    "state_provider": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 1,
+          "data": {
+            "Name": "super_block_world:coin_block",
+            "Properties": {
+              "type": "4",
+              "coin_count": "5"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "super_block_world:coin_block",
+            "Properties": {
+              "type": "0",
+              "coin_count": "1"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "super_block_world:coin_block",
+            "Properties": {
+              "type": "0",
+              "coin_count": "5"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "super_block_world:question_block"
+          }
+        },
+        {
+          "weight": 7,
+          "data": {
+            "Name": "super_block_world:crystal_bricks"
+          }
+        }
+      ]
+    },
+    "block_placer": {
+      "type": "minecraft:simple_block_placer"
+    },
+    "whitelist": [],
+    "blacklist": []
+  }
+}

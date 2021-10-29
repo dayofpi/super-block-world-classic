@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:decorated",
+      "config": {
+        "outer": {
+          "type": "minecraft:square",
+          "config": {}
+        },
+        "inner": {
+          "type": "minecraft:heightmap",
+          "config": {
+            "heightmap": "OCEAN_FLOOR_WG"
+          }
+        }
+      }
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:count",
+          "config": {
+            "count": 30
+          }
+        },
+        "feature": {
+          "type": "minecraft:seagrass",
+          "config": {
+            "probability": 0.3
+          }
+        }
+      }
+    }
+  }
+}

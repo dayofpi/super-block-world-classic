@@ -1,0 +1,8 @@
+{
+  "replace": "false",
+  "values": [
+    "super_block_world:amanita_carpet",
+    "super_block_world:yellow_flowerbed",
+    "super_block_world:white_flowerbed"
+  ]
+}

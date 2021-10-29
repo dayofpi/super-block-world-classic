@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "super_block_world:toadstool_soil"
+  },
+  "result": "super_block_world:toadstone",
+  "experience": 0.1,
+  "cookingtime": 200
+}

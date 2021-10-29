@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "super_block_world:raw_bronze_block"
+    }
+  ],
+  "result": {
+    "item": "super_block_world:raw_bronze",
+    "count": 9
+  }
+}

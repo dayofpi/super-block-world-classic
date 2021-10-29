@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "super_block_world:gloomstone"
+  },
+  "result": "super_block_world:gloomstone_brick_stairs",
+  "count": 1
+}

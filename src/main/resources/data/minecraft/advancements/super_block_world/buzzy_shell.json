@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:buzzy_shell"
+    },
+    "title": {
+      "translate": "advancements.sbw.buzzy_shell.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.buzzy_shell.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "super_block_world/enter_kingdom",
+  "criteria": {
+    "wear_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "player": {
+          "equipment": {
+            "head": {
+              "items": [
+                "super_block_world:buzzy_shell"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "wear_shell"
+    ]
+  ]
+}

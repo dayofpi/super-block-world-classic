@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "super_block_world:power_star"
+    }
+  ],
+  "result": {
+    "item": "super_block_world:power_dust",
+    "count": 6
+  }
+}

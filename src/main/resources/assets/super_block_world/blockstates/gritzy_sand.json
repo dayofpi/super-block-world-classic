@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "super_block_world:block/gritzy_sand"
+      },
+      {
+        "model": "super_block_world:block/gritzy_sand",
+        "y": 90
+      },
+      {
+        "model": "super_block_world:block/gritzy_sand",
+        "y": 180
+      },
+      {
+        "model": "super_block_world:block/gritzy_sand",
+        "y": 270
+      }
+    ]
+  }
+}

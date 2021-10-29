@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "super_block_world:block/girder_top",
+    "top": "super_block_world:block/girder_top",
+    "side": "super_block_world:block/girder"
+  }
+}

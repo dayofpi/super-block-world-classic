@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "super_block_world:block/gloomstone_slab"
+    },
+    "type=double": {
+      "model": "super_block_world:block/gloomstone_slab_double"
+    },
+    "type=top": {
+      "model": "super_block_world:block/gloomstone_slab_top"
+    }
+  }
+}

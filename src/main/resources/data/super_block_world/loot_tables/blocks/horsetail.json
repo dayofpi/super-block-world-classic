@@ -1,0 +1,60 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "super_block_world:horsetail",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "super_block_world:horsetail",
+              "properties": {
+                "part": "2"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "super_block_world:horsetail",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "super_block_world:horsetail",
+              "properties": {
+                "part": "1"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "super_block_world:horsetail",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "super_block_world:horsetail",
+              "properties": {
+                "part": "0"
+              }
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "items": [
+              "minecraft:shears"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

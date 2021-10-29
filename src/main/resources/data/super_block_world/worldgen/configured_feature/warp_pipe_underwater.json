@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:count_extra",
+      "config": {
+        "count": 0,
+        "extra_count": 3,
+        "extra_chance": 0.2
+      }
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:square",
+          "config": {}
+        },
+        "feature": {
+          "type": "minecraft:decorated",
+          "config": {
+            "decorator": {
+              "type": "minecraft:heightmap",
+              "config": {
+                "heightmap": "OCEAN_FLOOR_WG"
+              }
+            },
+            "feature": {
+              "type": "super_block_world:underwater_pipe",
+              "config": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

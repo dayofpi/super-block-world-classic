@@ -1,0 +1,80 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:count",
+      "config": {
+        "count": 2
+      }
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:decorated",
+          "config": {
+            "outer": {
+              "type": "minecraft:square",
+              "config": {}
+            },
+            "inner": {
+              "type": "minecraft:heightmap",
+              "config": {
+                "heightmap": "MOTION_BLOCKING"
+              }
+            }
+          }
+        },
+        "feature": {
+          "type": "minecraft:decorated",
+          "config": {
+            "decorator": {
+              "type": "minecraft:spread_32_above",
+              "config": {}
+            },
+            "feature": {
+              "type": "minecraft:random_patch",
+              "config": {
+                "can_replace": false,
+                "project": false,
+                "need_water": false,
+                "xspread": 8,
+                "yspread": 6,
+                "zspread": 8,
+                "tries": 64,
+                "state_provider": {
+                  "type": "minecraft:weighted_state_provider",
+                  "entries": [
+                    {
+                      "weight": 1,
+                      "data": {
+                        "Name": "super_block_world:blue_songflower"
+                      }
+                    },
+                    {
+                      "weight": 1,
+                      "data": {
+                        "Name": "super_block_world:pink_songflower"
+                      }
+                    },
+                    {
+                      "weight": 1,
+                      "data": {
+                        "Name": "super_block_world:yellow_songflower"
+                      }
+                    }
+                  ]
+                },
+                "block_placer": {
+                  "type": "minecraft:simple_block_placer"
+                },
+                "whitelist": [],
+                "blacklist": []
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

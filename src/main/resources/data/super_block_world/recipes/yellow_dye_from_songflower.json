@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "yellow_dye",
+  "ingredients": [
+    {
+      "item": "super_block_world:yellow_songflower"
+    }
+  ],
+  "result": {
+    "item": "minecraft:yellow_dye"
+  }
+}

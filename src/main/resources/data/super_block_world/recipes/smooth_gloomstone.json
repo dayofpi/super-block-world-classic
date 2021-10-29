@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "gloomstone",
+  "ingredient": {
+    "item": "super_block_world:gloomstone"
+  },
+  "result": "super_block_world:smooth_gloomstone",
+  "experience": 0.1,
+  "cookingtime": 200
+}

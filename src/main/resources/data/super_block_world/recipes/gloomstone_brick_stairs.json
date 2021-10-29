@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:gloomstone_bricks"
+    }
+  },
+  "result": {
+    "item": "super_block_world:gloomstone_brick_stairs",
+    "count": 4
+  }
+}

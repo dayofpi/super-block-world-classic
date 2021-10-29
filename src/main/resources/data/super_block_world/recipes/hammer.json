@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#/#",
+    " / "
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:bronze_ingot"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "super_block_world:hammer",
+    "count": 1
+  }
+}

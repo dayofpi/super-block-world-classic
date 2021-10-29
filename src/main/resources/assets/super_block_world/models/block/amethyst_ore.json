@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "super_block_world:block/amethyst_ore",
+    "side": "super_block_world:block/amethyst_ore_single"
+  }
+}

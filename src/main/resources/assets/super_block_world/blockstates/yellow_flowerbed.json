@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "super_block_world:block/yellow_flowerbed"
+      },
+      {
+        "model": "super_block_world:block/yellow_flowerbed",
+        "y": 90
+      },
+      {
+        "model": "super_block_world:block/yellow_flowerbed",
+        "y": 180
+      },
+      {
+        "model": "super_block_world:block/yellow_flowerbed",
+        "y": 270
+      }
+    ]
+  }
+}

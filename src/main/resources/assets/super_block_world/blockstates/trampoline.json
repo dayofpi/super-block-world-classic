@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "squash=false": {
+      "model": "super_block_world:block/trampoline"
+    },
+    "squash=true": {
+      "model": "super_block_world:block/trampoline_squash"
+    }
+  }
+}

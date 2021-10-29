@@ -1,0 +1,94 @@
+{
+  "temperature": 0.8,
+  "downfall": 0.4,
+  "precipitation": "rain",
+  "category": "underground",
+  "player_spawn_friendly": false,
+  "effects": {
+    "sky_color": 7721727,
+    "fog_color": 11859964,
+    "water_color": 1962492,
+    "water_fog_color": 52959,
+    "grass_color": 9500475,
+    "foliage_color": 4178950,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    },
+    "music": {
+      "sound": "super_block_world:music.cave",
+      "min_delay": 100,
+      "max_delay": 1000,
+      "replace_current_music": false
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "super_block_world:goomba",
+        "weight": 50,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:buzzy_beetle",
+        "weight": 100,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:spike_top",
+        "weight": 20,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:bob_omb",
+        "weight": 20,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "super_block_world:cave",
+      "super_block_world:maze_cave",
+      "super_block_world:canyon"
+    ]
+  },
+  "features": [
+    [],
+    [
+      "super_block_world:lake_lava",
+      "super_block_world:lake_poison"
+    ],
+    [],
+    [
+      "super_block_world:block_single"
+    ],
+    [],
+    [
+      "super_block_world:vanillate_topping"
+    ],
+    [
+      "super_block_world:ore_bronze",
+      "super_block_world:ore_hardstone",
+      "super_block_world:ore_crumble"
+    ],
+    [
+      "super_block_world:disk_sand",
+      "super_block_world:patch_cave_crystals",
+      "super_block_world:stone_torches",
+      "super_block_world:warp_pipe_surface",
+      "super_block_world:warp_pipe_underwater",
+      "super_block_world:mushroom_underground"
+    ],
+    [
+      "super_block_world:override_gloomstone"
+    ]
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:wooden_axe"
+    },
+    "title": {
+      "translate": "advancements.sbw.strip_mushroom_block.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.strip_mushroom_block.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:super_block_world/enter_kingdom",
+  "criteria": {
+    "strip_block": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "tag": "fabric:axes"
+        },
+        "location": {
+          "block": {
+            "tag": "super_block_world:mushroom_caps"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "strip_block"
+    ]
+  ]
+}

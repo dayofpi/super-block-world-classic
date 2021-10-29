@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "super_block_world:block/cloud_block",
+    "front": "super_block_world:block/happy_cloud",
+    "side": "super_block_world:block/cloud_block"
+  }
+}

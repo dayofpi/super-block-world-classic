@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "#X#",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:bronze_ingot"
+    },
+    "X": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "item": "super_block_world:warp_pipe",
+    "count": 1
+  }
+}

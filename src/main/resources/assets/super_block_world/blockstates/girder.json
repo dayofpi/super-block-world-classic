@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "super_block_world:block/girder"
+    },
+    "type=double": {
+      "model": "super_block_world:block/girder_stacked"
+    },
+    "type=top": {
+      "model": "super_block_world:block/girder_top"
+    }
+  }
+}

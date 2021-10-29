@@ -1,0 +1,54 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:count_extra",
+      "config": {
+        "count": 1,
+        "extra_count": 4,
+        "extra_chance": 0.5
+      }
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:decorated",
+          "config": {
+            "outer": {
+              "type": "minecraft:square",
+              "config": {}
+            },
+            "inner": {
+              "type": "minecraft:decorated",
+              "config": {
+                "outer": {
+                  "type": "minecraft:range",
+                  "config": {
+                    "height": {
+                      "type": "minecraft:uniform",
+                      "min_inclusive": {
+                        "above_bottom": 0
+                      },
+                      "max_inclusive": {
+                        "below_top": 0
+                      }
+                    }
+                  }
+                },
+                "inner": {
+                  "type": "minecraft:cave_surface",
+                  "config": {
+                    "surface": "ceiling",
+                    "floor_to_ceiling_search_range": 12
+                  }
+                }
+              }
+            }
+          }
+        },
+        "feature": "super_block_world:pipes/down"
+      }
+    }
+  }
+}

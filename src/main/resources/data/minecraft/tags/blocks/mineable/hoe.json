@@ -1,0 +1,15 @@
+{
+  "replace": "false",
+  "values": [
+    "super_block_world:amanita_leaves",
+    "super_block_world:fruiting_amanita_leaves",
+    "super_block_world:brown_mushroom_cap",
+    "super_block_world:red_mushroom_cap",
+    "super_block_world:yellow_mushroom_cap",
+    "super_block_world:green_mushroom_cap",
+    "super_block_world:pink_mushroom_cap",
+    "super_block_world:purple_mushroom_cap",
+    "super_block_world:orange_mushroom_cap",
+    "super_block_world:redstone_trampoline"
+  ]
+}

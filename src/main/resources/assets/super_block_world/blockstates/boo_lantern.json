@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "super_block_world:block/boo_lantern_off"
+    },
+    "lit=true": {
+      "model": "super_block_world:block/boo_lantern_on"
+    }
+  }
+}

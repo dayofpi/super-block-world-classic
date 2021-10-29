@@ -1,0 +1,72 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "config": {
+        "chance": 8
+      },
+      "type": "minecraft:chance"
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:decorated",
+          "config": {
+            "outer": {
+              "type": "minecraft:square",
+              "config": {}
+            },
+            "inner": {
+              "type": "minecraft:heightmap",
+              "config": {
+                "heightmap": "MOTION_BLOCKING"
+              }
+            }
+          }
+        },
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 96,
+            "xz_spread": 10,
+            "y_spread": 3,
+            "feature": {
+              "type": "minecraft:decorated",
+              "config": {
+                "decorator": {
+                  "config": {
+                    "predicate": {
+                      "predicates": [
+                        {
+                          "blocks": [
+                            "minecraft:air"
+                          ],
+                          "type": "minecraft:matching_blocks"
+                        },
+                        {
+                          "offset": [
+                            0,
+                            -1,
+                            0
+                          ],
+                          "blocks": [
+                            "super_block_world:toadstool_grass"
+                          ],
+                          "type": "minecraft:matching_blocks"
+                        }
+                      ],
+                      "type": "minecraft:all_of"
+                    }
+                  },
+                  "type": "minecraft:block_filter"
+                },
+                "feature": "super_block_world:horsetail"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

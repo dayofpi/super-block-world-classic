@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:note_block"
+    },
+    "#": {
+      "item": "super_block_world:cloud_puff"
+    }
+  },
+  "result": {
+    "item": "super_block_world:jump_block",
+    "count": 1
+  }
+}

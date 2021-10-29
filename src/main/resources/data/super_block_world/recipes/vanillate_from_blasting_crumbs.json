@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "super_block_world:vanillate_crumble"
+  },
+  "result": "super_block_world:vanillate",
+  "experience": 0.7,
+  "cookingtime": 100
+}

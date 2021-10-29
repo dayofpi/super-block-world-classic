@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "white_dye",
+  "ingredients": [
+    {
+      "item": "super_block_world:pawflower"
+    }
+  ],
+  "result": {
+    "item": "minecraft:white_dye"
+  }
+}
