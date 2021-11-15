@@ -23,7 +23,7 @@ import java.util.Random;
 
 @SuppressWarnings("deprecation")
 public class HappyCloudBlock extends HorizontalFacingBlock {
-    public static final DirectionProperty FACING;
+        public static final DirectionProperty FACING;
     public static final BooleanProperty SAD;
 
     static {

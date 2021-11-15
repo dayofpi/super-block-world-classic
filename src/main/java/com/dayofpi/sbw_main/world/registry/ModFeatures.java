@@ -2,6 +2,7 @@ package com.dayofpi.sbw_main.world.registry;
 
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.MushroomBlocks;
 import com.dayofpi.sbw_main.block.types.MushroomBlock;
 import com.dayofpi.sbw_main.world.feature.types.CustomHugeMushroomFeatureConfig;
 import com.google.common.collect.ImmutableList;
@@ -69,14 +70,14 @@ public class ModFeatures {
     }
 
     public static final class States {
-        private static final BlockState BROWN_MUSHROOM_CAP = ModBlocks.BROWN_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState RED_MUSHROOM_CAP = ModBlocks.RED_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState YELLOW_MUSHROOM_CAP = ModBlocks.YELLOW_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState GREEN_MUSHROOM_CAP = ModBlocks.GREEN_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState PINK_MUSHROOM_CAP = ModBlocks.PINK_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState PURPLE_MUSHROOM_CAP = ModBlocks.PURPLE_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState ORANGE_MUSHROOM_CAP = ModBlocks.ORANGE_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState MUSHROOM_STEM = ModBlocks.MUSHROOM_STEM.getDefaultState();
+        private static final BlockState BROWN_MUSHROOM_CAP = MushroomBlocks.BROWN_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
+        private static final BlockState RED_MUSHROOM_CAP = MushroomBlocks.RED_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
+        private static final BlockState YELLOW_MUSHROOM_CAP = MushroomBlocks.YELLOW_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
+        private static final BlockState GREEN_MUSHROOM_CAP = MushroomBlocks.GREEN_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
+        private static final BlockState PINK_MUSHROOM_CAP = MushroomBlocks.PINK_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
+        private static final BlockState PURPLE_MUSHROOM_CAP = MushroomBlocks.PURPLE_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
+        private static final BlockState ORANGE_MUSHROOM_CAP = MushroomBlocks.ORANGE_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
+        private static final BlockState MUSHROOM_STEM = MushroomBlocks.MUSHROOM_STEM.getDefaultState();
         private static final BlockState AMANITA_LEAVES = ModBlocks.AMANITA_LEAVES.getDefaultState();
         private static final BlockState FRUITING_AMANITA_LEAVES = ModBlocks.FRUITING_AMANITA_LEAVES.getDefaultState();
         private static final BlockState AMANITA_LOG = ModBlocks.AMANITA_LOG.getDefaultState();

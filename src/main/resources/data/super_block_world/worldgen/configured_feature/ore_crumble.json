@@ -1,84 +1,27 @@
 {
-  "type": "minecraft:decorated",
   "config": {
-    "decorator": {
-      "type": "minecraft:count",
-      "config": {
-        "count": 180
-      }
-    },
-    "feature": {
-      "type": "minecraft:decorated",
-      "config": {
-        "decorator": {
-          "type": "minecraft:square",
-          "config": {}
+    "targets": [
+      {
+        "target": {
+          "block": "super_block_world:vanillate",
+          "predicate_type": "minecraft:block_match"
         },
-        "feature": {
-          "type": "minecraft:decorated",
-          "config": {
-            "decorator": {
-              "type": "minecraft:range",
-              "config": {
-                "height": {
-                  "type": "minecraft:uniform",
-                  "min_inclusive": {
-                    "above_bottom": 0
-                  },
-                  "max_inclusive": {
-                    "below_top": 0
-                  }
-                }
-              }
-            },
-            "feature": {
-              "type": "minecraft:ore",
-              "config": {
-                "size": 16,
-                "discard_chance_on_air_exposure": 0,
-                "targets": [
-                  {
-                    "target": {
-                      "predicate_type": "minecraft:block_match",
-                      "block": "super_block_world:vanillate"
-                    },
-                    "state": {
-                      "Name": "super_block_world:vanillate_crumble"
-                    }
-                  },
-                  {
-                    "target": {
-                      "predicate_type": "minecraft:block_match",
-                      "block": "super_block_world:frosty_vanillate"
-                    },
-                    "state": {
-                      "Name": "super_block_world:frosty_vanillate_crumble"
-                    }
-                  },
-                  {
-                    "target": {
-                      "predicate_type": "minecraft:block_match",
-                      "block": "super_block_world:frosty_topped_vanillate"
-                    },
-                    "state": {
-                      "Name": "super_block_world:frosty_topped_vanillate_ore"
-                    }
-                  },
-                  {
-                    "target": {
-                      "predicate_type": "minecraft:block_match",
-                      "block": "super_block_world:toadstool_soil"
-                    },
-                    "state": {
-                      "Name": "super_block_world:coarse_toadstool_soil"
-                    }
-                  }
-                ]
-              }
-            }
-          }
+        "state": {
+          "Name": "super_block_world:vanillate_crumble"
+        }
+      },
+      {
+        "target": {
+          "block": "super_block_world:toadstool_soil",
+          "predicate_type": "minecraft:block_match"
+        },
+        "state": {
+          "Name": "super_block_world:coarse_toadstool_soil"
         }
       }
-    }
-  }
+    ],
+    "size": 15,
+    "discard_chance_on_air_exposure": 0.0
+  },
+  "type": "minecraft:ore"
 }

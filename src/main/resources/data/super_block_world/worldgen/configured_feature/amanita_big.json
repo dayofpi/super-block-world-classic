@@ -1,6 +1,6 @@
 {
-  "type": "minecraft:tree",
   "config": {
+    "decorators": [],
     "ignore_vines": true,
     "force_dirt": false,
     "minimum_size": {
@@ -62,7 +62,7 @@
       "radius": 2,
       "offset": 0,
       "height": 2
-    },
-    "decorators": []
-  }
+    }
+  },
+  "type": "minecraft:tree"
 }

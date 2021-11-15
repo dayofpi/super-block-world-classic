@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.block.types;
 
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.PlantBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -48,14 +48,14 @@ public class HorsetailBlock extends PlantBlock {
         if (state.get(PART) == 0) {
             return floor.isIn(BlockTags.DIRT);
         } else if (state.get(PART) == 1) {
-            return floor.isOf(ModBlocks.HORSETAIL) && floor.get(PART) == 0;
-        } else return floor.isOf(ModBlocks.HORSETAIL) && floor.get(PART) == 1;
+            return floor.isOf(PlantBlocks.HORSETAIL) && floor.get(PART) == 0;
+        } else return floor.isOf(PlantBlocks.HORSETAIL) && floor.get(PART) == 1;
     }
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         BlockState breakState = Blocks.AIR.getDefaultState();
-        if (direction == Direction.DOWN && !state.canPlaceAt(world, pos) || state.get(PART) < 2 && !world.getBlockState(pos.up()).isOf(ModBlocks.HORSETAIL)) {
+        if (direction == Direction.DOWN && !state.canPlaceAt(world, pos) || state.get(PART) < 2 && !world.getBlockState(pos.up()).isOf(PlantBlocks.HORSETAIL)) {
             return breakState;
         } else return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
@@ -65,8 +65,8 @@ public class HorsetailBlock extends PlantBlock {
         if (state.get(PART) == 0){
             BlockPos blockPos = pos.up();
             BlockPos blockPos2 = pos.up(2);
-            world.setBlockState(blockPos, ModBlocks.HORSETAIL.getDefaultState().with(PART, 1));
-            world.setBlockState(blockPos2, ModBlocks.HORSETAIL.getDefaultState().with(PART, 2));
+            world.setBlockState(blockPos, PlantBlocks.HORSETAIL.getDefaultState().with(PART, 1));
+            world.setBlockState(blockPos2, PlantBlocks.HORSETAIL.getDefaultState().with(PART, 2));
         }
     }
 

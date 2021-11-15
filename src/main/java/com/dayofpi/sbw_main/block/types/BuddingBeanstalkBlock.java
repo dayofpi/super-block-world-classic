@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.block.types;
 
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.PlantBlocks;
 import com.dayofpi.sbw_main.block.types.template.ModPlantStemBlock;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.entity.types.mobs.NipperPlantEntity;
@@ -117,7 +117,7 @@ public class BuddingBeanstalkBlock extends ModPlantStemBlock {
     }
 
     protected Block getPlant() {
-        return ModBlocks.BEANSTALK_PLANT;
+        return PlantBlocks.BEANSTALK_PLANT;
     }
 
     protected boolean chooseStemState(BlockState state) {

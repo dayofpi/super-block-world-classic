@@ -1,87 +1,46 @@
 {
-  "type": "minecraft:decorated",
+  "type": "minecraft:simple_block",
   "config": {
-    "decorator": {
-      "type": "minecraft:count_extra",
-      "config": {
-        "count": 0,
-        "extra_count": 2,
-        "extra_chance": 0.3
-      }
-    },
-    "feature": {
-      "type": "minecraft:decorated",
-      "config": {
-        "decorator": {
-          "type": "minecraft:decorated",
-          "config": {
-            "outer": {
-              "type": "minecraft:square",
-              "config": {}
-            },
-            "inner": {
-              "type": "minecraft:range",
-              "config": {
-                "height": {
-                  "type": "minecraft:biased_to_bottom",
-                  "min_inclusive": {
-                    "above_bottom": 60
-                  },
-                  "max_inclusive": {
-                    "absolute": 80
-                  }
-                }
-              }
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 1,
+          "data": {
+            "Name": "super_block_world:coin_block",
+            "Properties": {
+              "type": "3",
+              "coin_count": "15"
             }
           }
         },
-        "feature": {
-          "type": "minecraft:simple_block",
-          "config": {
-            "to_place": {
-              "type": "minecraft:weighted_state_provider",
-              "entries": [
-                {
-                  "weight": 1,
-                  "data": {
-                    "Name": "super_block_world:coin_block",
-                    "Properties": {
-                      "type": "3",
-                      "coin_count": "15"
-                    }
-                  }
-                },
-                {
-                  "weight": 7,
-                  "data": {
-                    "Name": "super_block_world:coin_block",
-                    "Properties": {
-                      "type": "0",
-                      "coin_count": "5"
-                    }
-                  }
-                },
-                {
-                  "weight": 8,
-                  "data": {
-                    "Name": "super_block_world:coin_block",
-                    "Properties": {
-                      "type": "0",
-                      "coin_count": "1"
-                    }
-                  }
-                },
-                {
-                  "weight": 16,
-                  "data": {
-                    "Name": "super_block_world:question_block"
-                  }
-                }
-              ]
+        {
+          "weight": 7,
+          "data": {
+            "Name": "super_block_world:coin_block",
+            "Properties": {
+              "type": "0",
+              "coin_count": "5"
             }
           }
+        },
+        {
+          "weight": 8,
+          "data": {
+            "Name": "super_block_world:coin_block",
+            "Properties": {
+              "type": "0",
+              "coin_count": "1"
+            }
+          }
+        },
+        {
+          "weight": 16,
+          "data": {
+            "Name": "super_block_world:question_block"
+          }
         }
-      }
+      ]
     }
   }
 }

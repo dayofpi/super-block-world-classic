@@ -2,6 +2,7 @@ package com.dayofpi.sbw_main.world.structure_feature;
 
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.VariantBlocks;
 import com.dayofpi.sbw_main.world.registry.ModStructurePieces;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
@@ -73,8 +74,8 @@ public class WarpPortalGenerator {
             processors.add(createReplacementRule(ModBlocks.WARP_FRAME, 0.2F, ModBlocks.GOLDEN_BRICKS));
             processors.add(createReplacementRule(ModBlocks.POLISHED_HARDSTONE, 0.5F, ModBlocks.HARDSTONE));
             processors.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.3F, ModBlocks.CRACKED_HARDSTONE_BRICKS));
-            processors.add(createReplacementRule(ModBlocks.HARDSTONE_BRICK_STAIRS, 0.1F, ModBlocks.WARP_FRAME));
-            processors.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.2F, ModBlocks.HARDSTONE_BRICK_STAIRS.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.fromHorizontal(random.nextInt(4)))));
+            processors.add(createReplacementRule(VariantBlocks.HARDSTONE_BRICK_STAIRS, 0.1F, ModBlocks.WARP_FRAME));
+            processors.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.2F, VariantBlocks.HARDSTONE_BRICK_STAIRS.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.fromHorizontal(random.nextInt(4)))));
             processors.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.1F, Blocks.AIR));
             processors.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.2F, Blocks.GRAVEL));
 

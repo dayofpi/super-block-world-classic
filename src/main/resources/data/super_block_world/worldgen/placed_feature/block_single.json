@@ -1,0 +1,29 @@
+{
+  "feature": "super_block_world:ore_bronze",
+  "placement": [
+    {
+      "type": "minecraft:count_extra",
+      "count": 0,
+      "extra_count": 2,
+      "extra_chance": 0.25
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "above_bottom": 60
+        },
+        "max_inclusive": {
+          "absolute": 80
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

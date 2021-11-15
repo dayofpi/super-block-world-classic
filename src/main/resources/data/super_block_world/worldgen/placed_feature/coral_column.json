@@ -1,0 +1,21 @@
+{
+  "feature": "super_block_world:column_coral",
+  "placement": [
+    {
+      "count": 0,
+      "extra_count": 3,
+      "extra_chance": 0.7,
+      "type": "minecraft:count_extra"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "heightmap": "OCEAN_FLOOR_WG",
+      "type": "minecraft:heightmap"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

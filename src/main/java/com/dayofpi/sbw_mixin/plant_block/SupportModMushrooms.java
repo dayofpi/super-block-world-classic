@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_mixin.plant_block;
 
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.MushroomBlocks;
 import com.dayofpi.sbw_main.world.registry.ModFeatures;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -30,15 +30,15 @@ public class SupportModMushrooms extends PlantBlock {
         ConfiguredFeature<?, ?> mushroomFeature;
         if (this == Blocks.BROWN_MUSHROOM) {
             mushroomFeature = ModFeatures.HUGE_BROWN_MUSHROOM;
-        } else if (this == ModBlocks.PINK_MUSHROOM) {
+        } else if (this == MushroomBlocks.PINK_MUSHROOM) {
             mushroomFeature = ModFeatures.HUGE_PINK_MUSHROOM;
-        } else if (this == ModBlocks.PURPLE_MUSHROOM) {
+        } else if (this == MushroomBlocks.PURPLE_MUSHROOM) {
             mushroomFeature = ModFeatures.HUGE_PURPLE_MUSHROOM;
-        } else if (this == ModBlocks.ORANGE_MUSHROOM) {
+        } else if (this == MushroomBlocks.ORANGE_MUSHROOM) {
             mushroomFeature = ModFeatures.HUGE_ORANGE_MUSHROOM;
-        }else if (this == ModBlocks.YELLOW_MUSHROOM) {
+        }else if (this == MushroomBlocks.YELLOW_MUSHROOM) {
             mushroomFeature = ModFeatures.HUGE_YELLOW_MUSHROOM;
-        } else if (this == ModBlocks.GREEN_MUSHROOM) {
+        } else if (this == MushroomBlocks.GREEN_MUSHROOM) {
             mushroomFeature = ModFeatures.HUGE_GREEN_MUSHROOM;
         } else {
             if (this != Blocks.RED_MUSHROOM) {

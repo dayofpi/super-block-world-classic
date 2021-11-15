@@ -86,14 +86,16 @@
   },
   "carvers": {
     "air": [
-      "super_block_world:cave",
+      "minecraft:cave",
       "super_block_world:maze_cave",
-      "super_block_world:canyon"
+      "minecraft:canyon"
     ]
   },
   "features": [
     [],
-    [],
+    [
+      "minecraft:lake_lava_underground"
+    ],
     [],
     [
       "super_block_world:block_single"
@@ -105,7 +107,6 @@
     [
       "super_block_world:ore_bronze",
       "super_block_world:ore_amethyst",
-      "super_block_world:ore_amethyst_scattered",
       "super_block_world:ore_hardstone",
       "super_block_world:ore_crumble",
       "super_block_world:toppings_coal",
@@ -114,13 +115,9 @@
     ],
     [
       "super_block_world:disk_sand",
-      "super_block_world:ceiling_default",
       "super_block_world:patch_cave_crystals",
       "super_block_world:stone_torches",
-      "super_block_world:warp_pipe_surface",
-      "super_block_world:warp_pipe_underwater",
-      "super_block_world:mushroom_underground",
-      "super_block_world:vegetation_underground"
+      "super_block_world:mushroom_underground"
     ],
     [
       "minecraft:patch_grass_normal",

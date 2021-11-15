@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "top": "super_block_world:block/jellybeam_top",
+    "front": "super_block_world:block/jellybeam",
+    "side": "super_block_world:block/jellybeam_side",
+    "bottom": "super_block_world:block/jellybeam_bottom"
+  }
+}

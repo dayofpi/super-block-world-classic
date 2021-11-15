@@ -1,72 +1,18 @@
 {
-  "type": "minecraft:decorated",
   "config": {
-    "decorator": {
-      "type": "minecraft:count",
-      "config": {
-        "count": 15
-      }
-    },
-    "feature": {
-      "type": "minecraft:decorated",
-      "config": {
-        "decorator": {
-          "type": "minecraft:square",
-          "config": {}
+    "targets": [
+      {
+        "target": {
+          "block": "super_block_world:vanillate",
+          "predicate_type": "minecraft:block_match"
         },
-        "feature": {
-          "type": "minecraft:decorated",
-          "config": {
-            "decorator": {
-              "type": "minecraft:range",
-              "config": {
-                "height": {
-                  "type": "minecraft:uniform",
-                  "min_inclusive": {
-                    "absolute": 0
-                  },
-                  "max_inclusive": {
-                    "below_top": 0
-                  }
-                }
-              }
-            },
-            "feature": {
-              "type": "minecraft:ore",
-              "config": {
-                "size": 64,
-                "discard_chance_on_air_exposure": 0,
-                "targets": [
-                  {
-                    "target": {
-                      "predicate_type": "minecraft:block_match",
-                      "block": "super_block_world:vanillate"
-                    },
-                    "state": {
-                      "Name": "super_block_world:hardstone",
-                      "Properties": {
-                        "axis": "y"
-                      }
-                    }
-                  },
-                  {
-                    "target": {
-                      "predicate_type": "minecraft:block_match",
-                      "block": "super_block_world:topped_vanillate"
-                    },
-                    "state": {
-                      "Name": "super_block_world:hardstone",
-                      "Properties": {
-                        "axis": "y"
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
+        "state": {
+          "Name": "super_block_world:hardstone"
         }
       }
-    }
-  }
+    ],
+    "size": 62,
+    "discard_chance_on_air_exposure": 0.0
+  },
+  "type": "minecraft:ore"
 }

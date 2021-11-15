@@ -1,11 +1,8 @@
 package com.dayofpi.sbw_main.world.registry;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.TagList;
 import com.dayofpi.sbw_main.world.structure_feature.ToadHouseFeature;
 import com.dayofpi.sbw_main.world.structure_feature.WarpPortalFeature;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.structure.v1.FabricStructureBuilder;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -43,10 +40,12 @@ public class ModStructures {
         FabricStructureBuilder.create(new Identifier(Main.MOD_ID, "toad_house"), TOAD_HOUSE_FEATURE).step(GenerationStep.Feature.SURFACE_STRUCTURES).defaultConfig(30, 10, 0).adjustsSurface().register();
         BuiltinRegistries.add(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE, TOAD_HOUSE_KEY.getValue(), TOAD_HOUSE_CONFIGURED);
 
+        /*
+        TODO: Wait for Biome API to update!
         BiomeModifications.addStructure(BiomeSelectors.foundInOverworld(), WARP_PORTAL_KEY);
         BiomeModifications.addStructure(BiomeSelectors.includeByKey(FOSSIL_FALLS_KEY), FOSSIL_KEY);
         BiomeModifications.addStructure(BiomeSelectors.tag(TagList.AQUATIC), SHIPWRECK_KEY);
         BiomeModifications.addStructure(BiomeSelectors.tag(TagList.AQUATIC), BEACHED_SHIPWRECK_KEY);
-        BiomeModifications.addStructure(BiomeSelectors.tag(TagList.SURFACE), TOAD_HOUSE_KEY);
+        BiomeModifications.addStructure(BiomeSelectors.tag(TagList.SURFACE), TOAD_HOUSE_KEY);*/
     }
 }

@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.block.types;
 
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.PlantBlocks;
 import com.dayofpi.sbw_main.block.types.template.ModPlantPartBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
@@ -89,6 +89,6 @@ public class BeanstalkPlantBlock extends ModPlantPartBlock implements Fertilizab
     }
 
     protected AbstractPlantStemBlock getStem(BlockState state) {
-        return state.get(BUDDING) ? (AbstractPlantStemBlock) ModBlocks.BUDDING_BEANSTALK : (AbstractPlantStemBlock) ModBlocks.BEANSTALK;
+        return state.get(BUDDING) ? (AbstractPlantStemBlock) PlantBlocks.BUDDING_BEANSTALK : (AbstractPlantStemBlock) PlantBlocks.BEANSTALK;
     }
 }

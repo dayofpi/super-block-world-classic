@@ -1,7 +1,11 @@
 package com.dayofpi.sbw_main.item.registry;
 
 import com.dayofpi.sbw_main.Main;
+import com.dayofpi.sbw_main.block.registry.categories.ColoredBlocks;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.MushroomBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.PlantBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.VariantBlocks;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.item.types.*;
 import com.dayofpi.sbw_main.misc.EnumBoats;
@@ -53,8 +57,8 @@ public class ModItems {
     public static final Item MOO_MOO_SPAWN_EGG = new SpawnEggItem(ModEntities.MOO_MOO, 15985102, 4605249, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item GOOMBA_SPAWN_EGG = new SpawnEggItem(ModEntities.GOOMBA, 12544546, 14922613, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item PARAGOOMBA_SPAWN_EGG = new SpawnEggItem(ModEntities.PARAGOOMBA, 12544546, 16767400, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
-    public static final Item KOOPA_TROOPA_SPAWN_EGG = new SpawnEggItem(ModEntities.KOOPA_TROOPA, 7125541, 16763466, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
-    public static final Item PARATROOPA_SPAWN_EGG = new SpawnEggItem(ModEntities.PARATROOPA, 7125541, 16767616, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item KOOPA_TROOPA_SPAWN_EGG = new SpawnEggItem(ModEntities.KOOPA_TROOPA, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item PARATROOPA_SPAWN_EGG = new SpawnEggItem(ModEntities.PARATROOPA, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item HAMMER_BRO_SPAWN_EGG = new SpawnEggItem(ModEntities.HAMMER_BRO, 16570144, 9341835, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item FIRE_BRO_SPAWN_EGG = new SpawnEggItem(ModEntities.FIRE_BRO, 16570144, 15552066, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BOB_OMB_SPAWN_EGG = new SpawnEggItem(ModEntities.BOB_OMB, 658473, 5688063, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
@@ -130,40 +134,41 @@ public class ModItems {
         registerBlockItem("fake_block", ModBlocks.FAKE_BLOCK);
         registerBlockItem("empty_block", ModBlocks.EMPTY_BLOCK);
 
-        registerBlockItem("brown_mushroom_cap", ModBlocks.BROWN_MUSHROOM_CAP);
-        registerBlockItem("red_mushroom_cap", ModBlocks.RED_MUSHROOM_CAP);
-        registerBlockItem("green_mushroom_cap", ModBlocks.GREEN_MUSHROOM_CAP);
-        registerBlockItem("pink_mushroom_cap", ModBlocks.PINK_MUSHROOM_CAP);
-        registerBlockItem("yellow_mushroom_cap", ModBlocks.YELLOW_MUSHROOM_CAP);
-        registerBlockItem("orange_mushroom_cap", ModBlocks.ORANGE_MUSHROOM_CAP);
-        registerBlockItem("purple_mushroom_cap", ModBlocks.PURPLE_MUSHROOM_CAP);
+        registerBlockItem("brown_mushroom_cap", MushroomBlocks.BROWN_MUSHROOM_CAP);
+        registerBlockItem("red_mushroom_cap", MushroomBlocks.RED_MUSHROOM_CAP);
+        registerBlockItem("green_mushroom_cap", MushroomBlocks.GREEN_MUSHROOM_CAP);
+        registerBlockItem("pink_mushroom_cap", MushroomBlocks.PINK_MUSHROOM_CAP);
+        registerBlockItem("yellow_mushroom_cap", MushroomBlocks.YELLOW_MUSHROOM_CAP);
+        registerBlockItem("orange_mushroom_cap", MushroomBlocks.ORANGE_MUSHROOM_CAP);
+        registerBlockItem("purple_mushroom_cap", MushroomBlocks.PURPLE_MUSHROOM_CAP);
         registerBlockItem("redstone_trampoline", ModBlocks.REDSTONE_TRAMPOLINE);
 
-        registerBlockItem("green_mushroom", ModBlocks.GREEN_MUSHROOM);
-        registerBlockItem("pink_mushroom", ModBlocks.PINK_MUSHROOM);
-        registerBlockItem("yellow_mushroom", ModBlocks.YELLOW_MUSHROOM);
-        registerBlockItem("orange_mushroom", ModBlocks.ORANGE_MUSHROOM);
-        registerBlockItem("purple_mushroom", ModBlocks.PURPLE_MUSHROOM);
+        registerBlockItem("green_mushroom", MushroomBlocks.GREEN_MUSHROOM);
+        registerBlockItem("pink_mushroom", MushroomBlocks.PINK_MUSHROOM);
+        registerBlockItem("yellow_mushroom", MushroomBlocks.YELLOW_MUSHROOM);
+        registerBlockItem("orange_mushroom", MushroomBlocks.ORANGE_MUSHROOM);
+        registerBlockItem("purple_mushroom", MushroomBlocks.PURPLE_MUSHROOM);
 
-        registerBlockItem("amanita_sapling", ModBlocks.AMANITA_SAPLING);
-        registerBlockItem("bush", ModBlocks.BUSH);
-        registerBlockItem("horsetail", ModBlocks.HORSETAIL);
-        registerBlockItem("vegetable", ModBlocks.VEGETABLE);
+        registerBlockItem("amanita_sapling", PlantBlocks.AMANITA_SAPLING);
+        registerBlockItem("bush", PlantBlocks.BUSH);
+        registerBlockItem("horsetail", PlantBlocks.HORSETAIL);
+        registerBlockItem("vegetable", PlantBlocks.VEGETABLE);
 
-        registerBlockItem("pawflower", ModBlocks.PAWFLOWER);
-        registerBlockItem("blue_songflower", ModBlocks.BLUE_SONGFLOWER);
-        registerBlockItem("pink_songflower", ModBlocks.PINK_SONGFLOWER);
-        registerBlockItem("yellow_songflower", ModBlocks.YELLOW_SONGFLOWER);
-        registerBlockItem("fire_tulip", ModBlocks.FIRE_TULIP);
+        registerBlockItem("pawflower", PlantBlocks.PAWFLOWER);
+        registerBlockItem("blue_songflower", PlantBlocks.BLUE_SONGFLOWER);
+        registerBlockItem("pink_songflower", PlantBlocks.PINK_SONGFLOWER);
+        registerBlockItem("yellow_songflower", PlantBlocks.YELLOW_SONGFLOWER);
+        registerBlockItem("fire_tulip", PlantBlocks.FIRE_TULIP);
 
-        registerBlockItem("cave_mushrooms", ModBlocks.CAVE_MUSHROOMS);
-        registerBlockItem("muncher", ModBlocks.MUNCHER);
-        registerBlockItem("piranha_lily", ModBlocks.PIRANHA_LILY);
-        registerBlockItem("budding_beanstalk", ModBlocks.BUDDING_BEANSTALK);
-        registerBlockItem("beanstalk", ModBlocks.BEANSTALK);
+        registerBlockItem("cave_mushrooms", PlantBlocks.CAVE_MUSHROOMS);
+        registerBlockItem("muncher", PlantBlocks.MUNCHER);
+        registerBlockItem("piranha_lily", PlantBlocks.PIRANHA_LILY);
+        registerBlockItem("budding_beanstalk", PlantBlocks.BUDDING_BEANSTALK);
+        registerBlockItem("beanstalk", PlantBlocks.BEANSTALK);
         registerBlockItem("strawberry_coral", ModBlocks.STRAWBERRY_CORAL);
 
-        registerBlockItem("mushroom_stem", ModBlocks.MUSHROOM_STEM);
+        registerBlockItem("jellybeam", ModBlocks.JELLYBEAM);
+        registerBlockItem("mushroom_stem", MushroomBlocks.MUSHROOM_STEM);
         registerBlockItem("beanstalk_block", ModBlocks.BEANSTALK_BLOCK);
         registerBlockItem("strawberry_coral_block", ModBlocks.STRAWBERRY_CORAL_BLOCK);
 
@@ -182,8 +187,8 @@ public class ModItems {
         registerBlockItem("chiseled_gritzy_sandstone", ModBlocks.CHISELED_GRITZY_SANDSTONE);
         registerBlockItem("cut_gritzy_sandstone", ModBlocks.CUT_GRITZY_SANDSTONE);
         registerBlockItem("smooth_gritzy_sandstone", ModBlocks.SMOOTH_GRITZY_SANDSTONE);
-        registerBlockItem("gritzy_sandstone_slab", ModBlocks.GRITZY_SANDSTONE_SLAB);
-        registerBlockItem("gritzy_sandstone_stairs", ModBlocks.GRITZY_SANDSTONE_STAIRS);
+        registerBlockItem("gritzy_sandstone_slab", VariantBlocks.GRITZY_SANDSTONE_SLAB);
+        registerBlockItem("gritzy_sandstone_stairs", VariantBlocks.GRITZY_SANDSTONE_STAIRS);
 
         registerBlockItem("topped_vanillate", ModBlocks.TOPPED_VANILLATE);
         registerBlockItem("coal_topped_vanillate", ModBlocks.COAL_TOPPED_VANILLATE);
@@ -197,7 +202,7 @@ public class ModItems {
         registerBlockItem("happy_cloud", ModBlocks.HAPPY_CLOUD);
         registerBlockItem("cloud_block", ModBlocks.CLOUD_BLOCK);
         registerBlockItem("jump_block", ModBlocks.JUMP_BLOCK);
-        registerBlockItem("cloud_slab", ModBlocks.CLOUD_SLAB);
+        registerBlockItem("cloud_slab", VariantBlocks.CLOUD_SLAB);
 
         registerBlockItem("amanita_log", ModBlocks.AMANITA_LOG);
         registerBlockItem("stripped_amanita_log", ModBlocks.STRIPPED_AMANITA_LOG);
@@ -207,30 +212,30 @@ public class ModItems {
         registerBlockItem("amanita_leaves", ModBlocks.AMANITA_LEAVES);
         registerBlockItem("fruiting_amanita_leaves", ModBlocks.FRUITING_AMANITA_LEAVES);
 
-        registerBlockItem("amanita_carpet", ModBlocks.AMANITA_CARPET);
-        registerBlockItem("yellow_flowerbed", ModBlocks.YELLOW_FLOWERBED);
-        registerBlockItem("white_flowerbed", ModBlocks.WHITE_FLOWERBED);
+        registerBlockItem("amanita_carpet", PlantBlocks.AMANITA_CARPET);
+        registerBlockItem("yellow_flowerbed", PlantBlocks.YELLOW_FLOWERBED);
+        registerBlockItem("white_flowerbed", PlantBlocks.WHITE_FLOWERBED);
 
         registerBlockItem("amanita_planks", ModBlocks.AMANITA_PLANKS);
-        registerBlockItem("amanita_slab", ModBlocks.AMANITA_SLAB);
-        registerBlockItem("amanita_stairs", ModBlocks.AMANITA_STAIRS);
+        registerBlockItem("amanita_slab", VariantBlocks.AMANITA_SLAB);
+        registerBlockItem("amanita_stairs", VariantBlocks.AMANITA_STAIRS);
 
-        registerBlockItem("white_bronze", ModBlocks.WHITE_BRONZE);
-        registerBlockItem("orange_bronze", ModBlocks.ORANGE_BRONZE);
-        registerBlockItem("magenta_bronze", ModBlocks.MAGENTA_BRONZE);
-        registerBlockItem("light_blue_bronze", ModBlocks.LIGHT_BLUE_BRONZE);
-        registerBlockItem("yellow_bronze", ModBlocks.YELLOW_BRONZE);
-        registerBlockItem("lime_bronze", ModBlocks.LIME_BRONZE);
-        registerBlockItem("pink_bronze", ModBlocks.PINK_BRONZE);
-        registerBlockItem("gray_bronze", ModBlocks.GRAY_BRONZE);
-        registerBlockItem("light_gray_bronze", ModBlocks.LIGHT_GRAY_BRONZE);
-        registerBlockItem("cyan_bronze", ModBlocks.CYAN_BRONZE);
-        registerBlockItem("purple_bronze", ModBlocks.PURPLE_BRONZE);
-        registerBlockItem("blue_bronze", ModBlocks.BLUE_BRONZE);
-        registerBlockItem("brown_bronze", ModBlocks.BROWN_BRONZE);
-        registerBlockItem("green_bronze", ModBlocks.GREEN_BRONZE);
-        registerBlockItem("red_bronze", ModBlocks.RED_BRONZE);
-        registerBlockItem("black_bronze", ModBlocks.BLACK_BRONZE);
+        registerBlockItem("white_bronze", ColoredBlocks.WHITE_BRONZE);
+        registerBlockItem("orange_bronze", ColoredBlocks.ORANGE_BRONZE);
+        registerBlockItem("magenta_bronze", ColoredBlocks.MAGENTA_BRONZE);
+        registerBlockItem("light_blue_bronze", ColoredBlocks.LIGHT_BLUE_BRONZE);
+        registerBlockItem("yellow_bronze", ColoredBlocks.YELLOW_BRONZE);
+        registerBlockItem("lime_bronze", ColoredBlocks.LIME_BRONZE);
+        registerBlockItem("pink_bronze", ColoredBlocks.PINK_BRONZE);
+        registerBlockItem("gray_bronze", ColoredBlocks.GRAY_BRONZE);
+        registerBlockItem("light_gray_bronze", ColoredBlocks.LIGHT_GRAY_BRONZE);
+        registerBlockItem("cyan_bronze", ColoredBlocks.CYAN_BRONZE);
+        registerBlockItem("purple_bronze", ColoredBlocks.PURPLE_BRONZE);
+        registerBlockItem("blue_bronze", ColoredBlocks.BLUE_BRONZE);
+        registerBlockItem("brown_bronze", ColoredBlocks.BROWN_BRONZE);
+        registerBlockItem("green_bronze", ColoredBlocks.GREEN_BRONZE);
+        registerBlockItem("red_bronze", ColoredBlocks.RED_BRONZE);
+        registerBlockItem("black_bronze", ColoredBlocks.BLACK_BRONZE);
 
         registerItem("amanita_sign", new SignItem(new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP).maxCount(16), ModBlocks.AMANITA_SIGN, ModBlocks.AMANITA_WALL_SIGN));
         registerBlockItem("amanita_door", ModBlocks.AMANITA_DOOR);
@@ -252,76 +257,76 @@ public class ModItems {
 
         registerBlockItem("bronze_block", ModBlocks.BRONZE_BLOCK);
         registerBlockItem("raw_bronze_block", ModBlocks.RAW_BRONZE_BLOCK);
-        registerBlockItem("bronze_slab", ModBlocks.BRONZE_SLAB);
-        registerBlockItem("bronze_stairs", ModBlocks.BRONZE_STAIRS);
+        registerBlockItem("bronze_slab", VariantBlocks.BRONZE_SLAB);
+        registerBlockItem("bronze_stairs", VariantBlocks.BRONZE_STAIRS);
 
         registerBlockItem("toadstone", ModBlocks.TOADSTONE);
         registerBlockItem("chiseled_toadstone", ModBlocks.CHISELED_TOADSTONE);
         registerBlockItem("smooth_toadstone", ModBlocks.SMOOTH_TOADSTONE);
 
-        registerBlockItem("toadstone_slab", ModBlocks.TOADSTONE_SLAB);
-        registerBlockItem("toadstone_stairs", ModBlocks.TOADSTONE_STAIRS);
-        registerBlockItem("toadstone_wall", ModBlocks.TOADSTONE_WALL);
+        registerBlockItem("toadstone_slab", VariantBlocks.TOADSTONE_SLAB);
+        registerBlockItem("toadstone_stairs", VariantBlocks.TOADSTONE_STAIRS);
+        registerBlockItem("toadstone_wall", VariantBlocks.TOADSTONE_WALL);
 
         registerBlockItem("toadstone_bricks", ModBlocks.TOADSTONE_BRICKS);
-        registerBlockItem("toadstone_brick_slab", ModBlocks.TOADSTONE_BRICK_SLAB);
-        registerBlockItem("toadstone_brick_stairs", ModBlocks.TOADSTONE_BRICK_STAIRS);
-        registerBlockItem("toadstone_brick_wall", ModBlocks.TOADSTONE_BRICK_WALL);
+        registerBlockItem("toadstone_brick_slab", VariantBlocks.TOADSTONE_BRICK_SLAB);
+        registerBlockItem("toadstone_brick_stairs", VariantBlocks.TOADSTONE_BRICK_STAIRS);
+        registerBlockItem("toadstone_brick_wall", VariantBlocks.TOADSTONE_BRICK_WALL);
 
         registerBlockItem("gloomstone", ModBlocks.GLOOMSTONE);
         registerBlockItem("chiseled_gloomstone", ModBlocks.CHISELED_GLOOMSTONE);
         registerBlockItem("smooth_gloomstone", ModBlocks.SMOOTH_GLOOMSTONE);
 
-        registerBlockItem("gloomstone_slab", ModBlocks.GLOOMSTONE_SLAB);
-        registerBlockItem("gloomstone_stairs", ModBlocks.GLOOMSTONE_STAIRS);
-        registerBlockItem("gloomstone_wall", ModBlocks.GLOOMSTONE_WALL);
+        registerBlockItem("gloomstone_slab", VariantBlocks.GLOOMSTONE_SLAB);
+        registerBlockItem("gloomstone_stairs", VariantBlocks.GLOOMSTONE_STAIRS);
+        registerBlockItem("gloomstone_wall", VariantBlocks.GLOOMSTONE_WALL);
 
         registerBlockItem("gloomstone_bricks", ModBlocks.GLOOMSTONE_BRICKS);
-        registerBlockItem("gloomstone_brick_slab", ModBlocks.GLOOMSTONE_BRICK_SLAB);
-        registerBlockItem("gloomstone_brick_stairs", ModBlocks.GLOOMSTONE_BRICK_STAIRS);
-        registerBlockItem("gloomstone_brick_wall", ModBlocks.GLOOMSTONE_BRICK_WALL);
+        registerBlockItem("gloomstone_brick_slab", VariantBlocks.GLOOMSTONE_BRICK_SLAB);
+        registerBlockItem("gloomstone_brick_stairs", VariantBlocks.GLOOMSTONE_BRICK_STAIRS);
+        registerBlockItem("gloomstone_brick_wall", VariantBlocks.GLOOMSTONE_BRICK_WALL);
 
         registerBlockItem("hardstone", ModBlocks.HARDSTONE);
         registerBlockItem("polished_hardstone", ModBlocks.POLISHED_HARDSTONE);
         registerBlockItem("chiseled_hardstone", ModBlocks.CHISELED_HARDSTONE);
         registerBlockItem("hardstone_pillar", ModBlocks.HARDSTONE_PILLAR);
-        registerBlockItem("polished_hardstone_slab", ModBlocks.POLISHED_HARDSTONE_SLAB);
-        registerBlockItem("polished_hardstone_stairs", ModBlocks.POLISHED_HARDSTONE_STAIRS);
+        registerBlockItem("polished_hardstone_slab", VariantBlocks.POLISHED_HARDSTONE_SLAB);
+        registerBlockItem("polished_hardstone_stairs", VariantBlocks.POLISHED_HARDSTONE_STAIRS);
 
         registerBlockItem("hardstone_bricks", ModBlocks.HARDSTONE_BRICKS);
         registerBlockItem("cracked_hardstone_bricks", ModBlocks.CRACKED_HARDSTONE_BRICKS);
-        registerBlockItem("hardstone_brick_slab", ModBlocks.HARDSTONE_BRICK_SLAB);
-        registerBlockItem("hardstone_brick_stairs", ModBlocks.HARDSTONE_BRICK_STAIRS);
+        registerBlockItem("hardstone_brick_slab", VariantBlocks.HARDSTONE_BRICK_SLAB);
+        registerBlockItem("hardstone_brick_stairs", VariantBlocks.HARDSTONE_BRICK_STAIRS);
 
         registerBlockItem("seastone", ModBlocks.SEASTONE);
         registerBlockItem("seastone_bricks", ModBlocks.SEASTONE_BRICKS);
-        registerBlockItem("seastone_brick_slab", ModBlocks.SEASTONE_BRICK_SLAB);
-        registerBlockItem("seastone_brick_stairs", ModBlocks.SEASTONE_BRICK_STAIRS);
+        registerBlockItem("seastone_brick_slab", VariantBlocks.SEASTONE_BRICK_SLAB);
+        registerBlockItem("seastone_brick_stairs", VariantBlocks.SEASTONE_BRICK_STAIRS);
 
         registerBlockItem("golden_bricks", ModBlocks.GOLDEN_BRICKS);
-        registerBlockItem("golden_brick_slab", ModBlocks.GOLDEN_BRICK_SLAB);
-        registerBlockItem("golden_brick_stairs", ModBlocks.GOLDEN_BRICK_STAIRS);
+        registerBlockItem("golden_brick_slab", VariantBlocks.GOLDEN_BRICK_SLAB);
+        registerBlockItem("golden_brick_stairs", VariantBlocks.GOLDEN_BRICK_STAIRS);
 
         registerBlockItem("crystal_bricks", ModBlocks.CRYSTAL_BRICKS);
-        registerBlockItem("crystal_brick_slab", ModBlocks.CRYSTAL_BRICK_SLAB);
-        registerBlockItem("crystal_brick_stairs", ModBlocks.CRYSTAL_BRICK_STAIRS);
+        registerBlockItem("crystal_brick_slab", VariantBlocks.CRYSTAL_BRICK_SLAB);
+        registerBlockItem("crystal_brick_stairs", VariantBlocks.CRYSTAL_BRICK_STAIRS);
 
         registerBlockItem("vanillate", ModBlocks.VANILLATE);
         registerBlockItem("vanillate_crumble", ModBlocks.VANILLATE_CRUMBLE);
         registerBlockItem("vanillate_bricks", ModBlocks.VANILLATE_BRICKS);
         registerBlockItem("vanillate_tiles", ModBlocks.VANILLATE_TILES);
-        registerBlockItem("vanillate_slab", ModBlocks.VANILLATE_SLAB);
-        registerBlockItem("vanillate_stairs", ModBlocks.VANILLATE_STAIRS);
-        registerBlockItem("vanillate_brick_slab", ModBlocks.VANILLATE_BRICK_SLAB);
-        registerBlockItem("vanillate_brick_stairs", ModBlocks.VANILLATE_BRICK_STAIRS);
+        registerBlockItem("vanillate_slab", VariantBlocks.VANILLATE_SLAB);
+        registerBlockItem("vanillate_stairs", VariantBlocks.VANILLATE_STAIRS);
+        registerBlockItem("vanillate_brick_slab", VariantBlocks.VANILLATE_BRICK_SLAB);
+        registerBlockItem("vanillate_brick_stairs", VariantBlocks.VANILLATE_BRICK_STAIRS);
 
         registerBlockItem("frosty_vanillate", ModBlocks.FROSTY_VANILLATE);
         registerBlockItem("frosty_vanillate_crumble", ModBlocks.FROSTY_VANILLATE_CRUMBLE);
         registerBlockItem("frosty_vanillate_bricks", ModBlocks.FROSTY_VANILLATE_BRICKS);
         registerBlockItem("frosty_vanillate_tiles", ModBlocks.FROSTY_VANILLATE_TILES);
-        registerBlockItem("frosty_vanillate_slab", ModBlocks.FROSTY_VANILLATE_SLAB);
-        registerBlockItem("frosty_vanillate_stairs", ModBlocks.FROSTY_VANILLATE_STAIRS);
-        registerBlockItem("frosty_vanillate_brick_slab", ModBlocks.FROSTY_VANILLATE_BRICK_SLAB);
-        registerBlockItem("frosty_vanillate_brick_stairs", ModBlocks.FROSTY_VANILLATE_BRICK_STAIRS);
+        registerBlockItem("frosty_vanillate_slab", VariantBlocks.FROSTY_VANILLATE_SLAB);
+        registerBlockItem("frosty_vanillate_stairs", VariantBlocks.FROSTY_VANILLATE_STAIRS);
+        registerBlockItem("frosty_vanillate_brick_slab", VariantBlocks.FROSTY_VANILLATE_BRICK_SLAB);
+        registerBlockItem("frosty_vanillate_brick_stairs", VariantBlocks.FROSTY_VANILLATE_BRICK_STAIRS);
     }
 }

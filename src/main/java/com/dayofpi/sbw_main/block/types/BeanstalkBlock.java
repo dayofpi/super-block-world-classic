@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.block.types;
 
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.PlantBlocks;
 import com.dayofpi.sbw_main.block.types.template.ModPlantStemBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -26,7 +26,7 @@ public class BeanstalkBlock extends ModPlantStemBlock {
     }
 
     protected Block getPlant() {
-        return ModBlocks.BEANSTALK_PLANT;
+        return PlantBlocks.BEANSTALK_PLANT;
     }
 
     protected boolean chooseStemState(BlockState state) {

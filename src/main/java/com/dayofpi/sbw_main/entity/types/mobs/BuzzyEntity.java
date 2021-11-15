@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.MushroomBlocks;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.entity.types.bases.AbstractBuzzy;
 import com.dayofpi.sbw_main.item.registry.ModItems;
@@ -72,7 +72,7 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
     public void initGoals() {
         this.goalSelector.add(2, new AnimalMateGoal(this, 1.0D));
         this.goalSelector.add(3, new TemptGoal(this, 1.2D, Ingredient.ofItems(ModItems.GREEN_MUSHROOM_ON_A_STICK), false));
-        this.goalSelector.add(3, new TemptGoal(this, 1.25D, Ingredient.ofItems(ModBlocks.GREEN_MUSHROOM), false));
+        this.goalSelector.add(3, new TemptGoal(this, 1.25D, Ingredient.ofItems(MushroomBlocks.GREEN_MUSHROOM), false));
         this.goalSelector.add(5, new FollowParentGoal(this, 1.1D));
         super.initGoals();
     }
@@ -188,7 +188,7 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.isOf(ModBlocks.GREEN_MUSHROOM.asItem());
+        return stack.isOf(MushroomBlocks.GREEN_MUSHROOM.asItem());
     }
 
     @Override

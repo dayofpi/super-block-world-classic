@@ -1,62 +1,20 @@
 {
-  "type": "minecraft:decorated",
   "config": {
-    "decorator": {
-      "type": "minecraft:chance",
-      "config": {
-        "chance": 8
-      }
-    },
-    "feature": {
-      "type": "minecraft:decorated",
-      "config": {
-        "decorator": {
-          "type": "minecraft:square",
-          "config": {}
+    "fluid": {
+      "state": {
+        "Properties": {
+          "level": "0"
         },
-        "feature": {
-          "type": "minecraft:decorated",
-          "config": {
-            "decorator": {
-              "type": "minecraft:range",
-              "config": {
-                "height": {
-                  "type": "minecraft:biased_to_bottom",
-                  "min_inclusive": {
-                    "above_bottom": 0
-                  },
-                  "max_inclusive": {
-                    "below_top": 0
-                  },
-                  "inner": 8
-                }
-              }
-            },
-            "feature": {
-              "type": "minecraft:decorated",
-              "config": {
-                "decorator": {
-                  "type": "minecraft:lava_lake",
-                  "config": {
-                    "chance": 80
-                  }
-                },
-                "feature": {
-                  "type": "super_block_world:lake",
-                  "config": {
-                    "state": {
-                      "Name": "minecraft:water",
-                      "Properties": {
-                        "level": "0"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+        "Name": "super_block_world:water"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
+    "barrier": {
+      "state": {
+        "Name": "super_block_world:vanillate"
+      },
+      "type": "minecraft:simple_state_provider"
     }
-  }
+  },
+  "type": "minecraft:lake"
 }

@@ -2,6 +2,7 @@ package com.dayofpi.sbw_main.world.structure_feature;
 
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.registry.categories.PottedBlocks;
 import com.dayofpi.sbw_main.world.registry.ModStructurePieces;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
@@ -56,12 +57,12 @@ public class ToadHouseGenerator {
             List<StructureProcessorRule> processors = Lists.newArrayList();
             processors.add(createReplacementRule(ModBlocks.QUESTION_BLOCK, 0.25F, Blocks.AIR));
             processors.add(createReplacementRule(ModBlocks.QUESTION_BLOCK, 0.25F, ModBlocks.COIN_BLOCK));
-            processors.add(createReplacementRule(ModBlocks.POTTED_GREEN_MUSHROOM, 0.25F, ModBlocks.POTTED_FIRE_TULIP));
-            processors.add(createReplacementRule(ModBlocks.POTTED_GREEN_MUSHROOM, 0.25F, ModBlocks.POTTED_PURPLE_MUSHROOM));
+            processors.add(createReplacementRule(PottedBlocks.POTTED_GREEN_MUSHROOM, 0.25F, PottedBlocks.POTTED_FIRE_TULIP));
+            processors.add(createReplacementRule(PottedBlocks.POTTED_GREEN_MUSHROOM, 0.25F, PottedBlocks.POTTED_PURPLE_MUSHROOM));
             processors.add(createReplacementRule(Blocks.POTTED_RED_MUSHROOM, 0.3F, Blocks.POTTED_BROWN_MUSHROOM));
-            processors.add(createReplacementRule(Blocks.POTTED_RED_MUSHROOM, 0.25F, ModBlocks.POTTED_YELLOW_MUSHROOM));
-            processors.add(createReplacementRule(Blocks.POTTED_RED_MUSHROOM, 0.25F, ModBlocks.POTTED_MUNCHER));
-            processors.add(createReplacementRule(Blocks.POTTED_RED_MUSHROOM, 0.25F, ModBlocks.POTTED_BEANSTALK));
+            processors.add(createReplacementRule(Blocks.POTTED_RED_MUSHROOM, 0.25F, PottedBlocks.POTTED_YELLOW_MUSHROOM));
+            processors.add(createReplacementRule(Blocks.POTTED_RED_MUSHROOM, 0.25F, PottedBlocks.POTTED_MUNCHER));
+            processors.add(createReplacementRule(Blocks.POTTED_RED_MUSHROOM, 0.25F, PottedBlocks.POTTED_BEANSTALK));
 
             return new StructurePlacementData()
                     .setRotation(rotation)
