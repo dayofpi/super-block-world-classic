@@ -1,0 +1,100 @@
+{
+  "temperature": 0.8,
+  "downfall": 0.4,
+  "precipitation": "rain",
+  "category": "plains",
+  "player_spawn_friendly": true,
+  "effects": {
+    "sky_color": 5156850,
+    "fog_color": 11337727,
+    "water_color": 1962492,
+    "water_fog_color": 52959,
+    "grass_color": 238377,
+    "foliage_color": 2519383,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "super_block_world:buzzy_beetle",
+        "weight": 100,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:spike_top",
+        "weight": 20,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:bob_omb",
+        "weight": 15,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "creature": [],
+    "water_ambient": [
+      {
+        "type": "minecraft:tropical_fish",
+        "weight": 1,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "super_block_world:cave",
+      "super_block_world:maze_cave",
+      "super_block_world:canyon"
+    ]
+  },
+  "features": [
+    [],
+    [
+      "super_block_world:lake_lava"
+    ],
+    [],
+    [
+      "super_block_world:block_single"
+    ],
+    [],
+    [
+      "super_block_world:vanillate_topping"
+    ],
+    [
+      "super_block_world:ore_bronze",
+      "super_block_world:ore_amethyst",
+      "super_block_world:ore_amethyst_scattered",
+      "super_block_world:ore_hardstone",
+      "super_block_world:ore_crumble",
+      "super_block_world:toppings_coal",
+      "super_block_world:toppings_iron",
+      "super_block_world:toppings_gold"
+    ],
+    [
+      "super_block_world:disk_sand",
+      "super_block_world:ceiling_default",
+      "super_block_world:patch_cave_crystals",
+      "super_block_world:stone_torches",
+      "super_block_world:warp_pipe_surface",
+      "super_block_world:warp_pipe_underwater",
+      "super_block_world:mushroom_underground",
+      "super_block_world:vegetation_underground"
+    ],
+    [
+      "super_block_world:patch_stumps",
+      "super_block_world:seagrass",
+      "super_block_world:plant_fossil_falls",
+      "super_block_world:mushroom_grassland"
+    ]
+  ]
+}

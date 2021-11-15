@@ -1,7 +1,9 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
 import com.dayofpi.sbw_main.ModSounds;
+import com.dayofpi.sbw_main.entity.goals.GoombaTargetGoal;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
+import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import com.dayofpi.sbw_main.item.registry.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -13,7 +15,6 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.loot.LootTables;
 import net.minecraft.nbt.NbtCompound;
@@ -62,7 +63,7 @@ public class GoombaEntity extends EnemyEntity {
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.7D));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new GoombaTargetGoal<>(this, PlayerEntity.class, true));
     }
 
     @Override
@@ -97,6 +98,14 @@ public class GoombaEntity extends EnemyEntity {
 
     protected SoundEvent getAmbientSound() {
         return ModSounds.ENTITY_GOOMBA_AMBIENT;
+    }
+
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return ModSounds.ENTITY_GOOMBA_HURT;
+    }
+
+    protected SoundEvent getDeathSound() {
+        return ModSounds.ENTITY_GOOMBA_DEATH;
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
@@ -222,14 +231,6 @@ public class GoombaEntity extends EnemyEntity {
 
     public EntityDimensions getDimensions(EntityPose pose) {
         return super.getDimensions(pose).scaled(0.5F * (float) this.getSize() + 0.5F);
-    }
-
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.ENTITY_GOOMBA_HURT;
-    }
-
-    protected SoundEvent getDeathSound() {
-        return ModSounds.ENTITY_GOOMBA_DEATH;
     }
 
     public void remove(RemovalReason reason) {

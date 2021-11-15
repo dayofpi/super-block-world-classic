@@ -24,8 +24,8 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // Custom Portal API
-    modImplementation 'net.kyrptonaught:customportalapi:0.0.1-beta45-1.18'
-    include 'net.kyrptonaught:customportalapi:0.0.1-beta45-1.18'
+    modImplementation 'net.kyrptonaught:customportalapi:0.0.1-beta45v3-1.18'
+    include 'net.kyrptonaught:customportalapi:0.0.1-beta45v3-1.18'
 }
 
 processResources {

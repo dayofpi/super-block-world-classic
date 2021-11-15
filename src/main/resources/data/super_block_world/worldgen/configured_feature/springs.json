@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:count",
+      "config": {
+        "count": 40
+      }
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:square",
+          "config": {}
+        },
+        "feature": {
+          "type": "minecraft:decorated",
+          "config": {
+            "decorator": {
+              "type": "minecraft:range",
+              "config": {
+                "height": {
+                  "type": "minecraft:uniform",
+                  "min_inclusive": {
+                    "absolute": 60
+                  },
+                  "max_inclusive": {
+                    "absolute": 192
+                  }
+                }
+              }
+            },
+            "feature": {
+              "type": "minecraft:spring_feature",
+              "config": {
+                "state": {
+                  "Name": "minecraft:water",
+                  "Properties": {
+                    "falling": "true"
+                  }
+                },
+                "rock_count": 4,
+                "hole_count": 1,
+                "requires_block_below": true,
+                "valid_blocks": [
+                  "super_block_world:toadstool_grass",
+                  "super_block_world:grassy_toadstone",
+                  "super_block_world:vanillate"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

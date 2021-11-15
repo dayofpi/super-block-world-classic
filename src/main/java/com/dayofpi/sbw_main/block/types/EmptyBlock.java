@@ -11,18 +11,25 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.predicate.entity.EntityPredicates;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
+import java.util.Random;
+
 @SuppressWarnings("deprecation")
-public class EmptyBlock  extends Block {
+public class EmptyBlock extends Block {
+    private boolean wasHit = false;
     public EmptyBlock(Settings settings) {
         super(settings);
     }
@@ -36,12 +43,24 @@ public class EmptyBlock  extends Block {
     public void onEntityCollision(BlockState state, World world, BlockPos blockPos, Entity entity) {
         boolean jumpUnder = entity.getY() < blockPos.getY();
         if (jumpUnder) {
-            world.playSound(null, blockPos, ModSounds.BLOCK_ITEM_BLOCK_BUMP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            if (!wasHit) {
+                wasHit = true;
+                world.playSound(null, blockPos, ModSounds.BLOCK_ITEM_BLOCK_BUMP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            } else {
+                world.method_39279(blockPos, this, 3);
+            }
         }
         super.onEntityCollision(state, world, blockPos, entity);
     }
 
     @Override
+    public void scheduledTick(BlockState state, ServerWorld world, BlockPos blockPos, Random random) {
+        if (world.getEntitiesByClass(PlayerEntity.class, Box.from(Vec3d.of(blockPos)), EntityPredicates.EXCEPT_SPECTATOR).isEmpty()) {
+            this.wasHit = false;
+        }
+    }
+
+        @Override
     public ActionResult onUse(BlockState state, World world, BlockPos blockPos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
         if (!itemStack.isEmpty()) {

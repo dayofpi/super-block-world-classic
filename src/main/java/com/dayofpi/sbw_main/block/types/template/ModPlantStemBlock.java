@@ -30,7 +30,7 @@ public abstract class ModPlantStemBlock extends AbstractPlantStemBlock implement
 
 	public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
 		if (direction == this.growthDirection.getOpposite() && !state.canPlaceAt(world, pos)) {
-			world.getBlockTickScheduler().schedule(pos, this, 1);
+			world.method_39279(pos, this, 1);
 		}
 
 		if (direction != this.growthDirection || !neighborState.isOf(this) && !neighborState.isOf(this.getPlant())) {

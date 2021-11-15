@@ -2,7 +2,7 @@ package com.dayofpi.sbw_main.entity.feature;
 
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.model.BuzzyModel;
-import com.dayofpi.sbw_main.entity.types.mobs.AbstractBuzzy;
+import com.dayofpi.sbw_main.entity.types.bases.AbstractBuzzy;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.feature.EyesFeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;

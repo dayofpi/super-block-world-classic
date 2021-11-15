@@ -3,13 +3,14 @@ package com.dayofpi.sbw_main.block.types;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.NoteBlock;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class JumpBlock extends NoteBlock {
+public class    JumpBlock extends NoteBlock {
     public JumpBlock(Settings $$0) {
         super($$0);
     }
@@ -40,8 +41,10 @@ public class JumpBlock extends NoteBlock {
         Vec3d vec3d = entity.getVelocity();
         World world = entity.world;
         BlockPos blockPos = entity.getLandingPos();
-        this.playNote(world, blockPos);
-        entity.setVelocity(vec3d.x, 0.9, vec3d.z);
-
+        if (vec3d.y < 0.2D) {
+            double d = entity instanceof LivingEntity ? 1.0D : 0.8D;
+            entity.setVelocity(vec3d.x, -vec3d.y * d, vec3d.z);if (entity.fallDistance > 0)
+                this.playNote(world, blockPos);
+        }
     }
 }

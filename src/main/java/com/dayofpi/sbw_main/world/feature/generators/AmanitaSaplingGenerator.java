@@ -11,6 +11,6 @@ import java.util.Random;
 public class AmanitaSaplingGenerator extends SaplingGenerator {
     @Nullable
     protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random random, boolean bees) {
-        return random.nextInt(6) == 2 ? ModFeatures.AMANITA_FRUITS : ModFeatures.AMANITA;
+        return random.nextInt(6) == 2 ? ModFeatures.AMANITA_FRUIT : ModFeatures.AMANITA;
     }
 }

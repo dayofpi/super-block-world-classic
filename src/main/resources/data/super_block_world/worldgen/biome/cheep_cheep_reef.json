@@ -39,6 +39,18 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:koopa_troopa",
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:paratroopa",
+        "weight": 2,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:hammer_bro",
         "weight": 10,
         "minCount": 2,
@@ -123,7 +135,8 @@
     [],
     [
       "super_block_world:lake_lava",
-      "super_block_world:lake_poison"
+      "super_block_world:lake_poison",
+      "super_block_world:lake_water"
     ],
     [],
     [
@@ -159,6 +172,7 @@
       "super_block_world:patch_horsetails",
       "super_block_world:seagrass",
       "super_block_world:kelp",
+      "super_block_world:springs",
       "super_block_world:water_plants",
       "super_block_world:coral_columns",
       "super_block_world:plant_reef",

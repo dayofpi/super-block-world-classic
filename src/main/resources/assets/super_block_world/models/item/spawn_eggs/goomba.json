@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "super_block_world:item/spawn_goomba"
-  }
+  "parent": "minecraft:item/template_spawn_egg"
 }

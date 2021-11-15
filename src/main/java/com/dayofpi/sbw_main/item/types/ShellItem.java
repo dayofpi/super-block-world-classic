@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.item.types;
 
-import com.dayofpi.sbw_main.entity.types.AbstractShell;
+import com.dayofpi.sbw_main.entity.types.bases.AbstractShell;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.SpawnReason;

@@ -1,10 +1,8 @@
 package com.dayofpi.sbw_main.block.registry;
 
-import com.dayofpi.sbw_main.entity.renderer.ModSignRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
@@ -15,17 +13,24 @@ import net.minecraft.client.render.RenderLayer;
 public class BlockClient {
     public static void setRenderLayers() {
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && pos != null ? BiomeColors.getGrassColor(view, pos) : GrassColors.getColor(0.5D, 1.0D),
-                ModBlocks.TOADSTOOL_GRASS, ModBlocks.TOADSTOOL_TURF, ModBlocks.BUSH, ModBlocks.POTTED_BUSH);
+                ModBlocks.TOADSTOOL_GRASS, ModBlocks.GRASSY_TOADSTONE, ModBlocks.TOADSTOOL_TURF, ModBlocks.BUSH, ModBlocks.POTTED_BUSH);
 
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && pos != null ? BiomeColors.getFoliageColor(view, pos) : FoliageColors.getColor(0.5D, 1.0D),
                 ModBlocks.AMANITA_LEAVES, ModBlocks.FRUITING_AMANITA_LEAVES, ModBlocks.AMANITA_CARPET);
 
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7067428, ModBlocks.TOADSTOOL_GRASS, ModBlocks.TOADSTOOL_TURF, ModBlocks.HORSETAIL, ModBlocks.BUSH, ModBlocks.AMANITA_LEAVES, ModBlocks.FRUITING_AMANITA_LEAVES, ModBlocks.AMANITA_CARPET);
-
-        BlockEntityRendererRegistry.register(ModBlockEntities.MOD_SIGN, ModSignRenderer::new);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 7067428,
+                ModBlocks.TOADSTOOL_GRASS,
+                ModBlocks.GRASSY_TOADSTONE,
+                ModBlocks.TOADSTOOL_TURF,
+                ModBlocks.HORSETAIL,
+                ModBlocks.BUSH,
+                ModBlocks.AMANITA_LEAVES,
+                ModBlocks.FRUITING_AMANITA_LEAVES,
+                ModBlocks.AMANITA_CARPET);
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POISON, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TOADSTOOL_GRASS, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GRASSY_TOADSTONE, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AMANITA_LEAVES, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FRUITING_AMANITA_LEAVES, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AMANITA_CARPET, RenderLayer.getCutoutMipped());

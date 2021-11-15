@@ -29,14 +29,14 @@ public class WarpPipeBlock extends AbstractWarpPipeBlock implements BlockEntityP
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify)
     {
         super.onBlockAdded(state, world, pos, oldState, notify);
-        world.getBlockTickScheduler().schedule(pos, this, 20);
+        world.method_39279(pos, this, 20);
         warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos); //Add to list
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos); //Add to list
         if (direction == Direction.UP && neighborState.isOf(Blocks.WATER)) {
-            world.getBlockTickScheduler().schedule(pos, this, 20);
+            world.method_39279(pos, this, 20);
         }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }

@@ -4,6 +4,8 @@ import com.dayofpi.sbw_main.SoundList;
 import com.dayofpi.sbw_main.entity.goals.BooFollowOwnerGoal;
 import com.dayofpi.sbw_main.entity.goals.BooPickupItemGoal;
 import com.dayofpi.sbw_main.entity.goals.BooSitGoal;
+import com.dayofpi.sbw_main.entity.types.bases.AbstractGhost;
+import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import com.dayofpi.sbw_main.item.registry.ModItems;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Blocks;

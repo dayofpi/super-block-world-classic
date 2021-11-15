@@ -42,7 +42,7 @@ public class RedstoneTrampolineBlock extends Block {
             boolean bl = state.get(POWERED);
             if (bl != world.isReceivingRedstonePower(blockPos)) {
                 if (bl) {
-                    world.getBlockTickScheduler().schedule(blockPos, this, 4);
+                    world.method_39279(blockPos, this, 4);
                 } else {
                     world.setBlockState(blockPos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
                 }
@@ -74,7 +74,6 @@ public class RedstoneTrampolineBlock extends Block {
             super.onEntityLand(world, entity);
         } else {
             this.bounce(entity);
-            entity.playSound(SoundEvents.BLOCK_WART_BLOCK_STEP, 1.0F, 1.0F);
         }
 
     }
@@ -89,6 +88,7 @@ public class RedstoneTrampolineBlock extends Block {
         BlockPos blockPos = entity.getLandingPos();
         double jumpPower = world.getReceivedRedstonePower(blockPos);
         if (world.getBlockState(blockPos).get(POWERED)) {
+            entity.playSound(SoundEvents.BLOCK_WART_BLOCK_STEP, 1.0F, 1.0F);
             if (jumpPower < 5) {
                 entity.setVelocity(vec3d.x, jumpPower / 5, vec3d.z);
             } else entity.setVelocity(vec3d.x, jumpPower / 10, vec3d.z);

@@ -2,15 +2,12 @@ package com.dayofpi.sbw_main.world.structure_feature;
 
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.world.registry.ModStructures;
+import com.dayofpi.sbw_main.world.registry.ModStructurePieces;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.class_6625;
-import net.minecraft.loot.LootTables;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.state.property.Properties;
 import net.minecraft.structure.SimpleStructurePiece;
@@ -46,27 +43,45 @@ public class WarpPortalGenerator {
     }
 
     public static class Piece extends SimpleStructurePiece {
-        public Piece(StructureManager structureManager, Identifier identifier, BlockPos blockPos, BlockRotation blockRotation) {
-            super(ModStructures.WARP_PORTAL_PIECE, 0, structureManager, identifier, identifier.toString(), createPlacementData(blockRotation), blockPos);
-        }
+        private final BlockRotation rotation;
+        private final Identifier template;
 
         public Piece(class_6625 class_6625, NbtCompound nbtCompound) {
-            super(ModStructures.WARP_PORTAL_PIECE, nbtCompound, class_6625.structureManager(), (identifier) -> createPlacementData(BlockRotation.valueOf(nbtCompound.getString("Rot"))));
+            super(ModStructurePieces.WARP_PORTAL, nbtCompound, class_6625.structureManager(), (identifier) -> createPlacementData());
+            this.template = new Identifier(nbtCompound.getString("Template"));
+            this.rotation = BlockRotation.valueOf(nbtCompound.getString("Rot"));
         }
 
-        private static StructurePlacementData createPlacementData(BlockRotation rotation) {
-            List<StructureProcessorRule> list = Lists.newArrayList();
-            Random random = new Random();
-            list.add(createReplacementRule(ModBlocks.WARP_FRAME, 0.4F, Blocks.AIR));
-            list.add(createReplacementRule(ModBlocks.WARP_FRAME, 0.2F, ModBlocks.GOLDEN_BRICKS));
-            list.add(createReplacementRule(ModBlocks.POLISHED_HARDSTONE, 0.5F, ModBlocks.HARDSTONE));
-            list.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.3F, ModBlocks.CRACKED_HARDSTONE_BRICKS));
-            list.add(createReplacementRule(ModBlocks.HARDSTONE_BRICK_STAIRS, 0.1F, ModBlocks.WARP_FRAME));
-            list.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.2F, ModBlocks.HARDSTONE_BRICK_STAIRS.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.fromHorizontal(random.nextInt(4)))));
-            list.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.1F, Blocks.AIR));
-            list.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.1F, Blocks.GRAVEL));
+        public Piece(StructureManager structureManager, Identifier identifier, BlockPos blockPos, BlockRotation blockRotation) {
+            super(ModStructurePieces.WARP_PORTAL, 0, structureManager, identifier, identifier.toString(), createPlacementData(), blockPos);
+            this.pos = blockPos;
+            this.rotation = blockRotation;
+            this.template = identifier;
+        }
 
-            return (new StructurePlacementData()).setRotation(rotation).setMirror(BlockMirror.NONE).addProcessor(new RuleStructureProcessor(list)).addProcessor(BlockIgnoreStructureProcessor.IGNORE_AIR_AND_STRUCTURE_BLOCKS);
+        protected void writeNbt(class_6625 arg, NbtCompound nbt) {
+            super.writeNbt(arg, nbt);
+            nbt.putString("Template", this.template.toString());
+            nbt.putString("Rot", this.rotation.name());
+        }
+
+        private static StructurePlacementData createPlacementData() {
+            List<StructureProcessorRule> processors = Lists.newArrayList();
+            Random random = new Random();
+            processors.add(createReplacementRule(ModBlocks.STONE_TORCH, 0.1F, ModBlocks.STONE_TORCH));
+            processors.add(createReplacementRule(ModBlocks.WARP_FRAME, 0.4F, Blocks.AIR));
+            processors.add(createReplacementRule(ModBlocks.WARP_FRAME, 0.2F, ModBlocks.GOLDEN_BRICKS));
+            processors.add(createReplacementRule(ModBlocks.POLISHED_HARDSTONE, 0.5F, ModBlocks.HARDSTONE));
+            processors.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.3F, ModBlocks.CRACKED_HARDSTONE_BRICKS));
+            processors.add(createReplacementRule(ModBlocks.HARDSTONE_BRICK_STAIRS, 0.1F, ModBlocks.WARP_FRAME));
+            processors.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.2F, ModBlocks.HARDSTONE_BRICK_STAIRS.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.fromHorizontal(random.nextInt(4)))));
+            processors.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.1F, Blocks.AIR));
+            processors.add(createReplacementRule(ModBlocks.HARDSTONE_BRICKS, 0.2F, Blocks.GRAVEL));
+
+            return (new StructurePlacementData())
+                    .setRotation(BlockRotation.random(new Random()))
+                    .setMirror(BlockMirror.NONE).addProcessor(new RuleStructureProcessor(processors))
+                    .addProcessor(BlockIgnoreStructureProcessor.IGNORE_AIR_AND_STRUCTURE_BLOCKS);
         }
 
         private static StructureProcessorRule createReplacementRule(Block old, float chance, Block updated) {
@@ -77,25 +92,12 @@ public class WarpPortalGenerator {
             return new StructureProcessorRule(new RandomBlockMatchRuleTest(old, chance), AlwaysTrueRuleTest.INSTANCE, updated);
         }
 
-        protected void writeNbt(class_6625 arg, NbtCompound nbt) {
-            super.writeNbt(arg, nbt);
-            nbt.putString("Rot", this.placementData.getRotation().name());
-        }
-
         protected void handleMetadata(String metadata, BlockPos pos, ServerWorldAccess world, Random random, BlockBox boundingBox) {
-            if ("chest".equals(metadata)) {
-                world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
-                BlockEntity blockEntity = world.getBlockEntity(pos.down());
-                if (blockEntity instanceof ChestBlockEntity) {
-                    ((ChestBlockEntity)blockEntity).setLootTable(LootTables.IGLOO_CHEST_CHEST, random.nextLong());
-                }
-
-            }
         }
 
         public void generate(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos pos) {
             this.pos = new BlockPos(this.pos.getX(), world.getTopY(Heightmap.Type.WORLD_SURFACE_WG, pos.getX(), pos.getZ()), this.pos.getZ());
-            super.translate(0, -random.nextInt(3), 0);
+            this.translate(0, -random.nextInt(4), 0);
             super.generate(world, structureAccessor, chunkGenerator, random, boundingBox, chunkPos, pos);
         }
     }

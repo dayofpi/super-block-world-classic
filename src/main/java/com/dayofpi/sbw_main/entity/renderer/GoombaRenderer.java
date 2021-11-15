@@ -8,7 +8,6 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
 
 public class GoombaRenderer<T extends GoombaEntity> extends MobEntityRenderer<T, GoombaModel<T>> {
     private static final Identifier COMMON = new Identifier(Main.MOD_ID, "textures/entity/goomba/goomba.png");
@@ -24,6 +23,8 @@ public class GoombaRenderer<T extends GoombaEntity> extends MobEntityRenderer<T,
             matrices.scale(0.5F, 0.5F, 0.5F);
         } else if (entity.getSize() == 2) {
             matrices.scale(2.5F, 2.5F, 2.5F);
+        } else {
+            matrices.scale(entity.getSize(), entity.getSize(), entity.getSize());
         }
         super.setupTransforms(entity, matrices, animationProgress, bodyYaw, tickDelta);
     }

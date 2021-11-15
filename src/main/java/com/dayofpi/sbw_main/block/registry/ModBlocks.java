@@ -1,13 +1,12 @@
 package com.dayofpi.sbw_main.block.registry;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.block.types.CloudSlabBlock;
-import com.dayofpi.sbw_main.block.types.*;
 import com.dayofpi.sbw_main.block.types.MushroomBlock;
-import com.dayofpi.sbw_main.block.types.template.*;
+import com.dayofpi.sbw_main.block.types.*;
+import com.dayofpi.sbw_main.block.types.template.ModFluidBlock;
+import com.dayofpi.sbw_main.world.feature.generators.AmanitaSaplingGenerator;
 import com.dayofpi.sbw_main.world.registry.ModFeatures;
 import com.dayofpi.sbw_main.world.registry.ModFluids;
-import com.dayofpi.sbw_main.world.feature.generators.AmanitaSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
@@ -24,7 +23,10 @@ import net.minecraft.world.BlockView;
 import java.util.function.ToIntFunction;
 
 @SuppressWarnings("SameReturnValue")
+
 public class ModBlocks {
+    public static final SignType AMANITA = new SignType("amanita"){};
+
     public static final Block WARP_FRAME = new PillarBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(3.0F, 200F));
     public static final Block WARP_PIPE = new WarpPipeBlock(FabricBlockSettings.of(Material.METAL, MapColor.GREEN).requiresTool().strength(3.0F, 20.0F).nonOpaque().sounds(BlockSoundGroup.METAL));
     public static final Block WARP_PIPE_BODY = new WarpPipeBodyBlock(FabricBlockSettings.copyOf(WARP_PIPE));
@@ -46,10 +48,15 @@ public class ModBlocks {
     public static final Block CLOUD_BLOCK = new CloudBlock(FabricBlockSettings.copyOf(HAPPY_CLOUD));
     public static final Block CLOUD_SLAB = new CloudSlabBlock(FabricBlockSettings.copyOf(CLOUD_BLOCK));
     public static final Block GRITZY_SAND = new SandBlock(16372053, FabricBlockSettings.of(Material.AGGREGATE, MapColor.TERRACOTTA_YELLOW).strength(1.0F, 3.0F).sounds(BlockSoundGroup.SAND));
+    public static final Block QUICKSAND = new QuicksandBlock(FabricBlockSettings.of(Material.AGGREGATE, MapColor.TERRACOTTA_YELLOW).strength(2.0F, 3.0F).sounds(BlockSoundGroup.SAND).noCollision());
     public static final Block GRITZY_SANDSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_YELLOW).strength(1.0F, 3.0F));
+    public static final Block CHISELED_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
+    public static final Block CUT_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
     public static final Block SMOOTH_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
-    public static final Block SEASTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.EMERALD_GREEN).sounds(BlockSoundGroup.CALCITE).strength(1.0F).requiresTool());
-    public static final Block SEASTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(SEASTONE));
+    public static final Block GRITZY_SANDSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
+    public static final Block GRITZY_SANDSTONE_STAIRS = new StairsBlock(GRITZY_SANDSTONE.getDefaultState(), FabricBlockSettings.copyOf(GRITZY_SANDSTONE)){};
+    public static final Block SEASTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.EMERALD_GREEN).sounds(Main.TOADSTONE).strength(1.0F).requiresTool());
+    public static final Block SEASTONE_BRICKS = new Block(FabricBlockSettings.copyOf(SEASTONE));
     public static final Block SEASTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(SEASTONE_BRICKS));
     public static final Block SEASTONE_BRICK_STAIRS = new StairsBlock(SEASTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(SEASTONE)){};
     public static final Block STRAWBERRY_CORAL = new StrawberryCoralBlock(FabricBlockSettings.of(Material.PLANT, MapColor.PINK).strength(0.2F).sounds(BlockSoundGroup.CORAL).nonOpaque());
@@ -86,21 +93,22 @@ public class ModBlocks {
     public static final Block DONUT_BLOCK = new DonutBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).strength(0.1F).nonOpaque());
     public static final Block STONE_TORCH = new StoneTorchBlock(FabricBlockSettings.copyOf(VANILLATE).nonOpaque().luminance(createLightLevelFromLitBlockState(15, 0)));
     public static final Block BOO_LANTERN = new BooLanternBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.DARK_AQUA).strength(0.4F).nonOpaque().luminance(createLightLevelFromLitBlockState(14, 3)));
-    public static final Block FAKE_BLOCK = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_BROWN).requiresTool().strength(0.6F));
-    public static final Block TOADSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(1.2F, 1.0F));
+    public static final Block FAKE_BLOCK = new FakeBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_BROWN).strength(0.6F).sounds(Main.TOADSTONE));
+    public static final Block TOADSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(1.2F, 1.0F).sounds(Main.TOADSTONE));
+    public static final Block GRASSY_TOADSTONE = new Block(FabricBlockSettings.copyOf(TOADSTONE).mapColor(MapColor.DARK_GREEN).sounds(Main.GRASSY_STONE));
     public static final Block SMOOTH_TOADSTONE = new Block(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block CHISELED_TOADSTONE = new Block(FabricBlockSettings.copyOf(TOADSTONE));
-    public static final Block TOADSTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(TOADSTONE));
+    public static final Block TOADSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block TOADSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block TOADSTONE_STAIRS = new StairsBlock(TOADSTONE.getDefaultState(), FabricBlockSettings.copyOf(TOADSTONE)){};
     public static final Block TOADSTONE_WALL = new WallBlock(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block TOADSTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(TOADSTONE_BRICKS));
     public static final Block TOADSTONE_BRICK_STAIRS = new StairsBlock(TOADSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(TOADSTONE_BRICKS)){};
     public static final Block TOADSTONE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(TOADSTONE_BRICKS));
-    public static final Block GLOOMSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.DARK_AQUA).requiresTool().strength(1.2F, 1.0F).sounds(BlockSoundGroup.DEEPSLATE));
-    public static final Block SMOOTH_GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE).sounds(BlockSoundGroup.DEEPSLATE_BRICKS));
-    public static final Block CHISELED_GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE).sounds(BlockSoundGroup.DEEPSLATE_BRICKS));
-    public static final Block GLOOMSTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(GLOOMSTONE).sounds(BlockSoundGroup.DEEPSLATE_BRICKS));
+    public static final Block GLOOMSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.DARK_AQUA).requiresTool().strength(1.2F, 1.0F).sounds(Main.TOADSTONE));
+    public static final Block SMOOTH_GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE));
+    public static final Block CHISELED_GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE));
+    public static final Block GLOOMSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(GLOOMSTONE));
     public static final Block GLOOMSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(GLOOMSTONE));
     public static final Block GLOOMSTONE_STAIRS = new StairsBlock(GLOOMSTONE.getDefaultState(), FabricBlockSettings.copyOf(GLOOMSTONE)){};
     public static final Block GLOOMSTONE_WALL = new WallBlock(FabricBlockSettings.copyOf(GLOOMSTONE));
@@ -117,10 +125,10 @@ public class ModBlocks {
     public static final Block POLISHED_HARDSTONE_STAIRS = new StairsBlock(POLISHED_HARDSTONE.getDefaultState(), FabricBlockSettings.copyOf(POLISHED_HARDSTONE)){};
     public static final Block HARDSTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(HARDSTONE_BRICKS));
     public static final Block HARDSTONE_BRICK_STAIRS = new StairsBlock(HARDSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(POLISHED_HARDSTONE)){};
-    public static final Block GOLDEN_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(TOADSTONE_BRICKS).sounds(BlockSoundGroup.METAL).mapColor(MapColor.GOLD));
+    public static final Block GOLDEN_BRICKS = new Block(FabricBlockSettings.copyOf(TOADSTONE_BRICKS).sounds(BlockSoundGroup.METAL).mapColor(MapColor.GOLD));
     public static final Block GOLDEN_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(GOLDEN_BRICKS));
     public static final Block GOLDEN_BRICK_STAIRS = new StairsBlock(GOLDEN_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(GOLDEN_BRICKS)){};
-    public static final Block CRYSTAL_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(TOADSTONE_BRICKS).sounds(BlockSoundGroup.AMETHYST_BLOCK).mapColor(MapColor.PURPLE));
+    public static final Block CRYSTAL_BRICKS = new Block(FabricBlockSettings.copyOf(TOADSTONE_BRICKS).sounds(BlockSoundGroup.AMETHYST_BLOCK).mapColor(MapColor.PURPLE));
     public static final Block CRYSTAL_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(CRYSTAL_BRICKS));
     public static final Block CRYSTAL_BRICK_STAIRS = new StairsBlock(CRYSTAL_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(CRYSTAL_BRICKS)){};
     public static final Block AMANITA_LOG = new WoodBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
@@ -136,8 +144,8 @@ public class ModBlocks {
     public static final Block AMANITA_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(3.0F).nonOpaque().allowsSpawning(ModBlocks::never)){};
     public static final Block AMANITA_BUTTON = new WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5F).sounds(BlockSoundGroup.WOOD)){};
     public static final Block AMANITA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5F).sounds(BlockSoundGroup.WOOD)){};
-    public static final Block AMANITA_SIGN = new ModSignBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), SignType.OAK);
-    public static final Block AMANITA_WALL_SIGN = new ModWallSignBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), SignType.OAK);
+    public static final Block AMANITA_SIGN = new SignBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), AMANITA);
+    public static final Block AMANITA_WALL_SIGN = new WallSignBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), AMANITA);
     public static final Block AMANITA_LEAVES = new AmanitaLeavesBlock(FabricBlockSettings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(ModBlocks::canSpawnOnLeaves).suffocates(ModBlocks::never).blockVision(ModBlocks::never));
     public static final Block FRUITING_AMANITA_LEAVES = new AmanitaLeavesBlock(FabricBlockSettings.copyOf(AMANITA_LEAVES));
     public static final Block AMANITA_SAPLING = new SaplingBlock(new AmanitaSaplingGenerator(), FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().sounds(BlockSoundGroup.GRASS)){};
@@ -250,8 +258,13 @@ public class ModBlocks {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_farmland"), TOADSTOOL_FARMLAND);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstool_path"), TOADSTOOL_PATH);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gritzy_sand"), GRITZY_SAND);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "quicksand"), QUICKSAND);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gritzy_sandstone"), GRITZY_SANDSTONE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "chiseled_gritzy_sandstone"), CHISELED_GRITZY_SANDSTONE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "cut_gritzy_sandstone"), CUT_GRITZY_SANDSTONE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "smooth_gritzy_sandstone"), SMOOTH_GRITZY_SANDSTONE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gritzy_sandstone_slab"), GRITZY_SANDSTONE_SLAB);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "gritzy_sandstone_stairs"), GRITZY_SANDSTONE_STAIRS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "happy_cloud"), HAPPY_CLOUD);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "cloud_block"), CLOUD_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "cloud_slab"), CLOUD_SLAB);
@@ -286,6 +299,7 @@ public class ModBlocks {
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "bronze_stairs"), BRONZE_STAIRS);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "fake_block"), FAKE_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone"), TOADSTONE);
+        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "grassy_toadstone"), GRASSY_TOADSTONE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "smooth_toadstone"), SMOOTH_TOADSTONE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "chiseled_toadstone"), CHISELED_TOADSTONE);
         Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, "toadstone_bricks"), TOADSTONE_BRICKS);

@@ -1,13 +1,13 @@
 package com.dayofpi.sbw_main.misc;
 
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.entity.types.projectiles.HammerEntity;
-import com.dayofpi.sbw_main.entity.types.projectiles.TurnipEntity;
+import com.dayofpi.sbw_main.entity.types.projectiles.*;
 import com.dayofpi.sbw_main.item.registry.ModItems;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.*;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.FluidModificationItem;
 import net.minecraft.item.ItemStack;
@@ -70,6 +70,28 @@ public class DispenserBehaviors {
         DispenserBlock.registerBehavior(ModItems.HAMMER, new ProjectileDispenserBehavior() {
             protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
                 return Util.make(new HammerEntity(world, position.getX(), position.getY(), position.getZ()), (hammerEntity) -> hammerEntity.setItem(stack));
+            }
+        });
+
+        DispenserBlock.registerBehavior(ModItems.BOMB, new ProjectileDispenserBehavior() {
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                return Util.make(new BombEntity(world, position.getX(), position.getY(), position.getZ()), (hammerEntity) -> hammerEntity.setItem(stack));
+            }
+        });
+
+        DispenserBlock.registerBehavior(ModItems.FIRE_FLOWER, new ProjectileDispenserBehavior() {
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                PersistentProjectileEntity persistentProjectileEntity = new FlowerFireballEntity(world, position.getX(), position.getY(), position.getZ());
+                persistentProjectileEntity.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
+                return persistentProjectileEntity;
+            }
+        });
+
+        DispenserBlock.registerBehavior(ModItems.ICE_FLOWER, new ProjectileDispenserBehavior() {
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                PersistentProjectileEntity persistentProjectileEntity = new IceballEntity(world, position.getX(), position.getY(), position.getZ());
+                persistentProjectileEntity.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
+                return persistentProjectileEntity;
             }
         });
 

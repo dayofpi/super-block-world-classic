@@ -1,6 +1,7 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
@@ -39,7 +40,7 @@ public class StingbyEntity extends EnemyEntity implements Flutterer {
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return EnemyEntity.createEnemyAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0D)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D)
                 .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.6D)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0D);

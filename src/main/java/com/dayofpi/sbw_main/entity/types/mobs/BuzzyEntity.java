@@ -2,6 +2,7 @@ package com.dayofpi.sbw_main.entity.types.mobs;
 
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
+import com.dayofpi.sbw_main.entity.types.bases.AbstractBuzzy;
 import com.dayofpi.sbw_main.item.registry.ModItems;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.AnimalMateGoal;

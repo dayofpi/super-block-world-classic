@@ -1,7 +1,9 @@
 package com.dayofpi.sbw_main.entity.types.projectiles;
 
+import com.dayofpi.sbw_main.Client;
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
+import com.dayofpi.sbw_main.misc.SpawnPacket;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -19,6 +21,7 @@ import net.minecraft.entity.passive.StriderEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.Packet;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.hit.BlockHitResult;
@@ -39,6 +42,10 @@ public class IceballEntity extends PersistentProjectileEntity {
         if (livingEntity instanceof PlayerEntity) {
             this.pickupType = PickupPermission.ALLOWED;
         }
+    }
+
+    public IceballEntity(World world, double x, double y, double z) {
+        super(ModEntities.ICEBALL, x, y, z, world);
     }
 
     protected SoundEvent getHitSound() {
@@ -107,10 +114,17 @@ public class IceballEntity extends PersistentProjectileEntity {
             this.playSound(ModSounds.ENTITY_ICEBALL_HIT, 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 6));
         }
+
+        entity.extinguish();
     }
 
     @Override
     protected ItemStack asItemStack() {
         return null;
+    }
+
+    @Override
+    public Packet<?> createSpawnPacket() {
+        return SpawnPacket.create(this, Client.PacketID);
     }
 }

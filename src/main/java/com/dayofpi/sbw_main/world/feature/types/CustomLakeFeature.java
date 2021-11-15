@@ -100,7 +100,7 @@ public class CustomLakeFeature extends Feature<SingleStateFeatureConfig> {
                                 boolean bl2 = aa >= 4;
                                 structureWorldAccess.setBlockState(blockPos3, bl2 ? CAVE_AIR : singleStateFeatureConfig.state, 2);
                                 if (bl2) {
-                                    structureWorldAccess.getBlockTickScheduler().schedule(blockPos3, CAVE_AIR.getBlock(), 0);
+                                    structureWorldAccess.method_39279(blockPos3, CAVE_AIR.getBlock(), 0);
                                     this.markBlocksAboveForPostProcessing(structureWorldAccess, blockPos3);
                                 }
                             }

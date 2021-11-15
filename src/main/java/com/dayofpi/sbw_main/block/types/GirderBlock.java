@@ -16,7 +16,7 @@ public class GirderBlock extends SlabBlock {
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if (context instanceof EntityShapeContext) {
+        if (context instanceof EntityShapeContext && !context.isDescending()) {
             if (context.isAbove(VoxelShapes.fullCube(), pos, false)|| context.isAbove(TOP_SHAPE, pos, false) || context.isAbove(BOTTOM_SHAPE, pos, false)) {
                 return super.getCollisionShape(state, world, pos, context);
             }

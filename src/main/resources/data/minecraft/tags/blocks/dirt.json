@@ -2,6 +2,7 @@
   "replace": "false",
   "values": [
     "super_block_world:toadstool_grass",
+    "super_block_world:grassy_toadstone",
     "super_block_world:toadstool_turf",
     "super_block_world:toadstool_soil",
     "super_block_world:coarse_toadstool_soil",

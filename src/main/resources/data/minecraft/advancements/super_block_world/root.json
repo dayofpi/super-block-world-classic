@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "super_block_world:toadstone_bricks"
+      "item": "super_block_world:power_star"
     },
     "title": {
       "translate": "advancements.sbw.root.title"

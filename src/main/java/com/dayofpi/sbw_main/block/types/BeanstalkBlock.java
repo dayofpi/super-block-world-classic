@@ -36,12 +36,12 @@ public class BeanstalkBlock extends ModPlantStemBlock {
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (direction == this.growthDirection.getOpposite() && !state.canPlaceAt(world, pos)) {
-            world.getBlockTickScheduler().schedule(pos, this, 1);
+            world.method_39279(pos, this, 1);
         }
 
         if (direction != this.growthDirection || !neighborState.isOf(this) && !neighborState.isOf(this.getPlant())) {
             if (this.tickWater) {
-                world.getFluidTickScheduler().schedule(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+                world.method_39281(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
             }
 
             return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);

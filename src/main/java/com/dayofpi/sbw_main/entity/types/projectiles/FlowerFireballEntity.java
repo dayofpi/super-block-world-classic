@@ -1,17 +1,19 @@
 package com.dayofpi.sbw_main.entity.types.projectiles;
 
+import com.dayofpi.sbw_main.Client;
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
+import com.dayofpi.sbw_main.misc.SpawnPacket;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.Packet;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -27,12 +29,14 @@ public class FlowerFireballEntity extends PersistentProjectileEntity {
         super(entityType, world);
     }
 
+    public FlowerFireballEntity(World world, LivingEntity owner) {
+        super(ModEntities.FIREBALL, owner, world);
+    }
+
     public FlowerFireballEntity(EntityType<? extends FlowerFireballEntity> entityType, LivingEntity livingEntity, World world) {
         this(entityType, livingEntity.getX(), livingEntity.getEyeY() - 0.10000000149011612D, livingEntity.getZ(), world);
         this.setOwner(livingEntity);
-        if (livingEntity instanceof PlayerEntity) {
-            this.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
-        }
+        this.pickupType = PickupPermission.DISALLOWED;
     }
 
     protected SoundEvent getHitSound() {
@@ -42,6 +46,10 @@ public class FlowerFireballEntity extends PersistentProjectileEntity {
     public FlowerFireballEntity(EntityType<? extends FlowerFireballEntity> entityType, double x, double v, double z, World world) {
         super(ModEntities.FIREBALL, x, v, z, world);
         this.setPosition(x, v, z);
+    }
+
+    public FlowerFireballEntity(World world, double x, double y, double z) {
+        super(ModEntities.FIREBALL, x, y, z, world);
     }
 
     protected void onBlockHit(BlockHitResult blockHitResult) {
@@ -101,5 +109,10 @@ public class FlowerFireballEntity extends PersistentProjectileEntity {
     @Override
     protected ItemStack asItemStack() {
         return null;
+    }
+
+    @Override
+    public Packet<?> createSpawnPacket() {
+        return SpawnPacket.create(this, Client.PacketID);
     }
 }

@@ -1,12 +1,10 @@
 package com.dayofpi.sbw_main.entity.types;
 
-import com.dayofpi.sbw_main.Client;
+import com.dayofpi.sbw_main.entity.types.bases.AbstractShell;
 import com.dayofpi.sbw_main.item.registry.ModItems;
-import com.dayofpi.sbw_main.misc.SpawnPacket;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.Packet;
 import net.minecraft.world.World;
 
 public class BuzzyShellEntity extends AbstractShell {
@@ -27,11 +25,6 @@ public class BuzzyShellEntity extends AbstractShell {
     @Override
     protected void writeCustomDataToNbt(NbtCompound nbt) {
 
-    }
-
-    @Override
-    public Packet<?> createSpawnPacket() {
-        return SpawnPacket.create(this, Client.PacketID);
     }
 
     public Item asItem() {

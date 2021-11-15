@@ -11,17 +11,23 @@
     "water_fog_color": 5295837,
     "grass_color": 6593569,
     "foliage_color": 1728811,
+    "particle": {
+      "options": {
+        "type": "minecraft:ash"
+      },
+      "probability": 0.0006
+    },
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2
     },
-    "particle": {
-      "options": {
-        "type": "minecraft:ash"
-      },
-      "probability": 0.006
+    "music": {
+      "sound": "super_block_world:music.water",
+      "min_delay": 100,
+      "max_delay": 1000,
+      "replace_current_music": false
     }
   },
   "spawners": {
@@ -107,8 +113,7 @@
     ],
     [],
     [
-      "super_block_world:vanillate_topping",
-      "super_block_world:forest_path"
+      "super_block_world:vanillate_topping"
     ],
     [
       "super_block_world:ore_bronze",

@@ -5,8 +5,8 @@
       "type": "minecraft:count_extra",
       "config": {
         "count": 0,
-        "extra_count": 2,
-        "extra_chance": 0.2
+        "extra_count": 5,
+        "extra_chance": 0.5
       }
     },
     "feature": {
@@ -74,14 +74,29 @@
                   "type": "minecraft:simple_block",
                   "config": {
                     "to_place": {
-                      "type": "minecraft:simple_state_provider",
-                      "state": {
-                        "Name": "minecraft:amethyst_cluster",
-                        "Properties": {
-                          "facing": "up",
-                          "waterlogged": "false"
+                      "type": "minecraft:weighted_state_provider",
+                      "entries": [
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "minecraft:stone_torch",
+                            "Properties": {
+                              "lit": "false",
+                              "waterlogged": "false"
+                            }
+                          }
+                        },
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "minecraft:stone_torch",
+                            "Properties": {
+                              "lit": "true",
+                              "waterlogged": "false"
+                            }
+                          }
                         }
-                      }
+                      ]
                     }
                   }
                 }

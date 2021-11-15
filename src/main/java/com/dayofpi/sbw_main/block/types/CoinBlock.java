@@ -40,7 +40,7 @@ public class CoinBlock extends ReactiveBlock {
 
     @Override
     public void activate(BlockState state, World world, BlockPos blockPos) {
-        world.getBlockTickScheduler().schedule(blockPos, this, 2);
+        world.method_39279(blockPos, this, 2);
     }
 
     @Override
@@ -59,7 +59,5 @@ public class CoinBlock extends ReactiveBlock {
             world.setBlockState(blockPos, state.with(COIN_COUNT, i - 1));
         } else
             world.setBlockState(blockPos, pushEntitiesUpBeforeBlockChange(state, ModBlocks.EMPTY_BLOCK.getDefaultState(), world, blockPos));
-
-
     }
 }

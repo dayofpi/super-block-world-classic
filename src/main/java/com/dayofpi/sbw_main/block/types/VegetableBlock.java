@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.block.types;
 
-import com.dayofpi.sbw_main.SoundList;
+import com.dayofpi.sbw_main.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -58,7 +58,7 @@ public class VegetableBlock extends Block {
                 Iterator<ItemStack> stackIterator = list.iterator();
                 player.setStackInHand(hand, stackIterator.next());
                 world.removeBlock(blockPos, false);
-                world.playSound(null, blockPos, SoundList.blockPluck, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.playSound(null, blockPos, ModSounds.BLOCK_ITEM_BLOCK_PLUCK, SoundCategory.BLOCKS, 1.0F, 1.0F);
             } else {
                 world.addBlockBreakParticles(blockPos.down(), world.getBlockState(blockPos.down()));
             } return ActionResult.success(world.isClient);

@@ -26,8 +26,6 @@ public class BuzzyShellModel<T extends BuzzyShellEntity> extends SinglePartEntit
 
     @Override
     public void setAngles(BuzzyShellEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-        if (entity.isSpinning()) {
-            this.BODY.yaw += 0.15F;
-        }
+
     }
 }

@@ -23,11 +23,33 @@
       }
     ]
   },
+  "music.ghost": {
+    "sounds": [
+      {
+        "name": "super_block_world:music/waltz_of_the_lost",
+        "stream": true
+      }
+    ]
+  },
   "block.poison.ambient": {
     "subtitle": "sound.block.poison.ambient",
     "sounds": [
       "super_block_world:block/poison1",
       "super_block_world:block/poison2"
+    ]
+  },
+  "block.poison.fill": {
+    "subtitle": "subtitles.item.bucket.fill",
+    "sounds": [
+      "super_block_world:item/poison_fill1",
+      "super_block_world:item/poison_fill2",
+      "super_block_world:item/poison_fill3"
+    ]
+  },
+  "block.poison.empty": {
+    "subtitle": "subtitles.item.bucket.empty",
+    "sounds": [
+      "super_block_world:item/poison_empty"
     ]
   },
   "block.frosted_stone.break": {
@@ -80,6 +102,104 @@
       "super_block_world:block/frost_step6"
     ]
   },
+  "block.toadstone.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "super_block_world:block/toadstone_dig1",
+      "super_block_world:block/toadstone_dig2",
+      "super_block_world:block/toadstone_dig3",
+      "super_block_world:block/toadstone_dig4",
+      "super_block_world:block/toadstone_dig5"
+    ]
+  },
+  "block.toadstone.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "super_block_world:block/toadstone_step1",
+      "super_block_world:block/toadstone_step2",
+      "super_block_world:block/toadstone_step3",
+      "super_block_world:block/toadstone_step4"
+    ]
+  },
+  "block.toadstone.fall": {
+    "sounds": [
+      "super_block_world:block/toadstone_step1",
+      "super_block_world:block/toadstone_step2",
+      "super_block_world:block/toadstone_step3",
+      "super_block_world:block/toadstone_step4"
+    ]
+  },
+  "block.toadstone.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "super_block_world:block/toadstone_dig1",
+      "super_block_world:block/toadstone_dig2",
+      "super_block_world:block/toadstone_dig3",
+      "super_block_world:block/toadstone_dig4",
+      "super_block_world:block/toadstone_dig5"
+    ]
+  },
+  "block.toadstone.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "super_block_world:block/toadstone_step1",
+      "super_block_world:block/toadstone_step2",
+      "super_block_world:block/toadstone_step3",
+      "super_block_world:block/toadstone_step4"
+    ]
+  },
+  "block.grassy_stone.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "super_block_world:block/grassy_stone_dig1",
+      "super_block_world:block/grassy_stone_dig2",
+      "super_block_world:block/grassy_stone_dig3",
+      "super_block_world:block/grassy_stone_dig4",
+      "super_block_world:block/grassy_stone_dig5"
+    ]
+  },
+  "block.grassy_stone.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "super_block_world:block/grassy_stone_step1",
+      "super_block_world:block/grassy_stone_step2",
+      "super_block_world:block/grassy_stone_step3",
+      "super_block_world:block/grassy_stone_step4",
+      "super_block_world:block/grassy_stone_step5",
+      "super_block_world:block/grassy_stone_step6"
+    ]
+  },
+  "block.grassy_stone.fall": {
+    "sounds": [
+      "super_block_world:block/grassy_stone_step1",
+      "super_block_world:block/grassy_stone_step2",
+      "super_block_world:block/grassy_stone_step3",
+      "super_block_world:block/grassy_stone_step4",
+      "super_block_world:block/grassy_stone_step5",
+      "super_block_world:block/grassy_stone_step6"
+    ]
+  },
+  "block.grassy_stone.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "super_block_world:block/grassy_stone_dig1",
+      "super_block_world:block/grassy_stone_dig2",
+      "super_block_world:block/grassy_stone_dig3",
+      "super_block_world:block/grassy_stone_dig4",
+      "super_block_world:block/grassy_stone_dig5"
+    ]
+  },
+  "block.grassy_stone.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "super_block_world:block/grassy_stone_step1",
+      "super_block_world:block/grassy_stone_step2",
+      "super_block_world:block/grassy_stone_step3",
+      "super_block_world:block/grassy_stone_step4",
+      "super_block_world:block/grassy_stone_step5",
+      "super_block_world:block/grassy_stone_step6"
+    ]
+  },
   "block.item_block.bump": {
     "subtitle": "sound.block.item_block.bump",
     "sounds": [
@@ -102,6 +222,12 @@
     "subtitle": "sound.block.item_block.hit",
     "sounds": [
       "super_block_world:block/item_block_hit"
+    ]
+  },
+  "block.item_block.pluck": {
+    "subtitle": "sound.block.item_block.pluck",
+    "sounds": [
+      "super_block_world:block/item_block_pluck"
     ]
   },
   "block.warp_pipe.teleport": {
@@ -230,43 +356,52 @@
       "mob/parrot/fly8"
     ]
   },
-
-
-
-  "block.item_in": {
-    "subtitle": "block.item_in",
+  "entity.koopa.ambient": {
+    "subtitle": "sound.entity.koopa.ambient",
     "sounds": [
-      {
-        "name": "super_block_world:item/item_in",
-        "stream": true
-      }
+      "super_block_world:entity/koopa/say1",
+      "super_block_world:entity/koopa/say2"
     ]
   },
-  "block.item_out": {
-    "subtitle": "block.item_out",
+  "entity.koopa.hurt": {
+    "subtitle": "sound.entity.koopa.hurt",
     "sounds": [
-      {
-        "name": "super_block_world:item/item_out",
-        "stream": true
-      }
+      "super_block_world:entity/koopa/hurt1",
+      "super_block_world:entity/koopa/hurt2"
     ]
   },
-  "block.coin": {
-    "subtitle": "block.coin",
+  "entity.koopa.death": {
+    "subtitle": "sound.entity.koopa.death",
     "sounds": [
-      {
-        "name": "super_block_world:item/coin",
-        "stream": true
-      }
+      "super_block_world:entity/koopa/death1",
+      "super_block_world:entity/koopa/death2",
+      "super_block_world:entity/koopa/death3"
     ]
   },
-  "block.pluck": {
-    "subtitle": "block.pluck",
+  "entity.bob_omb.hurt": {
+    "subtitle": "sound.entity.bob_omb.hurt",
     "sounds": [
-      {
-        "name": "super_block_world:item/pluck",
-        "stream": true
-      }
+      "super_block_world:entity/bob_omb/hurt1",
+      "super_block_world:entity/bob_omb/hurt2"
+    ]
+  },
+  "entity.bob_omb.death": {
+    "subtitle": "sound.entity.bob_omb.death",
+    "sounds": [
+      "super_block_world:entity/bob_omb/death"
+    ]
+  },
+  "entity.bob_omb.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "super_block_world:entity/bob_omb/step1",
+      "super_block_world:entity/bob_omb/step2"
+    ]
+  },
+  "entity.bob_omb.fuse": {
+    "subtitle": "sound.entity.bob_omb.fuse",
+    "sounds": [
+      "super_block_world:entity/bob_omb/fuse"
     ]
   },
   "block.trampoline": {

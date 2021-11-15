@@ -11,10 +11,10 @@ import net.minecraft.world.gen.feature.StructureFeature;
 
 public class WarpPortalFeature extends StructureFeature<DefaultFeatureConfig> {
     public WarpPortalFeature(Codec<DefaultFeatureConfig> codec) {
-        super(codec, WarpPortalFeature::method_38675);
+        super(codec, WarpPortalFeature::init);
     }
 
-    private static void method_38675(class_6626 arg, DefaultFeatureConfig defaultFeatureConfig, class_6622.class_6623 arg2) {
+    private static void init(class_6626 arg, DefaultFeatureConfig defaultFeatureConfig, class_6622.class_6623 arg2) {
         Heightmap.Type type = Heightmap.Type.WORLD_SURFACE_WG;
         if (arg2.method_38707(type)) {
             int x = arg2.chunkPos().getStartX();

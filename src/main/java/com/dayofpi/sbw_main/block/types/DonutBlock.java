@@ -60,7 +60,7 @@ public class DonutBlock extends FallingBlock {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos blockPos, Entity entity) {
         if (isEntityAbove(blockPos, entity) && !state.get(WILL_FALL) && !world.isReceivingRedstonePower(blockPos)) {
-            world.getBlockTickScheduler().schedule(blockPos, this, this.getFallDelay());
+            world.method_39279(blockPos, this, this.getFallDelay());
         }
     }
 
@@ -74,7 +74,7 @@ public class DonutBlock extends FallingBlock {
                 world.setBlockState(blockPos, state.with(WILL_FALL, true));
                 world.playSound(null, blockPos, ModSounds.BLOCK_DONUT_BLOCK_TRIGGER, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.spawnParticles(ParticleTypes.POOF, blockPos.getX() + 0.5, blockPos.getY() + 1.0, blockPos.getZ() + 0.5, 3, 0.0D, 0.0D, 0.0D, 0.0D);
-                world.getBlockTickScheduler().schedule(blockPos, this, 12);
+                world.method_39279(blockPos, this, 12);
             } else if (state.get(WILL_FALL)) {
                 FallingBlockEntity fallingBlockEntity = new FallingBlockEntity(world, (double) blockPos.getX() + 0.5D, blockPos.getY(), (double) blockPos.getZ() + 0.5D, world.getBlockState(blockPos));
                 this.configureFallingBlockEntity(fallingBlockEntity);

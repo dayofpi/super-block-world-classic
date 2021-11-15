@@ -6,7 +6,6 @@ import net.minecraft.util.registry.Registry;
 
 public class SoundList {
     // Identifiers
-    protected static final Identifier PLUCK_ID = new Identifier(Main.MOD_ID, "block.pluck");
     protected static final Identifier TRAMPOLINE_ID = new Identifier(Main.MOD_ID, "block.trampoline");
     protected static final Identifier POWERED_TRAMPOLINE_ID = new Identifier(Main.MOD_ID, "block.powered_trampoline");
     protected static final Identifier STOMP_ID = new Identifier(Main.MOD_ID, "item.stomp");
@@ -28,7 +27,6 @@ public class SoundList {
     protected static final Identifier BUZZY_BEETLE_LAND_ID = new Identifier(Main.MOD_ID, "entity.buzzy_beetle.land");
     protected static final Identifier BUZZY_BEETLE_BLOCK_ID = new Identifier(Main.MOD_ID, "entity.buzzy_beetle.block");
 
-    public static final SoundEvent blockPluck = new SoundEvent(PLUCK_ID);
     public static final SoundEvent blockTrampoline = new SoundEvent(TRAMPOLINE_ID);
     public static final SoundEvent blockPoweredTrampoline = new SoundEvent(POWERED_TRAMPOLINE_ID);
     public static final SoundEvent jumpBoots_stomp = new SoundEvent(STOMP_ID);
@@ -50,7 +48,6 @@ public class SoundList {
     public static final SoundEvent buzzyBlock = new SoundEvent(BUZZY_BEETLE_BLOCK_ID);
 
     public static void registerSounds() {
-        Registry.register(Registry.SOUND_EVENT, PLUCK_ID, blockPluck);
         Registry.register(Registry.SOUND_EVENT, TRAMPOLINE_ID, blockTrampoline);
         Registry.register(Registry.SOUND_EVENT, POWERED_TRAMPOLINE_ID, blockPoweredTrampoline);
         Registry.register(Registry.SOUND_EVENT, STOMP_ID, jumpBoots_stomp);

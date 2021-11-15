@@ -26,13 +26,13 @@ public class ModFluidBlock extends FluidBlock {
 
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         if (this.receiveNeighborFluids(world, pos)) {
-            world.getFluidTickScheduler().schedule(pos, state.getFluidState().getFluid(), this.fluid.getTickRate(world));
+            world.method_39281(pos, state.getFluidState().getFluid(), this.fluid.getTickRate(world));
         }
     }
 
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
         if (this.receiveNeighborFluids(world, pos)) {
-            world.getFluidTickScheduler().schedule(pos, state.getFluidState().getFluid(), this.fluid.getTickRate(world));
+            world.method_39281(pos, state.getFluidState().getFluid(), this.fluid.getTickRate(world));
         }
     }
 

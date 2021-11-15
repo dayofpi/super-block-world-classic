@@ -57,12 +57,12 @@ public class BuddingBeanstalkBlock extends ModPlantStemBlock {
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (direction == this.growthDirection.getOpposite() && !state.canPlaceAt(world, pos)) {
-            world.getBlockTickScheduler().schedule(pos, this, 1);
+            world.method_39279(pos, this, 1);
         }
 
         if (direction != this.growthDirection || !neighborState.isOf(this) && !neighborState.isOf(this.getPlant())) {
             if (this.tickWater) {
-                world.getFluidTickScheduler().schedule(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+                world.method_39281(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
             }
 
             return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
@@ -97,15 +97,19 @@ public class BuddingBeanstalkBlock extends ModPlantStemBlock {
             }
         } else if (hasLight && random.nextInt(7) == 0) {
             world.setBlockState(pos, state.with(OPEN, true));
-            world.getBlockTickScheduler().schedule(pos, this, 500);
+            world.method_39279(pos, this, 500);
 
         }
         super.randomTick(state, world, pos, random);
     }
+
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos blockPos, Random random) {
         super.scheduledTick(state, world, blockPos, random);
         world.setBlockState(blockPos, state.with(OPEN, false));
+        if (!this.canPlaceAt(state, world, blockPos.down())) {
+            world.breakBlock(blockPos, true );
+        }
     }
 
     protected int getGrowthLength(Random random) {

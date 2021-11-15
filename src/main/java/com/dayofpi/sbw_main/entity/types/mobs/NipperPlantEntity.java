@@ -1,5 +1,6 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
+import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;

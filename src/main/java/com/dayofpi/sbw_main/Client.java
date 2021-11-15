@@ -8,7 +8,7 @@ import com.dayofpi.sbw_main.world.registry.ParticleClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -19,40 +19,40 @@ import net.minecraft.util.registry.Registry;
 import java.util.UUID;
 
 @Environment(EnvType.CLIENT)
-@SuppressWarnings("deprecation")
 public class Client implements ClientModInitializer {
     public static final Identifier PacketID = new Identifier(Main.MOD_ID, "spawn_packet");
 
     @Override
     public void onInitializeClient() {
-        receiveEntityPacket();
         FluidRendering.renderFluids();
         BlockClient.setRenderLayers();
         EntityClient.registerEntityRenderers();
         ParticleClient.particleRendering();
+        receiveEntityPacket();
     }
 
     public void receiveEntityPacket() {
-        ClientSidePacketRegistry.INSTANCE.register(PacketID, (ctx, byteBuf) -> {
-            EntityType<?> et = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());
-            UUID uuid = byteBuf.readUuid();
-            int entityId = byteBuf.readVarInt();
-            Vec3d pos = SpawnPacket.PacketBufUtil.readVec3d(byteBuf);
-            float pitch = SpawnPacket.PacketBufUtil.readAngle(byteBuf);
-            float yaw = SpawnPacket.PacketBufUtil.readAngle(byteBuf);
-            ctx.getTaskQueue().execute(() -> {
+        ClientPlayNetworking.registerGlobalReceiver(PacketID, (client, handler, buf, responseSender) ->
+        {
+            EntityType<?> type = Registry.ENTITY_TYPE.get(buf.readVarInt());
+            UUID uuid = buf.readUuid();
+            int entityId = buf.readVarInt();
+            Vec3d pos = SpawnPacket.PacketBufUtil.readVec3d(buf);
+            float pitch = SpawnPacket.PacketBufUtil.readAngle(buf);
+            float yaw = SpawnPacket.PacketBufUtil.readAngle(buf);
+            client.execute(() -> {
                 if (MinecraftClient.getInstance().world == null)
                     throw new IllegalStateException("Tried to spawn entity in a null world!");
-                Entity e = et.create(MinecraftClient.getInstance().world);
-                if (e == null)
-                    throw new IllegalStateException("Failed to create instance of entity \"" + Registry.ENTITY_TYPE.getId(et) + "\"!");
-                e.updateTrackedPosition(pos);
-                e.setPos(pos.x, pos.y, pos.z);
-                e.getPitch(pitch);
-                e.getYaw(yaw);
-                e.setId(entityId);
-                e.setUuid(uuid);
-                MinecraftClient.getInstance().world.addEntity(entityId, e);
+                Entity entity = type.create(MinecraftClient.getInstance().world);
+                if (entity == null)
+                    throw new IllegalStateException("Failed to create instance of entity \"" + Registry.ENTITY_TYPE.getId(type) + "\"!");
+                    entity.updateTrackedPosition(pos);
+                    entity.setPos(pos.x, pos.y, pos.z);
+                    entity.getPitch(pitch);
+                    entity.getYaw(yaw);
+                    entity.setId(entityId);
+                    entity.setUuid(uuid);
+                    MinecraftClient.getInstance().world.addEntity(entityId, entity);
             });
         });
     }

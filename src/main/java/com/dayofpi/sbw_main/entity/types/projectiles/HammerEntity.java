@@ -31,7 +31,7 @@ public class HammerEntity extends ThrownItemEntity {
     }
 
     public HammerEntity(World world, double x, double y, double z) {
-        super(ModEntities.TURNIP, x, y, z, world); // null will be changed later
+        super(ModEntities.HAMMER, x, y, z, world);
     }
 
     protected Item getDefaultItem() {
@@ -56,7 +56,7 @@ public class HammerEntity extends ThrownItemEntity {
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         if (!this.world.isClient) {
-            if (hitResult.getType() == HitResult.Type.BLOCK) {
+            if (hitResult.getType() == HitResult.Type.BLOCK && this.getOwner() != null && this.getOwner().isPlayer()) {
                 BlockPos blockPos = ((BlockHitResult) hitResult).getBlockPos();
                 BlockState blockState = world.getBlockState(blockPos);
                 if (blockState.getBlock().getHardness() <= 1.2F && blockState.getMaterial().isSolid()) {

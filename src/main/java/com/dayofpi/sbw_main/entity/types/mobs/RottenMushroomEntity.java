@@ -1,6 +1,7 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
 import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import com.dayofpi.sbw_main.item.registry.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -12,33 +13,31 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.*;
 
-import java.util.List;
 import java.util.Random;
 import java.util.function.Predicate;
 
 @SuppressWarnings("deprecation")
-public class RottenMushroomEntity extends HostileEntity {
+public class RottenMushroomEntity extends EnemyEntity {
     static final Predicate<ItemEntity> POWER_UP_FILTER;
 
     static {
         POWER_UP_FILTER = (item) -> !item.cannotPickup() && item.isAlive() && item.getStack().isOf(ModItems.ONE_UP);
     }
 
-    public RottenMushroomEntity(EntityType<? extends HostileEntity> entityType, World world) {
+    public RottenMushroomEntity(EntityType<? extends EnemyEntity> entityType, World world) {
         super(entityType, world);
     }
 
     public static boolean canSpawn(EntityType<RottenMushroomEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         boolean isDirt = world.getBlockState(pos.down()).isIn(BlockTags.DIRT);
         boolean isPoison = world.getFluidState(pos).isIn(TagList.POISON);
-        return isDirt && isSpawnDark((ServerWorldAccess) world, pos, random) || isPoison && world.isSkyVisible(pos);
+        return isDirt && isSpawnDark((ServerWorldAccess) world, pos, random) || isDirt && isPoison;
     }
 
     public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {

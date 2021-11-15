@@ -30,7 +30,7 @@ public class NipperPlantModel<T extends Entity> extends SinglePartEntityModel<T>
         return TexturedModelData.of(modelData, 64, 32);
     }
 
-        @Override
+    @Override
     public ModelPart getPart() {
         return ROOT;
     }

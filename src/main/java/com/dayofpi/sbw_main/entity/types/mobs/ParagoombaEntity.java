@@ -2,6 +2,7 @@ package com.dayofpi.sbw_main.entity.types.mobs;
 
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.entity.goals.SpawnMiniGoombaGoal;
+import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;

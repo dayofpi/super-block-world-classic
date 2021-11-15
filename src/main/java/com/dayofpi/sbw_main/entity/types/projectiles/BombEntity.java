@@ -21,6 +21,10 @@ public class BombEntity extends ThrownItemEntity {
         super(entityType, world);
     }
 
+    public BombEntity(World world, double x, double y, double z) {
+        super(ModEntities.BOMB, x, y, z, world);
+    }
+
     public BombEntity(World world, LivingEntity owner) {
         super(ModEntities.BOMB, owner, world);
     }

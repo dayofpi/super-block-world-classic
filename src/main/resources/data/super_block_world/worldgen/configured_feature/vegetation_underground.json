@@ -32,7 +32,8 @@
                   "type": "minecraft:cave_surface",
                   "config": {
                     "surface": "floor",
-                    "floor_to_ceiling_search_range": 12
+                    "floor_to_ceiling_search_range": 12,
+                    "allow_water": true
                   }
                 }
               }

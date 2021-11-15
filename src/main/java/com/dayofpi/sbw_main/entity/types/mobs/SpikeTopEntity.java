@@ -1,5 +1,6 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
+import com.dayofpi.sbw_main.entity.types.bases.AbstractBuzzy;
 import com.dayofpi.sbw_main.misc.ModDamageSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;

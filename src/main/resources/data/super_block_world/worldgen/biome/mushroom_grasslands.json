@@ -16,12 +16,6 @@
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2
-    },
-    "music": {
-      "sound": "super_block_world:music.grassland",
-      "min_delay": 100,
-      "max_delay": 1000,
-      "replace_current_music": false
     }
   },
   "spawners": {
@@ -39,16 +33,28 @@
         "maxCount": 4
       },
       {
-        "type": "super_block_world:hammer_bro",
-        "weight": 10,
-        "minCount": 2,
-        "maxCount": 2
-      },
-      {
         "type": "super_block_world:paragoomba",
         "weight": 5,
         "minCount": 2,
         "maxCount": 4
+      },
+      {
+        "type": "super_block_world:koopa_troopa",
+        "weight": 18,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:paratroopa",
+        "weight": 8,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:hammer_bro",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 2
       },
       {
         "type": "super_block_world:buzzy_beetle",

@@ -33,7 +33,7 @@ public class MixinBoatEntity {
             opcode = Opcodes.PUTSTATIC,
             target = "Lnet/minecraft/entity/vehicle/BoatEntity$Type;field_7724:[Lnet/minecraft/entity/vehicle/BoatEntity$Type;",
             shift = At.Shift.AFTER))
-    private static void addMineshaft(CallbackInfo info) {
+    private static void addBoat(CallbackInfo info) {
         var variants = new ArrayList<>(Arrays.asList(field_7724));
         var last = variants.get(variants.size() - 1);
         var amanita = newType("AMANITA", last.ordinal() + 1, ModBlocks.AMANITA_PLANKS, "amanita");

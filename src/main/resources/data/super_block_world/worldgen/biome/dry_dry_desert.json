@@ -27,6 +27,12 @@
         "maxCount": 2
       },
       {
+        "type": "super_block_world:fire_bro",
+        "weight": 8,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
         "type": "super_block_world:paragoomba",
         "weight": 5,
         "minCount": 1,
@@ -79,12 +85,14 @@
   "features": [
     [],
     [
-      "super_block_world:lake_lava"
+      "super_block_world:lake_lava",
+      "super_block_world:lake_quicksand"
     ],
     [],
     [
       "super_block_world:block_single",
-      "super_block_world:brick_pile"
+      "super_block_world:block_pile",
+      "super_block_world:block_crystal_pile"
     ],
     [],
     [

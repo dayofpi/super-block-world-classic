@@ -49,10 +49,9 @@ public abstract class PoisonFluid extends AbstractFluid {
                 double f = (double)pos.getZ() + random.nextDouble();
                 world.addParticle(ModParticles.POISON_BUBBLE, d, e, f, 0.0D, 0.0D, 0.0D);
             }
-
-            if (random.nextInt(190) == 0) {
-                world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.BLOCK_POISON_AMBIENT, SoundCategory.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 1.0F + random.nextFloat() * 0.15F, false);
-            }
+        }
+        if (random.nextInt(192) == 0) {
+            world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.BLOCK_POISON_AMBIENT, SoundCategory.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
         }
     }
 

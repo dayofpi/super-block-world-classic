@@ -1,6 +1,8 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
+import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import com.dayofpi.sbw_main.entity.types.projectiles.FlowerFireballEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -20,7 +22,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -68,7 +72,7 @@ public class BobOmbEntity extends EnemyEntity implements Angerable {
 
     public static boolean canSpawn(EntityType<BobOmbEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         BlockState blockState = world.getBlockState(pos.down());
-        return EnemyEntity.isSpawnDark((ServerWorldAccess) world, pos, random) && blockState.isOf(ModBlocks.VANILLATE);
+        return EnemyEntity.isSpawnDark((ServerWorldAccess) world, pos, random) && (blockState.isOf(ModBlocks.VANILLATE) || blockState.isIn(BlockTags.PLANKS));
     }
 
     public boolean tryAttack(Entity target) {
@@ -113,6 +117,18 @@ public class BobOmbEntity extends EnemyEntity implements Angerable {
         }
     }
 
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return ModSounds.ENTITY_BOB_OMB_HURT;
+    }
+
+    protected SoundEvent getDeathSound() {
+        return ModSounds.ENTITY_BOB_OMB_DEATH;
+    }
+
+    protected void playStepSound(BlockPos pos, BlockState state) {
+        this.playSound(ModSounds.ENTITY_BOB_OMB_STEP, 1.0F, 1.0F);
+    }
+
     public int getFuseSpeed() {
         return this.dataTracker.get(FUSE_SPEED);
     }
@@ -142,7 +158,7 @@ public class BobOmbEntity extends EnemyEntity implements Angerable {
                 double e = this.getY() + 1D;
                 double f = this.getZ();
                 world.addParticle(ParticleTypes.FLAME, d, e, f, 0.0D, 0.0D, 0.0D);
-                this.playSound(SoundEvents.ENTITY_CREEPER_PRIMED, 1.0F, 0.5F);
+                this.playSound(ModSounds.ENTITY_BOB_OMB_FUSE, 1.0F, 1.0F);
                 this.emitGameEvent(GameEvent.PRIME_FUSE);
                 this.ignite();
             }

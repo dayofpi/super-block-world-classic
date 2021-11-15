@@ -19,14 +19,14 @@ public abstract class UndeadPoisonSwimming extends MobEntity {
     @Override
     public void tickMovement() {
         // This makes it so mobs that are immune to poison can swim in it
-        super.tickMovement();
         boolean bl = this.getType().isIn(TagList.POISON_IMMUNE);
         boolean bl2 = this.updateMovementInFluid(TagList.POISON, 0.014D);
         if (bl) {
             if (bl2) {
-                this.goalSelector.add(1, this.swimGoal);
+                this.goalSelector.add(0, this.swimGoal);
             } else this.goalSelector.remove(this.swimGoal);
         }
+        super.tickMovement();
     }
 }
 

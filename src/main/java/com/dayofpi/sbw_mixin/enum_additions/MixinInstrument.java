@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_mixin.enum_additions;
 
+import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.SoundList;
 import com.dayofpi.sbw_main.misc.EnumInstruments;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.Instrument;
@@ -39,7 +39,7 @@ public class MixinInstrument {
     private static void addCustomInstrument(CallbackInfo info) {
         var variants = new ArrayList<>(Arrays.asList(field_12652));
         var last = variants.get(variants.size() - 1);
-        var bling = newInstrument("BLING", last.ordinal() + 1, "bling", SoundList.blockCoin);
+        var bling = newInstrument("BLING", last.ordinal() + 1, "bling", ModSounds.BLOCK_ITEM_BLOCK_COIN);
         EnumInstruments.BLING = bling;
         variants.add(bling);
 
