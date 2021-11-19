@@ -2,7 +2,7 @@
   "feature": "super_block_world:plant_forest",
   "placement": [
     {
-      "count": 2,
+      "count": 6,
       "type": "minecraft:count"
     },
     {

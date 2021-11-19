@@ -2,15 +2,8 @@
   "config": {
     "features": [
       {
-        "feature": {
-          "feature": "super_block_world:huge_red_mushroom",
-          "placement": []
-        },
-        "chance": 0.01
-      },
-      {
         "feature": "super_block_world:beanstalk",
-        "chance": 0.01
+        "chance": 0.025
       },
       {
         "feature": "super_block_world:beanstalk_budding",

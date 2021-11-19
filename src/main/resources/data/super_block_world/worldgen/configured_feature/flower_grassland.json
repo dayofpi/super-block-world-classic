@@ -1,8 +1,8 @@
 {
   "config": {
     "tries": 64,
-    "xz_spread": 7,
-    "y_spread": 3,
+    "xz_spread": 12,
+    "y_spread": 6,
     "feature": {
       "feature": {
         "config": {
@@ -12,7 +12,7 @@
                 "data": {
                   "Name": "super_block_world:blue_songflower"
                 },
-                "weight": 1
+                "weight": 5
               },
               {
                 "data": {
@@ -30,16 +30,7 @@
                 "data": {
                   "Name": "minecraft:poppy"
                 },
-                "weight": 1
-              },
-              {
-                "weight": 1,
-                "data": {
-                  "Name": "minecraft:rose_bush",
-                  "Properties": {
-                    "half": "lower"
-                  }
-                }
+                "weight": 3
               }
             ],
             "type": "minecraft:weighted_state_provider"

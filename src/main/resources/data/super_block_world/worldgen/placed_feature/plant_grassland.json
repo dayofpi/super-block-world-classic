@@ -2,7 +2,7 @@
   "feature": "super_block_world:plant_grassland",
   "placement": [
     {
-      "count": 2,
+      "count": 5,
       "type": "minecraft:count"
     },
     {

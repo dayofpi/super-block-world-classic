@@ -58,7 +58,7 @@ public class VegetableBlock extends Block {
                 Iterator<ItemStack> stackIterator = list.iterator();
                 player.setStackInHand(hand, stackIterator.next());
                 world.removeBlock(blockPos, false);
-                world.playSound(null, blockPos, ModSounds.BLOCK_ITEM_BLOCK_PLUCK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.playSound(null, blockPos, ModSounds.BLOCK_VEGETABLE_PLUCK, SoundCategory.BLOCKS, 1.0F, 1.0F);
             } else {
                 world.addBlockBreakParticles(blockPos.down(), world.getBlockState(blockPos.down()));
             } return ActionResult.success(world.isClient);

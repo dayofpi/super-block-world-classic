@@ -68,7 +68,7 @@ public class ModItems {
     public static final Item NIPPER_PLANT_SPAWN_EGG = new SpawnEggItem(ModEntities.NIPPER_PLANT, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item STINGBY_SPAWN_EGG = new SpawnEggItem(ModEntities.STINGBY, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item ROTTEN_MUSHROOM_SPAWN_EGG = new SpawnEggItem(ModEntities.ROTTEN_MUSHROOM, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
-    public static final Item FAKE_BLOCK_SPAWN_EGG = new SpawnEggItem(ModEntities.FAKE_BLOCK, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item FAKE_BLOCK_SPAWN_EGG = new SpawnEggItem(ModEntities.FAKE_BLOCK, 10042394, 10042394, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
 
     private static void registerItem(String id, Item item) {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, id), item);
@@ -167,10 +167,11 @@ public class ModItems {
         registerBlockItem("beanstalk", PlantBlocks.BEANSTALK);
         registerBlockItem("strawberry_coral", ModBlocks.STRAWBERRY_CORAL);
 
-        registerBlockItem("jellybeam", ModBlocks.JELLYBEAM);
         registerBlockItem("mushroom_stem", MushroomBlocks.MUSHROOM_STEM);
         registerBlockItem("beanstalk_block", ModBlocks.BEANSTALK_BLOCK);
         registerBlockItem("strawberry_coral_block", ModBlocks.STRAWBERRY_CORAL_BLOCK);
+        registerBlockItem("frozen_muncher", PlantBlocks.FROZEN_MUNCHER);
+        registerBlockItem("jellybeam", ModBlocks.JELLYBEAM);
 
         registerBlockItem("toadstool_grass", ModBlocks.TOADSTOOL_GRASS);
         registerBlockItem("grassy_toadstone", ModBlocks.GRASSY_TOADSTONE);
@@ -240,8 +241,8 @@ public class ModItems {
         registerItem("amanita_sign", new SignItem(new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP).maxCount(16), ModBlocks.AMANITA_SIGN, ModBlocks.AMANITA_WALL_SIGN));
         registerBlockItem("amanita_door", ModBlocks.AMANITA_DOOR);
         registerBlockItem("amanita_trapdoor", ModBlocks.AMANITA_TRAPDOOR);
-        registerBlockItem("amanita_fence", ModBlocks.AMANITA_FENCE);
-        registerBlockItem("amanita_fence_gate", ModBlocks.AMANITA_FENCE_GATE);
+        registerBlockItem("amanita_fence", VariantBlocks.AMANITA_FENCE);
+        registerBlockItem("amanita_fence_gate", VariantBlocks.AMANITA_FENCE_GATE);
         registerBlockItem("amanita_pressure_plate", ModBlocks.AMANITA_PRESSURE_PLATE);
         registerBlockItem("amanita_button", ModBlocks.AMANITA_BUTTON);
 
@@ -328,5 +329,9 @@ public class ModItems {
         registerBlockItem("frosty_vanillate_stairs", VariantBlocks.FROSTY_VANILLATE_STAIRS);
         registerBlockItem("frosty_vanillate_brick_slab", VariantBlocks.FROSTY_VANILLATE_BRICK_SLAB);
         registerBlockItem("frosty_vanillate_brick_stairs", VariantBlocks.FROSTY_VANILLATE_BRICK_STAIRS);
+
+        registerBlockItem("royalite", ModBlocks.ROYALITE);
+        registerBlockItem("smooth_royalite", ModBlocks.SMOOTH_ROYALITE);
+        registerBlockItem("royalite_bricks", ModBlocks.ROYALITE_BRICKS);
     }
 }

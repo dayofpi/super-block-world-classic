@@ -1,11 +1,9 @@
 {
-  "feature": "super_block_world:column_coral",
+  "feature": "super_block_world:coral_columns",
   "placement": [
     {
-      "count": 0,
-      "extra_count": 3,
-      "extra_chance": 0.7,
-      "type": "minecraft:count_extra"
+      "count": 3,
+      "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"

@@ -1,68 +1,7 @@
 {
-  "type": "minecraft:random_patch",
+  "type": "minecraft:random_boolean_selector",
   "config": {
-    "tries": 32,
-    "xz_spread": 7,
-    "y_spread": 3,
-    "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:weighted_state_provider",
-            "entries": [
-              {
-                "weight": 1,
-                "data": {
-                  "Name": "minecraft:large_amethyst_bud",
-                  "Properties": {
-                    "facing": "up",
-                    "waterlogged": "false"
-                  }
-                }
-              },
-              {
-                "weight": 1,
-                "data": {
-                  "Name": "minecraft:amethyst_cluster",
-                  "Properties": {
-                    "facing": "up",
-                    "waterlogged": "false"
-                  }
-                }
-              }
-            ]
-          }
-        }
-      },
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:all_of",
-            "predicates": [
-              {
-                "type": "minecraft:matching_blocks",
-                "blocks": [
-                  "minecraft:air"
-                ]
-              },
-              {
-                "type": "minecraft:matching_blocks",
-                "offset": [
-                  0,
-                  -1,
-                  0
-                ],
-                "blocks": [
-                  "super_block_world:vanillate",
-                  "super_block_world:topped_vanillate"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    }
+    "feature_false": "super_block_world:cave_crystals_ceiling",
+    "feature_true": "super_block_world:cave_crystals_floor"
   }
 }

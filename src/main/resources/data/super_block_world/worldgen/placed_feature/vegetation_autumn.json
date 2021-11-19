@@ -3,9 +3,7 @@
   "placement": [
     {
       "count": 4,
-      "extra_count": 2,
-      "extra_chance": 0.3,
-      "type": "minecraft:count_extra"
+      "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"

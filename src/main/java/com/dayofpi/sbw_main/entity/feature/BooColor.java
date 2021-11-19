@@ -23,15 +23,16 @@ public class BooColor extends FeatureRenderer<BooEntity, BooModel<BooEntity>> {
 		super(featureRendererContext);
 	}
 
-	public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, BooEntity booEntity, float f, float g, float h, float j, float k, float l) {
+	public void render(MatrixStack matrixStack, VertexConsumerProvider provider, int i, BooEntity booEntity, float f, float g, float h, float j, float k, float l) {
 		if (booEntity.isTamed() && !booEntity.isInvisible()) {
 			float[] fs = booEntity.getBooColor().getColorComponents();
-			if (booEntity.isInSittingPose()){
-				VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RenderLayer.getEntityTranslucent(SITTING_OVERLAY));
-				this.getContextModel().render(matrixStack, vertexConsumer, i, LivingEntityRenderer.getOverlay(booEntity, 0.0F), fs[0], fs[1], fs[2], 0.7F);
+
+			if (booEntity.isInSittingPose() && booEntity.getBooFace() != 3){
+				VertexConsumer consumer = provider.getBuffer(RenderLayer.getEntityTranslucent(SITTING_OVERLAY));
+				this.getContextModel().render(matrixStack, consumer, i, LivingEntityRenderer.getOverlay(booEntity, 0.0F), fs[0], fs[1], fs[2], 0.75F);
 			} else {
-				VertexConsumer vertexConsumer2 = vertexConsumerProvider.getBuffer(RenderLayer.getEntityTranslucent(OVERLAY));
-				this.getContextModel().render(matrixStack, vertexConsumer2, i, LivingEntityRenderer.getOverlay(booEntity, 0.0F), fs[0], fs[1], fs[2], 0.7F);
+				VertexConsumer consumer = provider.getBuffer(RenderLayer.getEntityTranslucent(OVERLAY));
+				this.getContextModel().render(matrixStack, consumer, i, LivingEntityRenderer.getOverlay(booEntity, 0.0F), fs[0], fs[1], fs[2], 0.75F);
 			}
 		}
 	}

@@ -1,0 +1,54 @@
+{
+	"parent": "minecraft:block/block",
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"ice": "minecraft:block/ice",
+		"cross": "super_block_world:block/muncher",
+		"particle": "#cross"
+	},
+	"elements": [
+		{
+			"name": "ice",
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#ice"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#ice"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#ice"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#ice"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#ice"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#ice"}
+			}
+		},
+		{
+			"from": [0.8, 0, 8],
+			"to": [15.2, 16, 8],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#cross"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#cross"}
+			}
+		},
+		{
+			"from": [8, 0, 0.8],
+			"to": [8, 16, 15.2],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#cross"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#cross"}
+			}
+		}
+	],
+	"groups": [
+		0,
+		{
+			"name": "cross",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [1, 2]
+		}
+	]
+}

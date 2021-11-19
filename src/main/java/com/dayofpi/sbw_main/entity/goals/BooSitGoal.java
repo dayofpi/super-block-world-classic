@@ -7,38 +7,38 @@ import net.minecraft.entity.ai.goal.Goal;
 import java.util.EnumSet;
 
 public class BooSitGoal extends Goal {
-	private final BooEntity tameable;
+	private final BooEntity boo;
 
-	public BooSitGoal(BooEntity tameableEntity) {
-		this.tameable = tameableEntity;
+	public BooSitGoal(BooEntity booEntity) {
+		this.boo = booEntity;
 		this.setControls(EnumSet.of(Control.JUMP, Control.MOVE));
 	}
 
 	public boolean shouldContinue() {
-		return this.tameable.isSitting();
+		return this.boo.isSitting();
 	}
 
 	public boolean canStart() {
-		if (!this.tameable.isTamed()) {
+		if (!this.boo.isTamed()) {
 			return false;
-		} else if (this.tameable.isInsideWaterOrBubbleColumn()) {
+		} else if (this.boo.isInsideWaterOrBubbleColumn()) {
 			return false;
 		} else {
-			LivingEntity livingEntity = this.tameable.getOwner();
-			if (livingEntity == null) {
+			LivingEntity owner = this.boo.getOwner();
+			if (owner == null) {
 				return true;
 			} else {
-				return (!(this.tameable.squaredDistanceTo(livingEntity) < 144.0D) || livingEntity.getAttacker() == null) && this.tameable.isSitting();
+				return (!(this.boo.squaredDistanceTo(owner) < 144.0D) || owner.getAttacker() == null) && this.boo.isSitting();
 			}
 		}
 	}
 
 	public void start() {
-		this.tameable.getNavigation().stop();
-		this.tameable.setInSittingPose(true);
+		this.boo.getNavigation().stop();
+		this.boo.setInSittingPose(true);
 	}
 
 	public void stop() {
-		this.tameable.setInSittingPose(false);
+		this.boo.setInSittingPose(false);
 	}
 }

@@ -2,7 +2,7 @@
   "type": "minecraft:random_patch",
   "config": {
     "tries": 64,
-    "xz_spread": 7,
+    "xz_spread": 12,
     "y_spread": 3,
     "feature": {
       "feature": {
@@ -12,33 +12,51 @@
             "type": "minecraft:weighted_state_provider",
             "entries": [
               {
-                "weight": 1,
+                "weight": 10,
                 "data": {
                   "Name": "minecraft:red_mushroom"
                 }
               },
               {
-                "weight": 1,
+                "weight": 10,
                 "data": {
                   "Name": "minecraft:brown_mushroom"
                 }
               },
               {
-                "weight": 1,
+                "weight": 10,
                 "data": {
                   "Name": "super_block_world:yellow_mushroom"
                 }
               },
               {
-                "weight": 2,
+                "weight": 20,
                 "data": {
                   "Name": "super_block_world:green_mushroom"
                 }
               },
               {
-                "weight": 3,
+                "weight": 30,
                 "data": {
                   "Name": "super_block_world:cave_mushrooms"
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "super_block_world:stone_torch",
+                  "Properties": {
+                    "waterlogged": "false",
+                    "lit": "true"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "super_block_world:stone_torch",
+                  "waterlogged": "false",
+                  "lit": "false"
                 }
               }
             ]
@@ -65,7 +83,9 @@
                 ],
                 "blocks": [
                   "super_block_world:vanillate",
-                  "super_block_world:topped_vanillate"
+                  "super_block_world:topped_vanillate",
+                  "super_block_world:toadstone",
+                  "super_block_world:royalite"
                 ]
               }
             ],

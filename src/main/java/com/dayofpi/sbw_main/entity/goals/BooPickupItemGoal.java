@@ -13,8 +13,8 @@ import java.util.List;
 public class BooPickupItemGoal extends Goal {
     private final BooEntity boo;
 
-    public BooPickupItemGoal(BooEntity boo) {
-        this.boo = boo;
+    public BooPickupItemGoal(BooEntity booEntity) {
+        this.boo = booEntity;
         this.setControls(EnumSet.of(Goal.Control.MOVE));
     }
 

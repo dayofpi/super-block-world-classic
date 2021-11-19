@@ -1,8 +1,8 @@
 package com.dayofpi.sbw_main.entity.types.bases;
 
+import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.misc.ModDamageSource;
-import com.dayofpi.sbw_main.SoundList;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.goal.EscapeSunlightGoal;
@@ -47,11 +47,11 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundList.buzzyHurt;
+        return ModSounds.ENTITY_BUZZY_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundList.buzzyDeath;
+        return ModSounds.ENTITY_BUZZY_DEATH;
     }
 
     public static boolean isSpawnBlockValid(WorldAccess world, BlockPos pos) {
@@ -82,7 +82,7 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     }
 
     protected SoundEvent getLandingSound() {
-        return SoundList.buzzyLand;
+        return ModSounds.ENTITY_BUZZY_IMPACT;
     }
 
     @Override
@@ -106,12 +106,8 @@ public abstract class AbstractBuzzy extends CeilingEntity {
         }
     }
 
-    public int getLookPitchSpeed() {
-        return 40;
-    }
-
     private SoundEvent getDropSound() {
-        return SoundList.buzzyDrop;
+        return ModSounds.ENTITY_BUZZY_DROP;
     }
 
     @Override
@@ -128,6 +124,6 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     }
 
     private SoundEvent getBlockingSound() {
-        return SoundList.buzzyBlock;
+        return ModSounds.ENTITY_BUZZY_BLOCK;
     }
 }

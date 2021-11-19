@@ -13,7 +13,7 @@ public class BuzzyArmorMaterial implements ArmorMaterial {
 
     @Override
     public int getProtectionAmount(EquipmentSlot slot) {
-        return 2;
+        return 3;
     }
 
     @Override

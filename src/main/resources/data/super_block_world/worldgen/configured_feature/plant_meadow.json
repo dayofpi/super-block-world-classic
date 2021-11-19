@@ -4,78 +4,67 @@
     "tries": 64,
     "xz_spread": 10,
     "y_spread": 3,
-    "only_in_air": false,
-    "allowed_on": [],
-    "disallowed_on": [],
     "feature": {
-      "type": "minecraft:decorated",
-      "config": {
-        "decorator": {
-          "type": "minecraft:block_filter",
-          "config": {
-            "predicate": {
-              "type": "minecraft:matching_blocks",
-              "offset": [
-                0,
-                0,
-                0
-              ],
-              "blocks": [
-                "minecraft:air"
-              ]
-            }
-          }
-        },
-        "feature": {
-          "type": "minecraft:simple_block",
-          "config": {
-            "to_place": {
-              "type": "minecraft:weighted_state_provider",
-              "entries": [
-                {
-                  "weight": 50,
-                  "data": {
-                    "Name": "minecraft:grass"
-                  }
-                },
-                {
-                  "weight": 1,
-                  "data": {
-                    "Name": "super_block_world:vegetable"
-                  }
-                },
-                {
-                  "weight": 20,
-                  "data": {
-                    "Name": "super_block_world:bush",
-                    "Properties": {
-                      "fruits": "0"
-                    }
-                  }
-                },
-                {
-                  "weight": 3,
-                  "data": {
-                    "Name": "super_block_world:bush",
-                    "Properties": {
-                      "fruits": "1"
-                    }
-                  }
-                },
-                {
-                  "weight": 2,
-                  "data": {
-                    "Name": "super_block_world:bush",
-                    "Properties": {
-                      "fruits": "2"
-                    }
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "weight": 50,
+                "data": {
+                  "Name": "minecraft:grass"
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "super_block_world:vegetable"
+                }
+              },
+              {
+                "weight": 20,
+                "data": {
+                  "Name": "super_block_world:bush",
+                  "Properties": {
+                    "fruits": "0"
                   }
                 }
-              ]
-            }
+              },
+              {
+                "weight": 3,
+                "data": {
+                  "Name": "super_block_world:bush",
+                  "Properties": {
+                    "fruits": "1"
+                  }
+                }
+              },
+              {
+                "weight": 2,
+                "data": {
+                  "Name": "super_block_world:bush",
+                  "Properties": {
+                    "fruits": "2"
+                  }
+                }
+              }
+            ]
           }
         }
-      }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": [
+              "minecraft:air"
+            ]
+          }
+        }
+      ]
     }
   }
 }

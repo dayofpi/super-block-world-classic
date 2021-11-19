@@ -4,66 +4,56 @@
     "tries": 64,
     "xz_spread": 7,
     "y_spread": 3,
-    "only_in_air": true,
-    "allowed_on": [],
-    "disallowed_on": [],
     "feature": {
       "type": "minecraft:decorated",
-      "config": {
-        "decorator": {
-          "type": "minecraft:block_filter",
-          "config": {
-            "predicate": {
-              "type": "minecraft:matching_blocks",
-              "offset": [
-                0,
-                0,
-                0
-              ],
-              "blocks": [
-                "minecraft:air"
-              ]
-            }
-          }
-        },
-        "feature": {
-          "type": "minecraft:simple_block",
-          "config": {
-            "to_place": {
-              "type": "minecraft:weighted_state_provider",
-              "entries": [
-                {
-                  "weight": 50,
-                  "data": {
-                    "Name": "minecraft:grass"
-                  }
-                },
-                {
-                  "weight": 13,
-                  "data": {
-                    "Name": "minecraft:fern"
-                  }
-                },
-                {
-                  "weight": 8,
-                  "data": {
-                    "Name": "minecraft:large_fern",
-                    "Properties": {
-                      "half": "lower"
-                    }
-                  }
-                },
-                {
-                  "weight": 1,
-                  "data": {
-                    "Name": "minecraft:cornflower"
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "weight": 50,
+                "data": {
+                  "Name": "minecraft:grass"
+                }
+              },
+              {
+                "weight": 13,
+                "data": {
+                  "Name": "minecraft:fern"
+                }
+              },
+              {
+                "weight": 8,
+                "data": {
+                  "Name": "minecraft:large_fern",
+                  "Properties": {
+                    "half": "lower"
                   }
                 }
-              ]
-            }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "minecraft:cornflower"
+                }
+              }
+            ]
           }
         }
-      }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": [
+              "minecraft:air"
+            ]
+          }
+        }
+      ]
     }
   }
 }

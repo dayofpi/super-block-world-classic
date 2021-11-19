@@ -31,34 +31,104 @@ public class WarpPipeBodyBlock extends AbstractWarpPipeBlock{
         this.setDefaultState(this.stateManager.getDefaultState().with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(UP, false).with(DOWN, false));
     }
 
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighbor, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+
+
         if (state.get(FACING) == Direction.UP || state.get(FACING) == Direction.DOWN) {
-            boolean isPipe = neighborState.getBlock() instanceof AbstractWarpPipeBlock;
-            boolean northSouth = isPipe && (neighborState.get(FACING) == Direction.NORTH || neighborState.get(FACING) == Direction.SOUTH);
-            boolean eastWest = isPipe && (neighborState.get(FACING) == Direction.EAST || neighborState.get(FACING) == Direction.WEST);
-            boolean upDown = neighborState.isOf(this) && (neighborState.get(FACING) == Direction.UP || neighborState.get(FACING) == Direction.DOWN);
-            if (northSouth && direction == Direction.NORTH) {
-                return state.with(NORTH, true);
-            } else if (!northSouth && direction == Direction.NORTH) {
-                return state.with(NORTH, false);
-            }
-            if (northSouth && direction == Direction.SOUTH) {
-                return state.with(SOUTH, true);
-            } else if (!northSouth && direction == Direction.SOUTH) {
-                return state.with(SOUTH, false);
-            }
-            if (eastWest && direction == Direction.EAST) {
-                return state.with(EAST, true);
-            } else if (!eastWest && direction == Direction.EAST) {
-                return state.with(EAST, false);
-            }
-            if (eastWest && direction == Direction.WEST) {
-                return state.with(WEST, true);
-            } else if (!eastWest && direction == Direction.WEST) {
-                return state.with(WEST, false);
-            }
+            return this.upDownPredicates(state, direction, neighbor);
         }
-        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+        else if (state.get(FACING) == Direction.NORTH || state.get(FACING) == Direction.SOUTH) {
+            return this.northSouthPredicates(state, direction, neighbor);
+        }
+        else if (state.get(FACING) == Direction.EAST || state.get(FACING) == Direction.WEST) {
+            return this.eastWestPredicates(state, direction, neighbor);
+        }
+        return super.getStateForNeighborUpdate(state, direction, neighbor, world, pos, neighborPos);
+    }
+
+    private BlockState northSouthPredicates(BlockState state, Direction direction, BlockState neighbor) {
+        boolean isPipe = neighbor.getBlock() instanceof AbstractWarpPipeBlock;
+        boolean upDown = neighbor.isOf(this) && (neighbor.get(FACING) == Direction.UP || neighbor.get(FACING) == Direction.DOWN);
+        boolean eastWest = isPipe && (neighbor.get(FACING) == Direction.EAST || neighbor.get(FACING) == Direction.WEST);
+
+        if (upDown && direction == Direction.UP) {
+            return state.with(UP, true);
+        } else if (!upDown && direction == Direction.UP) {
+            return state.with(UP, false);
+        }
+        if (upDown && direction == Direction.DOWN) {
+            return state.with(DOWN, true);
+        } else if (!upDown && direction == Direction.DOWN) {
+            return state.with(DOWN, false);
+        }
+
+        if (eastWest && direction == Direction.EAST) {
+            return state.with(EAST, true);
+        } else if (!eastWest && direction == Direction.EAST) {
+            return state.with(EAST, false);
+        }
+        if (eastWest && direction == Direction.WEST) {
+            return state.with(WEST, true);
+        } else if (!eastWest && direction == Direction.WEST) {
+            return state.with(WEST, false);
+        } else return state;
+    }
+
+    private BlockState upDownPredicates(BlockState state, Direction direction, BlockState neighbor) {
+        boolean isPipe = neighbor.getBlock() instanceof AbstractWarpPipeBlock;
+        boolean northSouth = isPipe && (neighbor.get(FACING) == Direction.NORTH || neighbor.get(FACING) == Direction.SOUTH);
+        boolean eastWest = isPipe && (neighbor.get(FACING) == Direction.EAST || neighbor.get(FACING) == Direction.WEST);
+
+        if (northSouth && direction == Direction.NORTH) {
+            return state.with(NORTH, true);
+        } else if (!northSouth && direction == Direction.NORTH) {
+            return state.with(NORTH, false);
+        }
+        if (northSouth && direction == Direction.SOUTH) {
+            return state.with(SOUTH, true);
+        } else if (!northSouth && direction == Direction.SOUTH) {
+            return state.with(SOUTH, false);
+        }
+
+        if (eastWest && direction == Direction.EAST) {
+            return state.with(EAST, true);
+        } else if (!eastWest && direction == Direction.EAST) {
+            return state.with(EAST, false);
+        }
+        if (eastWest && direction == Direction.WEST) {
+            return state.with(WEST, true);
+        } else if (!eastWest && direction == Direction.WEST) {
+            return state.with(WEST, false);
+        } else return state;
+    }
+
+    private BlockState eastWestPredicates(BlockState state, Direction direction, BlockState neighbor) {
+        boolean isPipe = neighbor.getBlock() instanceof AbstractWarpPipeBlock;
+        boolean northSouth = isPipe && (neighbor.get(FACING) == Direction.NORTH || neighbor.get(FACING) == Direction.SOUTH);
+        boolean upDown = neighbor.isOf(this) && (neighbor.get(FACING) == Direction.UP || neighbor.get(FACING) == Direction.DOWN);
+
+        if (upDown && direction == Direction.UP) {
+            return state.with(UP, true);
+        } else if (!upDown && direction == Direction.UP) {
+            return state.with(UP, false);
+        }
+        if (upDown && direction == Direction.DOWN) {
+            return state.with(DOWN, true);
+        } else if (!upDown && direction == Direction.DOWN) {
+            return state.with(DOWN, false);
+        }
+
+        if (northSouth && direction == Direction.NORTH) {
+            return state.with(NORTH, true);
+        } else if (!northSouth && direction == Direction.NORTH) {
+            return state.with(NORTH, false);
+        }
+        if (northSouth && direction == Direction.SOUTH) {
+            return state.with(SOUTH, true);
+        } else if (!northSouth && direction == Direction.SOUTH) {
+            return state.with(SOUTH, false);
+        } else return state;
+
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

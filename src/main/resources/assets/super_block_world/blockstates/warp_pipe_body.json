@@ -68,6 +68,16 @@
     },
     {
       "when": {
+        "down": "true"
+      },
+      "apply": {
+        "model": "super_block_world:block/warp_pipe_connection",
+        "x": 90,
+        "y": 270
+      }
+    },
+    {
+      "when": {
         "east": "true"
       },
       "apply": {

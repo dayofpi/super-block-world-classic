@@ -1,10 +1,10 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
 import com.dayofpi.sbw_main.Main;
+import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.item.registry.ModItems;
-import com.dayofpi.sbw_main.SoundList;
 import com.google.common.collect.Maps;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityData;
@@ -20,7 +20,6 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.CowEntity;
-import net.minecraft.entity.passive.MooshroomEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -99,19 +98,19 @@ public class MooMooEntity extends CowEntity {
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundList.mooMooAmbient;
+        return ModSounds.ENTITY_MOO_MOO_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundList.mooMooHurt;
+        return ModSounds.ENTITY_MOO_MOO_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundList.mooMooDeath;
+        return ModSounds.ENTITY_MOO_MOO_DEATH;
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(SoundList.mooMooStep, 0.2F, 1.0F);
+        this.playSound(ModSounds.ENTITY_MOO_MOO_STEP, 0.2F, 1.0F);
     }
 
     protected float getSoundVolume() {
@@ -217,6 +216,16 @@ public class MooMooEntity extends CowEntity {
                 } else return false;
             }
             return super.canStart();
+        }
+
+        public void start() {
+            super.start();
+            this.mooMooEntity.playSound(ModSounds.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume(), mooMooEntity.getSoundPitch());
+        }
+
+        public void stop() {
+            super.stop();
+            this.mooMooEntity.playSound(ModSounds.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume(), mooMooEntity.getSoundPitch());
         }
 
         @Nullable

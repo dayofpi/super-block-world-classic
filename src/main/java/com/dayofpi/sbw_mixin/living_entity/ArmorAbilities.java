@@ -1,7 +1,6 @@
 package com.dayofpi.sbw_mixin.living_entity;
 
 import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.SoundList;
 import com.dayofpi.sbw_main.TagList;
 import com.dayofpi.sbw_main.entity.registry.ModEffects;
 import com.dayofpi.sbw_main.entity.types.bases.AbstractBuzzy;
@@ -32,14 +31,9 @@ import java.util.Map;
 
 @Mixin(LivingEntity.class)
 public abstract class ArmorAbilities extends Entity {
-    @Shadow @Final private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
-
     @Shadow
-    private static byte getEquipmentBreakStatus(EquipmentSlot slot) {
-        return 0;
-    }
-
-    @Shadow public abstract float getSoundPitch();
+    @Final
+    private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
 
     public ArmorAbilities(EntityType<?> type, World world) {
         super(type, world);
@@ -54,21 +48,33 @@ public abstract class ArmorAbilities extends Entity {
             }
 
             if (!other.isDead() && other.getEquippedStack(EquipmentSlot.FEET).isOf(ModItems.JUMP_BOOTS)) {
-                ItemStack entityHelmet = this.getEquippedStack(EquipmentSlot.HEAD);
-                boolean conditions = other.getY() > this.getY() && other.fallDistance > 0;
+                ItemStack helmet = this.getEquippedStack(EquipmentSlot.HEAD);
 
-                if (conditions) {
-                    if (!(entityHelmet.isOf(ModItems.BUZZY_SHELL) || this.getType().isIn(TagList.IMMUNE_TO_BOOTS))) {
+                if (other.getY() > this.getY() && other.fallDistance > 0) {
+                    if (!(helmet.isOf(ModItems.BUZZY_SHELL) || this.getType().isIn(TagList.IMMUNE_TO_BOOTS))) {
                         this.damage(ModDamageSource.stomp(other), 5F);
-                        this.playSound(SoundList.item_jumpBoots_bounce, 1.0F, this.getSoundPitch());
-                        if (entityHelmet.isDamageable()) {
-                            entityHelmet.damage(2, other, ((e) -> e.sendEquipmentBreakStatus(EquipmentSlot.HEAD)));
+                        this.playSound(ModSounds.ENTITY_JUMP_BOOTS_ATTACK, 1.0F, this.getSoundPitch());
+                        if (helmet.isDamageable()) {
+                            helmet.damage(2, other, ((e) -> e.sendEquipmentBreakStatus(EquipmentSlot.HEAD)));
                         }
+                    } else {
+                        this.playSound(ModSounds.ENTITY_JUMP_BOOTS_BOUNCE, 1.0F, this.getSoundPitch());
                     }
                 }
             }
         }
     }
+
+    private boolean hasJumpBoots() {
+        ItemStack feetSlot = this.getEquippedStack(EquipmentSlot.FEET);
+        return (feetSlot.isOf(ModItems.JUMP_BOOTS));
+    }
+
+    @Invoker("getEquippedStack")
+    public abstract ItemStack getEquippedStack(EquipmentSlot slot);
+
+    @Shadow
+    public abstract float getSoundPitch();
 
     @Inject(at = @At("HEAD"), method = "jump")
     protected void jump(CallbackInfo info) {
@@ -89,14 +95,6 @@ public abstract class ArmorAbilities extends Entity {
         }
     }
 
-    private boolean hasJumpBoots() {
-        ItemStack feetSlot = this.getEquippedStack(EquipmentSlot.FEET);
-        return (feetSlot.isOf(ModItems.JUMP_BOOTS));
-    }
-
-    @Invoker("getEquippedStack")
-    public abstract ItemStack getEquippedStack(EquipmentSlot slot);
-
     @Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", cancellable = true)
     private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> info) {
         if (this.activeStatusEffects.containsKey(ModEffects.STAR_POWER) && !source.isOutOfWorld()) {
@@ -107,7 +105,7 @@ public abstract class ArmorAbilities extends Entity {
         ItemStack headSlot = this.getEquippedStack(EquipmentSlot.HEAD);
         if (headSlot.isOf(ModItems.BUZZY_SHELL)) {
             if (source instanceof ProjectileDamageSource && source.getPosition() != null && source.getPosition().y > this.getY() + 1.5 || source.isFallingBlock() || source.getAttacker() != null && source.getAttacker() instanceof AbstractBuzzy && ((AbstractBuzzy) source.getAttacker()).isUpsideDown() && source.getAttacker().fallDistance > 0) {
-                this.world.playSound(null, this.getBlockPos(), SoundList.buzzyBlock, SoundCategory.NEUTRAL, 0.6F, this.getSoundPitch());
+                this.world.playSound(null, this.getBlockPos(), ModSounds.ENTITY_BUZZY_BLOCK, SoundCategory.NEUTRAL, 0.6F, this.getSoundPitch());
                 headSlot.setDamage(headSlot.getDamage() + random.nextInt(2));
                 if (headSlot.getDamage() >= headSlot.getMaxDamage()) {
                     this.sendEquipmentBreakStatus(EquipmentSlot.HEAD);
@@ -125,6 +123,11 @@ public abstract class ArmorAbilities extends Entity {
 
     public void sendEquipmentBreakStatus(EquipmentSlot slot) {
         this.world.sendEntityStatus(this, getEquipmentBreakStatus(slot));
+    }
+
+    @Shadow
+    private static byte getEquipmentBreakStatus(EquipmentSlot slot) {
+        return 0;
     }
 
     @Inject(at = @At("HEAD"), method = "handleFallDamage(FFLnet/minecraft/entity/damage/DamageSource;)Z", cancellable = true)

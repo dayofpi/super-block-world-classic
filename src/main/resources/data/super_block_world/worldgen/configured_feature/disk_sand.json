@@ -1,7 +1,7 @@
 {
   "config": {
     "state": {
-      "Name": "super_block_world:gritzy_sand"
+      "Name": "minecraft:sand"
     },
     "radius": {
       "type": "minecraft:uniform",

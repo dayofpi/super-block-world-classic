@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.block.types;
 
-import com.dayofpi.sbw_main.SoundList;
+import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
@@ -55,14 +55,14 @@ public class TrampolineBlock extends FallingBlock implements Waterloggable {
             if (!entity.isSneaking()) {
                 entity.world.setBlockState(entity.getLandingPos(), blockState.with(SQUASH, false));
                 this.bounce(entity, 1.2);
-                entity.playSound(SoundList.blockPoweredTrampoline, 1.0F, this.getSoundPitch(entity));
+                entity.playSound(ModSounds.BLOCK_TRAMPOLINE_SUPER_JUMP, 1.0F, this.getSoundPitch(entity));
             }
         }
         else if (world.getBlockState(entity.getLandingPos()).isOf(ModBlocks.TRAMPOLINE) && !world.getBlockState(entity.getLandingPos()).get(SQUASH)) {
             // If not squashed
             if (!entity.isSneaking()) {
                 this.bounce(entity, 0.8);
-                entity.playSound(SoundList.blockTrampoline, 1.0F, this.getSoundPitch(entity));
+                entity.playSound(ModSounds.BLOCK_TRAMPOLINE_JUMP, 1.0F, this.getSoundPitch(entity));
             }  else {
                 entity.world.setBlockState(entity.getLandingPos(), blockState.with(SQUASH, true));
             }

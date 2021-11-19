@@ -1,5 +1,6 @@
 package com.dayofpi.sbw_mixin;
 
+import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.TagList;
 import com.dayofpi.sbw_main.misc.ModDamageSource;
 import com.dayofpi.sbw_main.world.registry.ModParticles;
@@ -56,6 +57,7 @@ public abstract class EntityPoisonInteraction {
 
     @Shadow public abstract BlockPos getBlockPos();
 
+    @Shadow private EntityDimensions dimensions;
     private final Random random = new Random();
     protected boolean touchingPoison;
 
@@ -82,15 +84,16 @@ public abstract class EntityPoisonInteraction {
             // Replace water splash particles
             Entity entity = this.hasPassengers() && this.getPrimaryPassenger() != null ? this.getPrimaryPassenger() : this.getWorld().getEntityById(this.getId());
             if (entity != null) {
+                this.playSound(ModSounds.BLOCK_POISON_SWIM, 0.4F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.4F);
+
                 float h = (float) MathHelper.floor(this.getY());
 
                 int i;
                 double d;
                 double e;
-                for (i = 0; (float) i < 1.0F + this.getDimensions(EntityPose.STANDING).width * 20.0F; ++i) {
+                for (i = 0; (float) i < 1.0F + this.dimensions.width * 20.0F; ++i) {
                     d = (this.random.nextDouble() * 2.0D - 1.0D) * (double) this.getDimensions(EntityPose.STANDING).width;
                     e = (this.random.nextDouble() * 2.0D - 1.0D) * (double) this.getDimensions(EntityPose.STANDING).width;
-                    this.playSound(SoundEvents.ENTITY_GENERIC_SPLASH, 0.3F, 0.9F);
                     this.getWorld().addParticle(ModParticles.POISON_BUBBLE, this.getX() + d, h + 1.0F, this.getZ() + e, 0, 0, 0);
                 }
                 info.cancel();

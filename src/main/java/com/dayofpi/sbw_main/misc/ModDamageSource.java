@@ -7,10 +7,10 @@ import net.minecraft.entity.damage.EntityDamageSource;
 public class ModDamageSource extends DamageSource {
     private boolean light;
 
-    public static final DamageSource POISON = new DamageSource("poison") {};
-    public static final DamageSource SHELL = new DamageSource("shell") {};
-    public static final DamageSource SPIKES = new DamageSource("spikes") {};
-    public static final DamageSource MUNCHER = new DamageSource("muncher") {};
+    public static final DamageSource POISON = new ModDamageSource("poison");
+    public static final DamageSource SPIKES = new ModDamageSource("spikes");
+    public static final DamageSource MUNCHER = new ModDamageSource("muncher");
+    public static final DamageSource JELLY = new ModDamageSource("jelly");
 
     public ModDamageSource(String string) {
         super(string);

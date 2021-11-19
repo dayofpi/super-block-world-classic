@@ -2,6 +2,7 @@
   "replace": "false",
   "values": [
     "super_block_world:spike_top",
+    "super_block_world:boo",
     "minecraft:shulker",
     "minecraft:guardian",
     "minecraft:elder_guardian"

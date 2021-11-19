@@ -6,10 +6,9 @@
   "mixins": [
     "AllowCacti",
     "AllowCarvers",
-    "ArmorKnockbackResistance",
     "ClientPlayer",
     "EntityPoisonInteraction",
-    "MinecraftClientMixin",
+    "CustomMusic",
     "MixinSignType",
     "PipeBubbles",
     "RabbitSkins",

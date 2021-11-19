@@ -89,11 +89,6 @@ public abstract class EnemyEntity extends PathAwareEntity {
     }
 
     @Override
-    protected SoundEvent getFallSound(int distance) {
-        return distance > 4 ? SoundEvents.ENTITY_HOSTILE_BIG_FALL : SoundEvents.ENTITY_HOSTILE_SMALL_FALL;
-    }
-
-    @Override
     protected SoundEvent getSwimSound() {
         return SoundEvents.ENTITY_HOSTILE_SWIM;
     }

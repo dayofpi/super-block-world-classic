@@ -28,18 +28,6 @@
         ]
       }
     },
-    "poison_mushroom": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "super_block_world:poison_mushroom"
-            ]
-          }
-        ]
-      }
-    },
     "golden_mushroom": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -104,9 +92,6 @@
   "requirements": [
     [
       "super_mushroom"
-    ],
-    [
-      "poison_mushroom"
     ],
     [
       "golden_mushroom"

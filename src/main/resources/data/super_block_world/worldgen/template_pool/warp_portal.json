@@ -1,0 +1,15 @@
+{
+  "name": "super_block_world:warp_portal",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "terrain_matching",
+        "location": "super_block_world:warp_portal",
+        "processors": "super_block_world:warp_portal_degradation"
+      }
+    }
+  ]
+}

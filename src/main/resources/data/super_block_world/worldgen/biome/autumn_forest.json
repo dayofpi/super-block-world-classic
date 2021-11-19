@@ -7,8 +7,8 @@
   "effects": {
     "sky_color": 13432786,
     "fog_color": 12637889,
-    "water_color": 5295837,
-    "water_fog_color": 5295837,
+    "water_color": 59345,
+    "water_fog_color": 59345,
     "grass_color": 16758835,
     "foliage_color": 16765486,
     "mood_sound": {
@@ -94,11 +94,13 @@
   "features": [
     [],
     [
-      "minecraft:lake_lava_underground"
+      "super_block_world:lake_lava"
     ],
     [],
     [
-      "super_block_world:block_single"
+      "super_block_world:block_single",
+      "super_block_world:pipe_default",
+      "super_block_world:pipe_underwater"
     ],
     [],
     [
@@ -116,7 +118,7 @@
     [
       "super_block_world:disk_sand",
       "super_block_world:patch_cave_crystals",
-      "super_block_world:stone_torches",
+      "super_block_world:patch_lantern",
       "super_block_world:mushroom_underground"
     ],
     [
@@ -124,7 +126,6 @@
       "minecraft:patch_tall_grass",
       "super_block_world:patch_stumps",
       "super_block_world:seagrass",
-      "super_block_world:water_plants",
       "super_block_world:plant_forest",
       "super_block_world:flower_grassland",
       "super_block_world:mushroom_forest",

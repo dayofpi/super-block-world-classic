@@ -1,28 +1,27 @@
 package com.dayofpi.sbw_main.world.structure_feature;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.class_6622;
-import net.minecraft.class_6626;
-import net.minecraft.util.BlockRotation;
+import net.minecraft.class_6834;
+import net.minecraft.structure.PoolStructurePiece;
+import net.minecraft.structure.pool.StructurePoolBasedGenerator;
+import net.minecraft.structure.pool.StructurePools;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.Heightmap;
-import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import net.minecraft.world.gen.feature.StructureFeature;
+import net.minecraft.world.gen.feature.MarginedStructureFeature;
+import net.minecraft.world.gen.feature.StructurePoolFeatureConfig;
 
-public class WarpPortalFeature extends StructureFeature<DefaultFeatureConfig> {
-    public WarpPortalFeature(Codec<DefaultFeatureConfig> codec) {
-        super(codec, WarpPortalFeature::init);
-    }
+import java.util.Optional;
+import java.util.function.Predicate;
 
-    private static void init(class_6626 arg, DefaultFeatureConfig defaultFeatureConfig, class_6622.class_6623 arg2) {
-        Heightmap.Type type = Heightmap.Type.WORLD_SURFACE_WG;
-        if (arg2.method_38707(type)) {
-            int x = arg2.chunkPos().getStartX();
-            int z = arg2.chunkPos().getStartZ();
-            int y = arg2.chunkGenerator().getHeight(x, z, Heightmap.Type.WORLD_SURFACE_WG, arg2.heightAccessor());
-            BlockRotation blockRotation = BlockRotation.random(arg2.random());
-            BlockPos blockPos = new BlockPos(x, y, z);
-            WarpPortalGenerator.addPiece(arg2.structureManager(), blockPos, blockRotation, arg);
-        }
+public class WarpPortalFeature extends MarginedStructureFeature<StructurePoolFeatureConfig> {
+    public WarpPortalFeature(Codec<StructurePoolFeatureConfig> codec, int structureStartY, boolean modifyBoundingBox, boolean surface, Predicate<class_6834.class_6835<StructurePoolFeatureConfig>> predicate) {
+        super(codec, (context) -> {
+            if (!predicate.test(context)) {
+                return Optional.empty();
+             } else {
+                BlockPos blockPos = new BlockPos(context.chunkPos().getStartX(), structureStartY, context.chunkPos().getStartZ());
+                StructurePools.initDefaultPools();
+                return StructurePoolBasedGenerator.generate(context, PoolStructurePiece::new, blockPos, modifyBoundingBox, surface);
+            }
+        });
     }
 }

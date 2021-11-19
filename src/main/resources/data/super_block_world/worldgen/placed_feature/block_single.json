@@ -1,11 +1,9 @@
 {
-  "feature": "super_block_world:ore_bronze",
+  "feature": "super_block_world:block_single",
   "placement": [
     {
-      "type": "minecraft:count_extra",
-      "count": 0,
-      "extra_count": 2,
-      "extra_chance": 0.25
+      "type": "minecraft:rarity_filter",
+      "chance": 8
     },
     {
       "type": "minecraft:in_square"
@@ -15,10 +13,10 @@
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "above_bottom": 60
+          "above_bottom": 0
         },
         "max_inclusive": {
-          "absolute": 80
+          "absolute": 90
         }
       }
     },

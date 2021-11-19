@@ -27,8 +27,14 @@ public class ColumnCoralFeature extends Feature<DefaultFeatureConfig> {
       int j = structureWorldAccess.getTopY(Heightmap.Type.OCEAN_FLOOR, blockPos.getX(), blockPos.getZ());
       BlockPos blockPos2 = new BlockPos(blockPos.getX(), j, blockPos.getZ());
       if (structureWorldAccess.getBlockState(blockPos2).isOf(Blocks.WATER)) {
-         BlockState blockState = ModBlocks.STRAWBERRY_CORAL.getDefaultState();
+         BlockState blockState = ModBlocks.QUESTION_BLOCK.getDefaultState();
+         if (random.nextFloat() > 0.3F ) {
+            blockState = ModBlocks.STRAWBERRY_CORAL.getDefaultState();
+         } else if (random.nextFloat() < 0.7F) {
+            blockState = ModBlocks.COIN_BLOCK.getDefaultState();
+         }
          BlockState blockState2 = ModBlocks.STRAWBERRY_CORAL.getDefaultState();
+
          int k = 1 + random.nextInt(10);
 
          for(int l = 0; l <= k; ++l) {

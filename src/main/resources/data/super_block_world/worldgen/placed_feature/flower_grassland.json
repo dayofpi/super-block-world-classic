@@ -2,14 +2,8 @@
   "feature": "super_block_world:flower_grassland",
   "placement": [
     {
-      "type": "minecraft:noise_threshold_count",
-      "noise_level": -0.8,
-      "below_noise": 15,
-      "above_noise": 4
-    },
-    {
       "type": "minecraft:rarity_filter",
-      "chance": 2
+      "chance": 4
     },
     {
       "type": "minecraft:in_square"

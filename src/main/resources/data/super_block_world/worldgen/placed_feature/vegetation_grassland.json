@@ -2,10 +2,12 @@
   "feature": "super_block_world:vegetation_grassland",
   "placement": [
     {
-      "count": 0,
-      "extra_count": 7,
-      "extra_chance": 0.1,
-      "type": "minecraft:count_extra"
+      "type": "minecraft:rarity_filter",
+      "chance": 3
+    },
+    {
+      "count": 5,
+      "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"

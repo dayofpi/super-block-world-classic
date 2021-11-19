@@ -2,10 +2,6 @@
   "config": {
     "features": [
       {
-        "feature": "super_block_world:flowerbed",
-        "chance": 0.02
-      },
-      {
         "feature": "super_block_world:dark_amanita_baby_checked",
         "chance": 0.07
       }

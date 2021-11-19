@@ -7,8 +7,8 @@
   "effects": {
     "sky_color": 5940405,
     "fog_color": 11387566,
-    "water_color": 5295837,
-    "water_fog_color": 5295837,
+    "water_color": 36583,
+    "water_fog_color": 36583,
     "grass_color": 6593569,
     "foliage_color": 1728811,
     "particle": {
@@ -24,9 +24,9 @@
       "offset": 2
     },
     "music": {
-      "sound": "super_block_world:music.water",
-      "min_delay": 100,
-      "max_delay": 1000,
+      "sound": "super_block_world:music.ghost",
+      "min_delay": 3000,
+      "max_delay": 24000,
       "replace_current_music": false
     }
   },
@@ -52,13 +52,13 @@
       },
       {
         "type": "super_block_world:boo",
-        "weight": 12,
+        "weight": 10,
         "minCount": 1,
         "maxCount": 1
       },
       {
         "type": "super_block_world:rotten_mushroom",
-        "weight": 15,
+        "weight": 10,
         "minCount": 1,
         "maxCount": 1
       },
@@ -92,6 +92,10 @@
     "super_block_world:goomba": {
       "energy_budget": 0.16,
       "charge": 0.7
+    },
+    "super_block_world:boo": {
+      "energy_budget": 0.16,
+      "charge": 0.7
     }
   },
   "carvers": {
@@ -104,12 +108,14 @@
   "features": [
     [],
     [
-      "minecraft:lake_lava_underground",
+      "super_block_world:lake_lava",
       "super_block_world:lake_poison"
     ],
     [],
     [
-      "super_block_world:block_single"
+      "super_block_world:block_single",
+      "super_block_world:pipe_default",
+      "super_block_world:pipe_underwater"
     ],
     [],
     [
@@ -127,7 +133,7 @@
     [
       "super_block_world:disk_sand",
       "super_block_world:patch_cave_crystals",
-      "super_block_world:stone_torches",
+      "super_block_world:patch_lantern",
       "super_block_world:mushroom_underground"
     ],
     [

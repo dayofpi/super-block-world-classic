@@ -1,67 +1,66 @@
 {
   "type": "minecraft:random_patch",
   "config": {
+    "tries": 32,
+    "xz_spread": 7,
+    "y_spread": 3,
     "feature": {
-      "type": "minecraft:decorated",
-      "config": {
-        "decorator": {
-          "type": "minecraft:block_filter",
-          "config": {
-            "predicate": {
-              "predicates": [
-                {
-                  "type": "minecraft:matching_blocks",
-                  "offset": [
-                    0,
-                    -1,
-                    0
-                  ],
-                  "blocks": [
-                    "super_block_world:vanillate",
-                    "super_block_world:topped_vanillate"
-                  ]
-                },
-                {
-                  "type": "minecraft:matching_blocks",
-                  "blocks": [
-                    "minecraft:air"
-                  ]
-                }
-              ], "type": "minecraft:all_of"
-            }
-          }
-        },
-        "feature": {
-          "type": "minecraft:simple_block",
-          "config": {
-            "to_place": {
-              "type": "minecraft:weighted_state_provider",
-              "entries": [
-                {
-                  "weight": 1,
-                  "data": {
-                    "Name": "minecraft:stone_torch",
-                    "Properties": {
-                      "lit": "false",
-                      "waterlogged": "false"
-                    }
-                  }
-                },
-                {
-                  "weight": 1,
-                  "data": {
-                    "Name": "minecraft:stone_torch",
-                    "Properties": {
-                      "lit": "true",
-                      "waterlogged": "false"
-                    }
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "minecraft:stone_torch",
+                  "Properties": {
+                    "lit": "true",
+                    "waterlogged": "false"
                   }
                 }
-              ]
-            }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "minecraft:stone_torch",
+                  "Properties": {
+                    "lit": "false",
+                    "waterlogged": "false"
+                  }
+                }
+              }
+            ]
           }
         }
-      }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": [
+              "minecraft:air"
+            ]
+          }
+        },
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "offset": [
+              0,
+              -1,
+              0
+            ],
+            "blocks": [
+              "super_block_world:vanillate",
+              "super_block_world:toadstone"
+            ]
+          }
+        }
+      ]
     }
   }
 }

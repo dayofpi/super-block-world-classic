@@ -11,7 +11,12 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 20,
+          "weight": 5,
+          "name": "minecraft:gravel"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
           "name": "super_block_world:toadstone_bricks",
           "functions": [
             {
@@ -27,7 +32,7 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 40,
+          "weight": 5,
           "name": "super_block_world:hardstone",
           "functions": [
             {
@@ -43,7 +48,7 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 40,
+          "weight": 5,
           "name": "minecraft:flint",
           "functions": [
             {
@@ -59,7 +64,7 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 30,
+          "weight": 5,
           "name": "minecraft:iron_nugget",
           "functions": [
             {
@@ -80,7 +85,7 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 15,
+          "weight": 5,
           "name": "super_block_world:hammer"
         },
         {
