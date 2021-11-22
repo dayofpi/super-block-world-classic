@@ -3,7 +3,7 @@
     "features": [
       {
         "feature": "super_block_world:dark_amanita_baby_checked",
-        "chance": 0.07
+        "chance": 0.01
       }
     ],
     "default": "super_block_world:dark_amanita_checked"

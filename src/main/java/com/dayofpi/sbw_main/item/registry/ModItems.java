@@ -333,5 +333,8 @@ public class ModItems {
         registerBlockItem("royalite", ModBlocks.ROYALITE);
         registerBlockItem("smooth_royalite", ModBlocks.SMOOTH_ROYALITE);
         registerBlockItem("royalite_bricks", ModBlocks.ROYALITE_BRICKS);
+        registerBlockItem("royalite_brick_slab", VariantBlocks.ROYALITE_BRICK_SLAB);
+        registerBlockItem("royalite_brick_stairs", VariantBlocks.ROYALITE_BRICK_STAIRS);
+        registerBlockItem("royalite_brick_wall", VariantBlocks.ROYALITE_BRICK_WALL);
     }
 }

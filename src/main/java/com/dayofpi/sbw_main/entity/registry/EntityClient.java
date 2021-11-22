@@ -34,6 +34,7 @@ public class EntityClient {
 
         EntityRendererRegistry.register(ModEntities.KOOPA_TROOPA, KoopaRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModelLayers.KOOPA, KoopaModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(ModelLayers.KOOPA_SADDLE, KoopaModel::getTexturedModelData);
 
         EntityRendererRegistry.register(ModEntities.PARATROOPA, KoopaRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModelLayers.PARATROOPA, KoopaModel::getTexturedModelData);

@@ -4,6 +4,7 @@
     "super_block_world:toadstone_wall",
     "super_block_world:toadstone_brick_wall",
     "super_block_world:gloomstone_wall",
-    "super_block_world:gloomstone_brick_wall"
+    "super_block_world:gloomstone_brick_wall",
+    "super_block_world:royalite_brick_wall"
   ]
 }

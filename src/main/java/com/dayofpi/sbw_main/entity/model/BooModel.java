@@ -52,14 +52,19 @@ public class BooModel<T extends BooEntity> extends SinglePartEntityModel<T> {
 
     @Override
     public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-        this.right_arm.visible = true;
-        this.left_arm.visible = true;
-        this.right_cover.visible = false;
-        this.left_cover.visible = false;
+        this.right_arm.visible = !entity.isHiding() || entity.isDabbing();
+        this.left_arm.visible = !entity.isHiding() || entity.isDabbing();
+        this.right_cover.visible = entity.isHiding() && !entity.isDabbing();
+        this.left_cover.visible = entity.isHiding() && !entity.isDabbing();
         this.right_cover.yaw = -0.8727F;
         this.left_cover.yaw = 0.8727F;
+        this.body.yaw = headYaw * 0.01F;
+        this.body.pitch = headPitch * 0.01F;
         this.body.roll = headPitch * 0.01F;
-        this.tongue.pitch = 0.3927F;
+
+        float cosF = animationProgress * 5F * 0.017453292F;
+
+        this.tongue.pitch = MathHelper.cos(cosF * 0.8F) * 0.2F + 0.2F;
         this.tongue.yaw = MathHelper.cos(limbAngle * 0.2F) * limbDistance;
         if (!entity.getEquippedStack(EquipmentSlot.MAINHAND).isEmpty()) {
             this.right_arm.setAngles(0F,0.6F, 1.5F);
@@ -69,26 +74,21 @@ public class BooModel<T extends BooEntity> extends SinglePartEntityModel<T> {
         } else {
             this.right_arm.setPivot(0, 0, 0);
             this.left_arm.setPivot(0, 0, 0);
-            if (entity.isHiding()) {
-                if (!entity.isDabbing()){
-                    this.right_arm.visible = false;
-                    this.left_arm.visible = false;
-                    this.right_cover.visible = true;
-                    this.left_cover.visible = true;
-                } else {
-                    this.right_arm.setAngles(0F,2F,0F);
-                    this.left_arm.setAngles(0F,2F,0F);
-                }
+
+            if (entity.isHiding() && entity.isDabbing()) {
+                this.right_arm.setAngles(0F,2F,0F);
+                this.left_arm.setAngles(0F,2F,0F);
+
             } else if (entity.isAttacking()) {
                 this.right_arm.setAngles(0F,0F, -0.2F);
                 this.left_arm.setAngles(0F,0F, 0.2F);
-            }else if (entity.isInSittingPose()) {
+
+            } else if (entity.isInSittingPose()) {
                 this.right_arm.setAngles(0F,0.4F, 0.2F);
                 this.left_arm.setAngles(0F,-0.4F, -0.2F);
             } else {
-                float l = animationProgress * 5F * 0.017453292F;
-                this.right_arm.setAngles(0F,0F, MathHelper.cos(l) * 0.2F);
-                this.left_arm.setAngles(0F,0F, MathHelper.cos(l) * -0.2F);
+                this.right_arm.setAngles(0F,0F, MathHelper.cos(cosF) * 0.2F);
+                this.left_arm.setAngles(0F,0F, MathHelper.cos(cosF) * -0.2F);
             }
         }
     }

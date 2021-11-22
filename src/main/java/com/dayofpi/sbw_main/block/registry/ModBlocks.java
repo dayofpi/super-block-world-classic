@@ -1,6 +1,7 @@
 package com.dayofpi.sbw_main.block.registry;
 
 import com.dayofpi.sbw_main.Main;
+import com.dayofpi.sbw_main.misc.ModSignTypes;
 import com.dayofpi.sbw_main.block.registry.categories.*;
 import com.dayofpi.sbw_main.block.types.*;
 import com.dayofpi.sbw_main.block.types.template.ModFluidBlock;
@@ -22,8 +23,6 @@ import java.util.function.ToIntFunction;
 @SuppressWarnings("SameReturnValue")
 
 public class ModBlocks {
-    public static final SignType AMANITA = new SignType("amanita"){};
-
     public static final Block WARP_FRAME = new PillarBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(3.0F, 200F));
 
     public static final Block WARP_PIPE = new WarpPipeBlock(FabricBlockSettings.of(Material.METAL, MapColor.GREEN).requiresTool().strength(3.0F, 20.0F).nonOpaque().sounds(BlockSoundGroup.METAL));
@@ -129,8 +128,8 @@ public class ModBlocks {
     public static final Block AMANITA_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(3.0F).nonOpaque().allowsSpawning(ModBlocks::never)){};
     public static final Block AMANITA_BUTTON = new WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5F).sounds(BlockSoundGroup.WOOD)){};
     public static final Block AMANITA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5F).sounds(BlockSoundGroup.WOOD)){};
-    public static final Block AMANITA_SIGN = new SignBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), AMANITA);
-    public static final Block AMANITA_WALL_SIGN = new WallSignBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), AMANITA);
+    public static final Block AMANITA_SIGN = new SignBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), ModSignTypes.AMANITA);
+    public static final Block AMANITA_WALL_SIGN = new WallSignBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), ModSignTypes.AMANITA);
 
     public static final Block POISON = new ModFluidBlock(ModFluids.STILL_POISON, FabricBlockSettings.of(Material.LAVA, MapColor.PURPLE).noCollision().ticksRandomly().strength(100.0F).luminance(7));
 
@@ -260,6 +259,9 @@ public class ModBlocks {
         registerBlock("royalite", ROYALITE);
         registerBlock("smooth_royalite", SMOOTH_ROYALITE);
         registerBlock("royalite_bricks", ROYALITE_BRICKS);
+        registerBlock("royalite_brick_slab", VariantBlocks.ROYALITE_BRICK_SLAB);
+        registerBlock("royalite_brick_stairs", VariantBlocks.ROYALITE_BRICK_STAIRS);
+        registerBlock("royalite_brick_wall", VariantBlocks.ROYALITE_BRICK_WALL);
         registerBlock("amanita_log", AMANITA_LOG);
         registerBlock("amanita_wood", AMANITA_WOOD);
         registerBlock("stripped_amanita_log", STRIPPED_AMANITA_LOG);

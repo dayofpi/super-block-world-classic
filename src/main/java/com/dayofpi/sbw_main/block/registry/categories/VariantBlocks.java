@@ -20,15 +20,6 @@ public class VariantBlocks {
     public static final Block SEASTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SEASTONE_BRICKS));
     public static final Block SEASTONE_BRICK_STAIRS = new StairsBlock(ModBlocks.SEASTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.SEASTONE)){};
 
-    public static final Block VANILLATE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.VANILLATE_BRICKS));
-    public static final Block VANILLATE_BRICK_STAIRS = new StairsBlock(ModBlocks.VANILLATE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.VANILLATE_BRICKS)){};
-
-    public static final Block FROSTY_VANILLATE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.FROSTY_VANILLATE));
-    public static final Block FROSTY_VANILLATE_STAIRS = new StairsBlock(ModBlocks.FROSTY_VANILLATE.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.FROSTY_VANILLATE)){};
-
-    public static final Block FROSTY_VANILLATE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.FROSTY_VANILLATE_BRICKS));
-    public static final Block FROSTY_VANILLATE_BRICK_STAIRS = new StairsBlock(ModBlocks.FROSTY_VANILLATE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.FROSTY_VANILLATE_BRICKS)){};
-
     public static final Block TOADSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.TOADSTONE));
     public static final Block TOADSTONE_STAIRS = new StairsBlock(ModBlocks.TOADSTONE.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.TOADSTONE)){};
     public static final Block TOADSTONE_WALL = new WallBlock(FabricBlockSettings.copyOf(ModBlocks.TOADSTONE));
@@ -37,7 +28,10 @@ public class VariantBlocks {
     public static final Block TOADSTONE_BRICK_STAIRS = new StairsBlock(ModBlocks.TOADSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.TOADSTONE_BRICKS)){};
     public static final Block TOADSTONE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(ModBlocks.TOADSTONE_BRICKS));
 
+    public static final Block GLOOMSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.GLOOMSTONE));
+    public static final Block GLOOMSTONE_STAIRS = new StairsBlock(ModBlocks.GLOOMSTONE.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.GLOOMSTONE)){};
     public static final Block GLOOMSTONE_WALL = new WallBlock(FabricBlockSettings.copyOf(ModBlocks.GLOOMSTONE));
+
     public static final Block GLOOMSTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.GLOOMSTONE_BRICKS));
     public static final Block GLOOMSTONE_BRICK_STAIRS = new StairsBlock(ModBlocks.GLOOMSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.GLOOMSTONE_BRICKS)){};
     public static final Block GLOOMSTONE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(ModBlocks.GLOOMSTONE_BRICKS));
@@ -57,8 +51,18 @@ public class VariantBlocks {
     public static final Block VANILLATE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.VANILLATE));
     public static final Block VANILLATE_STAIRS = new StairsBlock(ModBlocks.VANILLATE.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.VANILLATE)){};
 
-    public static final Block GLOOMSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.GLOOMSTONE));
-    public static final Block GLOOMSTONE_STAIRS = new StairsBlock(ModBlocks.GLOOMSTONE.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.GLOOMSTONE)){};
+    public static final Block VANILLATE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.VANILLATE_BRICKS));
+    public static final Block VANILLATE_BRICK_STAIRS = new StairsBlock(ModBlocks.VANILLATE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.VANILLATE_BRICKS)){};
+
+    public static final Block FROSTY_VANILLATE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.FROSTY_VANILLATE));
+    public static final Block FROSTY_VANILLATE_STAIRS = new StairsBlock(ModBlocks.FROSTY_VANILLATE.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.FROSTY_VANILLATE)){};
+
+    public static final Block FROSTY_VANILLATE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.FROSTY_VANILLATE_BRICKS));
+    public static final Block FROSTY_VANILLATE_BRICK_STAIRS = new StairsBlock(ModBlocks.FROSTY_VANILLATE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.FROSTY_VANILLATE_BRICKS)){};
+
+    public static final Block ROYALITE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.ROYALITE_BRICKS));
+    public static final Block ROYALITE_BRICK_STAIRS = new StairsBlock(ModBlocks.ROYALITE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.ROYALITE_BRICKS)){};
+    public static final Block ROYALITE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(ModBlocks.ROYALITE_BRICKS));
 
     public static final Block AMANITA_FENCE = new FenceBlock(FabricBlockSettings.copyOf(ModBlocks.AMANITA_PLANKS));
     public static final Block AMANITA_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.AMANITA_PLANKS));

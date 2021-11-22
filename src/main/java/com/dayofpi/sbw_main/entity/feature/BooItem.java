@@ -20,14 +20,14 @@ public class BooItem extends FeatureRenderer<BooEntity, BooModel<BooEntity>> {
 		super(featureRendererContext);
 	}
 
-	public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, BooEntity booEntity, float f, float g, float h, float j, float k, float l) {
+	public void render(MatrixStack matrixStack, VertexConsumerProvider provider, int light, BooEntity entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
 		matrixStack.push();
 		matrixStack.translate(0.05999999865889549D, 1.8D, -0.4D);
-		matrixStack.multiply(Vec3f.POSITIVE_Z.getRadialQuaternion(booEntity.getRoll()));
+		matrixStack.multiply(Vec3f.POSITIVE_Z.getRadialQuaternion(entity.getRoll()));
 		matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(180));
 
-		ItemStack itemStack = booEntity.getEquippedStack(EquipmentSlot.MAINHAND);
-		MinecraftClient.getInstance().getHeldItemRenderer().renderItem(booEntity, itemStack, ModelTransformation.Mode.GROUND, false, matrixStack, vertexConsumerProvider, i);
+		ItemStack itemStack = entity.getEquippedStack(EquipmentSlot.MAINHAND);
+		MinecraftClient.getInstance().getHeldItemRenderer().renderItem(entity, itemStack, ModelTransformation.Mode.GROUND, false, matrixStack, provider, light);
 		matrixStack.pop();
 	}
 }

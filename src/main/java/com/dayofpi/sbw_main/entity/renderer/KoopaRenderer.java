@@ -6,6 +6,7 @@ import com.dayofpi.sbw_main.entity.registry.ModelLayers;
 import com.dayofpi.sbw_main.entity.types.mobs.KoopaEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.feature.SaddleFeatureRenderer;
 import net.minecraft.util.Identifier;
 
 public class KoopaRenderer<T extends KoopaEntity> extends MobEntityRenderer<T, KoopaModel<T>> {
@@ -16,6 +17,7 @@ public class KoopaRenderer<T extends KoopaEntity> extends MobEntityRenderer<T, K
 
     public KoopaRenderer(EntityRendererFactory.Context context) {
         super(context, new KoopaModel<>(context.getPart(ModelLayers.KOOPA)), 0.4F);
+        this.addFeature(new SaddleFeatureRenderer<>(this, new KoopaModel<>(context.getPart(ModelLayers.KOOPA_SADDLE)), new Identifier(Main.MOD_ID, "textures/entity/koopa_troopa/saddle.png")));
     }
 
     @Override

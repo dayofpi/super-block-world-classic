@@ -367,7 +367,8 @@
     "subtitle": "sound.entity.goomba.death",
     "sounds": [
       "super_block_world:entity/goomba/death1",
-      "super_block_world:entity/goomba/death2"
+      "super_block_world:entity/goomba/death2",
+      "super_block_world:entity/goomba/death3"
     ]
   },
   "entity.goomba.step": {

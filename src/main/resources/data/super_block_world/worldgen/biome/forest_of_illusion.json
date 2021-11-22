@@ -139,8 +139,9 @@
     [
       "minecraft:patch_grass_normal",
       "minecraft:patch_tall_grass",
-      "super_block_world:seagrass",
+      "super_block_world:patch_stumps",
       "super_block_world:patch_pumpkins",
+      "super_block_world:seagrass",
       "super_block_world:plant_forest",
       "super_block_world:flower_illusion",
       "super_block_world:mushroom_forest",

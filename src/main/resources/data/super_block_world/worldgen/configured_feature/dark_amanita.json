@@ -32,7 +32,7 @@
           "data": {
             "Name": "super_block_world:amanita_leaves",
             "Properties": {
-              "persistent": "true",
+              "persistent": "false",
               "distance": "7"
             }
           }
@@ -42,7 +42,7 @@
           "data": {
             "Name": "super_block_world:fruiting_amanita_leaves",
             "Properties": {
-              "persistent": "true",
+              "persistent": "false",
               "distance": "7"
             }
           }

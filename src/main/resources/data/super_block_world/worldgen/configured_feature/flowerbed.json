@@ -22,32 +22,35 @@
       }
     },
     "vegetation_feature": {
-      "type": "minecraft:simple_block",
-      "config": {
-        "to_place": {
-          "type": "minecraft:weighted_state_provider",
-          "entries": [
-            {
-              "weight": 1,
-              "data": {
-                "Name": "minecraft:dandelion"
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "minecraft:dandelion"
+                }
+              },
+              {
+                "weight": 10,
+                "data": {
+                  "Name": "super_block_world:yellow_flowerbed"
+                }
+              },
+              {
+                "weight": 2,
+                "data": {
+                  "Name": "super_block_world:white_flowerbed"
+                }
               }
-            },
-            {
-              "weight": 10,
-              "data": {
-                "Name": "super_block_world:yellow_flowerbed"
-              }
-            },
-            {
-              "weight": 2,
-              "data": {
-                "Name": "super_block_world:white_flowerbed"
-              }
-            }
-          ]
+            ]
+          }
         }
-      }
+      },
+      "placement": []
     }
   }
 }

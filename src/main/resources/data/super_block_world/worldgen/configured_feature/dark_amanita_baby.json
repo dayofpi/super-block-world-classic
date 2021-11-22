@@ -29,7 +29,7 @@
       "state": {
         "Name": "super_block_world:amanita_leaves",
         "Properties": {
-          "persistent": "true",
+          "persistent": "false",
           "distance": "7"
         }
       }

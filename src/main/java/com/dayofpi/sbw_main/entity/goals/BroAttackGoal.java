@@ -10,9 +10,9 @@ import net.minecraft.util.Hand;
 public class BroAttackGoal extends ProjectileAttackGoal {
     private final AbstractBro entity;
 
-    public BroAttackGoal(RangedAttackMob rangedAttackMob, double d, int i, int j, float f) {
-        super(rangedAttackMob, d, i, j, f);
-        this.entity = (AbstractBro) rangedAttackMob;
+    public BroAttackGoal(RangedAttackMob mob, double mobSpeed, int minIntervalTicks, int maxIntervalTicks, float maxShootRange) {
+        super(mob, mobSpeed, minIntervalTicks, maxIntervalTicks, maxShootRange);
+        this.entity = (AbstractBro) mob;
     }
 
     public boolean canStart() {

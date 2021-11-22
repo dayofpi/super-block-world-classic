@@ -18,7 +18,7 @@
                 }
               },
               {
-                "weight": 20,
+                "weight": 30,
                 "data": {
                   "Name": "minecraft:tall_grass",
                   "Properties": {
@@ -39,7 +39,7 @@
                 }
               },
               {
-                "weight": 20,
+                "weight": 25,
                 "data": {
                   "Name": "super_block_world:bush",
                   "Properties": {
@@ -48,7 +48,7 @@
                 }
               },
               {
-                "weight": 5,
+                "weight": 10,
                 "data": {
                   "Name": "super_block_world:bush",
                   "Properties": {

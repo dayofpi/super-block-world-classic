@@ -1,11 +1,12 @@
 package com.dayofpi.sbw_main.block.types;
 
+import com.dayofpi.sbw_main.misc.ModDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PlantBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -29,7 +30,11 @@ public class MuncherBlock extends PlantBlock {
 
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!world.isClient) {
-            entity.damage(DamageSource.SWEET_BERRY_BUSH, 2.0F);
+            entity.damage(ModDamageSource.MUNCHER, 2.0F);
         }
+    }
+
+    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
+        return false;
     }
 }

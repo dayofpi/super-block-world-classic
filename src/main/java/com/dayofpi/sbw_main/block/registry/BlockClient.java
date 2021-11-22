@@ -1,11 +1,13 @@
 package com.dayofpi.sbw_main.block.registry;
 
+import com.dayofpi.sbw_main.block.block_entity.CustomSignRenderer;
 import com.dayofpi.sbw_main.block.registry.categories.MushroomBlocks;
 import com.dayofpi.sbw_main.block.registry.categories.PlantBlocks;
 import com.dayofpi.sbw_main.block.registry.categories.PottedBlocks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
@@ -15,6 +17,7 @@ import net.minecraft.client.render.RenderLayer;
 @Environment(EnvType.CLIENT)
 public class BlockClient {
     public static void setRenderLayers() {
+        BlockEntityRendererRegistry.register(ModBlockEntities.SIGN, CustomSignRenderer::new);
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && pos != null ? BiomeColors.getGrassColor(view, pos) : GrassColors.getColor(0.5D, 1.0D),
                 ModBlocks.TOADSTOOL_GRASS, ModBlocks.GRASSY_TOADSTONE, ModBlocks.TOADSTOOL_TURF, PlantBlocks.BUSH, PottedBlocks.POTTED_BUSH);
 

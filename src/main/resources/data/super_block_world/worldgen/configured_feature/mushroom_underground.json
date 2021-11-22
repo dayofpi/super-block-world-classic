@@ -30,13 +30,13 @@
                 }
               },
               {
-                "weight": 20,
+                "weight": 18,
                 "data": {
                   "Name": "super_block_world:green_mushroom"
                 }
               },
               {
-                "weight": 30,
+                "weight": 18  ,
                 "data": {
                   "Name": "super_block_world:cave_mushrooms"
                 }

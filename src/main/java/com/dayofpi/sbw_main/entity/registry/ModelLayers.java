@@ -15,6 +15,7 @@ public class ModelLayers {
     public static final EntityModelLayer PARAGOOMBA = new EntityModelLayer(new Identifier(Main.MOD_ID, "paragoomba"), "main");
     public static final EntityModelLayer KOOPA = new EntityModelLayer(new Identifier(Main.MOD_ID, "koopa"), "main");
     public static final EntityModelLayer PARATROOPA = new EntityModelLayer(new Identifier(Main.MOD_ID, "paratroopa"), "main");
+    public static final EntityModelLayer KOOPA_SADDLE = new EntityModelLayer(new Identifier(Main.MOD_ID, "koopa_sadle"), "main");
     public static final EntityModelLayer HAMMER_BRO = new EntityModelLayer(new Identifier(Main.MOD_ID, "hammer_bro"), "main");
     public static final EntityModelLayer FIRE_BRO = new EntityModelLayer(new Identifier(Main.MOD_ID, "fire_bro"), "main");
     public static final EntityModelLayer BOB_OMB = new EntityModelLayer(new Identifier(Main.MOD_ID, "bob_omb"), "main");

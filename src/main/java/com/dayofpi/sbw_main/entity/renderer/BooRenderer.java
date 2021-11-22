@@ -15,14 +15,14 @@ import net.minecraft.util.math.BlockPos;
 
 @Environment(EnvType.CLIENT)
 public class BooRenderer extends MobEntityRenderer<BooEntity, BooModel<BooEntity>> {
-    private static final Identifier NORMAL_TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/boo/seeking.png");
-    private static final Identifier HIDING_TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/boo/hiding.png");
-    private static final Identifier TAMED_TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/boo/tamed.png");
-    private static final Identifier SITTING_0 = new Identifier(Main.MOD_ID, "textures/entity/boo/sitting_0.png");
-    private static final Identifier SITTING_1 = new Identifier(Main.MOD_ID, "textures/entity/boo/sitting_1.png");
-    private static final Identifier SITTING_2 = new Identifier(Main.MOD_ID, "textures/entity/boo/sitting_2.png");
-    private static final Identifier SITTING_3 = new Identifier(Main.MOD_ID, "textures/entity/boo/sitting_3.png");
-    private static final Identifier SITTING_4 = new Identifier(Main.MOD_ID, "textures/entity/boo/sitting_4.png");
+    private static final Identifier BOO = new Identifier(Main.MOD_ID, "textures/entity/boo/boo.png");
+    private static final Identifier SHY = new Identifier(Main.MOD_ID, "textures/entity/boo/shy.png");
+    private static final Identifier TAMED = new Identifier(Main.MOD_ID, "textures/entity/boo/tamed.png");
+    private static final Identifier FACE_0 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_0.png");
+    private static final Identifier FACE_1 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_1.png");
+    private static final Identifier FACE_2 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_2.png");
+    private static final Identifier FACE_3 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_3.png");
+    private static final Identifier FACE_4 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_4.png");
 
     public BooRenderer(EntityRendererFactory.Context context) {
         super(context, new BooModel<>(context.getPart(ModelLayers.BOO)), 0.5F);
@@ -36,20 +36,20 @@ public class BooRenderer extends MobEntityRenderer<BooEntity, BooModel<BooEntity
 
     public Identifier getTexture(BooEntity booEntity) {
         if (booEntity.isHiding()) {
-            return HIDING_TEXTURE;
+            return SHY;
         } else if (booEntity.isTamed()) {
             if (booEntity.isInSittingPose()) {
                 if (booEntity.getBooFace() == 0)
-                    return SITTING_0;
+                    return FACE_0;
                 else if (booEntity.getBooFace() == 1)
-                    return SITTING_1;
+                    return FACE_1;
                 else if (booEntity.getBooFace() == 2)
-                    return SITTING_2;
+                    return FACE_2;
                 else if (booEntity.getBooFace() == 3)
-                    return SITTING_3;
+                    return FACE_3;
                 else
-                    return SITTING_4;
-            } else return TAMED_TEXTURE;
-        } else return NORMAL_TEXTURE;
+                    return FACE_4;
+            } else return TAMED;
+        } else return BOO;
     }
 }

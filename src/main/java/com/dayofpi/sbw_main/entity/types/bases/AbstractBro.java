@@ -29,7 +29,7 @@ public abstract class AbstractBro extends EnemyEntity implements RangedAttackMob
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(1, new BroJumpGoal(this, 0.6F));
-        this.goalSelector.add(2, new BroAttackGoal(this, 1.0F, 10, 30, 10.0F));
+        this.goalSelector.add(2, new BroAttackGoal(this, 1.0F, 20, 30, 10.0F));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8D));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
