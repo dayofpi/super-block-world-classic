@@ -1,8 +1,8 @@
 package com.dayofpi.sbw_main.world.structure_feature;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.class_6834;
 import net.minecraft.structure.PoolStructurePiece;
+import net.minecraft.structure.StructureGeneratorFactory;
 import net.minecraft.structure.pool.StructurePoolBasedGenerator;
 import net.minecraft.structure.pool.StructurePools;
 import net.minecraft.util.math.BlockPos;
@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 public class WarpPortalFeature extends MarginedStructureFeature<StructurePoolFeatureConfig> {
-    public WarpPortalFeature(Codec<StructurePoolFeatureConfig> codec, int structureStartY, boolean modifyBoundingBox, boolean surface, Predicate<class_6834.class_6835<StructurePoolFeatureConfig>> predicate) {
+    public WarpPortalFeature(Codec<StructurePoolFeatureConfig> codec, int structureStartY, boolean modifyBoundingBox, boolean surface, Predicate<StructureGeneratorFactory.Context<StructurePoolFeatureConfig>> predicate) {
         super(codec, (context) -> {
             if (!predicate.test(context)) {
                 return Optional.empty();

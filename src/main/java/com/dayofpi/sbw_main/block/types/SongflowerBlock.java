@@ -1,19 +1,17 @@
 package com.dayofpi.sbw_main.block.types;
 
-import com.dayofpi.sbw_main.block.block_entity.SongflowerBE;
-import com.dayofpi.sbw_main.block.registry.ModBlockEntities;
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.FlowerBlock;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
-public class SongflowerBlock extends FlowerBlock implements BlockEntityProvider {
+import java.util.Random;
+
+public class SongflowerBlock extends FlowerBlock {
     public static final BooleanProperty DANCING;
 
     static {
@@ -25,22 +23,11 @@ public class SongflowerBlock extends FlowerBlock implements BlockEntityProvider 
         this.setDefaultState(this.stateManager.getDefaultState().with(DANCING, false));
     }
 
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.SONGFLOWER, SongflowerBE::tick);
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (state.get(DANCING) != world.isDay()) {
+            world.setBlockState(pos, state.cycle(DANCING));
+        }
     }
-
-    @Nullable
-    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker) {
-        return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
-    }
-
-    @Nullable
-    @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new SongflowerBE(pos, state);
-    }
-
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(DANCING);
     }

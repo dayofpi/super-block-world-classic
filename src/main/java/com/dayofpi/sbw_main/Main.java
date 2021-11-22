@@ -16,14 +16,19 @@ import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.dimension.DimensionType;
 
 public class Main implements ModInitializer {
-    /* Changelog 1.0.1
-    Fixed amanita signs not working.
-
+    /*
     TODO:
       Fix biome spread and shape.
       Reduce empty oceans.
+      Add shell entities
+      Add toads
+      Add block piles
+      Add block lines
+      Give fake blocks an attack animation and unique sound/events
       Reduce spread of quicksand and forest paths.
       Make mushroom block textures varied.
+      Make more spawn eggs unique
+      Fix bottled ghost ID
       Add missing slabs/stairs/walls.
       Add cerise.
     */
@@ -36,7 +41,7 @@ public class Main implements ModInitializer {
     public static final BlockSoundGroup FROSTED_STONE = new BlockSoundGroup(1.0F, 1.0F, ModSounds.BLOCK_FROSTED_STONE_BREAK, ModSounds.BLOCK_FROSTED_STONE_STEP, ModSounds.BLOCK_FROSTED_STONE_PLACE, ModSounds.BLOCK_FROSTED_STONE_HIT, ModSounds.BLOCK_FROSTED_STONE_FALL);
 
     public static final MusicSound GRASSLAND = new MusicSound(ModSounds.MUSIC_GRASSLAND, 12000, 24000, false);
-    public static final MusicSound CAVE = new MusicSound(ModSounds.MUSIC_CAVE, 12000, 24000, false);
+    public static final MusicSound CAVE = new MusicSound(ModSounds.MUSIC_CAVE, 10000, 22000, false);
 
     @Override
     public void onInitialize() {
