@@ -35,6 +35,16 @@
       }
     ]
   },
+  "block.portal.trigger": {
+    "sounds": [
+      "super_block_world:portal_trigger"
+    ]
+  },
+  "block.portal.travel": {
+    "sounds": [
+      "super_block_world:portal_travel"
+    ]
+  },
   "block.poison.ambient": {
     "subtitle": "sound.block.poison.ambient",
     "sounds": [

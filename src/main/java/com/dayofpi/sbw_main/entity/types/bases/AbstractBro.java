@@ -11,7 +11,6 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.LightType;
 import net.minecraft.world.ServerWorldAccess;
@@ -39,8 +38,8 @@ public abstract class AbstractBro extends EnemyEntity implements RangedAttackMob
     }
 
     public static boolean canSpawn(EntityType<? extends AbstractBro> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        boolean allowedBlocks = world.getBlockState(pos.down()).isIn(BlockTags.SAND) || world.getBlockState(pos.down()).isOf(ModBlocks.TOADSTONE);
-        return allowedBlocks && world.getBiome(pos).getTemperature() >= 0.9 && !(world.getLightLevel(LightType.BLOCK, pos) > 0) || isSpawnDark((ServerWorldAccess) world, pos, random) && !world.isSkyVisible(pos);
+        boolean allowedBlocks = world.getBlockState(pos.down()).isOf(ModBlocks.GRITZY_SAND) || world.getBlockState(pos.down()).isOf(ModBlocks.TOADSTONE);
+        return allowedBlocks && !(world.getLightLevel(LightType.BLOCK, pos) > 0) || isSpawnDark((ServerWorldAccess) world, pos, random) && !world.isSkyVisible(pos);
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {

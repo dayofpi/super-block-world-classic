@@ -10,12 +10,9 @@
         {
           "biome": "super_block_world:mushroom_grasslands",
           "parameters": {
-            "temperature": 0.1,
-            "humidity": 0.2,
-            "continentalness": [
-              0.4,
-              1
-            ],
+            "temperature": 0.2,
+            "humidity": 0.4,
+            "continentalness": 0,
             "erosion": [
               -0.2,
               0
@@ -28,38 +25,23 @@
         {
           "biome": "super_block_world:moo_moo_meadow",
           "parameters": {
-            "temperature": 0.1,
+            "temperature": 0.3,
             "humidity": 0.2,
             "continentalness": 0,
-            "erosion": 0.8,
+            "erosion": 0.2,
             "weirdness": 0.2,
             "depth": 0,
-            "offset": 0.2
+            "offset": 0.4
           }
         },
         {
           "biome": "super_block_world:amanita_forest",
           "parameters": {
-            "temperature": 0.5,
-            "humidity": 0.2,
-            "continentalness": 0,
-            "erosion": 0,
+            "temperature": 0.3,
+            "humidity": 0.4,
+            "continentalness": -0.2,
+            "erosion": -0.1,
             "weirdness": 0,
-            "depth": 0,
-            "offset": 0
-          }
-        },
-        {
-          "biome": "super_block_world:autumn_forest",
-          "parameters": {
-            "temperature": -0.4,
-            "humidity": 0.5,
-            "continentalness": -0.4,
-            "erosion": [
-              -0.2,
-              0.4
-            ],
-            "weirdness": 0.3,
             "depth": 0,
             "offset": 0
           }
@@ -68,36 +50,9 @@
           "biome": "super_block_world:forest_of_illusion",
           "parameters": {
             "temperature": 0.2,
-            "humidity": [
-              0,
-              0.2
-            ],
-            "continentalness": [
-              0.4,
-              0.8
-            ],
-            "erosion": [
-              0.5,
-              0.8
-            ],
-            "weirdness": 0.5,
-            "depth": 0,
-            "offset": 0
-          }
-        },
-        {
-          "biome": "super_block_world:fossil_falls",
-          "parameters": {
-            "temperature": 0.5,
-            "humidity": 0.5,
-            "continentalness": [
-              -0.2,
-              0.5
-            ],
-            "erosion": [
-              -0.2,
-              0.2
-            ],
+            "humidity": 0.4,
+            "continentalness": 0.6,
+            "erosion": 0,
             "weirdness": 0,
             "depth": 0,
             "offset": 0
@@ -106,52 +61,49 @@
         {
           "biome": "super_block_world:dry_dry_desert",
           "parameters": {
+            "temperature": 0.4,
+            "humidity": 0,
+            "continentalness": 0.4,
+            "erosion": -0.25,
+            "weirdness": 0.2,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "super_block_world:cheep_cheep_reef",
+          "parameters": {
             "temperature": 0.3,
-            "humidity": -0.5,
-            "continentalness": [
-              0.5,
-              0.8
-            ],
-            "erosion": -0.3,
+            "humidity": 0.5,
+            "continentalness": -0.2,
+            "erosion": 0.2,
             "weirdness": 0,
             "depth": 0,
             "offset": 0
           }
         },
         {
-          "biome": "super_block_world:cheep_cheep_reef",
+          "biome": "super_block_world:autumn_forest",
           "parameters": {
-            "temperature": 0.5,
-            "humidity": 0.5,
-            "continentalness": [
-              -0.5,
-              0
-            ],
-            "erosion": [
-              0,
-              0.5
-            ],
+            "temperature": 0.25,
+            "humidity": 0.2,
+            "continentalness": 0.3,
+            "erosion": -0.25,
             "weirdness": 0,
             "depth": 0,
             "offset": 0
           }
         },
         {
-          "biome": "super_block_world:cheep_cheep_reef",
+          "biome": "super_block_world:fossil_falls",
           "parameters": {
-            "temperature": [
-              0.34,
-              0.5
-            ],
-            "humidity": 0.5,
-            "continentalness": [
-              -0.4,
-              0.3
-            ],
-            "erosion": 0,
-            "weirdness": 0,
+            "temperature": 0.3,
+            "humidity": 0.3,
+            "continentalness": 0.1,
+            "erosion": -0.25,
+            "weirdness": 0.5,
             "depth": 0,
-            "offset": 0.5
+            "offset": 0
           }
         }
       ]

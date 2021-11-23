@@ -51,7 +51,7 @@ public class AmanitaLeavesBlock extends LeavesBlock {
     }
 
     private static int getDistanceFromLog(BlockState state, WorldAccess world, BlockPos pos) {
-        Box box = new Box(pos).expand(2);
+        Box box = new Box(pos).expand(3);
 
         if (world.getStatesInBox(box).anyMatch(state1 -> state.isIn(BlockTags.LOGS))) {
             return 0;

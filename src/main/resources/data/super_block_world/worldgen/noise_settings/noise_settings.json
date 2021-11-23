@@ -2798,7 +2798,7 @@
                                 "type": "minecraft:noise_threshold",
                                 "noise": "minecraft:surface",
                                 "min_threshold": -0.1818,
-                                "max_threshold": 0.1818
+                                "max_threshold": 0
                               },
                               "then_run": {
                                 "type": "minecraft:condition",
@@ -2921,7 +2921,7 @@
                             "if_true": {
                               "type": "minecraft:noise_threshold",
                               "noise": "minecraft:powder_snow",
-                              "min_threshold": -0.3,
+                              "min_threshold": -0.2,
                               "max_threshold": 0
                             },
                             "then_run": {

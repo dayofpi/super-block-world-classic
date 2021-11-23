@@ -142,6 +142,7 @@
     [],
     [
       "super_block_world:block_single",
+      "super_block_world:block_pile",
       "super_block_world:jellybeam",
       "super_block_world:pipe_default",
       "super_block_world:pipe_underwater"

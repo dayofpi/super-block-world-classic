@@ -8,6 +8,7 @@ import com.dayofpi.sbw_main.misc.DispenserBehaviors;
 import com.dayofpi.sbw_main.world.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
+import net.kyrptonaught.customportalapi.util.CPASoundEventData;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.util.Identifier;
@@ -16,10 +17,13 @@ import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.dimension.DimensionType;
 
 public class Main implements ModInitializer {
-    /*
+    /* Changelog for 1.0.2
+    Totally rebalanced biome distribution, should be much better now.
+    Reduced spread of quicksand and forest paths.
+    Added block piles, where fake blocks can now be naturally found.
+    Added custom portal travel sounds.
+
     TODO:
-      Fix biome spread and shape.
-      Reduce empty oceans.
       Add shell entities
       Add toads
       Add block piles
@@ -60,7 +64,10 @@ public class Main implements ModInitializer {
         DispenserBehaviors.addDispenserBehaviors();
         CustomPortalBuilder.beginPortal()
                 .frameBlock(ModBlocks.WARP_FRAME)
-                .tintColor(188, 112, 255).destDimID(DIMENSION_ID).registerPortal();
+                .tintColor(188, 112, 255).destDimID(DIMENSION_ID)
+                .registerInPortalAmbienceSound(playerEntity -> new CPASoundEventData(ModSounds.BLOCK_PORTAL_TRIGGER, 1.0F, 1.0F))
+                .registerPostTPPortalAmbience(playerEntity -> new CPASoundEventData(ModSounds.BLOCK_PORTAL_TRAVEL, 1.0F, 1.0F))
+                .registerPortal();
 
     }
 }

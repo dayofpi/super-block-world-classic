@@ -10,6 +10,9 @@ public class ModSounds {
     public static final SoundEvent MUSIC_WATER = createSound("music.water");
     public static final SoundEvent MUSIC_GHOST = createSound("music.ghost");
 
+    public static final SoundEvent BLOCK_PORTAL_TRIGGER = createSound("block.portal.trigger");
+    public static final SoundEvent BLOCK_PORTAL_TRAVEL = createSound("block.portal.travel");
+
     public static final SoundEvent BLOCK_POISON_AMBIENT = createSound("block.poison.ambient");
     public static final SoundEvent BLOCK_POISON_SWIM = createSound("block.poison.swim");
     public static final SoundEvent BLOCK_POISON_FILL = createSound("block.poison.fill");
@@ -110,6 +113,8 @@ public class ModSounds {
        registerSound(MUSIC_CAVE.getId(), MUSIC_CAVE);
        registerSound(MUSIC_WATER.getId(), MUSIC_WATER);
        registerSound(MUSIC_GHOST.getId(), MUSIC_GHOST);
+       registerSound(BLOCK_PORTAL_TRIGGER.getId(), BLOCK_PORTAL_TRIGGER);
+       registerSound(BLOCK_PORTAL_TRAVEL.getId(), BLOCK_PORTAL_TRAVEL);
        registerSound(BLOCK_POISON_AMBIENT.getId(), BLOCK_POISON_AMBIENT);
        registerSound(BLOCK_POISON_SWIM.getId(), BLOCK_POISON_SWIM);
        registerSound(BLOCK_POISON_FILL.getId(), BLOCK_POISON_FILL);
