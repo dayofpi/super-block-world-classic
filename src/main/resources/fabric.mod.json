@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "super_block_world",
-  "version": "${version}",
+  "version": "1.0.3",
 
   "name": "Super Block World",
   "description": "",
@@ -11,7 +11,7 @@
     "@EnvisionRebbi ~ Audio editing, concepts",
     "@KatieCake1118 ~ Art",
     "@OrbyyNew ~ Art",
-    "@owoirisowo ~ Art",
+    "@owoirisowo ~ Art, music",
     "Models made with Blockbench"
   ],
   "contact": {
@@ -38,8 +38,8 @@
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": ">=1.18-alpha.21.37.a",
-    "java": ">=16"
+    "minecraft": "1.18.x",
+    "java": ">=17"
   },
   "suggests": {
     "another-mod": "*"

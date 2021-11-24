@@ -1,7 +1,7 @@
 {
   "type": "minecraft:cave",
   "config": {
-    "probability": 0.33333334,
+    "probability": 0.3,
     "y": {
       "type": "minecraft:uniform",
       "min_inclusive": {
@@ -15,7 +15,7 @@
       "type": "minecraft:uniform",
       "value": {
         "min_inclusive": 0.1,
-        "max_exclusive": 0.9
+        "max_exclusive": 0.6
       }
     },
     "lava_level": {

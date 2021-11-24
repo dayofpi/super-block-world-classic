@@ -16,6 +16,12 @@
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2
+    },
+    "music": {
+      "sound": "super_block_world:music.forest",
+      "min_delay": 3000,
+      "max_delay": 20000,
+      "replace_current_music": false
     }
   },
   "spawners": {
@@ -95,6 +101,7 @@
     [
       "super_block_world:block_single",
       "super_block_world:block_pile",
+      "super_block_world:block_pile_crystal",
       "super_block_world:pipe_default",
       "super_block_world:pipe_underwater"
     ],
@@ -115,7 +122,7 @@
       "super_block_world:disk_sand",
       "super_block_world:patch_cave_crystals",
       "super_block_world:patch_lantern",
-      "super_block_world:mushroom_underground"
+      "super_block_world:cave_decoration"
     ],
     [
       "minecraft:patch_grass_normal",

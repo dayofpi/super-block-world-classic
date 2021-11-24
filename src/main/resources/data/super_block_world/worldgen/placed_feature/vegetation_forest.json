@@ -2,11 +2,7 @@
   "feature": "super_block_world:vegetation_forest",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 1
-    },
-    {
-      "count": 22,
+      "count": 21,
       "type": "minecraft:count"
     },
     {

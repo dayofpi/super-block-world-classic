@@ -143,12 +143,14 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
             if (this.hidingTime == 1) {
                 this.setHiding(false);
             }
-
-            if (!attribute.hasModifier(COVERED_ARMOR_BONUS)) {
-                attribute.addTemporaryModifier(COVERED_ARMOR_BONUS);
-            } else if (attribute.hasModifier(COVERED_ARMOR_BONUS)) {
-                attribute.removeModifier(COVERED_ARMOR_BONUS);
+            if (attribute != null) {
+                if (!attribute.hasModifier(COVERED_ARMOR_BONUS)) {
+                    attribute.addTemporaryModifier(COVERED_ARMOR_BONUS);
+                } else if (attribute.hasModifier(COVERED_ARMOR_BONUS)) {
+                    attribute.removeModifier(COVERED_ARMOR_BONUS);
+                }
             }
+
         }
     }
 

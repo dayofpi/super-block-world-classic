@@ -21,10 +21,7 @@
         "provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "super_block_world:beanstalk_plant",
-            "Properties": {
-              "budding": "true"
-            }
+            "Name": "super_block_world:beanstalk_plant"
           }
         }
       },

@@ -67,6 +67,8 @@
     [
       "super_block_world:block_single",
       "super_block_world:block_pile",
+      "super_block_world:block_pile_surface",
+      "super_block_world:block_pile_crystal",
       "super_block_world:pipe_default",
       "super_block_world:pipe_underwater"
     ],
@@ -87,12 +89,13 @@
       "super_block_world:disk_sand",
       "super_block_world:patch_cave_crystals",
       "super_block_world:patch_lantern",
-      "super_block_world:mushroom_underground"
+      "super_block_world:cave_decoration"
     ],
     [
       "super_block_world:patch_stumps",
       "super_block_world:seagrass",
-      "super_block_world:springs",
+      "minecraft:classic_vines_cave_feature",
+      "super_block_world:spring",
       "super_block_world:plant_fossil_falls",
       "super_block_world:mushroom_grassland"
     ]

@@ -10,11 +10,11 @@
         "chance": 0.025
       },
       {
-        "feature": "super_block_world:amanita_fruit_checked",
+        "feature": "super_block_world:amanita_fruit",
         "chance": 0.4
       }
     ],
-    "default": "super_block_world:amanita_checked"
+    "default": "super_block_world:amanita"
   },
   "type": "minecraft:random_selector"
 }

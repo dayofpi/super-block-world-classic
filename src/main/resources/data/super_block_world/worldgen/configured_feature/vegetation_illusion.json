@@ -2,11 +2,11 @@
   "config": {
     "features": [
       {
-        "feature": "super_block_world:dark_amanita_baby_checked",
+        "feature": "super_block_world:amanita_dark",
         "chance": 0.01
       }
     ],
-    "default": "super_block_world:dark_amanita_checked"
+    "default": "super_block_world:amanita_dark_tall"
   },
   "type": "minecraft:random_selector"
 }

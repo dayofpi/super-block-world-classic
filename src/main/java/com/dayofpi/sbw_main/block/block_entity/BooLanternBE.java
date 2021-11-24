@@ -27,7 +27,8 @@ public class BooLanternBE extends BlockEntity {
         Random random = new Random();
         List<PlayerEntity> list = world.getNonSpectatingEntities(PlayerEntity.class, box);
         if (state.isOf(ModBlocks.BOO_LANTERN) && state.get(Properties.LIT) != list.isEmpty() && be != null) {
-            world.setBlockState(pos, state.with(Properties.LIT, list.isEmpty()));
+            if (!world.isClient)
+                world.setBlockState(pos, state.with(Properties.LIT, list.isEmpty()));
             if (!state.get(Properties.WATERLOGGED))
                 world.playSound(null, pos, state.get(Properties.LIT) ? ModSounds.BLOCK_BOO_LANTERN_HIDE : ModSounds.BLOCK_BOO_LANTERN_REVEAL, SoundCategory.BLOCKS, 0.7F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
         }

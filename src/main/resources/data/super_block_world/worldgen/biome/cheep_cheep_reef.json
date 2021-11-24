@@ -20,7 +20,7 @@
     "music": {
       "sound": "super_block_world:music.water",
       "min_delay": 3000,
-      "max_delay": 24000,
+      "max_delay": 20000,
       "replace_current_music": false
     }
   },
@@ -143,6 +143,7 @@
     [
       "super_block_world:block_single",
       "super_block_world:block_pile",
+      "super_block_world:block_pile_crystal",
       "super_block_world:jellybeam",
       "super_block_world:pipe_default",
       "super_block_world:pipe_underwater"
@@ -164,15 +165,15 @@
       "super_block_world:disk_sand",
       "super_block_world:patch_cave_crystals",
       "super_block_world:patch_lantern",
-      "super_block_world:mushroom_underground"
+      "super_block_world:cave_decoration"
     ],
     [
       "minecraft:warm_ocean_vegetation",
       "super_block_world:patch_horsetails",
       "super_block_world:seagrass",
       "super_block_world:kelp",
-      "super_block_world:springs",
-      "super_block_world:coral_column",
+      "super_block_world:spring",
+      "super_block_world:coral",
       "super_block_world:plant_reef",
       "super_block_world:flower_reef",
       "super_block_world:flower_water",

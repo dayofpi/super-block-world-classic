@@ -62,7 +62,6 @@ public abstract class ModPlantStemBlock extends AbstractPlantStemBlock implement
 			blockPos = blockPos.offset(this.growthDirection);
 			i = Math.min(i + 1, 25);
 		}
-
 	}
 
 	protected abstract int getGrowthLength(Random random);

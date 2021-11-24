@@ -2920,14 +2920,24 @@
                             "type": "minecraft:condition",
                             "if_true": {
                               "type": "minecraft:noise_threshold",
-                              "noise": "minecraft:powder_snow",
+                              "noise": "minecraft:surface",
                               "min_threshold": -0.2,
                               "max_threshold": 0
                             },
                             "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "super_block_world:quicksand"
+                              "type": "minecraft:condition",
+                              "if_true": {
+                                "type": "minecraft:stone_depth",
+                                "offset": 0,
+                                "surface_type": "floor",
+                                "add_surface_depth": true,
+                                "add_surface_secondary_depth": true
+                              },
+                              "then_run": {
+                                "type": "minecraft:block",
+                                "result_state": {
+                                  "Name": "super_block_world:quicksand"
+                                }
                               }
                             }
                           },
@@ -2972,7 +2982,7 @@
             "absolute": -8
           },
           "false_at_and_above": {
-            "absolute": 8
+            "absolute": 0
           }
         },
         "then_run": {

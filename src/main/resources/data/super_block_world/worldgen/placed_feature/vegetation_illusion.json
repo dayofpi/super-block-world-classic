@@ -2,7 +2,7 @@
   "feature": "super_block_world:vegetation_illusion",
   "placement": [
     {
-      "count": 30,
+      "count": 35,
       "type": "minecraft:count"
     },
     {

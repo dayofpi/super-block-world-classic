@@ -16,7 +16,7 @@ public class ModEffects {
 
     public static void registerEffects() {
         Registry.register(Registry.STATUS_EFFECT, new Identifier(Main.MOD_ID, "star_power"), STAR_POWER);
-        Registry.register(Registry.POTION, new Identifier(Main.MOD_ID, "star_power"), new Potion(new StatusEffectInstance[]{new StatusEffectInstance(STAR_POWER, 3600)}));
-        Registry.register(Registry.POTION, new Identifier(Main.MOD_ID, "long_star_power"), new Potion("star_power", new StatusEffectInstance[]{new StatusEffectInstance(STAR_POWER, 9600)}));
+        Registry.register(Registry.POTION, new Identifier(Main.MOD_ID, "star_power"), new Potion(new StatusEffectInstance(STAR_POWER, 3600)));
+        Registry.register(Registry.POTION, new Identifier(Main.MOD_ID, "long_star_power"), new Potion("star_power", new StatusEffectInstance(STAR_POWER, 9600)));
     }
 }

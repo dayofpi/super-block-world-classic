@@ -6,9 +6,10 @@ import net.minecraft.util.registry.Registry;
 
 public class ModSounds {
     public static final SoundEvent MUSIC_GRASSLAND = createSound("music.grassland");
+    public static final SoundEvent MUSIC_FOREST = createSound("music.forest");
     public static final SoundEvent MUSIC_CAVE = createSound("music.cave");
     public static final SoundEvent MUSIC_WATER = createSound("music.water");
-    public static final SoundEvent MUSIC_GHOST = createSound("music.ghost");
+    public static final SoundEvent MUSIC_ILLUSION = createSound("music.illusion");
 
     public static final SoundEvent BLOCK_PORTAL_TRIGGER = createSound("block.portal.trigger");
     public static final SoundEvent BLOCK_PORTAL_TRAVEL = createSound("block.portal.travel");
@@ -110,9 +111,10 @@ public class ModSounds {
 
     public static void registerSounds() {
        registerSound(MUSIC_GRASSLAND.getId(), MUSIC_GRASSLAND);
+       registerSound(MUSIC_FOREST.getId(), MUSIC_FOREST);
        registerSound(MUSIC_CAVE.getId(), MUSIC_CAVE);
        registerSound(MUSIC_WATER.getId(), MUSIC_WATER);
-       registerSound(MUSIC_GHOST.getId(), MUSIC_GHOST);
+       registerSound(MUSIC_ILLUSION.getId(), MUSIC_ILLUSION);
        registerSound(BLOCK_PORTAL_TRIGGER.getId(), BLOCK_PORTAL_TRIGGER);
        registerSound(BLOCK_PORTAL_TRAVEL.getId(), BLOCK_PORTAL_TRAVEL);
        registerSound(BLOCK_POISON_AMBIENT.getId(), BLOCK_POISON_AMBIENT);

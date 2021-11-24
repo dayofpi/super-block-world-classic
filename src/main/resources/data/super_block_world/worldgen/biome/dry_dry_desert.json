@@ -10,7 +10,7 @@
     "water_color": 59345,
     "water_fog_color": 59345,
     "grass_color": 12121385,
-    "foliage_color": 443968,
+    "foliage_color": 12121385,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
@@ -74,7 +74,16 @@
       }
     ]
   },
-  "spawn_costs": {},
+  "spawn_costs": {
+    "super_block_world:hammer_bro": {
+      "energy_budget": 0.16,
+      "charge": 0.7
+    },
+    "super_block_world:fire_bro": {
+      "energy_budget": 0.16,
+      "charge": 0.7
+    }
+  },
   "carvers": {
     "air": [
       "minecraft:cave",
@@ -92,6 +101,8 @@
     [
       "super_block_world:block_single",
       "super_block_world:block_pile",
+      "super_block_world:block_pile_surface",
+      "super_block_world:block_pile_crystal",
       "super_block_world:pipe_default",
       "super_block_world:pipe_underwater"
     ],
@@ -112,7 +123,7 @@
       "super_block_world:disk_sand",
       "super_block_world:patch_cave_crystals",
       "super_block_world:patch_lantern",
-      "super_block_world:mushroom_underground"
+      "super_block_world:cave_decoration"
     ],
     [
       "super_block_world:patch_horsetails",

@@ -1,0 +1,21 @@
+{
+  "config": {
+    "rock_count": 4,
+    "hole_count": 1,
+    "valid_blocks": [
+      "super_block_world:toadstool_grass",
+      "super_block_world:toadstool_soil",
+      "super_block_world:grassy_toadstone",
+      "super_block_world:toadstone",
+      "minecraft:sand"
+    ],
+    "state": {
+      "Properties": {
+        "falling": "true"
+      },
+      "Name": "minecraft:water"
+    },
+    "requires_block_below": true
+  },
+  "type": "minecraft:spring_feature"
+}

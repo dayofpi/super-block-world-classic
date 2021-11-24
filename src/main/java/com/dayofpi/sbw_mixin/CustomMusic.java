@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MinecraftClient.class)
-public class CustomMusic {
+public abstract class CustomMusic {
     @Shadow @Nullable public ClientPlayerEntity player;
 
     @Shadow @Nullable public ClientWorld world;
@@ -38,6 +38,5 @@ public class CustomMusic {
                 info.cancel();
             }
         }
-
     }
 }

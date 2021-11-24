@@ -28,7 +28,7 @@ public class ColumnCoralFeature extends Feature<DefaultFeatureConfig> {
       BlockPos blockPos2 = new BlockPos(blockPos.getX(), j, blockPos.getZ());
       if (structureWorldAccess.getBlockState(blockPos2).isOf(Blocks.WATER)) {
          BlockState blockState = ModBlocks.QUESTION_BLOCK.getDefaultState();
-         if (random.nextFloat() > 0.3F ) {
+         if (random.nextFloat() > 0.2F ) {
             blockState = ModBlocks.STRAWBERRY_CORAL.getDefaultState();
          } else if (random.nextFloat() < 0.7F) {
             blockState = ModBlocks.COIN_BLOCK.getDefaultState();

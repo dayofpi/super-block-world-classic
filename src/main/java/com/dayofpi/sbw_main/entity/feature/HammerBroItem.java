@@ -38,11 +38,11 @@ public class HammerBroItem<T extends LivingEntity, M extends EntityModel<T> & Mo
     protected void renderItem(LivingEntity entity, ItemStack stack, ModelTransformation.Mode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
         if (!stack.isEmpty()) {
             matrices.push();
-            ((ModelWithArms)this.getContextModel()).setArmAngle(arm, matrices);
+            this.getContextModel().setArmAngle(arm, matrices);
             matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-90.0F));
             matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
             boolean bl = arm == Arm.LEFT;
-            matrices.translate((double)((float)(bl ? -1 : 1) / 16.0F), 0.125D, -0.625D);
+            matrices.translate((float)(bl ? -1 : 1) / 16.0F, 0.125D, -0.625D);
             MinecraftClient.getInstance().getHeldItemRenderer().renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light);
             matrices.pop();
         }

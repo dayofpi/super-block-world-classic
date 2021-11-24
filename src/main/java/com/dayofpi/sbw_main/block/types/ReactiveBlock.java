@@ -31,7 +31,9 @@ public abstract class ReactiveBlock extends Block {
 
     @Override
     public void onBlockBreakStart(BlockState state, World world, BlockPos blockPos, PlayerEntity player) {
-        this.activate(state, world, blockPos);
+        if (!world.isClient) {
+            this.activate(state, world, blockPos);
+        }
     }
 
     @Override

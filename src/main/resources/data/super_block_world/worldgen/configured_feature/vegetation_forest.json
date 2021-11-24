@@ -7,14 +7,14 @@
       },
       {
         "feature": "super_block_world:beanstalk_budding",
-        "chance": 0.025
+        "chance": 0.03
       },
       {
-        "feature": "super_block_world:forest_amanita_fruit_checked",
+        "feature": "super_block_world:amanita_forest_fruit",
         "chance": 0.5
       }
     ],
-    "default": "super_block_world:forest_amanita_checked"
+    "default": "super_block_world:amanita_forest"
   },
   "type": "minecraft:random_selector"
 }

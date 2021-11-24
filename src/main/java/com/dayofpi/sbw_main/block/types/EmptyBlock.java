@@ -41,16 +41,17 @@ public class EmptyBlock extends Block {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos blockPos, Entity entity) {
-        boolean jumpUnder = entity.getY() < blockPos.getY();
-        if (jumpUnder) {
-            if (!wasHit) {
-                wasHit = true;
-                world.playSound(null, blockPos, ModSounds.BLOCK_ITEM_BLOCK_BUMP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            } else {
-                world.createAndScheduleBlockTick(blockPos, this, 3);
+        if (!world.isClient) {
+            boolean jumpUnder = entity.getY() < blockPos.getY();
+            if (jumpUnder) {
+                if (!wasHit) {
+                    wasHit = true;
+                    world.playSound(null, blockPos, ModSounds.BLOCK_ITEM_BLOCK_BUMP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                } else {
+                    world.createAndScheduleBlockTick(blockPos, this, 3);
+                }
             }
         }
-        super.onEntityCollision(state, world, blockPos, entity);
     }
 
     @Override
@@ -64,17 +65,21 @@ public class EmptyBlock extends Block {
     public ActionResult onUse(BlockState state, World world, BlockPos blockPos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
         if (!itemStack.isEmpty()) {
-            world.setBlockState(blockPos, ModBlocks.QUESTION_BLOCK.getDefaultState(), 2);
-            if (world.getBlockEntity(blockPos) instanceof QuestionBlockBE blockEntity) {
-                blockEntity.setStack(0, itemStack.copy());
-                blockEntity.markDirty();
-                if (!player.isCreative()) {
-                    player.getStackInHand(hand).setCount(0);
+            if (world.isClient) {
+                return ActionResult.SUCCESS;
+            } else {
+                world.setBlockState(blockPos, ModBlocks.QUESTION_BLOCK.getDefaultState(), 2);
+                if (world.getBlockEntity(blockPos) instanceof QuestionBlockBE blockEntity) {
+                    blockEntity.setStack(0, itemStack.copy());
+                    blockEntity.markDirty();
+                    if (!player.isCreative()) {
+                        player.getStackInHand(hand).setCount(0);
+                    }
                 }
+                world.playSound(null, blockPos, ModSounds.BLOCK_ITEM_BLOCK_STORE, SoundCategory.NEUTRAL, 2.0F, 1.0F);
+                ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_ON, UniformIntProvider.create(3, 5));
+                return ActionResult.CONSUME;
             }
-            world.playSound(null, blockPos, ModSounds.BLOCK_ITEM_BLOCK_STORE, SoundCategory.NEUTRAL, 2.0F, 1.0F);
-            ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_ON, UniformIntProvider.create(3, 5));
-            return ActionResult.success(world.isClient);
         } else return ActionResult.PASS;
     }
 }

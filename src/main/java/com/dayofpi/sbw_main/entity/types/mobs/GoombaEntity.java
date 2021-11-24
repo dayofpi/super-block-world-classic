@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
 import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.entity.goals.GoombaTargetGoal;
+import com.dayofpi.sbw_main.entity.goals.JumpyAttackGoal;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import com.dayofpi.sbw_main.item.registry.ModItems;
@@ -58,12 +58,12 @@ public class GoombaEntity extends EnemyEntity {
 
     public void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
+        this.goalSelector.add(2, new JumpyAttackGoal(this, 1.0D, false));
         this.targetSelector.add(2, new RevengeGoal(this));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.7D));
         this.goalSelector.add(6, new LookAroundGoal(this));
-        this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.targetSelector.add(2, new GoombaTargetGoal<>(this, PlayerEntity.class, true));
+        this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
     @Override
