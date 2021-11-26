@@ -1,10 +1,12 @@
 package com.dayofpi.sbw_main.entity.model;
 
 import com.dayofpi.sbw_main.entity.types.mobs.GoombaEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.util.math.MathHelper;
-
+@Environment(EnvType.CLIENT)
 public class GoombaModel<T extends GoombaEntity> extends SinglePartEntityModel<T> {
     private final ModelPart ROOT;
     private final ModelPart HEAD;

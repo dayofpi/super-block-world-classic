@@ -13,7 +13,6 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.*;
-
 @Environment(EnvType.CLIENT)
 public class FlowerFireballRenderer extends EntityRenderer<FlowerFireballEntity> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/item/fireball.png");

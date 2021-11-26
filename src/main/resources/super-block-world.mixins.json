@@ -7,11 +7,9 @@
     "AllowCacti",
     "AllowCarvers",
     "BlockEntityTypeMixin",
-    "ClientPlayer",
-    "CustomMusic",
     "EntityPoisonInteraction",
+    "PathNodeMixin",
     "PipeBubbles",
-    "RabbitSkin",
     "SignTypeAccessor",
     "SpongePoisonBehavior",
     "UndeadPoisonSwimming",
@@ -25,7 +23,11 @@
     "plant_block.PoisonPotatoCrop",
     "plant_block.SupportModMushrooms"
   ],
-  "client": [],
+  "client": [
+    "ClientPlayer",
+    "CustomMusic",
+    "RabbitSkin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

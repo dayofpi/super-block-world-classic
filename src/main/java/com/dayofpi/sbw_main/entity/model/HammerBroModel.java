@@ -2,9 +2,11 @@ package com.dayofpi.sbw_main.entity.model;
 
 import com.dayofpi.sbw_main.entity.types.bases.AbstractBro;
 import com.dayofpi.sbw_main.entity.types.mobs.FireBroEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
-
+@Environment(EnvType.CLIENT)
 public class HammerBroModel<T extends AbstractBro> extends BipedEntityModel<T> {
     public HammerBroModel(ModelPart root) {
         super(root);

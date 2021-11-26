@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
-import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.ModTags;
 import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import com.dayofpi.sbw_main.item.registry.ModItems;
 import net.minecraft.block.BlockState;
@@ -36,7 +36,7 @@ public class RottenMushroomEntity extends EnemyEntity {
 
     public static boolean canSpawn(EntityType<RottenMushroomEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         boolean isDirt = world.getBlockState(pos.down()).isIn(BlockTags.DIRT);
-        boolean isPoison = world.getFluidState(pos).isIn(TagList.POISON);
+        boolean isPoison = world.getFluidState(pos).isIn(ModTags.POISON);
         return isDirt && isSpawnDark((ServerWorldAccess) world, pos, random) || isDirt && isPoison;
     }
 

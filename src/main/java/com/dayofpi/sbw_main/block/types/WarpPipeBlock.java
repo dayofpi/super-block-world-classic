@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.BubbleColumnBlock;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -39,6 +40,10 @@ public class WarpPipeBlock extends AbstractWarpPipeBlock implements BlockEntityP
             world.createAndScheduleBlockTick(pos, this, 20);
         }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+    }
+
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
+        warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos); //Add to list
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {

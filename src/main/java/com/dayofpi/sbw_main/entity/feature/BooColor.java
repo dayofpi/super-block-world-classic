@@ -13,7 +13,6 @@ import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-
 @Environment(EnvType.CLIENT)
 public class BooColor extends FeatureRenderer<BooEntity, BooModel<BooEntity>> {
 	private static final Identifier COLOR = new Identifier(Main.MOD_ID, "textures/entity/boo/color.png");

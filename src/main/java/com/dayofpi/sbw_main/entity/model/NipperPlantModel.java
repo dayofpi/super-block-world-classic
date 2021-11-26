@@ -1,9 +1,11 @@
 package com.dayofpi.sbw_main.entity.model;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.entity.Entity;
-
+@Environment(EnvType.CLIENT)
 public class NipperPlantModel<T extends Entity> extends SinglePartEntityModel<T> {
     private final ModelPart ROOT;
     private final ModelPart HEAD;

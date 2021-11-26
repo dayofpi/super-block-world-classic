@@ -5,7 +5,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.entity.Entity;
-
 @Environment(EnvType.CLIENT)
 public class RottenMushroomModel<T extends Entity> extends SinglePartEntityModel<T> {
     private final ModelPart ROOT;

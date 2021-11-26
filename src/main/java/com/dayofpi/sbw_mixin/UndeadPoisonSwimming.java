@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_mixin;
 
-import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.ModTags;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.mob.MobEntity;
@@ -19,8 +19,8 @@ public abstract class UndeadPoisonSwimming extends MobEntity {
     @Override
     public void tickMovement() {
         // This makes it so mobs that are immune to poison can swim in it
-        boolean bl = this.getType().isIn(TagList.POISON_IMMUNE);
-        boolean bl2 = this.updateMovementInFluid(TagList.POISON, 0.014D);
+        boolean bl = this.getType().isIn(ModTags.POISON_IMMUNE);
+        boolean bl2 = this.updateMovementInFluid(ModTags.POISON, 0.014D);
         if (bl) {
             if (bl2) {
                 this.goalSelector.add(0, this.swimGoal);

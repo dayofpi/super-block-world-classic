@@ -7,7 +7,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.util.math.MathHelper;
-
 @Environment(EnvType.CLIENT)
 public class KoopaModel<T extends KoopaEntity> extends SinglePartEntityModel<T> {
     private final ModelPart ROOT;

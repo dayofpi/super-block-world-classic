@@ -1,10 +1,12 @@
 package com.dayofpi.sbw_main.entity.renderer;
 
 import com.dayofpi.sbw_main.Main;
+import com.dayofpi.sbw_main.entity.feature.SpikeTopEyes;
 import com.dayofpi.sbw_main.entity.model.BuzzyModel;
 import com.dayofpi.sbw_main.entity.registry.ModelLayers;
-import com.dayofpi.sbw_main.entity.feature.SpikeTopEyes;
 import com.dayofpi.sbw_main.entity.types.mobs.SpikeTopEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -13,7 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
-
+@Environment(EnvType.CLIENT)
 public class SpikeTopRenderer<T extends SpikeTopEntity> extends MobEntityRenderer<T, BuzzyModel<T>> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/spike_top.png");
 

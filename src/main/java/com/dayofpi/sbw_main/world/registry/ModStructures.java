@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.world.registry;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.ModTags;
 import com.dayofpi.sbw_main.world.structure_feature.ToadHouseFeature;
 import com.dayofpi.sbw_main.world.structure_feature.WarpPortalFeature;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -24,8 +24,8 @@ public class ModStructures {
 
         addStructure(BiomeSelectors.foundInOverworld(), StructureKeys.WARP_PORTAL);
         addStructure(BiomeSelectors.includeByKey(StructureKeys.FOSSIL_FALLS), StructureKeys.FOSSIL);
-        addStructure(BiomeSelectors.tag(TagList.AQUATIC), StructureKeys.SHIPWRECK);
-        addStructure(BiomeSelectors.tag(TagList.AQUATIC), StructureKeys.BEACHED_SHIPWRECK);
-        addStructure(BiomeSelectors.tag(TagList.SURFACE), StructureKeys.TOAD_HOUSE);
+        addStructure(BiomeSelectors.tag(ModTags.AQUATIC), StructureKeys.SHIPWRECK);
+        addStructure(BiomeSelectors.tag(ModTags.AQUATIC), StructureKeys.BEACHED_SHIPWRECK);
+        addStructure(BiomeSelectors.tag(ModTags.SURFACE), StructureKeys.TOAD_HOUSE);
     }
 }

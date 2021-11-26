@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_mixin;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.ModTags;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
@@ -25,7 +25,7 @@ public abstract class CustomMusic {
     @Inject(at = @At("HEAD"), method = "getMusicType", cancellable = true)
     public void getMusicType(CallbackInfoReturnable<MusicSound> info) {
         if (this.player != null) {
-            if (TagList.SURFACE.contains(this.player.world.getBiome(this.player.getBlockPos()))) {
+            if (ModTags.SURFACE.contains(this.player.world.getBiome(this.player.getBlockPos()))) {
                 World world = this.player.world;
                 BlockPos pos = this.player.getBlockPos();
                 if (pos.getY() < world.getSeaLevel() && world.getLightLevel(pos) <= 7 && !world.isSkyVisible(pos)) {

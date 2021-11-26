@@ -9,7 +9,6 @@ import net.minecraft.client.render.entity.feature.EyesFeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Identifier;
-
 @Environment(EnvType.CLIENT)
 public class RottenMushroomEyes<T extends Entity, M extends RottenMushroomModel<T>> extends EyesFeatureRenderer<T, M> {
     private static final RenderLayer SKIN = RenderLayer.getEyes(new Identifier(Main.MOD_ID, "textures/entity/rotten_mushroom_eyes.png"));

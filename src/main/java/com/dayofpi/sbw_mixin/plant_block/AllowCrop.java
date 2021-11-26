@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_mixin.plant_block;
 
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.ModTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
@@ -67,7 +67,7 @@ public class AllowCrop extends PlantBlock {
         BlockPos blockPos = pos.down();
         for (Direction direction : Direction.Type.HORIZONTAL) {
             FluidState fluidState = world.getFluidState(blockPos.offset(direction));
-            if (fluidState.isIn(TagList.POISON)) {
+            if (fluidState.isIn(ModTags.POISON)) {
                 // If there is poison next to it, drop nothing
                 world.breakBlock(pos, false);
             }

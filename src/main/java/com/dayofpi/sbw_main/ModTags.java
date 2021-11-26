@@ -9,7 +9,7 @@ import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
-public class TagList {
+public class ModTags {
     public static Tag<Biome> SURFACE;
     public static Tag<Biome> AQUATIC;
     public static Tag<Item> SHELLMETS;

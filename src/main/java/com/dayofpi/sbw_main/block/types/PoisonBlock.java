@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.block.types;
 
+import com.dayofpi.sbw_main.ModTags;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.TagList;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -10,7 +10,6 @@ import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
@@ -37,10 +36,11 @@ public class PoisonBlock extends FluidBlock {
     }
 
     private boolean receiveNeighborFluids(World world, BlockPos pos) {
-        if (this.fluid.isIn(TagList.POISON)) {
-            for (Direction ignored : FLOW_DIRECTIONS) {
+        if (this.fluid.isIn(ModTags.POISON)) {
+            int size = FLOW_DIRECTIONS.size();
+            for (int i = 0; i < size; i++) {
                 BlockPos blockPos = pos.add(1, 1, 1);
-                if (world.getFluidState(blockPos).isIn(FluidTags.WATER) && !world.getFluidState(blockPos).isIn(TagList.POISON)) {
+                if (world.getFluidState(blockPos).isIn(FluidTags.WATER) && !world.getFluidState(blockPos).isIn(ModTags.POISON)) {
                     Block block = Blocks.AIR;
                     world.setBlockState(blockPos, block.getDefaultState());
                     playExtinguishEvent(world, pos);

@@ -1,17 +1,19 @@
 package com.dayofpi.sbw_main.entity.renderer;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.entity.registry.ModelLayers;
-import com.dayofpi.sbw_main.entity.model.BuzzyModel;
 import com.dayofpi.sbw_main.entity.feature.BuzzyEyes;
+import com.dayofpi.sbw_main.entity.model.BuzzyModel;
+import com.dayofpi.sbw_main.entity.registry.ModelLayers;
 import com.dayofpi.sbw_main.entity.types.mobs.BuzzyEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.feature.SaddleFeatureRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3f;
-
+@Environment(EnvType.CLIENT)
 public class BuzzyRenderer<T extends BuzzyEntity> extends MobEntityRenderer<T, BuzzyModel<T>> {
     private static final Identifier DEFAULT = new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/buzzy.png");
     private static final Identifier HIDING = new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/buzzy_shell.png");

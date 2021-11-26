@@ -7,7 +7,6 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.util.math.MathHelper;
 @Environment(EnvType.CLIENT)
-
 public class BobOmbModel<T extends BobOmbEntity> extends SinglePartEntityModel<T> {
     private final ModelPart root;
     private final ModelPart fuse;

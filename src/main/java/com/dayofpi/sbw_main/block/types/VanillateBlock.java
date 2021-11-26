@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.block.types;
 
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.fluid.FluidState;
@@ -22,7 +22,7 @@ public class VanillateBlock extends Block {
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         FluidState fluidState = world.getFluidState(pos.up());
-        if (direction == Direction.UP && fluidState.isIn(FluidTags.LAVA) && !fluidState.isIn(TagList.POISON)) {
+        if (direction == Direction.UP && fluidState.isIn(FluidTags.LAVA) && !fluidState.isIn(ModTags.POISON)) {
             world.createAndScheduleBlockTick(pos, this, 1);
         }
 
@@ -32,7 +32,7 @@ public class VanillateBlock extends Block {
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         FluidState fluidState = world.getFluidState(pos.up());
-        if (fluidState.isIn(FluidTags.LAVA) && !fluidState.isIn(TagList.POISON)) {
+        if (fluidState.isIn(FluidTags.LAVA) && !fluidState.isIn(ModTags.POISON)) {
             world.createAndScheduleBlockTick(pos, this, 1);
         }
     }

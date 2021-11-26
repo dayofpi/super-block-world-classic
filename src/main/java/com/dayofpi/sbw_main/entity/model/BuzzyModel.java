@@ -1,11 +1,13 @@
 package com.dayofpi.sbw_main.entity.model;
 
 import com.google.common.collect.ImmutableList;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
-
+@Environment(EnvType.CLIENT)
 public class BuzzyModel<T extends Entity> extends SinglePartEntityModel<T> {
     private final ModelPart BODY;
     private final ModelPart SHELL;

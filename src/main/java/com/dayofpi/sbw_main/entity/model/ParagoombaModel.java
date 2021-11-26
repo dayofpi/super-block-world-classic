@@ -1,10 +1,12 @@
 package com.dayofpi.sbw_main.entity.model;
 
 import com.dayofpi.sbw_main.entity.types.mobs.ParagoombaEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.util.math.MathHelper;
-
+@Environment(EnvType.CLIENT)
 public class ParagoombaModel<T extends ParagoombaEntity> extends SinglePartEntityModel<T> {
     private final ModelPart ROOT;
     private final ModelPart HEAD;

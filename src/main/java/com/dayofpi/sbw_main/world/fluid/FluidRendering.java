@@ -46,7 +46,7 @@ public class FluidRendering {
         final Identifier fluidId = Registry.FLUID.getId(still);
         final Identifier listenerId = new Identifier(fluidId.getNamespace(), fluidId.getPath() + "_reload_listener");
 
-        final Sprite[] fluidSprites = {null, null};
+        final Sprite[] fluidSprites = { null, null };
 
         ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
             @Override

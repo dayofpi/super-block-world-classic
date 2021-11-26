@@ -16,7 +16,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Matrix3f;
 import net.minecraft.util.math.Matrix4f;
 import net.minecraft.util.math.Vec3f;
-
 @Environment(EnvType.CLIENT)
 public class IceballRenderer extends EntityRenderer<IceballEntity> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/item/iceball.png");

@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_mixin;
 
-import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.ModTags;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -18,7 +18,7 @@ public class ClientPlayer extends AbstractClientPlayerEntity {
 
     @Inject(at = @At("HEAD"), method = "updateWaterSubmersionState()Z", cancellable = true)
     private void updateWaterSubmersionState(CallbackInfoReturnable<Boolean> info) {
-        if (this.updateMovementInFluid(TagList.POISON, 0.014D)) {
+        if (this.updateMovementInFluid(ModTags.POISON, 0.014D)) {
             info.setReturnValue(false);
             info.cancel();
         }

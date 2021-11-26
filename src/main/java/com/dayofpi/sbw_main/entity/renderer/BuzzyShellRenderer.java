@@ -3,6 +3,8 @@ package com.dayofpi.sbw_main.entity.renderer;
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.model.BuzzyShellModel;
 import com.dayofpi.sbw_main.entity.types.BuzzyShellEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -13,7 +15,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3f;
-
+@Environment(EnvType.CLIENT)
 public class BuzzyShellRenderer<T extends BuzzyShellEntity> extends EntityRenderer<T> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/buzzy_shell.png");
     protected final EntityModel<T> model;

@@ -9,7 +9,6 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-
 @Environment(EnvType.CLIENT)
 public class MooMooRenderer<T extends MooMooEntity> extends MobEntityRenderer<T, MooMooModel<T>> {
     public MooMooRenderer(EntityRendererFactory.Context context) {

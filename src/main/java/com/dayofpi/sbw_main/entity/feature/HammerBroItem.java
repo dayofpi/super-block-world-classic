@@ -14,7 +14,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Arm;
 import net.minecraft.util.math.Vec3f;
-
 @Environment(EnvType.CLIENT)
 public class HammerBroItem<T extends LivingEntity, M extends EntityModel<T> & ModelWithArms> extends FeatureRenderer<T, M> {
     public HammerBroItem(FeatureRendererContext<T, M> featureRendererContext) {

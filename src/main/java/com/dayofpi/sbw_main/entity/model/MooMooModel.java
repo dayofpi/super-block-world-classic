@@ -9,9 +9,7 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.AnimalModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
-
 @Environment(EnvType.CLIENT)
-
 public class MooMooModel<T extends MooMooEntity> extends AnimalModel<T> {
     private final ModelPart head;
     private final ModelPart ear1;

@@ -146,6 +146,10 @@ public class MooMooEntity extends CowEntity {
         this.dataTracker.startTracking(TYPE, 1);
     }
 
+    public int getMaxLookYawChange() {
+        return this.isLying() ? 5 : 10;
+    }
+
     @Override
     public void tickMovement() {
         if (!this.world.isClient && this.isAlive() && this.canMoveVoluntarily()) {

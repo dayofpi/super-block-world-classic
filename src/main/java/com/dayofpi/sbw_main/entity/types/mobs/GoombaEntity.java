@@ -26,12 +26,9 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.Random;
-import java.util.function.Predicate;
-
+@SuppressWarnings("ConstantConditions, unused")
 public class GoombaEntity extends EnemyEntity {
-    private static final Predicate<ItemEntity> POWER_UP_FILTER;
     private static final TrackedData<Integer> SIZE;
     private static final TrackedData<Boolean> GROWABLE;
     private static final TrackedData<Boolean> GOLD;
@@ -40,7 +37,6 @@ public class GoombaEntity extends EnemyEntity {
         SIZE = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.INTEGER);
         GROWABLE = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
         GOLD = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-        POWER_UP_FILTER = (item) -> !item.cannotPickup() && item.isAlive() && item.getStack().isOf(ModItems.SUPER_MUSHROOM);
     }
 
     public GoombaEntity(EntityType<? extends EnemyEntity> entityType, World world) {
@@ -59,10 +55,10 @@ public class GoombaEntity extends EnemyEntity {
     public void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(2, new JumpyAttackGoal(this, 1.0D, false));
-        this.targetSelector.add(2, new RevengeGoal(this));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.7D));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
+        this.targetSelector.add(2, new RevengeGoal(this));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
@@ -76,24 +72,6 @@ public class GoombaEntity extends EnemyEntity {
 
     public int getMinAmbientSoundDelay() {
         return 300;
-    }
-
-    public void tick() {
-        super.tick();
-        if (this.getSize() < 2 && this.isAlive() && this.isGrowable()) {
-            List<ItemEntity> list = GoombaEntity.this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox(), POWER_UP_FILTER);
-            if (!list.isEmpty()) {
-                list.forEach((Entity::discard));
-                if (world.isClient) {
-                    this.playSound(ModSounds.ITEM_SUPER_MUSHROOM_GROW, 0.8F, 0.9F);
-                } else {
-                    this.setSize(this.getSize() + 1);
-                    if (!this.getPassengerList().isEmpty()) {
-                        this.getPassengerList().forEach(entity -> entity.updatePassengerPosition(entity));
-                    }
-                }
-            }
-        }
     }
 
     protected SoundEvent getAmbientSound() {
@@ -265,7 +243,7 @@ public class GoombaEntity extends EnemyEntity {
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(this.getStepSound(), 0.5F, this.getSoundPitch() * 1.2F);
+        this.playSound(this.getStepSound(), 0.5F, this.getSoundPitch() * 1.3F);
     }
 
     protected SoundEvent getStepSound() {

@@ -1,9 +1,12 @@
 package com.dayofpi.sbw_main.entity.model;
 
 import com.dayofpi.sbw_main.entity.types.BuzzyShellEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 
+@Environment(EnvType.CLIENT)
 public class BuzzyShellModel<T extends BuzzyShellEntity> extends SinglePartEntityModel<T> {
     private final ModelPart BODY;
 

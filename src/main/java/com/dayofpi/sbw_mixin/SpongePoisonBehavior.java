@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_mixin;
 
-import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.ModTags;
 import com.google.common.collect.Lists;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -41,7 +41,7 @@ public class SpongePoisonBehavior extends Block {
                 BlockState blockState = world.getBlockState(blockPos2);
                 FluidState fluidState = world.getFluidState(blockPos2);
                 Material material = blockState.getMaterial();
-                if (fluidState.isIn(FluidTags.WATER) && !fluidState.isIn(TagList.POISON)) {
+                if (fluidState.isIn(FluidTags.WATER) && !fluidState.isIn(ModTags.POISON)) {
                     if (blockState.getBlock() instanceof FluidDrainable && !((FluidDrainable) blockState.getBlock()).tryDrainFluid(world, blockPos2, blockState).isEmpty()) {
                         ++i;
                         if (j < 6) {

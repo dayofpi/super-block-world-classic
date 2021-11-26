@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_mixin.living_entity;
 
 import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.ModTags;
 import com.dayofpi.sbw_main.entity.registry.ModEffects;
 import com.dayofpi.sbw_main.entity.types.bases.AbstractBuzzy;
 import com.dayofpi.sbw_main.item.registry.ModItems;
@@ -51,7 +51,7 @@ public abstract class ArmorAbilities extends Entity {
                 ItemStack helmet = this.getEquippedStack(EquipmentSlot.HEAD);
 
                 if (other.getY() > this.getY() && other.fallDistance > 0) {
-                    if (!(helmet.isOf(ModItems.BUZZY_SHELL) || this.getType().isIn(TagList.IMMUNE_TO_BOOTS))) {
+                    if (!(helmet.isOf(ModItems.BUZZY_SHELL) || this.getType().isIn(ModTags.IMMUNE_TO_BOOTS))) {
                         this.damage(ModDamageSource.stomp(other), 5F);
                         this.playSound(ModSounds.ENTITY_JUMP_BOOTS_ATTACK, 1.0F, this.getSoundPitch());
                         if (helmet.isDamageable()) {

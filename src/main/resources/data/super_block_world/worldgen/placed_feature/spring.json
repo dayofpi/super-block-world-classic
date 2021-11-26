@@ -2,7 +2,7 @@
   "feature": "super_block_world:spring",
   "placement": [
     {
-      "count": 90,
+      "count": 150,
       "type": "minecraft:count"
     },
     {
@@ -11,7 +11,7 @@
     {
       "height": {
         "min_inclusive": {
-          "absolute": 63
+          "absolute": 80
         },
         "max_inclusive": {
           "absolute": 192

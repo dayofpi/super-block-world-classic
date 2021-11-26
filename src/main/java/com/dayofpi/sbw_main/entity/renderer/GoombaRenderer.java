@@ -4,11 +4,13 @@ import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.model.GoombaModel;
 import com.dayofpi.sbw_main.entity.registry.ModelLayers;
 import com.dayofpi.sbw_main.entity.types.mobs.GoombaEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-
+@Environment(EnvType.CLIENT)
 public class GoombaRenderer<T extends GoombaEntity> extends MobEntityRenderer<T, GoombaModel<T>> {
     private static final Identifier COMMON = new Identifier(Main.MOD_ID, "textures/entity/goomba/goomba.png");
     private static final Identifier GOLD = new Identifier(Main.MOD_ID, "textures/entity/goomba/gold_goomba.png");

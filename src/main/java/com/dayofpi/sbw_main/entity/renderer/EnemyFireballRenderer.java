@@ -15,7 +15,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Matrix3f;
 import net.minecraft.util.math.Matrix4f;
 import net.minecraft.util.math.Vec3f;
-
 @Environment(EnvType.CLIENT)
 public class EnemyFireballRenderer extends EntityRenderer<EnemyFireballEntity> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/item/enemy_fireball.png");

@@ -100,6 +100,7 @@
     [
       "super_block_world:patch_horsetails_extra",
       "super_block_world:seagrass",
+      "super_block_world:coral_fewer",
       "super_block_world:plant_meadow",
       "super_block_world:flower_meadow",
       "super_block_world:mushroom_grassland",

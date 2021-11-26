@@ -13,7 +13,6 @@ import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
-
 @Environment(EnvType.CLIENT)
 public class BlockClient {
     public static void setRenderLayers() {

@@ -4,10 +4,12 @@ import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.model.NipperPlantModel;
 import com.dayofpi.sbw_main.entity.registry.ModelLayers;
 import com.dayofpi.sbw_main.entity.types.mobs.NipperPlantEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
-
+@Environment(EnvType.CLIENT)
 public class NipperPlantRenderer<T extends NipperPlantEntity> extends MobEntityRenderer<T, NipperPlantModel<T>> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/nipper_plant.png");
 

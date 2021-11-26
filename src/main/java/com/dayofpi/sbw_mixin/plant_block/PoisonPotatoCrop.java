@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_mixin.plant_block;
 
-import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
@@ -27,7 +27,7 @@ public class PoisonPotatoCrop extends CropBlock {
         if (state.get(AGE) == 7) { // Checks if the crop is fully grown
             for (Direction direction : Direction.Type.HORIZONTAL) {
                 FluidState fluidState = world.getFluidState(blockPos.offset(direction));
-                if (fluidState.isIn(TagList.POISON)) {
+                if (fluidState.isIn(ModTags.POISON)) {
                     // If there is poison next to it, always drop a poisonous potato
                     world.breakBlock(pos, false);
                     Block.dropStack(world, pos, new ItemStack(Items.POISONOUS_POTATO, 2));

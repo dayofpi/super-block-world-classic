@@ -52,7 +52,7 @@ public class Main implements ModInitializer {
         ModFluids.registerFluids();
         ModFeatureTypes.registerFeatureTypes();
         ModFeatures.registerFeatures();
-        TagList.registerTags();
+        ModTags.registerTags();
         ModStructures.registerStructures();
         ModParticles.registerParticles();
         ModSounds.registerSounds();

@@ -2,8 +2,8 @@
   "feature": "super_block_world:strawberry_coral",
   "placement": [
     {
-      "count": 1,
-      "type": "minecraft:count"
+      "type": "minecraft:rarity_filter",
+      "chance": 8
     },
     {
       "type": "minecraft:in_square"

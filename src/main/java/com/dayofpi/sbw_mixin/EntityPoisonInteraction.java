@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_mixin;
 
 import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.TagList;
+import com.dayofpi.sbw_main.ModTags;
 import com.dayofpi.sbw_main.misc.ModDamageSource;
 import com.dayofpi.sbw_main.world.registry.ModParticles;
 import net.minecraft.entity.Entity;
@@ -68,7 +68,7 @@ public abstract class EntityPoisonInteraction {
     @Inject(at = @At("TAIL"), method = "baseTick")
     void baseTick(CallbackInfo info) {
         if (this.isTouchingPoison()) {
-            if (!this.getType().isIn(TagList.POISON_IMMUNE)) {
+            if (!this.getType().isIn(ModTags.POISON_IMMUNE)) {
                 if (this.damage(ModDamageSource.POISON, 4.0F)) {
                     this.playSound(SoundEvents.ENTITY_GENERIC_BURN, 0.4F, 2.0F + this.random.nextFloat() * 0.4F);
                     if (this.getWorld().isClient)
@@ -80,7 +80,7 @@ public abstract class EntityPoisonInteraction {
 
     @Inject(at = @At("HEAD"), method = "onSwimmingStart", cancellable = true)
     public void onSwimmingStart(CallbackInfo info) {
-        if (this.updateMovementInFluid(TagList.POISON, 0.0023)) {
+        if (this.updateMovementInFluid(ModTags.POISON, 0.0023)) {
             // Replace water splash particles
             Entity entity = this.hasPassengers() && this.getPrimaryPassenger() != null ? this.getPrimaryPassenger() : this.getWorld().getEntityById(this.getId());
             if (entity != null) {
@@ -103,7 +103,7 @@ public abstract class EntityPoisonInteraction {
 
     @Inject(at = @At("HEAD"), method = "checkWaterState")
     void checkWaterState(CallbackInfo info) {
-        this.touchingPoison = this.updateMovementInFluid(TagList.POISON, 0.0023);
+        this.touchingPoison = this.updateMovementInFluid(ModTags.POISON, 0.0023);
     }
 }
 

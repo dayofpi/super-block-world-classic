@@ -62,6 +62,14 @@
   "sound.entity.jump_boots.bounce": "Bounce",
   "sound.entity.star_power": "Star Power flows",
 
+  "entity.super_block_world.turnip": "Turnip",
+  "entity.super_block_world.hammer": "Hammer",
+  "entity.super_block_world.bomb": "Bomb",
+  "entity.super_block_world.fireball": "Fireball",
+  "entity.super_block_world.enemy_fireball": "Fireball",
+  "entity.super_block_world.iceball": "Iceball",
+  "entity.super_block_world.ghost": "Ghost",
+
   "entity.super_block_world.moo_moo": "Moo Moo",
   "item.super_block_world.spawn_eggs.moo_moo": "Moo Moo Spawn Egg",
   "sound.entity.moo_moo.ambient": "Moo Moo moos",
@@ -80,6 +88,8 @@
 
   "entity.super_block_world.buzzy_beetle": "Buzzy Beetle",
   "entity.super_block_world.spike_top": "Spike Top",
+  "item.super_block_world.spawn_eggs.buzzy_beetle": "Buzzy Beetle Spawn Egg",
+  "item.super_block_world.spawn_eggs.spike_top": "Spike Top Spawn Egg",
   "sound.entity.buzzy.hurt": "Buzzy hurts",
   "sound.entity.buzzy.death": "Buzzy dies",
   "sound.entity.buzzy.drop": "Buzzy drops",
@@ -102,8 +112,10 @@
   "sound.entity.koopa.hurt": "Koopa hurts",
   "sound.entity.koopa.death": "Koopa dies",
 
-  "item.super_block_world.spawn_eggs.hammer_bro": "Hammer Bro. Spawn Egg",
-  "item.super_block_world.spawn_eggs.fire_bro": "Fire Bro. Spawn Egg",
+  "entity.super_block_world.hammer_bro": "Hammer Bro",
+  "entity.super_block_world.fire_bro": "Fire Bro",
+  "item.super_block_world.spawn_eggs.hammer_bro": "Hammer Bro Spawn Egg",
+  "item.super_block_world.spawn_eggs.fire_bro": "Fire Bro Spawn Egg",
 
   "entity.super_block_world.bob_omb": "Bob-omb",
   "item.super_block_world.spawn_eggs.bob_omb": "Bob-omb Spawn Egg",
@@ -111,11 +123,17 @@
   "sound.entity.bob_omb.death": "Bob-omb dies",
   "sound.entity.bob_omb.fuse": "Bob-omb ignites",
 
+  "entity.super_block_world.fake_block": "Fake Block",
   "item.super_block_world.spawn_eggs.fake_block": "Fake Block Spawn Egg",
 
   "entity.super_block_world.nipper_plant": "Nipper Plant",
+  "item.super_block_world.spawn_eggs.nipper_plant": "Nipper Plant Spawn Egg",
+
   "entity.super_block_world.stingby": "Stingby",
+  "item.super_block_world.spawn_eggs.stingby": "Stingby Spawn Egg",
+
   "entity.super_block_world.rotten_mushroom": "Rotten Mushroom",
+  "item.super_block_world.spawn_eggs.rotten_mushroom": "Rotten Mushroom Spawn Egg",
 
   "effect.super_block_world.star_power": "Star Power",
   "item.minecraft.potion.effect.star_power": "Potion of Star Power",
@@ -152,11 +170,6 @@
   "item.super_block_world.power_star": "Power Star",
   "item.super_block_world.power_dust": "Power Dust",
   "item.super_block_world.amanita_boat": "Amanita Boat",
-  "item.super_block_world.spawn_eggs.buzzy_beetle": "Buzzy Beetle Spawn Egg",
-  "item.super_block_world.spawn_eggs.spike_top": "Spike Top Spawn Egg",
-  "item.super_block_world.spawn_eggs.nipper_plant": "Nipper Plant Spawn Egg",
-  "item.super_block_world.spawn_eggs.stingby": "Stingby Spawn Egg",
-  "item.super_block_world.spawn_eggs.rotten_mushroom": "Rotten Mushroom Spawn Egg",
 
   "block.super_block_world.warp_frame": "Warp Frame",
   "block.super_block_world.warp_pipe": "Warp Pipe",

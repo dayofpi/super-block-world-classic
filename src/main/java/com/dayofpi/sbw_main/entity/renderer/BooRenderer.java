@@ -12,7 +12,6 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-
 @Environment(EnvType.CLIENT)
 public class BooRenderer extends MobEntityRenderer<BooEntity, BooModel<BooEntity>> {
     private static final Identifier BOO = new Identifier(Main.MOD_ID, "textures/entity/boo/boo.png");

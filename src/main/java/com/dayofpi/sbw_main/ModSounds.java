@@ -67,6 +67,7 @@ public class ModSounds {
     public static final SoundEvent ENTITY_JUMP_BOOTS_JUMP = createSound("entity.jump_boots.jump");
     public static final SoundEvent ENTITY_JUMP_BOOTS_ATTACK = createSound("entity.jump_boots.attack");
     public static final SoundEvent ENTITY_JUMP_BOOTS_BOUNCE = createSound("entity.jump_boots.bounce");
+    public static final SoundEvent ENTITY_ENEMY_SPOT = createSound("entity.enemy.spot");
 
     public static final SoundEvent ENTITY_MOO_MOO_AMBIENT = createSound("entity.moo_moo.ambient");
     public static final SoundEvent ENTITY_MOO_MOO_HURT = createSound("entity.moo_moo.hurt");
@@ -168,6 +169,7 @@ public class ModSounds {
        registerSound(ENTITY_JUMP_BOOTS_JUMP.getId(), ENTITY_JUMP_BOOTS_JUMP);
        registerSound(ENTITY_JUMP_BOOTS_ATTACK.getId(), ENTITY_JUMP_BOOTS_ATTACK);
        registerSound(ENTITY_JUMP_BOOTS_BOUNCE.getId(), ENTITY_JUMP_BOOTS_BOUNCE);
+       registerSound(ENTITY_ENEMY_SPOT.getId(), ENTITY_ENEMY_SPOT);
 
        registerSound(ENTITY_MOO_MOO_AMBIENT.getId(), ENTITY_MOO_MOO_AMBIENT);
        registerSound(ENTITY_MOO_MOO_HURT.getId(), ENTITY_MOO_MOO_HURT);
