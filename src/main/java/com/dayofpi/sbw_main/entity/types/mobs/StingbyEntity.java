@@ -1,12 +1,10 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
+import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityGroup;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.Flutterer;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.AboveGroundTargeting;
 import net.minecraft.entity.ai.NoPenaltySolidTargeting;
 import net.minecraft.entity.ai.control.FlightMoveControl;
@@ -64,7 +62,7 @@ public class StingbyEntity extends EnemyEntity implements Flutterer {
 
     protected void initGoals() {
         this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
-        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true, true));
         this.goalSelector.add(5, new StingbyEntity.StingbyWanderGoal());
         this.targetSelector.add(2, new RevengeGoal(this));
     }
@@ -75,6 +73,14 @@ public class StingbyEntity extends EnemyEntity implements Flutterer {
         birdNavigation.setCanSwim(false);
         birdNavigation.setCanEnterOpenDoors(true);
         return birdNavigation;
+    }
+
+    @Override
+    public void setTarget(@Nullable LivingEntity target) {
+        if (this.getTarget() == null && target instanceof PlayerEntity) {
+            this.playSound(ModSounds.ENTITY_ENEMY_SPOT, this.getSoundVolume(), this.getSoundPitch());
+        }
+        super.setTarget(target);
     }
 
     public void playAmbientSound() {
@@ -126,7 +132,7 @@ public class StingbyEntity extends EnemyEntity implements Flutterer {
 
         @Nullable
         private Vec3d getRandomLocation() {
-            Vec3d vec3d4 = AboveGroundTargeting.find(StingbyEntity.this, 8, 4, StingbyEntity.this.getX(), StingbyEntity.this.getZ(), 1.5707964F, 2, 2);
+            Vec3d vec3d4 = AboveGroundTargeting.find(StingbyEntity.this, 10, 4, StingbyEntity.this.getX(), StingbyEntity.this.getZ(), 1.5707964F, 2, 2);
             return vec3d4 != null ? vec3d4 : NoPenaltySolidTargeting.find(StingbyEntity.this, 8, 4, -2, StingbyEntity.this.getX(), StingbyEntity.this.getZ(), 1.5707963705062866D);
         }
     }

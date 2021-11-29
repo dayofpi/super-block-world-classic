@@ -30,20 +30,26 @@ public class WarpPipeBlock extends AbstractWarpPipeBlock implements BlockEntityP
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify)
     {
         super.onBlockAdded(state, world, pos, oldState, notify);
-        world.createAndScheduleBlockTick(pos, this, 20);
-        warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos); //Add to list
+        if (state.get(FACING) == Direction.UP) {
+            world.createAndScheduleBlockTick(pos, this, 20);
+            warpPipeTree.addBlockToChunk(pos.getX() / 16, pos.getZ() / 16, pos); //Add to list
+        }
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos); //Add to list
         if (direction == Direction.UP && neighborState.isOf(Blocks.WATER)) {
             world.createAndScheduleBlockTick(pos, this, 20);
+        }
+        if (state.get(FACING) == Direction.UP) {
+            warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos); //Add to list
         }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-        warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos); //Add to list
+        if (state.get(FACING) == Direction.UP) {
+            warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos);
+        }
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {

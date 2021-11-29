@@ -128,7 +128,7 @@ public class ModBlocks {
     public static final Block AMANITA_BUTTON = new WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5F).sounds(BlockSoundGroup.WOOD)){};
     public static final Block AMANITA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5F).sounds(BlockSoundGroup.WOOD)){};
     public static final Block AMANITA_SIGN = new SignBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), ModSignTypes.AMANITA);
-    public static final Block AMANITA_WALL_SIGN = new WallSignBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(1.0F).noCollision(), ModSignTypes.AMANITA);
+    public static final Block AMANITA_WALL_SIGN = new WallSignBlock(FabricBlockSettings.copyOf(AMANITA_SIGN).dropsLike(AMANITA_SIGN), ModSignTypes.AMANITA);
 
     public static final Block POISON = new PoisonBlock(ModFluids.STILL_POISON, FabricBlockSettings.of(Material.LAVA, MapColor.PURPLE).noCollision().ticksRandomly().strength(100.0F).luminance(7));
 
@@ -242,9 +242,11 @@ public class ModBlocks {
         registerBlock("golden_bricks", GOLDEN_BRICKS);
         registerBlock("golden_brick_slab", VariantBlocks.GOLDEN_BRICK_SLAB);
         registerBlock("golden_brick_stairs", VariantBlocks.GOLDEN_BRICK_STAIRS);
+        registerBlock("golden_brick_wall", VariantBlocks.GOLDEN_BRICK_WALL);
         registerBlock("crystal_bricks", CRYSTAL_BRICKS);
         registerBlock("crystal_brick_slab", VariantBlocks.CRYSTAL_BRICK_SLAB);
         registerBlock("crystal_brick_stairs", VariantBlocks.CRYSTAL_BRICK_STAIRS);
+        registerBlock("crystal_brick_wall", VariantBlocks.CRYSTAL_BRICK_WALL);
         registerBlock("hardstone", HARDSTONE);
         registerBlock("polished_hardstone", POLISHED_HARDSTONE);
         registerBlock("chiseled_hardstone", CHISELED_HARDSTONE);
@@ -253,8 +255,10 @@ public class ModBlocks {
         registerBlock("cracked_hardstone_bricks", CRACKED_HARDSTONE_BRICKS);
         registerBlock("polished_hardstone_slab", VariantBlocks.POLISHED_HARDSTONE_SLAB);
         registerBlock("polished_hardstone_stairs", VariantBlocks.POLISHED_HARDSTONE_STAIRS);
+        registerBlock("polished_hardstone_wall", VariantBlocks.POLISHED_HARDSTONE_WALL);
         registerBlock("hardstone_brick_slab", VariantBlocks.HARDSTONE_BRICK_SLAB);
         registerBlock("hardstone_brick_stairs", VariantBlocks.HARDSTONE_BRICK_STAIRS);
+        registerBlock("hardstone_brick_wall", VariantBlocks.HARDSTONE_BRICK_WALL);
         registerBlock("royalite", ROYALITE);
         registerBlock("smooth_royalite", SMOOTH_ROYALITE);
         registerBlock("royalite_bricks", ROYALITE_BRICKS);
@@ -296,6 +300,7 @@ public class ModBlocks {
         registerBlock("seastone_bricks", SEASTONE_BRICKS);
         registerBlock("seastone_brick_slab", VariantBlocks.SEASTONE_BRICK_SLAB);
         registerBlock("seastone_brick_stairs", VariantBlocks.SEASTONE_BRICK_STAIRS);
+        registerBlock("seastone_brick_wall", VariantBlocks.SEASTONE_BRICK_WALL);
         registerBlock("beanstalk_block", BEANSTALK_BLOCK);
         registerBlock("mushroom_stem", MushroomBlocks.MUSHROOM_STEM);
         registerBlock("brown_mushroom_cap", MushroomBlocks.BROWN_MUSHROOM_CAP);

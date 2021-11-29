@@ -25,6 +25,7 @@ public class ModelLayers {
     public static final EntityModelLayer NIPPER_PLANT = new EntityModelLayer(new Identifier(Main.MOD_ID, "nipper_plant"), "main");
     public static final EntityModelLayer STINGBY = new EntityModelLayer(new Identifier(Main.MOD_ID, "stingby"), "main");
     public static final EntityModelLayer ROTTEN_MUSHROOM = new EntityModelLayer(new Identifier(Main.MOD_ID, "rotten_mushroom"), "main");
+    public static final EntityModelLayer THWOMP = new EntityModelLayer(new Identifier(Main.MOD_ID, "thwomp"), "main");
     public static final EntityModelLayer FAKE_BLOCK = new EntityModelLayer(new Identifier(Main.MOD_ID, "fake_block"), "main");
 
 }

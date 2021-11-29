@@ -1,4 +1,4 @@
-package com.dayofpi.sbw_main.entity.feature;
+package com.dayofpi.sbw_main.entity.renderer.feature;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -26,7 +26,6 @@ public class HammerBroItem<T extends LivingEntity, M extends EntityModel<T> & Mo
         ItemStack itemStack2 = bl ? livingEntity.getMainHandStack() : livingEntity.getOffHandStack();
         if (!itemStack.isEmpty() || !itemStack2.isEmpty()) {
             matrixStack.push();
-            matrixStack.translate(0.0D, 0.0D, 0.0D);
 
             this.renderItem(livingEntity, itemStack2, ModelTransformation.Mode.THIRD_PERSON_RIGHT_HAND, Arm.RIGHT, matrixStack, vertexConsumerProvider, i);
             this.renderItem(livingEntity, itemStack, ModelTransformation.Mode.THIRD_PERSON_LEFT_HAND, Arm.LEFT, matrixStack, vertexConsumerProvider, i);
@@ -41,7 +40,7 @@ public class HammerBroItem<T extends LivingEntity, M extends EntityModel<T> & Mo
             matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-90.0F));
             matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
             boolean bl = arm == Arm.LEFT;
-            matrices.translate((float)(bl ? -1 : 1) / 16.0F, 0.125D, -0.625D);
+            matrices.translate((float)(bl ? -1 : 1) / 16.0F, 0.125D, -0.5D);
             MinecraftClient.getInstance().getHeldItemRenderer().renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light);
             matrices.pop();
         }

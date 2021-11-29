@@ -47,7 +47,7 @@ public class StingbyModel<T extends StingbyEntity> extends SinglePartEntityModel
     @Override
     public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         float angryMode = 0F;
-        if (entity.isAttacking()) {
+        if (entity.getTarget() != null) {
             angryMode = 0.4F;
         }
         this.ROOT.pitch = headPitch * 0.017453292F + angryMode;

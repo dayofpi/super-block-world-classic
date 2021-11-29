@@ -9,6 +9,7 @@ import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
 
 public class StructureKeys {
         public static RegistryKey<Biome> FOSSIL_FALLS;
+        public static RegistryKey<Biome> CHEEP_CHEEP_REEF;
         public static RegistryKey<ConfiguredStructureFeature<?, ?>> FOSSIL;
         public static RegistryKey<ConfiguredStructureFeature<?, ?>> SHIPWRECK;
         public static RegistryKey<ConfiguredStructureFeature<?, ?>> BEACHED_SHIPWRECK;
@@ -17,6 +18,7 @@ public class StructureKeys {
 
         public static void registerStructureKeys() {
                 FOSSIL_FALLS = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Main.MOD_ID, "fossil_falls"));
+                CHEEP_CHEEP_REEF = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Main.MOD_ID, "cheep_cheep_reef"));
                 FOSSIL = RegistryKey.of(Registry.CONFIGURED_STRUCTURE_FEATURE_KEY, new Identifier("nether_fossil"));
                 SHIPWRECK = RegistryKey.of(Registry.CONFIGURED_STRUCTURE_FEATURE_KEY, new Identifier("shipwreck"));
                 BEACHED_SHIPWRECK = RegistryKey.of(Registry.CONFIGURED_STRUCTURE_FEATURE_KEY, new Identifier("shipwreck_beached"));

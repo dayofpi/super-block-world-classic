@@ -64,15 +64,21 @@
       },
       {
         "type": "super_block_world:spike_top",
-        "weight": 20,
+        "weight": 24,
         "minCount": 2,
         "maxCount": 4
       },
       {
         "type": "super_block_world:bob_omb",
-        "weight": 20,
+        "weight": 24,
         "minCount": 2,
         "maxCount": 4
+      },
+      {
+        "type": "super_block_world:thwomp",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 2
       }
     ],
     "creature": [

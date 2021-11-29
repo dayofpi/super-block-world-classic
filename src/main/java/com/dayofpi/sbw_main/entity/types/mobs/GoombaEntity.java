@@ -1,7 +1,6 @@
 package com.dayofpi.sbw_main.entity.types.mobs;
 
 import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.entity.goals.JumpyAttackGoal;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import com.dayofpi.sbw_main.item.registry.ModItems;
@@ -23,6 +22,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
@@ -54,12 +54,12 @@ public class GoombaEntity extends EnemyEntity {
 
     public void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(2, new JumpyAttackGoal(this, 1.0D, false));
+        this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.7D));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
         this.targetSelector.add(2, new RevengeGoal(this));
-        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true, true));
     }
 
     @Override
@@ -68,6 +68,16 @@ public class GoombaEntity extends EnemyEntity {
         this.dataTracker.startTracking(SIZE, 1);
         this.dataTracker.startTracking(GROWABLE, true);
         this.dataTracker.startTracking(GOLD, false);
+    }
+
+    @Override
+    public void setTarget(@Nullable LivingEntity target) {
+        if (this.isOnGround() && this.getTarget() == null) {
+            this.playSound(ModSounds.ENTITY_ENEMY_SPOT, this.getSoundVolume(), this.getSoundPitch());
+            Vec3d vec3d = this.getVelocity();
+            this.setVelocity(vec3d.x, 0.2F, vec3d.z);
+        }
+        super.setTarget(target);
     }
 
     public int getMinAmbientSoundDelay() {
@@ -166,9 +176,7 @@ public class GoombaEntity extends EnemyEntity {
 
         EntityAttributeInstance health = this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
         EntityAttributeInstance speed = this.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
-        EntityAttributeInstance follow_range = this.getAttributeInstance(EntityAttributes.GENERIC_FOLLOW_RANGE);
         EntityAttributeInstance attack_damage = this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-        follow_range.setBaseValue(clampedSize + 6);
         attack_damage.setBaseValue(clampedSize + 1);
         if (clampedSize == 0) {
             health.setBaseValue(1);

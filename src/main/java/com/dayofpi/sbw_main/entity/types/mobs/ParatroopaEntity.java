@@ -3,13 +3,18 @@ package com.dayofpi.sbw_main.entity.types.mobs;
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.entity.types.bases.EnemyEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
+
+import java.util.Random;
 
 public class ParatroopaEntity extends KoopaEntity {
     public ParatroopaEntity(EntityType<? extends EnemyEntity> entityType, World world) {
@@ -19,6 +24,10 @@ public class ParatroopaEntity extends KoopaEntity {
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return KoopaEntity.createAttributes().add(EntityAttributes.GENERIC_FLYING_SPEED, 0.5D);
+    }
+
+    public static boolean canSpawn(EntityType<? extends KoopaEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        return world.getBlockState(pos.down()).allowsSpawning(world, pos, type) && world.isSkyVisible(pos);
     }
 
     protected EntityNavigation createNavigation(World world) {

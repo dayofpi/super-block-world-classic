@@ -531,7 +531,36 @@
       "super_block_world:entity/bob_omb/fuse"
     ]
   },
-
+  "entity.thwomp.hurt": {
+    "subtitle": "sound.entity.thwomp.hurt",
+    "sounds": [
+      "super_block_world:entity/thwomp/hurt"
+    ]
+  },
+  "entity.thwomp.death": {
+    "subtitle": "sound.entity.thwomp.death",
+    "sounds": [
+      "super_block_world:entity/thwomp/death"
+    ]
+  },
+  "entity.thwomp.fall": {
+    "subtitle": "sound.entity.thwomp.fall",
+    "sounds": [
+      "super_block_world:entity/thwomp/fall"
+    ]
+  },
+  "entity.thwomp.rest": {
+    "subtitle": "sound.entity.thwomp.rest",
+    "sounds": [
+      "super_block_world:entity/thwomp/rest"
+    ]
+  },
+  "entity.thwomp.land": {
+    "subtitle": "sound.entity.thwomp.land",
+    "sounds": [
+      "super_block_world:entity/thwomp/ourgh"
+    ]
+  },
   "entity.moo_moo.ambient": {
     "subtitle": "sound.entity.moo_moo.ambient",
     "sounds": [

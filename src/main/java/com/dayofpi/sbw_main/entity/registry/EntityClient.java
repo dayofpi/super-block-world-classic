@@ -65,6 +65,9 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.ROTTEN_MUSHROOM, RottenMushroomRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModelLayers.ROTTEN_MUSHROOM, RottenMushroomModel::getTexturedModelData);
 
+        EntityRendererRegistry.register(ModEntities.THWOMP, ThwompRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModelLayers.THWOMP, ThwompModel::getTexturedModelData);
+
         EntityRendererRegistry.register(ModEntities.FAKE_BLOCK, FakeBlockRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModelLayers.FAKE_BLOCK, FakeBlockModel::getTexturedModelData);
     }

@@ -19,6 +19,7 @@ public class VariantBlocks {
 
     public static final Block SEASTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SEASTONE_BRICKS));
     public static final Block SEASTONE_BRICK_STAIRS = new StairsBlock(ModBlocks.SEASTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.SEASTONE)){};
+    public static final Block SEASTONE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(ModBlocks.SEASTONE_BRICKS));
 
     public static final Block TOADSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.TOADSTONE));
     public static final Block TOADSTONE_STAIRS = new StairsBlock(ModBlocks.TOADSTONE.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.TOADSTONE)){};
@@ -38,15 +39,19 @@ public class VariantBlocks {
 
     public static final Block POLISHED_HARDSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.POLISHED_HARDSTONE));
     public static final Block POLISHED_HARDSTONE_STAIRS = new StairsBlock(ModBlocks.POLISHED_HARDSTONE.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.POLISHED_HARDSTONE)){};
+    public static final Block POLISHED_HARDSTONE_WALL = new WallBlock(FabricBlockSettings.copyOf(ModBlocks.POLISHED_HARDSTONE));
 
     public static final Block HARDSTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.HARDSTONE_BRICKS));
     public static final Block HARDSTONE_BRICK_STAIRS = new StairsBlock(ModBlocks.HARDSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.POLISHED_HARDSTONE)){};
+    public static final Block HARDSTONE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(ModBlocks.HARDSTONE_BRICKS));
 
     public static final Block GOLDEN_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.GOLDEN_BRICKS));
     public static final Block GOLDEN_BRICK_STAIRS = new StairsBlock(ModBlocks.GOLDEN_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.GOLDEN_BRICKS)){};
+    public static final Block GOLDEN_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(ModBlocks.GOLDEN_BRICKS));
 
     public static final Block CRYSTAL_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.CRYSTAL_BRICKS));
     public static final Block CRYSTAL_BRICK_STAIRS = new StairsBlock(ModBlocks.CRYSTAL_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.CRYSTAL_BRICKS)){};
+    public static final Block CRYSTAL_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(ModBlocks.CRYSTAL_BRICKS));
 
     public static final Block VANILLATE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.VANILLATE));
     public static final Block VANILLATE_STAIRS = new StairsBlock(ModBlocks.VANILLATE.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.VANILLATE)){};

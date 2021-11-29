@@ -3,7 +3,7 @@ package com.dayofpi.sbw_main.entity.renderer;
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.model.RottenMushroomModel;
 import com.dayofpi.sbw_main.entity.registry.ModelLayers;
-import com.dayofpi.sbw_main.entity.feature.RottenMushroomEyes;
+import com.dayofpi.sbw_main.entity.renderer.feature.RottenMushroomEyes;
 import com.dayofpi.sbw_main.entity.types.mobs.RottenMushroomEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

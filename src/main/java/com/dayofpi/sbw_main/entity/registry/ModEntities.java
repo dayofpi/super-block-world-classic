@@ -101,13 +101,19 @@ public class ModEntities {
 
     public static final EntityType<RottenMushroomEntity> ROTTEN_MUSHROOM = FabricEntityTypeBuilder.createMob()
             .entityFactory(RottenMushroomEntity::new).spawnGroup(SpawnGroup.MONSTER)
-            .dimensions(EntityDimensions.fixed(0.6F, 0.7F))
+            .dimensions(EntityDimensions.fixed(0.7F, 0.8F))
             .spawnRestriction(Location.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, RottenMushroomEntity::canSpawn)
+            .fireImmune().build();
+
+    public static final EntityType<ThwompEntity> THWOMP = FabricEntityTypeBuilder.createMob()
+            .entityFactory(ThwompEntity::new).spawnGroup(SpawnGroup.MONSTER)
+            .dimensions(EntityDimensions.fixed(1.0F, 2.0F))
+            .spawnRestriction(Location.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ThwompEntity::canSpawn)
             .fireImmune().build();
 
     public static final EntityType<FakeBlockEntity> FAKE_BLOCK = FabricEntityTypeBuilder.createMob()
             .entityFactory(FakeBlockEntity::new).spawnGroup(SpawnGroup.MONSTER)
-            .dimensions(EntityDimensions.fixed(0.8F, 0.8F))
+            .dimensions(EntityDimensions.fixed(0.85F, 0.85F))
             .build();
 
     public static void registerEntities() {
@@ -133,6 +139,7 @@ public class ModEntities {
         registerMob("nipper_plant", NIPPER_PLANT, NipperPlantEntity.createAttributes());
         registerMob("stingby", STINGBY, StingbyEntity.createAttributes());
         registerMob("rotten_mushroom", ROTTEN_MUSHROOM, RottenMushroomEntity.createAttributes());
+        registerMob("thwomp", THWOMP, ThwompEntity.createAttributes());
         registerMob("fake_block", FAKE_BLOCK, FakeBlockEntity.createAttributes());
     }
 

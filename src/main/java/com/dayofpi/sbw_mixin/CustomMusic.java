@@ -25,7 +25,7 @@ public abstract class CustomMusic {
     @Inject(at = @At("HEAD"), method = "getMusicType", cancellable = true)
     public void getMusicType(CallbackInfoReturnable<MusicSound> info) {
         if (this.player != null) {
-            if (ModTags.SURFACE.contains(this.player.world.getBiome(this.player.getBlockPos()))) {
+            if (ModTags.ALL_BIOMES.contains(this.player.world.getBiome(this.player.getBlockPos()))) {
                 World world = this.player.world;
                 BlockPos pos = this.player.getBlockPos();
                 if (pos.getY() < world.getSeaLevel() && world.getLightLevel(pos) <= 7 && !world.isSkyVisible(pos)) {

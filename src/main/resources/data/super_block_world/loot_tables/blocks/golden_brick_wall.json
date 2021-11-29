@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "super_block_world:beanstalk"
+          "name": "super_block_world:golden_brick_wall"
         }
       ],
       "conditions": [

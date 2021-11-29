@@ -1,4 +1,4 @@
-package com.dayofpi.sbw_main.entity.feature;
+package com.dayofpi.sbw_main.entity.renderer.feature;
 
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.model.BooModel;

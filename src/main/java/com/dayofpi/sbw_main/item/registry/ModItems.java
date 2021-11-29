@@ -68,6 +68,7 @@ public class ModItems {
     public static final Item NIPPER_PLANT_SPAWN_EGG = new SpawnEggItem(ModEntities.NIPPER_PLANT, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item STINGBY_SPAWN_EGG = new SpawnEggItem(ModEntities.STINGBY, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item ROTTEN_MUSHROOM_SPAWN_EGG = new SpawnEggItem(ModEntities.ROTTEN_MUSHROOM, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item THWOMP_SPAWN_EGG = new SpawnEggItem(ModEntities.THWOMP, 10530706, 12572889, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item FAKE_BLOCK_SPAWN_EGG = new SpawnEggItem(ModEntities.FAKE_BLOCK, 10042394, 10042394, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
 
     private static void registerItem(String id, Item item) {
@@ -119,6 +120,7 @@ public class ModItems {
         registerItem("spawn_eggs/nipper_plant", NIPPER_PLANT_SPAWN_EGG);
         registerItem("spawn_eggs/stingby", STINGBY_SPAWN_EGG);
         registerItem("spawn_eggs/rotten_mushroom", ROTTEN_MUSHROOM_SPAWN_EGG);
+        registerItem("spawn_eggs/thwomp", THWOMP_SPAWN_EGG);
         registerItem("spawn_eggs/fake_block", FAKE_BLOCK_SPAWN_EGG);
     }
 
@@ -293,24 +295,29 @@ public class ModItems {
         registerBlockItem("hardstone_pillar", ModBlocks.HARDSTONE_PILLAR);
         registerBlockItem("polished_hardstone_slab", VariantBlocks.POLISHED_HARDSTONE_SLAB);
         registerBlockItem("polished_hardstone_stairs", VariantBlocks.POLISHED_HARDSTONE_STAIRS);
+        registerBlockItem("polished_hardstone_wall", VariantBlocks.POLISHED_HARDSTONE_WALL);
 
         registerBlockItem("hardstone_bricks", ModBlocks.HARDSTONE_BRICKS);
         registerBlockItem("cracked_hardstone_bricks", ModBlocks.CRACKED_HARDSTONE_BRICKS);
         registerBlockItem("hardstone_brick_slab", VariantBlocks.HARDSTONE_BRICK_SLAB);
         registerBlockItem("hardstone_brick_stairs", VariantBlocks.HARDSTONE_BRICK_STAIRS);
+        registerBlockItem("hardstone_brick_wall", VariantBlocks.HARDSTONE_BRICK_WALL);
 
         registerBlockItem("seastone", ModBlocks.SEASTONE);
         registerBlockItem("seastone_bricks", ModBlocks.SEASTONE_BRICKS);
         registerBlockItem("seastone_brick_slab", VariantBlocks.SEASTONE_BRICK_SLAB);
         registerBlockItem("seastone_brick_stairs", VariantBlocks.SEASTONE_BRICK_STAIRS);
+        registerBlockItem("seastone_brick_wall", VariantBlocks.SEASTONE_BRICK_WALL);
 
         registerBlockItem("golden_bricks", ModBlocks.GOLDEN_BRICKS);
         registerBlockItem("golden_brick_slab", VariantBlocks.GOLDEN_BRICK_SLAB);
         registerBlockItem("golden_brick_stairs", VariantBlocks.GOLDEN_BRICK_STAIRS);
+        registerBlockItem("golden_brick_wall", VariantBlocks.GOLDEN_BRICK_WALL);
 
         registerBlockItem("crystal_bricks", ModBlocks.CRYSTAL_BRICKS);
         registerBlockItem("crystal_brick_slab", VariantBlocks.CRYSTAL_BRICK_SLAB);
         registerBlockItem("crystal_brick_stairs", VariantBlocks.CRYSTAL_BRICK_STAIRS);
+        registerBlockItem("crystal_brick_wall", VariantBlocks.CRYSTAL_BRICK_WALL);
 
         registerBlockItem("vanillate", ModBlocks.VANILLATE);
         registerBlockItem("vanillate_crumble", ModBlocks.VANILLATE_CRUMBLE);

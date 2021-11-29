@@ -102,6 +102,13 @@ public class ModSounds {
     public static final SoundEvent ENTITY_BOB_OMB_STEP = createSound("entity.bob_omb.step");
     public static final SoundEvent ENTITY_BOB_OMB_FUSE = createSound("entity.bob_omb.fuse");
 
+    public static final SoundEvent ENTITY_THWOMP_HURT = createSound("entity.thwomp.hurt");
+    public static final SoundEvent ENTITY_THWOMP_DEATH = createSound("entity.thwomp.death");
+    public static final SoundEvent ENTITY_THWOMP_FALL = createSound("entity.thwomp.fall");
+    public static final SoundEvent ENTITY_THWOMP_REST = createSound("entity.thwomp.rest");
+    public static final SoundEvent ENTITY_THWOMP_LAND = createSound("entity.thwomp.land");
+
+
     private static SoundEvent createSound(String string) {
         return new SoundEvent(new Identifier(Main.MOD_ID, string));
     }
@@ -198,5 +205,11 @@ public class ModSounds {
        registerSound(ENTITY_BOB_OMB_DEATH.getId(), ENTITY_BOB_OMB_DEATH);
        registerSound(ENTITY_BOB_OMB_STEP.getId(), ENTITY_BOB_OMB_STEP);
        registerSound(ENTITY_BOB_OMB_FUSE.getId(), ENTITY_BOB_OMB_FUSE);
+
+       registerSound(ENTITY_THWOMP_HURT.getId(), ENTITY_THWOMP_HURT);
+       registerSound(ENTITY_THWOMP_DEATH.getId(), ENTITY_THWOMP_DEATH);
+       registerSound(ENTITY_THWOMP_FALL.getId(), ENTITY_THWOMP_FALL);
+       registerSound(ENTITY_THWOMP_REST.getId(), ENTITY_THWOMP_REST);
+       registerSound(ENTITY_THWOMP_LAND.getId(), ENTITY_THWOMP_LAND);
     }
 }

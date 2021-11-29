@@ -24,8 +24,8 @@ public class ModStructures {
 
         addStructure(BiomeSelectors.foundInOverworld(), StructureKeys.WARP_PORTAL);
         addStructure(BiomeSelectors.includeByKey(StructureKeys.FOSSIL_FALLS), StructureKeys.FOSSIL);
-        addStructure(BiomeSelectors.tag(ModTags.AQUATIC), StructureKeys.SHIPWRECK);
-        addStructure(BiomeSelectors.tag(ModTags.AQUATIC), StructureKeys.BEACHED_SHIPWRECK);
-        addStructure(BiomeSelectors.tag(ModTags.SURFACE), StructureKeys.TOAD_HOUSE);
+        addStructure(BiomeSelectors.includeByKey(StructureKeys.CHEEP_CHEEP_REEF), StructureKeys.SHIPWRECK);
+        addStructure(BiomeSelectors.includeByKey(StructureKeys.CHEEP_CHEEP_REEF), StructureKeys.BEACHED_SHIPWRECK);
+        addStructure(BiomeSelectors.tag(ModTags.ALL_BIOMES), StructureKeys.TOAD_HOUSE);
     }
 }

@@ -4,6 +4,7 @@
     "super_block_world:amethyst_ore",
     "super_block_world:crystal_bricks",
     "super_block_world:crystal_brick_slab",
-    "super_block_world:crystal_brick_stairs"
+    "super_block_world:crystal_brick_stairs",
+    "super_block_world:crystal_brick_wall"
   ]
 }

@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.entity.renderer;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.entity.feature.SpikeTopEyes;
+import com.dayofpi.sbw_main.entity.renderer.feature.SpikeTopEyes;
 import com.dayofpi.sbw_main.entity.model.BuzzyModel;
 import com.dayofpi.sbw_main.entity.registry.ModelLayers;
 import com.dayofpi.sbw_main.entity.types.mobs.SpikeTopEntity;

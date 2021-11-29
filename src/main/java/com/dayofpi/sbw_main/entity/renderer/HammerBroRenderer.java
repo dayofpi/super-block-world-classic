@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.entity.renderer;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.entity.feature.HammerBroItem;
+import com.dayofpi.sbw_main.entity.renderer.feature.HammerBroItem;
 import com.dayofpi.sbw_main.entity.model.HammerBroModel;
 import com.dayofpi.sbw_main.entity.registry.ModelLayers;
 import com.dayofpi.sbw_main.entity.types.mobs.HammerBroEntity;

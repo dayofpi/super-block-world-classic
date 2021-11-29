@@ -61,7 +61,7 @@ public class KoopaEntity extends EnemyEntity implements Angerable, ItemSteerable
     }
 
     public static boolean canSpawn(EntityType<? extends KoopaEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return world.getBlockState(pos.down()).allowsSpawning(world, pos, type) && !(world.getLightLevel(LightType.BLOCK, pos) > 0);
+        return world.getBlockState(pos.down()).allowsSpawning(world, pos, type);
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
