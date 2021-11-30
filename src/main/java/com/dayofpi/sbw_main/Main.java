@@ -22,23 +22,27 @@ public class Main implements ModInitializer {
     -Thwomps spawn semi-rarely across the world
     -They're mobs, but you can walk on them
     -They try to attack players, but can damage any mobs or bricks on impact
-    Added cloud stairs
-    Fixed cloud slab loot table
-    Added block lines
-    Munchers are now animated
-    Giant brown mushrooms now generate in mushroom grasslands
-    Giant mushrooms in vanilla Mushroom Fields and Dark Forest biomes are now replaced with the mod ones
-    Buzzy beetles and spike tops now destroy bricks when landing
-    Buzzy beetles and spike tops are now able to spawn on the ceiling again
-    Fire and ice flowers now properly work with dispensers
-    Mobs are now set on fire if killed by a fireball, ensuring a cooked drop
-    Thrown hammers now only destroy brick blocks
+    Added cloud stairs.
+    Fixed cloud slab loot table.
+    Added block lines.
+    The dimension now has a bit of ambient light.
+    Munchers are now animated.
+    Fossil falls now have falls.
+    Giant brown mushrooms now generate in mushroom grasslands.
+    Giant mushrooms in vanilla Mushroom Fields and Dark Forest biomes are now replaced with the mod ones.
+    Buzzy beetles and spike tops now destroy bricks when landing.
+    Buzzy beetles and spike tops are now able to spawn on the ceiling again.
+    Paratroopas no longer spawn underground.
+    Fire and ice flowers now properly work with dispensers.
+    Mobs are now set on fire if killed by a fireball, ensuring a cooked drop.
+    Thrown hammers now only destroy brick blocks.
 
     TODO:
       Add shell entities
       Add toads
       Add block lines
       Give fake blocks an attack animation and unique sound/events
+
       Make mushroom block textures varied.
       Make more spawn eggs unique
       Fix bottled ghost ID

@@ -3,7 +3,7 @@ package com.dayofpi.sbw_main;
 import com.dayofpi.sbw_main.block.registry.BlockClient;
 import com.dayofpi.sbw_main.entity.registry.EntityClient;
 import com.dayofpi.sbw_main.misc.SpawnPacket;
-import com.dayofpi.sbw_main.world.fluid.FluidRendering;
+import com.dayofpi.sbw_main.misc.fluid.FluidRendering;
 import com.dayofpi.sbw_main.world.registry.ParticleClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;

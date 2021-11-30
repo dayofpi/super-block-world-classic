@@ -170,6 +170,7 @@
       "super_block_world:toppings_gold"
     ],
     [
+      "super_block_world:spring_extra",
       "super_block_world:disk_sand",
       "super_block_world:patch_cave_crystals",
       "super_block_world:patch_lantern",
@@ -180,7 +181,6 @@
       "super_block_world:patch_horsetails",
       "super_block_world:seagrass",
       "super_block_world:kelp",
-      "super_block_world:spring",
       "super_block_world:coral",
       "super_block_world:plant_reef",
       "super_block_world:flower_reef",

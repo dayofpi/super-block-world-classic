@@ -17,11 +17,11 @@ public class BooRenderer extends MobEntityRenderer<BooEntity, BooModel<BooEntity
     private static final Identifier BOO = new Identifier(Main.MOD_ID, "textures/entity/boo/boo.png");
     private static final Identifier SHY = new Identifier(Main.MOD_ID, "textures/entity/boo/shy.png");
     private static final Identifier TAMED = new Identifier(Main.MOD_ID, "textures/entity/boo/tamed.png");
-    private static final Identifier FACE_0 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_0.png");
-    private static final Identifier FACE_1 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_1.png");
-    private static final Identifier FACE_2 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_2.png");
-    private static final Identifier FACE_3 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_3.png");
-    private static final Identifier FACE_4 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_4.png");
+    private static final Identifier FACE_0 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_cheeky.png");
+    private static final Identifier FACE_1 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_mad.png");
+    private static final Identifier FACE_2 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_scrunkly.png");
+    private static final Identifier FACE_3 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_spooky.png");
+    private static final Identifier FACE_4 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_poyo.png");
 
     public BooRenderer(EntityRendererFactory.Context context) {
         super(context, new BooModel<>(context.getPart(ModelLayers.BOO)), 0.5F);

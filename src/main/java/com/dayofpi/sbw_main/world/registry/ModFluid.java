@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.world.registry;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.world.fluid.PoisonFluid;
+import com.dayofpi.sbw_main.misc.fluid.PoisonFluid;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;

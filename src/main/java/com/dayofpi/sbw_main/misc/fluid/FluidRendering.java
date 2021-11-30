@@ -1,4 +1,4 @@
-package com.dayofpi.sbw_main.world.fluid;
+package com.dayofpi.sbw_main.misc.fluid;
 
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.world.registry.ModFluid;

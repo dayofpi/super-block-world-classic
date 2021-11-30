@@ -1,4 +1,4 @@
-package com.dayofpi.sbw_main.world.fluid;
+package com.dayofpi.sbw_main.misc.fluid;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

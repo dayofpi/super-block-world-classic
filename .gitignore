@@ -118,4 +118,6 @@ run/
 !gradle-wrapper.jar
 thought.png
 src/main/resources/assets/super_block_world/textures/block/thought.png
+src/main/java/com/dayofpi/sbw_main/world/registry/ModBiome.java
+src/main/java/com/dayofpi/sbw_main/world/registry/ModPlacedFeature.java.java
 /src/main/resources/assets/super_block_world/textures/stamp/

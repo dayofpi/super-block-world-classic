@@ -94,6 +94,7 @@
       "super_block_world:toppings_gold"
     ],
     [
+      "super_block_world:spring_extra",
       "super_block_world:disk_sand",
       "super_block_world:patch_cave_crystals",
       "super_block_world:patch_lantern",
@@ -103,7 +104,6 @@
       "super_block_world:patch_stumps",
       "super_block_world:seagrass",
       "super_block_world:vines",
-      "super_block_world:spring",
       "super_block_world:plant_fossil_falls",
       "super_block_world:mushroom_grassland"
     ]

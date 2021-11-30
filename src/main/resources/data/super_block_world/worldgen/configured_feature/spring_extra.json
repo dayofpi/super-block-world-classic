@@ -11,8 +11,11 @@
     "hole_count": 1,
     "requires_block_below": true,
     "valid_blocks": [
-      "super_block_world:vanillate",
-      "super_block_world:toadstool_soil"
+      "minecraft:bone_block",
+      "minecraft:sand",
+      "super_block_world:toadstool_grass",
+      "super_block_world:toadstool_soil",
+      "super_block_world:grassy_toadstone"
     ]
   }
 }

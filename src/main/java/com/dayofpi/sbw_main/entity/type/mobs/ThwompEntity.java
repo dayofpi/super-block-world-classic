@@ -78,7 +78,7 @@ public class ThwompEntity extends GolemEntity {
     }
 
     public static boolean canSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return !(world.getLightLevel(pos) > 0) && !world.isSkyVisible(pos) && world.isSpaceEmpty(type.getDimensions().getBoxAt(Vec3d.ofCenter(pos)).expand(1, 5, 0).offset(0, -5, 0));
+        return !(world.getLightLevel(pos) > 0) && !world.isSkyVisible(pos) && world.isSpaceEmpty(type.getDimensions().getBoxAt(Vec3d.ofCenter(pos)).expand(0, 5, 0).offset(0, -5, 0));
     }
 
     @Override
