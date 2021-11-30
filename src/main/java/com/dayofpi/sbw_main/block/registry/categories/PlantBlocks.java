@@ -1,11 +1,11 @@
 package com.dayofpi.sbw_main.block.registry.categories;
 
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.block.types.*;
-import com.dayofpi.sbw_main.block.types.beanstalk.BeanstalkBlock;
-import com.dayofpi.sbw_main.block.types.beanstalk.BeanstalkBodyBlock;
-import com.dayofpi.sbw_main.block.types.beanstalk.BuddingBeanstalkBlock;
-import com.dayofpi.sbw_main.world.feature.generators.AmanitaSaplingGenerator;
+import com.dayofpi.sbw_main.block.type.*;
+import com.dayofpi.sbw_main.block.type.beanstalk.BeanstalkBlock;
+import com.dayofpi.sbw_main.block.type.beanstalk.BeanstalkBodyBlock;
+import com.dayofpi.sbw_main.block.type.beanstalk.BuddingBeanstalkBlock;
+import com.dayofpi.sbw_main.world.AmanitaSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;

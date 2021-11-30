@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.entity.model;
 
-import com.dayofpi.sbw_main.entity.types.mobs.MooMooEntity;
+import com.dayofpi.sbw_main.entity.type.mobs.MooMooEntity;
 import com.google.common.collect.ImmutableList;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

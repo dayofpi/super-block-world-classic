@@ -2,7 +2,7 @@ package com.dayofpi.sbw_mixin.living_entity;
 
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.block.types.WarpPipeBlock;
+import com.dayofpi.sbw_main.block.type.warp_pipe.WarpPipeBlock;
 import com.dayofpi.sbw_main.entity.registry.ModEffects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;

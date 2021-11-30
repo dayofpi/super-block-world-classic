@@ -1,9 +1,9 @@
 package com.dayofpi.sbw_main.entity.registry;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.entity.types.*;
-import com.dayofpi.sbw_main.entity.types.mobs.*;
-import com.dayofpi.sbw_main.entity.types.projectiles.*;
+import com.dayofpi.sbw_main.entity.type.*;
+import com.dayofpi.sbw_main.entity.type.mobs.*;
+import com.dayofpi.sbw_main.entity.type.projectiles.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.*;
@@ -48,7 +48,7 @@ public class ModEntities {
 
     public static final EntityType<ParatroopaEntity> PARATROOPA = FabricEntityTypeBuilder.createMob().entityFactory(ParatroopaEntity::new).spawnGroup(SpawnGroup.MONSTER)
             .dimensions(EntityDimensions.fixed(1.1F, 1.5F))
-            .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, KoopaEntity::canSpawn)
+            .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ParatroopaEntity::canSpawn)
             .build();
 
     public static final EntityType<BobOmbEntity> BOB_OMB = FabricEntityTypeBuilder.createMob().entityFactory(BobOmbEntity::new).spawnGroup(SpawnGroup.MONSTER)
@@ -75,14 +75,16 @@ public class ModEntities {
             .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, FireBroEntity::canSpawn)
             .build();
 
-    public static final EntityType<BuzzyEntity> BUZZY_BEETLE = FabricEntityTypeBuilder.createMob().entityFactory(BuzzyEntity::new).spawnGroup(SpawnGroup.MONSTER)
-            .dimensions(EntityDimensions.changing(1.2F, 0.9F)).spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BuzzyEntity::canSpawn).build();
+    public static final EntityType<BuzzyEntity> BUZZY_BEETLE = FabricEntityTypeBuilder.createMob()
+            .entityFactory(BuzzyEntity::new)
+            .spawnGroup(SpawnGroup.MONSTER)
+            .dimensions(EntityDimensions.changing(1.2F, 0.9F))
+            .build();
 
     public static final EntityType<SpikeTopEntity> SPIKE_TOP = FabricEntityTypeBuilder.createMob()
             .entityFactory(SpikeTopEntity::new)
             .spawnGroup(SpawnGroup.MONSTER)
             .dimensions(EntityDimensions.changing(1.2F, 0.9F))
-            .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, SpikeTopEntity::canSpawn)
             .build();
 
     public static final EntityType<NipperPlantEntity> NIPPER_PLANT = FabricEntityTypeBuilder.createMob()
@@ -102,13 +104,11 @@ public class ModEntities {
     public static final EntityType<RottenMushroomEntity> ROTTEN_MUSHROOM = FabricEntityTypeBuilder.createMob()
             .entityFactory(RottenMushroomEntity::new).spawnGroup(SpawnGroup.MONSTER)
             .dimensions(EntityDimensions.fixed(0.7F, 0.8F))
-            .spawnRestriction(Location.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, RottenMushroomEntity::canSpawn)
             .fireImmune().build();
 
     public static final EntityType<ThwompEntity> THWOMP = FabricEntityTypeBuilder.createMob()
             .entityFactory(ThwompEntity::new).spawnGroup(SpawnGroup.MONSTER)
             .dimensions(EntityDimensions.fixed(1.0F, 2.0F))
-            .spawnRestriction(Location.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ThwompEntity::canSpawn)
             .fireImmune().build();
 
     public static final EntityType<FakeBlockEntity> FAKE_BLOCK = FabricEntityTypeBuilder.createMob()

@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.item.types;
 
 import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.entity.types.projectiles.IceballEntity;
+import com.dayofpi.sbw_main.entity.type.projectiles.IceballEntity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;

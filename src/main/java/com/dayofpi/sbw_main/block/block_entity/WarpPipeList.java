@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.block.block_entity;
 
-import com.dayofpi.sbw_main.block.types.WarpPipeBlock;
+import com.dayofpi.sbw_main.block.type.warp_pipe.WarpPipeBlock;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -13,34 +13,32 @@ import java.util.List;
 
 public class WarpPipeList
 {
-    List<BlockPos> warps;
+    List<BlockPos> warpList;
     int chunkX, chunkZ;
 
     public WarpPipeList(int chunkX, int chunkZ)
     {
         this.chunkX = chunkX;
         this.chunkZ = chunkZ;
-        warps = new ArrayList<>();
+        warpList = new ArrayList<>();
     }
 
     public int getX() {return chunkX;}
     public int getZ() {return chunkZ;}
 
-    public boolean isWarpInList(BlockPos pipe)
+    public boolean isPipeInList(BlockPos pipe)
     {
-        return warps.contains(pipe);
+        return warpList.contains(pipe);
     }
 
-    public void add(BlockPos warp)
-    {
-        if (!isWarpInList(warp))
-            warps.add(warp);
+    public void add(BlockPos warp) {
+        if (!isPipeInList(warp))
+            warpList.add(warp);
 
     }
 
-    public void remove(BlockPos warp)
-    {
-        warps.remove(warp);
+    public void remove(BlockPos warp) {
+        warpList.remove(warp);
     }
 
     @Nullable
@@ -49,7 +47,7 @@ public class WarpPipeList
         //Find the nearest block by looking direction
         BlockPos pipe = null;
         double dist = 9999.0; //Max distance, we only check 16x256x16, so we shouldn't really hit it.
-        for(BlockPos warp : warps)
+        for(BlockPos warp : warpList)
         {
             //Ignore if start block
             if (warp.getX() == ignore.getX() && warp.getY() == ignore.getY() && warp.getZ() == ignore.getZ())
@@ -79,7 +77,7 @@ public class WarpPipeList
     {
         BlockPos pipe = null;
         //loop through warps to find the nearest warp to blockPos
-        for(BlockPos warp : warps)
+        for(BlockPos warp : warpList)
         {
             //Ignore if same block
             if (warp.getX() == pos.getX() && warp.getY() == pos.getY() && warp.getZ() == pos.getZ())
@@ -109,7 +107,7 @@ public class WarpPipeList
             else if (manhattanA == manhattanB)
             {
                 //If the current block is the same distance as the new position, select by yaw.
-                Vec3d forward = new Vec3d((double)pos.getX() - Math.sin(lookingYaw / 180.0 * Math.PI), pos.getY(), (double)pos.getZ() + Math.cos(lookingYaw/ 180.0 * Math.PI));
+                Vec3d forward = new Vec3d((double)pos.getX() - Math.sin(lookingYaw / 180.0 * Math.PI), pos.getY(), pos.getZ() + Math.cos(lookingYaw/ 180.0 * Math.PI));
                 BlockPos nearestInFront = findNearestBlockFromPosition(pos, world, forward);
                 if (nearestInFront != null)
                     pipe = nearestInFront;

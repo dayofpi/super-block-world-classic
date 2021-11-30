@@ -1,8 +1,8 @@
 package com.dayofpi.sbw_main.block.registry.categories;
 
-import com.dayofpi.sbw_main.block.types.BouncyMushroomBlock;
-import com.dayofpi.sbw_main.block.types.MushroomBlock;
-import com.dayofpi.sbw_main.world.registry.ModFeatures;
+import com.dayofpi.sbw_main.block.type.BouncyMushroomBlock;
+import com.dayofpi.sbw_main.block.type.MushroomBlock;
+import com.dayofpi.sbw_main.world.registry.ModConfiguredFeature;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
@@ -16,9 +16,9 @@ public class MushroomBlocks {
     public static final Block GREEN_MUSHROOM_CAP = new MushroomBlock(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.EMERALD_GREEN));
     public static final Block YELLOW_MUSHROOM_CAP = new MushroomBlock(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.YELLOW));
     public static final Block RED_MUSHROOM_CAP = new BouncyMushroomBlock(FabricBlockSettings.copyOf(BROWN_MUSHROOM_CAP).mapColor(MapColor.RED));
-    public static final Block YELLOW_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().sounds(BlockSoundGroup.GRASS), () -> ModFeatures.HUGE_YELLOW_MUSHROOM);
-    public static final Block GREEN_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.EMERALD_GREEN).luminance(6), () -> ModFeatures.HUGE_GREEN_MUSHROOM);
-    public static final Block PINK_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.PINK), () -> ModFeatures.HUGE_PINK_MUSHROOM);
-    public static final Block PURPLE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.PURPLE), () -> ModFeatures.HUGE_PURPLE_MUSHROOM);
-    public static final Block ORANGE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.ORANGE), () -> ModFeatures.HUGE_ORANGE_MUSHROOM);
+    public static final Block YELLOW_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().sounds(BlockSoundGroup.GRASS), () -> ModConfiguredFeature.HUGE_YELLOW_MUSHROOM);
+    public static final Block GREEN_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.EMERALD_GREEN).luminance(6), () -> ModConfiguredFeature.HUGE_GREEN_MUSHROOM);
+    public static final Block PINK_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.PINK), () -> ModConfiguredFeature.HUGE_PINK_MUSHROOM);
+    public static final Block PURPLE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.PURPLE), () -> ModConfiguredFeature.HUGE_PURPLE_MUSHROOM);
+    public static final Block ORANGE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.ORANGE), () -> ModConfiguredFeature.HUGE_ORANGE_MUSHROOM);
 }

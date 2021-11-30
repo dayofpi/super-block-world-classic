@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.item.types;
 
 import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.entity.types.projectiles.HammerEntity;
+import com.dayofpi.sbw_main.entity.type.projectiles.HammerEntity;
 import com.dayofpi.sbw_main.item.registry.ModItems;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;

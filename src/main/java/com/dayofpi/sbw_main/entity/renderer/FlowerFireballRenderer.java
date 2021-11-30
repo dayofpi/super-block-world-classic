@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.entity.renderer;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.entity.types.projectiles.FlowerFireballEntity;
+import com.dayofpi.sbw_main.entity.type.projectiles.FlowerFireballEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;

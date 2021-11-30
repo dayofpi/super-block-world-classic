@@ -7,7 +7,13 @@
       },
       {
         "feature": "super_block_world:beanstalk_budding",
-        "chance": 0.025
+        "chance": 0.04
+      },
+      {
+        "feature": {
+          "feature": "super_block_world:huge_brown_mushroom",
+          "placement": []
+        }, "chance": 0.1
       },
       {
         "feature": "super_block_world:amanita_fruit",

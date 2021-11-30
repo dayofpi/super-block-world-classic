@@ -4,7 +4,7 @@ import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.renderer.feature.SpikeTopEyes;
 import com.dayofpi.sbw_main.entity.model.BuzzyModel;
 import com.dayofpi.sbw_main.entity.registry.ModelLayers;
-import com.dayofpi.sbw_main.entity.types.mobs.SpikeTopEntity;
+import com.dayofpi.sbw_main.entity.type.mobs.SpikeTopEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

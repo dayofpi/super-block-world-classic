@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 9,
+          "data": {
+            "Name": "super_block_world:toadstone_bricks"
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "super_block_world:question_block"
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "super_block_world:jump_block"
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "super_block_world:coin_block",
+            "Properties": {
+              "type": "0",
+              "coin_count": "1"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "super_block_world:coin_block",
+            "Properties": {
+              "type": "1",
+              "coin_count": "5"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,12 +1,14 @@
 package com.dayofpi.sbw_main.block.registry.categories;
 
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.block.types.CloudSlabBlock;
+import com.dayofpi.sbw_main.block.type.CloudSlabBlock;
+import com.dayofpi.sbw_main.block.type.CloudStairsBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 
 public class VariantBlocks {
     public static final Block CLOUD_SLAB = new CloudSlabBlock(FabricBlockSettings.copyOf(ModBlocks.CLOUD_BLOCK));
+    public static final Block CLOUD_STAIRS = new CloudStairsBlock(FabricBlockSettings.copyOf(ModBlocks.CLOUD_BLOCK));
 
     public static final Block BRONZE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.BRONZE_BLOCK));
     public static final Block BRONZE_STAIRS = new StairsBlock(ModBlocks.BRONZE_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.BRONZE_BLOCK)){};

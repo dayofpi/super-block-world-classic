@@ -3,7 +3,7 @@ package com.dayofpi.sbw_main.entity.renderer;
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.model.ThwompModel;
 import com.dayofpi.sbw_main.entity.registry.ModelLayers;
-import com.dayofpi.sbw_main.entity.types.mobs.ThwompEntity;
+import com.dayofpi.sbw_main.entity.type.mobs.ThwompEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

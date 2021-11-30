@@ -118,3 +118,4 @@ run/
 !gradle-wrapper.jar
 thought.png
 src/main/resources/assets/super_block_world/textures/block/thought.png
+/src/main/resources/assets/super_block_world/textures/stamp/

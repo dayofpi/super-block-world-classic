@@ -40,7 +40,7 @@
             "temperature": 0.3,
             "humidity": 0.4,
             "continentalness": -0.2,
-            "erosion": -0.1,
+            "erosion": -0.2,
             "weirdness": 0,
             "depth": 0,
             "offset": 0

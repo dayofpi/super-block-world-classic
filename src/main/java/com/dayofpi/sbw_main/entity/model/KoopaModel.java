@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.entity.model;
 
-import com.dayofpi.sbw_main.entity.types.mobs.KoopaEntity;
-import com.dayofpi.sbw_main.entity.types.mobs.ParatroopaEntity;
+import com.dayofpi.sbw_main.entity.type.mobs.KoopaEntity;
+import com.dayofpi.sbw_main.entity.type.mobs.ParatroopaEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;

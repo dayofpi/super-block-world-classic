@@ -4,7 +4,7 @@ import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.renderer.feature.BuzzyEyes;
 import com.dayofpi.sbw_main.entity.model.BuzzyModel;
 import com.dayofpi.sbw_main.entity.registry.ModelLayers;
-import com.dayofpi.sbw_main.entity.types.mobs.BuzzyEntity;
+import com.dayofpi.sbw_main.entity.type.mobs.BuzzyEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

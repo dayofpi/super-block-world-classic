@@ -1,0 +1,39 @@
+{
+  "feature": {
+    "type": "minecraft:random_boolean_selector",
+    "config": {
+      "feature_false": "super_block_world:block_line_x_deep",
+      "feature_true": "super_block_world:block_line_z_deep"
+    }
+  },
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 2
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "absolute": -30
+        },
+        "max_inclusive": {
+          "absolute": 50
+        }
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": [
+          "minecraft:air"
+        ]
+      }
+    }
+  ]
+}

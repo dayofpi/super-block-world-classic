@@ -11,6 +11,22 @@
             {
               "type": "minecraft:item",
               "name": "super_block_world:cloud_slab",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 2,
+                  "add": false,
+                  "conditions": [
+                    {
+                      "condition": "minecraft:block_state_property",
+                      "block": "super_block_world:cloud_slab",
+                      "properties": {
+                        "type": "double"
+                      }
+                    }
+                  ]
+                }
+              ],
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",

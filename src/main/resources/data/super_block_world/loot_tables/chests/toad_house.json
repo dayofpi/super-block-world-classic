@@ -16,6 +16,11 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 10,
+          "name": "super_block_world:cloud_puff"
+        },
+        {
+          "type": "minecraft:item",
           "weight": 40,
           "name": "minecraft:name_tag"
         },

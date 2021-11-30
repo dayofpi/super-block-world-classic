@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.entity.model;
 
-import com.dayofpi.sbw_main.entity.types.bases.AbstractBro;
-import com.dayofpi.sbw_main.entity.types.mobs.FireBroEntity;
+import com.dayofpi.sbw_main.entity.type.bases.AbstractBro;
+import com.dayofpi.sbw_main.entity.type.mobs.FireBroEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;

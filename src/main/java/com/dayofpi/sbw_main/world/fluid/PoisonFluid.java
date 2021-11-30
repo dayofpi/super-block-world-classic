@@ -3,8 +3,8 @@ package com.dayofpi.sbw_main.world.fluid;
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.item.registry.ModItems;
-import com.dayofpi.sbw_main.world.registry.ModFluids;
-import com.dayofpi.sbw_main.world.registry.ModParticles;
+import com.dayofpi.sbw_main.world.registry.ModFluid;
+import com.dayofpi.sbw_main.world.registry.ModParticle;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.fluid.Fluid;
@@ -23,11 +23,11 @@ import java.util.Random;
 
 public abstract class PoisonFluid extends AbstractFluid {
     public Fluid getFlowing() {
-        return ModFluids.FLOWING_POISON;
+        return ModFluid.FLOWING_POISON;
     }
 
     public Fluid getStill() {
-        return ModFluids.STILL_POISON;
+        return ModFluid.STILL_POISON;
     }
 
     public Item getBucketItem() {
@@ -47,7 +47,7 @@ public abstract class PoisonFluid extends AbstractFluid {
                 double d = (double)pos.getX() + random.nextDouble();
                 double e = (double)pos.getY() + 1.0D;
                 double f = (double)pos.getZ() + random.nextDouble();
-                world.addParticle(ModParticles.POISON_BUBBLE, d, e, f, 0.0D, 0.0D, 0.0D);
+                world.addParticle(ModParticle.POISON_BUBBLE, d, e, f, 0.0D, 0.0D, 0.0D);
             }
         }
         if (random.nextInt(192) == 0) {

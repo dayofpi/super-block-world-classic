@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.entity.model;
 
-import com.dayofpi.sbw_main.entity.types.mobs.GoombaEntity;
+import com.dayofpi.sbw_main.entity.type.mobs.GoombaEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;

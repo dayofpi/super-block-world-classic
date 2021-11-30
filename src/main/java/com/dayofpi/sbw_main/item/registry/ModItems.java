@@ -9,7 +9,7 @@ import com.dayofpi.sbw_main.block.registry.categories.VariantBlocks;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.item.types.*;
 import com.dayofpi.sbw_main.misc.EnumBoats;
-import com.dayofpi.sbw_main.world.registry.ModFluids;
+import com.dayofpi.sbw_main.world.registry.ModFluid;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
@@ -50,10 +50,10 @@ public class ModItems {
     public static final Item RED_SHELL = new ArmorItem(RED_SHELL_ARMOR_MATERIAL, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BUZZY_SHELL = new ArmorItem(BUZZY_ARMOR_MATERIAL, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item JUMP_BOOTS = new ArmorItem(JUMP_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
-    public static final Item BOTTLE_O_GHOST = new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).group(CreativeTabs.ITEM_GROUP));
+    public static final Item BOTTLED_GHOST = new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).group(CreativeTabs.ITEM_GROUP));
     public static final Item GREEN_MUSHROOM_ON_A_STICK = new OnAStickItem<>(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxDamage(25), ModEntities.BUZZY_BEETLE, 2);
     public static final Item AMANITA_BOAT = new BoatItem(EnumBoats.AMANITA, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxCount(1));
-    public static final Item POISON_BUCKET = new PoisonBucketItem(ModFluids.STILL_POISON, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1).group(CreativeTabs.ITEM_GROUP));
+    public static final Item POISON_BUCKET = new PoisonBucketItem(ModFluid.STILL_POISON, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1).group(CreativeTabs.ITEM_GROUP));
     public static final Item MOO_MOO_SPAWN_EGG = new SpawnEggItem(ModEntities.MOO_MOO, 15985102, 4605249, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item GOOMBA_SPAWN_EGG = new SpawnEggItem(ModEntities.GOOMBA, 12544546, 14922613, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item PARAGOOMBA_SPAWN_EGG = new SpawnEggItem(ModEntities.PARAGOOMBA, 12544546, 16767400, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
@@ -104,7 +104,7 @@ public class ModItems {
         registerItem("buzzy_shell_piece", BUZZY_SHELL_PIECE);
         registerItem("green_mushroom_on_a_stick", GREEN_MUSHROOM_ON_A_STICK);
         registerItem("amanita_boat", AMANITA_BOAT);
-        registerItem("bottle_o_ghost", BOTTLE_O_GHOST);
+        registerItem("bottle_o_ghost", BOTTLED_GHOST);
         registerItem("poison_bucket", POISON_BUCKET);
         registerItem("spawn_eggs/moo_moo", MOO_MOO_SPAWN_EGG);
         registerItem("spawn_eggs/goomba", GOOMBA_SPAWN_EGG);
@@ -206,6 +206,7 @@ public class ModItems {
         registerBlockItem("cloud_block", ModBlocks.CLOUD_BLOCK);
         registerBlockItem("jump_block", ModBlocks.JUMP_BLOCK);
         registerBlockItem("cloud_slab", VariantBlocks.CLOUD_SLAB);
+        registerBlockItem("cloud_stairs", VariantBlocks.CLOUD_STAIRS);
 
         registerBlockItem("amanita_log", ModBlocks.AMANITA_LOG);
         registerBlockItem("stripped_amanita_log", ModBlocks.STRIPPED_AMANITA_LOG);

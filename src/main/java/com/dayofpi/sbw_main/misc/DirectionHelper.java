@@ -14,8 +14,6 @@ public class DirectionHelper {
     /**
      * Get the cardinal compass direction of an entity.
      *
-     * @param entity
-     * @return
      */
     public static Direction getCardinalDirection(LivingEntity entity) {
         double rot = (entity.getYaw() - 90) % 360;
@@ -28,8 +26,6 @@ public class DirectionHelper {
     /**
      * Converts a rotation to a cardinal direction name.
      *
-     * @param rot
-     * @return
      */
     private static Direction getDirection(double rot) {
         if (27 <= rot && rot < 45) {

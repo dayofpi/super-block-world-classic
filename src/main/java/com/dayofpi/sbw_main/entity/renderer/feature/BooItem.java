@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.entity.renderer.feature;
 
 import com.dayofpi.sbw_main.entity.model.BooModel;
-import com.dayofpi.sbw_main.entity.types.mobs.BooEntity;
+import com.dayofpi.sbw_main.entity.type.mobs.BooEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;

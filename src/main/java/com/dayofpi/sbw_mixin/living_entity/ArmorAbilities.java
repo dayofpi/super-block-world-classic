@@ -3,7 +3,7 @@ package com.dayofpi.sbw_mixin.living_entity;
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.ModTags;
 import com.dayofpi.sbw_main.entity.registry.ModEffects;
-import com.dayofpi.sbw_main.entity.types.bases.AbstractBuzzy;
+import com.dayofpi.sbw_main.entity.type.bases.AbstractBuzzy;
 import com.dayofpi.sbw_main.item.registry.ModItems;
 import com.dayofpi.sbw_main.misc.ModDamageSource;
 import net.minecraft.entity.Entity;

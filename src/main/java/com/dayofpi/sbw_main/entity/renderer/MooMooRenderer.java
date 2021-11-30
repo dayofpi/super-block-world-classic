@@ -2,7 +2,7 @@ package com.dayofpi.sbw_main.entity.renderer;
 
 import com.dayofpi.sbw_main.entity.model.MooMooModel;
 import com.dayofpi.sbw_main.entity.registry.ModelLayers;
-import com.dayofpi.sbw_main.entity.types.mobs.MooMooEntity;
+import com.dayofpi.sbw_main.entity.type.mobs.MooMooEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

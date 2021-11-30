@@ -11,7 +11,7 @@ public class ParticleClient {
     public static void particleRendering() {
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> registry.register(new Identifier(Main.MOD_ID, "particle/poison_0"))));
 
-        ParticleFactoryRegistry.getInstance().register(ModParticles.POISON_BUBBLE, SoulParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticle.POISON_BUBBLE, SoulParticle.Factory::new);
 
     }
 }

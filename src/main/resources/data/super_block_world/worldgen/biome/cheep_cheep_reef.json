@@ -64,15 +64,21 @@
       },
       {
         "type": "super_block_world:spike_top",
-        "weight": 20,
+        "weight": 24,
         "minCount": 2,
         "maxCount": 4
       },
       {
         "type": "super_block_world:bob_omb",
-        "weight": 15,
+        "weight": 24,
         "minCount": 2,
         "maxCount": 4
+      },
+      {
+        "type": "super_block_world:thwomp",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
       }
     ],
     "creature": [
@@ -142,6 +148,8 @@
     [],
     [
       "super_block_world:block_single",
+      "super_block_world:block_line",
+      "super_block_world:block_line_deep",
       "super_block_world:block_pile",
       "super_block_world:block_pile_crystal",
       "super_block_world:jellybeam",

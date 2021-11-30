@@ -3,7 +3,7 @@ package com.dayofpi.sbw_mixin;
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.ModTags;
 import com.dayofpi.sbw_main.misc.ModDamageSource;
-import com.dayofpi.sbw_main.world.registry.ModParticles;
+import com.dayofpi.sbw_main.world.registry.ModParticle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
@@ -94,7 +94,7 @@ public abstract class EntityPoisonInteraction {
                 for (i = 0; (float) i < 1.0F + this.dimensions.width * 20.0F; ++i) {
                     d = (this.random.nextDouble() * 2.0D - 1.0D) * (double) this.getDimensions(EntityPose.STANDING).width;
                     e = (this.random.nextDouble() * 2.0D - 1.0D) * (double) this.getDimensions(EntityPose.STANDING).width;
-                    this.getWorld().addParticle(ModParticles.POISON_BUBBLE, this.getX() + d, h + 1.0F, this.getZ() + e, 0, 0, 0);
+                    this.getWorld().addParticle(ModParticle.POISON_BUBBLE, this.getX() + d, h + 1.0F, this.getZ() + e, 0, 0, 0);
                 }
                 info.cancel();
             }

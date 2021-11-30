@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_main.entity.model;
 
-import com.dayofpi.sbw_main.entity.types.mobs.FakeBlockEntity;
+import com.dayofpi.sbw_main.entity.type.mobs.FakeBlockEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;

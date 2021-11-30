@@ -46,13 +46,7 @@
         "Name": "minecraft:glass"
       }
     },
-    "horizontal_radius_multiplier": {
-      "type": "minecraft:uniform",
-      "value": {
-        "min_inclusive": 1,
-        "max_exclusive": 2
-      }
-    },
+    "horizontal_radius_multiplier": 1,
     "vertical_radius_multiplier": {
       "type": "minecraft:uniform",
       "value": {
@@ -60,12 +54,6 @@
         "max_exclusive": 2
       }
     },
-    "floor_level": {
-      "type": "minecraft:uniform",
-      "value": {
-        "min_inclusive": -1,
-        "max_exclusive": -0.4
-      }
-    }
+    "floor_level": -0.7
   }
 }

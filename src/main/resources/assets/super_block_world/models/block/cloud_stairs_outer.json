@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "super_block_world:block/cloud_block",
+    "top": "super_block_world:block/cloud_block",
+    "side": "super_block_world:block/cloud_block"
+  }
+}

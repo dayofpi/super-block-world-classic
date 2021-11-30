@@ -17,7 +17,22 @@ import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.dimension.DimensionType;
 
 public class Main implements ModInitializer {
-    /*
+    /* Changelog 1.0.8
+    Added thwomps!
+    -Thwomps spawn semi-rarely across the world
+    -They're mobs, but you can walk on them
+    -They try to attack players, but can damage any mobs or bricks on impact
+    Added cloud stairs
+    Fixed cloud slab loot table
+    Added block lines
+    Munchers are now animated
+    Giant brown mushrooms now generate in mushroom grasslands
+    Giant mushrooms in vanilla Mushroom Fields and Dark Forest biomes are now replaced with the mod ones
+    Buzzy beetles and spike tops now destroy bricks when landing
+    Buzzy beetles and spike tops are now able to spawn on the ceiling again
+    Fire and ice flowers now properly work with dispensers
+    Mobs are now set on fire if killed by a fireball, ensuring a cooked drop
+    Thrown hammers now only destroy brick blocks
 
     TODO:
       Add shell entities
@@ -36,7 +51,7 @@ public class Main implements ModInitializer {
     public static RegistryKey<DimensionType> DIMENSION_KEY;
 
     public static final BlockSoundGroup TOADSTONE = new BlockSoundGroup(1.0F, 1.0F, ModSounds.BLOCK_TOADSTONE_BREAK, ModSounds.BLOCK_TOADSTONE_STEP, ModSounds.BLOCK_TOADSTONE_PLACE, ModSounds.BLOCK_TOADSTONE_HIT, ModSounds.BLOCK_TOADSTONE_FALL);
-    public static final BlockSoundGroup GRASSY_STONE = new BlockSoundGroup(1.0F, 1.0F, ModSounds.BLOCK_GRASSY_STONE_BREAK, ModSounds.BLOCK_GRASSY_STONE_STEP, ModSounds.BLOCK_GRASSY_STONE_PLACE, ModSounds.BLOCK_GRASSY_STONE_HIT, ModSounds.BLOCK_GRASSY_STONE_FALL);
+    public static final BlockSoundGroup GRASSY_TOADSTONE = new BlockSoundGroup(1.0F, 1.0F, ModSounds.BLOCK_GRASSY_STONE_BREAK, ModSounds.BLOCK_GRASSY_STONE_STEP, ModSounds.BLOCK_GRASSY_STONE_PLACE, ModSounds.BLOCK_GRASSY_STONE_HIT, ModSounds.BLOCK_GRASSY_STONE_FALL);
     public static final BlockSoundGroup FROSTED_STONE = new BlockSoundGroup(1.0F, 1.0F, ModSounds.BLOCK_FROSTED_STONE_BREAK, ModSounds.BLOCK_FROSTED_STONE_STEP, ModSounds.BLOCK_FROSTED_STONE_PLACE, ModSounds.BLOCK_FROSTED_STONE_HIT, ModSounds.BLOCK_FROSTED_STONE_FALL);
 
     public static final MusicSound GRASSLAND = new MusicSound(ModSounds.MUSIC_GRASSLAND, 12000, 24000, false);
@@ -49,12 +64,13 @@ public class Main implements ModInitializer {
         ModEntities.registerEntities();
         ModItems.registerItems();
         ModEffects.registerEffects();
-        ModFluids.registerFluids();
-        ModFeatureTypes.registerFeatureTypes();
-        ModFeatures.registerFeatures();
+        ModFluid.registerFluids();
+        ModFeature.registerFeatures();
+        ModConfiguredFeature.registerConfiguredFeatures();
         ModTags.registerTags();
-        ModStructures.registerStructures();
-        ModParticles.registerParticles();
+        ModKeys.registerKeys();
+        ModStructure.registerStructures();
+        ModParticle.registerParticles();
         ModSounds.registerSounds();
         DispenserBehaviors.addDispenserBehaviors();
         CustomPortalBuilder.beginPortal()

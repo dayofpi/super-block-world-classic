@@ -4,7 +4,7 @@
 	"ambientocclusion": false,
 	"textures": {
 		"ice": "minecraft:block/ice",
-		"cross": "super_block_world:block/muncher",
+		"cross": "super_block_world:block/muncher_still",
 		"particle": "#cross"
 	},
 	"elements": [

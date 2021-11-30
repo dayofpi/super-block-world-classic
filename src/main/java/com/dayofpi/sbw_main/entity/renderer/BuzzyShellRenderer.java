@@ -2,7 +2,7 @@ package com.dayofpi.sbw_main.entity.renderer;
 
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.model.BuzzyShellModel;
-import com.dayofpi.sbw_main.entity.types.BuzzyShellEntity;
+import com.dayofpi.sbw_main.entity.type.BuzzyShellEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;

@@ -3,7 +3,7 @@ package com.dayofpi.sbw_main.entity.renderer;
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.model.KoopaModel;
 import com.dayofpi.sbw_main.entity.registry.ModelLayers;
-import com.dayofpi.sbw_main.entity.types.mobs.KoopaEntity;
+import com.dayofpi.sbw_main.entity.type.mobs.KoopaEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

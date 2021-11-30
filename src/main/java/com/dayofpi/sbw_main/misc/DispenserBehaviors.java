@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.misc;
 
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.entity.types.projectiles.*;
+import com.dayofpi.sbw_main.entity.type.projectiles.*;
 import com.dayofpi.sbw_main.item.registry.ModItems;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;
@@ -79,7 +79,7 @@ public class DispenserBehaviors {
             }
         });
 
-        DispenserBlock.registerBehavior(ModItems.FIRE_FLOWER, new ProjectileDispenserBehavior() {
+        DispenserBlock.registerBehavior(ModItems.FIRE_FLOWER, new AmmoProjectileDispenserBehavior() {
             protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
                 PersistentProjectileEntity persistentProjectileEntity = new FlowerFireballEntity(world, position.getX(), position.getY(), position.getZ());
                 persistentProjectileEntity.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
@@ -87,7 +87,7 @@ public class DispenserBehaviors {
             }
         });
 
-        DispenserBlock.registerBehavior(ModItems.ICE_FLOWER, new ProjectileDispenserBehavior() {
+        DispenserBlock.registerBehavior(ModItems.ICE_FLOWER, new AmmoProjectileDispenserBehavior() {
             protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
                 PersistentProjectileEntity persistentProjectileEntity = new IceballEntity(world, position.getX(), position.getY(), position.getZ());
                 persistentProjectileEntity.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;

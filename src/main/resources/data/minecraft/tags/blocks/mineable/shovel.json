@@ -11,6 +11,7 @@
     "super_block_world:quicksand",
     "super_block_world:happy_cloud",
     "super_block_world:cloud_block",
-    "super_block_world:cloud_slab"
+    "super_block_world:cloud_slab",
+    "super_block_world:cloud_stairs"
   ]
 }

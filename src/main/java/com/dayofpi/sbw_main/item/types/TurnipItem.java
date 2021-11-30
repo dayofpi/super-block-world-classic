@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.item.types;
 
 import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.entity.types.projectiles.TurnipEntity;
+import com.dayofpi.sbw_main.entity.type.projectiles.TurnipEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

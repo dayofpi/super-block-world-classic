@@ -2,7 +2,7 @@ package com.dayofpi.sbw_main.entity.renderer.feature;
 
 import com.dayofpi.sbw_main.Main;
 import com.dayofpi.sbw_main.entity.model.BuzzyModel;
-import com.dayofpi.sbw_main.entity.types.bases.AbstractBuzzy;
+import com.dayofpi.sbw_main.entity.type.bases.AbstractBuzzy;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.RenderLayer;
