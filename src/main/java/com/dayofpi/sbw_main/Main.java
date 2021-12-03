@@ -1,6 +1,7 @@
 package com.dayofpi.sbw_main;
 
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.registry.ModFluid;
 import com.dayofpi.sbw_main.entity.registry.ModEffects;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.item.registry.ModItems;
@@ -17,38 +18,23 @@ import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.dimension.DimensionType;
 
 public class Main implements ModInitializer {
-    /* Changelog 1.0.8
-    Added thwomps!
-    -Thwomps spawn semi-rarely across the world
-    -They're mobs, but you can walk on them
-    -They try to attack players, but can damage any mobs or bricks on impact
-    Added cloud stairs.
-    Fixed cloud slab loot table.
-    Added block lines.
-    The dimension now has a bit of ambient light.
-    Munchers are now animated.
-    Fossil falls now have falls.
-    Giant brown mushrooms now generate in mushroom grasslands.
-    Giant mushrooms in vanilla Mushroom Fields and Dark Forest biomes are now replaced with the mod ones.
-    Buzzy beetles and spike tops now destroy bricks when landing.
-    Buzzy beetles and spike tops are now able to spawn on the ceiling again.
-    Paratroopas no longer spawn underground.
-    Fire and ice flowers now properly work with dispensers.
-    Mobs are now set on fire if killed by a fireball, ensuring a cooked drop.
-    Thrown hammers now only destroy brick blocks.
+    /* Changelog 1.0.9
+    World features (trees, pipes, etc.) have been re-balanced and are now done by code rather than data files,
+    all you need to know is that this should increase stability and reduce the file size.
+
+    New textures for strawberry coral blocks and green, purple, and pink mushroom caps
+    Added dark amanita logs and planks
+    Purple giant mushrooms can now be found in forests of illusion
+    Trees in forests of illusion now use dark amanita
+    Forests of illusion no longer generate paths
+    Fake blocks no longer take fall damage
 
     TODO:
       Add shell entities
       Add toads
-      Add block lines
       Give fake blocks an attack animation and unique sound/events
-
-      Make mushroom block textures varied.
-      Make more spawn eggs unique
       Fix bottled ghost ID
-      Add missing slabs/stairs/walls.
       Add cerise.
-      Remove experimental world warning.
     */
     public static final String MOD_ID = "super_block_world";
     public static final Identifier DIMENSION_ID = new Identifier(MOD_ID, "mushroom_kingdom");
@@ -67,13 +53,14 @@ public class Main implements ModInitializer {
         ModBlocks.registerBlocks();
         ModEntities.registerEntities();
         ModItems.registerItems();
-        ModEffects.registerEffects();
         ModFluid.registerFluids();
+        ModTags.registerTags();
         ModFeature.registerFeatures();
         ModConfiguredFeature.registerConfiguredFeatures();
-        ModTags.registerTags();
+        ModPlacedFeature.registerPlacedFeatures();
         ModKeys.registerKeys();
         ModStructure.registerStructures();
+        ModEffects.registerEffects();
         ModParticle.registerParticles();
         ModSounds.registerSounds();
         DispenserBehaviors.addDispenserBehaviors();

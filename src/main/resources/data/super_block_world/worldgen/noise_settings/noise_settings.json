@@ -2806,8 +2806,7 @@
                                   "type": "minecraft:biome",
                                   "biome_is": [
                                     "super_block_world:amanita_forest",
-                                    "super_block_world:autumn_forest",
-                                    "super_block_world:forest_of_illusion"
+                                    "super_block_world:autumn_forest"
                                   ]
                                 },
                                 "then_run": {
@@ -2979,10 +2978,10 @@
           "type": "minecraft:vertical_gradient",
           "random_name": "minecraft:deepslate",
           "true_at_and_below": {
-            "absolute": -8
+            "absolute": -16
           },
           "false_at_and_above": {
-            "absolute": 0
+            "absolute": -8
           }
         },
         "then_run": {

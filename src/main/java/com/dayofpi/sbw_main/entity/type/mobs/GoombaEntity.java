@@ -200,7 +200,12 @@ public class GoombaEntity extends EnemyEntity {
     }
 
     public float getSoundPitch() {
-        return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F - (this.getSize() * 0.2F);
+        if (this.getSize() == 0)
+            return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.5F;
+        else if (this.getSize() == 1)
+            return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F;
+        else
+            return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F;
     }
 
     public void onTrackedDataSet(TrackedData<?> data) {

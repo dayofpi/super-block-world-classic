@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_mixin.plant_block;
 
 import com.dayofpi.sbw_main.block.registry.categories.MushroomBlocks;
-import com.dayofpi.sbw_main.world.registry.ModConfiguredFeature;
+import com.dayofpi.sbw_main.world.registry.configured_feature.ConfiguredTrees;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomPlantBlock;
@@ -29,23 +29,23 @@ public class SupportModMushrooms extends PlantBlock {
         world.removeBlock(pos, false);
         ConfiguredFeature<?, ?> mushroomFeature;
         if (this == Blocks.BROWN_MUSHROOM) {
-            mushroomFeature = ModConfiguredFeature.HUGE_BROWN_MUSHROOM;
+            mushroomFeature = ConfiguredTrees.HUGE_BROWN_MUSHROOM;
         } else if (this == MushroomBlocks.PINK_MUSHROOM) {
-            mushroomFeature = ModConfiguredFeature.HUGE_PINK_MUSHROOM;
+            mushroomFeature = ConfiguredTrees.HUGE_PINK_MUSHROOM;
         } else if (this == MushroomBlocks.PURPLE_MUSHROOM) {
-            mushroomFeature = ModConfiguredFeature.HUGE_PURPLE_MUSHROOM;
+            mushroomFeature = ConfiguredTrees.HUGE_PURPLE_MUSHROOM;
         } else if (this == MushroomBlocks.ORANGE_MUSHROOM) {
-            mushroomFeature = ModConfiguredFeature.HUGE_ORANGE_MUSHROOM;
+            mushroomFeature = ConfiguredTrees.HUGE_ORANGE_MUSHROOM;
         }else if (this == MushroomBlocks.YELLOW_MUSHROOM) {
-            mushroomFeature = ModConfiguredFeature.HUGE_YELLOW_MUSHROOM;
+            mushroomFeature = ConfiguredTrees.HUGE_YELLOW_MUSHROOM;
         } else if (this == MushroomBlocks.GREEN_MUSHROOM) {
-            mushroomFeature = ModConfiguredFeature.HUGE_GREEN_MUSHROOM;
+            mushroomFeature = ConfiguredTrees.HUGE_GREEN_MUSHROOM;
         } else {
             if (this != Blocks.RED_MUSHROOM) {
                 world.setBlockState(pos, state, 3);
                 info.setReturnValue(false);
             }
-            mushroomFeature = ModConfiguredFeature.HUGE_RED_MUSHROOM;
+            mushroomFeature = ConfiguredTrees.HUGE_RED_MUSHROOM;
         }
 
         if (mushroomFeature.generate(world, world.getChunkManager().getChunkGenerator(), random, pos)) {

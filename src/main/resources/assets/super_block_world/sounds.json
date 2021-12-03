@@ -373,6 +373,9 @@
   "entity.enemy.spot": {
     "sounds": [ "super_block_world:entity/spotted" ]
   },
+  "entity.misc.transform": {
+    "sounds": [ "super_block_world:entity/transform" ]
+  },
   "entity.goomba.ambient": {
     "subtitle": "sound.entity.goomba.ambient",
     "sounds": [

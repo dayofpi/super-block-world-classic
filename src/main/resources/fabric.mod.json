@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "super_block_world",
-  "version": "1.0.4",
+  "version": "${version}",
 
   "name": "Super Block World",
   "description": "",

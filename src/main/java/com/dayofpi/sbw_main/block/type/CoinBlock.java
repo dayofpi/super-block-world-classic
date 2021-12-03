@@ -34,7 +34,7 @@ public class CoinBlock extends ReactiveBlock {
     }
 
     static {
-        COIN_COUNT = IntProperty.of("coin_count", 1, 64);
+        COIN_COUNT = IntProperty.of("coin_count", 1, 24);
         TYPE = IntProperty.of("type", 0, 4);
     }
 

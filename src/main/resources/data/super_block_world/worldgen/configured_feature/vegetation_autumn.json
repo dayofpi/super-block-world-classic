@@ -12,6 +12,10 @@
         "chance": 0.4
       },
       {
+        "feature": "super_block_world:amanita_oaky",
+        "chance": 0.4
+      },
+      {
         "feature": "super_block_world:amanita_fruit",
         "chance": 0.4
       }

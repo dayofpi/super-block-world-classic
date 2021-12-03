@@ -7,7 +7,6 @@ import com.dayofpi.sbw_main.block.type.PoisonBlock;
 import com.dayofpi.sbw_main.block.type.warp_pipe.WarpPipeBlock;
 import com.dayofpi.sbw_main.block.type.warp_pipe.WarpPipeBodyBlock;
 import com.dayofpi.sbw_main.misc.ModSignTypes;
-import com.dayofpi.sbw_main.world.registry.ModFluid;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
@@ -119,6 +118,9 @@ public class ModBlocks {
     public static final Block AMANITA_WOOD = new WoodBlock(FabricBlockSettings.copyOf(AMANITA_LOG));
     public static final Block STRIPPED_AMANITA_LOG = new PillarBlock(FabricBlockSettings.copyOf(AMANITA_LOG));
     public static final Block STRIPPED_AMANITA_WOOD = new PillarBlock(FabricBlockSettings.copyOf(AMANITA_LOG).mapColor(MapColor.TERRACOTTA_YELLOW));
+
+    public static final Block DARK_AMANITA_LOG = new WoodBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
+    public static final Block DARK_AMANITA_WOOD = new WoodBlock(FabricBlockSettings.copyOf(DARK_AMANITA_LOG));
 
     public static final Block AMANITA_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD, MapColor.TERRACOTTA_YELLOW).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD));
     public static final Block AMANITA_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(ModBlocks::canSpawnOnLeaves).suffocates(ModBlocks::never).blockVision(ModBlocks::never));
@@ -272,6 +274,8 @@ public class ModBlocks {
         registerBlock("amanita_wood", AMANITA_WOOD);
         registerBlock("stripped_amanita_log", STRIPPED_AMANITA_LOG);
         registerBlock("stripped_amanita_wood", STRIPPED_AMANITA_WOOD);
+        registerBlock("dark_amanita_log", DARK_AMANITA_LOG);
+        registerBlock("dark_amanita_wood", DARK_AMANITA_WOOD);
         registerBlock("amanita_planks", AMANITA_PLANKS);
         registerBlock("amanita_slab", VariantBlocks.AMANITA_SLAB);
         registerBlock("amanita_stairs", VariantBlocks.AMANITA_STAIRS);

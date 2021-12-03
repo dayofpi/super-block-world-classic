@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "super_block_world:block/dark_amanita_log",
+    "side": "super_block_world:block/dark_amanita_log"
+  }
+}

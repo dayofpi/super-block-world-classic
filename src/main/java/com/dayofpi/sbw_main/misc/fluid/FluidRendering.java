@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.misc.fluid;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.world.registry.ModFluid;
+import com.dayofpi.sbw_main.block.registry.ModFluid;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;

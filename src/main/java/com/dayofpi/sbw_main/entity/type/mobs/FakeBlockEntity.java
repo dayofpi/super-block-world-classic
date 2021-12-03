@@ -43,6 +43,10 @@ public class FakeBlockEntity extends EnemyEntity {
         this.playSound(ModSounds.BLOCK_TOADSTONE_STEP, 0.15F, 1.0F);
     }
 
+    public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
+        return false;
+    }
+
     public void tickMovement() {
         super.tickMovement();
 

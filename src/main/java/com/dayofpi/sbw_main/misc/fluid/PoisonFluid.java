@@ -3,7 +3,7 @@ package com.dayofpi.sbw_main.misc.fluid;
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.item.registry.ModItems;
-import com.dayofpi.sbw_main.world.registry.ModFluid;
+import com.dayofpi.sbw_main.block.registry.ModFluid;
 import com.dayofpi.sbw_main.world.registry.ModParticle;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;

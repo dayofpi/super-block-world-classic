@@ -2,14 +2,14 @@
   "feature": "super_block_world:vegetation_illusion",
   "placement": [
     {
-      "count": 35,
+      "count": 40,
       "type": "minecraft:count"
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "max_water_depth": 0,
+      "max_water_depth": 2,
       "type": "minecraft:surface_water_depth_filter"
     },
     {

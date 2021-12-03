@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_mixin;
 
-import com.dayofpi.sbw_main.world.registry.ModConfiguredFeature;
+import com.dayofpi.sbw_main.world.registry.configured_feature.ConfiguredTrees;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.world.biome.*;
@@ -30,8 +30,8 @@ public class ReplaceBiomeFeatures {
 
     private static final PlacementModifier NOT_IN_SURFACE_WATER_MODIFIER = SurfaceWaterDepthFilterPlacementModifier.of(0);
 
-    private static final ConfiguredFeature<RandomBooleanFeatureConfig, ?> MUSHROOM_ISLAND_SELECTOR = ConfiguredFeatures.register("super_bock_world:mushroom_island_vegetation", Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(ModConfiguredFeature.HUGE_RED_MUSHROOM::withPlacement, ModConfiguredFeature.HUGE_BROWN_MUSHROOM::withPlacement)));
-    private static final ConfiguredFeature<RandomFeatureConfig, ?> DARK_FOREST_SELECTOR = ConfiguredFeatures.register("super_bock_world:dark_forest_vegetation", Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(List.of(new RandomFeatureEntry(ModConfiguredFeature.HUGE_BROWN_MUSHROOM.withPlacement(), 0.025f), new RandomFeatureEntry(ModConfiguredFeature.HUGE_RED_MUSHROOM.withPlacement(), 0.05f), new RandomFeatureEntry(TreePlacedFeatures.DARK_OAK_CHECKED, 0.6666667f), new RandomFeatureEntry(TreePlacedFeatures.BIRCH_CHECKED, 0.2f), new RandomFeatureEntry(TreePlacedFeatures.FANCY_OAK_CHECKED, 0.1f)), TreePlacedFeatures.OAK_CHECKED)));
+    private static final ConfiguredFeature<RandomBooleanFeatureConfig, ?> MUSHROOM_ISLAND_SELECTOR = ConfiguredFeatures.register("super_bock_world:mushroom_island_vegetation", Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(ConfiguredTrees.HUGE_RED_MUSHROOM::withPlacement, ConfiguredTrees.HUGE_BROWN_MUSHROOM::withPlacement)));
+    private static final ConfiguredFeature<RandomFeatureConfig, ?> DARK_FOREST_SELECTOR = ConfiguredFeatures.register("super_bock_world:dark_forest_vegetation", Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(List.of(new RandomFeatureEntry(ConfiguredTrees.HUGE_BROWN_MUSHROOM.withPlacement(), 0.025f), new RandomFeatureEntry(ConfiguredTrees.HUGE_RED_MUSHROOM.withPlacement(), 0.05f), new RandomFeatureEntry(TreePlacedFeatures.DARK_OAK_CHECKED, 0.6666667f), new RandomFeatureEntry(TreePlacedFeatures.BIRCH_CHECKED, 0.2f), new RandomFeatureEntry(TreePlacedFeatures.FANCY_OAK_CHECKED, 0.1f)), TreePlacedFeatures.OAK_CHECKED)));
 
     private static final PlacedFeature MUSHROOM_ISLAND_VEGETATION = PlacedFeatures.register("super_bock_world:mushroom_island_vegetation", MUSHROOM_ISLAND_SELECTOR.withPlacement(SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of()));
     private static final PlacedFeature DARK_FOREST_VEGETATION = PlacedFeatures.register("super_bock_world:dark_forest_vegetation", DARK_FOREST_SELECTOR.withPlacement(CountPlacementModifier.of(16), SquarePlacementModifier.of(), NOT_IN_SURFACE_WATER_MODIFIER, PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP, BiomePlacementModifier.of()));

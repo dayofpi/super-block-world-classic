@@ -59,15 +59,13 @@
   "carvers": {
     "air": [
       "minecraft:cave",
-      "super_block_world:maze_cave",
       "minecraft:canyon"
     ]
   },
   "features": [
     [],
     [
-      "super_block_world:lake_lava",
-      "super_block_world:lake_lava_surface"
+      "super_block_world:lake_lava"
     ],
     [],
     [
@@ -75,8 +73,7 @@
       "super_block_world:block_line",
       "super_block_world:block_line_deep",
       "super_block_world:block_pile",
-      "super_block_world:block_pile_surface",
-      "super_block_world:block_pile_crystal",
+      "super_block_world:block_pile_rare",
       "super_block_world:pipe_default",
       "super_block_world:pipe_underwater"
     ],
@@ -94,7 +91,7 @@
       "super_block_world:toppings_gold"
     ],
     [
-      "super_block_world:spring_extra",
+      "super_block_world:waterfall",
       "super_block_world:disk_sand",
       "super_block_world:patch_cave_crystals",
       "super_block_world:patch_lantern",

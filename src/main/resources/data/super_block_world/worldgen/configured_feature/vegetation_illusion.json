@@ -2,11 +2,17 @@
   "config": {
     "features": [
       {
-        "feature": "super_block_world:amanita_dark",
-        "chance": 0.01
+        "feature": "super_block_world:dark_amanita",
+        "chance": 0.1
+      },
+      {
+        "feature": {
+          "feature": "super_block_world:huge_purple_mushroom",
+          "placement": []
+        }, "chance": 0.06
       }
     ],
-    "default": "super_block_world:amanita_dark_tall"
+    "default": "super_block_world:dark_amanita_tall"
   },
   "type": "minecraft:random_selector"
 }

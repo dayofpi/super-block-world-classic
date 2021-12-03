@@ -9,7 +9,7 @@ import com.dayofpi.sbw_main.block.registry.categories.VariantBlocks;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.item.types.*;
 import com.dayofpi.sbw_main.misc.EnumBoats;
-import com.dayofpi.sbw_main.world.registry.ModFluid;
+import com.dayofpi.sbw_main.block.registry.ModFluid;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EquipmentSlot;
@@ -212,6 +212,9 @@ public class ModItems {
         registerBlockItem("stripped_amanita_log", ModBlocks.STRIPPED_AMANITA_LOG);
         registerBlockItem("amanita_wood", ModBlocks.AMANITA_WOOD);
         registerBlockItem("stripped_amanita_wood", ModBlocks.STRIPPED_AMANITA_WOOD);
+
+        registerBlockItem("dark_amanita_log", ModBlocks.DARK_AMANITA_LOG);
+        registerBlockItem("dark_amanita_wood", ModBlocks.DARK_AMANITA_WOOD);
 
         registerBlockItem("amanita_leaves", ModBlocks.AMANITA_LEAVES);
         registerBlockItem("fruiting_amanita_leaves", ModBlocks.FRUITING_AMANITA_LEAVES);

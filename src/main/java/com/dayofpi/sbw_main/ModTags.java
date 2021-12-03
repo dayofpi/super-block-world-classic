@@ -14,6 +14,7 @@ public class ModTags {
     public static Tag<Item> SHELLMETS;
     public static Tag<Block> BRICKS;
     public static Tag<Block> ALWAYS_CARVABLE;
+    public static Tag<Block> APPLY_TOPPING_TO;
     public static Tag<EntityType<?>> POISON_IMMUNE;
     public static Tag<EntityType<?>> IMMUNE_TO_BOOTS;
     public static Tag<Fluid> POISON;
@@ -23,6 +24,7 @@ public class ModTags {
         SHELLMETS = addItemTag("shellmets");
         BRICKS = addBlockTag("bricks");
         ALWAYS_CARVABLE = addBlockTag("always_carvable");
+        APPLY_TOPPING_TO = addBlockTag("apply_topping_to");
         POISON_IMMUNE = addEntityTag("poison_immune");
         IMMUNE_TO_BOOTS = addEntityTag("immune_to_boots");
         POISON = addFluidTag("poison");

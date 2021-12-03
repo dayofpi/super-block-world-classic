@@ -93,7 +93,6 @@
   "carvers": {
     "air": [
       "minecraft:cave",
-      "super_block_world:maze_cave",
       "minecraft:canyon"
     ]
   },
@@ -109,7 +108,7 @@
       "super_block_world:block_line",
       "super_block_world:block_line_deep",
       "super_block_world:block_pile",
-      "super_block_world:block_pile_crystal",
+      "super_block_world:block_pile_rare",
       "super_block_world:pipe_default",
       "super_block_world:pipe_underwater"
     ],

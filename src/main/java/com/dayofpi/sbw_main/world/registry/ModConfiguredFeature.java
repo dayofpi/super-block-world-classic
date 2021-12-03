@@ -1,70 +1,59 @@
 package com.dayofpi.sbw_main.world.registry;
 
 import com.dayofpi.sbw_main.Main;
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.block.registry.categories.MushroomBlocks;
-import com.dayofpi.sbw_main.block.type.MushroomBlock;
-import com.dayofpi.sbw_main.world.feature_config.GiantMushroomFeatureConfig;
-import net.minecraft.block.BlockState;
+import com.dayofpi.sbw_main.world.registry.configured_feature.ConfiguredBlocks;
+import com.dayofpi.sbw_main.world.registry.configured_feature.ConfiguredMisc;
+import com.dayofpi.sbw_main.world.registry.configured_feature.ConfiguredOres;
+import com.dayofpi.sbw_main.world.registry.configured_feature.ConfiguredTrees;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DataPool;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
-import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.LargeOakFoliagePlacer;
-import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 public class ModConfiguredFeature {
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> AMANITA = Feature.TREE.configure((new TreeFeatureConfig.Builder(BlockStateProvider.of(States.AMANITA_LOG), new StraightTrunkPlacer(3, 2, 1), BlockStateProvider.of(States.AMANITA_LEAVES), new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().dirtProvider(BlockStateProvider.of(ModBlocks.TOADSTOOL_GRASS.getDefaultState())).build());
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> AMANITA_FRUIT = Feature.TREE.configure((new TreeFeatureConfig.Builder(BlockStateProvider.of(States.AMANITA_LOG), new StraightTrunkPlacer(3, 2, 1), new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(States.AMANITA_LEAVES, 3).add(States.FRUITING_AMANITA_LEAVES, 1).build()), new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().dirtProvider(BlockStateProvider.of(ModBlocks.TOADSTOOL_GRASS.getDefaultState())).build());
-
-    public static final ConfiguredFeature<?, ?> HUGE_RED_MUSHROOM_FLAT = ModFeature.HUGE_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.RED_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(6, 10),UniformIntProvider.create(2, 3), true));
-    public static final ConfiguredFeature<?, ?> HUGE_GREEN_MUSHROOM_FLAT = ModFeature.HUGE_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.GREEN_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(6, 10),UniformIntProvider.create(2, 3), true));
-
-    public static final ConfiguredFeature<?, ?> HUGE_YELLOW_MUSHROOM = ModFeature.HUGE_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.YELLOW_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(4, 8), UniformIntProvider.create(2, 3), true));
-    public static final ConfiguredFeature<?, ?> HUGE_GREEN_MUSHROOM = ModFeature.HUGE_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.GREEN_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(3, 6), ConstantIntProvider.create(2), false));
-    public static final ConfiguredFeature<?, ?> HUGE_PINK_MUSHROOM = ModFeature.HUGE_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.PINK_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(4, 8), UniformIntProvider.create(2, 3), true));
-    public static final ConfiguredFeature<?, ?> HUGE_PURPLE_MUSHROOM = ModFeature.HUGE_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.PURPLE_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(4, 8), UniformIntProvider.create(2, 3), true));
-    public static final ConfiguredFeature<?, ?> HUGE_ORANGE_MUSHROOM = ModFeature.HUGE_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.ORANGE_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(0, 8), UniformIntProvider.create(2, 3), true));
-    public static final ConfiguredFeature<?, ?> HUGE_BROWN_MUSHROOM = ModFeature.HUGE_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.BROWN_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(4, 8), UniformIntProvider.create(2, 3), true));
-    public static final ConfiguredFeature<?, ?> HUGE_RED_MUSHROOM = ModFeature.HUGE_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.RED_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(4, 8),ConstantIntProvider.create(2), false));
-
     private static void registerConfiguredFeature(String id, ConfiguredFeature<?, ?> type) {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.MOD_ID, id), type);
     }
 
     public static void registerConfiguredFeatures() {
-        registerConfiguredFeature("amanita", AMANITA);
-        registerConfiguredFeature("amanita_fruit", AMANITA_FRUIT);
-        registerConfiguredFeature("huge_red_mushroom_flat", HUGE_RED_MUSHROOM_FLAT);
-        registerConfiguredFeature("huge_green_mushroom_flat", HUGE_GREEN_MUSHROOM_FLAT);
-        registerConfiguredFeature("huge_yellow_mushroom", HUGE_YELLOW_MUSHROOM);
-        registerConfiguredFeature("huge_green_mushroom", HUGE_GREEN_MUSHROOM);
-        registerConfiguredFeature("huge_pink_mushroom", HUGE_PINK_MUSHROOM);
-        registerConfiguredFeature("huge_purple_mushroom", HUGE_PURPLE_MUSHROOM);
-        registerConfiguredFeature("huge_orange_mushroom", HUGE_ORANGE_MUSHROOM);
-        registerConfiguredFeature("huge_brown_mushroom", HUGE_BROWN_MUSHROOM);
-        registerConfiguredFeature("huge_red_mushroom", HUGE_RED_MUSHROOM);
+        registerConfiguredFeature("spring", ConfiguredMisc.SPRING);
+        registerConfiguredFeature("waterfall", ConfiguredMisc.WATERFALL);
+        registerConfiguredFeature("lake_lava", ConfiguredMisc.LAKE_LAVA);
+        registerConfiguredFeature("lake_poison", ConfiguredMisc.LAKE_POISON);
+        registerConfiguredFeature("pipe_ceiling", ConfiguredMisc.PIPE_CEILING);
+        registerConfiguredFeature("pipe_floor", ConfiguredMisc.PIPE_FLOOR);
+        registerConfiguredFeature("jellybeam", ConfiguredBlocks.JELLYBEAM);
+        registerConfiguredFeature("block_single", ConfiguredBlocks.BLOCK_SINGLE);
+        registerConfiguredFeature("block_line_toadstone", ConfiguredBlocks.BLOCK_LINE_TOADSTONE);
+        registerConfiguredFeature("block_line_gloomstone", ConfiguredBlocks.BLOCK_LINE_GLOOMSTONE);
+        registerConfiguredFeature("block_line", ConfiguredBlocks.BLOCK_LINE);
+        registerConfiguredFeature("block_line_deep", ConfiguredBlocks.BLOCK_LINE_DEEP);
+        registerConfiguredFeature("block_pile", ConfiguredBlocks.BLOCK_PILE);
+        registerConfiguredFeature("block_pile_rare", ConfiguredBlocks.BLOCK_PILE_RARE);
+        registerConfiguredFeature("vanillate_topping", ConfiguredOres.VANILLATE_TOPPING);
+        registerConfiguredFeature("ore_crumble", ConfiguredOres.ORE_CRUMBLE);
+        registerConfiguredFeature("ore_bronze", ConfiguredOres.ORE_BRONZE);
+        registerConfiguredFeature("ore_amethyst", ConfiguredOres.ORE_AMETHYST);
+        registerConfiguredFeature("ore_hardstone", ConfiguredOres.ORE_HARDSTONE);
+        registerConfiguredFeature("topping_coal", ConfiguredOres.TOPPING_COAL);
+        registerConfiguredFeature("topping_iron", ConfiguredOres.TOPPING_IRON);
+        registerConfiguredFeature("topping_gold", ConfiguredOres.TOPPING_GOLD);
+        registerConfiguredFeature("disk_sand", ConfiguredOres.DISK_SAND);
+        registerConfiguredFeature("amanita", ConfiguredTrees.AMANITA);
+        registerConfiguredFeature("amanita_fruit", ConfiguredTrees.AMANITA_FRUIT);
+        registerConfiguredFeature("amanita_large", ConfiguredTrees.AMANITA_LARGE);
+        registerConfiguredFeature("amanita_oaky", ConfiguredTrees.AMANITA_OAKY);
+        registerConfiguredFeature("amanita_oaky_fruit", ConfiguredTrees.AMANITA_OAKY_FRUIT);
+        registerConfiguredFeature("dark_amanita", ConfiguredTrees.DARK_AMANITA);
+        registerConfiguredFeature("dark_amanita_tall", ConfiguredTrees.DARK_AMANITA_TALL);
+        registerConfiguredFeature("huge_red_mushroom_flat", ConfiguredTrees.HUGE_RED_MUSHROOM_FLAT);
+        registerConfiguredFeature("huge_green_mushroom_flat", ConfiguredTrees.HUGE_GREEN_MUSHROOM_FLAT);
+        registerConfiguredFeature("huge_yellow_mushroom", ConfiguredTrees.HUGE_YELLOW_MUSHROOM);
+        registerConfiguredFeature("huge_green_mushroom", ConfiguredTrees.HUGE_GREEN_MUSHROOM);
+        registerConfiguredFeature("huge_pink_mushroom", ConfiguredTrees.HUGE_PINK_MUSHROOM);
+        registerConfiguredFeature("huge_purple_mushroom", ConfiguredTrees.HUGE_PURPLE_MUSHROOM);
+        registerConfiguredFeature("huge_orange_mushroom", ConfiguredTrees.HUGE_ORANGE_MUSHROOM);
+        registerConfiguredFeature("huge_brown_mushroom", ConfiguredTrees.HUGE_BROWN_MUSHROOM);
+        registerConfiguredFeature("huge_red_mushroom", ConfiguredTrees.HUGE_RED_MUSHROOM);
         }
-
-    public static final class States {
-        private static final BlockState BROWN_MUSHROOM_CAP = MushroomBlocks.BROWN_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState RED_MUSHROOM_CAP = MushroomBlocks.RED_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState YELLOW_MUSHROOM_CAP = MushroomBlocks.YELLOW_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState GREEN_MUSHROOM_CAP = MushroomBlocks.GREEN_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState PINK_MUSHROOM_CAP = MushroomBlocks.PINK_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState PURPLE_MUSHROOM_CAP = MushroomBlocks.PURPLE_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState ORANGE_MUSHROOM_CAP = MushroomBlocks.ORANGE_MUSHROOM_CAP.getDefaultState().with(MushroomBlock.DOWN, false);
-        private static final BlockState MUSHROOM_STEM = MushroomBlocks.MUSHROOM_STEM.getDefaultState();
-        private static final BlockState AMANITA_LEAVES = ModBlocks.AMANITA_LEAVES.getDefaultState();
-        private static final BlockState FRUITING_AMANITA_LEAVES = ModBlocks.FRUITING_AMANITA_LEAVES.getDefaultState();
-        private static final BlockState AMANITA_LOG = ModBlocks.AMANITA_LOG.getDefaultState();
-    }
 }

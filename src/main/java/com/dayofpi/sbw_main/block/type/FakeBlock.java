@@ -1,5 +1,6 @@
 package com.dayofpi.sbw_main.block.type;
 
+import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.entity.type.mobs.FakeBlockEntity;
 import net.minecraft.block.Block;
@@ -23,6 +24,7 @@ public class FakeBlock extends Block {
         if (fakeBlockEntity != null) {
             fakeBlockEntity.refreshPositionAndAngles((double) pos.getX() + 0.5D, pos.getY(), (double) pos.getZ() + 0.5D, 0.0F, 0.0F);
             world.spawnEntity(fakeBlockEntity);
+            fakeBlockEntity.playSound(ModSounds.ENTITY_MISC_TRANSFORM, 1.0F, 1.0F);
             fakeBlockEntity.playSpawnEffects();
         }
     }

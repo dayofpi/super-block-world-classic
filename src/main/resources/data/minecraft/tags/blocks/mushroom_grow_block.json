@@ -6,11 +6,10 @@
     "super_block_world:toadstool_farmland",
     "super_block_world:toadstool_path",
     "super_block_world:amanita_log",
-    "super_block_world:amanita_planks",
+    "super_block_world:dark_amanita_log",
     "super_block_world:vanillate",
     "super_block_world:topped_vanillate",
     "super_block_world:toadstone",
-    "super_block_world:grassy_toadstone",
-    "super_block_world:toadstone_bricks"
+    "super_block_world:grassy_toadstone"
   ]
 }
