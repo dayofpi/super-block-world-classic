@@ -9,7 +9,6 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 
 public class ModBlockEntities {
 
@@ -17,13 +16,11 @@ public class ModBlockEntities {
     public static BlockEntityType<BooLanternBE> BOO_LANTERN;
     public static BlockEntityType<WarpPipeBE> WARP_PIPE;
     public static BlockEntityType<SignBlockEntity> SIGN;
-    public static RegistryKey<BlockEntityType<?>> SIGN_BE;
 
     public static void registerBlockEntities() {
-        SIGN_BE = RegistryKey.of(Registry.BLOCK_ENTITY_TYPE_KEY, new Identifier("sign"));
         QUESTION_BLOCK = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "question_block"), FabricBlockEntityTypeBuilder.create(QuestionBlockBE::new, ModBlocks.QUESTION_BLOCK).build());
         BOO_LANTERN = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "boo_lantern"), FabricBlockEntityTypeBuilder.create(BooLanternBE::new, ModBlocks.BOO_LANTERN).build());
         WARP_PIPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "warp_pipe"), FabricBlockEntityTypeBuilder.create(WarpPipeBE::new, ModBlocks.WARP_PIPE).build());
-        SIGN = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "sign"), FabricBlockEntityTypeBuilder.create(SignBlockEntity::new, ModBlocks.AMANITA_SIGN, ModBlocks.AMANITA_WALL_SIGN).build());
+        SIGN = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "sign"), FabricBlockEntityTypeBuilder.create(SignBlockEntity::new, ModBlocks.AMANITA_SIGN, ModBlocks.AMANITA_WALL_SIGN, ModBlocks.DARK_AMANITA_SIGN, ModBlocks.DARK_AMANITA_WALL_SIGN).build());
     }
 }

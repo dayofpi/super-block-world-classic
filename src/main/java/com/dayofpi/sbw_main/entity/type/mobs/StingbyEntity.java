@@ -63,7 +63,7 @@ public class StingbyEntity extends EnemyEntity implements Flutterer {
     protected void initGoals() {
         this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true, true));
-        this.goalSelector.add(5, new StingbyEntity.StingbyWanderGoal());
+        this.goalSelector.add(5, new StingbyWanderGoal());
         this.targetSelector.add(2, new RevengeGoal(this));
     }
 

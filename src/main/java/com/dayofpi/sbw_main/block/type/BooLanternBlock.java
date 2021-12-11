@@ -14,26 +14,34 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 @SuppressWarnings("deprecation")
 public class BooLanternBlock extends BlockWithEntity {
     public static final BooleanProperty LIT;
+    public static final BooleanProperty HANGING;
     protected static final BooleanProperty WATERLOGGED;
     protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D);
 
     static {
         LIT = Properties.LIT;
+        HANGING = Properties.HANGING;
         WATERLOGGED = Properties.WATERLOGGED;
     }
 
     public BooLanternBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(LIT, true).with(WATERLOGGED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(LIT, true).with(HANGING, false).with(WATERLOGGED, false));
+    }
+
+    protected static Direction attachedDirection(BlockState state) {
+        return state.get(HANGING) ? Direction.DOWN : Direction.UP;
     }
 
     @Nullable
@@ -66,20 +74,38 @@ public class BooLanternBlock extends BlockWithEntity {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (state.get(WATERLOGGED)) {
+            world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
+        return attachedDirection(state).getOpposite() == direction && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+    }
+
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
     }
 
-    @Override
+    @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        boolean bl = fluidState.getFluid() == Fluids.WATER;
-        return this.getDefaultState().with(WATERLOGGED, bl);
+        Direction[] var3 = ctx.getPlacementDirections();
+
+        for (Direction direction : var3) {
+            if (direction.getAxis() == Direction.Axis.Y) {
+                BlockState blockState = this.getDefaultState().with(HANGING, direction == Direction.UP);
+                if (blockState.canPlaceAt(ctx.getWorld(), ctx.getBlockPos())) {
+                    return blockState.with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+                }
+            }
+        }
+
+        return null;
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(LIT, WATERLOGGED);
+        builder.add(LIT, HANGING, WATERLOGGED);
     }
 
     @Override

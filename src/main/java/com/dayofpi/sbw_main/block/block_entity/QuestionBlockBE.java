@@ -1,7 +1,6 @@
 package com.dayofpi.sbw_main.block.block_entity;
 
 import com.dayofpi.sbw_main.block.registry.ModBlockEntities;
-import com.dayofpi.sbw_main.misc.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventories;

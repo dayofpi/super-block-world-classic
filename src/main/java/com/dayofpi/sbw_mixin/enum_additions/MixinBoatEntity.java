@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_mixin.enum_additions;
 
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.misc.EnumBoats;
+import com.dayofpi.sbw_main.misc.ModBoatType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.vehicle.BoatEntity;
 import org.objectweb.asm.Opcodes;
@@ -36,9 +36,14 @@ public class MixinBoatEntity {
     private static void addBoat(CallbackInfo info) {
         var variants = new ArrayList<>(Arrays.asList(field_7724));
         var last = variants.get(variants.size() - 1);
-        var amanita = newType("AMANITA", last.ordinal() + 1, ModBlocks.AMANITA_PLANKS, "amanita");
-        EnumBoats.AMANITA = amanita;
+        var amanita = newType("AMANITA", last.ordinal() + 1,
+                ModBlocks.AMANITA_PLANKS, "amanita");
+        var dark_amanita = newType("DARK_AMANITA", last.ordinal() + 2,
+                ModBlocks.DARK_AMANITA_PLANKS, "dark_amanita");
+        ModBoatType.AMANITA = amanita;
+        ModBoatType.DARK_AMANITA = dark_amanita;
         variants.add(amanita);
+        variants.add(dark_amanita);
 
         field_7724 = variants.toArray(new BoatEntity.Type[0]);
     }

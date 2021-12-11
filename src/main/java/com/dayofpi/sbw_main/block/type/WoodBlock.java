@@ -28,6 +28,10 @@ public class WoodBlock extends PillarBlock {
         BlockState stripResult = ModBlocks.STRIPPED_AMANITA_LOG.getDefaultState();
         if (state.isOf(ModBlocks.AMANITA_WOOD)) {
             stripResult = ModBlocks.STRIPPED_AMANITA_WOOD.getDefaultState();
+        } else if (state.isOf(ModBlocks.DARK_AMANITA_LOG)) {
+            stripResult = ModBlocks.STRIPPED_DARK_AMANITA_LOG.getDefaultState();
+        } else if (state.isOf(ModBlocks.DARK_AMANITA_WOOD)) {
+            stripResult = ModBlocks.STRIPPED_DARK_AMANITA_WOOD.getDefaultState();
         }
         if (itemStack.isIn(FabricToolTags.AXES)) {
             world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);

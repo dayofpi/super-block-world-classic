@@ -22,7 +22,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "super_block_world:buzzy_shell_piece",
+          "name": "super_block_world:cerise",
           "functions": [
             {
               "function": "minecraft:set_count",

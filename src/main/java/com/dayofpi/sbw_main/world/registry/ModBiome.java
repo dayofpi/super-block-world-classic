@@ -1,35 +1,36 @@
 package com.dayofpi.sbw_main.world.registry;
 
-import net.minecraft.sound.BiomeMoodSound;
+import com.dayofpi.sbw_main.Main;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.BuiltinRegistries;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
 
 public class ModBiome {
-    private static final Biome MUSHROOM_GRASSLANDS = createMushroomGrasslands();
-    private static final int DEFAULT_SKY_COLOR = 5156850, DEFAULT_FOG_COLOR = 11337727;
-    private static final int DEFAULT_GRASS_COLOR = 6879535, DEFAULT_FOLIAGE_COLOR = 891656;
-    private static final int DEFAULT_WATER_COLOR = 47847;
+    private static final Biome MUSHROOM_GRASSLANDS = ModBiomeBuilder.createMushroomGrasslands();
+    private static final Biome MOO_MOO_MEADOW = ModBiomeBuilder.createMushroomGrasslands();
+    private static final Biome MUSHROOM_GORGE = ModBiomeBuilder.createMushroomGorge();
+    private static final Biome FOSSIL_FALLS = ModBiomeBuilder.createMushroomGrasslands();
+    private static final Biome DRY_DRY_DESERT = ModBiomeBuilder.createDryDryDesert();
+    private static final Biome CHEEP_CHEEP_REEF = ModBiomeBuilder.createMushroomGrasslands();
+    private static final Biome AMANITA_FOREST = ModBiomeBuilder.createAmanitaForest();
+    private static final Biome AUTUMN_FOREST = ModBiomeBuilder.createMushroomGrasslands();
+    private static final Biome FOREST_OF_ILLUSION = ModBiomeBuilder.createMushroomGrasslands();
 
-    private static Biome createMushroomGrasslands() {
-        GenerationSettings.Builder gen = new GenerationSettings.Builder();
-        SpawnSettings.Builder spawn = new SpawnSettings.Builder();
+    private static void registerBiome(String id, Biome type) {
+        Registry.register(BuiltinRegistries.BIOME, RegistryKey.of(Registry.BIOME_KEY, new Identifier(Main.MOD_ID, id)), type);
+    }
 
-        ModBiomeBuilder.addLandCarvers(gen);
-
-        ModBiomeBuilder.addMushroomGrasslandMobs(spawn);
-        ModBiomeBuilder.addCaveMobs(spawn);
-
-        return new Biome.Builder()
-                .effects(new BiomeEffects.Builder()
-                        .skyColor(DEFAULT_SKY_COLOR).fogColor(DEFAULT_FOG_COLOR)
-                        .grassColor(DEFAULT_GRASS_COLOR).foliageColor(DEFAULT_FOLIAGE_COLOR)
-                        .waterColor(DEFAULT_WATER_COLOR).waterFogColor(DEFAULT_WATER_COLOR)
-                        .moodSound(BiomeMoodSound.CAVE).build())
-                .spawnSettings(spawn.build())
-                .precipitation(Biome.Precipitation.RAIN)
-                .temperature(0.7f).downfall(0.4f)
-                .build();
+    public static void registerBiomes() {
+        registerBiome("mushroom_grasslands", MUSHROOM_GRASSLANDS);
+        registerBiome("moo_moo_meadow", MOO_MOO_MEADOW);
+        registerBiome("mushroom_gorge", MUSHROOM_GORGE);
+        registerBiome("fossil_falls", FOSSIL_FALLS);
+        registerBiome("dry_dry_desert", DRY_DRY_DESERT);
+        registerBiome("cheep_cheep_reef", CHEEP_CHEEP_REEF);
+        registerBiome("amanita_forest", AMANITA_FOREST);
+        registerBiome("autumn_forest", AUTUMN_FOREST);
+        registerBiome("forest_of_illusion", FOREST_OF_ILLUSION);
     }
 }

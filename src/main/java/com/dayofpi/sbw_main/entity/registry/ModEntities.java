@@ -41,12 +41,14 @@ public class ModEntities {
             .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, ParagoombaEntity::canParagoombaSpawn)
             .build();
 
-    public static final EntityType<KoopaEntity> KOOPA_TROOPA = FabricEntityTypeBuilder.createMob().entityFactory(KoopaEntity::new).spawnGroup(SpawnGroup.MONSTER)
+    public static final EntityType<KoopaEntity> KOOPA_TROOPA = FabricEntityTypeBuilder.createMob()
+            .entityFactory(KoopaEntity::new).spawnGroup(SpawnGroup.CREATURE)
             .dimensions(EntityDimensions.fixed(1.1F, 1.5F))
             .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, KoopaEntity::canSpawn)
             .build();
 
-    public static final EntityType<ParatroopaEntity> PARATROOPA = FabricEntityTypeBuilder.createMob().entityFactory(ParatroopaEntity::new).spawnGroup(SpawnGroup.MONSTER)
+    public static final EntityType<ParatroopaEntity> PARATROOPA = FabricEntityTypeBuilder.createMob()
+            .entityFactory(ParatroopaEntity::new).spawnGroup(SpawnGroup.CREATURE)
             .dimensions(EntityDimensions.fixed(1.1F, 1.5F))
             .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ParatroopaEntity::canSpawn)
             .build();
@@ -77,7 +79,7 @@ public class ModEntities {
 
     public static final EntityType<BuzzyEntity> BUZZY_BEETLE = FabricEntityTypeBuilder.createMob()
             .entityFactory(BuzzyEntity::new)
-            .spawnGroup(SpawnGroup.MONSTER)
+            .spawnGroup(SpawnGroup.CREATURE)
             .dimensions(EntityDimensions.changing(1.2F, 0.9F))
             .build();
 
@@ -104,6 +106,7 @@ public class ModEntities {
     public static final EntityType<RottenMushroomEntity> ROTTEN_MUSHROOM = FabricEntityTypeBuilder.createMob()
             .entityFactory(RottenMushroomEntity::new).spawnGroup(SpawnGroup.MONSTER)
             .dimensions(EntityDimensions.fixed(0.7F, 0.8F))
+            .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, RottenMushroomEntity::canSpawn)
             .fireImmune().build();
 
     public static final EntityType<ThwompEntity> THWOMP = FabricEntityTypeBuilder.createMob()

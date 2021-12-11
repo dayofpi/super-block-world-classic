@@ -8,7 +8,7 @@
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
         "location": "super_block_world:toad_house",
-        "processors": "minecraft:empty"
+        "processors": "super_block_world:toad_house_decor"
       }
     }
   ]

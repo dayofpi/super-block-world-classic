@@ -1,0 +1,30 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:block_ignore",
+      "blocks": [
+        {
+          "Name": "minecraft:air"
+        }
+      ]
+    },
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:potted_red_mushroom",
+            "probability": 0.3
+          },
+          "output_state": {
+            "Name": "super_block_world:potted_yellow_mushroom"
+          }
+        }
+      ]
+    }
+  ]
+}

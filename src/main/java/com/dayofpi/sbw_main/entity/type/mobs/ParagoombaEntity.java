@@ -1,7 +1,6 @@
 package com.dayofpi.sbw_main.entity.type.mobs;
 
 import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.entity.goal.SpawnMiniGoombaGoal;
 import com.dayofpi.sbw_main.entity.type.bases.EnemyEntity;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
@@ -33,11 +32,6 @@ public class ParagoombaEntity extends GoombaEntity {
     public ParagoombaEntity(EntityType<? extends EnemyEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new FlightMoveControl(this, 10, false);
-    }
-
-    public void initGoals() {
-        super.initGoals();
-        this.goalSelector.add(1, new SpawnMiniGoombaGoal(this));
     }
 
     protected EntityNavigation createNavigation(World world) {

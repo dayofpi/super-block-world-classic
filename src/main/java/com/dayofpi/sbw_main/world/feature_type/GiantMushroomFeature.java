@@ -19,7 +19,7 @@ public class GiantMushroomFeature extends Feature<GiantMushroomFeatureConfig> {
         super(codec);
     }
 
-    protected void generateStem(WorldAccess world, Random random, BlockPos pos, GiantMushroomFeatureConfig config, int height, BlockPos.Mutable mutable) {
+    private void generateStem(WorldAccess world, Random random, BlockPos pos, GiantMushroomFeatureConfig config, int height, BlockPos.Mutable mutable) {
         for(int i = 0; i < height; ++i) {
             mutable.set(pos).move(Direction.UP, i);
             if (!world.getBlockState(mutable).isOpaqueFullCube(world, mutable)) {
@@ -37,14 +37,14 @@ public class GiantMushroomFeature extends Feature<GiantMushroomFeatureConfig> {
                 return false;
             } else {
                 for(int j = 0; j <= height; ++j) {
-                    int k = this.getCapSize(-1, -1, config.capRadius.getMax(), j);
+                    int maxCapRadius = this.getCapSize(-1, -1, config.capRadius.getMax(), j);
 
                     if (config.isFlat) {
-                        k = this.getFlatCapSize(-1, -1, config.capRadius.getMax(), j);
+                        maxCapRadius = this.getFlatCapSize(-1, -1, config.capRadius.getMax(), j);
                     }
 
-                    for(int l = -k; l <= k; ++l) {
-                        for(int m = -k; m <= k; ++m) {
+                    for(int l = -maxCapRadius; l <= maxCapRadius; ++l) {
+                        for(int m = -maxCapRadius; m <= maxCapRadius; ++m) {
                             BlockState blockState2 = world.getBlockState(mutable.set(pos, l, j, m));
                             if (!blockState2.isAir() && !blockState2.isIn(BlockTags.LEAVES)) {
                                 return false;
@@ -52,12 +52,9 @@ public class GiantMushroomFeature extends Feature<GiantMushroomFeatureConfig> {
                         }
                     }
                 }
-
                 return true;
             }
-        } else {
-            return false;
-        }
+        } else return false;
     }
 
     protected int getFlatCapSize(int i, int j, int capSize, int y) {

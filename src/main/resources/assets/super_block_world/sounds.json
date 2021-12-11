@@ -368,7 +368,7 @@
   },
   "entity.jump_boots.bounce": {
     "subtitle": "sound.entity.jump_boots.bounce",
-    "sounds": [ "super_block_world:entity/spotted" ]
+    "sounds": [ "super_block_world:entity/jump_boots_bounce" ]
   },
   "entity.enemy.spot": {
     "sounds": [ "super_block_world:entity/spotted" ]

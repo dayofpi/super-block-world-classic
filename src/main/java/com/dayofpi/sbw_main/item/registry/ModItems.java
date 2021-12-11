@@ -8,7 +8,7 @@ import com.dayofpi.sbw_main.block.registry.categories.PlantBlocks;
 import com.dayofpi.sbw_main.block.registry.categories.VariantBlocks;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.item.types.*;
-import com.dayofpi.sbw_main.misc.EnumBoats;
+import com.dayofpi.sbw_main.misc.ModBoatType;
 import com.dayofpi.sbw_main.block.registry.ModFluid;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
@@ -40,8 +40,10 @@ public class ModItems {
     public static final Item ICE_FLOWER = new IceFlowerItem(new FabricItemSettings().maxDamage(16).group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item SUPER_STAR = new SuperStarItem(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).rarity(Rarity.RARE));
     public static final Item COIN = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item STAR_COIN = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item RAW_BRONZE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BRONZE_INGOT = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item CERISE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item TROOP_HIDE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item CLOUD_PUFF = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item SPIKE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
@@ -52,7 +54,8 @@ public class ModItems {
     public static final Item JUMP_BOOTS = new ArmorItem(JUMP_ARMOR_MATERIAL, EquipmentSlot.FEET, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BOTTLED_GHOST = new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).group(CreativeTabs.ITEM_GROUP));
     public static final Item GREEN_MUSHROOM_ON_A_STICK = new OnAStickItem<>(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxDamage(25), ModEntities.BUZZY_BEETLE, 2);
-    public static final Item AMANITA_BOAT = new BoatItem(EnumBoats.AMANITA, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxCount(1));
+    public static final Item AMANITA_BOAT = new BoatItem(ModBoatType.AMANITA, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxCount(1));
+    public static final Item DARK_AMANITA_BOAT = new BoatItem(ModBoatType.DARK_AMANITA, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxCount(1));
     public static final Item POISON_BUCKET = new PoisonBucketItem(ModFluid.STILL_POISON, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1).group(CreativeTabs.ITEM_GROUP));
     public static final Item MOO_MOO_SPAWN_EGG = new SpawnEggItem(ModEntities.MOO_MOO, 15985102, 4605249, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item GOOMBA_SPAWN_EGG = new SpawnEggItem(ModEntities.GOOMBA, 12544546, 14922613, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
@@ -96,14 +99,17 @@ public class ModItems {
         registerItem("ice_flower", ICE_FLOWER);
         registerItem("super_star", SUPER_STAR);
         registerItem("coin", COIN);
+        registerItem("star_coin", STAR_COIN);
         registerItem("raw_bronze", RAW_BRONZE);
         registerItem("bronze_ingot", BRONZE_INGOT);
+        registerItem("cerise", CERISE);
         registerItem("troop_hide", TROOP_HIDE);
         registerItem("cloud_puff", CLOUD_PUFF);
         registerItem("spike", SPIKE);
         registerItem("buzzy_shell_piece", BUZZY_SHELL_PIECE);
         registerItem("green_mushroom_on_a_stick", GREEN_MUSHROOM_ON_A_STICK);
         registerItem("amanita_boat", AMANITA_BOAT);
+        registerItem("dark_amanita_boat", DARK_AMANITA_BOAT);
         registerItem("bottle_o_ghost", BOTTLED_GHOST);
         registerItem("poison_bucket", POISON_BUCKET);
         registerItem("spawn_eggs/moo_moo", MOO_MOO_SPAWN_EGG);
@@ -152,6 +158,7 @@ public class ModItems {
         registerBlockItem("purple_mushroom", MushroomBlocks.PURPLE_MUSHROOM);
 
         registerBlockItem("amanita_sapling", PlantBlocks.AMANITA_SAPLING);
+        registerBlockItem("dark_amanita_sapling", PlantBlocks.DARK_AMANITA_SAPLING);
         registerBlockItem("bush", PlantBlocks.BUSH);
         registerBlockItem("horsetail", PlantBlocks.HORSETAIL);
         registerBlockItem("vegetable", PlantBlocks.VEGETABLE);
@@ -164,7 +171,8 @@ public class ModItems {
 
         registerBlockItem("cave_mushrooms", PlantBlocks.CAVE_MUSHROOMS);
         registerBlockItem("muncher", PlantBlocks.MUNCHER);
-        registerBlockItem("piranha_lily", PlantBlocks.PIRANHA_LILY);
+        registerBlockItem("pit_plant", PlantBlocks.PIT_PLANT);
+        registerItem("piranha_lily", new PiranhaLilyItem(PlantBlocks.PIRANHA_LILY, new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP)));
         registerBlockItem("budding_beanstalk", PlantBlocks.BUDDING_BEANSTALK);
         registerBlockItem("beanstalk", PlantBlocks.BEANSTALK);
         registerBlockItem("strawberry_coral", ModBlocks.STRAWBERRY_CORAL);
@@ -201,6 +209,7 @@ public class ModItems {
         registerBlockItem("frosty_topped_vanillate_ore", ModBlocks.FROSTY_TOPPED_VANILLATE_ORE);
         registerBlockItem("bronze_ore", ModBlocks.BRONZE_ORE);
         registerBlockItem("amethyst_ore", ModBlocks.AMETHYST_ORE);
+        registerBlockItem("cerise_ore", ModBlocks.CERISE_ORE);
 
         registerBlockItem("happy_cloud", ModBlocks.HAPPY_CLOUD);
         registerBlockItem("cloud_block", ModBlocks.CLOUD_BLOCK);
@@ -214,10 +223,15 @@ public class ModItems {
         registerBlockItem("stripped_amanita_wood", ModBlocks.STRIPPED_AMANITA_WOOD);
 
         registerBlockItem("dark_amanita_log", ModBlocks.DARK_AMANITA_LOG);
+        registerBlockItem("stripped_dark_amanita_log", ModBlocks.STRIPPED_DARK_AMANITA_LOG);
         registerBlockItem("dark_amanita_wood", ModBlocks.DARK_AMANITA_WOOD);
+        registerBlockItem("stripped_dark_amanita_wood", ModBlocks.STRIPPED_DARK_AMANITA_WOOD);
 
         registerBlockItem("amanita_leaves", ModBlocks.AMANITA_LEAVES);
         registerBlockItem("fruiting_amanita_leaves", ModBlocks.FRUITING_AMANITA_LEAVES);
+
+        registerBlockItem("dark_amanita_leaves", ModBlocks.DARK_AMANITA_LEAVES);
+        registerBlockItem("fruiting_dark_amanita_leaves", ModBlocks.FRUITING_DARK_AMANITA_LEAVES);
 
         registerBlockItem("amanita_carpet", PlantBlocks.AMANITA_CARPET);
         registerBlockItem("yellow_flowerbed", PlantBlocks.YELLOW_FLOWERBED);
@@ -226,6 +240,10 @@ public class ModItems {
         registerBlockItem("amanita_planks", ModBlocks.AMANITA_PLANKS);
         registerBlockItem("amanita_slab", VariantBlocks.AMANITA_SLAB);
         registerBlockItem("amanita_stairs", VariantBlocks.AMANITA_STAIRS);
+
+        registerBlockItem("dark_amanita_planks", ModBlocks.DARK_AMANITA_PLANKS);
+        registerBlockItem("dark_amanita_slab", VariantBlocks.DARK_AMANITA_SLAB);
+        registerBlockItem("dark_amanita_stairs", VariantBlocks.DARK_AMANITA_STAIRS);
 
         registerBlockItem("white_bronze", ColoredBlocks.WHITE_BRONZE);
         registerBlockItem("orange_bronze", ColoredBlocks.ORANGE_BRONZE);
@@ -252,6 +270,16 @@ public class ModItems {
         registerBlockItem("amanita_pressure_plate", ModBlocks.AMANITA_PRESSURE_PLATE);
         registerBlockItem("amanita_button", ModBlocks.AMANITA_BUTTON);
 
+        registerItem("dark_amanita_sign", new SignItem(new FabricItemSettings().group(CreativeTabs.BLOCK_GROUP).maxCount(16), ModBlocks.DARK_AMANITA_SIGN, ModBlocks.DARK_AMANITA_WALL_SIGN));
+        registerBlockItem("dark_amanita_door", ModBlocks.DARK_AMANITA_DOOR);
+        registerBlockItem("dark_amanita_trapdoor", ModBlocks.DARK_AMANITA_TRAPDOOR);
+        registerBlockItem("dark_amanita_fence", VariantBlocks.DARK_AMANITA_FENCE);
+        registerBlockItem("dark_amanita_fence_gate", VariantBlocks.DARK_AMANITA_FENCE_GATE);
+        registerBlockItem("dark_amanita_pressure_plate", ModBlocks.DARK_AMANITA_PRESSURE_PLATE);
+        registerBlockItem("dark_amanita_button", ModBlocks.DARK_AMANITA_BUTTON);
+
+        registerBlockItem("bronze_pipe", ModBlocks.BRONZE_PIPE);
+        registerBlockItem("bronze_pipe_body", ModBlocks.BRONZE_PIPE_BODY);
         registerBlockItem("warp_pipe", ModBlocks.WARP_PIPE);
         registerBlockItem("warp_pipe_body", ModBlocks.WARP_PIPE_BODY);
         registerBlockItem("trampoline", ModBlocks.TRAMPOLINE);
@@ -344,8 +372,17 @@ public class ModItems {
         registerBlockItem("royalite", ModBlocks.ROYALITE);
         registerBlockItem("smooth_royalite", ModBlocks.SMOOTH_ROYALITE);
         registerBlockItem("royalite_bricks", ModBlocks.ROYALITE_BRICKS);
+        registerBlockItem("cracked_royalite_bricks", ModBlocks.CRACKED_ROYALITE_BRICKS);
+        registerBlockItem("chiseled_royalite_bricks", ModBlocks.CHISELED_ROYALITE_BRICKS);
         registerBlockItem("royalite_brick_slab", VariantBlocks.ROYALITE_BRICK_SLAB);
         registerBlockItem("royalite_brick_stairs", VariantBlocks.ROYALITE_BRICK_STAIRS);
         registerBlockItem("royalite_brick_wall", VariantBlocks.ROYALITE_BRICK_WALL);
+        registerBlockItem("cerise_block", ModBlocks.CERISE_BLOCK);
+        registerBlockItem("cerise_bricks", ModBlocks.CERISE_BRICKS);
+        registerBlockItem("cerise_tiles", ModBlocks.CERISE_TILES);
+        registerBlockItem("cerise_brick_slab", VariantBlocks.CERISE_BRICK_SLAB);
+        registerBlockItem("cerise_brick_stairs", VariantBlocks.CERISE_BRICK_STAIRS);
+        registerBlockItem("cerise_tile_slab", VariantBlocks.CERISE_TILE_SLAB);
+        registerBlockItem("cerise_tile_stairs", VariantBlocks.CERISE_TILE_STAIRS);
     }
 }

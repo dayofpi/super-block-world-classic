@@ -256,7 +256,7 @@ public class GoombaEntity extends EnemyEntity {
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(this.getStepSound(), 0.5F, this.getSoundPitch() * 1.3F);
+        this.playSound(this.getStepSound(), 0.4F, this.getSoundPitch() * 1.3F);
     }
 
     protected SoundEvent getStepSound() {

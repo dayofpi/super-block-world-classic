@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/pressure_plate_up",
+  "textures": {
+    "texture": "super_block_world:block/dark_amanita_planks"
+  }
+}

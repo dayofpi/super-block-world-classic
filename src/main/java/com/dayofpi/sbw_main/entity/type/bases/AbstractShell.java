@@ -2,7 +2,7 @@ package com.dayofpi.sbw_main.entity.type.bases;
 
 import com.dayofpi.sbw_main.Client;
 import com.dayofpi.sbw_main.item.registry.ModItems;
-import com.dayofpi.sbw_main.misc.SpawnPacket;
+import com.dayofpi.sbw_main.misc.ModSpawnPacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
@@ -26,7 +26,7 @@ public abstract class AbstractShell extends Entity {
 
     @Override
     public Packet<?> createSpawnPacket() {
-        return SpawnPacket.create(this, Client.PacketID);
+        return ModSpawnPacket.create(this, Client.PacketID);
     }
 
 }

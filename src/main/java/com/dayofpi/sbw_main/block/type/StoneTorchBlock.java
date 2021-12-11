@@ -95,6 +95,9 @@ public class StoneTorchBlock extends Block implements Waterloggable {
         boolean isProjectileFiery = projectile.isOnFire() || projectile instanceof FlowerFireballEntity;
         if (!world.isClient && isProjectileFiery && projectile.canModifyAt(world, blockPos) && !(Boolean)state.get(LIT)) {
             world.setBlockState(blockPos, state.with(Properties.LIT, true), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+            if (projectile instanceof FlowerFireballEntity) {
+                projectile.discard();
+            }
         }
 
     }

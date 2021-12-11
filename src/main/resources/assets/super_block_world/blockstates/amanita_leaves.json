@@ -1,21 +1,7 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "super_block_world:block/leaves/amanita_leaves"
-      },
-      {
-        "model": "super_block_world:block/leaves/amanita_leaves",
-        "y": 90
-      },
-      {
-        "model": "super_block_world:block/leaves/amanita_leaves",
-        "y": 180
-      },
-      {
-        "model": "super_block_world:block/leaves/amanita_leaves",
-        "y": 270
-      }
-    ]
+    "": {
+      "model": "super_block_world:block/leaves/amanita_leaves"
+    }
   }
 }

@@ -39,11 +39,8 @@
           "parameters": {
             "temperature": 0.3,
             "humidity": 0.4,
-            "continentalness": [
-              -0.2,
-              0
-            ],
-            "erosion": -0.2,
+            "continentalness": -0.2,
+            "erosion": -0.1,
             "weirdness": 0,
             "depth": 0,
             "offset": 0
@@ -98,16 +95,28 @@
           }
         },
         {
+          "biome": "super_block_world:mushroom_gorge",
+          "parameters": {
+            "temperature": 0.15,
+            "humidity": 0.3,
+            "continentalness": 0,
+            "erosion": [
+              -0.5,
+              -0.25
+            ],
+            "weirdness": 0.45,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
           "biome": "super_block_world:fossil_falls",
           "parameters": {
             "temperature": 0.3,
             "humidity": 0.3,
             "continentalness": 0.1,
-            "erosion": [
-              -0.5,
-              -0.2
-            ],
-            "weirdness": 0.7,
+            "erosion": -0.25,
+            "weirdness": 0.5,
             "depth": 0,
             "offset": 0
           }

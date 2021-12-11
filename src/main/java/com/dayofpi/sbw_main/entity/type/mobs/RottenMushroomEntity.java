@@ -1,8 +1,6 @@
 package com.dayofpi.sbw_main.entity.type.mobs;
 
-import com.dayofpi.sbw_main.ModTags;
 import com.dayofpi.sbw_main.entity.type.bases.EnemyEntity;
-import com.dayofpi.sbw_main.item.registry.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
@@ -21,15 +19,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.*;
 
 import java.util.Random;
-import java.util.function.Predicate;
 
 @SuppressWarnings("deprecation")
 public class RottenMushroomEntity extends EnemyEntity {
-    static final Predicate<ItemEntity> POWER_UP_FILTER;
-
-    static {
-        POWER_UP_FILTER = (item) -> !item.cannotPickup() && item.isAlive() && item.getStack().isOf(ModItems.ONE_UP);
-    }
 
     public RottenMushroomEntity(EntityType<? extends EnemyEntity> entityType, World world) {
         super(entityType, world);
@@ -37,8 +29,7 @@ public class RottenMushroomEntity extends EnemyEntity {
 
     public static boolean canSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         boolean isDirt = world.getBlockState(pos.down()).isIn(BlockTags.DIRT);
-        boolean isPoison = world.getFluidState(pos).isIn(ModTags.POISON);
-        return isDirt && isSpawnDark((ServerWorldAccess) world, pos, random) || isDirt && isPoison;
+        return isDirt && isSpawnDark((ServerWorldAccess) world, pos, random);
     }
 
     public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {

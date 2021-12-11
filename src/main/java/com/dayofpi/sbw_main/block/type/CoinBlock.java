@@ -2,6 +2,7 @@ package com.dayofpi.sbw_main.block.type;
 
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.type.template.ReactiveBlock;
 import com.dayofpi.sbw_main.item.registry.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

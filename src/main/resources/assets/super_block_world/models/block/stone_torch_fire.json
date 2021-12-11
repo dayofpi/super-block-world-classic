@@ -1,7 +1,7 @@
 {
 	"textures": {
 		"6": "super_block_world:block/stone_torch_fire",
-		"particle": "super_block_world:block/stone_torch_sides"
+		"particle": "super_block_world:block/stone_torch_side"
 	},
 	"ambientocclusion": false,
 	"elements": [

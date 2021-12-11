@@ -1,18 +1,12 @@
 {
   "schemaVersion": 1,
   "id": "super_block_world",
-  "version": "${version}",
+  "version": "1.0.9",
 
   "name": "Super Block World",
-  "description": "",
+  "description": "A new Mario-themed dimension full of fun content",
   "authors": [
-    "@dayofpi ~ Code, art, direction",
-    "@TRoboknight ~ Art, structures",
-    "@EnvisionRebbi ~ Audio editing, concepts",
-    "@KatieCake1118 ~ Art",
-    "@OrbyyNew ~ Art",
-    "@owoirisowo ~ Art, music",
-    "Models made with Blockbench"
+    "dayofpi"
   ],
   "contact": {
     "homepage": "",
@@ -32,7 +26,7 @@
     ]
   },
   "mixins": [
-    "super-block-world.mixins.json"
+    "fabric.mixins.json"
   ],
 
   "depends": {

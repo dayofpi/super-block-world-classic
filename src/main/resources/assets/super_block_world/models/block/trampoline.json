@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cube_column",
   "textures": {
     "end": "super_block_world:block/trampoline_top",
-    "side": "super_block_world:block/trampoline_side"
+    "side": "super_block_world:block/trampoline"
   }
 }

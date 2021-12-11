@@ -1,7 +1,9 @@
 package com.dayofpi.sbw_mixin;
 
-import com.dayofpi.sbw_main.Main;
+import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.ModTags;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
@@ -14,12 +16,16 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
+@Environment(value= EnvType.CLIENT)
 @Mixin(MinecraftClient.class)
 public abstract class CustomMusic {
     @Shadow @Nullable public ClientPlayerEntity player;
 
     @Shadow @Nullable public ClientWorld world;
+
+    private static final MusicSound GRASSLAND = new MusicSound(ModSounds.MUSIC_GRASSLAND, 12000, 24000, false);
+    private static final MusicSound CAVE = new MusicSound(ModSounds.MUSIC_CAVE, 10000, 20000, false);
+
 
     // The code for Iris Music
     @Inject(at = @At("HEAD"), method = "getMusicType", cancellable = true)
@@ -29,10 +35,10 @@ public abstract class CustomMusic {
                 World world = this.player.world;
                 BlockPos pos = this.player.getBlockPos();
                 if (pos.getY() < world.getSeaLevel() && world.getLightLevel(pos) <= 7 && !world.isSkyVisible(pos)) {
-                    info.setReturnValue(Main.CAVE);
+                    info.setReturnValue(CAVE);
                 } else {
                     if (this.world != null) {
-                        info.setReturnValue(this.world.getBiomeAccess().getBiomeForNoiseGen(pos).getMusic().orElse(Main.GRASSLAND));
+                        info.setReturnValue(this.world.getBiomeAccess().getBiomeForNoiseGen(pos).getMusic().orElse(GRASSLAND));
                     }
                 }
                 info.cancel();

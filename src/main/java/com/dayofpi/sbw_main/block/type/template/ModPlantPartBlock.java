@@ -20,7 +20,7 @@ public abstract class ModPlantPartBlock extends Block {
     protected final boolean tickWater;
     protected final VoxelShape outlineShape;
 
-    protected ModPlantPartBlock(AbstractBlock.Settings settings, Direction growthDirection, VoxelShape outlineShape, boolean tickWater) {
+    protected ModPlantPartBlock(Settings settings, Direction growthDirection, VoxelShape outlineShape, boolean tickWater) {
         super(settings);
         this.growthDirection = growthDirection;
         this.outlineShape = outlineShape;

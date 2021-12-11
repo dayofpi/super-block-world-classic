@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:coin"
+    }
+  },
+  "result": {
+    "item": "super_block_world:star_coin",
+    "count": 1
+  }
+}

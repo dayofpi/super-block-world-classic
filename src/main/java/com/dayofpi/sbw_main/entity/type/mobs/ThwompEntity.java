@@ -2,6 +2,7 @@ package com.dayofpi.sbw_main.entity.type.mobs;
 
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.misc.DirectionHelper;
+import com.dayofpi.sbw_main.misc.ModEntityDamageSource;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.entity.*;
@@ -55,7 +56,10 @@ public class ThwompEntity extends GolemEntity {
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 70.0);
     }
 
-
+    @Override
+    public float getPathfindingFavor(BlockPos pos, WorldView world) {
+        return 0.5F - world.getBrightness(pos);
+    }
 
     @Override
     protected void initDataTracker() {
@@ -104,37 +108,39 @@ public class ThwompEntity extends GolemEntity {
         return ModSounds.ENTITY_THWOMP_DEATH;
     }
 
-    public void tick() {
-        super.tick();
+    public void tickMovement() {
         if (this.isInsideWall()) {
             // In a wall, die; don't keep doing things
             this.setHealth(0);
             return;
         }
 
-        if (this.getStage() == 1)
-            homeLogic();
+        super.tickMovement();
+        if (this.isAlive()) {
+            if (this.getStage() == 1)
+                homeLogic();
 
-        if (falling) {
-            fall();
-        } else if (rising) {
-            this.setStage(1);
-            rise();
-        } else {
-            if (peekTimer > 0)
-                --peekTimer;
-            Box farDetection = this.getBoundingBox().expand(6, 16, 6).offset(0, -16, 0);
-            LivingEntity playerNear = world.getClosestEntity(PlayerEntity.class, TargetPredicate.createAttackable(), this, this.getX(), this.getY(), this.getZ(), farDetection);
-            this.setEyeTarget(playerNear);
-            if (playerNear != null && this.peekTimer == 0) {
-                Box closeDetection = this.getBoundingBox().expand(1, 12, 1).offset(0, -16, 0);
-                PlayerEntity playerUnder = world.getClosestEntity(PlayerEntity.class, TargetPredicate.createAttackable(), this, this.getX(), this.getY(), this.getZ(), closeDetection);
-                if (playerUnder != null && !falling) {
-                    startFalling();
-                } else {
-                    this.setStage(2);
-                }
-            } else this.setStage(1);
+            if (falling) {
+                fall();
+            } else if (rising) {
+                this.setStage(1);
+                rise();
+            } else {
+                if (peekTimer > 0)
+                    --peekTimer;
+                Box farDetection = this.getBoundingBox().expand(6, 16, 6).offset(0, -16, 0);
+                LivingEntity playerNear = world.getClosestEntity(PlayerEntity.class, TargetPredicate.createAttackable(), this, this.getX(), this.getY(), this.getZ(), farDetection);
+                this.setEyeTarget(playerNear);
+                if (playerNear != null && this.peekTimer == 0) {
+                    Box closeDetection = this.getBoundingBox().expand(1, 12, 1).offset(0, -16, 0);
+                    PlayerEntity playerUnder = world.getClosestEntity(PlayerEntity.class, TargetPredicate.createAttackable(), this, this.getX(), this.getY(), this.getZ(), closeDetection);
+                    if (playerUnder != null && !falling) {
+                        startFalling();
+                    } else {
+                        this.setStage(2);
+                    }
+                } else this.setStage(1);
+            }
         }
     }
 
@@ -201,7 +207,8 @@ public class ThwompEntity extends GolemEntity {
         }
 
         if (entity != null) {
-            entity.damage(DamageSource.FALLING_BLOCK, 12F);
+            if (!(entity instanceof ThwompEntity))
+                entity.damage(ModEntityDamageSource.mobDrop(this), 12F);
         }
     }
 

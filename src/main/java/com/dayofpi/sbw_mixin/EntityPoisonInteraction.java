@@ -70,9 +70,10 @@ public abstract class EntityPoisonInteraction {
         if (this.isTouchingPoison()) {
             if (!this.getType().isIn(ModTags.POISON_IMMUNE)) {
                 if (this.damage(ModDamageSource.POISON, 4.0F)) {
-                    this.playSound(SoundEvents.ENTITY_GENERIC_BURN, 0.4F, 2.0F + this.random.nextFloat() * 0.4F);
                     if (this.getWorld().isClient)
                         this.getWorld().addParticle(ParticleTypes.LARGE_SMOKE, this.getBlockPos().getX() + 0.5, this.getBlockPos().getY() + 1, this.getBlockPos().getZ() + 0.5, 0.0D, 0.0D, 0.0D);
+                    else
+                        this.playSound(SoundEvents.ENTITY_GENERIC_BURN, 0.4F, 2.0F + this.random.nextFloat() * 0.4F);
                 }
             }
         }
@@ -84,17 +85,15 @@ public abstract class EntityPoisonInteraction {
             // Replace water splash particles
             Entity entity = this.hasPassengers() && this.getPrimaryPassenger() != null ? this.getPrimaryPassenger() : this.getWorld().getEntityById(this.getId());
             if (entity != null) {
-                this.playSound(ModSounds.BLOCK_POISON_SWIM, 0.4F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.4F);
+                this.playSound(ModSounds.BLOCK_POISON_SWIM, 0.4F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.5F);
 
-                float h = (float) MathHelper.floor(this.getY());
-
-                int i;
-                double d;
+                float y = (float) MathHelper.floor(this.getY());
+                double x;
                 double e;
-                for (i = 0; (float) i < 1.0F + this.dimensions.width * 20.0F; ++i) {
-                    d = (this.random.nextDouble() * 2.0D - 1.0D) * (double) this.getDimensions(EntityPose.STANDING).width;
+                for (int i = 0; (float) i < 1.0F + this.dimensions.width * 20.0F; ++i) {
+                    x = (this.random.nextDouble() * 2.0D - 1.0D) * (double) this.getDimensions(EntityPose.STANDING).width;
                     e = (this.random.nextDouble() * 2.0D - 1.0D) * (double) this.getDimensions(EntityPose.STANDING).width;
-                    this.getWorld().addParticle(ModParticle.POISON_BUBBLE, this.getX() + d, h + 1.0F, this.getZ() + e, 0, 0, 0);
+                    this.getWorld().addParticle(ModParticle.POISON_BUBBLE, this.getX() + x, y + 1.0F, this.getZ() + e, 0, 0, 0);
                 }
                 info.cancel();
             }

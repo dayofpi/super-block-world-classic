@@ -2,7 +2,6 @@ package com.dayofpi.sbw_mixin;
 
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.entity.type.mobs.BuzzyEntity;
-import com.dayofpi.sbw_main.entity.type.mobs.RottenMushroomEntity;
 import com.dayofpi.sbw_main.entity.type.mobs.SpikeTopEntity;
 import com.dayofpi.sbw_main.entity.type.mobs.ThwompEntity;
 import net.minecraft.entity.EntityType;
@@ -28,10 +27,6 @@ public class SpecialSpawnCases {
         }
         if (type == ModEntities.SPIKE_TOP) {
             info.setReturnValue(SpikeTopEntity.canSpawn(type, world, reason, pos, random));
-            info.cancel();
-        }
-        if (type == ModEntities.ROTTEN_MUSHROOM) {
-            info.setReturnValue(RottenMushroomEntity.canSpawn(type, world, reason, pos, random));
             info.cancel();
         }
         if (type == ModEntities.THWOMP) {

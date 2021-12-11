@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "super_block_world:block/dark_amanita_slab"
+    },
+    "type=double": {
+      "model": "super_block_world:block/dark_amanita_planks"
+    },
+    "type=top": {
+      "model": "super_block_world:block/dark_amanita_slab_top"
+    }
+  }
+}

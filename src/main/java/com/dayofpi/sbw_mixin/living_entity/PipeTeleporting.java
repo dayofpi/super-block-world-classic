@@ -4,34 +4,23 @@ import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.block.type.warp_pipe.WarpPipeBlock;
 import com.dayofpi.sbw_main.entity.registry.ModEffects;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Map;
+@Mixin(PlayerEntity.class)
+public abstract class PipeTeleporting extends LivingEntity {
 
-@Mixin(LivingEntity.class)
-public abstract class PipeTeleporting extends Entity {
-    @Shadow
-    @Final
-    private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
     private int pipeCooldown;
 
-    public PipeTeleporting(EntityType<?> type, World world) {
+    public PipeTeleporting(EntityType<? extends LivingEntity> type, World world) {
         super(type, world);
     }
 
@@ -43,11 +32,10 @@ public abstract class PipeTeleporting extends Entity {
     }
 
     public void warpToPipe() {
-        if (!world.isClient) {
-            BlockPos entityPos = this.getBlockPos();
-            BlockPos floor = this.getBlockPos().down();
-
+        if (this.isAlive()) {
             if (this.getPipeCooldown() == 0) {
+                BlockPos entityPos = this.getBlockPos();
+                BlockPos floor = this.getBlockPos().down();
                 if (world.getBlockState(entityPos).isAir() && world.getBlockState(floor).isOf(ModBlocks.WARP_PIPE) && world.getBlockState(floor).get(Properties.FACING) == Direction.UP) {
                     BlockPos destination = WarpPipeBlock.warpPipeTree.getNearestBlock(floor, world, this.getHeadYaw());
                     if (destination != null) {
@@ -70,15 +58,18 @@ public abstract class PipeTeleporting extends Entity {
         this.pipeCooldown = cooldown;
     }
 
-    @Inject(at = @At("TAIL"), method = "baseTick")
-    void baseTick(CallbackInfo info) {
-        if (this.activeStatusEffects.containsKey(ModEffects.STAR_POWER)) {
-            for (int i = 0; i < 1; ++i) {
-                world.addParticle(ParticleTypes.GLOW, true, this.getX() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), this.getRandomBodyY(), this.getZ() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), 0, 0, 0);
+    @Override
+    public void baseTick() {
+        super.baseTick();
+        if (this.isAlive()) {
+            if (this.hasStatusEffect(ModEffects.STAR_POWER)) {
+                for (int i = 0; i < 1; ++i) {
+                    world.addParticle(ParticleTypes.GLOW, true, this.getX() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), this.getRandomBodyY(), this.getZ() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), 0, 0, 0);
+                }
             }
-        }
-        if (this.getPipeCooldown() > 0) {
-            --this.pipeCooldown;
+            if (this.getPipeCooldown() > 0) {
+                --this.pipeCooldown;
+            }
         }
     }
 }

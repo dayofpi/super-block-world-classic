@@ -4,7 +4,7 @@
 	"textures": {
 		"ends": "super_block_world:block/trampoline_top",
 		"side": "super_block_world:block/trampoline_squash",
-		"particle": "super_block_world:block/trampoline_squash"
+		"particle": "super_block_world:block/trampoline"
 	},
 	"elements": [
 		{

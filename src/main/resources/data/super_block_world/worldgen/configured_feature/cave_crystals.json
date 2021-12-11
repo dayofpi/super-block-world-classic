@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:random_boolean_selector",
-  "config": {
-    "feature_false": "super_block_world:cave_crystals_ceiling",
-    "feature_true": "super_block_world:cave_crystals_floor"
-  }
-}

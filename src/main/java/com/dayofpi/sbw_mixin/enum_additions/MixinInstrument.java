@@ -2,7 +2,7 @@ package com.dayofpi.sbw_mixin.enum_additions;
 
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.misc.EnumInstruments;
+import com.dayofpi.sbw_main.misc.ModInstrument;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.sound.SoundEvent;
@@ -40,7 +40,7 @@ public class MixinInstrument {
         var variants = new ArrayList<>(Arrays.asList(field_12652));
         var last = variants.get(variants.size() - 1);
         var bling = newInstrument("BLING", last.ordinal() + 1, "bling", ModSounds.BLOCK_ITEM_BLOCK_COIN);
-        EnumInstruments.BLING = bling;
+        ModInstrument.BLING = bling;
         variants.add(bling);
 
         field_12652 = variants.toArray(new Instrument[0]);
@@ -49,7 +49,7 @@ public class MixinInstrument {
     @Inject(method = "fromBlockState(Lnet/minecraft/block/BlockState;)Lnet/minecraft/block/enums/Instrument;", at =@At("HEAD"), cancellable = true)
     private static void fromBlockState(BlockState state, CallbackInfoReturnable<Instrument> info) {
         if (state.isOf(ModBlocks.COIN_BLOCK) || state.isOf(ModBlocks.QUESTION_BLOCK)) {
-            info.setReturnValue(EnumInstruments.BLING);
+            info.setReturnValue(ModInstrument.BLING);
             info.cancel();
         }
     }

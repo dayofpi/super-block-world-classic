@@ -18,6 +18,13 @@ public class VariantBlocks {
 
     public static final Block AMANITA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.AMANITA_PLANKS));
     public static final Block AMANITA_STAIRS = new StairsBlock(ModBlocks.AMANITA_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.AMANITA_PLANKS)){};
+    public static final Block AMANITA_FENCE = new FenceBlock(FabricBlockSettings.copyOf(ModBlocks.AMANITA_PLANKS));
+    public static final Block AMANITA_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.AMANITA_PLANKS));
+
+    public static final Block DARK_AMANITA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.DARK_AMANITA_PLANKS));
+    public static final Block DARK_AMANITA_STAIRS = new StairsBlock(ModBlocks.DARK_AMANITA_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.DARK_AMANITA_PLANKS)){};
+    public static final Block DARK_AMANITA_FENCE = new FenceBlock(FabricBlockSettings.copyOf(ModBlocks.DARK_AMANITA_PLANKS));
+    public static final Block DARK_AMANITA_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.DARK_AMANITA_PLANKS));
 
     public static final Block SEASTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.SEASTONE_BRICKS));
     public static final Block SEASTONE_BRICK_STAIRS = new StairsBlock(ModBlocks.SEASTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.SEASTONE)){};
@@ -71,6 +78,9 @@ public class VariantBlocks {
     public static final Block ROYALITE_BRICK_STAIRS = new StairsBlock(ModBlocks.ROYALITE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.ROYALITE_BRICKS)){};
     public static final Block ROYALITE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(ModBlocks.ROYALITE_BRICKS));
 
-    public static final Block AMANITA_FENCE = new FenceBlock(FabricBlockSettings.copyOf(ModBlocks.AMANITA_PLANKS));
-    public static final Block AMANITA_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(ModBlocks.AMANITA_PLANKS));
+    public static final Block CERISE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.CERISE_BRICKS));
+    public static final Block CERISE_BRICK_STAIRS = new StairsBlock(ModBlocks.CERISE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.CERISE_BRICKS)){};
+
+    public static final Block CERISE_TILE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ModBlocks.CERISE_TILES));
+    public static final Block CERISE_TILE_STAIRS = new StairsBlock(ModBlocks.CERISE_TILES.getDefaultState(), FabricBlockSettings.copyOf(ModBlocks.CERISE_TILES)){};
 }

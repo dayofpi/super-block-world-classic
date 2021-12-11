@@ -9,7 +9,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
 
-public class WarpPipeBodyBlock extends AbstractWarpPipeBlock {
+public class WarpPipeBodyBlock extends BronzePipeBlock {
     public static final BooleanProperty DOWN;
     protected static final BooleanProperty NORTH;
     protected static final BooleanProperty EAST;
@@ -28,7 +28,7 @@ public class WarpPipeBodyBlock extends AbstractWarpPipeBlock {
 
     public WarpPipeBodyBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(UP, false).with(DOWN, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.UP).with(WATERLOGGED, false).with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(UP, false).with(DOWN, false));
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighbor, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
@@ -47,7 +47,7 @@ public class WarpPipeBodyBlock extends AbstractWarpPipeBlock {
     }
 
     private BlockState northSouthPredicates(BlockState state, Direction direction, BlockState neighbor) {
-        boolean isPipe = neighbor.getBlock() instanceof AbstractWarpPipeBlock;
+        boolean isPipe = neighbor.getBlock() instanceof BronzePipeBlock;
         boolean upDown = neighbor.isOf(this) && (neighbor.get(FACING) == Direction.UP || neighbor.get(FACING) == Direction.DOWN);
         boolean eastWest = isPipe && (neighbor.get(FACING) == Direction.EAST || neighbor.get(FACING) == Direction.WEST);
 
@@ -75,7 +75,7 @@ public class WarpPipeBodyBlock extends AbstractWarpPipeBlock {
     }
 
     private BlockState upDownPredicates(BlockState state, Direction direction, BlockState neighbor) {
-        boolean isPipe = neighbor.getBlock() instanceof AbstractWarpPipeBlock;
+        boolean isPipe = neighbor.getBlock() instanceof BronzePipeBlock;
         boolean northSouth = isPipe && (neighbor.get(FACING) == Direction.NORTH || neighbor.get(FACING) == Direction.SOUTH);
         boolean eastWest = isPipe && (neighbor.get(FACING) == Direction.EAST || neighbor.get(FACING) == Direction.WEST);
 
@@ -103,7 +103,7 @@ public class WarpPipeBodyBlock extends AbstractWarpPipeBlock {
     }
 
     private BlockState eastWestPredicates(BlockState state, Direction direction, BlockState neighbor) {
-        boolean isPipe = neighbor.getBlock() instanceof AbstractWarpPipeBlock;
+        boolean isPipe = neighbor.getBlock() instanceof BronzePipeBlock;
         boolean northSouth = isPipe && (neighbor.get(FACING) == Direction.NORTH || neighbor.get(FACING) == Direction.SOUTH);
         boolean upDown = neighbor.isOf(this) && (neighbor.get(FACING) == Direction.UP || neighbor.get(FACING) == Direction.DOWN);
 

@@ -4,7 +4,8 @@ import com.dayofpi.sbw_main.Client;
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
-import com.dayofpi.sbw_main.misc.SpawnPacket;
+import com.dayofpi.sbw_main.misc.ModSpawnPacket;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -77,14 +78,15 @@ public class FlowerFireballEntity extends PersistentProjectileEntity {
 
         if (world.getBlockState(this.getBlockPos()).isAir() && world.getBlockState(this.getBlockPos().down()).isOf(ModBlocks.WARP_FRAME)) {
             this.playSound(SoundEvents.BLOCK_CANDLE_EXTINGUISH, 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
-            world.setBlockState(this.getBlockPos(), Blocks.FIRE.getDefaultState());
+            world.setBlockState(this.getBlockPos(), Blocks.FIRE.getDefaultState(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+            this.discard();
         }
 
         if (hops <= 0) {
             this.playSound(SoundEvents.BLOCK_CANDLE_EXTINGUISH, 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             this.discard();
             if (world.getBlockState(this.getBlockPos()).isAir() && world.getBlockState(this.getBlockPos().down()).isSideSolidFullSquare(world, this.getBlockPos(), Direction.UP)) {
-                world.setBlockState(this.getBlockPos(), Blocks.FIRE.getDefaultState());
+                world.setBlockState(this.getBlockPos(), Blocks.FIRE.getDefaultState(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
             }
         }
     }
@@ -125,6 +127,6 @@ public class FlowerFireballEntity extends PersistentProjectileEntity {
 
     @Override
     public Packet<?> createSpawnPacket() {
-        return SpawnPacket.create(this, Client.PacketID);
+        return ModSpawnPacket.create(this, Client.PacketID);
     }
 }

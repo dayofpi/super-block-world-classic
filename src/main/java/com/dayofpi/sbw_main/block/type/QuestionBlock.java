@@ -3,6 +3,7 @@ package com.dayofpi.sbw_main.block.type;
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.block_entity.QuestionBlockBE;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
+import com.dayofpi.sbw_main.block.type.template.ReactiveBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;

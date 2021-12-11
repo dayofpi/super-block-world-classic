@@ -30,7 +30,7 @@ public class NipperPlantEntity extends EnemyEntity {
         super(entityType, world);
         this.experiencePoints = 1;
         this.jumpControl = new NipperJumpControl(this);
-        this.moveControl = new NipperPlantEntity.NipperMoveControl(this);
+        this.moveControl = new NipperMoveControl(this);
         this.setSpeed(0.0D);
     }
 
@@ -53,7 +53,7 @@ public class NipperPlantEntity extends EnemyEntity {
     public void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(6, new LookAroundGoal(this));
-        this.goalSelector.add(4, new NipperPlantEntity.NipperAttackGoal(this));
+        this.goalSelector.add(4, new NipperAttackGoal(this));
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         this.goalSelector.add(6, new WanderAroundGoal(this, 0.6D));
     }
@@ -90,7 +90,7 @@ public class NipperPlantEntity extends EnemyEntity {
                 }
             }
 
-            NipperPlantEntity.NipperJumpControl nipperJumpControl = (NipperPlantEntity.NipperJumpControl) this.jumpControl;
+            NipperJumpControl nipperJumpControl = (NipperJumpControl) this.jumpControl;
             if (nipperJumpControl.isInactive()) {
                 if (this.moveControl.isMoving() && this.ticksUntilJump == 0) {
                     Path path = this.navigation.getCurrentPath();
@@ -126,7 +126,7 @@ public class NipperPlantEntity extends EnemyEntity {
     }
 
     private void method_6611() {
-        ((NipperPlantEntity.NipperJumpControl) this.jumpControl).method_27311(true);
+        ((NipperJumpControl) this.jumpControl).method_27311(true);
     }
 
     private void doScheduleJump() {
@@ -138,7 +138,7 @@ public class NipperPlantEntity extends EnemyEntity {
     }
 
     private void method_6621() {
-        ((NipperPlantEntity.NipperJumpControl) this.jumpControl).method_27311(false);
+        ((NipperJumpControl) this.jumpControl).method_27311(false);
     }
 
     protected float getJumpVelocity() {

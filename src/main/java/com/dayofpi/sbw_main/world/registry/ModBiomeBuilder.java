@@ -1,37 +1,84 @@
 package com.dayofpi.sbw_main.world.registry;
 
-import com.dayofpi.sbw_main.entity.registry.ModEntities;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
+import net.minecraft.sound.BiomeMoodSound;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.carver.ConfiguredCarvers;
 
 public class ModBiomeBuilder {
+    public static final int DEFAULT_GRASS_COLOR = 6879535;
+    public static final int DEFAULT_FOLIAGE_COLOR = 6408218;
 
-    public static void addLandCarvers(GenerationSettings.Builder builder) {
-        builder.carver(GenerationStep.Carver.AIR, ConfiguredCarvers.CAVE);
-        builder.carver(GenerationStep.Carver.AIR, ConfiguredCarvers.CAVE_EXTRA_UNDERGROUND);
-        builder.carver(GenerationStep.Carver.AIR, ConfiguredCarvers.CANYON);
-        builder.feature(GenerationStep.Feature.LAKES, ModPlacedFeature.LAKE_LAVA);
-        builder.feature(GenerationStep.Feature.LAKES, ModPlacedFeature.LAKE_POISON);
+    private static final int DEFAULT_SKY_COLOR = 5156850;
+    private static final int DEFAULT_FOG_COLOR = 11337727;
+    private static final int DARK_GRASS_COLOR = 4499737;
+    private static final int REEF_GRASS_COLOR = 12121385;
+    private static final int DEFAULT_WATER_COLOR = 2868223;
+
+    protected static Biome createMushroomGrasslands() {
+        GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
+        SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
+
+        ModBiomeTemplate.addCaveMobs(spawnSettings);
+        ModBiomeTemplate.addMushroomGrasslandMobs(spawnSettings);
+
+        ModBiomeTemplate.addBasicFeatures(generationSettings);
+        ModBiomeTemplate.addMushroomGrasslandsFeatures(generationSettings);
+
+        return new Biome.Builder().effects(new BiomeEffects.Builder()
+                        .skyColor(DEFAULT_SKY_COLOR).fogColor(DEFAULT_FOG_COLOR)
+                        .grassColor(DEFAULT_GRASS_COLOR).foliageColor(DEFAULT_FOLIAGE_COLOR)
+                        .waterColor(DEFAULT_WATER_COLOR).waterFogColor(DEFAULT_WATER_COLOR)
+                        .moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
     }
 
-    static void addCaveMobs(SpawnSettings.Builder builder) {
-        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(ModEntities.BUZZY_BEETLE, 100, 2, 4));
-        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(ModEntities.SPIKE_TOP, 50, 2, 4));
-        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(ModEntities.BOB_OMB, 30, 2, 3));
-        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(ModEntities.HAMMER_BRO, 25, 2, 2));
-        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(ModEntities.THWOMP, 1, 1, 1));
+    protected static Biome createAmanitaForest() {
+        GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
+        SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
+
+        ModBiomeTemplate.addCaveMobs(spawnSettings);
+        ModBiomeTemplate.addAmanitaForestMobs(spawnSettings);
+
+        return new Biome.Builder().effects(new BiomeEffects.Builder()
+                .skyColor(DEFAULT_SKY_COLOR).fogColor(DEFAULT_FOG_COLOR)
+                .grassColor(DARK_GRASS_COLOR).foliageColor(DEFAULT_FOLIAGE_COLOR)
+                .waterColor(DEFAULT_WATER_COLOR).waterFogColor(DEFAULT_WATER_COLOR)
+                .moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
+
     }
 
-    static void addMushroomGrasslandMobs(SpawnSettings.Builder builder) {
-        builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 90, 2, 4));
-        builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.MOO_MOO, 10, 2, 2));
-        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(ModEntities.GOOMBA, 40, 1, 2));
-        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(ModEntities.KOOPA_TROOPA, 18, 2, 4));
-        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(ModEntities.PARAGOOMBA, 5, 2, 4));
-        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(ModEntities.PARATROOPA, 5, 2, 4));
+    protected static Biome createMushroomGorge() {
+        GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
+        SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
+
+        ModBiomeTemplate.addCaveMobs(spawnSettings);
+        ModBiomeTemplate.addMushroomGorgeMobs(spawnSettings);
+
+        ModBiomeTemplate.addBasicFeatures(generationSettings);
+        ModBiomeTemplate.addMushroomGorgeFeatures(generationSettings);
+
+        return new Biome.Builder().effects(new BiomeEffects.Builder()
+                .skyColor(DEFAULT_SKY_COLOR).fogColor(DEFAULT_FOG_COLOR)
+                .grassColor(DARK_GRASS_COLOR).foliageColor(DEFAULT_FOLIAGE_COLOR)
+                .waterColor(DEFAULT_WATER_COLOR).waterFogColor(DEFAULT_WATER_COLOR)
+                .moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
+    }
+
+    protected static Biome createDryDryDesert() {
+        GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
+        SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
+
+        ModBiomeTemplate.addCaveMobs(spawnSettings);
+
+        ModBiomeTemplate.addDryDryDesertFeatures(generationSettings);
+        ModBiomeTemplate.addBasicFeatures(generationSettings);
+
+        return new Biome.Builder().effects(new BiomeEffects.Builder()
+                .skyColor(DEFAULT_SKY_COLOR).fogColor(DEFAULT_FOG_COLOR)
+                .grassColor(REEF_GRASS_COLOR).foliageColor(REEF_GRASS_COLOR)
+                .waterColor(DEFAULT_WATER_COLOR).waterFogColor(DEFAULT_WATER_COLOR)
+                .moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.DESERT).precipitation(Biome.Precipitation.NONE).temperature(0.9f).downfall(0.4f).build();
+
     }
 }

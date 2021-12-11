@@ -34,4 +34,8 @@ public class CaveMushroomBlock extends PlantBlock {
             return world.getBaseLightLevel(pos, 0) < 13 && this.canPlantOnTop(blockState, world, blockPos);
         }
     }
+
+    public OffsetType getOffsetType() {
+        return OffsetType.XYZ;
+    }
 }

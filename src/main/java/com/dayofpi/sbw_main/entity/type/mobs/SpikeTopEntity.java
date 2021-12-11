@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_main.entity.type.mobs;
 
 import com.dayofpi.sbw_main.entity.type.bases.AbstractBuzzy;
-import com.dayofpi.sbw_main.misc.ModDamageSource;
+import com.dayofpi.sbw_main.misc.ModEntityDamageSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
@@ -56,7 +56,7 @@ public class SpikeTopEntity extends AbstractBuzzy {
 
     public void tick() {
         super.tick();
-        if (!this.world.isClient) {
+        if (!this.world.isClient && this.isAlive()) {
             this.setClimbingWall(this.horizontalCollision);
         }
     }
@@ -82,11 +82,11 @@ public class SpikeTopEntity extends AbstractBuzzy {
 
     public void pushAwayFrom(Entity entity) {
         if (entity.getY() > this.getY() && !this.isUpsideDown() && entity.fallDistance > 0 && entity.getBlockX() == this.getBlockX() && !(entity instanceof AbstractBuzzy)) {
-            boolean damaged = entity.damage(ModDamageSource.spikyMob(this), entity.fallDistance);
+            boolean damaged = entity.damage(ModEntityDamageSource.spikyMob(this), entity.fallDistance);
             if (damaged) {
                 this.playSound(SoundEvents.ENCHANT_THORNS_HIT, 1.0F, getSoundPitch());
             }
-            entity.damage(ModDamageSource.spikyMob(this), entity.fallDistance * 2);
+            entity.damage(ModEntityDamageSource.spikyMob(this), entity.fallDistance * 2);
         } else super.pushAwayFrom(entity);
     }
 

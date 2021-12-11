@@ -39,8 +39,7 @@ public class BushBlock extends PlantBlock implements Fertilizable {
 
     @Override
     public void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        ItemStack itemStack = player.getStackInHand(player.preferredHand);
-        if (itemStack.isOf(Items.SHEARS)) {
+        if (player.getStackInHand(Hand.MAIN_HAND).isOf(Items.SHEARS) || player.getStackInHand(Hand.OFF_HAND).isOf(Items.SHEARS)) {
             Block.dropStack(world, pos, new ItemStack(ModItems.YOSHI_FRUIT, state.get(FRUITS)));
         }
     }

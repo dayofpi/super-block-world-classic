@@ -88,7 +88,7 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
         rider.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0F);
         rider.initialize(world, difficulty, SpawnReason.JOCKEY, null, null);
         rider.startRiding(this, true);
-        return new PassiveEntity.PassiveData(0.0F);
+        return new PassiveData(0.0F);
     }
 
     @Override
@@ -125,12 +125,12 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
     @Override
     public void tickMovement() {
         super.tickMovement();
-        EntityAttributeInstance armorAttribute = this.getAttributeInstance(EntityAttributes.GENERIC_ARMOR);
         if (hidingTime > 0) {
             --hidingTime;
         }
 
         if (this.isHiding()) {
+            EntityAttributeInstance armorAttribute = this.getAttributeInstance(EntityAttributes.GENERIC_ARMOR);
             if (this.hidingTime == 1) {
                 this.setHiding(false);
             }

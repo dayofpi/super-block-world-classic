@@ -9,6 +9,8 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -56,6 +58,11 @@ public class TrampolineBlock extends FallingBlock implements Waterloggable {
                 entity.world.setBlockState(entity.getLandingPos(), blockState.with(SQUASH, false));
                 this.bounce(entity, 1.2);
                 entity.playSound(ModSounds.BLOCK_TRAMPOLINE_SUPER_JUMP, 1.0F, this.getSoundPitch(entity));
+                Random random = new Random();
+                for (int i = 0; i < 6; i++) {
+                    double rand = random.nextBoolean() ? 0.02 : -0.02;
+                    entity.world.addParticle(ParticleTypes.CLOUD, entity.getX(), entity.getY(), entity.getZ(), i * rand, 0.0D, i * rand);
+                }
             }
         }
         else if (world.getBlockState(entity.getLandingPos()).isOf(ModBlocks.TRAMPOLINE) && !world.getBlockState(entity.getLandingPos()).get(SQUASH)) {
@@ -65,6 +72,7 @@ public class TrampolineBlock extends FallingBlock implements Waterloggable {
                 entity.playSound(ModSounds.BLOCK_TRAMPOLINE_JUMP, 1.0F, this.getSoundPitch(entity));
             }  else {
                 entity.world.setBlockState(entity.getLandingPos(), blockState.with(SQUASH, true));
+                entity.playSound(SoundEvents.BLOCK_WOOD_STEP, 1.0F, 1.1F);
             }
         }
 

@@ -3,7 +3,7 @@ package com.dayofpi.sbw_main.entity.type.projectiles;
 import com.dayofpi.sbw_main.Client;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.item.registry.ModItems;
-import com.dayofpi.sbw_main.misc.SpawnPacket;
+import com.dayofpi.sbw_main.misc.ModSpawnPacket;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
@@ -69,7 +69,7 @@ public class BombEntity extends ThrownItemEntity {
 
     @Override
     public Packet<?> createSpawnPacket() {
-        return SpawnPacket.create(this, Client.PacketID);
+        return ModSpawnPacket.create(this, Client.PacketID);
     }
 
     protected float getGravity() {

@@ -22,15 +22,21 @@ public class BlockLineFeature extends Feature<BlockLineFeatureConfig> {
         StructureWorldAccess structureWorldAccess = context.getWorld();
         int i = 0;
         BlockPos.Mutable mutable = new BlockPos.Mutable();
-        BlockPos.Mutable mutable2 = new BlockPos.Mutable();
         int x = config.xSpread();
         int z = config.zSpread();
         int y = config.ySpread();
-        for (int l = 0; l < config.tries(); ++l) {
-            mutable.set(blockPos, random.nextInt(x) - random.nextInt(x), random.nextInt(y) - random.nextInt(y), random.nextInt(z) - random.nextInt(z));
-            mutable2.set(blockPos, random.nextInt(z) - random.nextInt(z), random.nextInt(y) - random.nextInt(y), random.nextInt(x) - random.nextInt(x));
-            if (!config.feature().get().generateUnregistered(structureWorldAccess, context.getGenerator(), random, random.nextBoolean() ? mutable : mutable2)) continue;
-            ++i;
+        if (random.nextBoolean()) {
+            for (int l = 0; l < config.tries(); ++l) {
+                mutable.set(blockPos, random.nextInt(x) - random.nextInt(x), random.nextInt(y) - random.nextInt(y), random.nextInt(z) - random.nextInt(z));
+                if (!config.feature().get().generateUnregistered(structureWorldAccess, context.getGenerator(), random, mutable)) continue;
+                ++i;
+            }
+        } else {
+            for (int l = 0; l < config.tries(); ++l) {
+                mutable.set(blockPos, random.nextInt(z) - random.nextInt(z), random.nextInt(y) - random.nextInt(y), random.nextInt(x) - random.nextInt(x));
+                if (!config.feature().get().generateUnregistered(structureWorldAccess, context.getGenerator(), random, mutable)) continue;
+                ++i;
+            }
         }
         return i > 0;
     }

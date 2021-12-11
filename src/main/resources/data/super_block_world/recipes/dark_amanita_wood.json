@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:dark_amanita_log"
+    }
+  },
+  "result": {
+    "item": "super_block_world:dark_amanita_wood",
+    "count": 3
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "temperature": 0.8,
+  "downfall": 0.4,
+  "precipitation": "rain",
+  "category": "ocean",
+  "player_spawn_friendly": true,
+  "effects": {
+    "sky_color": 7721727,
+    "fog_color": 11859964,
+    "water_color": 47847,
+    "water_fog_color": 47847,
+    "grass_color": 12121385,
+    "foliage_color": 443968,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    },
+    "music": {
+      "sound": "super_block_world:music.water",
+      "min_delay": 3000,
+      "max_delay": 20000,
+      "replace_current_music": false
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "super_block_world:goomba",
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:paragoomba",
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:koopa_troopa",
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:paratroopa",
+        "weight": 2,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:hammer_bro",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
+        "type": "super_block_world:buzzy_beetle",
+        "weight": 100,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:spike_top",
+        "weight": 24,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:bob_omb",
+        "weight": 24,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:thwomp",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [
+      {
+        "type": "minecraft:rabbit",
+        "weight": 20,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:cat",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 2
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
+        "type": "minecraft:dolphin",
+        "weight": 2,
+        "minCount": 2,
+        "maxCount": 2
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:tropical_fish",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:pufferfish",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ]
+  },
+  "spawn_costs": {
+    "super_block_world:goomba": {
+      "energy_budget": 0.16,
+      "charge": 0.7
+    }
+  },
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [],
+    [
+      "super_block_world:lake_lava",
+      "super_block_world:lake_poison"
+    ],
+    [],
+    [
+      "super_block_world:block_single",
+      "super_block_world:block_line",
+      "super_block_world:block_line_deep",
+      "super_block_world:jellybeam",
+      "super_block_world:pipe_default",
+      "super_block_world:pipe_underwater"
+    ],
+    [],
+    [
+      "super_block_world:vanillate_topping"
+    ],
+    [
+      "super_block_world:ore_bronze",
+      "super_block_world:ore_amethyst",
+      "super_block_world:ore_hardstone",
+      "super_block_world:ore_crumble",
+      "super_block_world:toppings_coal",
+      "super_block_world:toppings_iron",
+      "super_block_world:toppings_gold"
+    ],
+    [
+      "super_block_world:waterfall",
+      "super_block_world:disk_sand",
+      "super_block_world:patch_cave_crystals",
+      "super_block_world:patch_lantern",
+      "super_block_world:cave_decoration"
+    ],
+    [
+      "minecraft:warm_ocean_vegetation",
+      "super_block_world:seagrass",
+      "super_block_world:kelp",
+      "super_block_world:coral_many",
+      "super_block_world:plant_reef",
+      "super_block_world:flower_reef",
+      "super_block_world:flower_water",
+      "super_block_world:vegetation_reef"
+    ]
+  ]
+}

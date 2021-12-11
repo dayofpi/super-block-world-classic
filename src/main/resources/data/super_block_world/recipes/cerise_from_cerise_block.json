@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "cerise",
+  "ingredients": [
+    {
+      "item": "super_block_world:cerise_block"
+    }
+  ],
+  "result": {
+    "item": "super_block_world:cerise",
+    "count": 9
+  }
+}

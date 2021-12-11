@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_inventory",
+  "textures": {
+    "texture": "super_block_world:block/dark_amanita_planks"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.dayofpi.sbw_mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "AllowCacti",
+    "AllowCarvers",
+    "BlockEntityTypeMixin",
+    "EntityPoisonInteraction",
+    "PathNodeMixin",
+    "PipeBubbles",
+    "RabbitType",
+    "ReplaceBiomeFeatures",
+    "SignTypeAccessor",
+    "SpecialSpawnCases",
+    "SpongePoisonBehavior",
+    "enum_additions.MixinBoatEntity",
+    "enum_additions.MixinInstrument",
+    "living_entity.DeathEffects",
+    "living_entity.DefensiveItems",
+    "living_entity.JumpBoots",
+    "living_entity.PipeTeleporting",
+    "plant_block.AllowCrop",
+    "plant_block.AllowDeadBush",
+    "plant_block.AllowStem",
+    "plant_block.PoisonPotatoCrop",
+    "plant_block.SupportModMushrooms"
+  ],
+  "client": [
+    "CoinPickupSound",
+    "ClientPlayer",
+    "CustomMusic",
+    "RabbitSkin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

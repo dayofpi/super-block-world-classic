@@ -5,10 +5,10 @@ import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.block.type.warp_pipe.WarpPipeBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
 
 public class WarpPipeBE extends BlockEntity {
     public WarpPipeBE(BlockPos pos, BlockState state) {
@@ -16,10 +16,12 @@ public class WarpPipeBE extends BlockEntity {
     }
 
     @Override
-    public void readNbt(NbtCompound nbtCompound) {
-        super.readNbt(nbtCompound);
-        if (this.world != null)
-            if (this.world.getBlockState(pos).isOf(ModBlocks.WARP_PIPE) && this.world.getBlockState(pos).get(Properties.FACING) == Direction.UP)
-                WarpPipeBlock.warpPipeTree.addBlockToChunk(pos.getX()/16, pos.getZ()/16, pos);
+    public void setWorld(World world) {
+        super.setWorld(world);
+        if (!WarpPipeBlock.warpPipeTree.getChunk(pos.getX() / 16, pos.getZ() / 16).warpList.contains(pos)) {
+            final BlockState blockState = world.getBlockState(pos);
+            if (blockState.isOf(ModBlocks.WARP_PIPE) && blockState.get(Properties.FACING) == Direction.UP && !blockState.get(Properties.WATERLOGGED))
+                WarpPipeBlock.warpPipeTree.addBlockToChunk(pos.getX() / 16, pos.getZ() / 16, pos);
+        }
     }
 }

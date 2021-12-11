@@ -35,7 +35,7 @@ public class BuddingBeanstalkBlock extends ModPlantStemBlock {
         OPEN = Properties.OPEN;
     }
 
-    public BuddingBeanstalkBlock(AbstractBlock.Settings settings) {
+    public BuddingBeanstalkBlock(Settings settings) {
         super(settings, Direction.UP, SHAPE, false, 0.1D);
         this.setDefaultState(this.stateManager.getDefaultState().with(OPEN, false));
     }

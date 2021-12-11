@@ -4,7 +4,7 @@ import com.dayofpi.sbw_main.Client;
 import com.dayofpi.sbw_main.ModTags;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.item.registry.ModItems;
-import com.dayofpi.sbw_main.misc.SpawnPacket;
+import com.dayofpi.sbw_main.misc.ModSpawnPacket;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -16,6 +16,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -58,6 +59,7 @@ public class HammerEntity extends ThrownItemEntity {
         super.onCollision(hitResult);
         if (!this.world.isClient) {
             if (hitResult.getType() == HitResult.Type.BLOCK) {
+                this.playSound(SoundEvents.BLOCK_ANCIENT_DEBRIS_BREAK, 1.0F, 0.8F);
                 BlockPos blockPos = ((BlockHitResult) hitResult).getBlockPos();
                 BlockState blockState = world.getBlockState(blockPos);
                 if (blockState.isIn(ModTags.BRICKS)) {
@@ -73,12 +75,13 @@ public class HammerEntity extends ThrownItemEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         Entity entity = entityHitResult.getEntity();
+        this.playSound(SoundEvents.BLOCK_ANCIENT_DEBRIS_BREAK, 1.0F, 0.8F);
         entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 6);
     }
 
     @Override
     public Packet<?> createSpawnPacket() {
-        return SpawnPacket.create(this, Client.PacketID);
+        return ModSpawnPacket.create(this, Client.PacketID);
     }
 
     protected float getGravity() {

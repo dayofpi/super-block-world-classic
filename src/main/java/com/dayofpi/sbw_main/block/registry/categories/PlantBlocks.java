@@ -2,24 +2,27 @@ package com.dayofpi.sbw_main.block.registry.categories;
 
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.block.type.*;
-import com.dayofpi.sbw_main.block.type.beanstalk.BeanstalkBlock;
+import com.dayofpi.sbw_main.block.type.beanstalk.BeanstalkPlantBlock;
 import com.dayofpi.sbw_main.block.type.beanstalk.BeanstalkBodyBlock;
 import com.dayofpi.sbw_main.block.type.beanstalk.BuddingBeanstalkBlock;
 import com.dayofpi.sbw_main.world.AmanitaSaplingGenerator;
+import com.dayofpi.sbw_main.world.DarkAmanitaSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.sound.BlockSoundGroup;
 
 public class PlantBlocks {
-    public static final Block AMANITA_SAPLING = new SaplingBlock(new AmanitaSaplingGenerator(), FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().sounds(BlockSoundGroup.GRASS)){};
+    public static final Block AMANITA_SAPLING = new SaplingBlock(new AmanitaSaplingGenerator(), FabricBlockSettings.of(Material.PLANT, MapColor.GREEN).noCollision().ticksRandomly().sounds(BlockSoundGroup.GRASS)){};
+    public static final Block DARK_AMANITA_SAPLING = new SaplingBlock(new DarkAmanitaSaplingGenerator(), FabricBlockSettings.of(Material.PLANT, MapColor.DARK_GREEN).noCollision().ticksRandomly().sounds(BlockSoundGroup.GRASS)){};
     public static final Block HORSETAIL = new HorsetailBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block BUSH = new BushBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block VEGETABLE = new VegetableBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.RED).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
-    public static final Block BEANSTALK = new BeanstalkBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS).ticksRandomly());
+    public static final Block BEANSTALK = new BeanstalkPlantBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block BEANSTALK_PLANT = new BeanstalkBodyBlock(FabricBlockSettings.of(Material.PLANT).dropsLike(BEANSTALK).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
-    public static final Block BUDDING_BEANSTALK = new BuddingBeanstalkBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS).ticksRandomly());
+    public static final Block BUDDING_BEANSTALK = new BuddingBeanstalkBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block PIRANHA_LILY = new PiranhaLilyBlock(FabricBlockSettings.of(Material.PLANT, MapColor.RED).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
+    public static final Block PIT_PLANT = new PitPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.DARK_GREEN).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block MUNCHER = new MuncherBlock(FabricBlockSettings.of(Material.PLANT, MapColor.BLACK).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block FROZEN_MUNCHER = new FrozenMuncherBlock(FabricBlockSettings.of(Material.ICE, MapColor.LIGHT_BLUE_GRAY).nonOpaque().sounds(BlockSoundGroup.GLASS).slipperiness(0.98f).strength(0.5f).ticksRandomly());
     public static final Block CAVE_MUSHROOMS = new CaveMushroomBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.TERRACOTTA_BLUE).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));

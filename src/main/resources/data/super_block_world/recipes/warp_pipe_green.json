@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "warp_pipe",
+  "pattern": [
+    "#X#",
+    "#0#"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:bronze_ingot"
+    },
+    "X": {
+      "item": "minecraft:ender_pearl"
+    },
+    "0": {
+      "item": "minecraft:green_dye"
+    }
+  },
+  "result": {
+    "item": "super_block_world:warp_pipe",
+    "count": 1
+  }
+}

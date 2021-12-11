@@ -13,7 +13,7 @@ import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 public class EntityClient {
     public static void registerEntityRenderers() {
         EntityRendererRegistry.register(ModEntities.TURNIP, FlyingItemEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntities.HAMMER, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.HAMMER, HammerRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOMB, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.FIREBALL, FlowerFireballRenderer::new);
         EntityRendererRegistry.register(ModEntities.ENEMY_FIREBALL, EnemyFireballRenderer::new);

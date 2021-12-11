@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "super_block_world:item/dark_amanita_boat"
+  }
+}

@@ -92,7 +92,7 @@ public class MooMooEntity extends CowEntity {
         this.goalSelector.add(2, new AnimalMateGoal(this, 1.0D));
         this.goalSelector.add(3, new TemptGoal(this, 1.25D, BREEDING_INGREDIENT, false));
         this.goalSelector.add(4, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.add(8, new MooMooEntity.MooMooWanderGoal(this, 1.0D));
+        this.goalSelector.add(8, new MooMooWanderGoal(this, 1.0D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(7, new LookAroundGoal(this));
     }
@@ -224,12 +224,14 @@ public class MooMooEntity extends CowEntity {
 
         public void start() {
             super.start();
-            this.mooMooEntity.playSound(ModSounds.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume(), mooMooEntity.getSoundPitch());
+            this.mooMooEntity.playSound(ModSounds.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume() - 0.4F, mooMooEntity.getSoundPitch());
         }
 
         public void stop() {
             super.stop();
-            this.mooMooEntity.playSound(ModSounds.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume(), mooMooEntity.getSoundPitch());
+            Random random = new Random();
+            if (random.nextInt(5) == 0)
+                this.mooMooEntity.playSound(ModSounds.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume() - 0.4F, mooMooEntity.getSoundPitch());
         }
 
         @Nullable

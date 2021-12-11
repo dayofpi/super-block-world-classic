@@ -12,7 +12,10 @@ import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Matrix3f;
+import net.minecraft.util.math.Matrix4f;
+import net.minecraft.util.math.Vec3f;
 @Environment(EnvType.CLIENT)
 public class FlowerFireballRenderer extends EntityRenderer<FlowerFireballEntity> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/item/fireball.png");
@@ -20,6 +23,10 @@ public class FlowerFireballRenderer extends EntityRenderer<FlowerFireballEntity>
 
     public FlowerFireballRenderer(EntityRendererFactory.Context context) {
         super(context);
+    }
+
+    protected int getBlockLight(FlowerFireballEntity fireballEntity, BlockPos blockPos) {
+        return 15;
     }
 
     public void render(FlowerFireballEntity entity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light) {

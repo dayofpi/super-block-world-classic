@@ -4,7 +4,7 @@ import com.dayofpi.sbw_main.Client;
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.categories.PlantBlocks;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
-import com.dayofpi.sbw_main.misc.SpawnPacket;
+import com.dayofpi.sbw_main.misc.ModSpawnPacket;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ParticleUtil;
@@ -133,6 +133,6 @@ public class IceballEntity extends PersistentProjectileEntity {
 
     @Override
     public Packet<?> createSpawnPacket() {
-        return SpawnPacket.create(this, Client.PacketID);
+        return ModSpawnPacket.create(this, Client.PacketID);
     }
 }

@@ -68,12 +68,12 @@
     },
     {
       "when": {
-        "down": "true"
+        "up": "true"
       },
       "apply": {
         "model": "super_block_world:block/warp_pipe_connection",
         "x": 90,
-        "y": 270
+        "y": 180
       }
     },
     {

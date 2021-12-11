@@ -1,10 +1,28 @@
 {
-  "variants": {
-    "lit=false": {
-      "model": "super_block_world:block/boo_lantern_off"
+  "multipart": [
+    {
+      "when": {
+        "lit": "false"
+      },
+      "apply": {
+        "model": "super_block_world:block/boo_lantern_off"
+      }
     },
-    "lit=true": {
-      "model": "super_block_world:block/boo_lantern_on"
+    {
+      "when": {
+        "lit": "true"
+      },
+      "apply": {
+        "model": "super_block_world:block/boo_lantern_on"
+      }
+    },
+    {
+      "when": {
+        "hanging": "true"
+      },
+      "apply": {
+        "model": "super_block_world:block/boo_lantern_chain"
+      }
     }
-  }
+  ]
 }

@@ -20,7 +20,7 @@ public class SongflowerBlock extends FlowerBlock {
 
     public SongflowerBlock(StatusEffect suspiciousStewEffect, int effectDuration, Settings settings) {
         super(suspiciousStewEffect, effectDuration, settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(DANCING, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(DANCING, true));
     }
 
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {

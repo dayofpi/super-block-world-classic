@@ -11,6 +11,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
@@ -36,6 +37,13 @@ public class ParatroopaEntity extends KoopaEntity {
         birdNavigation.setCanSwim(true);
         birdNavigation.setCanEnterOpenDoors(true);
         return birdNavigation;
+    }
+
+    @Override
+    public boolean consumeOnAStickItem() {
+        Vec3d vec3d = this.getVelocity();
+        this.setVelocity(vec3d.x, 0.5D, vec3d.z);
+        return super.consumeOnAStickItem();
     }
 
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {

@@ -3,7 +3,7 @@ package com.dayofpi.sbw_main.entity.type.projectiles;
 import com.dayofpi.sbw_main.Client;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
 import com.dayofpi.sbw_main.item.registry.ModItems;
-import com.dayofpi.sbw_main.misc.SpawnPacket;
+import com.dayofpi.sbw_main.misc.ModSpawnPacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -30,7 +30,7 @@ public class TurnipEntity extends ThrownItemEntity {
     }
 
     public TurnipEntity(World world, double x, double y, double z) {
-        super(ModEntities.TURNIP, x, y, z, world); // null will be changed later
+        super(ModEntities.TURNIP, x, y, z, world);
     }
 
     protected Item getDefaultItem() {
@@ -75,6 +75,6 @@ public class TurnipEntity extends ThrownItemEntity {
 
     @Override
     public Packet<?> createSpawnPacket() {
-        return SpawnPacket.create(this, Client.PacketID);
+        return ModSpawnPacket.create(this, Client.PacketID);
     }
 }

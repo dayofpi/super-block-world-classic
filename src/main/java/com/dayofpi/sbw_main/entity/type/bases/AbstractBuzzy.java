@@ -3,7 +3,7 @@ package com.dayofpi.sbw_main.entity.type.bases;
 import com.dayofpi.sbw_main.ModSounds;
 import com.dayofpi.sbw_main.block.registry.ModBlocks;
 import com.dayofpi.sbw_main.entity.registry.ModEntities;
-import com.dayofpi.sbw_main.misc.ModDamageSource;
+import com.dayofpi.sbw_main.misc.ModEntityDamageSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -85,9 +85,9 @@ public abstract class AbstractBuzzy extends CeilingEntity {
 
             List<Entity> entities = world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR);
             if (this.getType() == ModEntities.SPIKE_TOP)
-                entities.forEach((entity) -> entity.damage(ModDamageSource.spikyMob(this), fallDamage + 3));
+                entities.forEach((entity) -> entity.damage(ModEntityDamageSource.spikyMob(this), fallDamage + 3));
             else
-                entities.forEach((entity) -> entity.damage(ModDamageSource.mobDrop(this), fallDamage + 1));
+                entities.forEach((entity) -> entity.damage(ModEntityDamageSource.mobDrop(this), fallDamage + 1));
             this.playSound(ModSounds.ENTITY_BUZZY_IMPACT, this.getSoundVolume(), this.getSoundPitch());
             ((ServerWorld) world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
         }

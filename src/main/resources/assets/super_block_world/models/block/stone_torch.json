@@ -5,9 +5,9 @@
   "textures": {
     "2": "super_block_world:block/stone_torch_top",
     "3": "super_block_world:block/stone_torch_body",
-    "4": "super_block_world:block/stone_torch_sides",
+    "4": "super_block_world:block/stone_torch_side",
     "5": "super_block_world:block/stone_torch_base",
-    "particle": "super_block_world:block/stone_torch_sides"
+    "particle": "super_block_world:block/stone_torch_side"
   },
   "elements": [
     {

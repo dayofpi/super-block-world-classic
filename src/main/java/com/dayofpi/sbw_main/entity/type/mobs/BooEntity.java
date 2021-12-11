@@ -421,10 +421,8 @@ public class BooEntity extends AbstractGhost implements Flutterer, Tameable {
 
     public void tickMovement() {
         super.tickMovement();
-        LivingEntity target = this.getTarget();
-        ParticleEffect splash = ParticleTypes.SPLASH;
-
         if (this.isAlive()) {
+            LivingEntity target = this.getTarget();
             if (((target instanceof PlayerEntity))) {
                 this.setHiding(this.isPlayerStaring((PlayerEntity) target));
             }
@@ -432,7 +430,7 @@ public class BooEntity extends AbstractGhost implements Flutterer, Tameable {
                 this.setVelocity(this.getVelocity().multiply(0));
 
                 if (random.nextFloat() > 0.95F && this.airStrafingSpeed != 0) {
-                    world.addParticle(splash, this.getX() + random.nextFloat(), this.getY() + random.nextFloat(), this.getZ() + random.nextFloat(), 0.0D, 0.0D, 0.0D);
+                    world.addParticle(ParticleTypes.SPLASH, this.getX() + random.nextFloat(), this.getY() + random.nextFloat(), this.getZ() + random.nextFloat(), 0.0D, 0.0D, 0.0D);
                 }
 
                 if (this.random.nextInt(400) == 0 && target == null) {

@@ -15,7 +15,7 @@ public class BooPickupItemGoal extends Goal {
 
     public BooPickupItemGoal(BooEntity booEntity) {
         this.boo = booEntity;
-        this.setControls(EnumSet.of(Goal.Control.MOVE));
+        this.setControls(EnumSet.of(Control.MOVE));
     }
 
     public boolean canStart() {

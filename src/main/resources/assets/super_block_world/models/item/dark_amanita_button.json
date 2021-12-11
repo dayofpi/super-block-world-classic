@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "super_block_world:block/dark_amanita_planks"
+  }
+}
