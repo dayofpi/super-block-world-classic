@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_mixin.plant_block;
 
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.ModTags;
+import com.dayofpi.sbw_main.registry.block.ModBlocks;
+import com.dayofpi.sbw_main.util.ModTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;

@@ -1,12 +1,17 @@
 package com.dayofpi.sbw_main;
 
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.block.registry.ModFluid;
-import com.dayofpi.sbw_main.entity.registry.ModEffects;
-import com.dayofpi.sbw_main.entity.registry.ModEntities;
-import com.dayofpi.sbw_main.item.registry.ModItems;
-import com.dayofpi.sbw_main.misc.ModDispenserBehavior;
-import com.dayofpi.sbw_main.world.registry.*;
+import com.dayofpi.sbw_main.registry.block.ModBlocks;
+import com.dayofpi.sbw_main.registry.ModFluid;
+import com.dayofpi.sbw_main.util.ModStatusEffects;
+import com.dayofpi.sbw_main.registry.entity.ModEntities;
+import com.dayofpi.sbw_main.registry.ModItems;
+import com.dayofpi.sbw_main.common.block_entity.behavior.ModDispenserBehavior;
+import com.dayofpi.sbw_main.util.sounds.ModSounds;
+import com.dayofpi.sbw_main.util.ModTags;
+import com.dayofpi.sbw_main.world.biome.ModBiome;
+import com.dayofpi.sbw_main.world.dimension.MushroomKingdom;
+import com.dayofpi.sbw_main.world.feature.registry.*;
+import com.dayofpi.sbw_main.util.ModParticle;
 import net.fabricmc.api.ModInitializer;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.util.CPASoundEventData;
@@ -31,8 +36,10 @@ public class Main implements ModInitializer {
 
         LOGGER.info("Super Block World successfully initialized");
         DIMENSION_KEY = RegistryKey.of(Registry.DIMENSION_TYPE_KEY, DIMENSION_ID);
+        MushroomKingdom.initializeDimension();
         ModTags.registerTags();
         ModKeys.registerKeys();
+        ModSounds.registerSounds();
         ModBlocks.registerBlocks();
         ModFluid.registerFluids();
         ModEntities.registerEntities();
@@ -42,9 +49,8 @@ public class Main implements ModInitializer {
         ModConfiguredFeature.registerConfiguredFeatures();
         ModStructure.registerStructures();
         ModBiome.registerBiomes();
-        ModEffects.registerEffects();
+        ModStatusEffects.registerEffects();
         ModParticle.registerParticles();
-        ModSounds.registerSounds();
         ModDispenserBehavior.addDispenserBehaviors();
         CustomPortalBuilder.beginPortal()
                 .frameBlock(ModBlocks.WARP_FRAME)

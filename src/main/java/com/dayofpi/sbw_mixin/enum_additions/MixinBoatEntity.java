@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_mixin.enum_additions;
 
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.misc.ModBoatType;
+import com.dayofpi.sbw_main.registry.block.ModBlocks;
+import com.dayofpi.sbw_main.util.mixin_aid.ModBoatType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.vehicle.BoatEntity;
 import org.objectweb.asm.Opcodes;

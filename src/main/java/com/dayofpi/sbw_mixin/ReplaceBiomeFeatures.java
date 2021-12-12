@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_mixin;
 
-import com.dayofpi.sbw_main.world.registry.configured_feature.ConfiguredTrees;
+import com.dayofpi.sbw_main.world.feature.registry.configured_feature.ConfiguredTrees;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.world.biome.*;

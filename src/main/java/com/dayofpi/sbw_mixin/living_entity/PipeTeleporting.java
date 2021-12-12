@@ -1,9 +1,9 @@
 package com.dayofpi.sbw_mixin.living_entity;
 
-import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.block.type.warp_pipe.WarpPipeBlock;
-import com.dayofpi.sbw_main.entity.registry.ModEffects;
+import com.dayofpi.sbw_main.util.sounds.ModSounds;
+import com.dayofpi.sbw_main.registry.block.ModBlocks;
+import com.dayofpi.sbw_main.common.block.type.warp_pipe.WarpPipeBlock;
+import com.dayofpi.sbw_main.util.ModStatusEffects;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -39,11 +39,10 @@ public abstract class PipeTeleporting extends LivingEntity {
                 if (world.getBlockState(entityPos).isAir() && world.getBlockState(floor).isOf(ModBlocks.WARP_PIPE) && world.getBlockState(floor).get(Properties.FACING) == Direction.UP) {
                     BlockPos destination = WarpPipeBlock.warpPipeTree.getNearestBlock(floor, world, this.getHeadYaw());
                     if (destination != null) {
-                        world.playSound(null, floor, ModSounds.BLOCK_WARP_PIPE_TELEPORT, SoundCategory.PLAYERS, 0.5F, 1.0F);
                         this.requestTeleport(destination.getX() + 0.5, destination.getY() + 1.0F, destination.getZ() + 0.5);
                         this.setPipeCooldown(20);
                         world.sendEntityStatus(this, (byte) 46);
-                        world.playSound(null, destination, ModSounds.BLOCK_WARP_PIPE_TELEPORT, SoundCategory.PLAYERS, 0.5F, 1.0F);
+                        world.playSound(null, destination, ModSounds.BLOCK_WARP_PIPE_TELEPORT, SoundCategory.PLAYERS, 0.5F, this.getSoundPitch());
                     }
                 }
             }
@@ -62,7 +61,7 @@ public abstract class PipeTeleporting extends LivingEntity {
     public void baseTick() {
         super.baseTick();
         if (this.isAlive()) {
-            if (this.hasStatusEffect(ModEffects.STAR_POWER)) {
+            if (this.hasStatusEffect(ModStatusEffects.STAR_POWER)) {
                 for (int i = 0; i < 1; ++i) {
                     world.addParticle(ParticleTypes.GLOW, true, this.getX() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), this.getRandomBodyY(), this.getZ() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), 0, 0, 0);
                 }

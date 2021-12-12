@@ -1,21 +1,7 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "super_block_world:block/frosty_topped_vanillate_ore"
-      },
-      {
-        "model": "super_block_world:block/frosty_topped_vanillate_ore",
-        "y": 90
-      },
-      {
-        "model": "super_block_world:block/frosty_topped_vanillate_ore",
-        "y": 180
-      },
-      {
-        "model": "super_block_world:block/frosty_topped_vanillate_ore",
-        "y": 270
-      }
-    ]
+    "": {
+      "model": "super_block_world:block/frosty_topped_vanillate"
+    }
   }
 }

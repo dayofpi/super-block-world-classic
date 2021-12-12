@@ -1,10 +1,10 @@
 package com.dayofpi.sbw_main;
 
-import com.dayofpi.sbw_main.block.registry.BlockClient;
-import com.dayofpi.sbw_main.entity.registry.EntityClient;
-import com.dayofpi.sbw_main.misc.ModSpawnPacket;
-import com.dayofpi.sbw_main.misc.fluid.FluidRendering;
-import com.dayofpi.sbw_main.world.registry.ParticleClient;
+import com.dayofpi.sbw_main.client.BlockClient;
+import com.dayofpi.sbw_main.client.EntityClient;
+import com.dayofpi.sbw_main.client.FluidRendering;
+import com.dayofpi.sbw_main.client.ParticleClient;
+import com.dayofpi.sbw_main.util.entity.CustomSpawnPacket;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -36,9 +36,9 @@ public class Client implements ClientModInitializer {
             EntityType<?> et = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());
             UUID uuid = byteBuf.readUuid();
             int entityId = byteBuf.readVarInt();
-            Vec3d pos = ModSpawnPacket.PacketBufUtil.readVec3d(byteBuf);
-            float pitch = ModSpawnPacket.PacketBufUtil.readAngle(byteBuf);
-            float yaw = ModSpawnPacket.PacketBufUtil.readAngle(byteBuf);
+            Vec3d pos = CustomSpawnPacket.PacketBufUtil.readVec3d(byteBuf);
+            float pitch = CustomSpawnPacket.PacketBufUtil.readAngle(byteBuf);
+            float yaw = CustomSpawnPacket.PacketBufUtil.readAngle(byteBuf);
             ctx.getTaskQueue().execute(() -> {
                 if (MinecraftClient.getInstance().world == null)
                     throw new IllegalStateException("Tried to spawn entity in a null world!");

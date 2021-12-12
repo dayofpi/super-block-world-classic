@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
+		"top": "super_block_world:block/spike_trap_top",
+		"bottom": "super_block_world:block/spike_trap_bottom",
 		"particle": "super_block_world:block/spike_trap_side",
-		"top": "super_block_world:block/spike_trap_on",
-		"bottom": "super_block_world:block/bronze_block",
 		"side": "super_block_world:block/spike_trap_side",
 		"spikes": "super_block_world:block/spikes"
 	},
@@ -52,6 +52,20 @@
 		},
 		{
 			"name": "spikes3",
+			"from": [0, 8, 8],
+			"to": [16, 18, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 10], "texture": "#spikes"},
+				"east": {"uv": [0, 0, 0, 10], "texture": "#spikes"},
+				"south": {"uv": [0, 0, 16, 10], "texture": "#spikes"},
+				"west": {"uv": [0, 0, 0, 10], "texture": "#spikes"},
+				"up": {"uv": [0, 0, 16, 0], "rotation": 180, "texture": "#spikes"},
+				"down": {"uv": [0, 0, 16, 0], "rotation": 180, "texture": "#spikes"}
+			}
+		},
+		{
+			"name": "spikes4",
 			"from": [3, 8, 0],
 			"to": [3, 18, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
@@ -65,9 +79,9 @@
 			}
 		},
 		{
-			"name": "spikes4",
-			"from": [13, 8, 0],
-			"to": [13, 18, 16],
+			"name": "spikes5",
+			"from": [8, 8, 0],
+			"to": [8, 18, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
 			"faces": {
 				"north": {"uv": [0, 0, 0, 10], "texture": "#spikes"},
@@ -79,32 +93,27 @@
 			}
 		},
 		{
-			"name": "spikes2",
-			"from": [0, 8, 8],
-			"to": [16, 18, 8],
-			"rotation": {"angle": -45, "axis": "y", "origin": [8, 9, 8]},
+			"name": "spikes6",
+			"from": [13, 8, 0],
+			"to": [13, 18, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
 			"faces": {
-				"north": {"uv": [0, 0, 16, 10], "texture": "#spikes"},
-				"east": {"uv": [0, 0, 0, 10], "texture": "#spikes"},
-				"south": {"uv": [0, 0, 16, 10], "texture": "#spikes"},
-				"west": {"uv": [0, 0, 0, 10], "texture": "#spikes"},
-				"up": {"uv": [0, 0, 16, 0], "rotation": 180, "texture": "#spikes"},
-				"down": {"uv": [0, 0, 16, 0], "rotation": 180, "texture": "#spikes"}
+				"north": {"uv": [0, 0, 0, 10], "texture": "#spikes"},
+				"east": {"uv": [0, 0, 16, 10], "texture": "#spikes"},
+				"south": {"uv": [0, 0, 0, 10], "texture": "#spikes"},
+				"west": {"uv": [0, 0, 16, 10], "texture": "#spikes"},
+				"up": {"uv": [0, 0, 16, 0], "rotation": 90, "texture": "#spikes"},
+				"down": {"uv": [0, 0, 16, 0], "rotation": 270, "texture": "#spikes"}
 			}
-		},
+		}
+	],
+	"groups": [
+		0,
 		{
-			"name": "spikes1",
-			"from": [0, 8, 8],
-			"to": [16, 18, 8],
-			"rotation": {"angle": 45, "axis": "y", "origin": [8, 9, 8]},
-			"faces": {
-				"north": {"uv": [0, 0, 16, 10], "texture": "#spikes"},
-				"east": {"uv": [0, 0, 0, 10], "texture": "#spikes"},
-				"south": {"uv": [0, 0, 16, 10], "texture": "#spikes"},
-				"west": {"uv": [0, 0, 0, 10], "texture": "#spikes"},
-				"up": {"uv": [0, 0, 16, 0], "texture": "#spikes"},
-				"down": {"uv": [0, 0, 16, 0], "texture": "#spikes"}
-			}
+			"name": "spikes",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [1, 2, 3, 4, 5, 6]
 		}
 	]
 }

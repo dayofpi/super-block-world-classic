@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_mixin;
 
-import com.dayofpi.sbw_main.ModTags;
+import com.dayofpi.sbw_main.world.dimension.MushroomKingdom;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.RabbitEntity;
@@ -22,7 +22,7 @@ public abstract class RabbitType extends LivingEntity {
     @Inject(at=@At("HEAD"), method = "chooseType", cancellable = true)
     private void chooseType(WorldAccess world, CallbackInfoReturnable<Integer> info) {
         Biome biome = world.getBiome(this.getBlockPos());
-        if (ModTags.ALL_BIOMES.contains(biome)) {
+        if (this.getWorld().getRegistryKey() == MushroomKingdom.WORLD_KEY) {
             info.setReturnValue(random.nextBoolean() ? 1 : 4);
             info.cancel();
         }

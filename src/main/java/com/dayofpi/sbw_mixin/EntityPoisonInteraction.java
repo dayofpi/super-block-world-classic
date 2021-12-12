@@ -1,9 +1,9 @@
 package com.dayofpi.sbw_mixin;
 
-import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.ModTags;
-import com.dayofpi.sbw_main.misc.ModDamageSource;
-import com.dayofpi.sbw_main.world.registry.ModParticle;
+import com.dayofpi.sbw_main.util.sounds.ModSounds;
+import com.dayofpi.sbw_main.util.ModTags;
+import com.dayofpi.sbw_main.util.entity.ModDamageSource;
+import com.dayofpi.sbw_main.util.ModParticle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;

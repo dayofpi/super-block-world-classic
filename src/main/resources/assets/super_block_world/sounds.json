@@ -242,7 +242,7 @@
   "block.item_block.coin": {
     "subtitle": "sound.block.item_block.coin",
     "sounds": [
-      "super_block_world:block/item_block_coin"
+      "super_block_world:item/coin"
     ]
   },
   "block.item_block.store": {
@@ -313,6 +313,14 @@
     "sounds": [
       "super_block_world:block/boo_lantern_reveal"
     ]
+  },
+  "item.collect.coin": {
+    "subtitle": "sound.item.collect.coin",
+    "sounds": [ "super_block_world:item/coin" ]
+  },
+  "item.collect.star_coin": {
+    "subtitle": "sound.item.collect.star_coin",
+    "sounds": [ "super_block_world:item/star_coin" ]
   },
   "item.projectile.throw": {
     "subtitle": "sound.item.projectile.throw",

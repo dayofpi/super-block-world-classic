@@ -1,9 +1,9 @@
 package com.dayofpi.sbw_mixin.living_entity;
 
-import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.entity.registry.ModEffects;
-import com.dayofpi.sbw_main.item.registry.ModItems;
-import com.dayofpi.sbw_main.misc.ModEntityDamageSource;
+import com.dayofpi.sbw_main.util.sounds.ModSounds;
+import com.dayofpi.sbw_main.util.ModStatusEffects;
+import com.dayofpi.sbw_main.registry.ModItems;
+import com.dayofpi.sbw_main.util.entity.ModEntityDamageSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -45,7 +45,7 @@ public abstract class DefensiveItems extends Entity {
     @Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", cancellable = true)
     private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> info) {
         // Prevent Star Powered entities from taking damage
-        if (this.activeStatusEffects.containsKey(ModEffects.STAR_POWER) && !source.isOutOfWorld()) {
+        if (this.activeStatusEffects.containsKey(ModStatusEffects.STAR_POWER) && !source.isOutOfWorld()) {
             info.setReturnValue(false);
             info.cancel();
         }

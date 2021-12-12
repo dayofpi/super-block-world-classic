@@ -1,8 +1,8 @@
 package com.dayofpi.sbw_mixin;
 
-import com.dayofpi.sbw_main.ModTags;
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.block.registry.categories.PlantBlocks;
+import com.dayofpi.sbw_main.util.ModTags;
+import com.dayofpi.sbw_main.registry.block.ModBlocks;
+import com.dayofpi.sbw_main.registry.block.PlantBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.ai.pathing.LandPathNodeMaker;
 import net.minecraft.entity.ai.pathing.PathNodeType;

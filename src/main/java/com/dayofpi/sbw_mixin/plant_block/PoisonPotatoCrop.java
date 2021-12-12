@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_mixin.plant_block;
 
-import com.dayofpi.sbw_main.ModTags;
+import com.dayofpi.sbw_main.util.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;

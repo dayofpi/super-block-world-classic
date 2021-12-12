@@ -1,8 +1,8 @@
 package com.dayofpi.sbw_mixin.enum_additions;
 
-import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.block.registry.ModBlocks;
-import com.dayofpi.sbw_main.misc.ModInstrument;
+import com.dayofpi.sbw_main.util.sounds.ModSounds;
+import com.dayofpi.sbw_main.registry.block.ModBlocks;
+import com.dayofpi.sbw_main.util.mixin_aid.ModInstrument;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.sound.SoundEvent;

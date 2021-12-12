@@ -5,7 +5,7 @@
 	"textures": {
 		"ice": "minecraft:block/ice",
 		"cross": "super_block_world:block/muncher_still",
-		"particle": "#cross"
+		"particle": "#ice"
 	},
 	"elements": [
 		{

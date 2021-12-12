@@ -1,7 +1,7 @@
 package com.dayofpi.sbw_mixin;
 
-import com.dayofpi.sbw_main.ModSounds;
-import com.dayofpi.sbw_main.ModTags;
+import com.dayofpi.sbw_main.util.sounds.ModSounds;
+import com.dayofpi.sbw_main.world.dimension.MushroomKingdom;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -26,12 +26,11 @@ public abstract class CustomMusic {
     private static final MusicSound GRASSLAND = new MusicSound(ModSounds.MUSIC_GRASSLAND, 12000, 24000, false);
     private static final MusicSound CAVE = new MusicSound(ModSounds.MUSIC_CAVE, 10000, 20000, false);
 
-
     // The code for Iris Music
     @Inject(at = @At("HEAD"), method = "getMusicType", cancellable = true)
     public void getMusicType(CallbackInfoReturnable<MusicSound> info) {
-        if (this.player != null) {
-            if (ModTags.ALL_BIOMES.contains(this.player.world.getBiome(this.player.getBlockPos()))) {
+        if (this.player != null && this.world != null) {
+            if (this.world.getRegistryKey() == MushroomKingdom.WORLD_KEY) {
                 World world = this.player.world;
                 BlockPos pos = this.player.getBlockPos();
                 if (pos.getY() < world.getSeaLevel() && world.getLightLevel(pos) <= 7 && !world.isSkyVisible(pos)) {

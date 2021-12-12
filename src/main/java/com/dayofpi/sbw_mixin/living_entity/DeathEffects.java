@@ -1,6 +1,6 @@
 package com.dayofpi.sbw_mixin.living_entity;
 
-import com.dayofpi.sbw_main.entity.registry.ModEntities;
+import com.dayofpi.sbw_main.registry.entity.ModEntities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;

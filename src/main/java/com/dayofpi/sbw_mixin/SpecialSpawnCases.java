@@ -1,9 +1,9 @@
 package com.dayofpi.sbw_mixin;
 
-import com.dayofpi.sbw_main.entity.registry.ModEntities;
-import com.dayofpi.sbw_main.entity.type.mobs.BuzzyEntity;
-import com.dayofpi.sbw_main.entity.type.mobs.SpikeTopEntity;
-import com.dayofpi.sbw_main.entity.type.mobs.ThwompEntity;
+import com.dayofpi.sbw_main.registry.entity.ModEntities;
+import com.dayofpi.sbw_main.common.entity.type.mobs.BuzzyEntity;
+import com.dayofpi.sbw_main.common.entity.type.mobs.SpikeTopEntity;
+import com.dayofpi.sbw_main.common.entity.type.mobs.ThwompEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.SpawnRestriction;
