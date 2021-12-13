@@ -1,12 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.dayofpi.sbw_mixin",
+  "package": "com.dayofpi.super_block_world.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "AllowCacti",
     "AllowCarvers",
     "BlockEntityTypeMixin",
+    "DimensionOptions",
     "EntityPoisonInteraction",
     "PathNodeMixin",
     "PipeBubbles",
@@ -28,8 +29,8 @@
     "plant_block.SupportModMushrooms"
   ],
   "client": [
-    "CoinPickupSound",
     "ClientPlayer",
+    "CoinPickupSound",
     "CustomMusic",
     "RabbitSkin"
   ],

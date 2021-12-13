@@ -25,6 +25,42 @@
           }
         }
       ]
+    },
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "super_block_world:toadstone_bricks",
+            "probability": 0.3
+          },
+          "output_state": {
+            "Name": "super_block_world:chiseled_toadstone"
+          }
+        },
+        {
+          "processor_type": "minecraft:rule",
+          "rules": [
+            {
+              "location_predicate": {
+                "predicate_type": "minecraft:always_true"
+              },
+              "input_predicate": {
+                "predicate_type": "minecraft:random_block_match",
+                "block": "super_block_world:red_mushroom_cap",
+                "probability": 0.3
+              },
+              "output_state": {
+                "Name": "minecraft:red_wool"
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
