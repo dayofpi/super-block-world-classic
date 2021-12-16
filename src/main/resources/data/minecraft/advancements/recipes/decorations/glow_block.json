@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "super_block_world:glow_block",
+      "super_block_world:glow_block_single"
+    ]
+  },
+  "criteria": {
+    "has_empty_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:empty_block"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "super_block_world:glow_block"
+      }
+    },
+    "has_the_recipe_single": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "super_block_world:glow_block_single"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_empty_block",
+      "has_the_recipe",
+      "has_the_recipe_single"
+    ]
+  ]
+}

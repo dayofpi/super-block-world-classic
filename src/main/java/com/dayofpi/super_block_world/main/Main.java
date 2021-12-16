@@ -1,15 +1,16 @@
 package com.dayofpi.super_block_world.main;
 
-import com.dayofpi.super_block_world.main.common.block_entity.behavior.ModDispenserBehavior;
+import com.dayofpi.super_block_world.main.util.ModDispenserBehavior;
 import com.dayofpi.super_block_world.main.registry.*;
-import com.dayofpi.super_block_world.main.registry.block.ModBlocks;
-import com.dayofpi.super_block_world.main.registry.world.ModConfiguredFeature;
-import com.dayofpi.super_block_world.main.registry.world.ModFeature;
-import com.dayofpi.super_block_world.main.registry.world.ModPlacedFeature;
-import com.dayofpi.super_block_world.main.registry.world.ModStructure;
-import com.dayofpi.super_block_world.main.registry.world.biome.ModBiomes;
+import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.world.feature.FeatureConfiguration;
+import com.dayofpi.super_block_world.main.registry.world.feature.FeatureType;
+import com.dayofpi.super_block_world.main.registry.world.feature.FeaturePlacement;
+import com.dayofpi.super_block_world.main.registry.world.feature.StructureRegistry;
+import com.dayofpi.super_block_world.main.registry.world.biome.BiomeRegistry;
 import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
-import com.dayofpi.super_block_world.main.world.dimension.MushroomKingdom;
+import com.dayofpi.super_block_world.main.common.world.dimension.MushroomKingdom;
 import net.fabricmc.api.ModInitializer;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.util.CPASoundEventData;
@@ -29,23 +30,23 @@ public class Main implements ModInitializer {
         // Proceed with mild caution.
 
         LOGGER.info("Super Block World successfully initialized");
+        BiomeRegistry.registerBiomes();
         MushroomKingdom.initializeDimension();
-        ModTags.registerTags();
+        TagRegistry.registerTags();
         ModSounds.registerSounds();
-        ModBlocks.registerBlocks();
-        ModFluid.registerFluids();
-        ModEntities.registerEntities();
-        ModItems.registerItems();
-        ModFeature.registerFeatures();
-        ModPlacedFeature.registerPlacedFeatures();
-        ModConfiguredFeature.registerConfiguredFeatures();
-        ModStructure.registerStructures();
-        ModBiomes.registerBiomes();
-        ModStatusEffects.registerEffects();
-        ModParticle.registerParticles();
+        BlockRegistry.registerBlocks();
+        FluidRegistry.registerFluids();
+        EntityRegistry.registerEntities();
+        ItemRegistry.registerItems();
+        FeatureType.registerFeatures();
+        FeatureConfiguration.registerConfiguredFeatures();
+        FeaturePlacement.registerPlacedFeatures();
+        StructureRegistry.registerStructures();
+        StatusEffectReg.registerEffects();
+        ParticleReg.registerParticles();
         ModDispenserBehavior.addDispenserBehaviors();
         CustomPortalBuilder.beginPortal()
-                .frameBlock(ModBlocks.WARP_FRAME)
+                .frameBlock(BlockRegistry.WARP_FRAME)
                 .tintColor(188, 112, 255).destDimID(DIMENSION_ID)
                 .registerInPortalAmbienceSound(playerEntity -> new CPASoundEventData(ModSounds.BLOCK_PORTAL_TRIGGER, 1.0F, 1.0F))
                 .registerPostTPPortalAmbience(playerEntity -> new CPASoundEventData(ModSounds.BLOCK_PORTAL_TRAVEL, 1.0F, 1.0F))

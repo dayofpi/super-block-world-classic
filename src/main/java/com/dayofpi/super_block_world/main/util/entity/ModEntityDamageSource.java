@@ -38,8 +38,4 @@ public class ModEntityDamageSource extends EntityDamageSource {
     public static DamageSource mobDrop(LivingEntity attacker) {
         return new ModEntityDamageSource("mob_drop", attacker).setFromAbove();
     }
-
-    public static DamageSource spikyMob(LivingEntity attacker) {
-        return new EntityDamageSource("spiky_mob", attacker);
-    }
 }

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.entity.goal;
 
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.BooEntity;
+import com.dayofpi.super_block_world.main.common.entity.mob.ghost.BooEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 

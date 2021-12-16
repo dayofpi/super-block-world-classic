@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.client.model;
 
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.MooMooEntity;
+import com.dayofpi.super_block_world.main.common.entity.mob.MooMooEntity;
 import com.google.common.collect.ImmutableList;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

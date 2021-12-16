@@ -2,8 +2,8 @@ package com.dayofpi.super_block_world.main.client.renderer.mob;
 
 import com.dayofpi.super_block_world.main.Main;
 import com.dayofpi.super_block_world.main.client.model.ParagoombaModel;
-import com.dayofpi.super_block_world.main.client.ModelLayers;
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.ParagoombaEntity;
+import com.dayofpi.super_block_world.main.client.ModModelLayers;
+import com.dayofpi.super_block_world.main.common.entity.mob.goomba.ParagoombaEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -17,7 +17,7 @@ public class ParagoombaRenderer<T extends ParagoombaEntity> extends MobEntityRen
     private static final Identifier GOLD = new Identifier(Main.MOD_ID, "textures/entity/goomba/gold_goomba.png");
 
     public ParagoombaRenderer(EntityRendererFactory.Context context) {
-        super(context, new ParagoombaModel<>(context.getPart(ModelLayers.PARAGOOMBA)), 0.4F);
+        super(context, new ParagoombaModel<>(context.getPart(ModModelLayers.PARAGOOMBA)), 0.4F);
     }
 
     @Override

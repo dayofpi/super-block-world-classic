@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.client.model;
 
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.BooEntity;
+import com.dayofpi.super_block_world.main.common.entity.mob.ghost.BooEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;

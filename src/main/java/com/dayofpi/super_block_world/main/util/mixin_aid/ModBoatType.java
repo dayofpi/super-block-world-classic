@@ -4,6 +4,7 @@ import net.minecraft.entity.vehicle.BoatEntity;
 
 public class ModBoatType {
     static {
+        //noinspection ResultOfMethodCallIgnored
         BoatEntity.Type.values();
     }
 

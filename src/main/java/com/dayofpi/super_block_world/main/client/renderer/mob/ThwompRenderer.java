@@ -2,8 +2,8 @@ package com.dayofpi.super_block_world.main.client.renderer.mob;
 
 import com.dayofpi.super_block_world.main.Main;
 import com.dayofpi.super_block_world.main.client.model.ThwompModel;
-import com.dayofpi.super_block_world.main.client.ModelLayers;
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.ThwompEntity;
+import com.dayofpi.super_block_world.main.client.ModModelLayers;
+import com.dayofpi.super_block_world.main.common.entity.mob.ThwompEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -15,7 +15,7 @@ public class ThwompRenderer<T extends ThwompEntity> extends MobEntityRenderer<T,
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/thwomp/idle.png");
 
     public ThwompRenderer(EntityRendererFactory.Context context) {
-        super(context, new ThwompModel<>(context.getPart(ModelLayers.THWOMP)), 0.5F);
+        super(context, new ThwompModel<>(context.getPart(ModModelLayers.THWOMP)), 0.5F);
     }
 
     @Override

@@ -74,7 +74,7 @@
           "input_predicate": {
             "predicate_type": "minecraft:random_block_match",
             "block": "super_block_world:hardstone_bricks",
-            "probability": 0.3
+            "probability": 0.4
           },
           "output_state": {
             "Name": "super_block_world:cracked_hardstone_bricks"
@@ -87,16 +87,10 @@
           "input_predicate": {
             "predicate_type": "minecraft:random_block_match",
             "block": "super_block_world:hardstone_bricks",
-            "probability": 0.1
+            "probability": 0.3
           },
           "output_state": {
-            "Name": "super_block_world:hardstone_brick_stairs",
-            "Properties": {
-              "facing": "north",
-              "bottom": "half",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
+            "Name": "super_block_world:chiseled_hardstone_bricks"
           }
         },
         {

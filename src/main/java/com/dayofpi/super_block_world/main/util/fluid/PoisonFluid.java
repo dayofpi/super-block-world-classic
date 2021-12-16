@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.main.util.fluid;
 
 import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
-import com.dayofpi.super_block_world.main.registry.block.ModBlocks;
-import com.dayofpi.super_block_world.main.registry.ModItems;
-import com.dayofpi.super_block_world.main.registry.ModFluid;
-import com.dayofpi.super_block_world.main.registry.ModParticle;
+import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.FluidRegistry;
+import com.dayofpi.super_block_world.main.registry.ParticleReg;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.fluid.Fluid;
@@ -23,15 +23,15 @@ import java.util.Random;
 
 public abstract class PoisonFluid extends AbstractFluid {
     public Fluid getFlowing() {
-        return ModFluid.FLOWING_POISON;
+        return FluidRegistry.FLOWING_POISON;
     }
 
     public Fluid getStill() {
-        return ModFluid.STILL_POISON;
+        return FluidRegistry.STILL_POISON;
     }
 
     public Item getBucketItem() {
-        return ModItems.POISON_BUCKET;
+        return ItemRegistry.POISON_BUCKET;
     }
 
     @Override
@@ -47,7 +47,7 @@ public abstract class PoisonFluid extends AbstractFluid {
                 double d = (double)pos.getX() + random.nextDouble();
                 double e = (double)pos.getY() + 0.4D  + (random.nextDouble() * 0.2);
                 double f = (double)pos.getZ() + random.nextDouble();
-                world.addParticle(ModParticle.POISON_BUBBLE, d, e, f, 0.0D, 0.0D, 0.0D);
+                world.addParticle(ParticleReg.POISON_BUBBLE, d, e, f, 0.0D, 0.0D, 0.0D);
             }
         }
         if (random.nextInt(192) == 0) {
@@ -61,7 +61,7 @@ public abstract class PoisonFluid extends AbstractFluid {
 
     @Override
     protected BlockState toBlockState(FluidState fluidState) {
-        return ModBlocks.POISON.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(fluidState));
+        return BlockRegistry.POISON.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(fluidState));
     }
 
     public Optional<SoundEvent> getBucketFillSound() {

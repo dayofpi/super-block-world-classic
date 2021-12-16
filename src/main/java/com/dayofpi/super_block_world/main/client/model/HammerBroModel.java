@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.client.model;
 
-import com.dayofpi.super_block_world.main.common.entity.type.bases.AbstractBro;
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.FireBroEntity;
+import com.dayofpi.super_block_world.main.common.entity.mob.hammer_bro.AbstractBro;
+import com.dayofpi.super_block_world.main.common.entity.mob.hammer_bro.FireBroEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;

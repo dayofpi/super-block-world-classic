@@ -2,8 +2,8 @@ package com.dayofpi.super_block_world.main.client.renderer.mob;
 
 import com.dayofpi.super_block_world.main.Main;
 import com.dayofpi.super_block_world.main.client.model.StingbyModel;
-import com.dayofpi.super_block_world.main.client.ModelLayers;
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.StingbyEntity;
+import com.dayofpi.super_block_world.main.client.ModModelLayers;
+import com.dayofpi.super_block_world.main.common.entity.mob.StingbyEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -15,7 +15,7 @@ public class StingbyRenderer<T extends StingbyEntity> extends MobEntityRenderer<
     private static final Identifier ANGRY = new Identifier(Main.MOD_ID, "textures/entity/stingby_angry.png");
 
     public StingbyRenderer(EntityRendererFactory.Context context) {
-        super(context, new StingbyModel<>(context.getPart(ModelLayers.STINGBY)), 0.5F);
+        super(context, new StingbyModel<>(context.getPart(ModModelLayers.STINGBY)), 0.5F);
     }
 
     @Override

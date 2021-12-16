@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.main.client.renderer.mob;
 
 import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.client.feature.HammerBroItem;
+import com.dayofpi.super_block_world.main.client.renderer.feature.HammerBroItem;
 import com.dayofpi.super_block_world.main.client.model.HammerBroModel;
-import com.dayofpi.super_block_world.main.client.ModelLayers;
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.FireBroEntity;
+import com.dayofpi.super_block_world.main.client.ModModelLayers;
+import com.dayofpi.super_block_world.main.common.entity.mob.hammer_bro.FireBroEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -15,7 +15,7 @@ public class FireBroRenderer<T extends FireBroEntity> extends MobEntityRenderer<
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID,"textures/entity/fire_bro.png");
 
     public FireBroRenderer(EntityRendererFactory.Context context) {
-        super(context, new HammerBroModel<>(context.getPart(ModelLayers.FIRE_BRO)), 0.5F);
+        super(context, new HammerBroModel<>(context.getPart(ModModelLayers.FIRE_BRO)), 0.5F);
         this.addFeature(new HammerBroItem<>(this));
     }
 

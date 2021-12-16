@@ -1,11 +1,12 @@
 package com.dayofpi.super_block_world.main.registry.block;
 
-import com.dayofpi.super_block_world.main.common.block.type.*;
-import com.dayofpi.super_block_world.main.common.block.type.beanstalk.BeanstalkStemBlock;
-import com.dayofpi.super_block_world.main.common.block.type.beanstalk.BeanstalkPlantBlock;
-import com.dayofpi.super_block_world.main.common.block.type.beanstalk.BuddingBeanstalkBlock;
-import com.dayofpi.super_block_world.main.world.feature.generator.AmanitaSaplingGenerator;
-import com.dayofpi.super_block_world.main.world.feature.generator.DarkAmanitaSaplingGenerator;
+import com.dayofpi.super_block_world.main.common.block.*;
+import com.dayofpi.super_block_world.main.common.block.beanstalk.BeanstalkStemBlock;
+import com.dayofpi.super_block_world.main.common.block.beanstalk.BeanstalkPlantBlock;
+import com.dayofpi.super_block_world.main.common.block.beanstalk.BuddingBeanstalkBlock;
+import com.dayofpi.super_block_world.main.common.block.plant.*;
+import com.dayofpi.super_block_world.main.common.world.feature.generator.AmanitaSaplingGenerator;
+import com.dayofpi.super_block_world.main.common.world.feature.generator.DarkAmanitaSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
@@ -32,5 +33,5 @@ public class PlantBlocks {
     public static final Block PINK_SONGFLOWER = new SongflowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.copyOf(BLUE_SONGFLOWER).mapColor(MapColor.PINK));
     public static final Block YELLOW_SONGFLOWER = new SongflowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.copyOf(BLUE_SONGFLOWER).mapColor(MapColor.YELLOW));
     public static final Block PAWFLOWER = new FlowerBlock(StatusEffects.SPEED, 6, FabricBlockSettings.of(Material.PLANT, MapColor.OFF_WHITE).noCollision().sounds(BlockSoundGroup.GRASS));
-    public static final Block FIRE_TULIP = new FireTulipBlock(StatusEffects.FIRE_RESISTANCE, 6, FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE).noCollision().sounds(BlockSoundGroup.GRASS).emissiveLighting(ModBlocks::always));
+    public static final Block FIRE_TULIP = new FireTulipBlock(StatusEffects.FIRE_RESISTANCE, 6, FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE).noCollision().sounds(BlockSoundGroup.GRASS).emissiveLighting(BlockRegistry::always));
 }

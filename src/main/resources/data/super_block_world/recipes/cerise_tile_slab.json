@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:cerise_tiles"
+    }
+  },
+  "result": {
+    "item": "super_block_world:cerise_tile_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:hardstone_brick_slab"
+    }
+  },
+  "result": {
+    "item": "super_block_world:chiseled_hardstone_bricks",
+    "count": 1
+  }
+}

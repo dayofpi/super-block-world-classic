@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.main.client.renderer.mob;
 
 import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.client.feature.BuzzyEyes;
+import com.dayofpi.super_block_world.main.client.renderer.feature.BuzzyEyes;
 import com.dayofpi.super_block_world.main.client.model.BuzzyModel;
-import com.dayofpi.super_block_world.main.client.ModelLayers;
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.BuzzyEntity;
+import com.dayofpi.super_block_world.main.client.ModModelLayers;
+import com.dayofpi.super_block_world.main.common.entity.mob.buzzy.BuzzyEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -19,8 +19,8 @@ public class BuzzyRenderer<T extends BuzzyEntity> extends MobEntityRenderer<T, B
     private static final Identifier HIDING = new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/buzzy_shell.png");
 
     public BuzzyRenderer(EntityRendererFactory.Context context) {
-        super(context, new BuzzyModel<>(context.getPart(ModelLayers.BUZZY_BEETLE)), 0.5F);
-        this.addFeature(new SaddleFeatureRenderer<>(this, new BuzzyModel<>(context.getPart(ModelLayers.BUZZY_BEETLE_SADDLE)), new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/buzzy_saddle.png")));
+        super(context, new BuzzyModel<>(context.getPart(ModModelLayers.BUZZY_BEETLE)), 0.5F);
+        this.addFeature(new SaddleFeatureRenderer<>(this, new BuzzyModel<>(context.getPart(ModModelLayers.BUZZY_BEETLE_SADDLE)), new Identifier(Main.MOD_ID, "textures/entity/buzzy_beetle/buzzy_saddle.png")));
         this.addFeature(new BuzzyEyes<>(this));
         this.model.getSpikeParts().forEach((spikeParts) -> spikeParts.visible = false);
     }

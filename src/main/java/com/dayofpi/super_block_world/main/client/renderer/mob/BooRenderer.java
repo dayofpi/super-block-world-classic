@@ -2,10 +2,10 @@ package com.dayofpi.super_block_world.main.client.renderer.mob;
 
 import com.dayofpi.super_block_world.main.Main;
 import com.dayofpi.super_block_world.main.client.model.BooModel;
-import com.dayofpi.super_block_world.main.client.ModelLayers;
-import com.dayofpi.super_block_world.main.client.feature.BooColor;
-import com.dayofpi.super_block_world.main.client.feature.BooItem;
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.BooEntity;
+import com.dayofpi.super_block_world.main.client.ModModelLayers;
+import com.dayofpi.super_block_world.main.client.renderer.feature.BooColorFeature;
+import com.dayofpi.super_block_world.main.client.renderer.feature.BooItem;
+import com.dayofpi.super_block_world.main.common.entity.mob.ghost.BooEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -24,8 +24,8 @@ public class BooRenderer extends MobEntityRenderer<BooEntity, BooModel<BooEntity
     private static final Identifier FACE_4 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_poyo.png");
 
     public BooRenderer(EntityRendererFactory.Context context) {
-        super(context, new BooModel<>(context.getPart(ModelLayers.BOO)), 0.5F);
-        this.addFeature(new BooColor(this));
+        super(context, new BooModel<>(context.getPart(ModModelLayers.BOO)), 0.5F);
+        this.addFeature(new BooColorFeature(this));
         this.addFeature(new BooItem(this));
     }
 

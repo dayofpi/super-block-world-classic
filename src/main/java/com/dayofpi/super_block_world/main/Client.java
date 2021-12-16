@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.main;
 
-import com.dayofpi.super_block_world.main.client.BlockClient;
-import com.dayofpi.super_block_world.main.client.EntityClient;
+import com.dayofpi.super_block_world.main.client.BlockRendering;
+import com.dayofpi.super_block_world.main.client.EntityRendering;
 import com.dayofpi.super_block_world.main.client.FluidRendering;
-import com.dayofpi.super_block_world.main.client.ParticleClient;
+import com.dayofpi.super_block_world.main.client.ParticleRendering;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -24,10 +24,13 @@ public class Client implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        //DimensionRenderingRegistry.registerSkyRenderer(MushroomKingdom.WORLD_KEY, new MushroomKingdomSky());
         FluidRendering.renderFluids();
-        BlockClient.setRenderLayers();
-        EntityClient.registerEntityRenderers();
-        ParticleClient.particleRendering();
+        BlockRendering.setBlockColors();
+        BlockRendering.renderBlockEntity();
+        BlockRendering.setRenderLayers();
+        EntityRendering.registerEntityRenderers();
+        ParticleRendering.renderParticles();
         receiveEntityPacket();
     }
 

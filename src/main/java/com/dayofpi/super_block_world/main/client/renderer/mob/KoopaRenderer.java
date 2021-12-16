@@ -2,8 +2,8 @@ package com.dayofpi.super_block_world.main.client.renderer.mob;
 
 import com.dayofpi.super_block_world.main.Main;
 import com.dayofpi.super_block_world.main.client.model.KoopaModel;
-import com.dayofpi.super_block_world.main.client.ModelLayers;
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.KoopaEntity;
+import com.dayofpi.super_block_world.main.client.ModModelLayers;
+import com.dayofpi.super_block_world.main.common.entity.mob.koopa.KoopaEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -18,8 +18,8 @@ public class KoopaRenderer<T extends KoopaEntity> extends MobEntityRenderer<T, K
     private static final Identifier RED_ANGRY = new Identifier(Main.MOD_ID, "textures/entity/koopa_troopa/red_angry.png");
 
     public KoopaRenderer(EntityRendererFactory.Context context) {
-        super(context, new KoopaModel<>(context.getPart(ModelLayers.KOOPA)), 0.4F);
-        this.addFeature(new SaddleFeatureRenderer<>(this, new KoopaModel<>(context.getPart(ModelLayers.KOOPA_SADDLE)), new Identifier(Main.MOD_ID, "textures/entity/koopa_troopa/saddle.png")));
+        super(context, new KoopaModel<>(context.getPart(ModModelLayers.KOOPA)), 0.4F);
+        this.addFeature(new SaddleFeatureRenderer<>(this, new KoopaModel<>(context.getPart(ModModelLayers.KOOPA_SADDLE)), new Identifier(Main.MOD_ID, "textures/entity/koopa_troopa/saddle.png")));
     }
 
     @Override

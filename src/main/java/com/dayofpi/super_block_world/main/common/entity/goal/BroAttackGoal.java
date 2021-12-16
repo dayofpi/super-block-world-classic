@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.main.common.entity.goal;
 
-import com.dayofpi.super_block_world.main.common.entity.type.bases.AbstractBro;
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.HammerBroEntity;
-import com.dayofpi.super_block_world.main.registry.ModItems;
+import com.dayofpi.super_block_world.main.common.entity.mob.hammer_bro.AbstractBro;
+import com.dayofpi.super_block_world.main.common.entity.mob.hammer_bro.HammerBroEntity;
+import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import net.minecraft.entity.ai.RangedAttackMob;
 import net.minecraft.entity.ai.goal.ProjectileAttackGoal;
 import net.minecraft.util.Hand;
@@ -17,7 +17,7 @@ public class BroAttackGoal extends ProjectileAttackGoal {
 
     public boolean canStart() {
         if (entity instanceof HammerBroEntity)
-            return super.canStart() && this.entity.getMainHandStack().isOf(ModItems.HAMMER);
+            return super.canStart() && this.entity.getMainHandStack().isOf(ItemRegistry.HAMMER);
         else return super.canStart();
     }
 
@@ -31,10 +31,5 @@ public class BroAttackGoal extends ProjectileAttackGoal {
         super.stop();
         this.entity.clearActiveItem();
         this.entity.setAttacking(false);
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
     }
 }

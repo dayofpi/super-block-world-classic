@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.client.model;
 
-import com.dayofpi.super_block_world.main.common.entity.type.mobs.ParagoombaEntity;
+import com.dayofpi.super_block_world.main.common.entity.mob.goomba.ParagoombaEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;

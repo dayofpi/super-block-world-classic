@@ -8,7 +8,7 @@ import net.minecraft.block.Material;
 public class PottedBlocks {
     public static final Block POTTED_AMANITA_SAPLING = new FlowerPotBlock(PlantBlocks.AMANITA_SAPLING, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_DARK_AMANITA_SAPLING = new FlowerPotBlock(PlantBlocks.DARK_AMANITA_SAPLING, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
-    public static final Block POTTED_FIRE_TULIP = new FlowerPotBlock(PlantBlocks.FIRE_TULIP, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque().emissiveLighting(ModBlocks::always));
+    public static final Block POTTED_FIRE_TULIP = new FlowerPotBlock(PlantBlocks.FIRE_TULIP, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque().emissiveLighting(BlockRegistry::always));
     public static final Block POTTED_MUNCHER = new FlowerPotBlock(PlantBlocks.MUNCHER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_CAVE_MUSHROOMS = new FlowerPotBlock(PlantBlocks.CAVE_MUSHROOMS, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_PIT_PLANT = new FlowerPotBlock(PlantBlocks.PIT_PLANT, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
