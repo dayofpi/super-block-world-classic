@@ -19,16 +19,15 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.dayofpi.sbw_main.Main"
+      "com.dayofpi.super_block_world.main.Main"
     ],
     "client": [
-      "com.dayofpi.sbw_main.Client"
+      "com.dayofpi.super_block_world.main.Client"
     ]
   },
   "mixins": [
     "fabric.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",

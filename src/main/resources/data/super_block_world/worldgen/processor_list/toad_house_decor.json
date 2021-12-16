@@ -1,14 +1,6 @@
 {
   "processors": [
     {
-      "processor_type": "minecraft:block_ignore",
-      "blocks": [
-        {
-          "Name": "minecraft:air"
-        }
-      ]
-    },
-    {
       "processor_type": "minecraft:rule",
       "rules": [
         {
@@ -17,11 +9,45 @@
           },
           "input_predicate": {
             "predicate_type": "minecraft:random_block_match",
+            "block": "super_block_world:red_mushroom_cap",
+            "probability": 0.15
+          },
+          "output_state": {
+            "Name": "minecraft:red_wool"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
             "block": "minecraft:potted_red_mushroom",
-            "probability": 0.3
+            "probability": 0.5
           },
           "output_state": {
             "Name": "super_block_world:potted_yellow_mushroom"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "super_block_world:yellow_mushroom_cap",
+            "probability": 0.2
+          },
+          "output_state": {
+            "Name": "super_block_world:green_mushroom_cap",
+            "Properties": {
+              "down": "true",
+              "east": "true",
+              "north": "true",
+              "south": "true",
+              "up": "true",
+              "west": "true"
+            }
           }
         }
       ]
