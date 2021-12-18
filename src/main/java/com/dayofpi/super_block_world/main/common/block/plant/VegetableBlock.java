@@ -26,7 +26,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
-import java.util.Iterator;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
@@ -51,19 +50,14 @@ public class VegetableBlock extends Block {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos blockPos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack itemStack = player.getStackInHand(hand);
-        if (itemStack.isEmpty()) {
-            if (!world.isClient()) {
-                List<ItemStack> list = this.getDroppedItem((ServerWorld) world, state, blockPos);
-                Iterator<ItemStack> stackIterator = list.iterator();
-                player.setStackInHand(hand, stackIterator.next());
-                world.removeBlock(blockPos, false);
-                world.playSound(null, blockPos, ModSounds.BLOCK_VEGETABLE_PLUCK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            } else {
-                world.addBlockBreakParticles(blockPos.down(), world.getBlockState(blockPos.down()));
-            } return ActionResult.success(world.isClient);
-        } else return ActionResult.PASS;
-
+        if (!world.isClient()) {
+            List<ItemStack> list = this.getDroppedItem((ServerWorld) world, state, blockPos);
+            Block.dropStack(world, blockPos, list.iterator().next());
+            world.removeBlock(blockPos, false);
+            world.playSound(null, blockPos, ModSounds.BLOCK_VEGETABLE_PLUCK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+        } else {
+            world.addBlockBreakParticles(blockPos.down(), world.getBlockState(blockPos.down()));
+        } return ActionResult.success(world.isClient);
     }
 
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {

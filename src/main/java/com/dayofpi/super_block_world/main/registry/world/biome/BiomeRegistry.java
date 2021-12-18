@@ -10,14 +10,14 @@ import net.minecraft.world.biome.Biome;
 
 public class BiomeRegistry {
     private static final Biome MUSHROOM_GRASSLANDS = BiomeBuilder.createMushroomGrasslands();
-    private static final Biome MOO_MOO_MEADOW = BiomeBuilder.createMushroomGrasslands();
+    private static final Biome MOO_MOO_MEADOW = BiomeBuilder.createMooMooMeadow();
     private static final Biome MUSHROOM_GORGE = BiomeBuilder.createMushroomGorge();
-    private static final Biome FOSSIL_FALLS = BiomeBuilder.createMushroomGrasslands();
+    private static final Biome FOSSIL_FALLS = BiomeBuilder.createFossilFalls();
     private static final Biome DRY_DRY_DESERT = BiomeBuilder.createDryDryDesert();
     private static final Biome CHEEP_CHEEP_REEF = BiomeBuilder.createCheepCheepReef();
     private static final Biome AMANITA_FOREST = BiomeBuilder.createAmanitaForest();
     private static final Biome AUTUMN_FOREST = BiomeBuilder.createAutumnForest();
-    private static final Biome FOREST_OF_ILLUSION = BiomeBuilder.createMushroomGrasslands();
+    private static final Biome FOREST_OF_ILLUSION = BiomeBuilder.createForestOfIllusion();
 
     private static void registerBiome(String id, Biome type) {
         Registry.register(BuiltinRegistries.BIOME, RegistryKey.of(Registry.BIOME_KEY, new Identifier(Main.MOD_ID, id)), type);

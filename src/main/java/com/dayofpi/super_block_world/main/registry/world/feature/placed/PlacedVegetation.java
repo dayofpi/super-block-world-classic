@@ -3,7 +3,6 @@ package com.dayofpi.super_block_world.main.registry.world.feature.placed;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.world.feature.FeatureType;
 import com.dayofpi.super_block_world.main.registry.world.feature.configured.ConfiguredVegetation;
-import com.dayofpi.super_block_world.main.registry.world.feature.utility.PlacementModifiers;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.YOffset;
@@ -30,12 +29,15 @@ public class PlacedVegetation {
     public static final PlacedFeature FLOWERBED = ConfiguredVegetation.FLOWERBED.withPlacement();
 
     public static final PlacedFeature GRASSLAND_PLANTS = ConfiguredVegetation.GRASSLAND_PLANTS.withPlacement(CountPlacementModifier.of(5), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
-    public static final PlacedFeature AUTUMN_FOREST_PLANTS = ConfiguredVegetation.AUTUMN_FOREST_PLANTS.withPlacement(CountPlacementModifier.of(7), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature GRASSLAND_FLOWERS = ConfiguredVegetation.GRASSLAND_FLOWERS.withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature GRASSLAND_MUSHROOMS = ConfiguredVegetation.GRASSLAND_MUSHROOMS.withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature GRASSLAND_VEGETATION = ConfiguredVegetation.GRASSLAND_VEGETATION.withPlacement(RarityFilterPlacementModifier.of(3), CountPlacementModifier.of(5), SquarePlacementModifier.of(), SurfaceWaterDepthFilterPlacementModifier.of(0), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR), BiomePlacementModifier.of());
 
-    public static final PlacedFeature REEF_FLOWERS = ConfiguredVegetation.REEF_FLOWERS.withPlacement(RarityFilterPlacementModifier.of(14), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
+    public static final PlacedFeature MEADOW_PLANTS = ConfiguredVegetation.GRASSLAND_PLANTS.withPlacement(CountPlacementModifier.of(3), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
+    public static final PlacedFeature MEADOW_FLOWERS = ConfiguredVegetation.GRASSLAND_FLOWERS.withPlacement(RarityFilterPlacementModifier.of(16), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
+    public static final PlacedFeature MEADOW_VEGETATION = ConfiguredVegetation.GRASSLAND_VEGETATION.withPlacement(RarityFilterPlacementModifier.of(8), CountPlacementModifier.of(5), SquarePlacementModifier.of(), SurfaceWaterDepthFilterPlacementModifier.of(0), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR), BiomePlacementModifier.of());
+
+    public static final PlacedFeature REEF_FLOWERS = ConfiguredVegetation.REEF_FLOWERS.withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature REEF_VEGETATION = ConfiguredVegetation.REEF_VEGETATION.withPlacement(RarityFilterPlacementModifier.of(3), CountPlacementModifier.of(5), SquarePlacementModifier.of(), SurfaceWaterDepthFilterPlacementModifier.of(2), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR), BiomePlacementModifier.of());
 
     public static final PlacedFeature GORGE_PLANTS = ConfiguredVegetation.MUSHROOM_GORGE_PLANTS.withPlacement(CountPlacementModifier.of(4), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
@@ -46,8 +48,12 @@ public class PlacedVegetation {
     public static final PlacedFeature DESERT_PLANTS = ConfiguredVegetation.DESERT_PLANTS.withPlacement(RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
 
     public static final PlacedFeature AMANITA_FOREST_MUSHROOMS = ConfiguredVegetation.AMANITA_FOREST_MUSHROOMS.withPlacement(RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
-    public static final PlacedFeature AMANITA_FOREST_VEGETATION = ConfiguredVegetation.AMANITA_FOREST_VEGETATION.withPlacement(CountPlacementModifier.of(21), SquarePlacementModifier.of(), SurfaceWaterDepthFilterPlacementModifier.of(0), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR), BiomePlacementModifier.of(), PlacementModifiers.SAPLING_SURVIVES);
+    public static final PlacedFeature AMANITA_FOREST_VEGETATION = ConfiguredVegetation.AMANITA_FOREST_VEGETATION.withPlacement(CountPlacementModifier.of(21), SquarePlacementModifier.of(), SurfaceWaterDepthFilterPlacementModifier.of(0), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR), BiomePlacementModifier.of());
 
+    public static final PlacedFeature FOREST_OF_ILLUSION_FLOWERS = ConfiguredVegetation.FOREST_OF_ILLUSION_FLOWERS.withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
+    public static final PlacedFeature FOREST_OF_ILLUSION_VEGETATION = ConfiguredVegetation.FOREST_OF_ILLUSION_VEGETATION.withPlacement(CountPlacementModifier.of(45), SquarePlacementModifier.of(), SurfaceWaterDepthFilterPlacementModifier.of(0), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR), BiomePlacementModifier.of());
+
+    public static final PlacedFeature AUTUMN_FOREST_PLANTS = ConfiguredVegetation.AUTUMN_FOREST_PLANTS.withPlacement(CountPlacementModifier.of(7), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature AUTUMN_FOREST_MUSHROOMS = ConfiguredVegetation.AUTUMN_FOREST_MUSHROOMS.withPlacement(RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature AUTUMN_FOREST_VEGETATION = ConfiguredVegetation.AUTUMN_FOREST_VEGETATION.withPlacement(CountPlacementModifier.of(4), SquarePlacementModifier.of(), SurfaceWaterDepthFilterPlacementModifier.of(0), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR), BiomePlacementModifier.of());
 

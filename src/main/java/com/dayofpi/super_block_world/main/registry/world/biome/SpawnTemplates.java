@@ -66,6 +66,6 @@ public class SpawnTemplates {
     }
 
     static void addMooMooMeadowMobs(SpawnSettings.Builder builder) {
-        builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityRegistry.MOO_MOO, 10, 2, 2));
+        builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityRegistry.MOO_MOO, 80, 2, 2));
     }
 }

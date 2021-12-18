@@ -4,7 +4,6 @@ import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.block.MushroomBlocks;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
 import com.dayofpi.super_block_world.main.registry.block.PottedBlocks;
-import com.dayofpi.super_block_world.main.registry.world.biome.BiomeBuilder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -20,10 +19,10 @@ public class BlockRendering {
     }
 
     public static void setBlockColors() {
-        setBlockColor(false, BiomeBuilder.DEFAULT_GRASS_COLOR, BlockRegistry.TOADSTOOL_GRASS, BlockRegistry.TOADSTOOL_TURF, BlockRegistry.GRASSY_TOADSTONE, PlantBlocks.BUSH);
-        setBlockColor(true, BiomeBuilder.DEFAULT_FOLIAGE_COLOR, BlockRegistry.AMANITA_LEAVES, BlockRegistry.DARK_AMANITA_LEAVES, BlockRegistry.FRUITING_AMANITA_LEAVES, BlockRegistry.FRUITING_DARK_AMANITA_LEAVES, PlantBlocks.AMANITA_CARPET);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> BiomeBuilder.DEFAULT_GRASS_COLOR, BlockRegistry.TOADSTOOL_GRASS, BlockRegistry.GRASSY_TOADSTONE, BlockRegistry.TOADSTOOL_TURF, PlantBlocks.BUSH);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> BiomeBuilder.DEFAULT_FOLIAGE_COLOR, BlockRegistry.AMANITA_LEAVES, BlockRegistry.FRUITING_AMANITA_LEAVES, BlockRegistry.DARK_AMANITA_LEAVES, BlockRegistry.FRUITING_DARK_AMANITA_LEAVES, PlantBlocks.AMANITA_CARPET);
+        setBlockColor(false, 6879535, BlockRegistry.TOADSTOOL_GRASS, BlockRegistry.TOADSTOOL_TURF, BlockRegistry.GRASSY_TOADSTONE, BlockRegistry.SHOREGRASS, PlantBlocks.BUSH);
+        setBlockColor(true, 6408218, BlockRegistry.AMANITA_LEAVES, BlockRegistry.DARK_AMANITA_LEAVES, BlockRegistry.FRUITING_AMANITA_LEAVES, BlockRegistry.FRUITING_DARK_AMANITA_LEAVES, PlantBlocks.AMANITA_CARPET);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 6879535, BlockRegistry.TOADSTOOL_GRASS, BlockRegistry.GRASSY_TOADSTONE, BlockRegistry.SHOREGRASS, BlockRegistry.TOADSTOOL_TURF, PlantBlocks.BUSH);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 6408218, BlockRegistry.AMANITA_LEAVES, BlockRegistry.FRUITING_AMANITA_LEAVES, BlockRegistry.DARK_AMANITA_LEAVES, BlockRegistry.FRUITING_DARK_AMANITA_LEAVES, PlantBlocks.AMANITA_CARPET);
     }
 
     private static void setRenderLayer(Block block, RenderLayer layer) {
@@ -42,6 +41,7 @@ public class BlockRendering {
         setRenderLayer(BlockRegistry.TRAMPOLINE, RenderLayer.getCutoutMipped());
 
         setRenderLayer(BlockRegistry.TOADSTOOL_GRASS, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockRegistry.SHOREGRASS, RenderLayer.getCutoutMipped());
         setRenderLayer(BlockRegistry.GRASSY_TOADSTONE, RenderLayer.getCutoutMipped());
         setRenderLayer(BlockRegistry.AMANITA_LEAVES, RenderLayer.getCutoutMipped());
         setRenderLayer(BlockRegistry.FRUITING_AMANITA_LEAVES, RenderLayer.getCutoutMipped());

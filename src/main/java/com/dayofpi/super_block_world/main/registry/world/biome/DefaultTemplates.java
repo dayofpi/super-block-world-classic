@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.main.registry.world.biome;
 
 import com.dayofpi.super_block_world.main.registry.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedBlocks;
 import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedMisc;
 import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedOres;
 import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedVegetation;
@@ -10,7 +11,6 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class DefaultTemplates {
     static void addCaveMobs(SpawnSettings.Builder builder) {
@@ -28,7 +28,6 @@ public class DefaultTemplates {
         addLandCarvers(builder);
         addDefaultOres(builder);
         addCaveFeatures(builder);
-        DefaultBiomeFeatures.addFrozenTopLayer(builder);
     }
 
     static void addLandCarvers(GenerationSettings.Builder builder) {
@@ -38,34 +37,35 @@ public class DefaultTemplates {
     }
 
     static void addFluids(GenerationSettings.Builder builder) {
-        builder.feature(9, () -> PlacedMisc.SPRING);
-        builder.feature(1, () -> PlacedMisc.LAKE_LAVA);
-        builder.feature(1, () -> PlacedMisc.LAKE_POISON);
-        builder.feature(10, () -> PlacedVegetation.CORAL_FEW);
-        builder.feature(10, () -> PlacedVegetation.SEAGRASS);
+        builder.feature(GenerationStep.Feature.LAKES, PlacedMisc.LAKE_LAVA);
+        builder.feature(GenerationStep.Feature.LAKES, PlacedMisc.LAKE_POISON);
+        builder.feature(GenerationStep.Feature.FLUID_SPRINGS, PlacedMisc.SPRING);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.CORAL_FEW);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.SEAGRASS);
     }
 
     static void addCaveFeatures(GenerationSettings.Builder builder) {
-        builder.feature(2, () -> PlacedMisc.WARP_PIPE_WATER);
-        //builder.feature(2, () -> PlacedBlocks.BLOCK_LINE_SURFACE);
-        //builder.feature(2, () -> PlacedBlocks.BLOCK_LINE_DEEP);
-        //  builder.feature(2, () -> PlacedBlocks.BLOCK_SINGLE);
-        builder.feature(2, () -> PlacedMisc.AMETHYST);
-        builder.feature(2, () -> PlacedMisc.CAVE_DECORATION);
-        builder.feature(2, () -> PlacedVegetation.CAVE_VEGETATION);
-        builder.feature(10, () -> PlacedVegetation.MUNCHER_FEW);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.WARP_PIPE_WATER);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_LINE_SURFACE);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_LINE_DEEP);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_SINGLE);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.AMETHYST);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.CAVE_DECORATION_COMMON);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.CAVE_DECORATION_RARE);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedVegetation.CAVE_VEGETATION);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.MUNCHER_FEW);
     }
 
     static void addDefaultOres(GenerationSettings.Builder builder) {
-        builder.feature(6, () -> PlacedMisc.VANILLATE_TOPPING);
-        builder.feature(7, () -> PlacedOres.DISK_SAND);
-        builder.feature(7, () -> PlacedOres.ORE_CRUMBLE);
-        builder.feature(7, () -> PlacedOres.ORE_BRONZE);
-        builder.feature(7, () -> PlacedOres.ORE_AMETHYST);
-        builder.feature(7, () -> PlacedOres.ORE_CERISE);
-        builder.feature(7, () -> PlacedOres.ORE_HARDSTONE);
-        builder.feature(7, () -> PlacedOres.TOPPING_COAL);
-        builder.feature(7, () -> PlacedOres.TOPPING_IRON);
-        builder.feature(7, () -> PlacedOres.TOPPING_GOLD);
+        builder.feature(GenerationStep.Feature.RAW_GENERATION, PlacedMisc.VANILLATE_TOPPING);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.DISK_SAND);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_CRUMBLE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_BRONZE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_AMETHYST);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_CERISE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_HARDSTONE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.TOPPING_COAL);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.TOPPING_IRON);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.TOPPING_GOLD);
     }
 }

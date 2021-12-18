@@ -23,6 +23,7 @@ public class StructureRegistry {
         FabricStructureBuilder.create(new Identifier(Main.MOD_ID, "toad_house"), TOAD_HOUSE_FEATURE).step(GenerationStep.Feature.SURFACE_STRUCTURES).defaultConfig(30, 10, 12345).adjustsSurface().register();
 
         BiomeModifications.addStructure(BiomeSelectors.foundInOverworld(), ModStructureKeys.WARP_PORTAL);
+        BiomeModifications.addStructure(BiomeSelectors.foundInTheNether(), ModStructureKeys.TOAD_HOUSE);
         BiomeModifications.addStructure(BiomeSelectors.tag(TagRegistry.ALL_BIOMES), ModStructureKeys.TOAD_HOUSE);
     }
 }

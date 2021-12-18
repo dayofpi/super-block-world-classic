@@ -2,6 +2,10 @@
   "replace": "false",
   "values": [
     "super_block_world:girder",
+    "super_block_world:cloud_block",
+    "super_block_world:happy_cloud",
+    "super_block_world:cloud_slab",
+    "super_block_world:cloud_stairs",
     "super_block_world:quicksand",
     "super_block_world:amanita_carpet",
     "super_block_world:yellow_flowerbed",

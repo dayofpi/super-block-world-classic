@@ -21,6 +21,8 @@ public class DataPools {
     public static final DataPool.Builder<BlockState> DESERT_PLANTS = DataPool.<BlockState>builder().add(Blocks.DEAD_BUSH.getDefaultState(), 90).add(PlantBlocks.BUSH.getDefaultState().with(BushBlock.FRUITS, 0), 60).add(PlantBlocks.BUSH.getDefaultState().with(BushBlock.FRUITS, 1), 15).add(PlantBlocks.BUSH.getDefaultState().with(BushBlock.FRUITS, 2), 5);
     public static final DataPool.Builder<BlockState> AMANITA_FOREST_MUSHROOMS = DataPool.<BlockState>builder().add(Blocks.RED_MUSHROOM.getDefaultState(), 4).add(MushroomBlocks.PURPLE_MUSHROOM.getDefaultState(), 2).add(Blocks.BROWN_MUSHROOM.getDefaultState(), 2);
 
+    public static final DataPool.Builder<BlockState> FOREST_OF_ILLUSION_FLOWERS = DataPool.<BlockState>builder().add(PlantBlocks.BLUE_SONGFLOWER.getDefaultState(), 10).add(PlantBlocks.YELLOW_SONGFLOWER.getDefaultState(), 10).add(PlantBlocks.PINK_SONGFLOWER.getDefaultState(), 10).add(PlantBlocks.FIRE_TULIP.getDefaultState(), 5);
+
     public static final DataPool.Builder<BlockState> AUTUMN_FOREST_PLANTS = DataPool.<BlockState>builder().add(PlantBlocks.AMANITA_CARPET.getDefaultState(), 90).add(Blocks.TALL_GRASS.getDefaultState(), 30).add(PlantBlocks.BUSH.getDefaultState().with(BushBlock.FRUITS, 0), 30).add(PlantBlocks.BUSH.getDefaultState().with(BushBlock.FRUITS, 1), 15).add(PlantBlocks.BUSH.getDefaultState().with(BushBlock.FRUITS, 2), 5);
     public static final DataPool.Builder<BlockState> AUTUMN_FOREST_MUSHROOMS = DataPool.<BlockState>builder().add(MushroomBlocks.ORANGE_MUSHROOM.getDefaultState(), 2).add(Blocks.RED_MUSHROOM.getDefaultState(), 1);
 }

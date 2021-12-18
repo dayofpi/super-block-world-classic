@@ -18,7 +18,8 @@ public class ConfiguredFeatureRegistry {
         registerConfiguredFeature("lake_poison", ConfiguredMisc.LAKE_POISON);
         registerConfiguredFeature("amethyst_ceiling", ConfiguredMisc.AMETHYST_CEILING);
         registerConfiguredFeature("amethyst_floor", ConfiguredMisc.AMETHYST_FLOOR);
-        registerConfiguredFeature("cave_decoration", ConfiguredMisc.CAVE_DECORATIONS);
+        registerConfiguredFeature("cave_decoration_common", ConfiguredMisc.CAVE_DECORATION_COMMON);
+        registerConfiguredFeature("cave_decoration_rare", ConfiguredMisc.CAVE_DECORATION_RARE);
         registerConfiguredFeature("jellybeam", ConfiguredBlocks.JELLYBEAM);
         registerConfiguredFeature("block_single", ConfiguredBlocks.BLOCK_SINGLE);
         registerConfiguredFeature("block_line", ConfiguredBlocks.BLOCK_LINE_SURFACE);
@@ -73,12 +74,14 @@ public class ConfiguredFeatureRegistry {
         registerConfiguredFeature("autumn_forest_mushrooms", ConfiguredVegetation.AUTUMN_FOREST_MUSHROOMS);
 
         registerConfiguredFeature("grassland_flowers", ConfiguredVegetation.GRASSLAND_FLOWERS);
+        registerConfiguredFeature("forest_of_illusion_flowers", ConfiguredVegetation.FOREST_OF_ILLUSION_FLOWERS);
         registerConfiguredFeature("reef_flowers", ConfiguredVegetation.REEF_FLOWERS);
         registerConfiguredFeature("mushroom_gorge_flowers", ConfiguredVegetation.MUSHROOM_GORGE_FLOWERS);
 
         registerConfiguredFeature("grassland_vegetation", ConfiguredVegetation.GRASSLAND_VEGETATION);
         registerConfiguredFeature("reef_vegetation", ConfiguredVegetation.REEF_VEGETATION);
         registerConfiguredFeature("amanita_forest_vegetation", ConfiguredVegetation.AMANITA_FOREST_VEGETATION);
+        registerConfiguredFeature("forest_of_illusion_vegetation", ConfiguredVegetation.FOREST_OF_ILLUSION_VEGETATION);
         registerConfiguredFeature("autumn_forest_vegetation", ConfiguredVegetation.AUTUMN_FOREST_VEGETATION);
         registerConfiguredFeature("mushroom_gorge_vegetation", ConfiguredVegetation.MUSHROOM_GORGE_VEGETATION);
         registerConfiguredFeature("canyon_vegetation", ConfiguredVegetation.CANYON_VEGETATION);

@@ -74,6 +74,9 @@ public class BlockRegistry {
     public static final Block CUT_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
     public static final Block SMOOTH_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
 
+    public static final Block SHORESAND = new SandBlock(16379337, FabricBlockSettings.copyOf(GRITZY_SAND).mapColor(MapColor.OFF_WHITE));
+    public static final Block SHOREGRASS = new Block(FabricBlockSettings.copyOf(GRITZY_SAND).mapColor(MapColor.PALE_YELLOW));
+
     public static final Block SEASTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.EMERALD_GREEN).sounds(ModSoundGroup.TOADSTONE).strength(1.0F).requiresTool());
     public static final Block SEASTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(SEASTONE));
     public static final Block STRAWBERRY_CORAL = new StrawberryCoralBlock(FabricBlockSettings.of(Material.PLANT, MapColor.PINK).strength(0.2F).sounds(BlockSoundGroup.CORAL).nonOpaque());
@@ -225,6 +228,8 @@ public class BlockRegistry {
         registerBlock("smooth_gritzy_sandstone", SMOOTH_GRITZY_SANDSTONE);
         registerBlock("gritzy_sandstone_slab", VariantBlocks.GRITZY_SANDSTONE_SLAB);
         registerBlock("gritzy_sandstone_stairs", VariantBlocks.GRITZY_SANDSTONE_STAIRS);
+        registerBlock("shoresand", SHORESAND);
+        registerBlock("shoregrass", SHOREGRASS);
         registerBlock("happy_cloud", HAPPY_CLOUD);
         registerBlock("cloud_block", CLOUD_BLOCK);
         registerBlock("cloud_slab", VariantBlocks.CLOUD_SLAB);

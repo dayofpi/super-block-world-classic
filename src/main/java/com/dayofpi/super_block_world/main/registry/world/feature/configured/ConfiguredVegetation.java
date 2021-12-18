@@ -2,10 +2,10 @@ package com.dayofpi.super_block_world.main.registry.world.feature.configured;
 
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
+import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedTrees;
 import com.dayofpi.super_block_world.main.registry.world.feature.utility.BlockLists;
 import com.dayofpi.super_block_world.main.registry.world.feature.utility.DataPools;
 import com.dayofpi.super_block_world.main.registry.world.feature.utility.PlacementModifiers;
-import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedTrees;
 import net.minecraft.block.Blocks;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
@@ -53,7 +53,10 @@ public class ConfiguredVegetation {
     public static final ConfiguredFeature<?, ?> REEF_VEGETATION = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(List.of(new RandomFeatureEntry(FLOWERBED.withPlacement(), 0.42F), new RandomFeatureEntry(PlacedTrees.AMANITA_FRUIT, 0.42F)), PlacedTrees.AMANITA));
 
     public static final ConfiguredFeature<?, ?> AMANITA_FOREST_MUSHROOMS = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(64, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.AMANITA_FOREST_MUSHROOMS))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR))));
-    public static final ConfiguredFeature<?, ?> AMANITA_FOREST_VEGETATION = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(List.of(new RandomFeatureEntry(BEANSTALK_BUDDING.withPlacement(), 0.03F), new RandomFeatureEntry(BEANSTALK.withPlacement(),0.025F), new RandomFeatureEntry(PlacedTrees.AMANITA_OAKY_FRUIT, 0.5F), new RandomFeatureEntry(PlacedTrees.AMANITA, 0.2F)), PlacedTrees.AMANITA_OAKY));
+    public static final ConfiguredFeature<?, ?> AMANITA_FOREST_VEGETATION = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(List.of(new RandomFeatureEntry(BEANSTALK_BUDDING.withPlacement(PlacementModifiers.SAPLING_SURVIVES), 0.03F), new RandomFeatureEntry(BEANSTALK.withPlacement(PlacementModifiers.SAPLING_SURVIVES),0.025F), new RandomFeatureEntry(PlacedTrees.AMANITA_OAKY_FRUIT, 0.5F), new RandomFeatureEntry(PlacedTrees.AMANITA, 0.2F)), PlacedTrees.AMANITA_OAKY));
+
+    public static final ConfiguredFeature<?, ?> FOREST_OF_ILLUSION_FLOWERS = Feature.FLOWER.configure(new RandomPatchFeatureConfig(64, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.FOREST_OF_ILLUSION_FLOWERS))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR))));
+    public static final ConfiguredFeature<?, ?> FOREST_OF_ILLUSION_VEGETATION = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(List.of(new RandomFeatureEntry(BEANSTALK_BUDDING.withPlacement(PlacementModifiers.SAPLING_SURVIVES), 0.03F), new RandomFeatureEntry(ConfiguredTrees.HUGE_PURPLE_MUSHROOM.withPlacement(),0.025F), new RandomFeatureEntry(PlacedTrees.DARK_AMANITA, 0.3F)), PlacedTrees.DARK_AMANITA_TALL));
 
     public static final ConfiguredFeature<?, ?> AUTUMN_FOREST_PLANTS = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(40, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.AUTUMN_FOREST_PLANTS))).withPlacement(PlacementModifiers.ON_SOIL_AND_LEAVES)));
     public static final ConfiguredFeature<?, ?> AUTUMN_FOREST_MUSHROOMS = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(64, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.AUTUMN_FOREST_MUSHROOMS))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR))));

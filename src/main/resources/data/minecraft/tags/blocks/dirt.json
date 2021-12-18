@@ -6,6 +6,7 @@
     "super_block_world:toadstool_turf",
     "super_block_world:toadstool_soil",
     "super_block_world:coarse_toadstool_soil",
-    "super_block_world:toadstool_path"
+    "super_block_world:toadstool_path",
+    "super_block_world:shoregrass"
   ]
 }

@@ -23,7 +23,8 @@ public class PlacedFeatureRegistry {
         registerPlacedFeature("lake_poison_forest", PlacedMisc.LAKE_POISON_FOREST);
         registerPlacedFeature("patch_cave_crystals", PlacedMisc.AMETHYST);
         registerPlacedFeature("amethyst_extra", PlacedMisc.AMETHYST_EXTRA);
-        registerPlacedFeature("cave_decoration", PlacedMisc.CAVE_DECORATION);
+        registerPlacedFeature("cave_decoration_common", PlacedMisc.CAVE_DECORATION_COMMON);
+        registerPlacedFeature("cave_decoration_rare", PlacedMisc.CAVE_DECORATION_RARE);
         registerPlacedFeature("pipe_underwater", PlacedMisc.WARP_PIPE_WATER);
         registerPlacedFeature("jellybeam", PlacedBlocks.JELLYBEAM);
         registerPlacedFeature("block_single", PlacedBlocks.BLOCK_SINGLE);
@@ -71,6 +72,10 @@ public class PlacedFeatureRegistry {
         registerPlacedFeature("grassland_flowers", PlacedVegetation.GRASSLAND_FLOWERS);
         registerPlacedFeature("grassland_vegetation", PlacedVegetation.GRASSLAND_VEGETATION);
 
+        registerPlacedFeature("meadow_plants", PlacedVegetation.MEADOW_PLANTS);
+        registerPlacedFeature("meadow_flowers", PlacedVegetation.MEADOW_FLOWERS);
+        registerPlacedFeature("meadow_vegetation", PlacedVegetation.MEADOW_VEGETATION);
+
         // Reef features
         registerPlacedFeature("reef_flowers", PlacedVegetation.REEF_FLOWERS);
         registerPlacedFeature("reef_vegetation", PlacedVegetation.REEF_VEGETATION);
@@ -85,8 +90,12 @@ public class PlacedFeatureRegistry {
         registerPlacedFeature("amanita_forest_mushrooms", PlacedVegetation.AMANITA_FOREST_MUSHROOMS);
         registerPlacedFeature("autumn_forest_mushrooms", PlacedVegetation.AUTUMN_FOREST_MUSHROOMS);
         registerPlacedFeature("amanita_forest_vegetation", PlacedVegetation.AMANITA_FOREST_VEGETATION);
+
         registerPlacedFeature("autumn_forest_plants", PlacedVegetation.AUTUMN_FOREST_PLANTS);
         registerPlacedFeature("autumn_forest_vegetation", PlacedVegetation.AUTUMN_FOREST_VEGETATION);
+
+        registerPlacedFeature("forest_of_illusion_flowers", PlacedVegetation.FOREST_OF_ILLUSION_FLOWERS);
+        registerPlacedFeature("forest_of_illusion_vegetation", PlacedVegetation.FOREST_OF_ILLUSION_VEGETATION);
 
         // Desert features
         registerPlacedFeature("desert_plants", PlacedVegetation.DESERT_PLANTS);

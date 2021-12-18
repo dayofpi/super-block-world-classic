@@ -76,7 +76,7 @@ public class ItemRegistry {
     public static final Item STINGBY_SPAWN_EGG = new SpawnEggItem(EntityRegistry.STINGBY, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item ROTTEN_MUSHROOM_SPAWN_EGG = new SpawnEggItem(EntityRegistry.ROTTEN_MUSHROOM, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item THWOMP_SPAWN_EGG = new SpawnEggItem(EntityRegistry.THWOMP, 10530706, 12572889, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
-    public static final Item FAKE_BLOCK_SPAWN_EGG = new SpawnEggItem(EntityRegistry.FAKE_BLOCK, 10042394, 10042394, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item FAKE_BLOCK_SPAWN_EGG = new SpawnEggItem(EntityRegistry.FAKE_BLOCK, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
 
     private static void registerItem(String id, Item item) {
         Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, id), item);
@@ -223,6 +223,9 @@ public class ItemRegistry {
         registerBlockItem("cloud_block", BlockRegistry.CLOUD_BLOCK);
         registerBlockItem("cloud_slab", VariantBlocks.CLOUD_SLAB);
         registerBlockItem("cloud_stairs", VariantBlocks.CLOUD_STAIRS);
+
+        registerBlockItem("shoregrass", BlockRegistry.SHOREGRASS);
+        registerBlockItem("shoresand", BlockRegistry.SHORESAND);
 
         registerBlockItem("amanita_leaves", BlockRegistry.AMANITA_LEAVES);
         registerBlockItem("fruiting_amanita_leaves", BlockRegistry.FRUITING_AMANITA_LEAVES);
