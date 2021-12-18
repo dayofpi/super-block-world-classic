@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.reactive;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.block_entity.QuestionBlockBE;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import net.minecraft.block.Block;
@@ -62,6 +62,7 @@ public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider 
                     Block.dropStack(world, pos, defaultItems((ServerWorld) world, state, blockPos).iterator().next());
                 }
                 world.setBlockState(blockPos, pushEntitiesUpBeforeBlockChange(state, BlockRegistry.EMPTY_BLOCK.getDefaultState(), world, blockPos));
+                world.removeBlockEntity(blockPos);
                 world.playSound(null, blockPos, ModSounds.BLOCK_ITEM_BLOCK_HIT, SoundCategory.NEUTRAL, 2.0F, 1.0F);
                 ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_OFF, UniformIntProvider.create(2, 3));
             }

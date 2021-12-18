@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.plant;
 
+import com.dayofpi.super_block_world.main.registry.TagRegistry;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -11,15 +12,15 @@ import net.minecraft.world.BlockView;
 public class PiranhaLilyBlock extends PlantBlock {
 
     protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
-    public PiranhaLilyBlock(Settings $$0) {
-        super($$0);
+    public PiranhaLilyBlock(Settings settings) {
+        super(settings);
     }
 
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
         FluidState fluidState = world.getFluidState(pos);
         FluidState fluidState2 = world.getFluidState(pos.up());
 
-        return super.canPlantOnTop(floor, world, pos) || (fluidState.getFluid() == Fluids.WATER || floor.getMaterial() == Material.ICE) && fluidState2.getFluid() == Fluids.EMPTY;
+        return super.canPlantOnTop(floor, world, pos) || floor.isIn(TagRegistry.PIPES) || (fluidState.getFluid() == Fluids.WATER || floor.getMaterial() == Material.ICE) && fluidState2.getFluid() == Fluids.EMPTY;
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

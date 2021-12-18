@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.warp_pipe;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.common.block.pipe.WarpPipeBlock;
 import com.dayofpi.super_block_world.main.registry.StatusEffectReg;

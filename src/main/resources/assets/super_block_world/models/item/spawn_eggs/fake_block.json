@@ -1,8 +1,6 @@
 {
-  "parent": "item/generated",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "item/spawn_egg",
-    "layer1": "item/spawn_egg_overlay",
-    "layer2": "super_block_world:item/spawn_egg_tail"
+    "layer0": "super_block_world:item/spawn_fake_block"
   }
 }

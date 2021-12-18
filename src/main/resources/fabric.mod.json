@@ -6,11 +6,14 @@
   "name": "Super Block World",
   "description": "A new Mario-themed dimension full of fun content",
   "authors": [
-    "dayofpi"
+    "dayofpi",
+    "KjoltConjures",
+    "Pink_Fedora",
+    "IridaceaeArt"
   ],
   "contact": {
-    "homepage": "",
-    "sources": ""
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/super-block-world",
+    "sources": "https://github.com/dayofpi/super_block_world"
   },
 
   "license": "CC0-1.0",

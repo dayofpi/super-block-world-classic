@@ -1,8 +1,7 @@
 package com.dayofpi.super_block_world.main.registry.world.feature.configured;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.common.block.reactive.CoinBlock;
 import com.dayofpi.super_block_world.main.common.world.feature.config.BlockLineFeatureConfig;
+import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.world.feature.FeatureType;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.collection.DataPool;
@@ -13,14 +12,12 @@ import net.minecraft.world.gen.feature.SimpleBlockFeatureConfig;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
 public class ConfiguredBlocks {
-    private static final DataPool.Builder<BlockState> BLOCK_POOL_SINGLE = DataPool.<BlockState>builder().add(BlockRegistry.QUESTION_BLOCK.getDefaultState(), 16).add(BlockRegistry.JUMP_BLOCK.getDefaultState(), 1).add(BlockRegistry.COIN_BLOCK.getDefaultState().with(CoinBlock.TYPE, 0).with(CoinBlock.COIN_COUNT, 5), 8).add(BlockRegistry.COIN_BLOCK.getDefaultState().with(CoinBlock.TYPE, 3).with(CoinBlock.COIN_COUNT, 15), 1);
-    private static final DataPool.Builder<BlockState> BLOCK_POOL_SURFACE = DataPool.<BlockState>builder().add(BlockRegistry.TOADSTONE_BRICKS.getDefaultState(), 8).add(BlockRegistry.QUESTION_BLOCK.getDefaultState(), 4).add(BlockRegistry.COIN_BLOCK.getDefaultState().with(CoinBlock.TYPE, 1).with(CoinBlock.COIN_COUNT, 5), 3).add(BlockRegistry.COIN_BLOCK.getDefaultState().with(CoinBlock.TYPE, 0).with(CoinBlock.COIN_COUNT, 1), 3);
-    private static final DataPool.Builder<BlockState> BLOCK_POOL_UNDERGROUND = DataPool.<BlockState>builder().add(BlockRegistry.GLOOMSTONE_BRICKS.getDefaultState(), 8).add(BlockRegistry.QUESTION_BLOCK.getDefaultState(), 4)
-            //.add(ModBlocks.POW_BLOCK.getDefaultState(), 2)
-            .add(BlockRegistry.COIN_BLOCK.getDefaultState().with(CoinBlock.TYPE, 2).with(CoinBlock.COIN_COUNT, 5), 3).add(BlockRegistry.COIN_BLOCK.getDefaultState().with(CoinBlock.TYPE, 0).with(CoinBlock.COIN_COUNT, 1), 3);
+    private static final DataPool.Builder<BlockState> BLOCK_POOL_SINGLE = DataPool.<BlockState>builder().add(BlockRegistry.QUESTION_BLOCK.getDefaultState(), 8).add(BlockRegistry.COIN_BLOCK.getDefaultState(), 8).add(BlockRegistry.JUMP_BLOCK.getDefaultState(), 1);
+    private static final DataPool.Builder<BlockState> BLOCK_POOL_SURFACE = DataPool.<BlockState>builder().add(BlockRegistry.TOADSTONE_BRICKS.getDefaultState(), 8).add(BlockRegistry.QUESTION_BLOCK.getDefaultState(), 4).add(BlockRegistry.COIN_BLOCK.getDefaultState(), 3);
+    private static final DataPool.Builder<BlockState> BLOCK_POOL_UNDERGROUND = DataPool.<BlockState>builder().add(BlockRegistry.GLOOMSTONE_BRICKS.getDefaultState(), 8).add(BlockRegistry.QUESTION_BLOCK.getDefaultState(), 4).add(BlockRegistry.COIN_BLOCK.getDefaultState(), 3);
 
     public static final ConfiguredFeature<?, ?> JELLYBEAM = FeatureType.JELLYBEAM.configure(FeatureConfig.DEFAULT);
-    public static final ConfiguredFeature<?, ?> BLOCK_SINGLE = Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(BLOCK_POOL_SINGLE)));
+    public static final ConfiguredFeature<?, ?> BLOCK_SINGLE = FeatureType.SINGLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(BLOCK_POOL_SINGLE)));
     public static final ConfiguredFeature<?, ?> BLOCK_LINE_SURFACE = FeatureType.BLOCK_LINE.configure(new BlockLineFeatureConfig(8, 4, 1, 1, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(BLOCK_POOL_SURFACE))).withPlacement()));
     public static final ConfiguredFeature<?, ?> BLOCK_LINE_DEEP = FeatureType.BLOCK_LINE.configure(new BlockLineFeatureConfig(8, 4, 1, 1, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(BLOCK_POOL_UNDERGROUND))).withPlacement()));
 

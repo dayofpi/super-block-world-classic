@@ -30,7 +30,7 @@ public class JellybeamBlock extends HorizontalFacingBlock {
 
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!world.isClient) {
-            entity.damage(ModDamageSource.JELLY, 1.0F);
+            entity.damage(ModDamageSource.JELLYBEAM, 1.0F);
         }
     }
 

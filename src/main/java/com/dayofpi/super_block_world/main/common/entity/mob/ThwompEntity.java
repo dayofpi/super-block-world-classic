@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.entity.mob;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.TagRegistry;
 import com.dayofpi.super_block_world.main.util.DirectionHelper;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;

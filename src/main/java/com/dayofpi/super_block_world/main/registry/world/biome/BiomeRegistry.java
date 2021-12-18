@@ -14,9 +14,9 @@ public class BiomeRegistry {
     private static final Biome MUSHROOM_GORGE = BiomeBuilder.createMushroomGorge();
     private static final Biome FOSSIL_FALLS = BiomeBuilder.createMushroomGrasslands();
     private static final Biome DRY_DRY_DESERT = BiomeBuilder.createDryDryDesert();
-    private static final Biome CHEEP_CHEEP_REEF = BiomeBuilder.createMushroomGrasslands();
+    private static final Biome CHEEP_CHEEP_REEF = BiomeBuilder.createCheepCheepReef();
     private static final Biome AMANITA_FOREST = BiomeBuilder.createAmanitaForest();
-    private static final Biome AUTUMN_FOREST = BiomeBuilder.createMushroomGrasslands();
+    private static final Biome AUTUMN_FOREST = BiomeBuilder.createAutumnForest();
     private static final Biome FOREST_OF_ILLUSION = BiomeBuilder.createMushroomGrasslands();
 
     private static void registerBiome(String id, Biome type) {

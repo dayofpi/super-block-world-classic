@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin.client;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
@@ -10,22 +10,17 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.network.packet.s2c.play.ItemPickupAnimationS2CPacket;
 import net.minecraft.sound.SoundCategory;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Random;
-
 @Environment(value= EnvType.CLIENT)
 @Mixin(ClientPlayNetworkHandler.class)
 public class CoinPickupSound {
 
     @Shadow private ClientWorld world;
-
-    @Shadow @Final private Random random;
 
     @Inject(at=@At("HEAD"), method = "onItemPickupAnimation")
     private void onItemPickupAnimation(ItemPickupAnimationS2CPacket packet, CallbackInfo info) {

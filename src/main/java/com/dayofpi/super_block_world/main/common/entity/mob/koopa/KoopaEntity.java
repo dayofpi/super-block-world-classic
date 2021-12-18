@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.main.common.entity.mob.koopa;
 import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
 import com.dayofpi.super_block_world.main.common.entity.mob.hammer_bro.HammerBroEntity;
 import com.dayofpi.super_block_world.main.registry.EntityRegistry;
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;

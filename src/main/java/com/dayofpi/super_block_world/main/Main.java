@@ -1,16 +1,17 @@
 package com.dayofpi.super_block_world.main;
 
-import com.dayofpi.super_block_world.main.util.ModDispenserBehavior;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import com.dayofpi.super_block_world.main.common.world.dimension.MushroomKingdom;
 import com.dayofpi.super_block_world.main.registry.*;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
-import com.dayofpi.super_block_world.main.registry.world.feature.FeatureConfiguration;
-import com.dayofpi.super_block_world.main.registry.world.feature.FeatureType;
-import com.dayofpi.super_block_world.main.registry.world.feature.FeaturePlacement;
-import com.dayofpi.super_block_world.main.registry.world.feature.StructureRegistry;
 import com.dayofpi.super_block_world.main.registry.world.biome.BiomeRegistry;
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
-import com.dayofpi.super_block_world.main.common.world.dimension.MushroomKingdom;
+import com.dayofpi.super_block_world.main.registry.world.feature.ConfiguredFeatureRegistry;
+import com.dayofpi.super_block_world.main.registry.world.feature.FeatureType;
+import com.dayofpi.super_block_world.main.registry.world.feature.PlacedFeatureRegistry;
+import com.dayofpi.super_block_world.main.registry.world.feature.StructureRegistry;
+import com.dayofpi.super_block_world.main.util.ModDispenserBehavior;
+import com.dayofpi.super_block_world.main.util.entity.ModDamageSource;
 import net.fabricmc.api.ModInitializer;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.util.CPASoundEventData;
@@ -30,19 +31,20 @@ public class Main implements ModInitializer {
         // Proceed with mild caution.
 
         LOGGER.info("Super Block World successfully initialized");
+        ModDamageSource.registerDamageSources();
+        BlockRegistry.registerBlocks();
+        FeatureType.registerFeatures();
+        ConfiguredFeatureRegistry.registerConfiguredFeatures();
+        PlacedFeatureRegistry.registerPlacedFeatures();
         BiomeRegistry.registerBiomes();
         MushroomKingdom.initializeDimension();
         TagRegistry.registerTags();
         ModSounds.registerSounds();
-        BlockRegistry.registerBlocks();
         FluidRegistry.registerFluids();
         EntityRegistry.registerEntities();
-        ItemRegistry.registerItems();
-        FeatureType.registerFeatures();
-        FeatureConfiguration.registerConfiguredFeatures();
-        FeaturePlacement.registerPlacedFeatures();
-        StructureRegistry.registerStructures();
         StatusEffectReg.registerEffects();
+        ItemRegistry.registerItems();
+        StructureRegistry.registerStructures();
         ParticleReg.registerParticles();
         ModDispenserBehavior.addDispenserBehaviors();
         CustomPortalBuilder.beginPortal()

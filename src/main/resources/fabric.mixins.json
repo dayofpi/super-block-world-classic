@@ -25,6 +25,7 @@
     "main.warp_pipe.PipeBubbles",
     "main.warp_pipe.PipeTeleporting",
     "main.world.AllowCarvers",
+    "main.world.RandomizeSeed",
     "main.world.ReplaceBiomeFeatures"
   ],
   "client": [

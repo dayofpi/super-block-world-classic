@@ -31,10 +31,10 @@
           "input_predicate": {
             "predicate_type": "minecraft:random_block_match",
             "block": "super_block_world:chiseled_hardstone",
-            "probability": 0.1
+            "probability": 0.45
           },
           "output_state": {
-            "Name": "minecraft:gravel"
+            "Name": "minecraft:air"
           }
         },
         {
@@ -57,14 +57,10 @@
           "input_predicate": {
             "predicate_type": "minecraft:random_block_match",
             "block": "super_block_world:chiseled_hardstone",
-            "probability": 0.03
+            "probability": 0.45
           },
           "output_state": {
-            "Name": "super_block_world:hardstone_brick_slab",
-            "Properties": {
-              "type": "bottom",
-              "waterlogged": "false"
-            }
+            "Name": "minecraft:dirt"
           }
         },
         {

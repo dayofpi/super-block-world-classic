@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.enums_and_sets;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.util.mixin_aid.ModInstrument;
 import net.minecraft.block.BlockState;

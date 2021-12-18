@@ -1,12 +1,13 @@
 package com.dayofpi.super_block_world.main.client;
 
-import com.dayofpi.super_block_world.main.client.renderer.other.CustomSignRenderer;
-import com.dayofpi.super_block_world.main.registry.block.*;
+import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.block.MushroomBlocks;
+import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
+import com.dayofpi.super_block_world.main.registry.block.PottedBlocks;
 import com.dayofpi.super_block_world.main.registry.world.biome.BiomeBuilder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.color.world.BiomeColors;
@@ -23,10 +24,6 @@ public class BlockRendering {
         setBlockColor(true, BiomeBuilder.DEFAULT_FOLIAGE_COLOR, BlockRegistry.AMANITA_LEAVES, BlockRegistry.DARK_AMANITA_LEAVES, BlockRegistry.FRUITING_AMANITA_LEAVES, BlockRegistry.FRUITING_DARK_AMANITA_LEAVES, PlantBlocks.AMANITA_CARPET);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> BiomeBuilder.DEFAULT_GRASS_COLOR, BlockRegistry.TOADSTOOL_GRASS, BlockRegistry.GRASSY_TOADSTONE, BlockRegistry.TOADSTOOL_TURF, PlantBlocks.BUSH);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> BiomeBuilder.DEFAULT_FOLIAGE_COLOR, BlockRegistry.AMANITA_LEAVES, BlockRegistry.FRUITING_AMANITA_LEAVES, BlockRegistry.DARK_AMANITA_LEAVES, BlockRegistry.FRUITING_DARK_AMANITA_LEAVES, PlantBlocks.AMANITA_CARPET);
-    }
-
-    public static void renderBlockEntity() {
-        BlockEntityRendererRegistry.register(BlockEntityRegistry.SIGN, CustomSignRenderer::new);
     }
 
     private static void setRenderLayer(Block block, RenderLayer layer) {

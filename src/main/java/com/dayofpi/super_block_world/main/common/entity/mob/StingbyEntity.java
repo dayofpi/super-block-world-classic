@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.main.common.entity.mob;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
+import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.AboveGroundTargeting;
@@ -19,7 +19,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -49,16 +48,21 @@ public class StingbyEntity extends EnemyEntity implements Flutterer {
         return world.getBlockState(pos.down()).isOf(BlockRegistry.TOADSTOOL_GRASS) && world.getBaseLightLevel(pos, 0) > 8;
     }
 
+    public boolean tryAttack(Entity target) {
+        this.playSound(ModSounds.ENTITY_STINGBY_STING, 1.0F, getSoundPitch());
+        return super.tryAttack(target);
+    }
+
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
         return world.getBlockState(pos).isAir() ? 10.0F : 0.0F;
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.ENTITY_BEE_HURT;
+        return ModSounds.ENTITY_STINGBY_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_BEE_DEATH;
+        return ModSounds.ENTITY_STINGBY_DEATH;
     }
 
     protected void initGoals() {
@@ -85,10 +89,8 @@ public class StingbyEntity extends EnemyEntity implements Flutterer {
     }
 
     public void playAmbientSound() {
-        SoundEvent soundEvent = SoundEvents.ENTITY_BEE_LOOP_AGGRESSIVE;
-        if (soundEvent != null) {
-            this.playSound(soundEvent, 0.3F, this.getSoundPitch());
-        }
+        SoundEvent soundEvent = ModSounds.ENTITY_STINGBY_AMBIENT;
+        this.playSound(soundEvent, 0.3F, this.getSoundPitch());
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
