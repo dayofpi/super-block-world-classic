@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.entity.projectile;
 
 import com.dayofpi.super_block_world.main.Client;
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.EntityRegistry;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;

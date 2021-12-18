@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.client;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModMusic;
 import com.dayofpi.super_block_world.main.common.world.dimension.MushroomKingdom;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -23,9 +23,6 @@ public abstract class CustomMusic {
 
     @Shadow @Nullable public ClientWorld world;
 
-    private static final MusicSound GRASSLAND = new MusicSound(ModSounds.MUSIC_GRASSLAND, 12000, 24000, false);
-    private static final MusicSound CAVE = new MusicSound(ModSounds.MUSIC_CAVE, 10000, 20000, false);
-
     // The code for Iris Music
     @Inject(at = @At("HEAD"), method = "getMusicType", cancellable = true)
     public void getMusicType(CallbackInfoReturnable<MusicSound> info) {
@@ -34,10 +31,10 @@ public abstract class CustomMusic {
                 World world = this.player.world;
                 BlockPos pos = this.player.getBlockPos();
                 if (pos.getY() < world.getSeaLevel() && world.getLightLevel(pos) <= 7 && !world.isSkyVisible(pos)) {
-                    info.setReturnValue(CAVE);
+                    info.setReturnValue(ModMusic.CAVE);
                 } else {
                     if (this.world != null) {
-                        info.setReturnValue(this.world.getBiomeAccess().getBiomeForNoiseGen(pos).getMusic().orElse(GRASSLAND));
+                        info.setReturnValue(this.world.getBiomeAccess().getBiomeForNoiseGen(pos).getMusic().orElse(ModMusic.GRASSLAND));
                     }
                 }
                 info.cancel();

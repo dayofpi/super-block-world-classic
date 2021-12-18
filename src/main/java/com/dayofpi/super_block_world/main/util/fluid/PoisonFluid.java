@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.util.fluid;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import com.dayofpi.super_block_world.main.registry.FluidRegistry;
@@ -45,7 +45,7 @@ public abstract class PoisonFluid extends AbstractFluid {
         if (world.getBlockState(abovePos).isAir()) {
             if (random.nextInt(25) == 0) {
                 double d = (double)pos.getX() + random.nextDouble();
-                double e = (double)pos.getY() + 0.4D  + (random.nextDouble() * 0.2);
+                double e = (double)pos.getY() + 0.9D  + (random.nextDouble() * 0.2);
                 double f = (double)pos.getZ() + random.nextDouble();
                 world.addParticle(ParticleReg.POISON_BUBBLE, d, e, f, 0.0D, 0.0D, 0.0D);
             }

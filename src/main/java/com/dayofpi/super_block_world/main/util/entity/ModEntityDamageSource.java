@@ -32,10 +32,10 @@ public class ModEntityDamageSource extends EntityDamageSource {
     }
 
     public static DamageSource stomp(LivingEntity attacker) {
-        return new ModEntityDamageSource("stomp", attacker).setFromAbove().setStomp();
+        return new ModEntityDamageSource("super_block_world:stomp", attacker).setFromAbove().setStomp();
     }
 
     public static DamageSource mobDrop(LivingEntity attacker) {
-        return new ModEntityDamageSource("mob_drop", attacker).setFromAbove();
+        return new ModEntityDamageSource("super_block_world:mob_drop", attacker).setFromAbove();
     }
 }

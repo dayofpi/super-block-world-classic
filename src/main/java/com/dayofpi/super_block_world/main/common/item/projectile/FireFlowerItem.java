@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.item.projectile;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.entity.projectile.FlowerFireballEntity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;

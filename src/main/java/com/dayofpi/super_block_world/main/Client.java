@@ -27,7 +27,6 @@ public class Client implements ClientModInitializer {
         //DimensionRenderingRegistry.registerSkyRenderer(MushroomKingdom.WORLD_KEY, new MushroomKingdomSky());
         FluidRendering.renderFluids();
         BlockRendering.setBlockColors();
-        BlockRendering.renderBlockEntity();
         BlockRendering.setRenderLayers();
         EntityRendering.registerEntityRenderers();
         ParticleRendering.renderParticles();

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.EntityRegistry;
 import com.dayofpi.super_block_world.main.common.entity.mob.FakeBlockEntity;
 import net.minecraft.block.Block;

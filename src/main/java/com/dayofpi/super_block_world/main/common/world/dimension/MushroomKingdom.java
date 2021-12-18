@@ -19,32 +19,19 @@ import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.source.MultiNoiseBiomeSource;
-import net.minecraft.world.dimension.DimensionOptions;
-import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.gen.chunk.ChunkGeneratorSettings;
 
 import static net.minecraft.server.command.CommandManager.literal;
 
 public class MushroomKingdom {
+    public static RegistryKey<World> WORLD_KEY;
+    public static ServerWorld DIMENSION;
     public static MultiNoiseBiomeSource.Preset PRESET;
 
-    public static RegistryKey<World> WORLD_KEY;
-    public static RegistryKey<ChunkGeneratorSettings> GENERATOR_SETTINGS_KEY;
-    public static RegistryKey<DimensionOptions> DIMENSION_KEY;
-    public static RegistryKey<DimensionType> DIMENSION_TYPE_KEY;
-
-    public static DimensionType DIMENSION_TYPE;
-    public static ServerWorld DIMENSION;
-
     public static void initializeDimension() {
-        PRESET = BiomeParameters.MUSHROOM_KINGDOM;
         WORLD_KEY = RegistryKey.of(Registry.WORLD_KEY, Main.DIMENSION_ID);
-        GENERATOR_SETTINGS_KEY = RegistryKey.of(Registry.CHUNK_GENERATOR_SETTINGS_KEY, Main.DIMENSION_ID);
-        DIMENSION_KEY = RegistryKey.of(Registry.DIMENSION_KEY, Main.DIMENSION_ID);
-        DIMENSION_TYPE_KEY = RegistryKey.of(Registry.DIMENSION_TYPE_KEY, Main.DIMENSION_ID);
+        PRESET = BiomeParameters.MUSHROOM_KINGDOM;
 
         ServerLifecycleEvents.SERVER_STARTED.register(server -> {
-            DIMENSION_TYPE = server.getRegistryManager().get(Registry.DIMENSION_TYPE_KEY).get(DIMENSION_TYPE_KEY);
             DIMENSION = server.getWorld(WORLD_KEY);
 
             Main.LOGGER.info("Preparing dimension for server");

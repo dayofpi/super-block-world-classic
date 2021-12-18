@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.mixin.main.entity;
 import com.dayofpi.super_block_world.main.registry.StatusEffectReg;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;

@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.koopa;
 
 import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.control.FlightMoveControl;

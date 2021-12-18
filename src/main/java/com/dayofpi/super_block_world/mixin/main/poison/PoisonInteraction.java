@@ -3,7 +3,8 @@ package com.dayofpi.super_block_world.mixin.main.poison;
 import com.dayofpi.super_block_world.main.registry.ParticleReg;
 import com.dayofpi.super_block_world.main.registry.TagRegistry;
 import com.dayofpi.super_block_world.main.util.entity.ModDamageSource;
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
@@ -55,20 +56,18 @@ public abstract class PoisonInteraction {
     @Shadow public abstract BlockPos getBlockPos();
 
     @Shadow private EntityDimensions dimensions;
+    @Shadow protected boolean firstUpdate;
+    @Shadow protected Object2DoubleMap<Tag<Fluid>> fluidHeight;
     private final Random random = new Random();
-    private boolean touchingPoison;
-
-    public boolean isTouchingPoison() {
-        return this.touchingPoison;
-    }
 
     @Inject(at = @At("TAIL"), method = "baseTick")
     void baseTick(CallbackInfo info) {
-        if (this.isTouchingPoison()) {
-            if (!this.getType().isIn(TagRegistry.POISON_IMMUNE)) {
+        if (!this.getType().isIn(TagRegistry.POISON_IMMUNE)) {
+            if (this.isInPoison()) {
                 if (this.damage(ModDamageSource.POISON, 4.0F)) {
-                    if (this.getWorld().isClient)
-                        this.getWorld().addParticle(ParticleTypes.LARGE_SMOKE, this.getBlockPos().getX() + 0.5, this.getBlockPos().getY() + 1, this.getBlockPos().getZ() + 0.5, 0.0D, 0.0D, 0.0D);
+                    World world = this.getWorld();
+                    if (world.isClient)
+                        world.addParticle(ParticleTypes.LARGE_SMOKE, this.getBlockPos().getX() + 0.5, this.getBlockPos().getY() + 1, this.getBlockPos().getZ() + 0.5, 0.0D, 0.0D, 0.0D);
                     else
                         this.playSound(SoundEvents.ENTITY_GENERIC_BURN, 0.4F, 2.0F + this.random.nextFloat() * 0.4F);
                 }
@@ -83,7 +82,6 @@ public abstract class PoisonInteraction {
             Entity entity = this.hasPassengers() && this.getPrimaryPassenger() != null ? this.getPrimaryPassenger() : this.getWorld().getEntityById(this.getId());
             if (entity != null) {
                 this.playSound(ModSounds.BLOCK_POISON_SWIM, 0.4F, 1.0F + (this.random.nextFloat() - this.random.nextFloat() * 0.5F));
-
                 float y = (float) MathHelper.floor(this.getY());
                 double x;
                 double z;
@@ -97,9 +95,8 @@ public abstract class PoisonInteraction {
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "checkWaterState")
-    void checkWaterState(CallbackInfo info) {
-        this.touchingPoison = this.updateMovementInFluid(TagRegistry.POISON, 0.0023);
+    public boolean isInPoison() {
+        return !this.firstUpdate && this.fluidHeight.getDouble(TagRegistry.POISON) > 0.0;
     }
 }
 

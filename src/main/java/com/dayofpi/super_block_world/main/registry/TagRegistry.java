@@ -14,6 +14,7 @@ public class TagRegistry {
     public static Tag<Biome> ALL_BIOMES;
     public static Tag<Item> SHELLMETS;
     public static Tag<Block> BRICKS;
+    public static Tag<Block> PIPES;
     public static Tag<Block> ALWAYS_CARVABLE;
     public static Tag<EntityType<?>> POISON_IMMUNE;
     public static Tag<EntityType<?>> IMMUNE_TO_BOOTS;
@@ -23,6 +24,7 @@ public class TagRegistry {
         ALL_BIOMES = addBiomeTag("all_biomes");
         SHELLMETS = addItemTag("shellmets");
         BRICKS = addBlockTag("bricks");
+        PIPES = addBlockTag("pipes");
         ALWAYS_CARVABLE = addBlockTag("always_carvable");
         POISON_IMMUNE = addEntityTag("poison_immune");
         IMMUNE_TO_BOOTS = addEntityTag("immune_to_boots");

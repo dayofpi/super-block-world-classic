@@ -1,7 +1,11 @@
 package com.dayofpi.super_block_world.main.common.world.feature.type;
 
+import com.dayofpi.super_block_world.main.common.block.reactive.CoinBlock;
+import com.dayofpi.super_block_world.main.common.block_entity.CoinBlockBE;
 import com.dayofpi.super_block_world.main.common.world.feature.config.BlockLineFeatureConfig;
+import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.mojang.serialization.Codec;
+import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
@@ -36,6 +40,17 @@ public class BlockLineFeature extends Feature<BlockLineFeatureConfig> {
                 mutable.set(blockPos, random.nextInt(z) - random.nextInt(z), random.nextInt(y) - random.nextInt(y), random.nextInt(x) - random.nextInt(x));
                 if (!config.feature().get().generateUnregistered(structureWorldAccess, context.getGenerator(), random, mutable)) continue;
                 ++i;
+            }
+        }
+
+        if (structureWorldAccess.getBlockEntity(mutable) instanceof CoinBlockBE blockEntity && structureWorldAccess.getBlockState(mutable).isOf(BlockRegistry.COIN_BLOCK)) {
+            if (random.nextInt(3) == 0) {
+                blockEntity.getStack(0).setCount(5);
+                BlockState state = structureWorldAccess.getBlockState(mutable);
+                if (mutable.getY() < 63)
+                    structureWorldAccess.setBlockState(mutable, state.with(CoinBlock.TYPE, 2), 2);
+                else
+                    structureWorldAccess.setBlockState(mutable, state.with(CoinBlock.TYPE, 1), 2);
             }
         }
         return i > 0;

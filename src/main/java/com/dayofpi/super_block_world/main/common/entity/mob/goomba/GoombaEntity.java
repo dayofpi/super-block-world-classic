@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.goomba;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.EntityRegistry;
 import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
@@ -80,12 +80,8 @@ public class GoombaEntity extends EnemyEntity {
         super.setTarget(target);
     }
 
-    public int getMinAmbientSoundDelay() {
-        return 300;
-    }
-
     protected SoundEvent getAmbientSound() {
-        return ModSounds.ENTITY_GOOMBA_AMBIENT;
+        return this.getTarget() != null ? ModSounds.ENTITY_GOOMBA_AMBIENT : null;
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {

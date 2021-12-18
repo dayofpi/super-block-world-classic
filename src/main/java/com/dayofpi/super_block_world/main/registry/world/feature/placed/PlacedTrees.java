@@ -1,20 +1,18 @@
 package com.dayofpi.super_block_world.main.registry.world.feature.placed;
 
-import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
 import com.dayofpi.super_block_world.main.registry.world.feature.configured.ConfiguredTrees;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.gen.blockpredicate.BlockPredicate;
+import com.dayofpi.super_block_world.main.registry.world.feature.utility.PlacementModifiers;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
 public class PlacedTrees {
-    public static final PlacedFeature AMANITA = ConfiguredTrees.AMANITA.withBlockPredicateFilter(BlockPredicate.wouldSurvive(PlantBlocks.AMANITA_SAPLING.getDefaultState(), BlockPos.ORIGIN));
-    public static final PlacedFeature AMANITA_FRUIT = ConfiguredTrees.AMANITA_FRUIT.withBlockPredicateFilter(BlockPredicate.wouldSurvive(PlantBlocks.AMANITA_SAPLING.getDefaultState(), BlockPos.ORIGIN));
-    public static final PlacedFeature AMANITA_LARGE = ConfiguredTrees.AMANITA_LARGE.withBlockPredicateFilter(BlockPredicate.wouldSurvive(PlantBlocks.AMANITA_SAPLING.getDefaultState(), BlockPos.ORIGIN));
-    public static final PlacedFeature AMANITA_MOUNTAIN = ConfiguredTrees.AMANITA_MOUNTAIN.withBlockPredicateFilter(BlockPredicate.wouldSurvive(PlantBlocks.AMANITA_SAPLING.getDefaultState(), BlockPos.ORIGIN));
-    public static final PlacedFeature AMANITA_OAKY = ConfiguredTrees.AMANITA_FRUIT.withBlockPredicateFilter(BlockPredicate.wouldSurvive(PlantBlocks.AMANITA_SAPLING.getDefaultState(), BlockPos.ORIGIN));
-    public static final PlacedFeature AMANITA_OAKY_FRUIT = ConfiguredTrees.AMANITA_FRUIT.withBlockPredicateFilter(BlockPredicate.wouldSurvive(PlantBlocks.AMANITA_SAPLING.getDefaultState(), BlockPos.ORIGIN));
-    public static final PlacedFeature DARK_AMANITA = ConfiguredTrees.DARK_AMANITA.withBlockPredicateFilter(BlockPredicate.wouldSurvive(PlantBlocks.DARK_AMANITA_SAPLING.getDefaultState(), BlockPos.ORIGIN));
-    public static final PlacedFeature DARK_AMANITA_TALL = ConfiguredTrees.DARK_AMANITA_TALL.withBlockPredicateFilter(BlockPredicate.wouldSurvive(PlantBlocks.DARK_AMANITA_SAPLING.getDefaultState(), BlockPos.ORIGIN));
+    public static final PlacedFeature AMANITA = ConfiguredTrees.AMANITA.withPlacement(PlacementModifiers.SAPLING_SURVIVES);
+    public static final PlacedFeature AMANITA_FRUIT = ConfiguredTrees.AMANITA_FRUIT.withPlacement(PlacementModifiers.SAPLING_SURVIVES);
+    public static final PlacedFeature AMANITA_LARGE = ConfiguredTrees.AMANITA_LARGE.withPlacement(PlacementModifiers.SAPLING_SURVIVES);
+    public static final PlacedFeature AMANITA_MOUNTAIN = ConfiguredTrees.AMANITA_MOUNTAIN.withPlacement(PlacementModifiers.SAPLING_SURVIVES);
+    public static final PlacedFeature AMANITA_OAKY = ConfiguredTrees.AMANITA_OAKY.withPlacement(PlacementModifiers.SAPLING_SURVIVES);
+    public static final PlacedFeature AMANITA_OAKY_FRUIT = ConfiguredTrees.AMANITA_OAKY_FRUIT.withPlacement(PlacementModifiers.SAPLING_SURVIVES);
+    public static final PlacedFeature DARK_AMANITA = ConfiguredTrees.DARK_AMANITA.withPlacement(PlacementModifiers.SAPLING_SURVIVES);
+    public static final PlacedFeature DARK_AMANITA_TALL = ConfiguredTrees.DARK_AMANITA_TALL.withPlacement(PlacementModifiers.SAPLING_SURVIVES);
     public static final PlacedFeature HUGE_RED_MUSHROOM_FLAT = ConfiguredTrees.HUGE_RED_MUSHROOM_FLAT.withPlacement();
     public static final PlacedFeature HUGE_GREEN_MUSHROOM_FLAT = ConfiguredTrees.HUGE_GREEN_MUSHROOM_FLAT.withPlacement();
     public static final PlacedFeature HUGE_YELLOW_MUSHROOM = ConfiguredTrees.HUGE_YELLOW_MUSHROOM.withPlacement();

@@ -1,7 +1,5 @@
 package com.dayofpi.super_block_world.main.common.block.reactive;
 
-import com.dayofpi.super_block_world.main.common.entity.mob.buzzy.AbstractBuzzy;
-import com.dayofpi.super_block_world.main.common.entity.mob.ThwompEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -12,6 +10,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 @SuppressWarnings("deprecation")
 public abstract class ReactiveBlock extends Block {
@@ -39,17 +38,10 @@ public abstract class ReactiveBlock extends Block {
     }
 
     @Override
-    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        if (entity instanceof ThwompEntity thwompEntity && ((ThwompEntity) entity).getStage() == 3)
-            this.activate(state, world, pos);
-        else if (entity instanceof AbstractBuzzy && ((AbstractBuzzy) entity).isUpsideDown() && entity.fallDistance > 0)
-            this.activate(state, world, pos);
-    }
-
-    @Override
     public void onEntityCollision(BlockState state, World world, BlockPos blockPos, Entity entity) {
         boolean jumpUnder = entity.getY() < blockPos.getY();
-        if (jumpUnder) {
+        boolean isValid = entity.isPlayer() || world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING);
+        if (jumpUnder && isValid) {
             this.activate(state, world, blockPos);
         }
         super.onEntityCollision(state, world, blockPos, entity);

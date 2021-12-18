@@ -6,6 +6,7 @@ import com.dayofpi.super_block_world.main.common.block.cloud.CloudBlock;
 import com.dayofpi.super_block_world.main.common.block.cloud.HappyCloudBlock;
 import com.dayofpi.super_block_world.main.common.block.fluid.PoisonBlock;
 import com.dayofpi.super_block_world.main.common.block.reactive.CoinBlock;
+import com.dayofpi.super_block_world.main.common.block.reactive.EmptyBlock;
 import com.dayofpi.super_block_world.main.common.block.reactive.QuestionBlock;
 import com.dayofpi.super_block_world.main.common.block.soil.*;
 import com.dayofpi.super_block_world.main.registry.FluidRegistry;
@@ -13,7 +14,7 @@ import com.dayofpi.super_block_world.main.common.block.pipe.BronzePipeBlock;
 import com.dayofpi.super_block_world.main.common.block.pipe.WarpPipeBlock;
 import com.dayofpi.super_block_world.main.common.block.pipe.WarpPipeBodyBlock;
 import com.dayofpi.super_block_world.main.util.mixin_aid.ModSignType;
-import com.dayofpi.super_block_world.main.util.sounds.ModSoundGroup;
+import com.dayofpi.super_block_world.main.client.sound.ModSoundGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
@@ -72,6 +73,9 @@ public class BlockRegistry {
     public static final Block CHISELED_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
     public static final Block CUT_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
     public static final Block SMOOTH_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
+
+    public static final Block SHORESAND = new SandBlock(16379337, FabricBlockSettings.copyOf(GRITZY_SAND).mapColor(MapColor.OFF_WHITE));
+    public static final Block SHOREGRASS = new Block(FabricBlockSettings.copyOf(GRITZY_SAND).mapColor(MapColor.PALE_YELLOW));
 
     public static final Block SEASTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.EMERALD_GREEN).sounds(ModSoundGroup.TOADSTONE).strength(1.0F).requiresTool());
     public static final Block SEASTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(SEASTONE));
@@ -224,6 +228,8 @@ public class BlockRegistry {
         registerBlock("smooth_gritzy_sandstone", SMOOTH_GRITZY_SANDSTONE);
         registerBlock("gritzy_sandstone_slab", VariantBlocks.GRITZY_SANDSTONE_SLAB);
         registerBlock("gritzy_sandstone_stairs", VariantBlocks.GRITZY_SANDSTONE_STAIRS);
+        registerBlock("shoresand", SHORESAND);
+        registerBlock("shoregrass", SHOREGRASS);
         registerBlock("happy_cloud", HAPPY_CLOUD);
         registerBlock("cloud_block", CLOUD_BLOCK);
         registerBlock("cloud_slab", VariantBlocks.CLOUD_SLAB);

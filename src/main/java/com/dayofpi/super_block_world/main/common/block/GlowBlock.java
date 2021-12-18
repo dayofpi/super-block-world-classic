@@ -9,6 +9,8 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 
 public class GlowBlock extends FallingBlock {
     public static final DirectionProperty FACING;
@@ -37,5 +39,9 @@ public class GlowBlock extends FallingBlock {
     @Override
     public BlockState mirror(BlockState state, BlockMirror mirror) {
         return state.rotate(mirror.getRotation(state.get(FACING)));
+    }
+
+    public int getColor(BlockState state, BlockView world, BlockPos pos) {
+        return 16775904;
     }
 }

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.hammer_bro;
 
-import com.dayofpi.super_block_world.main.util.sounds.ModSounds;
+import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
 import com.dayofpi.super_block_world.main.common.entity.projectile.HammerEntity;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
