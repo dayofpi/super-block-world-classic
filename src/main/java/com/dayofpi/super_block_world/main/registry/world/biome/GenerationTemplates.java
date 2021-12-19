@@ -5,6 +5,7 @@ import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedMi
 import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedVegetation;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.feature.OceanPlacedFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 public class GenerationTemplates {
@@ -54,6 +55,7 @@ public class GenerationTemplates {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_NORMAL);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.STUMP);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.WATER_PLANTS);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.AMANITA_CARPET);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.AUTUMN_FOREST_MUSHROOMS);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.AUTUMN_FOREST_PLANTS);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.GRASSLAND_FLOWERS);
@@ -79,16 +81,20 @@ public class GenerationTemplates {
 
 
     static void addFossilFallsFeatures(GenerationSettings.Builder builder) {
-
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.STUMP);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.AMANITA_CARPET);
     }
 
     public static void addCheepCheepReefFeatures(GenerationSettings.Builder builder) {
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.JELLYBEAM);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.HORSETAIL);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.WATER_PLANTS);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.AMANITA_CARPET);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.CORAL_MANY);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.GRASSLAND_PLANTS);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.KELP_WARM);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.AUTUMN_FOREST_PLANTS);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.REEF_FLOWERS);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.REEF_VEGETATION);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, OceanPlacedFeatures.WARM_OCEAN_VEGETATION);
     }
 }

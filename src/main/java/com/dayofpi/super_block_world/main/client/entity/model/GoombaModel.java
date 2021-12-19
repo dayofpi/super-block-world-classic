@@ -40,7 +40,7 @@ public class GoombaModel<T extends GoombaEntity> extends SinglePartEntityModel<T
         this.ROOT.roll = 0.05F * MathHelper.sin(limbAngle) * limbDistance;
         this.HEAD.yaw = headYaw * 0.017453292F;
         this.HEAD.pitch = headPitch * 0.017453292F;
-        this.RIGHT_FOOT.pitch = MathHelper.cos(limbAngle + 3.1415927F) * 1.4F * limbDistance;
-        this.LEFT_FOOT.pitch = MathHelper.cos(limbAngle) * 1.4F * limbDistance;
+        this.RIGHT_FOOT.pitch = MathHelper.cos(limbAngle + 3.1415927F) * 1.6F * limbDistance;
+        this.LEFT_FOOT.pitch = MathHelper.cos(limbAngle) * 1.6F * limbDistance;
     }
 }

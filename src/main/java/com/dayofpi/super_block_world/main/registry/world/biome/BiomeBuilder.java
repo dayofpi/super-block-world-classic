@@ -8,15 +8,15 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 
 public class BiomeBuilder {
-    private static final int DEFAULT_GRASS_COLOR = 6879535;
-    private static final int DEFAULT_FOLIAGE_COLOR = 6408218;
-
-    private static final int MEADOW_GRASS_COLOR = 13685323;
-    private static final int MEADOW_FOLIAGE_COLOR = 10005806;
-
+    private static final int DEFAULT_GRASS = 6879535;
+    private static final int DEFAULT_FOLIAGE = 6408218;
     private static final int DEFAULT_SKY = 5277426;
     private static final int DEFAULT_FOG = 11337727;
-    private static final int DEFAULT_WATER = 440574;
+    private static final int DEFAULT_WATER = 1366271;
+    private static final int DEFAULT_WATER_FOG = 4382975;
+
+    private static final int MEADOW_GRASS = 13685323;
+    private static final int MEADOW_FOLIAGE = 10005806;
 
     private static final int FOREST_FOG = 11387566;
     private static final int FOREST_GRASS = 6263838;
@@ -32,6 +32,8 @@ public class BiomeBuilder {
     private static final int REEF_GRASS = 14545466;
     private static final int REEF_FOLIAGE = 12971062;
 
+    private static final int FOSSIL_FALLS_GRASS = 109882;
+
 
     protected static Biome createMushroomGrasslands() {
         GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
@@ -40,7 +42,7 @@ public class BiomeBuilder {
         SpawnTemplates.addMushroomGrasslandMobs(spawnSettings);
         DefaultTemplates.addBasicFeatures(generationSettings);
         GenerationTemplates.addMushroomGrasslandsFeatures(generationSettings);
-        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(DEFAULT_FOG).grassColor(DEFAULT_GRASS_COLOR).foliageColor(DEFAULT_FOLIAGE_COLOR).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
+        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(DEFAULT_FOG).grassColor(DEFAULT_GRASS).foliageColor(DEFAULT_FOLIAGE).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER_FOG).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
     }
 
     protected static Biome createMooMooMeadow() {
@@ -51,7 +53,7 @@ public class BiomeBuilder {
         DefaultTemplates.addBasicFeatures(generationSettings);
         GenerationTemplates.addMooMooMeadowFeatures(generationSettings);
 
-        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(AUTUMN_SKY).fogColor(AUTUMN_FOG).grassColor(MEADOW_GRASS_COLOR).foliageColor(MEADOW_FOLIAGE_COLOR).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.9f).downfall(0.4f).build();
+        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(AUTUMN_SKY).fogColor(AUTUMN_FOG).grassColor(MEADOW_GRASS).foliageColor(MEADOW_FOLIAGE).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER_FOG).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.9f).downfall(0.4f).build();
     }
 
     protected static Biome createAmanitaForest() {
@@ -61,7 +63,7 @@ public class BiomeBuilder {
         SpawnTemplates.addAmanitaForestMobs(spawnSettings);
         DefaultTemplates.addBasicFeatures(generationSettings);
         GenerationTemplates.addAmanitaForestFeatures(generationSettings);
-        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(FOREST_FOG).grassColor(FOREST_GRASS).foliageColor(FOREST_GRASS).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER).moodSound(BiomeMoodSound.CAVE).music(ModMusic.FOREST).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
+        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(FOREST_FOG).grassColor(FOREST_GRASS).foliageColor(FOREST_GRASS).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER_FOG).moodSound(BiomeMoodSound.CAVE).music(ModMusic.FOREST).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
     }
 
     protected static Biome createForestOfIllusion() {
@@ -71,7 +73,7 @@ public class BiomeBuilder {
         SpawnTemplates.addForestOfIllusionMobs(spawnSettings);
         DefaultTemplates.addBasicFeatures(generationSettings);
         GenerationTemplates.addForestOfIllusionFeatures(generationSettings);
-        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(FOREST_FOG).grassColor(FOREST_GRASS).foliageColor(ILLUSION_FOLIAGE).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER).moodSound(BiomeMoodSound.CAVE).music(ModMusic.ILLUSION).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
+        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(FOREST_FOG).grassColor(FOREST_GRASS).foliageColor(ILLUSION_FOLIAGE).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER_FOG).moodSound(BiomeMoodSound.CAVE).music(ModMusic.ILLUSION).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
     }
 
     protected static Biome createFossilFalls() {
@@ -79,7 +81,8 @@ public class BiomeBuilder {
         SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
         DefaultTemplates.addCaveMobs(spawnSettings);
         DefaultTemplates.addBasicFeatures(generationSettings);
-        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(DEFAULT_FOG).grassColor(AUTUMN_GRASS).foliageColor(AUTUMN_GRASS).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
+        GenerationTemplates.addFossilFallsFeatures(generationSettings);
+        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(DEFAULT_FOG).grassColor(FOSSIL_FALLS_GRASS).foliageColor(FOSSIL_FALLS_GRASS).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER_FOG).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
     }
 
     protected static Biome createAutumnForest() {
@@ -101,7 +104,7 @@ public class BiomeBuilder {
         DefaultTemplates.addBasicFeatures(generationSettings);
         GenerationTemplates.addCheepCheepReefFeatures(generationSettings);
 
-        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(AUTUMN_FOG).grassColor(REEF_GRASS).foliageColor(REEF_FOLIAGE).waterColor(AUTUMN_WATER).waterFogColor(AUTUMN_WATER).moodSound(BiomeMoodSound.CAVE).music(ModMusic.WATER).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
+        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(AUTUMN_FOG).grassColor(REEF_GRASS).foliageColor(REEF_FOLIAGE).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER_FOG).moodSound(BiomeMoodSound.CAVE).music(ModMusic.WATER).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
     }
 
     protected static Biome createMushroomGorge() {
@@ -110,11 +113,10 @@ public class BiomeBuilder {
 
         DefaultTemplates.addCaveMobs(spawnSettings);
         SpawnTemplates.addMushroomGorgeMobs(spawnSettings);
-
         DefaultTemplates.addBasicFeatures(generationSettings);
         GenerationTemplates.addMushroomGorgeFeatures(generationSettings);
 
-        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(DEFAULT_FOG).grassColor(GORGE_GRASS).foliageColor(DEFAULT_FOLIAGE_COLOR).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
+        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(DEFAULT_FOG).grassColor(GORGE_GRASS).foliageColor(DEFAULT_FOLIAGE).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER_FOG).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.NONE).precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.4f).build();
     }
     protected static Biome createDryDryDesert() {
         GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
@@ -124,6 +126,6 @@ public class BiomeBuilder {
         GenerationTemplates.addDryDryDesertFeatures(generationSettings);
         DefaultTemplates.addBasicFeatures(generationSettings);
 
-        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(DEFAULT_FOG).grassColor(REEF_GRASS).foliageColor(AUTUMN_GRASS).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.DESERT).precipitation(Biome.Precipitation.NONE).temperature(0.9f).downfall(0.4f).build();
+        return new Biome.Builder().effects(new BiomeEffects.Builder().skyColor(DEFAULT_SKY).fogColor(DEFAULT_FOG).grassColor(REEF_GRASS).foliageColor(AUTUMN_GRASS).waterColor(DEFAULT_WATER).waterFogColor(DEFAULT_WATER_FOG).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(spawnSettings.build()).generationSettings(generationSettings.build()).category(Biome.Category.DESERT).precipitation(Biome.Precipitation.NONE).temperature(0.9f).downfall(0.4f).build();
     }
 }

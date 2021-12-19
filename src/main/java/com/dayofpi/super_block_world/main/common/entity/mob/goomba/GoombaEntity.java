@@ -217,7 +217,11 @@ public class GoombaEntity extends EnemyEntity {
     }
 
     public EntityDimensions getDimensions(EntityPose pose) {
-        return super.getDimensions(pose).scaled(0.5F * (float) this.getSize() + 0.5F);
+        float tallness = 1;
+        if (this.getSize() >= 2) {
+            tallness = 1.4f;
+        }
+        return super.getDimensions(pose).scaled(0.5F * (float) this.getSize() + 0.4F).scaled(tallness - 0.2f, tallness);
     }
 
     public void remove(RemovalReason reason) {

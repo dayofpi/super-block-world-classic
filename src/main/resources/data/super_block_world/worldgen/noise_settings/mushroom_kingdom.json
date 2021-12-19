@@ -2714,30 +2714,10 @@
                   }
                 },
                 "then_run": {
-                  "type": "minecraft:sequence",
-                  "sequence": [
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "minecraft:surface",
-                        "min_threshold": -0.4,
-                        "max_threshold": 0.2
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "super_block_world:seastone"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "super_block_world:shoresand"
-                      }
-                    }
-                  ]
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "super_block_world:shoresand"
+                  }
                 }
               }
             },

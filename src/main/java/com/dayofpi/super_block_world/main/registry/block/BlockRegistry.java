@@ -75,7 +75,7 @@ public class BlockRegistry {
     public static final Block SMOOTH_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
 
     public static final Block SHORESAND = new SandBlock(16379337, FabricBlockSettings.copyOf(GRITZY_SAND).mapColor(MapColor.OFF_WHITE));
-    public static final Block SHOREGRASS = new Block(FabricBlockSettings.copyOf(GRITZY_SAND).mapColor(MapColor.PALE_YELLOW));
+    public static final Block SHOREGRASS = new ShoregrassBlock(FabricBlockSettings.copyOf(GRITZY_SAND).mapColor(MapColor.PALE_YELLOW));
 
     public static final Block SEASTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.EMERALD_GREEN).sounds(ModSoundGroup.TOADSTONE).strength(1.0F).requiresTool());
     public static final Block SEASTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(SEASTONE));
@@ -105,7 +105,7 @@ public class BlockRegistry {
     public static final Block FROSTY_TOPPED_VANILLATE_ORE = new FrostyVanillateOre(FabricBlockSettings.copyOf(FROSTY_VANILLATE).emissiveLighting(BlockRegistry::always).slipperiness(1.0F));
 
     public static final Block TOADSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(1.2F, 1.0F).sounds(ModSoundGroup.TOADSTONE));
-    public static final Block GRASSY_TOADSTONE = new ToadstoneGrassBlock(FabricBlockSettings.copyOf(TOADSTONE).mapColor(MapColor.DARK_GREEN).sounds(ModSoundGroup.GRASSY_TOADSTONE));
+    public static final Block GRASSY_TOADSTONE = new GrassyToadstoneBlock(FabricBlockSettings.copyOf(TOADSTONE).mapColor(MapColor.DARK_GREEN).sounds(ModSoundGroup.GRASSY_TOADSTONE));
     public static final Block SMOOTH_TOADSTONE = new Block(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block CHISELED_TOADSTONE = new Block(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block TOADSTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(TOADSTONE));

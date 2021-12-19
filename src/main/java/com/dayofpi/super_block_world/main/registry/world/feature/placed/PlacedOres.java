@@ -19,4 +19,5 @@ public class PlacedOres {
     public static final PlacedFeature TOPPING_IRON = ConfiguredOres.TOPPING_IRON.withPlacement(CountPlacementModifier.of(8), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(0), YOffset.fixed(63)), BiomePlacementModifier.of());
     public static final PlacedFeature TOPPING_GOLD = ConfiguredOres.TOPPING_GOLD.withPlacement(CountPlacementModifier.of(8), SquarePlacementModifier.of(), HeightRangePlacementModifier.trapezoid(YOffset.fixed(-30), YOffset.fixed(50)), BiomePlacementModifier.of());
     public static final PlacedFeature DISK_SAND = ConfiguredOres.DISK_SAND.withPlacement(CountPlacementModifier.of(3), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.of());
+    public static final PlacedFeature DISK_SEASTONE = ConfiguredOres.DISK_SEASTONE.withPlacement(CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.of());
 }

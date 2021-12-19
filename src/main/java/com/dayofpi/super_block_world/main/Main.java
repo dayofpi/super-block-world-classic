@@ -7,7 +7,7 @@ import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import com.dayofpi.super_block_world.main.registry.world.biome.BiomeRegistry;
 import com.dayofpi.super_block_world.main.registry.world.feature.ConfiguredFeatureRegistry;
-import com.dayofpi.super_block_world.main.registry.world.feature.FeatureType;
+import com.dayofpi.super_block_world.main.registry.world.feature.FeatureRegistry;
 import com.dayofpi.super_block_world.main.registry.world.feature.PlacedFeatureRegistry;
 import com.dayofpi.super_block_world.main.registry.world.feature.StructureRegistry;
 import com.dayofpi.super_block_world.main.util.ModDispenserBehavior;
@@ -33,7 +33,7 @@ public class Main implements ModInitializer {
         LOGGER.info("Super Block World successfully initialized");
         ModDamageSource.registerDamageSources();
         BlockRegistry.registerBlocks();
-        FeatureType.registerFeatures();
+        FeatureRegistry.registerFeatures();
         ConfiguredFeatureRegistry.registerConfiguredFeatures();
         PlacedFeatureRegistry.registerPlacedFeatures();
         BiomeRegistry.registerBiomes();

@@ -59,6 +59,7 @@ public class DefaultTemplates {
     static void addDefaultOres(GenerationSettings.Builder builder) {
         builder.feature(GenerationStep.Feature.RAW_GENERATION, PlacedMisc.VANILLATE_TOPPING);
         builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.DISK_SAND);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.DISK_SEASTONE);
         builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_CRUMBLE);
         builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_BRONZE);
         builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_AMETHYST);
