@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.registry.world.feature.placed;
 
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.world.feature.FeatureType;
+import com.dayofpi.super_block_world.main.registry.world.feature.FeatureRegistry;
 import com.dayofpi.super_block_world.main.registry.world.feature.configured.ConfiguredMisc;
 import net.minecraft.block.Block;
 import net.minecraft.util.math.Vec3i;
@@ -20,14 +20,13 @@ public class PlacedMisc {
     private static final List<Block> PLACE_CRYSTAL_ON = List.of(BlockRegistry.VANILLATE, BlockRegistry.HARDSTONE, BlockRegistry.ROYALITE);
     private static final PlacedFeature AMETHYST_CEILING = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(16, 7, 3, () -> ConfiguredMisc.AMETHYST_CEILING.withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.allOf(BlockPredicate.IS_AIR, BlockPredicate.matchingBlocks(PLACE_CRYSTAL_ON, new Vec3i(0, 1, 0))))))).withPlacement();
     private static final PlacedFeature AMETHYST_FLOOR = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(16, 7, 3, () -> ConfiguredMisc.AMETHYST_FLOOR.withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.allOf(BlockPredicate.IS_AIR, BlockPredicate.matchingBlocks(PLACE_CRYSTAL_ON, new Vec3i(0, -1, 0))))))).withPlacement();
-
     public static final PlacedFeature SPRING = ConfiguredMisc.SPRING.withPlacement(CountPlacementModifier.of(4), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(0), YOffset.belowTop(0)), BiomePlacementModifier.of());
     public static final PlacedFeature LAKE_LAVA = ConfiguredMisc.LAKE_LAVA.withPlacement(RarityFilterPlacementModifier.of(9), SquarePlacementModifier.of(), HeightRangePlacementModifier.trapezoid(YOffset.fixed(-32), YOffset.fixed(63)), BiomePlacementModifier.of());
     public static final PlacedFeature LAKE_POISON = ConfiguredMisc.LAKE_POISON.withPlacement(RarityFilterPlacementModifier.of(9), SquarePlacementModifier.of(), HeightRangePlacementModifier.trapezoid(YOffset.fixed(0), YOffset.fixed(200)), BiomePlacementModifier.of());
     public static final PlacedFeature LAKE_POISON_FOREST = ConfiguredMisc.LAKE_POISON.withPlacement(RarityFilterPlacementModifier.of(3), SquarePlacementModifier.of(), HeightRangePlacementModifier.trapezoid(YOffset.fixed(63), YOffset.fixed(100)), BiomePlacementModifier.of());
     public static final PlacedFeature CAVE_DECORATION_COMMON = ConfiguredMisc.CAVE_DECORATION_COMMON.withPlacement(CountPlacementModifier.of(10), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(0), YOffset.belowTop(0)), BiomePlacementModifier.of());
     public static final PlacedFeature CAVE_DECORATION_RARE = ConfiguredMisc.CAVE_DECORATION_RARE.withPlacement(CountPlacementModifier.of(3), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(0), YOffset.belowTop(0)), BiomePlacementModifier.of());
-    public static final PlacedFeature WARP_PIPE_WATER = FeatureType.WARP_PIPE_WATER.configure(FeatureConfig.DEFAULT).withPlacement(CountPlacementModifier.of(8), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.fixed(-16), YOffset.belowTop(0)), BiomePlacementModifier.of());
+    public static final PlacedFeature WARP_PIPE_WATER = FeatureRegistry.WARP_PIPE_WATER.configure(FeatureConfig.DEFAULT).withPlacement(CountPlacementModifier.of(14), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.fixed(-16), YOffset.belowTop(0)), BiomePlacementModifier.of());
     public static final PlacedFeature VANILLATE_TOPPING = ConfiguredMisc.VANILLATE_TOPPING.withPlacement(CountPlacementModifier.of(35), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(0), YOffset.belowTop(0)), BiomePlacementModifier.of());
     public static final PlacedFeature QUICKSAND = ConfiguredMisc.QUICKSAND.withPlacement(RarityFilterPlacementModifier.of(16), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES), BiomePlacementModifier.of());
     public static final PlacedFeature AMETHYST_EXTRA = Feature.RANDOM_BOOLEAN_SELECTOR.configure(new RandomBooleanFeatureConfig(() -> AMETHYST_CEILING, () -> AMETHYST_FLOOR)).withPlacement(CountPlacementModifier.of(ConstantIntProvider.create(8)), SquarePlacementModifier.of(), HeightRangePlacementModifier.of(UniformHeightProvider.create(YOffset.fixed(40), YOffset.fixed(200))), BiomePlacementModifier.of());

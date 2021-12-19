@@ -13,7 +13,7 @@ public class WarpPipeBE extends BlockEntity {
     public WarpPipeBE(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.WARP_PIPE, pos, state);
         if (!WarpPipeBlock.warpPipeTree.getChunk(pos.getX() / 16, pos.getZ() / 16).warpList.contains(pos)) {
-            if (state.isOf(BlockRegistry.WARP_PIPE) && state.get(Properties.FACING) == Direction.UP && !state.get(Properties.WATERLOGGED))
+            if (state.isOf(BlockRegistry.WARP_PIPE) && state.get(Properties.FACING) == Direction.UP)
                 WarpPipeBlock.warpPipeTree.addBlockToChunk(pos.getX() / 16, pos.getZ() / 16, pos);
         }
     }

@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.registry.world.feature.placed;
 
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.world.feature.FeatureType;
+import com.dayofpi.super_block_world.main.registry.world.feature.FeatureRegistry;
 import com.dayofpi.super_block_world.main.registry.world.feature.configured.ConfiguredVegetation;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.Heightmap;
@@ -16,12 +16,13 @@ import java.util.List;
 
 public class PlacedVegetation {
     public static final PlacedFeature SEAGRASS = OceanConfiguredFeatures.SEAGRASS_SHORT.withPlacement(CountPlacementModifier.of(50), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.fixed(-24), YOffset.belowTop(0)), BiomePlacementModifier.of());
-    public static final PlacedFeature CORAL_FEW = FeatureType.STRAWBERRY_CORAL.configure(FeatureConfig.DEFAULT).withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of());
-    public static final PlacedFeature CORAL_MANY = FeatureType.STRAWBERRY_CORAL.configure(FeatureConfig.DEFAULT).withPlacement(CountPlacementModifier.of(5), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of());
+    public static final PlacedFeature CORAL_FEW = FeatureRegistry.STRAWBERRY_CORAL.configure(FeatureConfig.DEFAULT).withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of());
+    public static final PlacedFeature CORAL_MANY = FeatureRegistry.STRAWBERRY_CORAL.configure(FeatureConfig.DEFAULT).withPlacement(CountPlacementModifier.of(5), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of());
+    public static final PlacedFeature AMANITA_CARPET = ConfiguredVegetation.AMANITA_CARPET.withPlacement(CountPlacementModifier.of(150), HeightRangePlacementModifier.uniform(YOffset.fixed(60), YOffset.fixed(200)), SquarePlacementModifier.of(), BiomePlacementModifier.of());
     public static final PlacedFeature HORSETAIL = ConfiguredVegetation.HORSETAIL_PATCH.withPlacement(RarityFilterPlacementModifier.of(16), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.WORLD_SURFACE_WG), BiomePlacementModifier.of());
     public static final PlacedFeature STUMP = ConfiguredVegetation.STUMP_PATCH.withPlacement(RarityFilterPlacementModifier.of(64), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.WORLD_SURFACE_WG), BiomePlacementModifier.of());
     public static final PlacedFeature CACTUS = ConfiguredVegetation.CACTUS_PATCH.withPlacement(RarityFilterPlacementModifier.of(16), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.WORLD_SURFACE_WG), BiomePlacementModifier.of());
-    public static final PlacedFeature BEANSTALK_NOT_BUDDING = ConfiguredVegetation.BEANSTALK.withPlacement();
+    public static final PlacedFeature BEANSTALK = ConfiguredVegetation.BEANSTALK.withPlacement();
     public static final PlacedFeature BEANSTALK_BUDDING = ConfiguredVegetation.BEANSTALK_BUDDING.withPlacement();
     public static final PlacedFeature MUNCHER_FEW = ConfiguredVegetation.MUNCHER.withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(0), YOffset.belowTop(0)), BiomePlacementModifier.of());
     public static final PlacedFeature MUNCHER_MANY = ConfiguredVegetation.MUNCHER.withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES), BiomePlacementModifier.of());

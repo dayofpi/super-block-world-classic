@@ -48,7 +48,7 @@ public class WarpPipeBlock extends BronzePipeBlock implements BlockEntityProvide
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         super.onStateReplaced(state, world, pos, newState, moved);
-        if (state.hasBlockEntity() && !state.get(WATERLOGGED) && state.get(FACING) == Direction.UP && !state.isOf(newState.getBlock())) {
+        if (state.hasBlockEntity() && state.get(FACING) == Direction.UP && !state.isOf(newState.getBlock())) {
             warpPipeTree.removeBlockFromChunk(pos.getX()/16, pos.getZ()/16, pos); //if destroyed, remove from list
         }
     }

@@ -2,8 +2,8 @@
     "textures": {
         "particle": "super_block_world:block/shoresand",
         "bottom": "super_block_world:block/shoresand",
-        "top": "super_block_world:block/toadstool_grass_top",
-        "side": "super_block_world:block/shoresand",
+        "top": "super_block_world:block/shoregrass_top",
+        "side": "super_block_world:block/shoregrass",
         "overlay": "super_block_world:block/shoregrass_overlay"
     },
     "elements": [

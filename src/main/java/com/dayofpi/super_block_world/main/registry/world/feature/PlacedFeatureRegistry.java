@@ -17,6 +17,7 @@ public class PlacedFeatureRegistry {
         registerPlacedFeature("seagrass", PlacedVegetation.SEAGRASS);
         registerPlacedFeature("coral_few", PlacedVegetation.CORAL_FEW);
         registerPlacedFeature("coral_many", PlacedVegetation.CORAL_MANY);
+        registerPlacedFeature("amanita_carpet", PlacedVegetation.AMANITA_CARPET);
         registerPlacedFeature("spring", PlacedMisc.SPRING);
         registerPlacedFeature("lake_lava", PlacedMisc.LAKE_LAVA);
         registerPlacedFeature("lake_poison", PlacedMisc.LAKE_POISON);
@@ -40,6 +41,7 @@ public class PlacedFeatureRegistry {
         registerPlacedFeature("toppings_iron", PlacedOres.TOPPING_IRON);
         registerPlacedFeature("toppings_gold", PlacedOres.TOPPING_GOLD);
         registerPlacedFeature("disk_sand", PlacedOres.DISK_SAND);
+        registerPlacedFeature("disk_seastone", PlacedOres.DISK_SEASTONE);
         registerPlacedFeature("huge_red_mushroom_flat", PlacedTrees.HUGE_RED_MUSHROOM_FLAT);
         registerPlacedFeature("huge_green_mushroom_flat", PlacedTrees.HUGE_GREEN_MUSHROOM_FLAT);
         registerPlacedFeature("huge_yellow_mushroom", PlacedTrees.HUGE_YELLOW_MUSHROOM);
@@ -59,7 +61,7 @@ public class PlacedFeatureRegistry {
         registerPlacedFeature("dark_amanita_tall", PlacedTrees.DARK_AMANITA_TALL);
         registerPlacedFeature("horsetail", PlacedVegetation.HORSETAIL);
         registerPlacedFeature("stump", PlacedVegetation.STUMP);
-        registerPlacedFeature("beanstalk", PlacedVegetation.BEANSTALK_NOT_BUDDING);
+        registerPlacedFeature("beanstalk", PlacedVegetation.BEANSTALK);
         registerPlacedFeature("beanstalk_budding", PlacedVegetation.BEANSTALK_BUDDING);
         registerPlacedFeature("muncher_few", PlacedVegetation.MUNCHER_FEW);
         registerPlacedFeature("muncher_many", PlacedVegetation.MUNCHER_MANY);

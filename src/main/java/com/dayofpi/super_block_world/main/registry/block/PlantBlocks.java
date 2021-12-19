@@ -26,7 +26,7 @@ public class PlantBlocks {
     public static final Block MUNCHER = new MuncherBlock(FabricBlockSettings.of(Material.PLANT, MapColor.BLACK).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block FROZEN_MUNCHER = new FrozenMuncherBlock(FabricBlockSettings.of(Material.ICE, MapColor.LIGHT_BLUE_GRAY).nonOpaque().sounds(BlockSoundGroup.GLASS).slipperiness(0.98f).strength(0.5f).ticksRandomly());
     public static final Block CAVE_MUSHROOMS = new CaveMushroomBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.TERRACOTTA_BLUE).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
-    public static final Block AMANITA_CARPET = new CarpetBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().sounds(BlockSoundGroup.MOSS_CARPET));
+    public static final Block AMANITA_CARPET = new AmanitaCarpetBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().sounds(BlockSoundGroup.MOSS_CARPET));
     public static final Block YELLOW_FLOWERBED = new FlowerbedBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.YELLOW).noCollision().sounds(BlockSoundGroup.MOSS_CARPET));
     public static final Block WHITE_FLOWERBED = new FlowerbedBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.WHITE).noCollision().sounds(BlockSoundGroup.MOSS_CARPET));
     public static final Block BLUE_SONGFLOWER = new SongflowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.of(Material.PLANT, MapColor.DIAMOND_BLUE).ticksRandomly().noCollision().sounds(BlockSoundGroup.GRASS));

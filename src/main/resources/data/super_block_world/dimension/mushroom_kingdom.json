@@ -2,7 +2,7 @@
   "type": "super_block_world:mushroom_kingdom",
   "generator": {
     "type": "minecraft:noise",
-    "seed": 0,
+    "seed": 64,
     "settings": "super_block_world:mushroom_kingdom",
     "biome_source": {
       "type": "minecraft:multi_noise",

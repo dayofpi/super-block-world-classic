@@ -21,8 +21,8 @@ import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 import java.util.List;
 import java.util.Random;
 
-public class ToadstoneGrassBlock extends ToadstoolSoilBlock implements Fertilizable {
-    public ToadstoneGrassBlock(Settings settings) {
+public class GrassyToadstoneBlock extends ToadstoolSoilBlock implements Fertilizable {
+    public GrassyToadstoneBlock(Settings settings) {
         super(settings);
     }
 

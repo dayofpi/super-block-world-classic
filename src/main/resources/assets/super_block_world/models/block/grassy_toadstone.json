@@ -2,9 +2,9 @@
     "textures": {
         "particle": "super_block_world:block/toadstone",
         "bottom": "super_block_world:block/toadstone",
-        "top": "super_block_world:block/toadstool_grass_top",
+        "top": "super_block_world:block/grassy_toadstone_top",
         "side": "super_block_world:block/grassy_toadstone",
-        "overlay": "super_block_world:block/toadstone_overlay"
+        "overlay": "super_block_world:block/grassy_toadstone_overlay"
     },
     "elements": [
         {

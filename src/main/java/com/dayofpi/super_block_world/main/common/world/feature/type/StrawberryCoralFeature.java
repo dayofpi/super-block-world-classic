@@ -21,34 +21,32 @@ public class StrawberryCoralFeature extends Feature<DefaultFeatureConfig> {
 
    public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
       int i = 0;
-      StructureWorldAccess structureWorldAccess = context.getWorld();
+      StructureWorldAccess world = context.getWorld();
       BlockPos blockPos = context.getOrigin();
       Random random = context.getRandom();
-      int j = structureWorldAccess.getTopY(Heightmap.Type.OCEAN_FLOOR, blockPos.getX(), blockPos.getZ());
+      int j = world.getTopY(Heightmap.Type.OCEAN_FLOOR, blockPos.getX(), blockPos.getZ());
       BlockPos blockPos2 = new BlockPos(blockPos.getX(), j, blockPos.getZ());
-      if (structureWorldAccess.getBlockState(blockPos2).isOf(Blocks.WATER)) {
-         BlockState blockState = BlockRegistry.QUESTION_BLOCK.getDefaultState();
+      if (world.getBlockState(blockPos2).isOf(Blocks.WATER)) {
+         BlockState tip = BlockRegistry.COIN_BLOCK.getDefaultState();
          if (random.nextFloat() > 0.2F ) {
-            blockState = BlockRegistry.STRAWBERRY_CORAL.getDefaultState();
-         } else if (random.nextFloat() < 0.7F) {
-            blockState = BlockRegistry.COIN_BLOCK.getDefaultState();
+            tip = BlockRegistry.STRAWBERRY_CORAL.getDefaultState();
          }
-         BlockState blockState2 = BlockRegistry.STRAWBERRY_CORAL.getDefaultState();
+         BlockState body = BlockRegistry.STRAWBERRY_CORAL.getDefaultState();
 
          int k = 1 + random.nextInt(10);
 
          for(int l = 0; l <= k; ++l) {
-            if (structureWorldAccess.getBlockState(blockPos2).isOf(Blocks.WATER) && structureWorldAccess.getBlockState(blockPos2.up()).isOf(Blocks.WATER) && blockState2.canPlaceAt(structureWorldAccess, blockPos2)) {
+            if (world.getBlockState(blockPos2).isOf(Blocks.WATER) && world.getBlockState(blockPos2.up()).isOf(Blocks.WATER) && body.canPlaceAt(world, blockPos2)) {
                if (l == k) {
-                  structureWorldAccess.setBlockState(blockPos2, blockState, Block.NOTIFY_LISTENERS);
+                  world.setBlockState(blockPos2, tip, Block.NOTIFY_LISTENERS);
                   ++i;
                } else {
-                  structureWorldAccess.setBlockState(blockPos2, blockState2, Block.NOTIFY_LISTENERS);
+                  world.setBlockState(blockPos2, body, Block.NOTIFY_LISTENERS);
                }
             } else if (l > 0) {
                BlockPos blockPos3 = blockPos2.down();
-               if (blockState.canPlaceAt(structureWorldAccess, blockPos3)) {
-                  structureWorldAccess.setBlockState(blockPos3, blockState, Block.NOTIFY_LISTENERS);
+               if (tip.canPlaceAt(world, blockPos3)) {
+                  world.setBlockState(blockPos3, tip, Block.NOTIFY_LISTENERS);
                   ++i;
                }
                break;

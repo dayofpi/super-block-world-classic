@@ -35,6 +35,7 @@ public class ConfiguredFeatureRegistry {
         registerConfiguredFeature("topping_iron", ConfiguredOres.TOPPING_IRON);
         registerConfiguredFeature("topping_gold", ConfiguredOres.TOPPING_GOLD);
         registerConfiguredFeature("disk_sand", ConfiguredOres.DISK_SAND);
+        registerConfiguredFeature("disk_seastone", ConfiguredOres.DISK_SEASTONE);
         registerConfiguredFeature("horsetail_patch", ConfiguredVegetation.HORSETAIL_PATCH);
         registerConfiguredFeature("stump_patch", ConfiguredVegetation.STUMP_PATCH);
         registerConfiguredFeature("beanstalk", ConfiguredVegetation.BEANSTALK);
@@ -42,6 +43,7 @@ public class ConfiguredFeatureRegistry {
         registerConfiguredFeature("muncher", ConfiguredVegetation.MUNCHER);
         registerConfiguredFeature("flowerbed", ConfiguredVegetation.FLOWERBED);
         registerConfiguredFeature("water_plants", ConfiguredVegetation.WATER_PLANTS);
+        registerConfiguredFeature("amanita_carpet", ConfiguredVegetation.AMANITA_CARPET);
 
         registerConfiguredFeature("amanita", ConfiguredTrees.AMANITA);
         registerConfiguredFeature("amanita_fruit", ConfiguredTrees.AMANITA_FRUIT);
