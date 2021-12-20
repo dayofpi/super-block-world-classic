@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "super_block_world:glow_block"
+      "super_block_world:hidden_block"
     ]
   },
   "criteria": {
-    "has_empty_block": {
+    "has_bottle_o_ghost": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "super_block_world:empty_block"
+              "super_block_world:bottle_o_ghost"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "super_block_world:glow_block"
+        "recipe": "super_block_world:hidden_block"
       }
     }
   },
   "requirements": [
     [
-      "has_empty_block",
+      "has_bottle_o_ghost",
       "has_the_recipe"
     ]
   ]

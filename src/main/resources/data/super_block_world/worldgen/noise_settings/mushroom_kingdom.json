@@ -2910,9 +2910,18 @@
                           "add_surface_secondary_depth": false
                         },
                         "then_run": {
-                          "type": "minecraft:block",
-                          "result_state": {
-                            "Name": "super_block_world:grassy_toadstone"
+                          "type": "minecraft:condition",
+                          "if_true": {
+                            "type": "minecraft:noise_threshold",
+                            "noise": "minecraft:surface",
+                            "min_threshold": -0.5,
+                            "max_threshold": 0.6
+                          },
+                          "then_run": {
+                            "type": "minecraft:block",
+                            "result_state": {
+                              "Name": "super_block_world:grassy_toadstone"
+                            }
                           }
                         }
                       }

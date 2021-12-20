@@ -55,6 +55,7 @@ public class SpawnTemplates {
 
     static void addMushroomGorgeMobs(SpawnSettings.Builder builder) {
         builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 80, 2, 4));
+        addGoombas(builder);
     }
 
     static void addMooMooMeadowMobs(SpawnSettings.Builder builder) {

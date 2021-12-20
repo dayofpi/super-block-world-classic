@@ -3,9 +3,7 @@ package com.dayofpi.super_block_world.main.common.block.reactive;
 import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.block_entity.QuestionBlockBE;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockState;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.inventory.Inventory;
@@ -17,17 +15,34 @@ import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider {
+    public static final BooleanProperty HIDDEN;
+
+    static {
+        HIDDEN = BooleanProperty.of("hidden");
+    }
+
     public QuestionBlock(Settings settings) {
         super(settings);
+        this.setDefaultState(this.stateManager.getDefaultState().with(HIDDEN, false));
+
+    }
+
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(HIDDEN);
     }
 
     @Nullable
@@ -42,6 +57,19 @@ public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider 
 
         LootTable lootTable = serverWorld.getServer().getLootManager().getTable(state.getBlock().getLootTableId());
         return lootTable.generateLoot(lootContext);
+    }
+
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        if (context instanceof EntityShapeContext) {
+            if (state.get(HIDDEN)) {
+                return VoxelShapes.empty();
+            }
+        } return super.getCollisionShape(state, world, pos, context);
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return state.get(HIDDEN) ? BlockRenderType.INVISIBLE : BlockRenderType.MODEL;
     }
 
     @Override

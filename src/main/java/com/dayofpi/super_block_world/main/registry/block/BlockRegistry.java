@@ -7,6 +7,7 @@ import com.dayofpi.super_block_world.main.common.block.cloud.HappyCloudBlock;
 import com.dayofpi.super_block_world.main.common.block.fluid.PoisonBlock;
 import com.dayofpi.super_block_world.main.common.block.reactive.CoinBlock;
 import com.dayofpi.super_block_world.main.common.block.reactive.EmptyBlock;
+import com.dayofpi.super_block_world.main.common.block.reactive.HiddenBlock;
 import com.dayofpi.super_block_world.main.common.block.reactive.QuestionBlock;
 import com.dayofpi.super_block_world.main.common.block.soil.*;
 import com.dayofpi.super_block_world.main.registry.FluidRegistry;
@@ -40,8 +41,9 @@ public class BlockRegistry {
     public static final Block WARP_PIPE_BODY = new WarpPipeBodyBlock(FabricBlockSettings.copyOf(WARP_PIPE));
 
     public static final Block EMPTY_BLOCK = new EmptyBlock(FabricBlockSettings.of(Material.METAL, MapColor.SPRUCE_BROWN).requiresTool().strength(3.0F, 200.0F).sounds(BlockSoundGroup.METAL));
-    public static final Block QUESTION_BLOCK = new QuestionBlock(FabricBlockSettings.of(Material.METAL, MapColor.YELLOW).requiresTool().strength(3.0F, 200.0F).luminance(3).sounds(BlockSoundGroup.METAL));
-    public static final Block COIN_BLOCK = new CoinBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(3.0F, 200.0F).luminance(3).sounds(BlockSoundGroup.METAL));
+    public static final Block HIDDEN_BLOCK = new HiddenBlock(FabricBlockSettings.copyOf(EMPTY_BLOCK).noCollision());
+    public static final Block QUESTION_BLOCK = new QuestionBlock(FabricBlockSettings.of(Material.METAL, MapColor.YELLOW).requiresTool().strength(3.0F, 200.0F).luminance(3).sounds(BlockSoundGroup.METAL).nonOpaque());
+    public static final Block COIN_BLOCK = new CoinBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(3.0F, 200.0F).luminance(3).sounds(BlockSoundGroup.METAL).nonOpaque());
     public static final Block FAKE_BLOCK = new FakeBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_BROWN).strength(0.6F).sounds(ModSoundGroup.TOADSTONE));
     public static final Block GLOW_BLOCK = new GlowBlock(FabricBlockSettings.of(Material.METAL, MapColor.PALE_YELLOW).requiresTool().strength(3.0F, 200.0F).sounds(BlockSoundGroup.METAL).luminance(15));
 
@@ -203,6 +205,7 @@ public class BlockRegistry {
         registerBlock("warp_pipe", WARP_PIPE);
         registerBlock("warp_pipe_body", WARP_PIPE_BODY);
         registerBlock("empty_block", EMPTY_BLOCK);
+        registerBlock("hidden_block", HIDDEN_BLOCK);
         registerBlock("glow_block", GLOW_BLOCK);
         registerBlock("question_block", QUESTION_BLOCK);
         registerBlock("coin_block", COIN_BLOCK);

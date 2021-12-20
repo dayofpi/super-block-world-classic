@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "glow_block",
   "pattern": [
     "###",
     "#X#",
@@ -10,11 +11,11 @@
       "item": "super_block_world:empty_block"
     },
     "X": {
-      "item": "minecraft:glowstone_dust"
+      "item": "super_block_world:bottle_o_ghost"
     }
   },
   "result": {
-    "item": "super_block_world:glow_block",
+    "item": "super_block_world:hidden_block",
     "count": 8
   }
 }

@@ -220,6 +220,7 @@
   "block.super_block_world.question_block": "? Block",
   "block.super_block_world.coin_block": "Coin Block",
   "block.super_block_world.fake_block": "Fake Block",
+  "block.super_block_world.hidden_block": "Hidden Block",
   "block.super_block_world.glow_block": "Glow Block",
   "block.super_block_world.girder": "Girder",
   "block.super_block_world.spike_trap": "Spike Trap",

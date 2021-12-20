@@ -27,7 +27,7 @@ public class BooColorFeature extends FeatureRenderer<BooEntity, BooModel<BooEnti
 			float[] fs = entity.getBooColor().getColorComponents();
 			VertexConsumer consumer = provider.getBuffer(RenderLayer.getEntityTranslucent(COLOR));
 
-			if (entity.isInSittingPose() && entity.getBooFace() != 3) {
+			if (entity.isInSittingPose()) {
 				consumer = provider.getBuffer(RenderLayer.getEntityTranslucent(COLOR_SITTING));
 			}
 

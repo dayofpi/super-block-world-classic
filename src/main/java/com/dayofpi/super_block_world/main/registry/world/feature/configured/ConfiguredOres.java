@@ -14,6 +14,7 @@ import java.util.List;
 public class ConfiguredOres {
     private static final RuleTest VANILLATE = new BlockMatchRuleTest(BlockRegistry.VANILLATE);
     private static final RuleTest TOADSTONE = new BlockMatchRuleTest(BlockRegistry.TOADSTONE);
+    private static final RuleTest GRASSY_TOADSTONE = new BlockMatchRuleTest(BlockRegistry.GRASSY_TOADSTONE);
     private static final RuleTest ROYALITE = new BlockMatchRuleTest(BlockRegistry.ROYALITE);
     private static final RuleTest FROSTY_VANILLATE = new BlockMatchRuleTest(BlockRegistry.FROSTY_VANILLATE);
     private static final RuleTest TOADSTOOL_SOIL = new BlockMatchRuleTest(BlockRegistry.TOADSTOOL_SOIL);

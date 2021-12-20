@@ -78,11 +78,12 @@ public class GenerationTemplates {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.DESERT_PLANTS);
     }
 
-
-
     static void addFossilFallsFeatures(GenerationSettings.Builder builder) {
+        builder.carver(GenerationStep.Carver.AIR, CustomCarvers.WIDE_CANYON);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.STUMP);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.AMANITA_CARPET);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.FOSSIL_FALLS_PLANTS);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.FOSSIL_FALLS_FLOWERS);
     }
 
     public static void addCheepCheepReefFeatures(GenerationSettings.Builder builder) {

@@ -145,6 +145,7 @@ public class ItemRegistry {
         registerBlockItem("coin_block", BlockRegistry.COIN_BLOCK);
         registerBlockItem("fake_block", BlockRegistry.FAKE_BLOCK);
         registerBlockItem("empty_block", BlockRegistry.EMPTY_BLOCK);
+        registerBlockItem("hidden_block", BlockRegistry.HIDDEN_BLOCK);
         registerBlockItem("glow_block", BlockRegistry.GLOW_BLOCK);
 
         registerBlockItem("brown_mushroom_cap", MushroomBlocks.BROWN_MUSHROOM_CAP);

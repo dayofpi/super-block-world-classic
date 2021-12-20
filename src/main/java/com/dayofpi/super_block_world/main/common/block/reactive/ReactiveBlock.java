@@ -39,7 +39,7 @@ public abstract class ReactiveBlock extends Block {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos blockPos, Entity entity) {
-        boolean jumpUnder = entity.getY() < blockPos.getY();
+        boolean jumpUnder = entity.getBlockY() < blockPos.getY();
         boolean isValid = entity.isPlayer() || world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING);
         if (jumpUnder && isValid) {
             this.activate(state, world, blockPos);

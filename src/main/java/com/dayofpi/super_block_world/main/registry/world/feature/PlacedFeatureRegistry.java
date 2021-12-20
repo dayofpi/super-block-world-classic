@@ -74,6 +74,7 @@ public class PlacedFeatureRegistry {
         registerPlacedFeature("grassland_flowers", PlacedVegetation.GRASSLAND_FLOWERS);
         registerPlacedFeature("grassland_vegetation", PlacedVegetation.GRASSLAND_VEGETATION);
 
+        // Meadow features
         registerPlacedFeature("meadow_plants", PlacedVegetation.MEADOW_PLANTS);
         registerPlacedFeature("meadow_flowers", PlacedVegetation.MEADOW_FLOWERS);
         registerPlacedFeature("meadow_vegetation", PlacedVegetation.MEADOW_VEGETATION);
@@ -103,6 +104,10 @@ public class PlacedFeatureRegistry {
         registerPlacedFeature("desert_plants", PlacedVegetation.DESERT_PLANTS);
         registerPlacedFeature("quicksand", PlacedMisc.QUICKSAND);
         registerPlacedFeature("cactus", PlacedVegetation.CACTUS);
+
+        // Fossil falls features
+        registerPlacedFeature("fossil_falls_plants", PlacedVegetation.FOSSIL_FALLS_PLANTS);
+        registerPlacedFeature("fossil_falls_flowers", PlacedVegetation.FOSSIL_FALLS_FLOWERS);
 
         // Cave features
         registerPlacedFeature("cave_vegetation", PlacedVegetation.CAVE_VEGETATION);

@@ -67,8 +67,8 @@ public class BiomeParameters {
                     Pair.of(MultiNoiseUtil.createNoiseHypercube(
                             0.2f,
                             0.5f,
-                            -0.5f,
                             0f,
+                            -0.2f,
                             0.0f,
                             0.0f,
                             0.0f), () -> registry.getOrThrow(ModBiomeKeys.AUTUMN_FOREST)),
@@ -88,7 +88,7 @@ public class BiomeParameters {
                             -0.2f,
                             -0.5f,
                             0.0f,
-                            0.2f,
+                            0.5f,
                             0.0f), () -> registry.getOrThrow(ModBiomeKeys.FOSSIL_FALLS))
             )));
 

@@ -70,6 +70,7 @@ public class ConfiguredFeatureRegistry {
         registerConfiguredFeature("grassland_plants", ConfiguredVegetation.GRASSLAND_PLANTS);
         registerConfiguredFeature("autumn_forest_plants", ConfiguredVegetation.AUTUMN_FOREST_PLANTS);
         registerConfiguredFeature("mushroom_gorge_plants", ConfiguredVegetation.MUSHROOM_GORGE_PLANTS);
+        registerConfiguredFeature("fossil_falls_plants", ConfiguredVegetation.FOSSIL_FALLS_PLANTS);
 
         registerConfiguredFeature("grassland_mushrooms", ConfiguredVegetation.GRASSLAND_MUSHROOMS);
         registerConfiguredFeature("amanita_forest_mushrooms", ConfiguredVegetation.AMANITA_FOREST_MUSHROOMS);
@@ -79,6 +80,7 @@ public class ConfiguredFeatureRegistry {
         registerConfiguredFeature("forest_of_illusion_flowers", ConfiguredVegetation.FOREST_OF_ILLUSION_FLOWERS);
         registerConfiguredFeature("reef_flowers", ConfiguredVegetation.REEF_FLOWERS);
         registerConfiguredFeature("mushroom_gorge_flowers", ConfiguredVegetation.MUSHROOM_GORGE_FLOWERS);
+        registerConfiguredFeature("fossil_falls_flowers", ConfiguredVegetation.FOSSIL_FALLS_FLOWERS);
 
         registerConfiguredFeature("grassland_vegetation", ConfiguredVegetation.GRASSLAND_VEGETATION);
         registerConfiguredFeature("reef_vegetation", ConfiguredVegetation.REEF_VEGETATION);

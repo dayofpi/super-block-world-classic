@@ -1,0 +1,8 @@
+{
+	"parent": "super_block_world:block/bronze_pipe",
+	"textures": {
+		"top": "super_block_world:block/green_pipe_top",
+		"side": "super_block_world:block/green_pipe_side",
+		"particle": "super_block_world:block/green_pipe_body"
+	}
+}

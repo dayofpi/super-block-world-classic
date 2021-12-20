@@ -16,6 +16,8 @@ public class DataPools {
     public static final DataPool.Builder<BlockState> GRASSLAND_MUSHROOMS = DataPool.<BlockState>builder().add(MushroomBlocks.YELLOW_MUSHROOM.getDefaultState(), 2).add(Blocks.BROWN_MUSHROOM.getDefaultState(), 2).add(Blocks.RED_MUSHROOM.getDefaultState(), 1);
     public static final DataPool.Builder<BlockState> GRASSLAND_FLOWERS = DataPool.<BlockState>builder().add(PlantBlocks.BLUE_SONGFLOWER.getDefaultState(), 5).add(PlantBlocks.YELLOW_SONGFLOWER.getDefaultState(), 2).add(PlantBlocks.PINK_SONGFLOWER.getDefaultState(), 2);
 
+    public static final DataPool.Builder<BlockState> FOSSIL_FALLS_PLANTS = DataPool.<BlockState>builder().add(Blocks.GRASS.getDefaultState(), 90).add(Blocks.TALL_GRASS.getDefaultState(), 30).add(Blocks.FERN.getDefaultState(), 50).add(Blocks.LARGE_FERN.getDefaultState(), 5);
+
     public static final DataPool.Builder<BlockState> REEF_FLOWERS = DataPool.<BlockState>builder().add(PlantBlocks.BLUE_SONGFLOWER.getDefaultState(), 1).add(PlantBlocks.YELLOW_SONGFLOWER.getDefaultState(), 1).add(PlantBlocks.PINK_SONGFLOWER.getDefaultState(), 1).add(PlantBlocks.PAWFLOWER.getDefaultState(), 3);
 
     public static final DataPool.Builder<BlockState> GORGE_PLANTS = DataPool.<BlockState>builder().add(Blocks.GRASS.getDefaultState(), 90).add(Blocks.TALL_GRASS.getDefaultState(), 30).add(Blocks.FERN.getDefaultState(), 30).add(Blocks.LARGE_FERN.getDefaultState(), 30).add(PlantBlocks.BUSH.getDefaultState().with(BushBlock.FRUITS, 0), 30);

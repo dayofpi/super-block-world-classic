@@ -16,12 +16,10 @@ import net.minecraft.util.math.BlockPos;
 public class BooRenderer extends MobEntityRenderer<BooEntity, BooModel<BooEntity>> {
     private static final Identifier BOO = new Identifier(Main.MOD_ID, "textures/entity/boo/boo.png");
     private static final Identifier SHY = new Identifier(Main.MOD_ID, "textures/entity/boo/shy.png");
-    private static final Identifier TAMED = new Identifier(Main.MOD_ID, "textures/entity/boo/tamed.png");
     private static final Identifier FACE_0 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_cheeky.png");
     private static final Identifier FACE_1 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_mad.png");
     private static final Identifier FACE_2 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_scrunkly.png");
-    private static final Identifier FACE_3 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_spooky.png");
-    private static final Identifier FACE_4 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_poyo.png");
+    private static final Identifier FACE_3 = new Identifier(Main.MOD_ID, "textures/entity/boo/face_poyo.png");
 
     public BooRenderer(EntityRendererFactory.Context context) {
         super(context, new BooModel<>(context.getPart(ModelLayers.BOO)), 0.5F);
@@ -44,11 +42,8 @@ public class BooRenderer extends MobEntityRenderer<BooEntity, BooModel<BooEntity
                     return FACE_1;
                 else if (booEntity.getBooFace() == 2)
                     return FACE_2;
-                else if (booEntity.getBooFace() == 3)
-                    return FACE_3;
-                else
-                    return FACE_4;
-            } else return TAMED;
+                else return FACE_3;
+            } else return BOO;
         } else return BOO;
     }
 }

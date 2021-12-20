@@ -45,7 +45,7 @@ public class DefaultTemplates {
     }
 
     static void addCaveFeatures(GenerationSettings.Builder builder) {
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.WARP_PIPE_WATER);
+        //builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.WARP_PIPE_WATER);
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_LINE_SURFACE);
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_LINE_DEEP);
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_SINGLE);

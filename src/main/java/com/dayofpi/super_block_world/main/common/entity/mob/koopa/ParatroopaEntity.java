@@ -48,7 +48,7 @@ public class ParatroopaEntity extends KoopaEntity {
     }
 
     protected void addFlapEffects() {
-        if (random.nextFloat() < 0.06F)
+        if (random.nextFloat() < 0.03F)
             this.playSound(ModSounds.ENTITY_GOOMBA_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
     }
 }

@@ -61,7 +61,7 @@
         "down": "true"
       },
       "apply": {
-        "model": "super_block_world:block/bronze_pipe_connection",
+        "model": "super_block_world:block/bronze_pipe_link",
         "x": 90,
         "y": 270
       }
@@ -71,7 +71,7 @@
         "up": "true"
       },
       "apply": {
-        "model": "super_block_world:block/bronze_pipe_connection",
+        "model": "super_block_world:block/bronze_pipe_link",
         "x": 90,
         "y": 180
       }
@@ -81,7 +81,7 @@
         "east": "true"
       },
       "apply": {
-        "model": "super_block_world:block/bronze_pipe_connection",
+        "model": "super_block_world:block/bronze_pipe_link",
         "y": 90
       }
     },
@@ -90,7 +90,7 @@
         "west": "true"
       },
       "apply": {
-        "model": "super_block_world:block/bronze_pipe_connection",
+        "model": "super_block_world:block/bronze_pipe_link",
         "y": 270
       }
     },
@@ -99,7 +99,7 @@
         "north": "true"
       },
       "apply": {
-        "model": "super_block_world:block/bronze_pipe_connection"
+        "model": "super_block_world:block/bronze_pipe_link"
       }
     },
     {
@@ -107,7 +107,7 @@
         "south": "true"
       },
       "apply": {
-        "model": "super_block_world:block/bronze_pipe_connection",
+        "model": "super_block_world:block/bronze_pipe_link",
         "y": 180
       }
     }

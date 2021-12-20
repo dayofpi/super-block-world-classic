@@ -392,7 +392,7 @@ public class BooEntity extends AbstractGhost implements Flutterer, Tameable {
 
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         this.setDabbing(world.getRandom().nextDouble() < 0.02D);
-        this.setBooFace(random.nextInt(5));
+        this.setBooFace(random.nextInt(4));
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 

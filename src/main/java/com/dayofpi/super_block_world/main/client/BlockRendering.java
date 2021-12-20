@@ -35,6 +35,7 @@ public class BlockRendering {
 
     public static void setRenderLayers() {
         setRenderLayer(BlockRegistry.POISON, RenderLayer.getTranslucent());
+        setRenderLayer(BlockRegistry.HIDDEN_BLOCK, RenderLayer.getTranslucent());
         setRenderLayer(PlantBlocks.FROZEN_MUNCHER, RenderLayer.getTranslucent());
 
         setRenderLayer(BlockRegistry.ICICLE, RenderLayer.getCutoutMipped());
