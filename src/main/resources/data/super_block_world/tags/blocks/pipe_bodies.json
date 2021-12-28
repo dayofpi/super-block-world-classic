@@ -1,0 +1,21 @@
+{
+  "replace": "false",
+  "values": [
+    "super_block_world:white_pipe_body",
+    "super_block_world:orange_pipe_body",
+    "super_block_world:magenta_pipe_body",
+    "super_block_world:light_blue_pipe_body",
+    "super_block_world:yellow_pipe_body",
+    "super_block_world:lime_pipe_body",
+    "super_block_world:pink_pipe_body",
+    "super_block_world:gray_pipe_body",
+    "super_block_world:light_gray_pipe_body",
+    "super_block_world:cyan_pipe_body",
+    "super_block_world:purple_pipe_body",
+    "super_block_world:blue_pipe_body",
+    "super_block_world:brown_pipe_body",
+    "super_block_world:warp_pipe_body",
+    "super_block_world:red_pipe_body",
+    "super_block_world:black_pipe_body"
+  ]
+}

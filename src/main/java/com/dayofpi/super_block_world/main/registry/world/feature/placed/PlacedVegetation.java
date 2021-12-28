@@ -25,6 +25,7 @@ public class PlacedVegetation {
     public static final PlacedFeature BEANSTALK = ConfiguredVegetation.BEANSTALK.withPlacement();
     public static final PlacedFeature BEANSTALK_BUDDING = ConfiguredVegetation.BEANSTALK_BUDDING.withPlacement();
     public static final PlacedFeature MUNCHER_FEW = ConfiguredVegetation.MUNCHER.withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(0), YOffset.belowTop(0)), BiomePlacementModifier.of());
+    public static final PlacedFeature FROZEN_MUNCHER = ConfiguredVegetation.FROZEN_MUNCHER.withPlacement(RarityFilterPlacementModifier.of(4), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.fixed(-7), YOffset.fixed(70)), BiomePlacementModifier.of());
     public static final PlacedFeature MUNCHER_MANY = ConfiguredVegetation.MUNCHER.withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES), BiomePlacementModifier.of());
     public static final PlacedFeature WATER_PLANTS = ConfiguredVegetation.WATER_PLANTS.withPlacement(RarityFilterPlacementModifier.of(24), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES), BiomePlacementModifier.of());
     public static final PlacedFeature FLOWERBED = ConfiguredVegetation.FLOWERBED.withPlacement();
@@ -33,6 +34,8 @@ public class PlacedVegetation {
     public static final PlacedFeature GRASSLAND_FLOWERS = ConfiguredVegetation.GRASSLAND_FLOWERS.withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature GRASSLAND_MUSHROOMS = ConfiguredVegetation.GRASSLAND_MUSHROOMS.withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature GRASSLAND_VEGETATION = ConfiguredVegetation.GRASSLAND_VEGETATION.withPlacement(RarityFilterPlacementModifier.of(3), CountPlacementModifier.of(5), SquarePlacementModifier.of(), SurfaceWaterDepthFilterPlacementModifier.of(0), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR), BiomePlacementModifier.of());
+
+    public static final PlacedFeature SHERBET_LAND_VEGETATION = ConfiguredVegetation.SHERBET_LAND_VEGETATION.withPlacement(RarityFilterPlacementModifier.of(3), CountPlacementModifier.of(5), SquarePlacementModifier.of(), SurfaceWaterDepthFilterPlacementModifier.of(1), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR), BiomePlacementModifier.of());
 
     public static final PlacedFeature FOSSIL_FALLS_PLANTS = ConfiguredVegetation.FOSSIL_FALLS_PLANTS.withPlacement(CountPlacementModifier.of(45), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature FOSSIL_FALLS_FLOWERS = ConfiguredVegetation.FOSSIL_FALLS_FLOWERS.withPlacement(RarityFilterPlacementModifier.of(9), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());

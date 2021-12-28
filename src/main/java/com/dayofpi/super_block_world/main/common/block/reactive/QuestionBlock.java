@@ -1,25 +1,22 @@
 package com.dayofpi.super_block_world.main.common.block.reactive;
 
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.block_entity.QuestionBlockBE;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.loot.context.LootContextTypes;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -81,6 +78,7 @@ public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider 
                 pos = blockPos.down();
             }
         }
+
         if (!world.isClient) {
             if (blockEntity != null) {
                 if (!blockEntity.getStack(0).isEmpty()) {
@@ -91,8 +89,7 @@ public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider 
                 }
                 world.setBlockState(blockPos, pushEntitiesUpBeforeBlockChange(state, BlockRegistry.EMPTY_BLOCK.getDefaultState(), world, blockPos));
                 world.removeBlockEntity(blockPos);
-                world.playSound(null, blockPos, ModSounds.BLOCK_ITEM_BLOCK_HIT, SoundCategory.NEUTRAL, 2.0F, 1.0F);
-                ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_OFF, UniformIntProvider.create(2, 3));
+                world.playSound(null, blockPos, ModSounds.BLOCK_QUESTION_BLOCK_HIT, SoundCategory.NEUTRAL, 2.0F, 1.0F);
             }
         }
     }

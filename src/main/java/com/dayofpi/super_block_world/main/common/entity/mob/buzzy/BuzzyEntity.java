@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.buzzy;
 
 import com.dayofpi.super_block_world.main.registry.block.MushroomBlocks;
-import com.dayofpi.super_block_world.main.registry.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.AnimalMateGoal;

@@ -1,0 +1,8 @@
+{
+	"parent": "super_block_world:block/template_warp_pipe",
+	"textures": {
+		"top": "super_block_world:block/blue_pipe_top",
+		"side": "super_block_world:block/blue_warp_pipe",
+		"particle": "super_block_world:block/blue_pipe_body"
+	}
+}

@@ -24,19 +24,27 @@ public class PlacedFeatureRegistry {
         registerPlacedFeature("lake_poison_forest", PlacedMisc.LAKE_POISON_FOREST);
         registerPlacedFeature("patch_cave_crystals", PlacedMisc.AMETHYST);
         registerPlacedFeature("amethyst_extra", PlacedMisc.AMETHYST_EXTRA);
+        registerPlacedFeature("icicle", PlacedMisc.ICICLE);
         registerPlacedFeature("cave_decoration_common", PlacedMisc.CAVE_DECORATION_COMMON);
         registerPlacedFeature("cave_decoration_rare", PlacedMisc.CAVE_DECORATION_RARE);
-        registerPlacedFeature("pipe_underwater", PlacedMisc.WARP_PIPE_WATER);
+        registerPlacedFeature("pipe", PlacedMisc.PIPE);
+        registerPlacedFeature("pipe_patch", PlacedMisc.PIPE_PATCH);
+        registerPlacedFeature("underwater_pipe", PlacedMisc.UNDERWATER_PIPE);
+        registerPlacedFeature("ocean_floor_pipe", PlacedMisc.OCEAN_FLOOR_PIPE);
         registerPlacedFeature("jellybeam", PlacedBlocks.JELLYBEAM);
         registerPlacedFeature("block_single", PlacedBlocks.BLOCK_SINGLE);
         registerPlacedFeature("block_line", PlacedBlocks.BLOCK_LINE_SURFACE);
         registerPlacedFeature("block_line_deep", PlacedBlocks.BLOCK_LINE_DEEP);
-        registerPlacedFeature("vanillate_topping", PlacedMisc.VANILLATE_TOPPING);
+        registerPlacedFeature("block_line_crystal", PlacedBlocks.BLOCK_LINE_CRYSTAL);
+        registerPlacedFeature("block_pile_patch", PlacedBlocks.BLOCK_PILE_PATCH);
+        registerPlacedFeature("topping", PlacedMisc.TOPPING);
+        registerPlacedFeature("frosting", PlacedMisc.FROSTING);
         registerPlacedFeature("ore_crumble", PlacedOres.ORE_CRUMBLE);
         registerPlacedFeature("ore_bronze", PlacedOres.ORE_BRONZE);
         registerPlacedFeature("ore_amethyst", PlacedOres.ORE_AMETHYST);
         registerPlacedFeature("ore_cerise", PlacedOres.ORE_CERISE);
         registerPlacedFeature("ore_hardstone", PlacedOres.ORE_HARDSTONE);
+        registerPlacedFeature("ore_frozen", PlacedOres.ORE_FROZEN);
         registerPlacedFeature("toppings_coal", PlacedOres.TOPPING_COAL);
         registerPlacedFeature("toppings_iron", PlacedOres.TOPPING_IRON);
         registerPlacedFeature("toppings_gold", PlacedOres.TOPPING_GOLD);
@@ -64,6 +72,7 @@ public class PlacedFeatureRegistry {
         registerPlacedFeature("beanstalk", PlacedVegetation.BEANSTALK);
         registerPlacedFeature("beanstalk_budding", PlacedVegetation.BEANSTALK_BUDDING);
         registerPlacedFeature("muncher_few", PlacedVegetation.MUNCHER_FEW);
+        registerPlacedFeature("frozen_muncher", PlacedVegetation.FROZEN_MUNCHER);
         registerPlacedFeature("muncher_many", PlacedVegetation.MUNCHER_MANY);
         registerPlacedFeature("water_plants", PlacedVegetation.WATER_PLANTS);
 
@@ -73,6 +82,8 @@ public class PlacedFeatureRegistry {
         registerPlacedFeature("grassland_mushrooms", PlacedVegetation.GRASSLAND_MUSHROOMS);
         registerPlacedFeature("grassland_flowers", PlacedVegetation.GRASSLAND_FLOWERS);
         registerPlacedFeature("grassland_vegetation", PlacedVegetation.GRASSLAND_VEGETATION);
+
+        registerPlacedFeature("sherbet_land_vegetation", PlacedVegetation.SHERBET_LAND_VEGETATION);
 
         // Meadow features
         registerPlacedFeature("meadow_plants", PlacedVegetation.MEADOW_PLANTS);

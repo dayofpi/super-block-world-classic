@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.main.common.entity.mob;
 
 import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import com.google.common.collect.Maps;
 import net.minecraft.block.BlockState;

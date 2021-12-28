@@ -6,8 +6,8 @@ import com.dayofpi.super_block_world.main.common.item.armor.JumpBootsItem;
 import com.dayofpi.super_block_world.main.common.item.armor.ShellItem;
 import com.dayofpi.super_block_world.main.common.item.projectile.*;
 import com.dayofpi.super_block_world.main.util.armor_material.*;
-import com.dayofpi.super_block_world.main.registry.EntityRegistry;
-import com.dayofpi.super_block_world.main.registry.FluidRegistry;
+import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.general.FluidRegistry;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.block.ColoredBlocks;
 import com.dayofpi.super_block_world.main.registry.block.MushroomBlocks;
@@ -62,12 +62,13 @@ public class ItemRegistry {
     public static final Item DARK_AMANITA_BOAT = new BoatItem(ModBoatType.DARK_AMANITA, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxCount(1));
     public static final Item POISON_BUCKET = new PoisonBucketItem(FluidRegistry.STILL_POISON, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1).group(CreativeTabs.ITEM_GROUP));
     public static final Item MOO_MOO_SPAWN_EGG = new SpawnEggItem(EntityRegistry.MOO_MOO, 15985102, 4605249, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
-    public static final Item GOOMBA_SPAWN_EGG = new SpawnEggItem(EntityRegistry.GOOMBA, 12544546, 14922613, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
-    public static final Item PARAGOOMBA_SPAWN_EGG = new SpawnEggItem(EntityRegistry.PARAGOOMBA, 12544546, 16767400, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item GOOMBA_SPAWN_EGG = new SpawnEggItem(EntityRegistry.GOOMBA, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item PARAGOOMBA_SPAWN_EGG = new SpawnEggItem(EntityRegistry.PARAGOOMBA, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item KOOPA_TROOPA_SPAWN_EGG = new SpawnEggItem(EntityRegistry.KOOPA_TROOPA, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item PARATROOPA_SPAWN_EGG = new SpawnEggItem(EntityRegistry.PARATROOPA, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item HAMMER_BRO_SPAWN_EGG = new SpawnEggItem(EntityRegistry.HAMMER_BRO, 16570144, 9341835, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item FIRE_BRO_SPAWN_EGG = new SpawnEggItem(EntityRegistry.FIRE_BRO, 16570144, 15552066, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item ICE_BRO_SPAWN_EGG = new SpawnEggItem(EntityRegistry.ICE_BRO, 16570144, 6286530, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BOB_OMB_SPAWN_EGG = new SpawnEggItem(EntityRegistry.BOB_OMB, 658473, 5688063, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BOO_SPAWN_EGG = new SpawnEggItem(EntityRegistry.BOO, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BUZZY_BEETLE_SPAWN_EGG = new SpawnEggItem(EntityRegistry.BUZZY_BEETLE, 16777215, 16777215, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
@@ -123,6 +124,7 @@ public class ItemRegistry {
         registerItem("spawn_eggs/paratroopa", PARATROOPA_SPAWN_EGG);
         registerItem("spawn_eggs/hammer_bro", HAMMER_BRO_SPAWN_EGG);
         registerItem("spawn_eggs/fire_bro", FIRE_BRO_SPAWN_EGG);
+        registerItem("spawn_eggs/ice_bro", ICE_BRO_SPAWN_EGG);
         registerItem("spawn_eggs/bob_omb", BOB_OMB_SPAWN_EGG);
         registerItem("spawn_eggs/boo", BOO_SPAWN_EGG);
         registerItem("spawn_eggs/buzzy_beetle", BUZZY_BEETLE_SPAWN_EGG);
@@ -200,6 +202,9 @@ public class ItemRegistry {
         registerBlockItem("coarse_toadstool_soil", BlockRegistry.COARSE_TOADSTOOL_SOIL);
         registerBlockItem("toadstool_farmland", BlockRegistry.TOADSTOOL_FARMLAND);
 
+        registerBlockItem("sherbet_soil", BlockRegistry.SHERBET_SOIL);
+        registerBlockItem("snowy_sherbet_soil", BlockRegistry.SNOWY_SHERBET_SOIL);
+
         registerBlockItem("gritzy_sand", BlockRegistry.GRITZY_SAND);
         registerBlockItem("quicksand", BlockRegistry.QUICKSAND);
         registerBlockItem("gritzy_sandstone", BlockRegistry.GRITZY_SANDSTONE);
@@ -217,8 +222,8 @@ public class ItemRegistry {
         registerBlockItem("iron_topped_vanillate", BlockRegistry.IRON_TOPPED_VANILLATE);
         registerBlockItem("gold_topped_vanillate", BlockRegistry.GOLD_TOPPED_VANILLATE);
         registerBlockItem("frosty_vanillate_crumble", BlockRegistry.FROSTY_VANILLATE_CRUMBLE);
-        registerBlockItem("frosty_topped_vanillate", BlockRegistry.FROSTY_TOPPED_VANILLATE);
-        registerBlockItem("frosty_topped_vanillate_ore", BlockRegistry.FROSTY_TOPPED_VANILLATE_ORE);
+        registerBlockItem("frosted_vanillate", BlockRegistry.FROSTED_VANILLATE);
+        registerBlockItem("frozen_ore", BlockRegistry.FROZEN_ORE);
 
         registerBlockItem("happy_cloud", BlockRegistry.HAPPY_CLOUD);
         registerBlockItem("cloud_block", BlockRegistry.CLOUD_BLOCK);
@@ -340,6 +345,11 @@ public class ItemRegistry {
         registerBlockItem("seastone_brick_stairs", VariantBlocks.SEASTONE_BRICK_STAIRS);
         registerBlockItem("seastone_brick_wall", VariantBlocks.SEASTONE_BRICK_WALL);
 
+        registerBlockItem("sherbet_bricks", BlockRegistry.SHERBET_BRICKS);
+        registerBlockItem("sherbet_brick_slab", VariantBlocks.SHERBET_BRICK_SLAB);
+        registerBlockItem("sherbet_brick_stairs", VariantBlocks.SHERBET_BRICK_STAIRS);
+        registerBlockItem("sherbet_brick_wall", VariantBlocks.SHERBET_BRICK_WALL);
+
         registerBlockItem("golden_bricks", BlockRegistry.GOLDEN_BRICKS);
         registerBlockItem("golden_brick_slab", VariantBlocks.GOLDEN_BRICK_SLAB);
         registerBlockItem("golden_brick_stairs", VariantBlocks.GOLDEN_BRICK_STAIRS);
@@ -395,9 +405,37 @@ public class ItemRegistry {
         registerBlockItem("icicle", BlockRegistry.ICICLE);
         registerBlockItem("girder", BlockRegistry.GIRDER);
         registerBlockItem("spike_trap", BlockRegistry.SPIKE_TRAP);
-        registerBlockItem("bronze_pipe", BlockRegistry.BRONZE_PIPE);
-        registerBlockItem("bronze_pipe_body", BlockRegistry.BRONZE_PIPE_BODY);
-        registerBlockItem("warp_pipe", BlockRegistry.WARP_PIPE);
-        registerBlockItem("warp_pipe_body", BlockRegistry.WARP_PIPE_BODY);
+        registerBlockItem("white_warp_pipe", ColoredBlocks.WHITE_WARP_PIPE);
+        registerBlockItem("white_pipe_body", ColoredBlocks.WHITE_PIPE_BODY);
+        registerBlockItem("orange_warp_pipe", ColoredBlocks.ORANGE_WARP_PIPE);
+        registerBlockItem("orange_pipe_body", ColoredBlocks.ORANGE_PIPE_BODY);
+        registerBlockItem("magenta_warp_pipe", ColoredBlocks.MAGENTA_WARP_PIPE);
+        registerBlockItem("magenta_pipe_body", ColoredBlocks.MAGENTA_PIPE_BODY);
+        registerBlockItem("light_blue_warp_pipe", ColoredBlocks.LIGHT_BLUE_WARP_PIPE);
+        registerBlockItem("light_blue_pipe_body", ColoredBlocks.LIGHT_BLUE_PIPE_BODY);
+        registerBlockItem("yellow_warp_pipe", ColoredBlocks.YELLOW_WARP_PIPE);
+        registerBlockItem("yellow_pipe_body", ColoredBlocks.YELLOW_PIPE_BODY);
+        registerBlockItem("lime_warp_pipe", ColoredBlocks.LIME_WARP_PIPE);
+        registerBlockItem("lime_pipe_body", ColoredBlocks.LIME_PIPE_BODY);
+        registerBlockItem("pink_warp_pipe", ColoredBlocks.PINK_WARP_PIPE);
+        registerBlockItem("pink_pipe_body", ColoredBlocks.PINK_PIPE_BODY);
+        registerBlockItem("gray_warp_pipe", ColoredBlocks.GRAY_WARP_PIPE);
+        registerBlockItem("gray_pipe_body", ColoredBlocks.GRAY_PIPE_BODY);
+        registerBlockItem("light_gray_warp_pipe", ColoredBlocks.LIGHT_GRAY_WARP_PIPE);
+        registerBlockItem("light_gray_pipe_body", ColoredBlocks.LIGHT_GRAY_PIPE_BODY);
+        registerBlockItem("cyan_warp_pipe", ColoredBlocks.CYAN_WARP_PIPE);
+        registerBlockItem("cyan_pipe_body", ColoredBlocks.CYAN_PIPE_BODY);
+        registerBlockItem("purple_warp_pipe", ColoredBlocks.PURPLE_WARP_PIPE);
+        registerBlockItem("purple_pipe_body", ColoredBlocks.PURPLE_PIPE_BODY);
+        registerBlockItem("blue_warp_pipe", ColoredBlocks.BLUE_WARP_PIPE);
+        registerBlockItem("blue_pipe_body", ColoredBlocks.BLUE_PIPE_BODY);
+        registerBlockItem("brown_warp_pipe", ColoredBlocks.BROWN_WARP_PIPE);
+        registerBlockItem("brown_pipe_body", ColoredBlocks.BROWN_PIPE_BODY);
+        registerBlockItem("warp_pipe", ColoredBlocks.GREEN_WARP_PIPE);
+        registerBlockItem("warp_pipe_body", ColoredBlocks.GREEN_PIPE_BODY);
+        registerBlockItem("red_warp_pipe", ColoredBlocks.RED_WARP_PIPE);
+        registerBlockItem("red_pipe_body", ColoredBlocks.RED_PIPE_BODY);
+        registerBlockItem("black_warp_pipe", ColoredBlocks.BLACK_WARP_PIPE);
+        registerBlockItem("black_pipe_body", ColoredBlocks.BLACK_PIPE_BODY);
     }
 }

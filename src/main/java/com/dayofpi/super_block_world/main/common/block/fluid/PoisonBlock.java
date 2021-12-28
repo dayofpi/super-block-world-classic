@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.fluid;
 
-import com.dayofpi.super_block_world.main.registry.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

@@ -1,7 +1,8 @@
 package com.dayofpi.super_block_world.mixin.client;
 
-import com.dayofpi.super_block_world.main.client.sound.ModMusic;
+import com.dayofpi.super_block_world.client.sound.ModMusic;
 import com.dayofpi.super_block_world.main.common.world.dimension.MushroomKingdom;
+import com.dayofpi.super_block_world.main.registry.general.StatusEffectRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -30,7 +31,7 @@ public abstract class CustomMusic {
             if (this.world.getRegistryKey() == MushroomKingdom.WORLD_KEY) {
                 World world = this.player.world;
                 BlockPos pos = this.player.getBlockPos();
-                if (pos.getY() < world.getSeaLevel() && world.getLightLevel(pos) <= 7 && !world.isSkyVisible(pos)) {
+                if (world.getLightLevel(pos) <= 7 && !world.isSkyVisible(pos) && world.getFluidState(pos).isEmpty()) {
                     info.setReturnValue(ModMusic.CAVE);
                 } else {
                     if (this.world != null) {
@@ -39,6 +40,13 @@ public abstract class CustomMusic {
                 }
                 info.cancel();
             }
+        } else {
+            info.setReturnValue(ModMusic.MENU);
+            info.cancel();
+        }
+        if (this.player != null && this.player.getActiveStatusEffects().containsKey(StatusEffectRegistry.STAR_POWER)) {
+            info.setReturnValue(ModMusic.STAR);
+            info.cancel();
         }
     }
 }

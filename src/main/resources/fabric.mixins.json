@@ -12,6 +12,7 @@
     "main.block.SupportModMushrooms",
     "main.entity.DeathEffects",
     "main.entity.DefensiveItems",
+    "main.entity.HelmetEffects",
     "main.entity.JumpBoots",
     "main.entity.PathNodeMixin",
     "main.entity.RabbitType",
@@ -25,7 +26,9 @@
     "main.warp_pipe.PipeBubbles",
     "main.warp_pipe.PipeTeleporting",
     "main.world.AllowCarvers",
-    "main.world.RandomizeSeed",
+    "main.world.ChunkGeneratorAccessor",
+    "main.world.GeneratorOptionsMixin",
+    "main.world.NoiseChunkGeneratorMixin",
     "main.world.ReplaceBiomeFeatures"
   ],
   "client": [

@@ -1,8 +1,9 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.goomba;
 
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.EntityRegistry;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
+import com.dayofpi.super_block_world.main.common.entity.goal.SeekPowerUpGoal;
+import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -25,13 +26,22 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import java.util.List;
 import java.util.Random;
 @SuppressWarnings("ConstantConditions, unused")
-public class GoombaEntity extends EnemyEntity {
+public class GoombaEntity extends EnemyEntity implements IAnimatable {
     private static final TrackedData<Integer> SIZE;
     private static final TrackedData<Boolean> GROWABLE;
     private static final TrackedData<Boolean> GOLD;
+    AnimationFactory factory = new AnimationFactory(this);
 
     static {
         SIZE = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -41,6 +51,7 @@ public class GoombaEntity extends EnemyEntity {
 
     public GoombaEntity(EntityType<? extends EnemyEntity> entityType, World world) {
         super(entityType, world);
+        this.ignoreCameraFrustum = true;
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
@@ -55,9 +66,10 @@ public class GoombaEntity extends EnemyEntity {
     public void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
-        this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.7D));
+        this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8D));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
+        this.targetSelector.add(2, new SeekPowerUpGoal(this, ItemRegistry.SUPER_MUSHROOM));
         this.targetSelector.add(2, new RevengeGoal(this));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true, true));
     }
@@ -106,6 +118,19 @@ public class GoombaEntity extends EnemyEntity {
         super.readCustomDataFromNbt(nbt);
     }
 
+    @Override
+    public void tickMovement() {
+        super.tickMovement();
+        if (this.isAlive() && this.getSize() == 1) {
+            List<ItemEntity> list = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ItemRegistry.SUPER_MUSHROOM));
+            if (!list.isEmpty()) {
+                this.setSize(2);
+                this.playSound(ModSounds.ITEM_SUPER_MUSHROOM_GROW, 0.5F, 1.0F);
+                list.get(0).discard();
+            }
+        }
+    }
+
     protected Identifier getLootTableId() {
         return this.getSize() == 1 ? this.getType().getLootTableId() : LootTables.EMPTY;
     }
@@ -117,7 +142,7 @@ public class GoombaEntity extends EnemyEntity {
         }
         if (this.random.nextFloat() > 0.5F) {
             this.setSize(1);
-            if (this.random.nextInt(9) == 0) {
+            if (this.random.nextInt(7) == 0) {
                 GoombaEntity goombaEntity = EntityRegistry.GOOMBA.create(world.toServerWorld());
                 if (goombaEntity != null) {
                     goombaEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0F);
@@ -177,12 +202,15 @@ public class GoombaEntity extends EnemyEntity {
         if (clampedSize == 0) {
             health.setBaseValue(1);
             speed.setBaseValue(0.5D);
+            this.experiencePoints = 1;
         } else if (clampedSize == 1) {
             health.setBaseValue(4);
             speed.setBaseValue(0.25D);
+            this.experiencePoints = 3;
         } else if (clampedSize == 2) {
             health.setBaseValue(7);
-            speed.setBaseValue(0.15D);
+            speed.setBaseValue(0.18D);
+            this.experiencePoints = 5;
         }
         this.setHealth(this.getMaxHealth());
     }
@@ -225,29 +253,29 @@ public class GoombaEntity extends EnemyEntity {
     }
 
     public void remove(RemovalReason reason) {
-        int i = this.getSize();
-        if (!this.world.isClient && i == 2 && this.isDead()) {
-            Text text = this.getCustomName();
-            float f = (float) 2 / 4.0F;
-            int k = 2 + this.random.nextInt(3);
-
-            for (int l = 0; l < k; ++l) {
-                float g = ((float) (l % 2) - 0.5F) * f;
-                float h = ((float) (l / 2) - 0.5F) * f;
-                GoombaEntity goombaEntity = (GoombaEntity) this.getType().create(this.world);
-                if (goombaEntity != null) {
-                    if (this.isPersistent()) {
-                        goombaEntity.setPersistent();
+        int size = this.getSize();
+        if (!this.world.isClient && this.isDead()) {
+            if (size == 2) {
+                Text text = this.getCustomName();
+                float f = (float) 2 / 4.0F;
+                int k = 2 + this.random.nextInt(3);
+                for (int l = 0; l < k; ++l) {
+                    float g = ((float) (l % 2) - 0.5F) * f;
+                    float h = ((float) (l / 2) - 0.5F) * f;
+                    GoombaEntity goombaEntity = (GoombaEntity) this.getType().create(this.world);
+                    if (goombaEntity != null) {
+                        if (this.isPersistent()) {
+                            goombaEntity.setPersistent();
+                        }
+                        goombaEntity.setCustomName(text);
+                        goombaEntity.setAiDisabled(this.isAiDisabled());
+                        goombaEntity.setInvulnerable(this.isInvulnerable());
+                        goombaEntity.setGold(this.isGold());
+                        goombaEntity.setSize(1);
+                        goombaEntity.setGrowable(false);
+                        goombaEntity.refreshPositionAndAngles(this.getX() + (double) g, this.getY() + 0.5D, this.getZ() + (double) h, this.random.nextFloat() * 360.0F, 0.0F);
+                        this.world.spawnEntity(goombaEntity);
                     }
-
-                    goombaEntity.setCustomName(text);
-                    goombaEntity.setAiDisabled(this.isAiDisabled());
-                    goombaEntity.setInvulnerable(this.isInvulnerable());
-                    goombaEntity.setGold(this.isGold());
-                    goombaEntity.setSize(1);
-                    goombaEntity.setGrowable(false);
-                    goombaEntity.refreshPositionAndAngles(this.getX() + (double) g, this.getY() + 0.5D, this.getZ() + (double) h, this.random.nextFloat() * 360.0F, 0.0F);
-                    this.world.spawnEntity(goombaEntity);
                 }
             }
         }
@@ -273,5 +301,27 @@ public class GoombaEntity extends EnemyEntity {
         double f = this.getZ();
         super.calculateDimensions();
         this.setPosition(d, e, f);
+    }
+
+    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
+        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
+            return PlayState.CONTINUE;
+        }
+        if (this.getHealth() <= 0) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("squish", false));
+            return PlayState.CONTINUE;
+        }
+        return PlayState.STOP;
+    }
+
+    @Override
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController<>(this, "controller", 5, this::predicate));
+    }
+
+    @Override
+    public AnimationFactory getFactory() {
+        return factory;
     }
 }

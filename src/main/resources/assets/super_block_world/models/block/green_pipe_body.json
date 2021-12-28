@@ -1,5 +1,5 @@
 {
-	"parent": "super_block_world:block/bronze_pipe_body",
+	"parent": "super_block_world:block/template_pipe_body",
 	"textures": {
 		"top": "super_block_world:block/green_pipe_top",
 		"side": "super_block_world:block/green_pipe_body",

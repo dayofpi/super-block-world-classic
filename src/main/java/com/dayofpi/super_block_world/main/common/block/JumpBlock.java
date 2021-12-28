@@ -10,7 +10,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class    JumpBlock extends NoteBlock {
+public class JumpBlock extends NoteBlock {
     public JumpBlock(Settings $$0) {
         super($$0);
     }

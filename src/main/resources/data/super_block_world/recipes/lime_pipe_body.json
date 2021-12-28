@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "warp_pipe_body",
+  "pattern": [
+    "# #",
+    "#0#",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:bronze_ingot"
+    },
+    "0": {
+      "item": "minecraft:lime_dye"
+    }
+  },
+  "result": {
+    "item": "super_block_world:lime_pipe_body",
+    "count": 2
+  }
+}

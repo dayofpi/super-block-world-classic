@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin.client;
 
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
@@ -28,9 +28,9 @@ public class CoinPickupSound {
         if (entity != null) {
             if (entity instanceof ItemEntity item) {
                 if (item.getStack().isOf(ItemRegistry.COIN)) {
-                    this.world.playSound(entity.getX(), entity.getY(), entity.getZ(), ModSounds.ITEM_COLLECT_COIN, SoundCategory.PLAYERS, 0.2f, 1.0f, false);
+                    this.world.playSound(entity.getX(), entity.getY(), entity.getZ(), ModSounds.ITEM_COIN_COLLECT, SoundCategory.PLAYERS, 0.2f, 1.0f, false);
                 } else if (item.getStack().isOf(ItemRegistry.STAR_COIN)) {
-                    this.world.playSound(entity.getX(), entity.getY(), entity.getZ(), ModSounds.ITEM_COLLECT_STAR_COIN, SoundCategory.PLAYERS, 0.2f, 1.0f, false);
+                    this.world.playSound(entity.getX(), entity.getY(), entity.getZ(), ModSounds.ITEM_STAR_COIN_COLLECT, SoundCategory.PLAYERS, 0.2f, 1.0f, false);
                 }
             }
         }

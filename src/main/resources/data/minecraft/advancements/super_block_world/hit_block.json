@@ -19,7 +19,10 @@
     "hit_block": {
       "trigger": "minecraft:enter_block",
       "conditions": {
-        "block": "super_block_world:question_block"
+        "block": "super_block_world:question_block",
+        "state": {
+          "hidden": "false"
+        }
       }
     }
   },

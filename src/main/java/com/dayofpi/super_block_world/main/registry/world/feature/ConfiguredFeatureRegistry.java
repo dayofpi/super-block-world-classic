@@ -18,19 +18,27 @@ public class ConfiguredFeatureRegistry {
         registerConfiguredFeature("lake_poison", ConfiguredMisc.LAKE_POISON);
         registerConfiguredFeature("amethyst_ceiling", ConfiguredMisc.AMETHYST_CEILING);
         registerConfiguredFeature("amethyst_floor", ConfiguredMisc.AMETHYST_FLOOR);
+        registerConfiguredFeature("icicle", ConfiguredMisc.ICICLE);
         registerConfiguredFeature("cave_decoration_common", ConfiguredMisc.CAVE_DECORATION_COMMON);
         registerConfiguredFeature("cave_decoration_rare", ConfiguredMisc.CAVE_DECORATION_RARE);
         registerConfiguredFeature("jellybeam", ConfiguredBlocks.JELLYBEAM);
         registerConfiguredFeature("block_single", ConfiguredBlocks.BLOCK_SINGLE);
         registerConfiguredFeature("block_line", ConfiguredBlocks.BLOCK_LINE_SURFACE);
         registerConfiguredFeature("block_line_deep", ConfiguredBlocks.BLOCK_LINE_DEEP);
-        registerConfiguredFeature("vanillate_topping", ConfiguredMisc.VANILLATE_TOPPING);
+        registerConfiguredFeature("block_line_crystal", ConfiguredBlocks.BLOCK_LINE_CRYSTAL);
+        registerConfiguredFeature("block_pile", ConfiguredBlocks.BLOCK_PILE);
+        registerConfiguredFeature("pipe_patch", ConfiguredMisc.PIPE_PATCH);
+        registerConfiguredFeature("topping", ConfiguredMisc.TOPPING);
+        registerConfiguredFeature("frosting", ConfiguredMisc.FROSTING);
         registerConfiguredFeature("quicksand", ConfiguredMisc.QUICKSAND);
+
         registerConfiguredFeature("ore_crumble", ConfiguredOres.ORE_CRUMBLE);
         registerConfiguredFeature("ore_bronze", ConfiguredOres.ORE_BRONZE);
         registerConfiguredFeature("ore_amethyst", ConfiguredOres.ORE_AMETHYST);
         registerConfiguredFeature("ore_cerise", ConfiguredOres.ORE_CERISE);
         registerConfiguredFeature("ore_hardstone", ConfiguredOres.ORE_HARDSTONE);
+        registerConfiguredFeature("ore_frozen", ConfiguredOres.ORE_FROZEN);
+
         registerConfiguredFeature("topping_coal", ConfiguredOres.TOPPING_COAL);
         registerConfiguredFeature("topping_iron", ConfiguredOres.TOPPING_IRON);
         registerConfiguredFeature("topping_gold", ConfiguredOres.TOPPING_GOLD);
@@ -41,6 +49,7 @@ public class ConfiguredFeatureRegistry {
         registerConfiguredFeature("beanstalk", ConfiguredVegetation.BEANSTALK);
         registerConfiguredFeature("beanstalk_budding", ConfiguredVegetation.BEANSTALK_BUDDING);
         registerConfiguredFeature("muncher", ConfiguredVegetation.MUNCHER);
+        registerConfiguredFeature("frozen_muncher", ConfiguredVegetation.FROZEN_MUNCHER);
         registerConfiguredFeature("flowerbed", ConfiguredVegetation.FLOWERBED);
         registerConfiguredFeature("water_plants", ConfiguredVegetation.WATER_PLANTS);
         registerConfiguredFeature("amanita_carpet", ConfiguredVegetation.AMANITA_CARPET);
@@ -83,6 +92,7 @@ public class ConfiguredFeatureRegistry {
         registerConfiguredFeature("fossil_falls_flowers", ConfiguredVegetation.FOSSIL_FALLS_FLOWERS);
 
         registerConfiguredFeature("grassland_vegetation", ConfiguredVegetation.GRASSLAND_VEGETATION);
+        registerConfiguredFeature("sherbet_land_vegetation", ConfiguredVegetation.SHERBET_LAND_VEGETATION);
         registerConfiguredFeature("reef_vegetation", ConfiguredVegetation.REEF_VEGETATION);
         registerConfiguredFeature("amanita_forest_vegetation", ConfiguredVegetation.AMANITA_FOREST_VEGETATION);
         registerConfiguredFeature("forest_of_illusion_vegetation", ConfiguredVegetation.FOREST_OF_ILLUSION_VEGETATION);

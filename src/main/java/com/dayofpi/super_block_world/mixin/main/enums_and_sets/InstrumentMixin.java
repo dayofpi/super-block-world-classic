@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.enums_and_sets;
 
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.util.mixin_aid.ModInstrument;
 import net.minecraft.block.BlockState;
@@ -40,7 +40,7 @@ public class InstrumentMixin {
     private static void addCustomInstrument(CallbackInfo info) {
         var variants = new ArrayList<>(Arrays.asList(field_12652));
         var last = variants.get(variants.size() - 1);
-        var bling = newInstrument("BLING", last.ordinal() + 1, "bling", ModSounds.BLOCK_ITEM_BLOCK_COIN);
+        var bling = newInstrument("BLING", last.ordinal() + 1, "bling", ModSounds.BLOCK_COIN_BLOCK_HIT);
         ModInstrument.BLING = bling;
         variants.add(bling);
 

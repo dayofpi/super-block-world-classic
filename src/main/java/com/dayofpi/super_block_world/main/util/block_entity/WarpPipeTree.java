@@ -51,7 +51,7 @@ public class WarpPipeTree {
 
     //Gets the nearest warp pipe from a given position, taking looking direction into account if there must be a tie-breaker.
     @Nullable
-    public BlockPos getNearestBlock(BlockPos pos, World world, float lookingYaw) {
+    public BlockPos getNearestBlock(BlockPos pos, World world) {
         int chunkX = pos.getX() / 16;
         int chunkZ = pos.getZ() / 16;
 
@@ -59,11 +59,11 @@ public class WarpPipeTree {
 
         //Check center chunk and directly adjacent chunks for the nearest warp pipe
         if (chunkExists(chunkX, chunkZ)) {
-            nearestCandidate = getChunk(chunkX, chunkZ).findNearestBlock(pos, world, lookingYaw);
+            nearestCandidate = getChunk(chunkX, chunkZ).findNearestBlock(pos, world);
         }
         //Check adjacent chunks
         if (chunkExists(chunkX-1, chunkZ)) {
-            BlockPos t = getChunk(chunkX-1, chunkZ).findNearestBlock(pos, world, lookingYaw);
+            BlockPos t = getChunk(chunkX-1, chunkZ).findNearestBlock(pos, world);
             if (t != null)
             {
                 if (nearestCandidate == null)
@@ -75,7 +75,7 @@ public class WarpPipeTree {
             }
         }
         if (chunkExists(chunkX+1, chunkZ)) {
-            BlockPos t = getChunk(chunkX+1, chunkZ).findNearestBlock(pos, world, lookingYaw);
+            BlockPos t = getChunk(chunkX+1, chunkZ).findNearestBlock(pos, world);
             if (t != null)
             {
                 if (nearestCandidate == null)
@@ -87,7 +87,7 @@ public class WarpPipeTree {
             }
         }
         if (chunkExists(chunkX, chunkZ-1)) {
-            BlockPos t = getChunk(chunkX, chunkZ-1).findNearestBlock(pos, world, lookingYaw);
+            BlockPos t = getChunk(chunkX, chunkZ-1).findNearestBlock(pos, world);
             if (t != null)
             {
                 if (nearestCandidate == null)
@@ -100,7 +100,7 @@ public class WarpPipeTree {
 
         }
         if (chunkExists(chunkX, chunkZ+1)) {
-            BlockPos t = getChunk(chunkX, chunkZ+1).findNearestBlock(pos, world, lookingYaw);
+            BlockPos t = getChunk(chunkX, chunkZ+1).findNearestBlock(pos, world);
             if (t != null)
             {
                 if (nearestCandidate == null)
@@ -112,14 +112,14 @@ public class WarpPipeTree {
             }
         }
 
-        //If we found the nearest candidate, make sure it's within the range of -40 <= X <= 40, -40 <= Z <= 40, -20 <= Y <= 20, relative to our position
+        //If we found the nearest candidate, make sure it's within the range, relative to our position
         if (nearestCandidate != null) {
             BlockPos dPos = pos.subtract(nearestCandidate);
-            if (Math.abs(dPos.getX()) >= 40)
+            if (Math.abs(dPos.getX()) >= 80)
                 nearestCandidate = null;
-            else if (Math.abs(dPos.getZ()) >= 40)
+            else if (Math.abs(dPos.getZ()) >= 80)
                 nearestCandidate = null;
-            else if (Math.abs(dPos.getY()) >= 20)
+            else if (Math.abs(dPos.getY()) >= 96)
                 nearestCandidate = null;
         }
         return nearestCandidate;

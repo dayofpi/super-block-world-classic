@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bronze_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:bronze_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_bronze_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "super_block_world:white_warp_pipe",
+      "super_block_world:orange_warp_pipe",
+      "super_block_world:magenta_warp_pipe",
+      "super_block_world:light_blue_warp_pipe",
+      "super_block_world:yellow_warp_pipe",
+      "super_block_world:lime_warp_pipe",
+      "super_block_world:pink_warp_pipe",
+      "super_block_world:gray_warp_pipe",
+      "super_block_world:light_gray_warp_pipe",
+      "super_block_world:cyan_warp_pipe",
+      "super_block_world:purple_warp_pipe",
+      "super_block_world:blue_warp_pipe",
+      "super_block_world:brown_warp_pipe",
+      "super_block_world:green_warp_pipe",
+      "super_block_world:red_warp_pipe",
+      "super_block_world:black_warp_pipe"
+    ]
+  }
+}

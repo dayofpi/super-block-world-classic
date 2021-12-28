@@ -6,7 +6,7 @@
 		"bottom": "super_block_world:block/spike_trap_bottom",
 		"particle": "super_block_world:block/spike_trap_side",
 		"side": "super_block_world:block/spike_trap_side",
-		"spikes": "super_block_world:block/spikes"
+		"spikes": "super_block_world:block/spike_trap_spikes"
 	},
 	"elements": [
 		{

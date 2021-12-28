@@ -39,13 +39,17 @@ public class WarpPipeList {
     private BlockPos findNearestBlockFromPosition(BlockPos ignore, World world, Vec3d pos) {
         //Find the nearest block by looking direction
         BlockPos pipe = null;
-        double dist = 40D; //Max distance, we only check 16x256x16, so we shouldn't really hit it.
+        double dist = 999D; //Max distance, we only check 16x256x16, so we shouldn't really hit it.
         for(BlockPos warp : warpList) {
             //Ignore if start block
             if (warp.getX() == ignore.getX() && warp.getY() == ignore.getY() && warp.getZ() == ignore.getZ())
                 continue;
             //Ignore if not air above block
             if (world.getBlockState(warp.add(0, 1, 0)) != Blocks.AIR.getDefaultState())
+                continue;
+
+            //Ignore if not same color
+            if (!world.getBlockState(warp).isOf(world.getBlockState(ignore).getBlock()))
                 continue;
 
             //Compare squared distance
@@ -61,7 +65,7 @@ public class WarpPipeList {
     }
 
     @Nullable
-    public BlockPos findNearestBlock(BlockPos pos, World world, float lookingYaw) {
+    public BlockPos findNearestBlock(BlockPos pos, World world) {
         BlockPos pipe = null;
         //loop through warps to find the nearest warp to blockPos
         for(BlockPos warp : warpList) {
@@ -71,6 +75,10 @@ public class WarpPipeList {
 
             //Ignore if no air above
             if (!world.getBlockState(warp.add(0, 1, 0)).isAir())
+                continue;
+
+            //Ignore if not same color
+            if (!world.getBlockState(warp).isOf(world.getBlockState(pos).getBlock()))
                 continue;
 
             //Immediately accept if no pipe found
@@ -86,8 +94,7 @@ public class WarpPipeList {
             if (manhattanA < manhattanB)
                 pipe = warp;
             else if (manhattanA == manhattanB) {
-                //If the current block is the same distance as the new position, select by yaw.
-                Vec3d forward = new Vec3d((double)pos.getX() - Math.sin(lookingYaw / 180.0 * Math.PI), pos.getY(), pos.getZ() + Math.cos(lookingYaw/ 180.0 * Math.PI));
+                Vec3d forward = new Vec3d(pos.getX(), pos.getY(), pos.getZ());
                 BlockPos nearestInFront = findNearestBlockFromPosition(pos, world, forward);
                 if (nearestInFront != null)
                     pipe = nearestInFront;

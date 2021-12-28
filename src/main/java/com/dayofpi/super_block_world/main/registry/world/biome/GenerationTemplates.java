@@ -18,6 +18,14 @@ public class GenerationTemplates {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.GRASSLAND_VEGETATION);
     }
 
+    static void addSherbetLandFeatures(GenerationSettings.Builder builder) {
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.STUMP);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.GRASSLAND_PLANTS);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.GRASSLAND_FLOWERS);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.GRASSLAND_MUSHROOMS);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.SHERBET_LAND_VEGETATION);
+    }
+
     static void addMooMooMeadowFeatures(GenerationSettings.Builder builder) {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.HORSETAIL);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.STUMP);
@@ -87,6 +95,7 @@ public class GenerationTemplates {
     }
 
     public static void addCheepCheepReefFeatures(GenerationSettings.Builder builder) {
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.OCEAN_FLOOR_PIPE);
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.JELLYBEAM);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.HORSETAIL);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.WATER_PLANTS);

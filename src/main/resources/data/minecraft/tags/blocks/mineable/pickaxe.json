@@ -35,8 +35,9 @@
     "super_block_world:frosty_vanillate_stairs",
     "super_block_world:frosty_vanillate_brick_slab",
     "super_block_world:frosty_vanillate_brick_stairs",
-    "super_block_world:frosty_topped_vanillate",
-    "super_block_world:frosty_topped_vanillate_ore",
+    "super_block_world:frosted_vanillate",
+    "super_block_world:frozen_ore",
+    "super_block_world:frozen_muncher",
     "super_block_world:topped_vanillate",
     "super_block_world:coal_topped_vanillate",
     "super_block_world:iron_topped_vanillate",
@@ -96,11 +97,12 @@
     "super_block_world:seastone_bricks",
     "super_block_world:seastone_brick_slab",
     "super_block_world:seastone_brick_stairs",
+    "super_block_world:seastone_brick_wall",
+    "super_block_world:sherbet_bricks",
+    "super_block_world:sherbet_brick_slab",
+    "super_block_world:sherbet_brick_stairs",
+    "super_block_world:sherbet_brick_wall",
     "super_block_world:warp_frame",
-    "super_block_world:warp_pipe",
-    "super_block_world:warp_pipe_body",
-    "super_block_world:bronze_pipe",
-    "super_block_world:bronze_pipe_body",
     "super_block_world:stone_torch",
     "super_block_world:boo_lantern",
     "super_block_world:spike_trap",
@@ -119,6 +121,8 @@
     "super_block_world:brown_bronze",
     "super_block_world:green_bronze",
     "super_block_world:red_bronze",
-    "super_block_world:black_bronze"
+    "super_block_world:black_bronze",
+    "#super_block_world:warp_pipes",
+    "#super_block_world:pipe_bodies"
   ]
 }

@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.main.registry.world.feature.configured;
 
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.block.MushroomBlocks;
-import com.dayofpi.super_block_world.main.common.block.MushroomCapBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.MushroomCapBlock;
 import com.dayofpi.super_block_world.main.common.world.feature.config.GiantMushroomFeatureConfig;
 import com.dayofpi.super_block_world.main.registry.world.feature.FeatureRegistry;
 import net.minecraft.block.BlockState;

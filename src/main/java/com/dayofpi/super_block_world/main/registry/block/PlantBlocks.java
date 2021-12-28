@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.registry.block;
 
-import com.dayofpi.super_block_world.main.common.block.*;
+import com.dayofpi.super_block_world.main.common.block.decoration.FrozenMuncherBlock;
 import com.dayofpi.super_block_world.main.common.block.plant.beanstalk.BeanstalkStemBlock;
 import com.dayofpi.super_block_world.main.common.block.plant.beanstalk.BeanstalkPlantBlock;
 import com.dayofpi.super_block_world.main.common.block.plant.beanstalk.BuddingBeanstalkBlock;

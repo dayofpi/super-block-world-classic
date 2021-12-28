@@ -1,8 +1,10 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.hammer_bro;
 
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
+import com.dayofpi.super_block_world.main.common.entity.goal.SeekPowerUpGoal;
 import com.dayofpi.super_block_world.main.common.entity.projectile.HammerEntity;
+import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import net.minecraft.entity.*;
 import net.minecraft.item.ItemStack;
@@ -12,6 +14,8 @@ import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class HammerBroEntity extends AbstractBro {
     public HammerBroEntity(EntityType<? extends EnemyEntity> entityType, World world) {
@@ -29,6 +33,33 @@ public class HammerBroEntity extends AbstractBro {
         this.playSound(ModSounds.ITEM_PROJECTILE_THROW, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(hammerEntity);
         this.swingHand(Hand.MAIN_HAND);
+    }
+
+    public void initGoals() {
+        super.initGoals();
+        this.targetSelector.add(1, new SeekPowerUpGoal(this, ItemRegistry.FIRE_FLOWER));
+        this.targetSelector.add(1, new SeekPowerUpGoal(this, ItemRegistry.ICE_FLOWER));
+    }
+
+    @Override
+    public void tickMovement() {
+        super.tickMovement();
+        if (this.isAlive()) {
+            List<ItemEntity> fireFlowerList = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ItemRegistry.FIRE_FLOWER));
+            List<ItemEntity> iceFlowerList = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ItemRegistry.ICE_FLOWER));
+            if (!fireFlowerList.isEmpty()) {
+                this.transform(EntityRegistry.FIRE_BRO);
+                fireFlowerList.get(0).discard();
+            } else if (!iceFlowerList.isEmpty()) {
+                this.transform(EntityRegistry.ICE_BRO);
+                iceFlowerList.get(0).discard();
+            }
+        }
+    }
+
+    private void transform(EntityType<? extends AbstractBro> entityType) {
+        this.convertTo(entityType, false);
+        this.playSound(ModSounds.ITEM_SUPER_MUSHROOM_GROW, 0.5F, 1.0F);
     }
 
     @Nullable

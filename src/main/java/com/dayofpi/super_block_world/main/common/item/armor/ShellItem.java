@@ -28,6 +28,8 @@ public class ShellItem extends ArmorItem {
         tooltip.add( new TranslatableText("tooltip.super_block_world.brick_break").formatted(Formatting.GOLD));
         if (stack.isOf(ItemRegistry.BUZZY_SHELL)) {
             tooltip.add(new TranslatableText("tooltip.super_block_world.projectile_deflect").formatted(Formatting.GOLD));
+        } else if (stack.isOf(ItemRegistry.RED_SHELL)) {
+            tooltip.add(new TranslatableText("tooltip.super_block_world.fire_resist").formatted(Formatting.BLUE));
         }
     }
 

@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.world.dimension;
 
 import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.util.ModBiomeKeys;
+import com.dayofpi.super_block_world.main.registry.key.ModBiomeKeys;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.util.Identifier;
@@ -18,6 +18,15 @@ public class BiomeParameters {
                             0.0f,
                             0.0f,
                             0.0f), () -> registry.getOrThrow(ModBiomeKeys.MUSHROOM_GRASSLANDS)),
+
+                    Pair.of(MultiNoiseUtil.createNoiseHypercube(
+                            -0.2f,
+                            0.4f,
+                            0.0f,
+                            -0.25f,
+                            0.0f,
+                            0.0f,
+                            0.0f), () -> registry.getOrThrow(ModBiomeKeys.SHERBET_LAND)),
 
                     Pair.of(MultiNoiseUtil.createNoiseHypercube(
                             0.3f,

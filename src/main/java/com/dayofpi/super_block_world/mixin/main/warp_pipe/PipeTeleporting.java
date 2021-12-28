@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.mixin.main.warp_pipe;
 
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.block.pipe.WarpPipeBlock;
-import com.dayofpi.super_block_world.main.registry.StatusEffectReg;
+import com.dayofpi.super_block_world.main.registry.general.StatusEffectRegistry;
+import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -36,8 +36,18 @@ public abstract class PipeTeleporting extends LivingEntity {
             if (this.getPipeCooldown() == 0) {
                 BlockPos entityPos = this.getBlockPos();
                 BlockPos floor = this.getBlockPos().down();
-                if (world.getBlockState(entityPos).isAir() && world.getBlockState(floor).isOf(BlockRegistry.WARP_PIPE) && world.getBlockState(floor).get(Properties.FACING) == Direction.UP) {
-                    BlockPos destination = WarpPipeBlock.warpPipeTree.getNearestBlock(floor, world, this.getHeadYaw());
+                boolean onPipe = world.getBlockState(entityPos).isAir() && world.getBlockState(floor).isIn(TagRegistry.WARP_PIPES) && world.getBlockState(floor).get(Properties.FACING) == Direction.UP;
+                boolean inPipe = world.getBlockState(entityPos).isIn(TagRegistry.WARP_PIPES) && world.getBlockState(entityPos).get(Properties.FACING) == Direction.UP;
+                if (onPipe) {
+                    BlockPos destination = WarpPipeBlock.warpPipeTree.getNearestBlock(floor, world);
+                    if (destination != null) {
+                        this.requestTeleport(destination.getX() + 0.5, destination.getY() + 1.0F, destination.getZ() + 0.5);
+                        this.setPipeCooldown(20);
+                        world.sendEntityStatus(this, (byte) 46);
+                        world.playSound(null, destination, ModSounds.BLOCK_WARP_PIPE_TELEPORT, SoundCategory.PLAYERS, 0.5F, this.getSoundPitch());
+                    }
+                } else if (inPipe) {
+                    BlockPos destination = WarpPipeBlock.warpPipeTree.getNearestBlock(entityPos, world);
                     if (destination != null) {
                         this.requestTeleport(destination.getX() + 0.5, destination.getY() + 1.0F, destination.getZ() + 0.5);
                         this.setPipeCooldown(20);
@@ -61,7 +71,7 @@ public abstract class PipeTeleporting extends LivingEntity {
     public void baseTick() {
         super.baseTick();
         if (this.isAlive()) {
-            if (this.hasStatusEffect(StatusEffectReg.STAR_POWER)) {
+            if (this.hasStatusEffect(StatusEffectRegistry.STAR_POWER)) {
                 for (int i = 0; i < 1; ++i) {
                     world.addParticle(ParticleTypes.GLOW, true, this.getX() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), this.getRandomBodyY(), this.getZ() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), 0, 0, 0);
                 }

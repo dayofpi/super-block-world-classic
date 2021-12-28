@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 @SuppressWarnings("deprecation")
-public class WarpPipeBlock extends BronzePipeBlock implements BlockEntityProvider {
+public class WarpPipeBlock extends AbstractPipeBlock implements BlockEntityProvider {
 
     public static final WarpPipeTree warpPipeTree = new WarpPipeTree();
 

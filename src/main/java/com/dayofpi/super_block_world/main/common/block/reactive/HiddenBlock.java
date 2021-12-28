@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.reactive;
 
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.block_entity.CoinBlockBE;
 import com.dayofpi.super_block_world.main.common.block_entity.QuestionBlockBE;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
@@ -29,6 +29,7 @@ public class HiddenBlock extends Block {
         ItemStack itemStack = player.getStackInHand(hand);
         if (!itemStack.isEmpty()) {
             if (world.isClient) {
+                ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_ON, UniformIntProvider.create(3, 5));
                 return ActionResult.SUCCESS;
             } else {
                 if (itemStack.isOf(ItemRegistry.COIN)) {
@@ -47,8 +48,7 @@ public class HiddenBlock extends Block {
                 if (!player.isCreative()) {
                     player.getStackInHand(hand).setCount(0);
                 }
-                world.playSound(null, blockPos, ModSounds.BLOCK_ITEM_BLOCK_STORE, SoundCategory.NEUTRAL, 2.0F, 1.0F);
-                ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_ON, UniformIntProvider.create(3, 5));
+                world.playSound(null, blockPos, ModSounds.BLOCK_EMPTY_BLOCK_STORE, SoundCategory.NEUTRAL, 2.0F, 1.0F);
                 return ActionResult.CONSUME;
             }
         } else return ActionResult.PASS;

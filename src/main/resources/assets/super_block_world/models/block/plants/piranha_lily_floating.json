@@ -3,9 +3,9 @@
 	"parent": "minecraft:block/cross",
 	"ambientocclusion": false,
 	"textures": {
-		"1": "super_block_world:block/piranha_lily_pad",
-		"particle": "super_block_world:block/piranha_lily_water",
-		"cross": "super_block_world:block/piranha_lily_water"
+		"pad": "super_block_world:block/piranha_lily_pad",
+		"particle": "super_block_world:block/piranha_lily_pad",
+		"cross": "super_block_world:block/piranha_lily_floating"
 	},
 	"elements": [
 		{
@@ -32,12 +32,12 @@
 			"from": [0, 0, 0],
 			"to": [16, 0, 16],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 0], "texture": "#1"},
-				"east": {"uv": [0, 0, 16, 0], "texture": "#1"},
-				"south": {"uv": [0, 0, 16, 0], "texture": "#1"},
-				"west": {"uv": [0, 0, 16, 0], "texture": "#1"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#1"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#1"}
+				"north": {"uv": [0, 0, 16, 0], "texture": "#pad"},
+				"east": {"uv": [0, 0, 16, 0], "texture": "#pad"},
+				"south": {"uv": [0, 0, 16, 0], "texture": "#pad"},
+				"west": {"uv": [0, 0, 16, 0], "texture": "#pad"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#pad"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#pad"}
 			}
 		}
 	],
