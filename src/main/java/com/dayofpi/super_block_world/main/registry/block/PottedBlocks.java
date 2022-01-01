@@ -17,6 +17,7 @@ public class PottedBlocks {
     public static final Block POTTED_BLUE_SONGFLOWER = new FlowerPotBlock(PlantBlocks.BLUE_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_PINK_SONGFLOWER = new FlowerPotBlock(PlantBlocks.PINK_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_YELLOW_SONGFLOWER = new FlowerPotBlock(PlantBlocks.YELLOW_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block POTTED_PURPLE_SONGFLOWER = new FlowerPotBlock(PlantBlocks.PURPLE_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_YELLOW_MUSHROOM = new FlowerPotBlock(MushroomBlocks.YELLOW_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_GREEN_MUSHROOM = new FlowerPotBlock(MushroomBlocks.GREEN_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block POTTED_PINK_MUSHROOM = new FlowerPotBlock(MushroomBlocks.PINK_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());

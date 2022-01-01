@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.main.common.entity.projectile;
 import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.Client;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
-import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -41,10 +41,6 @@ public class IceballEntity extends PersistentProjectileEntity {
         this.pickupType = PickupPermission.DISALLOWED;
     }
 
-    public IceballEntity(World world, LivingEntity owner) {
-        super(EntityRegistry.ICEBALL, owner, world);
-    }
-
     public IceballEntity(World world, double x, double y, double z) {
         super(EntityRegistry.ICEBALL, x, y, z, world);
     }
@@ -54,7 +50,7 @@ public class IceballEntity extends PersistentProjectileEntity {
     }
 
     public IceballEntity(EntityType<? extends IceballEntity> entityType, double x, double v, double z, World world) {
-        super(EntityRegistry.ICEBALL, x, v, z, world);
+        super(entityType, x, v, z, world);
         this.setPosition(x, v, z);
     }
 

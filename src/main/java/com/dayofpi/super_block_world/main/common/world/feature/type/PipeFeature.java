@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.world.feature.type;
 
 import com.dayofpi.super_block_world.main.registry.block.ColoredBlocks;
-import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

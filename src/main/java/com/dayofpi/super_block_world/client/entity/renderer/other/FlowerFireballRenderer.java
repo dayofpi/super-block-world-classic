@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.entity.renderer.other;
 
 import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.common.entity.projectile.FlowerFireballEntity;
+import com.dayofpi.super_block_world.main.common.entity.projectile.FireballEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
@@ -17,7 +17,7 @@ import net.minecraft.util.math.Matrix3f;
 import net.minecraft.util.math.Matrix4f;
 import net.minecraft.util.math.Vec3f;
 @Environment(EnvType.CLIENT)
-public class FlowerFireballRenderer extends EntityRenderer<FlowerFireballEntity> {
+public class FlowerFireballRenderer extends EntityRenderer<FireballEntity> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/item/fireball.png");
     private static final RenderLayer LAYER;
 
@@ -25,11 +25,11 @@ public class FlowerFireballRenderer extends EntityRenderer<FlowerFireballEntity>
         super(context);
     }
 
-    protected int getBlockLight(FlowerFireballEntity fireballEntity, BlockPos blockPos) {
+    protected int getBlockLight(FireballEntity fireballEntity, BlockPos blockPos) {
         return 15;
     }
 
-    public void render(FlowerFireballEntity entity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light) {
+    public void render(FireballEntity entity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light) {
         matrixStack.push();
         matrixStack.scale(1.0F, 1.0F, 1.0F);
         matrixStack.multiply(this.dispatcher.getRotation());
@@ -50,7 +50,7 @@ public class FlowerFireballRenderer extends EntityRenderer<FlowerFireballEntity>
         vertexConsumer.vertex(modelMatrix, x - 0.5F, (float)y - 0.25F, 0.0F).color(255, 255, 255, 255).texture((float)textureU, (float)textureV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0.0F, 1.0F, 0.0F).next();
     }
 
-    public Identifier getTexture(FlowerFireballEntity fireballEntity) {
+    public Identifier getTexture(FireballEntity fireballEntity) {
         return TEXTURE;
     }
 

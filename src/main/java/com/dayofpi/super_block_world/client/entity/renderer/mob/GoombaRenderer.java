@@ -18,12 +18,11 @@ public class GoombaRenderer<T extends GoombaEntity> extends GeoEntityRenderer<T>
 
     public GoombaRenderer(EntityRendererFactory.Context context) {
         super(context, new GoombaModel<>());
-        this.shadowRadius = 0.4F;
     }
 
     @Override
     public void render(T entity, float entityYaw, float partialTicks, MatrixStack stack, VertexConsumerProvider bufferIn, int packedLightIn) {
-        this.shadowRadius = 0.25F * entity.getSize();
+        this.shadowRadius = 0.25F * entity.getSize() + 0.25F;
         super.render(entity, entityYaw, partialTicks, stack, bufferIn, packedLightIn);
     }
 

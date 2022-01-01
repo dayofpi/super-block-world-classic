@@ -6,7 +6,7 @@
         "stream": true
       },
       {
-        "name": "super_block_world:music/subtly",
+        "name": "super_block_world:music/cascading",
         "stream": true
       }
     ]
@@ -18,7 +18,7 @@
         "stream": true
       },
       {
-        "name": "super_block_world:music/subtly",
+        "name": "super_block_world:music/cascading",
         "stream": true
       }
     ]
@@ -83,18 +83,18 @@
       "super_block_world:block/poison_swim2"
     ]
   },
-  "block.poison.fill": {
+  "item.poison_bucket.fill": {
     "subtitle": "subtitles.item.bucket.fill",
     "sounds": [
-      "super_block_world:item/poison_fill1",
-      "super_block_world:item/poison_fill2",
-      "super_block_world:item/poison_fill3"
+      "super_block_world:item/poison_bucket/fill1",
+      "super_block_world:item/poison_bucket/fill2",
+      "super_block_world:item/poison_bucket/fill3"
     ]
   },
-  "block.poison.empty": {
+  "item.poison_bucket.empty": {
     "subtitle": "subtitles.item.bucket.empty",
     "sounds": [
-      "super_block_world:item/poison_empty"
+      "super_block_world:item/poison_bucket/empty"
     ]
   },
   "block.frosted_stone.break": {
@@ -432,12 +432,20 @@
     "subtitle": "sound.super_block_world.item.collect.star_coin",
     "sounds": [ "super_block_world:item/star_coin" ]
   },
-  "item.projectile.throw": {
-    "subtitle": "sound.super_block_world.item.projectile.throw",
-    "sounds": [ "minecraft:random/bow" ]
+  "item.projectile.generic": {
+    "subtitle": "sound.super_block_world.item.projectile.generic",
+    "sounds": [ "super_block_world:item/throw" ]
   },
-  "item.super_mushroom.grow": {
-    "subtitle": "sound.super_block_world.item.super_mushroom.grow",
+  "item.projectile.hammer": {
+    "subtitle": "sound.super_block_world.item.projectile.hammer",
+    "sounds": [ "super_block_world:item/hammer" ]
+  },
+  "item.projectile.bomb": {
+    "subtitle": "sound.super_block_world.item.projectile.bomb",
+    "sounds": [ "super_block_world:item/bomb" ]
+  },
+  "item.power_up.use": {
+    "subtitle": "sound.super_block_world.item.power_up.use",
     "sounds": [ "super_block_world:item/powerup" ]
   },
   "item.one_up.use": {
@@ -453,8 +461,13 @@
     "sounds": [ "super_block_world:item/ice_flower_shoot" ]
   },
   "item.super_star.use": {
-    "subtitle": "sound.super_block_world.entity.star_power",
     "sounds": [ "super_block_world:entity/starman" ]
+  },
+  "item.super_pickax.use": {
+    "sounds": [ "super_block_world:item/pickax" ]
+  },
+  "item.fuzzy_magnet.pull": {
+    "sounds": [ "super_block_world:item/fuzzy_magnet" ]
   },
   "entity.fireball.bounce": {
     "subtitle": "sound.super_block_world.entity.fireball.bounce",
@@ -682,6 +695,12 @@
     "subtitle": "sound.super_block_world.entity.bob_omb.fuse",
     "sounds": [
       "super_block_world:entity/mob/bob_omb/fuse"
+    ]
+  },
+  "entity.fuzzy.break": {
+    "subtitle": "sound.super_block_world.entity.fuzzy.break",
+    "sounds": [
+      "super_block_world:entity/mob/fuzzy/break_item"
     ]
   },
   "entity.thwomp.hurt": {

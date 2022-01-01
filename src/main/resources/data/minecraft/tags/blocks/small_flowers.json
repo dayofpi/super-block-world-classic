@@ -3,9 +3,11 @@
   "values": [
     "super_block_world:yellow_flowerbed",
     "super_block_world:white_flowerbed",
+    "super_block_world:hybrid_flowerbed",
     "super_block_world:blue_songflower",
     "super_block_world:pink_songflower",
     "super_block_world:yellow_songflower",
+    "super_block_world:purple_songflower",
     "super_block_world:fire_tulip",
     "super_block_world:pawflower"
   ]

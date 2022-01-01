@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.item;
 
-import com.dayofpi.super_block_world.main.registry.general.StatusEffectRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.StatusEffectRegistry;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;

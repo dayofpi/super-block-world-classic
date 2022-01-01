@@ -13,47 +13,57 @@ public class ConfiguredFeatureRegistry {
     }
 
     public static void registerConfiguredFeatures() {
-        registerConfiguredFeature("spring", ConfiguredMisc.SPRING);
-        registerConfiguredFeature("lake_lava", ConfiguredMisc.LAKE_LAVA);
-        registerConfiguredFeature("lake_poison", ConfiguredMisc.LAKE_POISON);
-        registerConfiguredFeature("amethyst_ceiling", ConfiguredMisc.AMETHYST_CEILING);
-        registerConfiguredFeature("amethyst_floor", ConfiguredMisc.AMETHYST_FLOOR);
-        registerConfiguredFeature("icicle", ConfiguredMisc.ICICLE);
-        registerConfiguredFeature("cave_decoration_common", ConfiguredMisc.CAVE_DECORATION_COMMON);
-        registerConfiguredFeature("cave_decoration_rare", ConfiguredMisc.CAVE_DECORATION_RARE);
+        registerConfiguredFeature("spring", ConfiguredDecoration.SPRING);
+        registerConfiguredFeature("lake_lava", ConfiguredDecoration.LAKE_LAVA);
+        registerConfiguredFeature("lake_poison", ConfiguredDecoration.LAKE_POISON);
+        registerConfiguredFeature("amethyst_ceiling", ConfiguredDecoration.AMETHYST_CEILING);
+        registerConfiguredFeature("amethyst_floor", ConfiguredDecoration.AMETHYST_FLOOR);
+        registerConfiguredFeature("star_crystal_ceiling", ConfiguredDecoration.STAR_CRYSTAL_CEILING);
+        registerConfiguredFeature("star_crystal_floor", ConfiguredDecoration.STAR_CRYSTAL_FLOOR);
+        registerConfiguredFeature("icicle", ConfiguredDecoration.ICICLE);
+        registerConfiguredFeature("cave_decoration_common", ConfiguredDecoration.CAVE_DECORATION_COMMON);
+        registerConfiguredFeature("cave_decoration_rare", ConfiguredDecoration.CAVE_DECORATION_RARE);
         registerConfiguredFeature("jellybeam", ConfiguredBlocks.JELLYBEAM);
         registerConfiguredFeature("block_single", ConfiguredBlocks.BLOCK_SINGLE);
         registerConfiguredFeature("block_line", ConfiguredBlocks.BLOCK_LINE_SURFACE);
         registerConfiguredFeature("block_line_deep", ConfiguredBlocks.BLOCK_LINE_DEEP);
         registerConfiguredFeature("block_line_crystal", ConfiguredBlocks.BLOCK_LINE_CRYSTAL);
         registerConfiguredFeature("block_pile", ConfiguredBlocks.BLOCK_PILE);
-        registerConfiguredFeature("pipe_patch", ConfiguredMisc.PIPE_PATCH);
-        registerConfiguredFeature("topping", ConfiguredMisc.TOPPING);
-        registerConfiguredFeature("frosting", ConfiguredMisc.FROSTING);
-        registerConfiguredFeature("quicksand", ConfiguredMisc.QUICKSAND);
-
+        registerConfiguredFeature("pipe_patch", ConfiguredPipes.PIPE_PATCH);
+        registerConfiguredFeature("topping", ConfiguredDecoration.TOPPING);
+        registerConfiguredFeature("frosting", ConfiguredDecoration.FROSTING);
+        registerConfiguredFeature("quicksand", ConfiguredDecoration.QUICKSAND);
         registerConfiguredFeature("ore_crumble", ConfiguredOres.ORE_CRUMBLE);
         registerConfiguredFeature("ore_bronze", ConfiguredOres.ORE_BRONZE);
-        registerConfiguredFeature("ore_amethyst", ConfiguredOres.ORE_AMETHYST);
+        registerConfiguredFeature("ore_vanillate_coal", ConfiguredOres.ORE_VANILLATE_COAL);
+        registerConfiguredFeature("ore_vanillate_iron", ConfiguredOres.ORE_VANILLATE_IRON);
         registerConfiguredFeature("ore_cerise", ConfiguredOres.ORE_CERISE);
+        registerConfiguredFeature("ore_toadstone", ConfiguredOres.ORE_TOADSTONE);
+        registerConfiguredFeature("ore_chiseled_toadstone", ConfiguredOres.ORE_CHISELED_TOADSTONE);
+        registerConfiguredFeature("ore_gloomstone", ConfiguredOres.ORE_GLOOMSTONE);
         registerConfiguredFeature("ore_hardstone", ConfiguredOres.ORE_HARDSTONE);
         registerConfiguredFeature("ore_frozen", ConfiguredOres.ORE_FROZEN);
-
-        registerConfiguredFeature("topping_coal", ConfiguredOres.TOPPING_COAL);
-        registerConfiguredFeature("topping_iron", ConfiguredOres.TOPPING_IRON);
         registerConfiguredFeature("topping_gold", ConfiguredOres.TOPPING_GOLD);
+        registerConfiguredFeature("topping_amethyst", ConfiguredOres.TOPPING_AMETHYST);
         registerConfiguredFeature("disk_sand", ConfiguredOres.DISK_SAND);
         registerConfiguredFeature("disk_seastone", ConfiguredOres.DISK_SEASTONE);
+        registerConfiguredFeature("horsetail", ConfiguredVegetation.HORSETAIL);
         registerConfiguredFeature("horsetail_patch", ConfiguredVegetation.HORSETAIL_PATCH);
+        registerConfiguredFeature("stump", ConfiguredVegetation.STUMP);
         registerConfiguredFeature("stump_patch", ConfiguredVegetation.STUMP_PATCH);
-        registerConfiguredFeature("beanstalk", ConfiguredVegetation.BEANSTALK);
-        registerConfiguredFeature("beanstalk_budding", ConfiguredVegetation.BEANSTALK_BUDDING);
+        registerConfiguredFeature("beanstalk", ConfiguredTrees.BEANSTALK);
+        registerConfiguredFeature("beanstalk_budding", ConfiguredTrees.BEANSTALK_BUDDING);
+        registerConfiguredFeature("beanstalk_underground", ConfiguredTrees.BEANSTALK_UNDERGROUND);
+        registerConfiguredFeature("beanstalk_budding_underground", ConfiguredTrees.BEANSTALK_BUDDING_UNDERGROUND);
+        registerConfiguredFeature("cactus", ConfiguredVegetation.CACTUS);
+        registerConfiguredFeature("cactus_patch", ConfiguredVegetation.CACTUS_PATCH);
         registerConfiguredFeature("muncher", ConfiguredVegetation.MUNCHER);
         registerConfiguredFeature("frozen_muncher", ConfiguredVegetation.FROZEN_MUNCHER);
         registerConfiguredFeature("flowerbed", ConfiguredVegetation.FLOWERBED);
+        registerConfiguredFeature("fuzzbush", ConfiguredVegetation.FUZZBUSH);
+        registerConfiguredFeature("piranha_lily", ConfiguredVegetation.PIRANHA_LILY);
         registerConfiguredFeature("water_plants", ConfiguredVegetation.WATER_PLANTS);
         registerConfiguredFeature("amanita_carpet", ConfiguredVegetation.AMANITA_CARPET);
-
         registerConfiguredFeature("amanita", ConfiguredTrees.AMANITA);
         registerConfiguredFeature("amanita_fruit", ConfiguredTrees.AMANITA_FRUIT);
         registerConfiguredFeature("amanita_large", ConfiguredTrees.AMANITA_LARGE);
@@ -62,7 +72,6 @@ public class ConfiguredFeatureRegistry {
         registerConfiguredFeature("amanita_oaky_fruit", ConfiguredTrees.AMANITA_OAKY_FRUIT);
         registerConfiguredFeature("dark_amanita", ConfiguredTrees.DARK_AMANITA);
         registerConfiguredFeature("dark_amanita_tall", ConfiguredTrees.DARK_AMANITA_TALL);
-
         registerConfiguredFeature("huge_red_mushroom_flat", ConfiguredTrees.HUGE_RED_MUSHROOM_FLAT);
         registerConfiguredFeature("huge_green_mushroom_flat", ConfiguredTrees.HUGE_GREEN_MUSHROOM_FLAT);
         registerConfiguredFeature("huge_red_mushroom_tall", ConfiguredTrees.HUGE_RED_MUSHROOM_TALL);
@@ -77,6 +86,8 @@ public class ConfiguredFeatureRegistry {
         registerConfiguredFeature("huge_red_mushroom", ConfiguredTrees.HUGE_RED_MUSHROOM);
 
         registerConfiguredFeature("grassland_plants", ConfiguredVegetation.GRASSLAND_PLANTS);
+        registerConfiguredFeature("pit_plant", ConfiguredVegetation.PIT_PLANT);
+        registerConfiguredFeature("desert_plants", ConfiguredVegetation.DESERT_PLANTS);
         registerConfiguredFeature("autumn_forest_plants", ConfiguredVegetation.AUTUMN_FOREST_PLANTS);
         registerConfiguredFeature("mushroom_gorge_plants", ConfiguredVegetation.MUSHROOM_GORGE_PLANTS);
         registerConfiguredFeature("fossil_falls_plants", ConfiguredVegetation.FOSSIL_FALLS_PLANTS);

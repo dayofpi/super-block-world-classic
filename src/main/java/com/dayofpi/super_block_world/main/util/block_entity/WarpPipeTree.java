@@ -10,6 +10,7 @@ import java.util.Map;
 public class WarpPipeTree {
     //To save memory and time, we store a list of all chunks that contain warp pipes. Within those chunks, we can access all warp pipes contained
     final Map<Long, WarpPipeList> chunks;
+    BlockPos nearestCandidate;
 
     public WarpPipeTree()
     {
@@ -17,15 +18,13 @@ public class WarpPipeTree {
     }
 
     //Get the chunk id from its x and z positions
-    long chunkToLong(int chunkX, int chunkZ)
-    {
+    long chunkToLong(int chunkX, int chunkZ) {
         //The key to the chunk map is the chunk's X and Z position merged into a 64 bit long from two 32-bit integers.
         return ((long)chunkX << 32) | chunkZ;
     }
 
     //Check if we currently have a chunk with that id stored
-    boolean chunkExists(int chunkX, int chunkZ)
-    {
+    boolean chunkExists(int chunkX, int chunkZ) {
         return chunks.containsKey(chunkToLong(chunkX, chunkZ));
     }
 
@@ -40,89 +39,74 @@ public class WarpPipeTree {
     //We add a warp pipe's position to the list at a given chunk
     public void addBlockToChunk(int chunkX, int chunkZ, BlockPos pos) {
         getChunk(chunkX, chunkZ).add(pos);
-        System.out.println("Added warp to chunk at Chunk X: " + chunkX + ", Chunk Z: " + chunkZ + ", " + pos);
     }
 
     //We remove a warp pipe's position to the list at a given chunk
     public void removeBlockFromChunk(int chunkX, int chunkZ, BlockPos pos) {
         getChunk(chunkX, chunkZ).remove(pos);
-        System.out.println("Removed warp from chunk at Chunk X: " + chunkX + ", Chunk Z:" + chunkZ + ", " + pos);
     }
 
-    //Gets the nearest warp pipe from a given position, taking looking direction into account if there must be a tie-breaker.
+    //Gets the nearest warp pipe from a given position.
     @Nullable
     public BlockPos getNearestBlock(BlockPos pos, World world) {
         int chunkX = pos.getX() / 16;
         int chunkZ = pos.getZ() / 16;
 
-        BlockPos nearestCandidate = null;
+        this.setNearestCandidate(null);
 
-        //Check center chunk and directly adjacent chunks for the nearest warp pipe
+        //Check center chunk and directly adjacent chunks for the nearest warp
         if (chunkExists(chunkX, chunkZ)) {
-            nearestCandidate = getChunk(chunkX, chunkZ).findNearestBlock(pos, world);
+            this.setNearestCandidate(getChunk(chunkX, chunkZ).findNearestBlock(pos, world));
         }
+
         //Check adjacent chunks
-        if (chunkExists(chunkX-1, chunkZ)) {
-            BlockPos t = getChunk(chunkX-1, chunkZ).findNearestBlock(pos, world);
-            if (t != null)
-            {
-                if (nearestCandidate == null)
-                {
-                    nearestCandidate = t;
-                }
-                else if (t.getManhattanDistance(pos) < nearestCandidate.getManhattanDistance(pos))
-                    nearestCandidate = t;
-            }
-        }
-        if (chunkExists(chunkX+1, chunkZ)) {
-            BlockPos t = getChunk(chunkX+1, chunkZ).findNearestBlock(pos, world);
-            if (t != null)
-            {
-                if (nearestCandidate == null)
-                {
-                    nearestCandidate = t;
-                }
-                else if (t.getManhattanDistance(pos) < nearestCandidate.getManhattanDistance(pos))
-                    nearestCandidate = t;
-            }
-        }
-        if (chunkExists(chunkX, chunkZ-1)) {
-            BlockPos t = getChunk(chunkX, chunkZ-1).findNearestBlock(pos, world);
-            if (t != null)
-            {
-                if (nearestCandidate == null)
-                {
-                    nearestCandidate = t;
-                }
-                else if (t.getManhattanDistance(pos) < nearestCandidate.getManhattanDistance(pos))
-                    nearestCandidate = t;
-            }
+        if (chunkExists(chunkX-1, chunkZ))
+            this.checkChunk(chunkX-1, chunkZ, pos, world);
+        if (chunkExists(chunkX+1, chunkZ))
+            this.checkChunk(chunkX+1, chunkZ, pos, world);
+        if (chunkExists(chunkX, chunkZ-1))
+            this.checkChunk(chunkX, chunkZ-1, pos, world);
+        if (chunkExists(chunkX, chunkZ+1))
+            this.checkChunk(chunkX, chunkZ+1, pos, world);
+        if (chunkExists(chunkX-2, chunkZ))
+            this.checkChunk(chunkX-2, chunkZ, pos, world);
+        if (chunkExists(chunkX+2, chunkZ))
+            this.checkChunk(chunkX+2, chunkZ, pos, world);
+        if (chunkExists(chunkX, chunkZ-2))
+            this.checkChunk(chunkX, chunkZ-2, pos, world);
+        if (chunkExists(chunkX, chunkZ+2))
+            this.checkChunk(chunkX, chunkZ+2, pos, world);
 
-        }
-        if (chunkExists(chunkX, chunkZ+1)) {
-            BlockPos t = getChunk(chunkX, chunkZ+1).findNearestBlock(pos, world);
-            if (t != null)
-            {
-                if (nearestCandidate == null)
-                {
-                    nearestCandidate = t;
-                }
-                else if (t.getManhattanDistance(pos) < nearestCandidate.getManhattanDistance(pos))
-                    nearestCandidate = t;
-            }
-        }
-
-        //If we found the nearest candidate, make sure it's within the range, relative to our position
-        if (nearestCandidate != null) {
+        //If we found the nearest candidate, make sure it's within the range
+        if (this.getNearestCandidate() != null) {
             BlockPos dPos = pos.subtract(nearestCandidate);
             if (Math.abs(dPos.getX()) >= 80)
-                nearestCandidate = null;
+                this.setNearestCandidate(null);
             else if (Math.abs(dPos.getZ()) >= 80)
-                nearestCandidate = null;
+                this.setNearestCandidate(null);
             else if (Math.abs(dPos.getY()) >= 96)
-                nearestCandidate = null;
+                this.setNearestCandidate(null);
         }
-        return nearestCandidate;
+        return this.getNearestCandidate();
+    }
+
+    @Nullable
+    private BlockPos getNearestCandidate() {
+        return this.nearestCandidate;
+    }
+
+    private void setNearestCandidate(BlockPos blockPos) {
+        this.nearestCandidate = blockPos;
+    }
+
+    private void checkChunk(int chunkX, int chunkZ, BlockPos pos, World world) {
+        BlockPos closestInChunk = getChunk(chunkX, chunkZ).findNearestBlock(pos, world);
+        if (closestInChunk != null) {
+            if (this.getNearestCandidate() == null) {
+                this.setNearestCandidate(closestInChunk);
+            } else if (closestInChunk.getManhattanDistance(pos) < this.getNearestCandidate().getManhattanDistance(pos))
+                this.setNearestCandidate(closestInChunk);
+        }
     }
 
 }

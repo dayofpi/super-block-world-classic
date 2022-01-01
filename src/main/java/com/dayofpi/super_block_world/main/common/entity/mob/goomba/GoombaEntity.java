@@ -3,9 +3,10 @@ package com.dayofpi.super_block_world.main.common.entity.mob.goomba;
 import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
 import com.dayofpi.super_block_world.main.common.entity.goal.SeekPowerUpGoal;
-import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import net.minecraft.block.BlockState;
+import net.minecraft.command.argument.EntityAnchorArgumentType;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -86,6 +87,7 @@ public class GoombaEntity extends EnemyEntity implements IAnimatable {
     public void setTarget(@Nullable LivingEntity target) {
         if (this.isOnGround() && this.getTarget() == null) {
             this.playSound(ModSounds.ENTITY_ENEMY_SPOT, this.getSoundVolume(), this.getSoundPitch());
+            this.lookAt(EntityAnchorArgumentType.EntityAnchor.EYES, target.getPos());
             Vec3d vec3d = this.getVelocity();
             this.setVelocity(vec3d.x, 0.2F, vec3d.z);
         }
@@ -125,7 +127,8 @@ public class GoombaEntity extends EnemyEntity implements IAnimatable {
             List<ItemEntity> list = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ItemRegistry.SUPER_MUSHROOM));
             if (!list.isEmpty()) {
                 this.setSize(2);
-                this.playSound(ModSounds.ITEM_SUPER_MUSHROOM_GROW, 0.5F, 1.0F);
+                this.playSound(ModSounds.ITEM_POWER_UP, 0.5F, 1.0F);
+                this.setPersistent();
                 list.get(0).discard();
             }
         }
@@ -249,7 +252,7 @@ public class GoombaEntity extends EnemyEntity implements IAnimatable {
         if (this.getSize() >= 2) {
             tallness = 1.4f;
         }
-        return super.getDimensions(pose).scaled(0.5F * (float) this.getSize() + 0.4F).scaled(tallness - 0.2f, tallness);
+        return super.getDimensions(pose).scaled(0.5F * (float) this.getSize() + 0.6F).scaled(tallness - 0.2f, tallness);
     }
 
     public void remove(RemovalReason reason) {

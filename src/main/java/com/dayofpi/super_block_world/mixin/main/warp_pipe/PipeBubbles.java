@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.warp_pipe;
 
-import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.BubbleColumnBlock;

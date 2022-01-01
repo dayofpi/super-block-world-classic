@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin.main.poison;
 
-import com.dayofpi.super_block_world.main.registry.general.ParticleRegistry;
-import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.ParticleRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.dayofpi.super_block_world.main.util.entity.ModDamageSource;
 import com.dayofpi.super_block_world.client.sound.ModSounds;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;

@@ -1,9 +1,10 @@
 package com.dayofpi.super_block_world.main.common.world.feature.type;
 
-import com.dayofpi.super_block_world.main.common.block.reactive.CoinBlock;
+import com.dayofpi.super_block_world.main.common.block.item_block.CoinBlock;
 import com.dayofpi.super_block_world.main.common.block_entity.CoinBlockBE;
 import com.dayofpi.super_block_world.main.common.world.feature.config.ExtraRandomPatchFeatureConfig;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.key.ModBiomeKeys;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -47,8 +48,12 @@ public class ExtraRandomPatchFeature extends Feature<ExtraRandomPatchFeatureConf
             if (random.nextInt(3) == 0) {
                 blockEntity.getStack(0).setCount(5);
                 BlockState state = structureWorldAccess.getBlockState(mutable);
-                if (mutable.getY() < 63)
-                    structureWorldAccess.setBlockState(mutable, state.with(CoinBlock.TYPE, 2), 2);
+                if (mutable.getY() < 63) {
+                    if (structureWorldAccess.getBiomeKey(mutable).isPresent() && structureWorldAccess.getBiomeKey(mutable).get() == ModBiomeKeys.SHERBET_LAND)
+                        structureWorldAccess.setBlockState(mutable, state.with(CoinBlock.TYPE, 4), 2);
+                    else
+                        structureWorldAccess.setBlockState(mutable, state.with(CoinBlock.TYPE, 2), 2);
+                }
                 else
                     structureWorldAccess.setBlockState(mutable, state.with(CoinBlock.TYPE, 1), 2);
             }

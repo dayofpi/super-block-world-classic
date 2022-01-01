@@ -33,10 +33,12 @@ public abstract class EnemyEntity extends PathAwareEntity {
     public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
         if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
             return false;
-        } else {
-            int i = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
-            return i <= random.nextInt(8);
         }
+        if (world.getLightLevel(LightType.BLOCK, pos) > 0) {
+            return false;
+        }
+        int i = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
+        return i <= random.nextInt(8);
     }
 
     @Override
@@ -57,7 +59,7 @@ public abstract class EnemyEntity extends PathAwareEntity {
     @Override
     protected boolean isDisallowedInPeaceful() {
         return false;
-    } // Troops can spawn in peaceful
+    }
 
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {

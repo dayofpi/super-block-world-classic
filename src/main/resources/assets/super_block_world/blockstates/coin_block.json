@@ -16,6 +16,9 @@
       "model": "super_block_world:block/crystal_bricks"
     },
     "type=5": {
+      "model": "super_block_world:block/seastone_bricks"
+    },
+    "type=6": {
       "model": "super_block_world:block/hidden_block"
     }
   }

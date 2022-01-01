@@ -2,14 +2,16 @@ package com.dayofpi.super_block_world.main;
 
 import com.dayofpi.super_block_world.client.BlockRendering;
 import com.dayofpi.super_block_world.client.GlobalReceivers;
-import com.dayofpi.super_block_world.client.entity.EntityRendering;
+import com.dayofpi.super_block_world.client.EntityRendering;
 import com.dayofpi.super_block_world.client.FluidRendering;
 import com.dayofpi.super_block_world.client.ParticleRendering;
+import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -31,6 +33,11 @@ public class Client implements ClientModInitializer {
         BlockRendering.setRenderLayers();
         EntityRendering.registerEntityRenderers();
         ParticleRendering.renderParticles();
+        FabricModelPredicateProviderRegistry.register(ItemRegistry.FUZZY_MAGNET, new Identifier("pulling"), (stack, world, livingEntity, seed) -> {
+            if (livingEntity == null)
+                return 0.0f;
+            return livingEntity.isUsingItem() && livingEntity.getActiveItem() == stack ? 1.0F : 0.0F;
+        });
         receiveEntityPacket();
     }
 

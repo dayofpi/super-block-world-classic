@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.ghost;
 
-import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
 import com.dayofpi.super_block_world.main.util.entity.ModDamageSource;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityGroup;

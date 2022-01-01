@@ -12,7 +12,7 @@ public class BiomeParameters {
     public static final MultiNoiseBiomeSource.Preset MUSHROOM_KINGDOM =
             new MultiNoiseBiomeSource.Preset(new Identifier(Main.MOD_ID,"mushroom_kingdom"), registry -> new MultiNoiseUtil.Entries<>(ImmutableList.of(Pair.of(MultiNoiseUtil.createNoiseHypercube(
                             0f,
-                            0.4f,
+                            0.1f,
                             0.0f,
                             -0.2f,
                             0.0f,
@@ -32,7 +32,7 @@ public class BiomeParameters {
                             0.3f,
                             0.2f,
                             0.0f,
-                            0.2f,
+                            0.1f,
                             0.0f,
                             0.0f,
                             0.45f), () -> registry.getOrThrow(ModBiomeKeys.MOO_MOO_MEADOW)),
@@ -70,12 +70,21 @@ public class BiomeParameters {
                             -0.2f,
                             0.3f,
                             0.0f,
-                            0.00f,
+                            0.0f,
                             0.0f), () -> registry.getOrThrow(ModBiomeKeys.CHEEP_CHEEP_REEF)),
 
                     Pair.of(MultiNoiseUtil.createNoiseHypercube(
+                            0.0f,
+                            0.25f,
+                            0.0f,
+                            0.3f,
+                            0.0f,
+                            2.0f,
+                            6.0f), () -> registry.getOrThrow(ModBiomeKeys.CHEEP_CHEEP_REEF)),
+
+                    Pair.of(MultiNoiseUtil.createNoiseHypercube(
                             0.2f,
-                            0.5f,
+                            0.2f,
                             0f,
                             -0.2f,
                             0.0f,
@@ -93,8 +102,8 @@ public class BiomeParameters {
 
                     Pair.of(MultiNoiseUtil.createNoiseHypercube(
                             0.3f,
-                            0f,
-                            -0.2f,
+                            0.05f,
+                            0.0f,
                             -0.5f,
                             0.0f,
                             0.5f,

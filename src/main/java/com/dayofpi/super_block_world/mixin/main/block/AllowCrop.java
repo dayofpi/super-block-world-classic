@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin.main.block;
 
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;

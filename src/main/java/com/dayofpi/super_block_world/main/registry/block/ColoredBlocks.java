@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.registry.block;
 
-import com.dayofpi.super_block_world.main.common.block.pipe.PipeBodyBlock;
-import com.dayofpi.super_block_world.main.common.block.pipe.WarpPipeBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.pipe.PipeBodyBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.pipe.WarpPipeBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;

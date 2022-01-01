@@ -21,6 +21,8 @@
     "main.enums_and_sets.BoatTypeMixin",
     "main.enums_and_sets.InstrumentMixin",
     "main.enums_and_sets.SignTypeAccessor",
+    "main.item.BrewingRecipeMixin",
+    "main.item.ItemEntityMixin",
     "main.poison.PoisonInteraction",
     "main.poison.SpongePoisonBehavior",
     "main.warp_pipe.PipeBubbles",
@@ -29,11 +31,12 @@
     "main.world.ChunkGeneratorAccessor",
     "main.world.GeneratorOptionsMixin",
     "main.world.NoiseChunkGeneratorMixin",
-    "main.world.ReplaceBiomeFeatures"
+    "main.world.ReplaceBiomeFeatures",
+    "main.world.WeatherCommandMixin"
   ],
   "client": [
     "client.ClientPlayer",
-    "client.CoinPickupSound",
+    "client.PickupSound",
     "client.CustomMusic",
     "client.RabbitSkin"
   ],

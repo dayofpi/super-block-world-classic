@@ -18,8 +18,8 @@ public class ModSounds {
 
     public static final SoundEvent BLOCK_POISON_AMBIENT = createSound("block.poison.ambient");
     public static final SoundEvent BLOCK_POISON_SWIM = createSound("block.poison.swim");
-    public static final SoundEvent BLOCK_POISON_FILL = createSound("block.poison.fill");
-    public static final SoundEvent BLOCK_POISON_EMPTY = createSound("block.poison.empty");
+    public static final SoundEvent ITEM_POISON_BUCKET_FILL = createSound("item.poison_bucket.fill");
+    public static final SoundEvent ITEM_POISON_BUCKET_EMPTY = createSound("item.poison_bucket.empty");
 
     public static final SoundEvent BLOCK_TOADSTONE_BREAK = createSound("block.toadstone.break");
     public static final SoundEvent BLOCK_TOADSTONE_FALL = createSound("block.toadstone.fall");
@@ -69,13 +69,16 @@ public class ModSounds {
 
     public static final SoundEvent ITEM_COIN_COLLECT = createSound("item.collect.coin");
     public static final SoundEvent ITEM_STAR_COIN_COLLECT = createSound("item.collect.star_coin");
-    public static final SoundEvent ITEM_PROJECTILE_THROW = createSound("item.projectile.throw");
-    public static final SoundEvent ITEM_SUPER_MUSHROOM_GROW = createSound("item.super_mushroom.grow");
-    public static final SoundEvent ITEM_ONE_UP_USE = createSound("item.one_up.use");
-    public static final SoundEvent ITEM_FIRE_FLOWER_SHOOT = createSound("item.fire_flower.shoot");
-    public static final SoundEvent ITEM_ICE_FLOWER_SHOOT = createSound("item.ice_flower.shoot");
-    public static final SoundEvent ITEM_SUPER_STAR_USE = createSound("item.super_star.use");
-
+    public static final SoundEvent ITEM_PROJECTILE_GENERIC = createSound("item.projectile.generic");
+    public static final SoundEvent ITEM_PROJECTILE_HAMMER = createSound("item.projectile.hammer");
+    public static final SoundEvent ITEM_PROJECTILE_BOMB = createSound("item.projectile.bomb");
+    public static final SoundEvent ITEM_POWER_UP = createSound("item.power_up.use");
+    public static final SoundEvent ITEM_ONE_UP = createSound("item.one_up.use");
+    public static final SoundEvent ITEM_FIRE_FLOWER = createSound("item.fire_flower.shoot");
+    public static final SoundEvent ITEM_ICE_FLOWER = createSound("item.ice_flower.shoot");
+    public static final SoundEvent ITEM_SUPER_STAR = createSound("item.super_star.use");
+    public static final SoundEvent ITEM_SUPER_PICKAX = createSound("item.super_pickax.use");
+    public static final SoundEvent ITEM_FUZZY_MAGNET = createSound("item.fuzzy_magnet.pull");
     public static final SoundEvent ENTITY_FIREBALL_BOUNCE = createSound("entity.fireball.bounce");
     public static final SoundEvent ENTITY_FIREBALL_HIT = createSound("entity.fireball.hit");
     public static final SoundEvent ENTITY_ICEBALL_BOUNCE = createSound("entity.iceball.bounce");
@@ -126,6 +129,8 @@ public class ModSounds {
     public static final SoundEvent ENTITY_BOB_OMB_STEP = createSound("entity.bob_omb.step");
     public static final SoundEvent ENTITY_BOB_OMB_FUSE = createSound("entity.bob_omb.fuse");
 
+    public static final SoundEvent ENTITY_FUZZY_BREAK = createSound("entity.fuzzy.break");
+
     public static final SoundEvent ENTITY_THWOMP_HURT = createSound("entity.thwomp.hurt");
     public static final SoundEvent ENTITY_THWOMP_DEATH = createSound("entity.thwomp.death");
     public static final SoundEvent ENTITY_THWOMP_FALL = createSound("entity.thwomp.fall");
@@ -152,8 +157,8 @@ public class ModSounds {
        registerSound(BLOCK_PORTAL_TRAVEL);
        registerSound(BLOCK_POISON_AMBIENT);
        registerSound(BLOCK_POISON_SWIM);
-       registerSound(BLOCK_POISON_FILL);
-       registerSound(BLOCK_POISON_EMPTY);
+       registerSound(ITEM_POISON_BUCKET_FILL);
+       registerSound(ITEM_POISON_BUCKET_EMPTY);
        registerSound(BLOCK_TOADSTONE_BREAK);
        registerSound(BLOCK_TOADSTONE_FALL);
        registerSound(BLOCK_TOADSTONE_HIT);
@@ -201,12 +206,16 @@ public class ModSounds {
 
        registerSound(ITEM_COIN_COLLECT);
        registerSound(ITEM_STAR_COIN_COLLECT);
-       registerSound(ITEM_PROJECTILE_THROW);
-       registerSound(ITEM_SUPER_MUSHROOM_GROW);
-       registerSound(ITEM_ONE_UP_USE);
-       registerSound(ITEM_FIRE_FLOWER_SHOOT);
-       registerSound(ITEM_ICE_FLOWER_SHOOT);
-       registerSound(ITEM_SUPER_STAR_USE);
+       registerSound(ITEM_PROJECTILE_GENERIC);
+       registerSound(ITEM_PROJECTILE_HAMMER);
+       registerSound(ITEM_PROJECTILE_BOMB);
+       registerSound(ITEM_POWER_UP);
+       registerSound(ITEM_ONE_UP);
+       registerSound(ITEM_FIRE_FLOWER);
+       registerSound(ITEM_ICE_FLOWER);
+       registerSound(ITEM_SUPER_STAR);
+       registerSound(ITEM_SUPER_PICKAX);
+       registerSound(ITEM_FUZZY_MAGNET);
 
        registerSound(ENTITY_FIREBALL_BOUNCE);
        registerSound(ENTITY_FIREBALL_HIT);
@@ -257,6 +266,8 @@ public class ModSounds {
        registerSound(ENTITY_BOB_OMB_DEATH);
        registerSound(ENTITY_BOB_OMB_STEP);
        registerSound(ENTITY_BOB_OMB_FUSE);
+
+       registerSound(ENTITY_FUZZY_BREAK);
 
        registerSound(ENTITY_THWOMP_HURT);
        registerSound(ENTITY_THWOMP_DEATH);

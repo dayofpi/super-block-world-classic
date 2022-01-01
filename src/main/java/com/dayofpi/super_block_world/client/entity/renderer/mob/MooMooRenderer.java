@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.entity.renderer.mob;
 
 import com.dayofpi.super_block_world.client.entity.model.MooMooModel;
-import com.dayofpi.super_block_world.client.entity.ModelLayers;
+import com.dayofpi.super_block_world.client.ModelLayers;
 import com.dayofpi.super_block_world.main.common.entity.mob.MooMooEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

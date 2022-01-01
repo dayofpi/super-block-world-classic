@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.block;
 
-import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;

@@ -3,6 +3,7 @@
   "values": [
     "#super_block_world:warp_pipes",
     "#super_block_world:pipe_bodies",
+    "super_block_world:vanillate_iron_ore",
     "super_block_world:bronze_ore",
     "super_block_world:raw_bronze_block",
     "super_block_world:bronze_block",

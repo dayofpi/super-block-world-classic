@@ -19,7 +19,7 @@ public class OneUpItem extends Item {
     }
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        user.playSound(ModSounds.ITEM_ONE_UP_USE, 1.0F, 1.0F);
+        user.playSound(ModSounds.ITEM_ONE_UP, 1.0F, 1.0F);
         return super.finishUsing(stack, world, user);
     }
 

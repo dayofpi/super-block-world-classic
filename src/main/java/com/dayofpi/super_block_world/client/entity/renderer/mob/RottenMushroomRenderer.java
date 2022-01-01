@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.client.entity.renderer.mob;
 
 import com.dayofpi.super_block_world.main.Main;
 import com.dayofpi.super_block_world.client.entity.model.RottenMushroomModel;
-import com.dayofpi.super_block_world.client.entity.ModelLayers;
+import com.dayofpi.super_block_world.client.ModelLayers;
 import com.dayofpi.super_block_world.client.entity.renderer.feature.RottenMushroomEyes;
 import com.dayofpi.super_block_world.main.common.entity.mob.RottenMushroomEntity;
 import net.fabricmc.api.EnvType;

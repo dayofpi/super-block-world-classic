@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.client.entity.renderer.mob;
 
 import com.dayofpi.super_block_world.main.Main;
 import com.dayofpi.super_block_world.client.entity.model.StingbyModel;
-import com.dayofpi.super_block_world.client.entity.ModelLayers;
+import com.dayofpi.super_block_world.client.ModelLayers;
 import com.dayofpi.super_block_world.main.common.entity.mob.StingbyEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

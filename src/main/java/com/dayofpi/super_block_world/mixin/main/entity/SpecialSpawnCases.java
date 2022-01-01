@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.mixin.main.entity;
 import com.dayofpi.super_block_world.main.common.entity.mob.ThwompEntity;
 import com.dayofpi.super_block_world.main.common.entity.mob.buzzy.AbstractBuzzy;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;

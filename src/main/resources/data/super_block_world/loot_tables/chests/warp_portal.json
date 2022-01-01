@@ -85,6 +85,11 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 10,
+          "name": "minecraft:stone_pickaxe"
+        },
+        {
+          "type": "minecraft:item",
           "weight": 5,
           "name": "super_block_world:hammer"
         },

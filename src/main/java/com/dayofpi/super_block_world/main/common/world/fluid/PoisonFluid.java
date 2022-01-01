@@ -3,8 +3,8 @@ package com.dayofpi.super_block_world.main.common.world.fluid;
 import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
-import com.dayofpi.super_block_world.main.registry.general.FluidRegistry;
-import com.dayofpi.super_block_world.main.registry.general.ParticleRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.FluidRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.ParticleRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.fluid.Fluid;
@@ -65,7 +65,7 @@ public abstract class PoisonFluid extends AbstractFluid {
     }
 
     public Optional<SoundEvent> getBucketFillSound() {
-        return Optional.of(ModSounds.BLOCK_POISON_FILL);
+        return Optional.of(ModSounds.ITEM_POISON_BUCKET_FILL);
     }
 
     public static class Flowing extends PoisonFluid {

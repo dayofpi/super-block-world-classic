@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.registry.world.biome;
 
-import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.SpawnSettings;
@@ -52,7 +52,6 @@ public class SpawnTemplates {
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityRegistry.BOO, 10, 1, 1));
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ENDERMAN, 2, 2, 2));
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityRegistry.HAMMER_BRO, 4, 2, 4));
-        builder.spawnCost(EntityRegistry.BOO, 0.7, 0.12);
         addGoombas(builder);
     }
 
@@ -78,8 +77,9 @@ public class SpawnTemplates {
     }
 
     static void addMooMooMeadowMobs(SpawnSettings.Builder builder) {
-        builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityRegistry.MOO_MOO, 80, 2, 2));
+        builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityRegistry.MOO_MOO, 100, 2, 4));
     }
+
     static void addGoombas(SpawnSettings.Builder builder) {
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityRegistry.GOOMBA, 40, 1, 2));
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityRegistry.PARAGOOMBA, 5, 2, 4));

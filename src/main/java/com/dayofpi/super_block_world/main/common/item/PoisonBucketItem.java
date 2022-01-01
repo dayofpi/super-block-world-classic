@@ -17,7 +17,7 @@ public class PoisonBucketItem extends BucketItem {
     }
 
     protected void playEmptyingSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos) {
-        SoundEvent soundEvent = ModSounds.BLOCK_POISON_EMPTY;
+        SoundEvent soundEvent = ModSounds.ITEM_POISON_BUCKET_EMPTY;
         world.playSound(player, pos, soundEvent, SoundCategory.BLOCKS, 1.0F, 1.0F);
         world.emitGameEvent(player, GameEvent.FLUID_PLACE, pos);
     }

@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.main.common.entity.mob;
 
 import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.common.block.reactive.ReactiveBlock;
-import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
+import com.dayofpi.super_block_world.main.common.block.item_block.ReactiveBlock;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.dayofpi.super_block_world.main.util.entity.DirectionHelper;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
 import net.minecraft.block.BlockState;

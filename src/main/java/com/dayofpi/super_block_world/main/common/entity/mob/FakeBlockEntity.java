@@ -2,9 +2,9 @@ package com.dayofpi.super_block_world.main.common.entity.mob;
 
 import com.dayofpi.super_block_world.client.GlobalReceivers;
 import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.common.block.reactive.ReactiveBlock;
+import com.dayofpi.super_block_world.main.common.block.item_block.ReactiveBlock;
 import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
-import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;

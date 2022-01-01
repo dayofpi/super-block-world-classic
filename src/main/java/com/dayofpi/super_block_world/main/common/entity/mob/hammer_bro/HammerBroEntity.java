@@ -4,7 +4,7 @@ import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
 import com.dayofpi.super_block_world.main.common.entity.goal.SeekPowerUpGoal;
 import com.dayofpi.super_block_world.main.common.entity.projectile.HammerEntity;
-import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import net.minecraft.entity.*;
 import net.minecraft.item.ItemStack;
@@ -29,10 +29,10 @@ public class HammerBroEntity extends AbstractBro {
         double e = target.getBodyY(0.3333333333333333D) - hammerEntity.getY();
         double f = target.getZ() - this.getZ();
         double g = Math.sqrt(d * d + f * f);
-        hammerEntity.setVelocity(d, e + g * 0.3D, f, 1.2F, (float)(14 - this.world.getDifficulty().getId() * 4));
-        this.playSound(ModSounds.ITEM_PROJECTILE_THROW, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+        hammerEntity.setVelocity(d, e + g * 0.67D, f, 0.9F, (float)(14 - this.world.getDifficulty().getId() * 4));
         this.world.spawnEntity(hammerEntity);
         this.swingHand(Hand.MAIN_HAND);
+        this.playSound(ModSounds.ITEM_PROJECTILE_HAMMER, 0.9F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
     }
 
     public void initGoals() {
@@ -59,7 +59,7 @@ public class HammerBroEntity extends AbstractBro {
 
     private void transform(EntityType<? extends AbstractBro> entityType) {
         this.convertTo(entityType, false);
-        this.playSound(ModSounds.ITEM_SUPER_MUSHROOM_GROW, 0.5F, 1.0F);
+        this.playSound(ModSounds.ITEM_POWER_UP, 0.5F, 1.0F);
     }
 
     @Nullable

@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.buzzy;
 
-import com.dayofpi.super_block_world.main.common.block.reactive.ReactiveBlock;
+import com.dayofpi.super_block_world.main.common.block.item_block.ReactiveBlock;
 import com.dayofpi.super_block_world.main.common.entity.CeilingEntity;
-import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
-import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
 import com.dayofpi.super_block_world.client.sound.ModSounds;

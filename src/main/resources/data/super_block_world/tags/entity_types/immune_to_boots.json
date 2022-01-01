@@ -3,6 +3,8 @@
   "values": [
     "super_block_world:spike_top",
     "super_block_world:boo",
+    "super_block_world:fuzzy",
+    "minecraft:armor_stand",
     "minecraft:shulker",
     "minecraft:guardian",
     "minecraft:elder_guardian"

@@ -50,7 +50,7 @@ public class IceballRenderer extends EntityRenderer<IceballEntity> {
         vertexConsumer.vertex(modelMatrix, x - 0.5F, (float)y - 0.25F, 0.0F).color(255, 255, 255, 255).texture((float)textureU, (float)textureV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0.0F, 1.0F, 0.0F).next();
     }
 
-    public Identifier getTexture(IceballEntity fireballEntity) {
+    public Identifier getTexture(IceballEntity entity) {
         return TEXTURE;
     }
 

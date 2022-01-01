@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#O#",
+    "X#X"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "X": {
+      "item": "super_block_world:fuzzball"
+    },
+    "O": {
+      "item": "super_block_world:blue_star_bit"
+    }
+  },
+  "result": {
+    "item": "super_block_world:fuzzy_magnet",
+    "count": 1
+  }
+}

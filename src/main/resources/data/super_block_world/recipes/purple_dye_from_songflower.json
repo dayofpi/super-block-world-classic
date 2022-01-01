@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "purple_dye",
+  "ingredients": [
+    {
+      "item": "super_block_world:purple_songflower"
+    }
+  ],
+  "result": {
+    "item": "minecraft:purple_dye"
+  }
+}

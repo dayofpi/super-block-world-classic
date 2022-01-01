@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.main.common.entity.mob;
 import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
-import com.dayofpi.super_block_world.main.common.entity.projectile.FlowerFireballEntity;
+import com.dayofpi.super_block_world.main.common.entity.projectile.FireballEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
@@ -84,7 +84,7 @@ public class BobOmbEntity extends EnemyEntity implements Angerable {
     }
 
     public boolean damage(DamageSource source, float amount) {
-        if (source.isFire() || source.getSource() instanceof FlowerFireballEntity || source.getSource() instanceof AbstractFireballEntity) {
+        if (source.isFire() || source.getSource() instanceof FireballEntity || source.getSource() instanceof AbstractFireballEntity) {
             if (!this.world.isClient) {
                 this.ignite();
             }

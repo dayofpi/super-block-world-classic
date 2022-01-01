@@ -1,10 +1,7 @@
 package com.dayofpi.super_block_world.main.registry.world.biome;
 
-import com.dayofpi.super_block_world.main.registry.general.EntityRegistry;
-import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedBlocks;
-import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedMisc;
-import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedOres;
-import com.dayofpi.super_block_world.main.registry.world.feature.placed.PlacedVegetation;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.world.feature.placed.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.GenerationSettings;
@@ -18,7 +15,9 @@ public class DefaultTemplates {
         builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityRegistry.BUZZY_BEETLE, 100, 2, 3));
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityRegistry.SPIKE_TOP, 50, 2, 3));
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityRegistry.BOB_OMB, 30, 1, 4));
-        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityRegistry.THWOMP, 3, 1, 2));
+        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityRegistry.THWOMP, 2, 1, 2));
+        builder.spawnCost(EntityRegistry.THWOMP, 0.8, 0.12);
+
     }
 
     static void addBasicFeatures(GenerationSettings.Builder builder) {
@@ -44,69 +43,75 @@ public class DefaultTemplates {
     }
 
     static void addFluids(GenerationSettings.Builder builder) {
-        builder.feature(GenerationStep.Feature.LAKES, PlacedMisc.LAKE_LAVA);
-        builder.feature(GenerationStep.Feature.LAKES, PlacedMisc.LAKE_POISON);
-        builder.feature(GenerationStep.Feature.FLUID_SPRINGS, PlacedMisc.SPRING);
+        builder.feature(GenerationStep.Feature.LAKES, PlacedDecoration.LAKE_LAVA);
+        builder.feature(GenerationStep.Feature.LAKES, PlacedDecoration.LAKE_POISON);
+        builder.feature(GenerationStep.Feature.FLUID_SPRINGS, PlacedDecoration.SPRING);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.CORAL_FEW);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.SEAGRASS);
     }
 
+    static void addPipes(GenerationSettings.Builder builder) {
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedPipe.PIPE_PATCH_HIGH);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedPipe.PIPE_PATCH_LOW);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedPipe.UNDERWATER_PIPE);
+    }
+
     static void addCaveContent(GenerationSettings.Builder builder) {
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.PIPE_PATCH);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.UNDERWATER_PIPE);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.AMETHYST);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.CAVE_DECORATION_COMMON);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.CAVE_DECORATION_RARE);
+        addPipes(builder);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedDecoration.AMETHYST);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedDecoration.STAR_CRYSTAL);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedDecoration.CAVE_DECORATION_COMMON);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedDecoration.CAVE_DECORATION_RARE);
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedVegetation.CAVE_VEGETATION);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.MUNCHER_FEW);
     }
 
     static void addIcyCaveContent(GenerationSettings.Builder builder) {
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.PIPE_PATCH);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.UNDERWATER_PIPE);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.AMETHYST);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.ICICLE);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.CAVE_DECORATION_COMMON);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedMisc.CAVE_DECORATION_RARE);
+        addPipes(builder);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedDecoration.AMETHYST);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedDecoration.ICICLE);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedDecoration.CAVE_DECORATION_COMMON);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedDecoration.CAVE_DECORATION_RARE);
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedVegetation.CAVE_VEGETATION);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedVegetation.FROZEN_MUNCHER);
     }
 
     static void addDefaultBlocks(GenerationSettings.Builder builder) {
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_PILE_PATCH);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_LINE_SURFACE);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_LINE_DEEP);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_SINGLE);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlock.BLOCK_PILE_PATCH);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlock.BLOCK_LINE_SURFACE);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlock.BLOCK_LINE_DEEP);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlock.BLOCK_SINGLE);
     }
 
     static void addIcyBlocks(GenerationSettings.Builder builder) {
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_PILE_PATCH);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_LINE_SURFACE);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_LINE_CRYSTAL);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlocks.BLOCK_SINGLE);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlock.BLOCK_PILE_PATCH);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlock.BLOCK_LINE_SURFACE);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlock.BLOCK_LINE_CRYSTAL);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedBlock.BLOCK_SINGLE);
     }
 
     static void addDefaultOres(GenerationSettings.Builder builder) {
-        builder.feature(GenerationStep.Feature.RAW_GENERATION, PlacedMisc.TOPPING);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.DISK_SAND);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.DISK_SEASTONE);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_CRUMBLE);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_BRONZE);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_AMETHYST);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_CERISE);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_HARDSTONE);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.TOPPING_COAL);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.TOPPING_IRON);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.TOPPING_GOLD);
+        builder.feature(GenerationStep.Feature.RAW_GENERATION, PlacedDecoration.TOPPING);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.DISK_SAND);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.DISK_SEASTONE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.ORE_CRUMBLE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.ORE_BRONZE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.ORE_VANILLATE_COAL);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.ORE_AMETHYST);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.ORE_CERISE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.ORE_TOADSTONE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.ORE_GLOOMSTONE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.VANILLATE_IRON_ORE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.TOPPING_GOLD);
     }
 
     static void addIcyOres(GenerationSettings.Builder builder) {
-        builder.feature(GenerationStep.Feature.RAW_GENERATION, PlacedMisc.FROSTING);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.DISK_SAND);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.DISK_SEASTONE);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_CRUMBLE);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_CERISE);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_HARDSTONE);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_FROZEN);
+        builder.feature(GenerationStep.Feature.RAW_GENERATION, PlacedDecoration.FROSTING);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.DISK_SAND);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.DISK_SEASTONE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.ORE_CRUMBLE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.ORE_CERISE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.ORE_HARDSTONE);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOre.ORE_FROZEN);
     }
 }

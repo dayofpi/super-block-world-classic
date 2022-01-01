@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.entity.renderer.other;
 
 import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.common.entity.projectile.IceballEntity;
+import com.dayofpi.super_block_world.main.common.entity.projectile.IceBroIceballEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
@@ -17,7 +17,7 @@ import net.minecraft.util.math.Matrix3f;
 import net.minecraft.util.math.Matrix4f;
 import net.minecraft.util.math.Vec3f;
 @Environment(EnvType.CLIENT)
-public class EnemyIceballRenderer extends EntityRenderer<IceballEntity> {
+public class EnemyIceballRenderer extends EntityRenderer<IceBroIceballEntity> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/item/enemy_iceball.png");
     private static final RenderLayer LAYER;
 
@@ -25,11 +25,11 @@ public class EnemyIceballRenderer extends EntityRenderer<IceballEntity> {
         super(context);
     }
 
-    protected int getBlockLight(IceballEntity fireballEntity, BlockPos blockPos) {
+    protected int getBlockLight(IceBroIceballEntity fireballEntity, BlockPos blockPos) {
         return 7;
     }
 
-    public void render(IceballEntity entity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light) {
+    public void render(IceBroIceballEntity entity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light) {
         matrixStack.push();
         matrixStack.scale(1.0F, 1.0F, 1.0F);
         matrixStack.multiply(this.dispatcher.getRotation());
@@ -50,7 +50,7 @@ public class EnemyIceballRenderer extends EntityRenderer<IceballEntity> {
         vertexConsumer.vertex(modelMatrix, x - 0.5F, (float)y - 0.25F, 0.0F).color(255, 255, 255, 255).texture((float)textureU, (float)textureV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0.0F, 1.0F, 0.0F).next();
     }
 
-    public Identifier getTexture(IceballEntity fireballEntity) {
+    public Identifier getTexture(IceBroIceballEntity entity) {
         return TEXTURE;
     }
 

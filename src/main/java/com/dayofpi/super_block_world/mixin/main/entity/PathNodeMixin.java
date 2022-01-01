@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
 import net.minecraft.block.BlockState;

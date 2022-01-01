@@ -18,7 +18,7 @@ public class TurnipItem extends Item {
 
    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
       ItemStack itemStack = user.getStackInHand(hand);
-      world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ITEM_PROJECTILE_THROW, SoundCategory.NEUTRAL, 0.5F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+      world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ITEM_PROJECTILE_GENERIC, SoundCategory.NEUTRAL, 0.5F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
       user.getItemCooldownManager().set(this, 5);
       if (!world.isClient) {
          TurnipEntity turnipEntity = new TurnipEntity(world, user);

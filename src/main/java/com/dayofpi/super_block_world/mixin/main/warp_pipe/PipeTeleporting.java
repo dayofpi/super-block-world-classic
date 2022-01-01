@@ -1,13 +1,13 @@
 package com.dayofpi.super_block_world.mixin.main.warp_pipe;
 
 import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.common.block.pipe.WarpPipeBlock;
-import com.dayofpi.super_block_world.main.registry.general.StatusEffectRegistry;
-import com.dayofpi.super_block_world.main.registry.general.TagRegistry;
+import com.dayofpi.super_block_world.main.common.block.decoration.pipe.WarpPipeBlock;
+import com.dayofpi.super_block_world.main.registry.misc.ParticleRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.StatusEffectRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -73,7 +73,7 @@ public abstract class PipeTeleporting extends LivingEntity {
         if (this.isAlive()) {
             if (this.hasStatusEffect(StatusEffectRegistry.STAR_POWER)) {
                 for (int i = 0; i < 1; ++i) {
-                    world.addParticle(ParticleTypes.GLOW, true, this.getX() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), this.getRandomBodyY(), this.getZ() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), 0, 0, 0);
+                    world.addParticle(ParticleRegistry.STAR_BIT, true, this.getX() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), this.getRandomBodyY(), this.getZ() + (random.nextBoolean() ? random.nextFloat() : -random.nextFloat()), 0, 0, 0);
                 }
             }
             if (this.getPipeCooldown() > 0) {

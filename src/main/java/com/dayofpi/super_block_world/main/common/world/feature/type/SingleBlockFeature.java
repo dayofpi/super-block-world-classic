@@ -1,11 +1,12 @@
 package com.dayofpi.super_block_world.main.common.world.feature.type;
 
-import com.dayofpi.super_block_world.main.common.block.reactive.CoinBlock;
+import com.dayofpi.super_block_world.main.common.block.item_block.CoinBlock;
 import com.dayofpi.super_block_world.main.common.block_entity.CoinBlockBE;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.SimpleBlockFeature;
@@ -21,14 +22,20 @@ public class SingleBlockFeature extends SimpleBlockFeature {
     public boolean generate(FeatureContext<SimpleBlockFeatureConfig> context) {
         StructureWorldAccess world = context.getWorld();
         BlockPos pos = context.getOrigin();
-        BlockState state = context.getWorld().getBlockState(pos);
+        BlockState state = context.getConfig().toPlace().getBlockState(context.getRandom(), pos);
         Inventory blockEntity = (Inventory) context.getWorld().getBlockEntity(pos);
-        if (world.getBlockState(pos).isOf(BlockRegistry.COIN_BLOCK) && blockEntity instanceof CoinBlockBE) {
+        boolean water = world.isWater(pos);
+
+        if (water && (state.isOf(BlockRegistry.QUESTION_BLOCK) || state.isOf(BlockRegistry.COIN_BLOCK))) {
+            world.setBlockState(pos, state.with(Properties.WATERLOGGED, true), 2);
+        }
+
+        if (state.isOf(BlockRegistry.COIN_BLOCK) && blockEntity instanceof CoinBlockBE) {
             if (world.getRandom().nextInt(30) == 0)
-                world.setBlockState(pos, state.with(CoinBlock.TYPE, 5), 2);
+                world.setBlockState(pos, state.with(CoinBlock.TYPE, 5).with(Properties.WATERLOGGED, water), 2);
 
             if (world.getRandom().nextInt(30) == 0) {
-                world.setBlockState(pos, state.with(CoinBlock.TYPE, 3), 2);
+                world.setBlockState(pos, state.with(CoinBlock.TYPE, 3).with(Properties.WATERLOGGED, water), 2);
                 blockEntity.getStack(0).setCount(15);
             } else if (world.getRandom().nextInt(3) == 0) {
                 blockEntity.getStack(0).setCount(5);

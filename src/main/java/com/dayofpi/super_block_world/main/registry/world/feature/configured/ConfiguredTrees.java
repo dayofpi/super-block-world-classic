@@ -5,10 +5,14 @@ import com.dayofpi.super_block_world.main.registry.block.MushroomBlocks;
 import com.dayofpi.super_block_world.main.common.block.decoration.MushroomCapBlock;
 import com.dayofpi.super_block_world.main.common.world.feature.config.GiantMushroomFeatureConfig;
 import com.dayofpi.super_block_world.main.registry.world.feature.FeatureRegistry;
+import com.dayofpi.super_block_world.main.registry.world.feature.utility.BlockLists;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
+import net.minecraft.world.gen.feature.BlockColumnFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
@@ -51,6 +55,10 @@ public class ConfiguredTrees {
     public static final ConfiguredFeature<?, ?> HUGE_ORANGE_MUSHROOM = FeatureRegistry.GIANT_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.ORANGE_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(0, 8), UniformIntProvider.create(2, 3), true));
     public static final ConfiguredFeature<?, ?> HUGE_BROWN_MUSHROOM = FeatureRegistry.GIANT_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.BROWN_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(4, 8), UniformIntProvider.create(2, 3), true));
     public static final ConfiguredFeature<?, ?> HUGE_RED_MUSHROOM = FeatureRegistry.GIANT_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.RED_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(4, 8),ConstantIntProvider.create(2), false));
+    public static final ConfiguredFeature<?, ?> BEANSTALK = Feature.BLOCK_COLUMN.configure(new BlockColumnFeatureConfig((BlockLists.BEANSTALK), Direction.UP, BlockPredicate.IS_AIR, true));
+    public static final ConfiguredFeature<?, ?> BEANSTALK_BUDDING = Feature.BLOCK_COLUMN.configure(new BlockColumnFeatureConfig((BlockLists.BEANSTALK_BUDDING), Direction.UP, BlockPredicate.IS_AIR, true));
+    public static final ConfiguredFeature<?, ?> BEANSTALK_UNDERGROUND = Feature.BLOCK_COLUMN.configure(new BlockColumnFeatureConfig((BlockLists.BEANSTALK_UNDERGROUND), Direction.UP, BlockPredicate.IS_AIR, true));
+    public static final ConfiguredFeature<?, ?> BEANSTALK_BUDDING_UNDERGROUND = Feature.BLOCK_COLUMN.configure(new BlockColumnFeatureConfig((BlockLists.BEANSTALK_BUDDING_UNDERGROUND), Direction.UP, BlockPredicate.IS_AIR, true));
 
     public static final class States {
         private static final BlockState AMANITA_LEAVES = BlockRegistry.AMANITA_LEAVES.getDefaultState();
