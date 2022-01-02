@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.main.common.entity.projectile;
 
 import com.dayofpi.super_block_world.main.Client;
-import com.dayofpi.super_block_world.main.registry.TagRegistry;
-import com.dayofpi.super_block_world.main.registry.EntityRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -21,6 +21,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 public class HammerEntity extends ThrownItemEntity {
@@ -58,11 +59,12 @@ public class HammerEntity extends ThrownItemEntity {
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         if (!this.world.isClient) {
+            this.playSound(SoundEvents.BLOCK_ANCIENT_DEBRIS_BREAK, 1.0F, 0.8F);
             if (hitResult.getType() == HitResult.Type.BLOCK) {
-                this.playSound(SoundEvents.BLOCK_ANCIENT_DEBRIS_BREAK, 1.0F, 0.8F);
                 BlockPos blockPos = ((BlockHitResult) hitResult).getBlockPos();
                 BlockState blockState = world.getBlockState(blockPos);
                 if (blockState.isIn(TagRegistry.BRICKS)) {
+                    if (this.getOwner() == null || this.getOwner() != null && this.getOwner().isPlayer() || this.getOwner() != null && this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING))
                     world.breakBlock(blockPos, true);
                 }
             }

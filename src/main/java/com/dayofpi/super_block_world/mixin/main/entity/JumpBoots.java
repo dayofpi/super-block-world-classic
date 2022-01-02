@@ -1,16 +1,13 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.TagRegistry;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,6 +17,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.List;
 
 @Mixin(LivingEntity.class)
 public abstract class JumpBoots extends Entity {
@@ -33,29 +32,27 @@ public abstract class JumpBoots extends Entity {
     @Shadow
     public abstract float getSoundPitch();
 
-    @Inject(at = @At("HEAD"), method = "pushAwayFrom")
-    public void pushAwayFrom(Entity entity, CallbackInfo info) {
-        if (entity instanceof LivingEntity other) {
-            if (this.hasJumpBoots() && !other.isDead() && this.getY() > other.getY()) {
+    @Shadow public abstract boolean isAlive();
+
+    @Shadow public abstract Box getBoundingBox(EntityPose pose);
+
+    @Inject(at = @At("TAIL"), method = "tickMovement")
+    private void tickMovement(CallbackInfo info) {
+        if (this.isAlive() && this.hasJumpBoots()) {
+            List<Entity> list = world.getOtherEntities(this, this.getBoundingBox().offset(0, -0.5, 0), entity -> entity instanceof LivingEntity);
+            list.forEach(entity -> {
                 Vec3d velocity = this.getVelocity();
-                this.setVelocity(velocity.x, 0.6, velocity.z);
-            }
-
-            if (other.getEquippedStack(EquipmentSlot.FEET).isOf(ItemRegistry.JUMP_BOOTS)) {
-                if (!other.isDead() && other.getY() > this.getY()) {
-                    SoundEvent soundEvent = ModSounds.ENTITY_JUMP_BOOTS_BOUNCE;
-                    if (!this.getType().isIn(TagRegistry.IMMUNE_TO_BOOTS)) {
-                        this.damage(ModEntityDamageSource.stomp(other), 5F);
-                        soundEvent = ModSounds.ENTITY_JUMP_BOOTS_ATTACK;
+                if (entity.isAlive() && entity.getBlockY() < this.getY() && velocity.y <= 0) {
+                    this.setVelocity(velocity.x, 0.6, velocity.z);
+                    if (!entity.getType().isIn(TagRegistry.IMMUNE_TO_BOOTS)) {
+                        entity.damage(ModEntityDamageSource.stomp(this), 5F);
+                        this.playSound(ModSounds.ENTITY_JUMP_BOOTS_ATTACK, 1.0F, 1.0F);
+                    } else {
+                        this.playSound(ModSounds.ENTITY_JUMP_BOOTS_BOUNCE, 1.0F, 1.0F);
                     }
-                    this.doStompSound(soundEvent);
                 }
-            }
+            });
         }
-    }
-
-    private void doStompSound(SoundEvent soundEvent) {
-        this.playSound(soundEvent, 1.0F, 1.0F);
     }
 
     private boolean hasJumpBoots() {
@@ -65,11 +62,12 @@ public abstract class JumpBoots extends Entity {
 
     @Inject(at = @At("HEAD"), method = "jump")
     protected void jump(CallbackInfo info) {
-        if (this.hasJumpBoots()) {
+        if (this.hasJumpBoots() && !this.isSneaking()) {
             this.playSound(ModSounds.ENTITY_JUMP_BOOTS_JUMP, 0.6F, this.getSoundPitch());
         }
     }
 
+    // Higher jump
     @Inject(at = @At("HEAD"), method = "getJumpVelocity()F", cancellable = true)
     private void getJumpVelocity(CallbackInfoReturnable<Float> info) {
         if (this.hasJumpBoots()) {
@@ -82,6 +80,7 @@ public abstract class JumpBoots extends Entity {
         }
     }
 
+    // No fall damage
     @Inject(at = @At("HEAD"), method = "handleFallDamage(FFLnet/minecraft/entity/damage/DamageSource;)Z", cancellable = true)
     public void handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> info) {
         if (this.hasJumpBoots()) {

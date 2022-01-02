@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.registry.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
 import net.minecraft.block.BlockState;
@@ -28,6 +28,9 @@ public class PathNodeMixin {
             info.setReturnValue(PathNodeType.DAMAGE_OTHER);
             info.cancel();
         } else if (blockState.isOf(PlantBlocks.FIRE_TULIP)) {
+            info.setReturnValue(PathNodeType.DAMAGE_FIRE);
+            info.cancel();
+        } else if (blockState.isOf(BlockRegistry.STONE_TORCH) && blockState.get(Properties.LIT)) {
             info.setReturnValue(PathNodeType.DAMAGE_FIRE);
             info.cancel();
         } else {
@@ -58,8 +61,12 @@ public class PathNodeMixin {
                         info.setReturnValue(PathNodeType.DANGER_OTHER);
                         info.cancel();
                     }
-                    if (blockState == BlockRegistry.SPIKE_TRAP.getDefaultState().with(Properties.POWERED, true)) {
+                    if (blockState.isOf(BlockRegistry.SPIKE_TRAP) && blockState.get(Properties.POWERED)) {
                         info.setReturnValue(PathNodeType.DAMAGE_OTHER);
+                        info.cancel();
+                    }
+                    if (blockState.isOf(BlockRegistry.STONE_TORCH) && blockState.get(Properties.LIT)) {
+                        info.setReturnValue(PathNodeType.DAMAGE_FIRE);
                         info.cancel();
                     }
                     if (blockState.isOf(PlantBlocks.FIRE_TULIP)) {

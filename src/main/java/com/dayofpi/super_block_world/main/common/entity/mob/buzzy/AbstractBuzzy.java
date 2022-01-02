@@ -1,11 +1,13 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.buzzy;
 
+import com.dayofpi.super_block_world.main.common.block.item_block.ReactiveBlock;
 import com.dayofpi.super_block_world.main.common.entity.CeilingEntity;
-import com.dayofpi.super_block_world.main.registry.EntityRegistry;
-import com.dayofpi.super_block_world.main.registry.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -95,8 +97,12 @@ public abstract class AbstractBuzzy extends CeilingEntity {
         }
         if (fallDistance > 0.0F) {
             for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos().down(), 1, 0, 1)) {
+                BlockState state = world.getBlockState(blockPos);
                 if (world.getBlockState(blockPos).isIn(TagRegistry.BRICKS)) {
                     world.breakBlock(blockPos, true);
+                } else if (state.getBlock() instanceof ReactiveBlock reactiveBlock) {
+                    reactiveBlock.activate(state, world, blockPos);
+                    this.setUpsideDown(false);
                 } else this.setUpsideDown(false);
 
             }

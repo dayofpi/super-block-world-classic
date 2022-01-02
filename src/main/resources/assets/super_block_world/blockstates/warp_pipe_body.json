@@ -5,7 +5,7 @@
         "facing": "down"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_body",
+        "model": "super_block_world:block/green_pipe_body",
         "x": 180
       }
     },
@@ -14,7 +14,7 @@
         "facing": "east"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_body",
+        "model": "super_block_world:block/green_pipe_body",
         "x": 90,
         "y": 90
       }
@@ -24,7 +24,7 @@
         "facing": "north"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_body",
+        "model": "super_block_world:block/green_pipe_body",
         "x": 90
       }
     },
@@ -33,7 +33,7 @@
         "facing": "south"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_body",
+        "model": "super_block_world:block/green_pipe_body",
         "x": 90,
         "y": 180
       }
@@ -43,7 +43,7 @@
         "facing": "up"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_body"
+        "model": "super_block_world:block/green_pipe_body"
       }
     },
     {
@@ -51,7 +51,7 @@
         "facing": "west"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_body",
+        "model": "super_block_world:block/green_pipe_body",
         "x": 90,
         "y": 270
       }
@@ -61,7 +61,7 @@
         "down": "true"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_connection",
+        "model": "super_block_world:block/green_pipe_link",
         "x": 90,
         "y": 270
       }
@@ -71,7 +71,7 @@
         "up": "true"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_connection",
+        "model": "super_block_world:block/green_pipe_link",
         "x": 90,
         "y": 180
       }
@@ -81,7 +81,7 @@
         "east": "true"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_connection",
+        "model": "super_block_world:block/green_pipe_link",
         "y": 90
       }
     },
@@ -90,7 +90,7 @@
         "west": "true"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_connection",
+        "model": "super_block_world:block/green_pipe_link",
         "y": 270
       }
     },
@@ -99,7 +99,7 @@
         "north": "true"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_connection"
+        "model": "super_block_world:block/green_pipe_link"
       }
     },
     {
@@ -107,7 +107,7 @@
         "south": "true"
       },
       "apply": {
-        "model": "super_block_world:block/warp_pipe_connection",
+        "model": "super_block_world:block/green_pipe_link",
         "y": 180
       }
     }

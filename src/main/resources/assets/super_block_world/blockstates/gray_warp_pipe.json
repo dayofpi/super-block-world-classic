@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "super_block_world:block/gray_warp_pipe",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "super_block_world:block/gray_warp_pipe",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "super_block_world:block/gray_warp_pipe",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "super_block_world:block/gray_warp_pipe",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "super_block_world:block/gray_warp_pipe"
+    },
+    "facing=west": {
+      "model": "super_block_world:block/gray_warp_pipe",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

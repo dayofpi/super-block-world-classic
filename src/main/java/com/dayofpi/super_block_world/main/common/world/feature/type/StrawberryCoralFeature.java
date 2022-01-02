@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
@@ -27,7 +28,7 @@ public class StrawberryCoralFeature extends Feature<DefaultFeatureConfig> {
       int j = world.getTopY(Heightmap.Type.OCEAN_FLOOR, blockPos.getX(), blockPos.getZ());
       BlockPos blockPos2 = new BlockPos(blockPos.getX(), j, blockPos.getZ());
       if (world.getBlockState(blockPos2).isOf(Blocks.WATER)) {
-         BlockState tip = BlockRegistry.COIN_BLOCK.getDefaultState();
+         BlockState tip = BlockRegistry.COIN_BLOCK.getDefaultState().with(Properties.WATERLOGGED, true);
          if (random.nextFloat() > 0.2F ) {
             tip = BlockRegistry.STRAWBERRY_CORAL.getDefaultState();
          }

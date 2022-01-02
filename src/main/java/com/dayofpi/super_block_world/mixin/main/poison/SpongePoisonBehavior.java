@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.poison;
 
-import com.dayofpi.super_block_world.main.registry.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.google.common.collect.Lists;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;

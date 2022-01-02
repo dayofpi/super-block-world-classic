@@ -1,0 +1,8 @@
+{
+	"parent": "super_block_world:block/template_pipe_link",
+	"textures": {
+		"top": "super_block_world:block/brown_pipe_top",
+		"side": "super_block_world:block/brown_pipe_body",
+		"particle": "super_block_world:block/brown_pipe_body"
+	}
+}

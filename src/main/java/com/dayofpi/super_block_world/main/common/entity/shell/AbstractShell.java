@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.main.common.entity.shell;
 
 import com.dayofpi.super_block_world.main.Client;
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.TagRegistry;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;

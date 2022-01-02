@@ -21,6 +21,6 @@ public class BlockEntityRegistry {
         QUESTION_BLOCK = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "question_block"), FabricBlockEntityTypeBuilder.create(QuestionBlockBE::new, BlockRegistry.QUESTION_BLOCK).build());
         COIN_BLOCK = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "coin_block"), FabricBlockEntityTypeBuilder.create(CoinBlockBE::new, BlockRegistry.COIN_BLOCK).build());
         BOO_LANTERN = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "boo_lantern"), FabricBlockEntityTypeBuilder.create(BooLanternBE::new, BlockRegistry.BOO_LANTERN).build());
-        WARP_PIPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "warp_pipe"), FabricBlockEntityTypeBuilder.create(WarpPipeBE::new, BlockRegistry.WARP_PIPE).build());
+        WARP_PIPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "warp_pipe"), FabricBlockEntityTypeBuilder.create(WarpPipeBE::new, ColoredBlocks.WHITE_WARP_PIPE, ColoredBlocks.ORANGE_WARP_PIPE, ColoredBlocks.MAGENTA_WARP_PIPE, ColoredBlocks.LIGHT_BLUE_WARP_PIPE, ColoredBlocks.YELLOW_WARP_PIPE, ColoredBlocks.LIME_WARP_PIPE, ColoredBlocks.PINK_WARP_PIPE, ColoredBlocks.GRAY_WARP_PIPE, ColoredBlocks.LIGHT_GRAY_WARP_PIPE, ColoredBlocks.CYAN_WARP_PIPE, ColoredBlocks.PURPLE_WARP_PIPE, ColoredBlocks.BLUE_WARP_PIPE, ColoredBlocks.BROWN_WARP_PIPE, ColoredBlocks.GREEN_WARP_PIPE, ColoredBlocks.RED_WARP_PIPE, ColoredBlocks.BLACK_WARP_PIPE).build());
     }
 }

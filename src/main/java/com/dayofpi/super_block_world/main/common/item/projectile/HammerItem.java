@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.item.projectile;
 
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.entity.projectile.HammerEntity;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import com.google.common.collect.ImmutableMultimap;
@@ -32,6 +32,25 @@ public class HammerItem extends Item {
       this.attributeModifiers = builder.build();
    }
 
+   public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+      ItemStack itemStack = user.getStackInHand(hand);
+      world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ITEM_PROJECTILE_HAMMER, SoundCategory.NEUTRAL, 0.5F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+      user.getItemCooldownManager().set(this, 5);
+      if (!world.isClient) {
+         HammerEntity hammerEntity = new HammerEntity(world, user);
+         hammerEntity.setItem(itemStack);
+         hammerEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+         world.spawnEntity(hammerEntity);
+      }
+
+      user.incrementStat(Stats.USED.getOrCreateStat(this));
+      if (!user.getAbilities().creativeMode) {
+         itemStack.decrement(1);
+      }
+
+      return TypedActionResult.success(itemStack, world.isClient());
+   }
+
    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
       stack.damage(1, attacker, ((e) -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND)));
       return true;
@@ -57,22 +76,5 @@ public class HammerItem extends Item {
       return 1;
    }
 
-   public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-      ItemStack itemStack = user.getStackInHand(hand);
-      world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ITEM_PROJECTILE_THROW, SoundCategory.NEUTRAL, 0.5F, 0.5F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
-      user.getItemCooldownManager().set(this, 5);
-      if (!world.isClient) {
-         HammerEntity hammerEntity = new HammerEntity(world, user);
-         hammerEntity.setItem(itemStack);
-         hammerEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
-         world.spawnEntity(hammerEntity);
-      }
 
-      user.incrementStat(Stats.USED.getOrCreateStat(this));
-      if (!user.getAbilities().creativeMode) {
-         itemStack.decrement(1);
-      }
-
-      return TypedActionResult.success(itemStack, world.isClient());
-   }
 }

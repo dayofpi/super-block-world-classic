@@ -1,0 +1,51 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"idle": {
+			"loop": true,
+			"animation_length": 0.25,
+			"bones": {
+				"right_eye": {
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.125": {
+							"vector": [0.7, 0.7, 0.7]
+						},
+						"0.25": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"left_eye": {
+					"scale": {
+						"0.0": {
+							"vector": [0.7, 0.7, 0.7]
+						},
+						"0.125": {
+							"vector": [1, 1, 1]
+						},
+						"0.25": {
+							"vector": [0.8, 0.8, 0.8]
+						}
+					}
+				},
+				"spikes": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.125": {
+							"vector": [0, 0, 45]
+						},
+						"0.25": {
+							"vector": [0, 0, 90]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

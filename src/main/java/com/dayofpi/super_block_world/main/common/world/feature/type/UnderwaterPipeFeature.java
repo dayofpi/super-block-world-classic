@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.main.common.world.feature.type;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.block.ColoredBlocks;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -25,27 +26,40 @@ public class UnderwaterPipeFeature extends Feature<DefaultFeatureConfig> {
 		int i = 0;
 		StructureWorldAccess world = context.getWorld();
 		BlockPos blockPos = context.getOrigin();
+		BlockPos floor = context.getOrigin().down();
 		Random random = context.getRandom();
 
-		if (world.getBlockState(blockPos).isOf(Blocks.WATER) && world.getBlockState(blockPos.down()).isSolidBlock(world, blockPos.down())) {
-			BlockState blockState = BlockRegistry.WARP_PIPE.getDefaultState().with(Properties.FACING, Direction.UP).with(Properties.WATERLOGGED, true);
-			BlockState blockState2 = BlockRegistry.WARP_PIPE_BODY.getDefaultState().with(Properties.FACING, Direction.UP).with(Properties.WATERLOGGED, true);
+		if (world.getBlockState(blockPos).isOf(Blocks.WATER) && world.getBlockState(floor).isSolidBlock(world, floor)) {
+			BlockState warpPipeState = ColoredBlocks.GREEN_WARP_PIPE.getDefaultState().with(Properties.FACING, Direction.UP).with(Properties.WATERLOGGED, true);
+			BlockState pipeBodyState = ColoredBlocks.GREEN_PIPE_BODY.getDefaultState().with(Properties.FACING, Direction.UP).with(Properties.WATERLOGGED, true);
+
+			if (random.nextInt(4) == 0) {
+				warpPipeState = ColoredBlocks.RED_WARP_PIPE.getDefaultState().with(Properties.FACING, Direction.UP).with(Properties.WATERLOGGED, true);
+				pipeBodyState = ColoredBlocks.RED_PIPE_BODY.getDefaultState().with(Properties.FACING, Direction.UP).with(Properties.WATERLOGGED, true);
+			} else if (random.nextInt(4) == 0) {
+				warpPipeState = ColoredBlocks.YELLOW_WARP_PIPE.getDefaultState().with(Properties.FACING, Direction.UP).with(Properties.WATERLOGGED, true);
+				pipeBodyState = ColoredBlocks.YELLOW_PIPE_BODY.getDefaultState().with(Properties.FACING, Direction.UP).with(Properties.WATERLOGGED, true);
+			}  else if (random.nextInt(4) == 0) {
+				warpPipeState = ColoredBlocks.BLUE_WARP_PIPE.getDefaultState().with(Properties.FACING, Direction.UP).with(Properties.WATERLOGGED, true);
+				pipeBodyState = ColoredBlocks.BLUE_PIPE_BODY.getDefaultState().with(Properties.FACING, Direction.UP).with(Properties.WATERLOGGED, true);
+			}
+
 			int k = 1 + random.nextInt(6);
 
 			for(int l = 0; l <= k; ++l) {
 				if (world.getBlockState(blockPos).isOf(Blocks.WATER) && world.getBlockState(blockPos.up()).isOf(Blocks.WATER)) {
 					if (l == k) {
-						world.setBlockState(blockPos, blockState, Block.NOTIFY_LISTENERS);
-						BubbleColumnBlock.update(world, blockPos.up(), blockState);
+						world.setBlockState(blockPos, warpPipeState, Block.NOTIFY_LISTENERS);
+						BubbleColumnBlock.update(world, blockPos.up(), warpPipeState);
 						++i;
 					} else {
-						world.setBlockState(blockPos, blockState2, Block.NOTIFY_LISTENERS);
+						world.setBlockState(blockPos, pipeBodyState, Block.NOTIFY_LISTENERS);
 					}
 				} else if (l > 0) {
 					BlockPos blockPos3 = blockPos.down();
-					if (!world.getBlockState(blockPos3.down()).isOf(BlockRegistry.WARP_PIPE)) {
-						world.setBlockState(blockPos3, blockState, Block.NOTIFY_LISTENERS);
-						BubbleColumnBlock.update(world, blockPos3.up(), blockState);
+					if (!world.getBlockState(blockPos3.down()).isIn(TagRegistry.WARP_PIPES)) {
+						world.setBlockState(blockPos3, warpPipeState, Block.NOTIFY_LISTENERS);
+						BubbleColumnBlock.update(world, blockPos3.up(), warpPipeState);
 						++i;
 					}
 					break;

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.block;
 
-import com.dayofpi.super_block_world.main.registry.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
@@ -14,7 +14,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 
-@SuppressWarnings("deprecation")
 @Mixin(PotatoesBlock.class)
 public class PoisonPotatoCrop extends CropBlock {
     public PoisonPotatoCrop(Settings settings) {

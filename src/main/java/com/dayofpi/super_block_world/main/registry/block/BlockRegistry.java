@@ -1,24 +1,34 @@
 package com.dayofpi.super_block_world.main.registry.block;
 
+import com.dayofpi.super_block_world.client.sound.ModSoundGroup;
 import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.common.block.*;
-import com.dayofpi.super_block_world.main.common.block.cloud.CloudBlock;
-import com.dayofpi.super_block_world.main.common.block.cloud.HappyCloudBlock;
-import com.dayofpi.super_block_world.main.common.block.fluid.PoisonBlock;
-import com.dayofpi.super_block_world.main.common.block.reactive.CoinBlock;
-import com.dayofpi.super_block_world.main.common.block.reactive.EmptyBlock;
-import com.dayofpi.super_block_world.main.common.block.reactive.QuestionBlock;
+import com.dayofpi.super_block_world.main.common.block.building.*;
+import com.dayofpi.super_block_world.main.common.block.building.cloud.CloudBlock;
+import com.dayofpi.super_block_world.main.common.block.building.cloud.HappyCloudBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.IcicleBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.QuicksandBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.StarCrystalBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.light_source.BooLanternBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.light_source.GlowBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.light_source.JellybeamBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.light_source.StoneTorchBlock;
+import com.dayofpi.super_block_world.main.common.block.hazard.FakeBlock;
+import com.dayofpi.super_block_world.main.common.block.hazard.PoisonBlock;
+import com.dayofpi.super_block_world.main.common.block.hazard.SpikeTrapBlock;
+import com.dayofpi.super_block_world.main.common.block.item_block.CoinBlock;
+import com.dayofpi.super_block_world.main.common.block.item_block.EmptyBlock;
+import com.dayofpi.super_block_world.main.common.block.item_block.HiddenBlock;
+import com.dayofpi.super_block_world.main.common.block.item_block.QuestionBlock;
+import com.dayofpi.super_block_world.main.common.block.mechanics.*;
+import com.dayofpi.super_block_world.main.common.block.plant.StrawberryCoralBlock;
 import com.dayofpi.super_block_world.main.common.block.soil.*;
-import com.dayofpi.super_block_world.main.registry.FluidRegistry;
-import com.dayofpi.super_block_world.main.common.block.pipe.BronzePipeBlock;
-import com.dayofpi.super_block_world.main.common.block.pipe.WarpPipeBlock;
-import com.dayofpi.super_block_world.main.common.block.pipe.WarpPipeBodyBlock;
+import com.dayofpi.super_block_world.main.registry.misc.FluidRegistry;
 import com.dayofpi.super_block_world.main.util.mixin_aid.ModSignType;
-import com.dayofpi.super_block_world.main.client.sound.ModSoundGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -27,28 +37,21 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 
 import java.util.function.ToIntFunction;
-
-@SuppressWarnings("SameReturnValue")
-
 public class BlockRegistry {
     public static final Block WARP_FRAME = new PillarBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(3.0F, 200F).sounds(BlockSoundGroup.METAL));
 
-    public static final Block BRONZE_PIPE = new BronzePipeBlock(FabricBlockSettings.of(Material.METAL, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(3.0F, 20.0F).nonOpaque().sounds(BlockSoundGroup.COPPER));
-    public static final Block BRONZE_PIPE_BODY = new WarpPipeBodyBlock(FabricBlockSettings.copyOf(BRONZE_PIPE));
-
-    public static final Block WARP_PIPE = new WarpPipeBlock(FabricBlockSettings.copyOf(BRONZE_PIPE).mapColor(MapColor.EMERALD_GREEN));
-    public static final Block WARP_PIPE_BODY = new WarpPipeBodyBlock(FabricBlockSettings.copyOf(WARP_PIPE));
-
     public static final Block EMPTY_BLOCK = new EmptyBlock(FabricBlockSettings.of(Material.METAL, MapColor.SPRUCE_BROWN).requiresTool().strength(3.0F, 200.0F).sounds(BlockSoundGroup.METAL));
-    public static final Block QUESTION_BLOCK = new QuestionBlock(FabricBlockSettings.of(Material.METAL, MapColor.YELLOW).requiresTool().strength(3.0F, 200.0F).luminance(3).sounds(BlockSoundGroup.METAL));
-    public static final Block COIN_BLOCK = new CoinBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(3.0F, 200.0F).luminance(3).sounds(BlockSoundGroup.METAL));
+    public static final Block HIDDEN_BLOCK = new HiddenBlock(FabricBlockSettings.copyOf(EMPTY_BLOCK).noCollision());
+    public static final Block QUESTION_BLOCK = new QuestionBlock(FabricBlockSettings.of(Material.METAL, MapColor.YELLOW).requiresTool().strength(3.0F, 200.0F).luminance(3).sounds(BlockSoundGroup.METAL).nonOpaque());
+    public static final Block COIN_BLOCK = new CoinBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(3.0F, 200.0F).luminance(3).sounds(BlockSoundGroup.METAL).nonOpaque());
     public static final Block FAKE_BLOCK = new FakeBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_BROWN).strength(0.6F).sounds(ModSoundGroup.TOADSTONE));
     public static final Block GLOW_BLOCK = new GlowBlock(FabricBlockSettings.of(Material.METAL, MapColor.PALE_YELLOW).requiresTool().strength(3.0F, 200.0F).sounds(BlockSoundGroup.METAL).luminance(15));
-
+    public static final Block PULL_BLOCK = new PullBlock(FabricBlockSettings.of(Material.METAL, MapColor.DIAMOND_BLUE).requiresTool().strength(3.0F, 200.0F).sounds(BlockSoundGroup.METAL).luminance(createLightLevelFromBooleanProperty(Properties.POWERED, 10, 0)));
     public static final Block JELLYBEAM = new JellybeamBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.LIGHT_BLUE).luminance(12).sounds(BlockSoundGroup.SLIME));
     public static final Block HAPPY_CLOUD = new HappyCloudBlock(FabricBlockSettings.of(Material.SNOW_BLOCK, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.SNOW).dynamicBounds());
     public static final Block CLOUD_BLOCK = new CloudBlock(FabricBlockSettings.copyOf(HAPPY_CLOUD));
     public static final Block QUICKSAND = new QuicksandBlock(FabricBlockSettings.of(Material.AGGREGATE, MapColor.TERRACOTTA_YELLOW).strength(2.0F, 3.0F).sounds(BlockSoundGroup.SAND).allowsSpawning(BlockRegistry::never).noCollision());
+    public static final Block STAR_CRYSTAL = new StarCrystalBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST).strength(1.5f).nonOpaque().luminance(5).slipperiness(0.9F).sounds(BlockSoundGroup.AMETHYST_CLUSTER));
     public static final Block ICICLE = new IcicleBlock(FabricBlockSettings.of(Material.DENSE_ICE).strength(0.2F).nonOpaque().slipperiness(0.9F).sounds(BlockSoundGroup.GLASS));
 
     public static final Block TRAMPOLINE = new TrampolineBlock(FabricBlockSettings.of(Material.WOOD, MapColor.GREEN).sounds(BlockSoundGroup.WOOD).nonOpaque());
@@ -56,17 +59,21 @@ public class BlockRegistry {
     public static final Block JUMP_BLOCK = new JumpBlock(FabricBlockSettings.of(Material.WOOD, MapColor.WHITE_GRAY).strength(0.8F).sounds(BlockSoundGroup.WOOD));
 
     public static final Block DONUT_BLOCK = new DonutBlock(FabricBlockSettings.of(Material.SOIL, MapColor.TERRACOTTA_ORANGE).strength(0.1F).sounds(BlockSoundGroup.GRAVEL).nonOpaque());
-    public static final Block STONE_TORCH = new StoneTorchBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_LIGHT_BLUE).requiresTool().strength(1.2F, 6.0F).nonOpaque().luminance(createLightLevelFromLitBlockState(15, 0)));
-    public static final Block BOO_LANTERN = new BooLanternBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.DARK_AQUA).strength(0.4F).nonOpaque().luminance(createLightLevelFromLitBlockState(14, 3)));
+    public static final Block STONE_TORCH = new StoneTorchBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_LIGHT_BLUE).requiresTool().strength(1.2F, 6.0F).nonOpaque().luminance(createLightLevelFromBooleanProperty(Properties.LIT, 15, 0)));
+    public static final Block BOO_LANTERN = new BooLanternBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.DARK_AQUA).strength(0.4F).nonOpaque().luminance(createLightLevelFromBooleanProperty(Properties.LIT,14, 3)));
     public static final Block SPIKE_TRAP = new SpikeTrapBlock(FabricBlockSettings.of(Material.METAL, MapColor.GRAY).requiresTool().strength(1.0F, 7.0F).sounds(BlockSoundGroup.METAL));
     public static final Block GIRDER = new GirderBlock(FabricBlockSettings.of(Material.METAL, MapColor.RED).requiresTool().strength(1.0F, 7.0F).nonOpaque().sounds(BlockSoundGroup.COPPER));
 
-    public static final Block TOADSTOOL_GRASS = new ToadstoolGrassBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.LIME).strength(0.5F, 4.0F).sounds(BlockSoundGroup.GRASS).ticksRandomly());
+    public static final Block TOADSTOOL_GRASS = new ToadstoolGrassBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.LIME).strength(0.5F, 4.0F).sounds(BlockSoundGroup.GRASS));
     public static final Block TOADSTOOL_TURF = new Block(FabricBlockSettings.copyOf(TOADSTOOL_GRASS));
     public static final Block TOADSTOOL_SOIL = new ToadstoolSoilBlock(FabricBlockSettings.of(Material.SOIL, MapColor.TERRACOTTA_YELLOW).strength(0.5F, 4.0F).sounds(BlockSoundGroup.GRAVEL));
     public static final Block COARSE_TOADSTOOL_SOIL = new ToadstoolSoilBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL));
     public static final Block TOADSTOOL_FARMLAND = new ToadstoolFarmlandBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).ticksRandomly());
     public static final Block TOADSTOOL_PATH = new ToadstoolPathBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).mapColor(MapColor.BROWN));
+
+    public static final Block SHERBET_SOIL = new SherbetSoilBlock(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).sounds(ModSoundGroup.SHERBET_SOIL).mapColor(MapColor.LIGHT_BLUE_GRAY));
+    public static final Block SNOWY_SHERBET_SOIL = new Block(FabricBlockSettings.copyOf(TOADSTOOL_SOIL).sounds(ModSoundGroup.SNOWY_SHERBET_SOIL).mapColor(MapColor.WHITE));
+    public static final Block SHERBET_BRICKS = new Block(FabricBlockSettings.of(Material.STONE, MapColor.LIGHT_BLUE).requiresTool().strength(1.2F, 1.0F).sounds(ModSoundGroup.FROSTED_STONE));
 
     public static final Block GRITZY_SAND = new SandBlock(16372053, FabricBlockSettings.of(Material.AGGREGATE, MapColor.PALE_YELLOW).strength(1.0F, 3.0F).sounds(BlockSoundGroup.SAND));
     public static final Block GRITZY_SANDSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.YELLOW).strength(1.0F, 3.0F).requiresTool());
@@ -75,7 +82,7 @@ public class BlockRegistry {
     public static final Block SMOOTH_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
 
     public static final Block SHORESAND = new SandBlock(16379337, FabricBlockSettings.copyOf(GRITZY_SAND).mapColor(MapColor.OFF_WHITE));
-    public static final Block SHOREGRASS = new ShoregrassBlock(FabricBlockSettings.copyOf(GRITZY_SAND).mapColor(MapColor.PALE_YELLOW));
+    public static final Block SHOREGRASS = new ShoregrassBlock(FabricBlockSettings.copyOf(GRITZY_SAND).sounds(ModSoundGroup.SHOREGRASS).mapColor(MapColor.PALE_YELLOW));
 
     public static final Block SEASTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.EMERALD_GREEN).sounds(ModSoundGroup.TOADSTONE).strength(1.0F).requiresTool());
     public static final Block SEASTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(SEASTONE));
@@ -87,35 +94,36 @@ public class BlockRegistry {
     public static final Block VANILLATE_TILES = new Block(FabricBlockSettings.copyOf(VANILLATE));
     public static final Block VANILLATE_CRUMBLE = new SandBlock(12636090, FabricBlockSettings.copyOf(VANILLATE).strength(0.5F).mapColor(MapColor.WHITE_GRAY));
 
-    public static final Block AMETHYST_ORE = new AmethystOreBlock(FabricBlockSettings.copyOf(VANILLATE).strength(1.5F).luminance(5));
-    public static final Block BRONZE_ORE = new Block(FabricBlockSettings.copyOf(VANILLATE).strength(1.5F));
+    public static final Block BRONZE_ORE = new OreBlock(FabricBlockSettings.copyOf(VANILLATE).strength(1.5F));
+    public static final Block VANILLATE_COAL_ORE = new OreBlock(FabricBlockSettings.copyOf(VANILLATE).strength(1.7F), UniformIntProvider.create(0, 1));
+    public static final Block VANILLATE_IRON_ORE = new OreBlock(FabricBlockSettings.copyOf(VANILLATE).strength(1.7F, 6.0F), UniformIntProvider.create(0, 1));
     public static final Block RAW_BRONZE_BLOCK = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(5.0F, 6.0F));
     public static final Block BRONZE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(5.0F, 8.0F).sounds(BlockSoundGroup.METAL));
 
     public static final Block TOPPED_VANILLATE = new Block(FabricBlockSettings.copyOf(VANILLATE).mapColor(MapColor.WHITE_GRAY));
-    public static final Block COAL_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE).strength(1.5F, 6.0F), UniformIntProvider.create(0, 1));
-    public static final Block IRON_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE).strength(1.5F, 6.0F), UniformIntProvider.create(0, 1));
     public static final Block GOLD_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE).strength(1.5F, 6.0F), UniformIntProvider.create(0, 1));
+    public static final Block AMETHYST_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE).strength(1.5F),  UniformIntProvider.create(1, 2));
 
     public static final Block FROSTY_VANILLATE = new VanillateBlock(FabricBlockSettings.copyOf(VANILLATE).sounds(ModSoundGroup.FROSTED_STONE).slipperiness(0.98F));
     public static final Block FROSTY_VANILLATE_BRICKS = new Block(FabricBlockSettings.copyOf(FROSTY_VANILLATE));
     public static final Block FROSTY_VANILLATE_TILES = new Block(FabricBlockSettings.copyOf(FROSTY_VANILLATE));
     public static final Block FROSTY_VANILLATE_CRUMBLE = new SandBlock(16119295, FabricBlockSettings.copyOf(FROSTY_VANILLATE).strength(0.5F).mapColor(MapColor.WHITE));
-    public static final Block FROSTY_TOPPED_VANILLATE = new Block(FabricBlockSettings.copyOf(FROSTY_VANILLATE).slipperiness(1.0F));
-    public static final Block FROSTY_TOPPED_VANILLATE_ORE = new FrostyVanillateOre(FabricBlockSettings.copyOf(FROSTY_VANILLATE).emissiveLighting(BlockRegistry::always).slipperiness(1.0F));
+    public static final Block FROSTED_VANILLATE = new Block(FabricBlockSettings.copyOf(FROSTY_VANILLATE).slipperiness(1.0F));
+    public static final Block FROZEN_ORE = new FrozenOre(FabricBlockSettings.copyOf(FROSTY_VANILLATE).emissiveLighting(BlockRegistry::always).slipperiness(1.0F), UniformIntProvider.create(0, 2));
 
     public static final Block TOADSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_ORANGE).requiresTool().strength(1.2F, 1.0F).sounds(ModSoundGroup.TOADSTONE));
     public static final Block GRASSY_TOADSTONE = new GrassyToadstoneBlock(FabricBlockSettings.copyOf(TOADSTONE).mapColor(MapColor.DARK_GREEN).sounds(ModSoundGroup.GRASSY_TOADSTONE));
     public static final Block SMOOTH_TOADSTONE = new Block(FabricBlockSettings.copyOf(TOADSTONE));
-    public static final Block CHISELED_TOADSTONE = new Block(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block TOADSTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(TOADSTONE));
+    public static final Block CHISELED_TOADSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(TOADSTONE));
 
     public static final Block GLOOMSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.DARK_AQUA).requiresTool().strength(1.2F, 1.0F).sounds(ModSoundGroup.TOADSTONE));
     public static final Block SMOOTH_GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE));
-    public static final Block CHISELED_GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE));
+    public static final Block CHISELED_GLOOMSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(GLOOMSTONE));
     public static final Block GLOOMSTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(GLOOMSTONE));
 
-    public static final Block HARDSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.LIGHT_GRAY).requiresTool().strength(4.0F, 10.0F));
+    public static final Block HARDSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.LIGHT_GRAY).sounds(ModSoundGroup.HARDSTONE).requiresTool().strength(4.0F, 10.0F));
+    public static final Block GRASSY_HARDSTONE = new GrassyHardstoneBlock(FabricBlockSettings.copyOf(HARDSTONE).mapColor(MapColor.DARK_GREEN).sounds(ModSoundGroup.GRASSY_HARDSTONE));
     public static final Block POLISHED_HARDSTONE = new Block(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block CHISELED_HARDSTONE = new Block(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block HARDSTONE_PILLAR = new PillarBlock(FabricBlockSettings.copyOf(HARDSTONE));
@@ -128,7 +136,7 @@ public class BlockRegistry {
     public static final Block ROYALITE_BRICKS = new Block(FabricBlockSettings.copyOf(ROYALITE));
     public static final Block CRACKED_ROYALITE_BRICKS = new Block(FabricBlockSettings.copyOf(ROYALITE));
     public static final Block CHISELED_ROYALITE_BRICKS = new Block(FabricBlockSettings.copyOf(ROYALITE));
-    public static final Block CERISE_ORE = new Block(FabricBlockSettings.copyOf(ROYALITE).strength(2.3F));
+    public static final Block CERISE_ORE = new OreBlock(FabricBlockSettings.copyOf(ROYALITE).strength(2.3F), UniformIntProvider.create(0, 4));
 
     public static final Block CERISE_BLOCK =  new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_PINK).requiresTool().strength(2.0F, 5.0F));
     public static final Block CERISE_BRICKS = new Block(FabricBlockSettings.copyOf(CERISE_BLOCK));
@@ -188,8 +196,8 @@ public class BlockRegistry {
         return false;
     }
 
-    private static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int onLevel, int offLevel) {
-        return (state) -> (Boolean) state.get(Properties.LIT) ? onLevel : offLevel;
+    private static ToIntFunction<BlockState> createLightLevelFromBooleanProperty(BooleanProperty property, int onLevel, int offLevel) {
+        return (state) -> (Boolean) state.get(property) ? onLevel : offLevel;
     }
 
     private static void registerBlock(String id, Block type) {
@@ -198,12 +206,10 @@ public class BlockRegistry {
 
     public static void registerBlocks() {
         registerBlock("warp_frame", WARP_FRAME);
-        registerBlock("bronze_pipe", BRONZE_PIPE);
-        registerBlock("bronze_pipe_body", BRONZE_PIPE_BODY);
-        registerBlock("warp_pipe", WARP_PIPE);
-        registerBlock("warp_pipe_body", WARP_PIPE_BODY);
         registerBlock("empty_block", EMPTY_BLOCK);
+        registerBlock("hidden_block", HIDDEN_BLOCK);
         registerBlock("glow_block", GLOW_BLOCK);
+        registerBlock("pull_block", PULL_BLOCK);
         registerBlock("question_block", QUESTION_BLOCK);
         registerBlock("coin_block", COIN_BLOCK);
         registerBlock("spike_trap", SPIKE_TRAP);
@@ -220,6 +226,12 @@ public class BlockRegistry {
         registerBlock("coarse_toadstool_soil", COARSE_TOADSTOOL_SOIL);
         registerBlock("toadstool_farmland", TOADSTOOL_FARMLAND);
         registerBlock("toadstool_path", TOADSTOOL_PATH);
+        registerBlock("sherbet_soil", SHERBET_SOIL);
+        registerBlock("snowy_sherbet_soil", SNOWY_SHERBET_SOIL);
+        registerBlock("sherbet_bricks", SHERBET_BRICKS);
+        registerBlock("sherbet_brick_slab", VariantBlocks.SHERBET_BRICK_SLAB);
+        registerBlock("sherbet_brick_stairs", VariantBlocks.SHERBET_BRICK_STAIRS);
+        registerBlock("sherbet_brick_wall", VariantBlocks.SHERBET_BRICK_WALL);
         registerBlock("gritzy_sand", GRITZY_SAND);
         registerBlock("quicksand", QUICKSAND);
         registerBlock("gritzy_sandstone", GRITZY_SANDSTONE);
@@ -250,15 +262,16 @@ public class BlockRegistry {
         registerBlock("frosty_vanillate_stairs", VariantBlocks.FROSTY_VANILLATE_STAIRS);
         registerBlock("frosty_vanillate_brick_slab", VariantBlocks.FROSTY_VANILLATE_BRICK_SLAB);
         registerBlock("frosty_vanillate_brick_stairs", VariantBlocks.FROSTY_VANILLATE_BRICK_STAIRS);
-        registerBlock("frosty_topped_vanillate", FROSTY_TOPPED_VANILLATE);
-        registerBlock("frosty_topped_vanillate_ore", FROSTY_TOPPED_VANILLATE_ORE);
+        registerBlock("frosted_vanillate", FROSTED_VANILLATE);
+        registerBlock("frozen_ore", FROZEN_ORE);
+        registerBlock("star_crystal", STAR_CRYSTAL);
         registerBlock("icicle", ICICLE);
         registerBlock("topped_vanillate", TOPPED_VANILLATE);
-        registerBlock("coal_topped_vanillate", COAL_TOPPED_VANILLATE);
-        registerBlock("iron_topped_vanillate", IRON_TOPPED_VANILLATE);
+        registerBlock("vanillate_coal_ore", VANILLATE_COAL_ORE);
+        registerBlock("vanillate_iron_ore", VANILLATE_IRON_ORE);
         registerBlock("gold_topped_vanillate", GOLD_TOPPED_VANILLATE);
+        registerBlock("amethyst_topped_vanillate", AMETHYST_TOPPED_VANILLATE);
         registerBlock("bronze_ore", BRONZE_ORE);
-        registerBlock("amethyst_ore", AMETHYST_ORE);
         registerBlock("raw_bronze_block", RAW_BRONZE_BLOCK);
         registerBlock("bronze_block", BRONZE_BLOCK);
         registerBlock("bronze_slab", VariantBlocks.BRONZE_SLAB);
@@ -267,8 +280,8 @@ public class BlockRegistry {
         registerBlock("toadstone", TOADSTONE);
         registerBlock("grassy_toadstone", GRASSY_TOADSTONE);
         registerBlock("smooth_toadstone", SMOOTH_TOADSTONE);
-        registerBlock("chiseled_toadstone", CHISELED_TOADSTONE);
         registerBlock("toadstone_bricks", TOADSTONE_BRICKS);
+        registerBlock("chiseled_toadstone_bricks", CHISELED_TOADSTONE_BRICKS);
         registerBlock("toadstone_slab", VariantBlocks.TOADSTONE_SLAB);
         registerBlock("toadstone_stairs", VariantBlocks.TOADSTONE_STAIRS);
         registerBlock("toadstone_wall", VariantBlocks.TOADSTONE_WALL);
@@ -277,8 +290,8 @@ public class BlockRegistry {
         registerBlock("toadstone_brick_wall", VariantBlocks.TOADSTONE_BRICK_WALL);
         registerBlock("gloomstone", GLOOMSTONE);
         registerBlock("smooth_gloomstone", SMOOTH_GLOOMSTONE);
-        registerBlock("chiseled_gloomstone", CHISELED_GLOOMSTONE);
         registerBlock("gloomstone_bricks", GLOOMSTONE_BRICKS);
+        registerBlock("chiseled_gloomstone_bricks", CHISELED_GLOOMSTONE_BRICKS);
         registerBlock("gloomstone_slab", VariantBlocks.GLOOMSTONE_SLAB);
         registerBlock("gloomstone_stairs", VariantBlocks.GLOOMSTONE_STAIRS);
         registerBlock("gloomstone_wall", VariantBlocks.GLOOMSTONE_WALL);
@@ -294,6 +307,7 @@ public class BlockRegistry {
         registerBlock("crystal_brick_stairs", VariantBlocks.CRYSTAL_BRICK_STAIRS);
         registerBlock("crystal_brick_wall", VariantBlocks.CRYSTAL_BRICK_WALL);
         registerBlock("hardstone", HARDSTONE);
+        registerBlock("grassy_hardstone", GRASSY_HARDSTONE);
         registerBlock("polished_hardstone", POLISHED_HARDSTONE);
         registerBlock("chiseled_hardstone", CHISELED_HARDSTONE);
         registerBlock("hardstone_pillar", HARDSTONE_PILLAR);
@@ -391,12 +405,16 @@ public class BlockRegistry {
         registerBlock("pink_mushroom", MushroomBlocks.PINK_MUSHROOM);
         registerBlock("purple_mushroom", MushroomBlocks.PURPLE_MUSHROOM);
         registerBlock("orange_mushroom", MushroomBlocks.ORANGE_MUSHROOM);
+        registerBlock("fuzzball", PlantBlocks.FUZZBALL);
+        registerBlock("fuzzbush", PlantBlocks.FUZZBUSH);
         registerBlock("amanita_carpet", PlantBlocks.AMANITA_CARPET);
         registerBlock("yellow_flowerbed", PlantBlocks.YELLOW_FLOWERBED);
         registerBlock("white_flowerbed", PlantBlocks.WHITE_FLOWERBED);
+        registerBlock("hybrid_flowerbed", PlantBlocks.HYBRID_FLOWERBED);
         registerBlock("blue_songflower", PlantBlocks.BLUE_SONGFLOWER);
         registerBlock("pink_songflower", PlantBlocks.PINK_SONGFLOWER);
         registerBlock("yellow_songflower", PlantBlocks.YELLOW_SONGFLOWER);
+        registerBlock("purple_songflower", PlantBlocks.PURPLE_SONGFLOWER);
         registerBlock("pawflower", PlantBlocks.PAWFLOWER);
         registerBlock("fire_tulip", PlantBlocks.FIRE_TULIP);
         registerBlock("white_bronze", ColoredBlocks.WHITE_BRONZE);
@@ -415,6 +433,38 @@ public class BlockRegistry {
         registerBlock("green_bronze", ColoredBlocks.GREEN_BRONZE);
         registerBlock("red_bronze", ColoredBlocks.RED_BRONZE);
         registerBlock("black_bronze", ColoredBlocks.BLACK_BRONZE);
+        registerBlock("white_warp_pipe", ColoredBlocks.WHITE_WARP_PIPE);
+        registerBlock("orange_warp_pipe", ColoredBlocks.ORANGE_WARP_PIPE);
+        registerBlock("magenta_warp_pipe", ColoredBlocks.MAGENTA_WARP_PIPE);
+        registerBlock("light_blue_warp_pipe", ColoredBlocks.LIGHT_BLUE_WARP_PIPE);
+        registerBlock("yellow_warp_pipe", ColoredBlocks.YELLOW_WARP_PIPE);
+        registerBlock("lime_warp_pipe", ColoredBlocks.LIME_WARP_PIPE);
+        registerBlock("pink_warp_pipe", ColoredBlocks.PINK_WARP_PIPE);
+        registerBlock("gray_warp_pipe", ColoredBlocks.GRAY_WARP_PIPE);
+        registerBlock("light_gray_warp_pipe", ColoredBlocks.LIGHT_GRAY_WARP_PIPE);
+        registerBlock("cyan_warp_pipe", ColoredBlocks.CYAN_WARP_PIPE);
+        registerBlock("purple_warp_pipe", ColoredBlocks.PURPLE_WARP_PIPE);
+        registerBlock("blue_warp_pipe", ColoredBlocks.BLUE_WARP_PIPE);
+        registerBlock("brown_warp_pipe", ColoredBlocks.BROWN_WARP_PIPE);
+        registerBlock("warp_pipe", ColoredBlocks.GREEN_WARP_PIPE);
+        registerBlock("red_warp_pipe", ColoredBlocks.RED_WARP_PIPE);
+        registerBlock("black_warp_pipe", ColoredBlocks.BLACK_WARP_PIPE);
+        registerBlock("white_pipe_body", ColoredBlocks.WHITE_PIPE_BODY);
+        registerBlock("orange_pipe_body", ColoredBlocks.ORANGE_PIPE_BODY);
+        registerBlock("magenta_pipe_body", ColoredBlocks.MAGENTA_PIPE_BODY);
+        registerBlock("light_blue_pipe_body", ColoredBlocks.LIGHT_BLUE_PIPE_BODY);
+        registerBlock("yellow_pipe_body", ColoredBlocks.YELLOW_PIPE_BODY);
+        registerBlock("lime_pipe_body", ColoredBlocks.LIME_PIPE_BODY);
+        registerBlock("pink_pipe_body", ColoredBlocks.PINK_PIPE_BODY);
+        registerBlock("gray_pipe_body", ColoredBlocks.GRAY_PIPE_BODY);
+        registerBlock("light_gray_pipe_body", ColoredBlocks.LIGHT_GRAY_PIPE_BODY);
+        registerBlock("cyan_pipe_body", ColoredBlocks.CYAN_PIPE_BODY);
+        registerBlock("purple_pipe_body", ColoredBlocks.PURPLE_PIPE_BODY);
+        registerBlock("blue_pipe_body", ColoredBlocks.BLUE_PIPE_BODY);
+        registerBlock("brown_pipe_body", ColoredBlocks.BROWN_PIPE_BODY);
+        registerBlock("warp_pipe_body", ColoredBlocks.GREEN_PIPE_BODY);
+        registerBlock("red_pipe_body", ColoredBlocks.RED_PIPE_BODY);
+        registerBlock("black_pipe_body", ColoredBlocks.BLACK_PIPE_BODY);
         registerBlock("poison", POISON);
         registerBlock("potted_fire_tulip", PottedBlocks.POTTED_FIRE_TULIP);
         registerBlock("potted_muncher", PottedBlocks.POTTED_MUNCHER);
@@ -424,6 +474,7 @@ public class BlockRegistry {
         registerBlock("potted_blue_songflower", PottedBlocks.POTTED_BLUE_SONGFLOWER);
         registerBlock("potted_pink_songflower", PottedBlocks.POTTED_PINK_SONGFLOWER);
         registerBlock("potted_yellow_songflower", PottedBlocks.POTTED_YELLOW_SONGFLOWER);
+        registerBlock("potted_purple_songflower", PottedBlocks.POTTED_PURPLE_SONGFLOWER);
         registerBlock("potted_pawflower", PottedBlocks.POTTED_PAWFLOWER);
         registerBlock("potted_yellow_mushroom", PottedBlocks.POTTED_YELLOW_MUSHROOM);
         registerBlock("potted_green_mushroom", PottedBlocks.POTTED_GREEN_MUSHROOM);

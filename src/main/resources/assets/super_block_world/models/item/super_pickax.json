@@ -1,0 +1,6 @@
+{
+  "parent": "super_block_world:item/hammer",
+  "textures": {
+    "layer0": "super_block_world:item/super_pickax"
+  }
+}

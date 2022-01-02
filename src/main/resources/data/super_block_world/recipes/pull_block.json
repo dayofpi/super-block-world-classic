@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0X0",
+    "X0X",
+    "0X0"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "0": {
+      "item": "super_block_world:blue_star_bit"
+    }
+  },
+  "result": {
+    "item": "super_block_world:pull_block",
+    "count": 1
+  }
+}

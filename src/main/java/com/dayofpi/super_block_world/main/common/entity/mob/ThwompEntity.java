@@ -1,9 +1,11 @@
 package com.dayofpi.super_block_world.main.common.entity.mob;
 
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.TagRegistry;
-import com.dayofpi.super_block_world.main.util.DirectionHelper;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.main.common.block.item_block.ReactiveBlock;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
+import com.dayofpi.super_block_world.main.util.entity.DirectionHelper;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.entity.*;
@@ -85,7 +87,7 @@ public class ThwompEntity extends GolemEntity {
     }
 
     public static boolean canSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return !(world.getLightLevel(pos) > 0) && !world.isSkyVisible(pos) && world.isSpaceEmpty(type.getDimensions().getBoxAt(Vec3d.ofCenter(pos)).expand(0, 5, 0).offset(0, -5, 0));
+        return !(world.getLightLevel(pos) > 0) && !world.isSkyVisible(pos) && world.isSpaceEmpty(type.getDimensions().getBoxAt(Vec3d.ofCenter(pos)).expand(0, 4, 0).offset(0, -4, 0));
     }
 
     @Override
@@ -215,8 +217,11 @@ public class ThwompEntity extends GolemEntity {
         }
 
         for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos().down(), 1, 0, 1)) {
-            if (world.getBlockState(blockPos).isIn(TagRegistry.BRICKS)) {
+            BlockState state = world.getBlockState(blockPos);
+            if (state.isIn(TagRegistry.BRICKS)) {
                 world.breakBlock(blockPos, true);
+            } else if (state.getBlock() instanceof ReactiveBlock reactiveBlock) {
+                reactiveBlock.activate(state, world, blockPos);
             }
         }
     }

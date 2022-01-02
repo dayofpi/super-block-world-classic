@@ -34,13 +34,12 @@ public abstract class AbstractBro extends EnemyEntity implements RangedAttackMob
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8D));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
-
         this.targetSelector.add(1, new RevengeGoal(this ));
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
     public static boolean canSpawn(EntityType<? extends AbstractBro> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        boolean allowedBlocks = world.getBlockState(pos.down()).isOf(BlockRegistry.GRITZY_SAND) || world.getBlockState(pos.down()).isOf(BlockRegistry.TOADSTONE);
+        boolean allowedBlocks = world.getBlockState(pos.down()).isOf(BlockRegistry.GRITZY_SAND) || world.getBlockState(pos.down()).isOf(BlockRegistry.SNOWY_SHERBET_SOIL);
         return allowedBlocks && isSpawnDark((ServerWorldAccess) world, pos, random) || isSpawnDark((ServerWorldAccess) world, pos, random) && !world.isSkyVisible(pos);
     }
 

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.item;
 
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BucketItem;
@@ -17,7 +17,7 @@ public class PoisonBucketItem extends BucketItem {
     }
 
     protected void playEmptyingSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos) {
-        SoundEvent soundEvent = ModSounds.BLOCK_POISON_EMPTY;
+        SoundEvent soundEvent = ModSounds.ITEM_POISON_BUCKET_EMPTY;
         world.playSound(player, pos, soundEvent, SoundCategory.BLOCKS, 1.0F, 1.0F);
         world.emitGameEvent(player, GameEvent.FLUID_PLACE, pos);
     }

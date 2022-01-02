@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "super_block_world:block/pull_block_off"
+    },
+    "powered=true": {
+      "model": "super_block_world:block/pull_block_on"
+    }
+  }
+}

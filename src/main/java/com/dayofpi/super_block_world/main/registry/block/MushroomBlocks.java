@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.registry.block;
 
-import com.dayofpi.super_block_world.main.common.block.BouncyMushroomBlock;
-import com.dayofpi.super_block_world.main.common.block.MushroomCapBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.BouncyMushroomBlock;
+import com.dayofpi.super_block_world.main.common.block.decoration.MushroomCapBlock;
 import com.dayofpi.super_block_world.main.registry.world.feature.configured.ConfiguredTrees;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;

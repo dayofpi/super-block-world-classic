@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.mixin.main.poison;
 
-import com.dayofpi.super_block_world.main.registry.ParticleReg;
-import com.dayofpi.super_block_world.main.registry.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.ParticleRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
 import com.dayofpi.super_block_world.main.util.entity.ModDamageSource;
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
@@ -88,7 +88,7 @@ public abstract class PoisonInteraction {
                 for (int i = 0; (float) i < 1.0F + this.dimensions.width * 20.0F; ++i) {
                     x = (this.random.nextDouble() * 2.0D - 1.0D) * (double) this.getDimensions(EntityPose.STANDING).width;
                     z = (this.random.nextDouble() * 2.0D - 1.0D) * (double) this.getDimensions(EntityPose.STANDING).width;
-                    this.getWorld().addParticle(ParticleReg.POISON_BUBBLE, this.getX() + x, y + 1.0F, this.getZ() + z, 0, 0, 0);
+                    this.getWorld().addParticle(ParticleRegistry.POISON_BUBBLE, this.getX() + x, y + 1.0F, this.getZ() + z, 0, 0, 0);
                 }
                 info.cancel();
             }

@@ -1,10 +1,13 @@
 package com.dayofpi.super_block_world.main.registry.block;
 
-import com.dayofpi.super_block_world.main.common.block.*;
+import com.dayofpi.super_block_world.main.common.block.hazard.*;
 import com.dayofpi.super_block_world.main.common.block.plant.beanstalk.BeanstalkStemBlock;
 import com.dayofpi.super_block_world.main.common.block.plant.beanstalk.BeanstalkPlantBlock;
 import com.dayofpi.super_block_world.main.common.block.plant.beanstalk.BuddingBeanstalkBlock;
 import com.dayofpi.super_block_world.main.common.block.plant.*;
+import com.dayofpi.super_block_world.main.common.block.plant.flower.FireTulipBlock;
+import com.dayofpi.super_block_world.main.common.block.plant.flower.FlowerbedBlock;
+import com.dayofpi.super_block_world.main.common.block.plant.flower.SongflowerBlock;
 import com.dayofpi.super_block_world.main.common.world.feature.generator.AmanitaSaplingGenerator;
 import com.dayofpi.super_block_world.main.common.world.feature.generator.DarkAmanitaSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -21,17 +24,21 @@ public class PlantBlocks {
     public static final Block BEANSTALK = new BeanstalkStemBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block BEANSTALK_PLANT = new BeanstalkPlantBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block BUDDING_BEANSTALK = new BuddingBeanstalkBlock(FabricBlockSettings.of(Material.PLANT, MapColor.PALE_GREEN).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS).ticksRandomly());
+    public static final Block FUZZBALL = new FuzzballBlock(FabricBlockSettings.of(Material.PLANT, MapColor.BLACK).ticksRandomly().nonOpaque().noCollision().sounds(BlockSoundGroup.SLIME));
+    public static final Block FUZZBUSH = new FuzzbushBlock(FabricBlockSettings.of(Material.PLANT, MapColor.BRIGHT_TEAL).ticksRandomly().nonOpaque().noCollision().sounds(BlockSoundGroup.AZALEA));
     public static final Block PIRANHA_LILY = new PiranhaLilyBlock(FabricBlockSettings.of(Material.PLANT, MapColor.RED).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block PIT_PLANT = new PitPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.DARK_GREEN).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block MUNCHER = new MuncherBlock(FabricBlockSettings.of(Material.PLANT, MapColor.BLACK).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block FROZEN_MUNCHER = new FrozenMuncherBlock(FabricBlockSettings.of(Material.ICE, MapColor.LIGHT_BLUE_GRAY).nonOpaque().sounds(BlockSoundGroup.GLASS).slipperiness(0.98f).strength(0.5f).ticksRandomly());
-    public static final Block CAVE_MUSHROOMS = new CaveMushroomBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.TERRACOTTA_BLUE).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
+    public static final Block CAVE_MUSHROOMS = new CaveMushroomsBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.TERRACOTTA_BLUE).nonOpaque().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block AMANITA_CARPET = new AmanitaCarpetBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().sounds(BlockSoundGroup.MOSS_CARPET));
     public static final Block YELLOW_FLOWERBED = new FlowerbedBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.YELLOW).noCollision().sounds(BlockSoundGroup.MOSS_CARPET));
     public static final Block WHITE_FLOWERBED = new FlowerbedBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.WHITE).noCollision().sounds(BlockSoundGroup.MOSS_CARPET));
+    public static final Block HYBRID_FLOWERBED = new FlowerbedBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.DULL_PINK).noCollision().sounds(BlockSoundGroup.MOSS_CARPET));
     public static final Block BLUE_SONGFLOWER = new SongflowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.of(Material.PLANT, MapColor.DIAMOND_BLUE).ticksRandomly().noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block PINK_SONGFLOWER = new SongflowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.copyOf(BLUE_SONGFLOWER).mapColor(MapColor.PINK));
     public static final Block YELLOW_SONGFLOWER = new SongflowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.copyOf(BLUE_SONGFLOWER).mapColor(MapColor.YELLOW));
+    public static final Block PURPLE_SONGFLOWER = new SongflowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.copyOf(BLUE_SONGFLOWER).mapColor(MapColor.PALE_PURPLE));
     public static final Block PAWFLOWER = new FlowerBlock(StatusEffects.SPEED, 6, FabricBlockSettings.of(Material.PLANT, MapColor.OFF_WHITE).noCollision().sounds(BlockSoundGroup.GRASS));
     public static final Block FIRE_TULIP = new FireTulipBlock(StatusEffects.FIRE_RESISTANCE, 6, FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE).noCollision().sounds(BlockSoundGroup.GRASS).emissiveLighting(BlockRegistry::always));
 }

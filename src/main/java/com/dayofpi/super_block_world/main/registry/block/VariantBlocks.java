@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.registry.block;
 
-import com.dayofpi.super_block_world.main.common.block.cloud.CloudSlabBlock;
-import com.dayofpi.super_block_world.main.common.block.cloud.CloudStairsBlock;
+import com.dayofpi.super_block_world.main.common.block.building.cloud.CloudSlabBlock;
+import com.dayofpi.super_block_world.main.common.block.building.cloud.CloudStairsBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 
@@ -52,6 +52,10 @@ public class VariantBlocks {
     public static final Block HARDSTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(BlockRegistry.HARDSTONE_BRICKS));
     public static final Block HARDSTONE_BRICK_STAIRS = new StairsBlock(BlockRegistry.HARDSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(BlockRegistry.POLISHED_HARDSTONE)){};
     public static final Block HARDSTONE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(BlockRegistry.HARDSTONE_BRICKS));
+
+    public static final Block SHERBET_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(BlockRegistry.SHERBET_BRICKS));
+    public static final Block SHERBET_BRICK_STAIRS = new StairsBlock(BlockRegistry.SHERBET_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(BlockRegistry.SHERBET_BRICKS)){};
+    public static final Block SHERBET_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(BlockRegistry.SHERBET_BRICKS));
 
     public static final Block GOLDEN_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(BlockRegistry.GOLDEN_BRICKS));
     public static final Block GOLDEN_BRICK_STAIRS = new StairsBlock(BlockRegistry.GOLDEN_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(BlockRegistry.GOLDEN_BRICKS)){};

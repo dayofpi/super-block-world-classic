@@ -2,8 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "super_block_world:glow_block",
-      "super_block_world:glow_block_single"
+      "super_block_world:glow_block"
     ]
   },
   "criteria": {
@@ -24,19 +23,12 @@
       "conditions": {
         "recipe": "super_block_world:glow_block"
       }
-    },
-    "has_the_recipe_single": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "super_block_world:glow_block_single"
-      }
     }
   },
   "requirements": [
     [
       "has_empty_block",
-      "has_the_recipe",
-      "has_the_recipe_single"
+      "has_the_recipe"
     ]
   ]
 }

@@ -3,27 +3,15 @@ package com.dayofpi.super_block_world.main.common.item.armor;
 import com.dayofpi.super_block_world.main.common.entity.shell.AbstractShell;
 import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
-import net.minecraft.predicate.entity.EntityPredicates;
-import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -40,6 +28,8 @@ public class ShellItem extends ArmorItem {
         tooltip.add( new TranslatableText("tooltip.super_block_world.brick_break").formatted(Formatting.GOLD));
         if (stack.isOf(ItemRegistry.BUZZY_SHELL)) {
             tooltip.add(new TranslatableText("tooltip.super_block_world.projectile_deflect").formatted(Formatting.GOLD));
+        } else if (stack.isOf(ItemRegistry.RED_SHELL)) {
+            tooltip.add(new TranslatableText("tooltip.super_block_world.fire_resist").formatted(Formatting.BLUE));
         }
     }
 
@@ -47,6 +37,7 @@ public class ShellItem extends ArmorItem {
         return this.shellEntity;
     }
 
+    /*
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         HitResult hitResult = raycast(world, user, RaycastContext.FluidHandling.NONE);
         ItemStack itemStack = user.getStackInHand(hand);
@@ -90,5 +81,5 @@ public class ShellItem extends ArmorItem {
                 } else return TypedActionResult.fail(itemStack);
             } else return TypedActionResult.pass(itemStack);
         }
-    }
+    }*/
 }

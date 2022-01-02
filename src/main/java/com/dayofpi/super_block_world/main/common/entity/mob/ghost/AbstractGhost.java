@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.ghost;
 
-import com.dayofpi.super_block_world.main.registry.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
 import com.dayofpi.super_block_world.main.util.entity.ModDamageSource;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityGroup;
@@ -78,7 +78,7 @@ public abstract class AbstractGhost extends AnimalEntity {
                 this.playSound(SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, 1.0F, 1.0F);
                 return super.damage(source, amount);
             } else return false;
-        } else if (source.isMagic()) {
+        } else if (source.isMagic() || source.isOutOfWorld()) {
             return super.damage(source, amount);
         } else return false;
     }

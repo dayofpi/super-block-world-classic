@@ -15,6 +15,8 @@ public class PlacedTrees {
     public static final PlacedFeature DARK_AMANITA_TALL = ConfiguredTrees.DARK_AMANITA_TALL.withPlacement(PlacementModifiers.SAPLING_SURVIVES);
     public static final PlacedFeature HUGE_RED_MUSHROOM_FLAT = ConfiguredTrees.HUGE_RED_MUSHROOM_FLAT.withPlacement();
     public static final PlacedFeature HUGE_GREEN_MUSHROOM_FLAT = ConfiguredTrees.HUGE_GREEN_MUSHROOM_FLAT.withPlacement();
+    public static final PlacedFeature HUGE_RED_MUSHROOM_TALL = ConfiguredTrees.HUGE_RED_MUSHROOM_TALL.withPlacement(PlacementModifiers.IN_CANYON);
+    public static final PlacedFeature HUGE_GREEN_MUSHROOM_TALL = ConfiguredTrees.HUGE_GREEN_MUSHROOM_TALL.withPlacement(PlacementModifiers.IN_CANYON);
     public static final PlacedFeature HUGE_YELLOW_MUSHROOM = ConfiguredTrees.HUGE_YELLOW_MUSHROOM.withPlacement();
     public static final PlacedFeature HUGE_GREEN_MUSHROOM = ConfiguredTrees.HUGE_GREEN_MUSHROOM.withPlacement();
     public static final PlacedFeature HUGE_PINK_MUSHROOM = ConfiguredTrees.HUGE_PINK_MUSHROOM.withPlacement();
@@ -22,4 +24,8 @@ public class PlacedTrees {
     public static final PlacedFeature HUGE_ORANGE_MUSHROOM = ConfiguredTrees.HUGE_ORANGE_MUSHROOM.withPlacement();
     public static final PlacedFeature HUGE_BROWN_MUSHROOM = ConfiguredTrees.HUGE_BROWN_MUSHROOM.withPlacement();
     public static final PlacedFeature HUGE_RED_MUSHROOM = ConfiguredTrees.HUGE_RED_MUSHROOM.withPlacement();
+    public static final PlacedFeature BEANSTALK = ConfiguredTrees.BEANSTALK.withPlacement(PlacementModifiers.SAPLING_SURVIVES);
+    public static final PlacedFeature BEANSTALK_BUDDING = ConfiguredTrees.BEANSTALK_BUDDING.withPlacement(PlacementModifiers.SAPLING_SURVIVES);
+    public static final PlacedFeature BEANSTALK_UNDERGROUND = ConfiguredTrees.BEANSTALK_UNDERGROUND.withPlacement();
+    public static final PlacedFeature BEANSTALK_BUDDING_UNDERGROUND = ConfiguredTrees.BEANSTALK_BUDDING.withPlacement();
 }

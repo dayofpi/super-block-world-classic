@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.item.projectile;
 
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.common.entity.projectile.FlowerFireballEntity;
+import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.main.common.entity.projectile.FireballEntity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
@@ -20,10 +20,10 @@ public class FireFlowerItem extends Item {
 
    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
       ItemStack itemStack = user.getStackInHand(hand);
-      world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ITEM_FIRE_FLOWER_SHOOT, SoundCategory.NEUTRAL, 0.5F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+      world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ITEM_FIRE_FLOWER, SoundCategory.NEUTRAL, 0.5F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
       user.getItemCooldownManager().set(this, 5);
       if (!world.isClient) {
-         FlowerFireballEntity fireballEntity = new FlowerFireballEntity(null, user, world);
+         FireballEntity fireballEntity = new FireballEntity(null, user, world);
          fireballEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
          fireballEntity.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
          world.spawnEntity(fireballEntity);

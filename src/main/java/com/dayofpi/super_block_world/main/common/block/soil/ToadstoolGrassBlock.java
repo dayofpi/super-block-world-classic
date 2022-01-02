@@ -21,25 +21,19 @@ import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 import java.util.List;
 import java.util.Random;
 
-@SuppressWarnings("deprecation")
 public class ToadstoolGrassBlock extends ToadstoolSoilBlock implements Fertilizable {
     public ToadstoolGrassBlock(Settings settings) {
         super(settings);
     }
 
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        {
-            if (world.getLightLevel(pos.up()) >= 9) {
-                BlockState blockState = this.getDefaultState();
-
-                for(int i = 0; i < 4; ++i) {
-                    BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                    if (world.getBlockState(blockPos).isOf(BlockRegistry.TOADSTOOL_SOIL) && canSpread(blockState, world, blockPos)) {
-                        world.setBlockState(blockPos, blockState);
-                    }
+    public void spread(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (world.getLightLevel(pos.up()) >= 9) {
+            for(int i = 0; i < 4; ++i) {
+                BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+                if (world.getBlockState(blockPos).isOf(BlockRegistry.TOADSTOOL_SOIL) && canSpread(state, world, blockPos)) {
+                    world.setBlockState(blockPos, state);
                 }
             }
-
         }
     }
 
@@ -73,11 +67,12 @@ public class ToadstoolGrassBlock extends ToadstoolSoilBlock implements Fertiliza
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        BlockPos blockPos = pos.up();
+        BlockPos abovePos = pos.up();
         BlockState blockState = Blocks.GRASS.getDefaultState();
         block0: for (int i = 0; i < 128; ++i) {
+            this.spread(state, world, pos, random);
             PlacedFeature placedFeature;
-            BlockPos blockPos2 = blockPos;
+            BlockPos blockPos2 = abovePos;
             for (int j = 0; j < i / 16; ++j) {
                 if (!world.getBlockState((blockPos2 = blockPos2.add(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1)).down()).isOf(this) || world.getBlockState(blockPos2).isFullCube(world, blockPos2)) continue block0;
             }

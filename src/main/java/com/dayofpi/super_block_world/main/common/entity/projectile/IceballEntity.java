@@ -1,13 +1,12 @@
 package com.dayofpi.super_block_world.main.common.entity.projectile;
 
+import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.Client;
-import com.dayofpi.super_block_world.main.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
-import com.dayofpi.super_block_world.main.registry.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -19,7 +18,6 @@ import net.minecraft.entity.mob.MagmaCubeEntity;
 import net.minecraft.entity.mob.StrayEntity;
 import net.minecraft.entity.passive.SnowGolemEntity;
 import net.minecraft.entity.passive.StriderEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
@@ -29,7 +27,6 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
 
 public class IceballEntity extends PersistentProjectileEntity {
@@ -41,9 +38,7 @@ public class IceballEntity extends PersistentProjectileEntity {
     public IceballEntity(EntityType<? extends IceballEntity> entityType, LivingEntity livingEntity, World world) {
         this(entityType, livingEntity.getX(), livingEntity.getEyeY() - 0.10000000149011612D, livingEntity.getZ(), world);
         this.setOwner(livingEntity);
-        if (livingEntity instanceof PlayerEntity) {
-            this.pickupType = PickupPermission.ALLOWED;
-        }
+        this.pickupType = PickupPermission.DISALLOWED;
     }
 
     public IceballEntity(World world, double x, double y, double z) {
@@ -55,7 +50,7 @@ public class IceballEntity extends PersistentProjectileEntity {
     }
 
     public IceballEntity(EntityType<? extends IceballEntity> entityType, double x, double v, double z, World world) {
-        super(EntityRegistry.ICEBALL, x, v, z, world);
+        super(entityType, x, v, z, world);
         this.setPosition(x, v, z);
     }
 
@@ -110,6 +105,10 @@ public class IceballEntity extends PersistentProjectileEntity {
         }
     }
 
+    protected int slownessDuration() {
+        return 100;
+    }
+
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
         this.discard();
@@ -120,8 +119,7 @@ public class IceballEntity extends PersistentProjectileEntity {
 
         if (entity instanceof LivingEntity && !(entity instanceof SnowGolemEntity) && !(entity instanceof StrayEntity)) {
             this.playSound(ModSounds.ENTITY_ICEBALL_HIT, 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
-            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 6));
-            ParticleUtil.spawnParticle(world, getBlockPos(), ParticleTypes.FLAME, UniformIntProvider.create(2,3));
+            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, slownessDuration(), 6), this);
         }
         entity.extinguish();
     }
