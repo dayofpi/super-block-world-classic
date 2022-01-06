@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.world.feature.type;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -30,7 +30,7 @@ public class JellybeamFeature extends Feature<DefaultFeatureConfig> {
       BlockPos blockPos2 = new BlockPos(blockPos.getX(), j + random.nextInt(10), blockPos.getZ());
 
       if (structureWorldAccess.getBlockState(blockPos2).isOf(Blocks.WATER)) {
-         BlockState blockState = BlockRegistry.JELLYBEAM.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.Type.HORIZONTAL.random(random));
+         BlockState blockState = BlockInit.JELLYBEAM.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.Type.HORIZONTAL.random(random));
 
 
          int k = 1 + random.nextInt(10);

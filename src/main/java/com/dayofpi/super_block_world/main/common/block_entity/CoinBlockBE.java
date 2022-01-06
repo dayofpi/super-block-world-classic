@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.block_entity;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockEntityRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockEntityInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import com.dayofpi.super_block_world.main.util.block_entity.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -12,10 +12,10 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
 public class CoinBlockBE extends BlockEntity implements ImplementedInventory {
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, new ItemStack(ItemRegistry.COIN));
+    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, new ItemStack(ItemInit.COIN));
 
     public CoinBlockBE(BlockPos pos, BlockState state) {
-        super(BlockEntityRegistry.COIN_BLOCK, pos, state);
+        super(BlockEntityInit.COIN_BLOCK, pos, state);
     }
 
     // Serialize the BlockEntity

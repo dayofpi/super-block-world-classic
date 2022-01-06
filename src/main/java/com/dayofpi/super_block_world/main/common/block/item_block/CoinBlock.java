@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.main.common.block.item_block;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.main.common.block_entity.CoinBlockBE;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventory;
@@ -72,12 +72,12 @@ public class CoinBlock extends ReactiveBlock implements BlockEntityProvider {
                 }
             }
             if (coinCount != 0) {
-                Block.dropStack(world, itemPos, new ItemStack(ItemRegistry.COIN));
-                world.playSound(null, blockPos, ModSounds.BLOCK_COIN_BLOCK_HIT, SoundCategory.NEUTRAL, 0.8F, 1.0F);
+                Block.dropStack(world, itemPos, new ItemStack(ItemInit.COIN));
+                world.playSound(null, blockPos, SoundInit.BLOCK_COIN_BLOCK_HIT, SoundCategory.NEUTRAL, 0.8F, 1.0F);
                 if (coinCount > 1) {
                     blockEntity.getStack(0).setCount(coinCount - 1);
                     } else {
-                    world.setBlockState(blockPos, pushEntitiesUpBeforeBlockChange(state, BlockRegistry.EMPTY_BLOCK.getDefaultState(), world, blockPos));
+                    world.setBlockState(blockPos, pushEntitiesUpBeforeBlockChange(state, BlockInit.EMPTY_BLOCK.getDefaultState(), world, blockPos));
                     world.removeBlockEntity(blockPos);
                 }
             }

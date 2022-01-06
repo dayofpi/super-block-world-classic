@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.main.common.entity.shell;
 
 import com.dayofpi.super_block_world.main.Client;
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.minecraft.entity.Entity;
@@ -45,14 +45,14 @@ public abstract class AbstractShell extends LivingEntity {
     @Override
     public void pushAwayFrom(Entity entity) {
         if (!this.isActive()) {
-            this.playSound(ModSounds.ENTITY_BUZZY_DROP, 1.0F, this.getSoundPitch());
+            this.playSound(SoundInit.ENTITY_BUZZY_DROP, 1.0F, this.getSoundPitch());
             this.setActive(true);
         } else {
             if (entity instanceof LivingEntity livingEntity) {
                 entity.damage(ModEntityDamageSource.mobDrop(this), 4.0F);
-                if (livingEntity.getEquippedStack(EquipmentSlot.FEET).isOf(ItemRegistry.JUMP_BOOTS) && livingEntity.getY() > this.getY()) {
+                if (livingEntity.getEquippedStack(EquipmentSlot.FEET).isOf(ItemInit.JUMP_BOOTS) && livingEntity.getY() > this.getY()) {
                     this.setActive(false);
-                    this.playSound(ModSounds.ENTITY_BUZZY_DROP, 1.0F, this.getSoundPitch());
+                    this.playSound(SoundInit.ENTITY_BUZZY_DROP, 1.0F, this.getSoundPitch());
                 }
             }
         }
@@ -68,7 +68,7 @@ public abstract class AbstractShell extends LivingEntity {
             boolean zLimit = vec3d.z > speedLimit || vec3d.z < -speedLimit;
             this.setVelocity(vec3d.multiply(xLimit ? 1.0D : 2.0D, 1.0D, zLimit ? 1.0D : 2.0D));
             for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 1, 0, 1)) {
-                if (world.getBlockState(blockPos).isIn(TagRegistry.BRICKS)) {
+                if (world.getBlockState(blockPos).isIn(TagInit.BRICKS)) {
                     world.breakBlock(blockPos, true);
                 }
             }
@@ -113,7 +113,7 @@ public abstract class AbstractShell extends LivingEntity {
         if (!bl && this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
             this.dropItem(this.asItemStack().getItem());
         }
-        this.playSound(ModSounds.ENTITY_BUZZY_DROP, 1.0F, 1.0F);
+        this.playSound(SoundInit.ENTITY_BUZZY_DROP, 1.0F, 1.0F);
         this.discard();
         return true;
     }

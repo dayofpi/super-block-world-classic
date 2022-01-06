@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.ghost;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.main.common.entity.goal.*;
-import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.common.entity.mob.EnemyEntity;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
@@ -85,7 +85,7 @@ public class BooEntity extends AbstractGhost implements Flutterer, Tameable {
         this.goalSelector.add(2, new BooFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
         this.targetSelector.add(2, new BooPickupItemGoal(this));
         this.targetSelector.add(1, new RevengeGoal(this));
-        this.goalSelector.add(3, new TemptGoal(this, 1.2D, Ingredient.ofItems(ItemRegistry.POISON_MUSHROOM), false));
+        this.goalSelector.add(3, new TemptGoal(this, 1.2D, Ingredient.ofItems(ItemInit.POISON_MUSHROOM), false));
         this.targetSelector.add(1, new BooTargetGoal<>(this, PlayerEntity.class));
     }
 
@@ -98,7 +98,7 @@ public class BooEntity extends AbstractGhost implements Flutterer, Tameable {
     }
 
     public SoundEvent getAmbientSound() {
-        return this.isHiding() ? ModSounds.ENTITY_BOO_SHY : ModSounds.ENTITY_BOO_AMBIENT;
+        return this.isHiding() ? SoundInit.ENTITY_BOO_SHY : SoundInit.ENTITY_BOO_AMBIENT;
     }
 
     public boolean isHiding() {
@@ -145,7 +145,7 @@ public class BooEntity extends AbstractGhost implements Flutterer, Tameable {
     }
 
     public boolean tryAttack(Entity target) {
-        this.playSound(ModSounds.ENTITY_BOO_ATTACK, 1.0F, getSoundPitch());
+        this.playSound(SoundInit.ENTITY_BOO_ATTACK, 1.0F, getSoundPitch());
         return super.tryAttack(target);
     }
 
@@ -168,11 +168,11 @@ public class BooEntity extends AbstractGhost implements Flutterer, Tameable {
     }
 
     public SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.ENTITY_BOO_HURT;
+        return SoundInit.ENTITY_BOO_HURT;
     }
 
     public SoundEvent getDeathSound() {
-        return ModSounds.ENTITY_BOO_DEATH;
+        return SoundInit.ENTITY_BOO_DEATH;
     }
 
     public float getSoundPitch() {
@@ -250,7 +250,7 @@ public class BooEntity extends AbstractGhost implements Flutterer, Tameable {
         ItemStack itemStack = player.getStackInHand(hand);
         Item item = itemStack.getItem();
         if (this.world.isClient) {
-            boolean bl = this.isOwner(player) || this.isTamed() || itemStack.isOf(ItemRegistry.POISON_MUSHROOM) && !this.isTamed();
+            boolean bl = this.isOwner(player) || this.isTamed() || itemStack.isOf(ItemInit.POISON_MUSHROOM) && !this.isTamed();
             return bl ? ActionResult.CONSUME : ActionResult.PASS;
         } else {
             if (this.isTamed()) {
@@ -282,7 +282,7 @@ public class BooEntity extends AbstractGhost implements Flutterer, Tameable {
                 }
 
                 return actionResult;
-            } else if (itemStack.isOf(ItemRegistry.POISON_MUSHROOM)) {
+            } else if (itemStack.isOf(ItemInit.POISON_MUSHROOM)) {
                 if (!player.getAbilities().creativeMode) {
                     itemStack.decrement(1);
                 }

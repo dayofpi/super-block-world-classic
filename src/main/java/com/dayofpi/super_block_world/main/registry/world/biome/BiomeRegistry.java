@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.registry.world.biome;
 
 import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.registry.key.ModBiomeKeys;
+import com.dayofpi.super_block_world.main.util.key.ModBiomeKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;

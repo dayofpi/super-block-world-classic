@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.hazard;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.main.util.entity.ModDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -83,7 +83,7 @@ public class SpikeTrapBlock extends Block {
 
     public void activate(BlockState state, World world, BlockPos pos) {
         Random random = new Random();
-        world.playSound(null, pos, ModSounds.BLOCK_SPIKES_EXTEND, SoundCategory.BLOCKS, 1.0F, 1.0F);
+        world.playSound(null, pos, SoundInit.BLOCK_SPIKES_EXTEND, SoundCategory.BLOCKS, 1.0F, 1.0F);
         world.setBlockState(pos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
         IntStream.range(0, 4).forEach(i ->((ServerWorld)world).spawnParticles(ParticleTypes.CRIT, pos.getX() + random.nextFloat(), pos.getY() + 1, pos.getZ() + random.nextFloat(), 1, 0, 0, 0, 0));
     }
@@ -92,7 +92,7 @@ public class SpikeTrapBlock extends Block {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (state.get(POWERED) && !world.isReceivingRedstonePower(pos)) {
             world.setBlockState(pos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
-            world.playSound(null, pos, ModSounds.BLOCK_SPIKES_RETRACT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.playSound(null, pos, SoundInit.BLOCK_SPIKES_RETRACT, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
 
     }

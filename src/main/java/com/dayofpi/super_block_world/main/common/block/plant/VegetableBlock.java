@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.plant;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -54,7 +54,7 @@ public class VegetableBlock extends Block {
             List<ItemStack> list = this.getDroppedItem((ServerWorld) world, state, blockPos);
             Block.dropStack(world, blockPos, list.iterator().next());
             world.removeBlock(blockPos, false);
-            world.playSound(null, blockPos, ModSounds.BLOCK_VEGETABLE_PLUCK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.playSound(null, blockPos, SoundInit.BLOCK_VEGETABLE_PLUCK, SoundCategory.BLOCKS, 1.0F, 1.0F);
         } else {
             world.addBlockBreakParticles(blockPos.down(), world.getBlockState(blockPos.down()));
         } return ActionResult.success(world.isClient);

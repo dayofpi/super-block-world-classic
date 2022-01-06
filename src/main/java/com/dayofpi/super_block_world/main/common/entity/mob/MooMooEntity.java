@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.main.common.entity.mob;
 
 import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import com.google.common.collect.Maps;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityData;
@@ -47,7 +47,7 @@ public class MooMooEntity extends CowEntity {
     private static final TrackedData<Boolean> LYING;
 
     static {
-        BREEDING_INGREDIENT = Ingredient.ofItems(Items.WHEAT, ItemRegistry.TURNIP);
+        BREEDING_INGREDIENT = Ingredient.ofItems(Items.WHEAT, ItemInit.TURNIP);
         TYPE = DataTracker.registerData(MooMooEntity.class, TrackedDataHandlerRegistry.INTEGER);
         LYING = DataTracker.registerData(MooMooEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
         TEXTURES = Util.make(Maps.newHashMap(), (map) -> {
@@ -99,19 +99,19 @@ public class MooMooEntity extends CowEntity {
     }
 
     protected SoundEvent getAmbientSound() {
-        return ModSounds.ENTITY_MOO_MOO_AMBIENT;
+        return SoundInit.ENTITY_MOO_MOO_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.ENTITY_MOO_MOO_HURT;
+        return SoundInit.ENTITY_MOO_MOO_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return ModSounds.ENTITY_MOO_MOO_DEATH;
+        return SoundInit.ENTITY_MOO_MOO_DEATH;
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(ModSounds.ENTITY_MOO_MOO_STEP, 0.2F, 1.0F);
+        this.playSound(SoundInit.ENTITY_MOO_MOO_STEP, 0.2F, 1.0F);
     }
 
     protected float getSoundVolume() {
@@ -119,7 +119,7 @@ public class MooMooEntity extends CowEntity {
     }
 
     public MooMooEntity createChild(ServerWorld serverWorld, PassiveEntity passiveEntity) {
-        MooMooEntity mooMooEntity = EntityRegistry.MOO_MOO.create(serverWorld);
+        MooMooEntity mooMooEntity = EntityInit.MOO_MOO.create(serverWorld);
         if (passiveEntity instanceof MooMooEntity && mooMooEntity != null) {
             mooMooEntity.setColor(((MooMooEntity) passiveEntity).getColor());
         }
@@ -175,7 +175,7 @@ public class MooMooEntity extends CowEntity {
     }
 
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
-        return world.getBlockState(pos.down()).isOf(BlockRegistry.TOADSTOOL_GRASS) ? 10.0F : world.getLightLevel(pos) - 0.5F;
+        return world.getBlockState(pos.down()).isOf(BlockInit.TOADSTOOL_GRASS) ? 10.0F : world.getLightLevel(pos) - 0.5F;
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
@@ -225,14 +225,14 @@ public class MooMooEntity extends CowEntity {
 
         public void start() {
             super.start();
-            this.mooMooEntity.playSound(ModSounds.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume() - 0.4F, mooMooEntity.getSoundPitch());
+            this.mooMooEntity.playSound(SoundInit.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume() - 0.4F, mooMooEntity.getSoundPitch());
         }
 
         public void stop() {
             super.stop();
             Random random = new Random();
             if (random.nextInt(5) == 0)
-                this.mooMooEntity.playSound(ModSounds.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume() - 0.4F, mooMooEntity.getSoundPitch());
+                this.mooMooEntity.playSound(SoundInit.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume() - 0.4F, mooMooEntity.getSoundPitch());
         }
 
         @Nullable

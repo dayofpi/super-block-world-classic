@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.soil;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Fertilizable;
@@ -30,7 +30,7 @@ public class GrassyToadstoneBlock extends ToadstoolSoilBlock implements Fertiliz
         if (world.getLightLevel(pos.up()) >= 9) {
             for(int i = 0; i < 4; ++i) {
                 BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                if (world.getBlockState(blockPos).isOf(BlockRegistry.TOADSTONE) && canSpread(state, world, blockPos)) {
+                if (world.getBlockState(blockPos).isOf(BlockInit.TOADSTONE) && canSpread(state, world, blockPos)) {
                     world.setBlockState(blockPos, state);
                 }
             }

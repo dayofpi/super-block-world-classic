@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.goomba;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.main.common.entity.mob.EnemyEntity;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -98,7 +98,7 @@ public class ParagoombaEntity extends GoombaEntity {
 
     protected void addFlapEffects() {
         if (random.nextFloat() < 0.06F)
-            this.playSound(ModSounds.ENTITY_GOOMBA_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
+            this.playSound(SoundInit.ENTITY_GOOMBA_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {

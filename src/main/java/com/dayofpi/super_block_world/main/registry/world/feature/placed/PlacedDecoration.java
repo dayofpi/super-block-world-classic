@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.registry.world.feature.placed;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import com.dayofpi.super_block_world.main.registry.world.feature.configured.ConfiguredDecoration;
 import net.minecraft.block.Block;
 import net.minecraft.util.math.Vec3i;
@@ -16,7 +16,7 @@ import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import java.util.List;
 
 public class PlacedDecoration {
-    private static final List<Block> PLACE_CRYSTAL_ON = List.of(BlockRegistry.VANILLATE, BlockRegistry.TOPPED_VANILLATE, BlockRegistry.FROSTY_VANILLATE, BlockRegistry.FROSTED_VANILLATE, BlockRegistry.HARDSTONE, BlockRegistry.ROYALITE);
+    private static final List<Block> PLACE_CRYSTAL_ON = List.of(BlockInit.VANILLATE, BlockInit.TOPPED_VANILLATE, BlockInit.FROSTY_VANILLATE, BlockInit.FROSTED_VANILLATE, BlockInit.HARDSTONE, BlockInit.ROYALITE);
     private static final PlacedFeature AMETHYST_CEILING = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(8, 7, 3, () -> ConfiguredDecoration.AMETHYST_CEILING.withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.allOf(BlockPredicate.IS_AIR, BlockPredicate.matchingBlocks(PLACE_CRYSTAL_ON, new Vec3i(0, 1, 0))))))).withPlacement();
     private static final PlacedFeature AMETHYST_FLOOR = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(8, 7, 3, () -> ConfiguredDecoration.AMETHYST_FLOOR.withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.allOf(BlockPredicate.IS_AIR, BlockPredicate.matchingBlocks(PLACE_CRYSTAL_ON, new Vec3i(0, -1, 0))))))).withPlacement();
     private static final PlacedFeature STAR_CRYSTAL_CEILING = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(16, 7, 3, () -> ConfiguredDecoration.STAR_CRYSTAL_CEILING.withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.allOf(BlockPredicate.IS_AIR, BlockPredicate.matchingBlocks(PLACE_CRYSTAL_ON, new Vec3i(0, 1, 0))))))).withPlacement();

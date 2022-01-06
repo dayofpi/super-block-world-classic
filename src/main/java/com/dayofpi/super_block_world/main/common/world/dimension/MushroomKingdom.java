@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.main.common.world.dimension;
 
 import com.dayofpi.super_block_world.main.Main;
+import com.dayofpi.super_block_world.main.registry.other.WorldInit;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
@@ -28,7 +29,7 @@ public class MushroomKingdom {
     public static MultiNoiseBiomeSource.Preset PRESET;
 
     public static void initializeDimension() {
-        WORLD_KEY = RegistryKey.of(Registry.WORLD_KEY, Main.DIMENSION_ID);
+        WORLD_KEY = RegistryKey.of(Registry.WORLD_KEY, WorldInit.DIMENSION_ID);
         PRESET = BiomeParameters.MUSHROOM_KINGDOM;
 
         ServerLifecycleEvents.SERVER_STARTED.register(server -> {

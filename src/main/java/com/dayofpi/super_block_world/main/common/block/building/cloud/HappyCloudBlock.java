@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.building.cloud;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -44,7 +44,7 @@ public class HappyCloudBlock extends HorizontalFacingBlock {
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (neighborState.isOf(BlockRegistry.HAPPY_CLOUD) && !neighborState.get(SAD))
+        if (neighborState.isOf(BlockInit.HAPPY_CLOUD) && !neighborState.get(SAD))
             return state.with(SAD, false);
         else return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }

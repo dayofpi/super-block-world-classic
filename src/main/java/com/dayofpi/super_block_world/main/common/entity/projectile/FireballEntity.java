@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.main.common.entity.projectile;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.main.Client;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -18,6 +18,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -40,7 +41,7 @@ public class FireballEntity extends PersistentProjectileEntity {
     }
 
     protected SoundEvent getHitSound() {
-        return ModSounds.ENTITY_FIREBALL_BOUNCE;
+        return SoundInit.ENTITY_FIREBALL_BOUNCE;
     }
 
     public FireballEntity(EntityType<? extends FireballEntity> entityType, double x, double v, double z, World world) {
@@ -49,7 +50,7 @@ public class FireballEntity extends PersistentProjectileEntity {
     }
 
     public FireballEntity(World world, double x, double y, double z) {
-        super(EntityRegistry.FIREBALL, x, y, z, world);
+        super(EntityInit.FIREBALL, x, y, z, world);
     }
 
     protected void onBlockHit(BlockHitResult blockHitResult) {
@@ -75,10 +76,14 @@ public class FireballEntity extends PersistentProjectileEntity {
         BlockState blockState = world.getBlockState(this.getBlockPos());
         BlockPos floor = this.getBlockPos().down();
 
-        if (blockState.isAir() && (world.getBlockState(floor).isOf(BlockRegistry.WARP_FRAME) || world.getBlockState(floor).isOf(Blocks.OBSIDIAN))) {
-            this.playSound(SoundEvents.BLOCK_CANDLE_EXTINGUISH, 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
-            world.setBlockState(this.getBlockPos(), Blocks.FIRE.getDefaultState(), Block.NOTIFY_LISTENERS);
-            this.discard();
+        if (hitState.isOf(BlockInit.WARP_FRAME) || hitState.isOf(Blocks.OBSIDIAN)) {
+            if (world.getBlockState(blockHitResult.getBlockPos().up()).isAir()) {
+                world.setBlockState(blockHitResult.getBlockPos().up(), Blocks.FIRE.getDefaultState());
+                this.discard();
+            }
+        } else if (hitState.isIn(BlockTags.ICE)) {
+            world.setBlockState(blockHitResult.getBlockPos(), Blocks.WATER.getDefaultState());
+            world.updateNeighbor(blockHitResult.getBlockPos(), Blocks.WATER, blockHitResult.getBlockPos());
         }
 
         if (hops <= 0) {
@@ -114,9 +119,9 @@ public class FireballEntity extends PersistentProjectileEntity {
                 world.addParticle(ParticleTypes.FLAME, this.getX(), this.getY(), this.getZ(), i * rand, 0.02D, i * rand);
             }        }
         if (entity instanceof LivingEntity livingEntity) {
-            this.playSound(ModSounds.ENTITY_FIREBALL_HIT, 1.0F, livingEntity.getSoundPitch());
+            this.playSound(SoundInit.ENTITY_FIREBALL_HIT, 1.0F, livingEntity.getSoundPitch());
         } else
-            this.playSound(ModSounds.ENTITY_FIREBALL_HIT, 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
+            this.playSound(SoundInit.ENTITY_FIREBALL_HIT, 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
     }
 
     @Override

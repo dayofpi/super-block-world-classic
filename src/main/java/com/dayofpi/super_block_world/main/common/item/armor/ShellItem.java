@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.item.armor;
 
 import com.dayofpi.super_block_world.main.common.entity.shell.AbstractShell;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -26,9 +26,9 @@ public class ShellItem extends ArmorItem {
 
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add( new TranslatableText("tooltip.super_block_world.brick_break").formatted(Formatting.GOLD));
-        if (stack.isOf(ItemRegistry.BUZZY_SHELL)) {
+        if (stack.isOf(ItemInit.BUZZY_SHELL)) {
             tooltip.add(new TranslatableText("tooltip.super_block_world.projectile_deflect").formatted(Formatting.GOLD));
-        } else if (stack.isOf(ItemRegistry.RED_SHELL)) {
+        } else if (stack.isOf(ItemInit.RED_SHELL)) {
             tooltip.add(new TranslatableText("tooltip.super_block_world.fire_resist").formatted(Formatting.BLUE));
         }
     }

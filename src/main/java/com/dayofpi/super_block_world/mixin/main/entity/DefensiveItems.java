@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.registry.misc.StatusEffectRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.other.StatusEffectInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -49,14 +49,14 @@ public abstract class DefensiveItems extends Entity {
     @Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", cancellable = true)
     private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> info) {
         // Prevent Star Powered entities from taking damage
-        if (this.activeStatusEffects.containsKey(StatusEffectRegistry.STAR_POWER) && !source.isOutOfWorld()) {
+        if (this.activeStatusEffects.containsKey(StatusEffectInit.STAR_POWER) && !source.isOutOfWorld()) {
             info.setReturnValue(false);
             info.cancel();
         }
 
         ItemStack headArmor = this.getEquippedStack(EquipmentSlot.HEAD);
 
-        if (headArmor.isOf(ItemRegistry.BUZZY_SHELL)) {
+        if (headArmor.isOf(ItemInit.BUZZY_SHELL)) {
             if (source instanceof ProjectileDamageSource damageSource && source.getPosition() != null && source.getPosition().y > this.getY() + 1) {
                 Entity projectile = damageSource.getSource();
                 if (projectile != null) {
@@ -74,7 +74,7 @@ public abstract class DefensiveItems extends Entity {
     }
 
     private void protect(ItemStack helmet, CallbackInfoReturnable<Boolean> info) {
-        this.world.playSound(null, this.getBlockPos(), ModSounds.ENTITY_BUZZY_BLOCK, SoundCategory.NEUTRAL, 0.6F, this.getSoundPitch());
+        this.world.playSound(null, this.getBlockPos(), SoundInit.ENTITY_BUZZY_BLOCK, SoundCategory.NEUTRAL, 0.6F, this.getSoundPitch());
         helmet.setDamage(helmet.getDamage() + random.nextInt(4));
         if (helmet.getDamage() >= helmet.getMaxDamage()) {
             this.sendEquipmentBreakStatus(EquipmentSlot.HEAD);

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.ghost;
 
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
 import com.dayofpi.super_block_world.main.util.entity.ModDamageSource;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityGroup;
@@ -58,7 +58,7 @@ public abstract class AbstractGhost extends AnimalEntity {
 
     public void onDeath(DamageSource source) {
         if (!world.isClient) {
-            SpiritEntity spiritEntity = new SpiritEntity(EntityRegistry.SPIRIT, world, this.getX(), this.getY(), this.getZ());
+            SpiritEntity spiritEntity = new SpiritEntity(EntityInit.SPIRIT, world, this.getX(), this.getY(), this.getZ());
             world.spawnEntity(spiritEntity);
         }
         super.onDeath(source);

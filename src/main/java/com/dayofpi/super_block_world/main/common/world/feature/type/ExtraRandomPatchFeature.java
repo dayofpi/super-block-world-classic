@@ -3,8 +3,8 @@ package com.dayofpi.super_block_world.main.common.world.feature.type;
 import com.dayofpi.super_block_world.main.common.block.item_block.CoinBlock;
 import com.dayofpi.super_block_world.main.common.block_entity.CoinBlockBE;
 import com.dayofpi.super_block_world.main.common.world.feature.config.ExtraRandomPatchFeatureConfig;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.key.ModBiomeKeys;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
+import com.dayofpi.super_block_world.main.util.key.ModBiomeKeys;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -44,7 +44,7 @@ public class ExtraRandomPatchFeature extends Feature<ExtraRandomPatchFeatureConf
             }
         }
 
-        if (structureWorldAccess.getBlockEntity(mutable) instanceof CoinBlockBE blockEntity && structureWorldAccess.getBlockState(mutable).isOf(BlockRegistry.COIN_BLOCK)) {
+        if (structureWorldAccess.getBlockEntity(mutable) instanceof CoinBlockBE blockEntity && structureWorldAccess.getBlockState(mutable).isOf(BlockInit.COIN_BLOCK)) {
             if (random.nextInt(3) == 0) {
                 blockEntity.getStack(0).setCount(5);
                 BlockState state = structureWorldAccess.getBlockState(mutable);

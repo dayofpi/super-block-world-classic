@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.hazard;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
@@ -57,7 +57,7 @@ public class FuzzballBlock extends PlantBlock {
         World world = ctx.getWorld();
         BlockPos floor = ctx.getBlockPos().down();
         BlockState neighborState = world.getBlockState(floor);
-        if (world.getBlockState(floor).isOf(BlockRegistry.PULL_BLOCK)) {
+        if (world.getBlockState(floor).isOf(BlockInit.PULL_BLOCK)) {
             if (neighborState.get(Properties.POWERED))
                 return this.getDefaultState().with(LIT, true);
             else return this.getDefaultState().with(LIT, false);
@@ -66,7 +66,7 @@ public class FuzzballBlock extends PlantBlock {
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (direction == Direction.DOWN && neighborState.isOf(BlockRegistry.PULL_BLOCK)) {
+        if (direction == Direction.DOWN && neighborState.isOf(BlockInit.PULL_BLOCK)) {
             if (neighborState.get(Properties.POWERED))
                 return state.with(LIT, true);
             else return state.with(LIT, false);

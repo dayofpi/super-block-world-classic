@@ -2,8 +2,8 @@ package com.dayofpi.super_block_world.mixin.client;
 
 import com.dayofpi.super_block_world.client.sound.ModMusic;
 import com.dayofpi.super_block_world.main.common.world.dimension.MushroomKingdom;
-import com.dayofpi.super_block_world.main.registry.misc.StatusEffectRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.other.StatusEffectInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -46,10 +46,10 @@ public abstract class CustomMusic {
             info.setReturnValue(ModMusic.MENU);
             info.cancel();
         }
-        if (this.player != null && this.player.getActiveStatusEffects().containsKey(StatusEffectRegistry.STAR_POWER)) {
+        if (this.player != null && this.player.getActiveStatusEffects().containsKey(StatusEffectInit.STAR_POWER)) {
             info.setReturnValue(ModMusic.STAR);
             info.cancel();
-        } else if (this.player != null && !this.player.isUsingItem() && this.player.getActiveHand() == Hand.MAIN_HAND && this.player.handSwinging && this.player.getStackInHand(Hand.MAIN_HAND).isOf(ItemRegistry.SUPER_PICKAX)) {
+        } else if (this.player != null && !this.player.isUsingItem() && this.player.getActiveHand() == Hand.MAIN_HAND && this.player.handSwinging && this.player.getStackInHand(Hand.MAIN_HAND).isOf(ItemInit.SUPER_PICKAX)) {
             info.setReturnValue(ModMusic.PICKAX);
             info.cancel();
         }

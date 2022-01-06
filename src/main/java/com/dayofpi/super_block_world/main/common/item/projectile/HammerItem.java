@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.main.common.item.projectile;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.main.common.entity.projectile.HammerEntity;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.block.BlockState;
@@ -34,7 +34,7 @@ public class HammerItem extends Item {
 
    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
       ItemStack itemStack = user.getStackInHand(hand);
-      world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ITEM_PROJECTILE_HAMMER, SoundCategory.NEUTRAL, 0.5F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+      world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundInit.ITEM_PROJECTILE_HAMMER, SoundCategory.NEUTRAL, 0.5F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
       user.getItemCooldownManager().set(this, 5);
       if (!world.isClient) {
          HammerEntity hammerEntity = new HammerEntity(world, user);
@@ -69,7 +69,7 @@ public class HammerItem extends Item {
    }
 
    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-      return ingredient.isOf(ItemRegistry.BRONZE_INGOT) || super.canRepair(stack, ingredient);
+      return ingredient.isOf(ItemInit.BRONZE_INGOT) || super.canRepair(stack, ingredient);
    }
 
    public int getEnchantability() {

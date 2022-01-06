@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.mechanics;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.FallingBlockEntity;
@@ -91,7 +91,7 @@ public class DonutBlock extends FallingBlock implements Waterloggable {
             } else if (state.get(INSTABILITY) == 1 && (!state.get(WILL_FALL))) {
                 world.setBlockState(blockPos, state.with(INSTABILITY, 2));
                 world.setBlockState(blockPos, state.with(WILL_FALL, true));
-                world.playSound(null, blockPos, ModSounds.BLOCK_DONUT_BLOCK_TRIGGER, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.playSound(null, blockPos, SoundInit.BLOCK_DONUT_BLOCK_TRIGGER, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.spawnParticles(ParticleTypes.POOF, blockPos.getX() + 0.5, blockPos.getY() + 1.0, blockPos.getZ() + 0.5, 3, 0.0D, 0.0D, 0.0D, 0.0D);
                 world.createAndScheduleBlockTick(blockPos, this, 12);
             } else if (state.get(WILL_FALL)) {

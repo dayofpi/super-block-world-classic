@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block_entity;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockEntityRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockEntityInit;
 import com.dayofpi.super_block_world.main.util.block_entity.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -14,7 +14,7 @@ public class QuestionBlockBE extends BlockEntity implements ImplementedInventory
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
     public QuestionBlockBE(BlockPos pos, BlockState state) {
-        super(BlockEntityRegistry.QUESTION_BLOCK, pos, state);
+        super(BlockEntityInit.QUESTION_BLOCK, pos, state);
     }
 
     // Serialize the BlockEntity

@@ -1,16 +1,12 @@
 package com.dayofpi.super_block_world.main.common.entity.mob;
 
 import com.dayofpi.super_block_world.client.GlobalReceivers;
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.common.block.item_block.ReactiveBlock;
-import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -22,7 +18,6 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -62,11 +57,11 @@ public class FakeBlockEntity extends EnemyEntity implements IAnimatable {
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.BLOCK_TOADSTONE_BREAK;
+        return SoundInit.BLOCK_TOADSTONE_BREAK;
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(ModSounds.BLOCK_TOADSTONE_STEP, 0.15F, 1.0F);
+        this.playSound(SoundInit.BLOCK_TOADSTONE_STEP, 0.15F, 1.0F);
     }
 
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
@@ -74,9 +69,7 @@ public class FakeBlockEntity extends EnemyEntity implements IAnimatable {
     }
 
     public boolean tryAttack(Entity target) {
-        if (this.isTwirling()) {
-            return super.tryAttack(target);
-        } else return false;
+        return false;
     }
 
     private boolean isTwirling() {
@@ -93,21 +86,11 @@ public class FakeBlockEntity extends EnemyEntity implements IAnimatable {
             LivingEntity target = this.getTarget();
             if (!this.world.isClient && this.world.getServer() != null) {
                 for (ServerPlayerEntity player : PlayerLookup.all(this.world.getServer())) {
-                    this.setTwirling(target != null && this.distanceTo(target) < 2F);
+                    this.setTwirling(target != null && this.distanceTo(target) <= 2F);
                     PacketByteBuf buf = PacketByteBufs.create();
                     buf.writeInt(this.getId());
                     buf.writeBoolean(this.isTwirling());
                     ServerPlayNetworking.send(player, GlobalReceivers.FAKE_BLOCK_STATE, buf);
-                }
-            }
-            if (!this.world.isClient() && this.isTwirling() && random.nextInt(4) == 0) {
-                for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 1, 0, 1)) {
-                    BlockState state = world.getBlockState(blockPos);
-                    if (state.isIn(TagRegistry.BRICKS)) {
-                        world.breakBlock(blockPos, true);
-                    } else if (state.getBlock() instanceof ReactiveBlock reactiveBlock) {
-                        reactiveBlock.activate(state, world, blockPos);
-                    }
                 }
             }
 
@@ -127,11 +110,10 @@ public class FakeBlockEntity extends EnemyEntity implements IAnimatable {
     }
 
     private <ENTITY extends IAnimatable> void soundListener(SoundKeyframeEvent<ENTITY> event) {
-        ClientPlayerEntity player = MinecraftClient.getInstance().player;
-        if (player != null) {
-            player.damage(DamageSource.mob(this), 3);
-            player.playSound(ModSounds.ENTITY_MISC_TAIL_ATTACK, SoundCategory.HOSTILE, 1.0F, 1.0F);
-        }
+        PacketByteBuf buf = PacketByteBufs.create();
+        buf.writeInt(this.getId());
+        buf.writeIdentifier(this.getEntityWorld().getRegistryKey().getValue());
+        ClientPlayNetworking.send(GlobalReceivers.FAKE_BLOCK_EVENT, buf);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.item;
 
-import com.dayofpi.super_block_world.main.registry.misc.StatusEffectRegistry;
+import com.dayofpi.super_block_world.main.registry.other.StatusEffectInit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,9 +29,9 @@ public class SuperStarItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
 
-        if (!user.hasStatusEffect(StatusEffectRegistry.STAR_POWER)) {
+        if (!user.hasStatusEffect(StatusEffectInit.STAR_POWER)) {
 
-            user.addStatusEffect((new StatusEffectInstance(StatusEffectRegistry.STAR_POWER, 450, 0)));
+            user.addStatusEffect((new StatusEffectInstance(StatusEffectInit.STAR_POWER, 450, 0)));
 
             user.incrementStat(Stats.USED.getOrCreateStat(this));
             if (!user.getAbilities().creativeMode) {

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.world.feature.type;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -28,11 +28,11 @@ public class StrawberryCoralFeature extends Feature<DefaultFeatureConfig> {
       int j = world.getTopY(Heightmap.Type.OCEAN_FLOOR, blockPos.getX(), blockPos.getZ());
       BlockPos blockPos2 = new BlockPos(blockPos.getX(), j, blockPos.getZ());
       if (world.getBlockState(blockPos2).isOf(Blocks.WATER)) {
-         BlockState tip = BlockRegistry.COIN_BLOCK.getDefaultState().with(Properties.WATERLOGGED, true);
+         BlockState tip = BlockInit.COIN_BLOCK.getDefaultState().with(Properties.WATERLOGGED, true);
          if (random.nextFloat() > 0.2F ) {
-            tip = BlockRegistry.STRAWBERRY_CORAL.getDefaultState();
+            tip = BlockInit.STRAWBERRY_CORAL.getDefaultState();
          }
-         BlockState body = BlockRegistry.STRAWBERRY_CORAL.getDefaultState();
+         BlockState body = BlockInit.STRAWBERRY_CORAL.getDefaultState();
 
          int k = 1 + random.nextInt(10);
 

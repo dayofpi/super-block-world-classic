@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.block.hazard;
 
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -36,11 +36,11 @@ public class PoisonBlock extends FluidBlock {
     }
 
     private boolean receiveNeighborFluids(World world, BlockPos pos) {
-        if (this.fluid.isIn(TagRegistry.POISON)) {
+        if (this.fluid.isIn(TagInit.POISON)) {
             int size = FLOW_DIRECTIONS.size();
             for (int i = 0; i < size; i++) {
                 BlockPos blockPos = pos.add(1, 1, 1);
-                if (world.getFluidState(blockPos).isIn(FluidTags.WATER) && !world.getFluidState(blockPos).isIn(TagRegistry.POISON)) {
+                if (world.getFluidState(blockPos).isIn(FluidTags.WATER) && !world.getFluidState(blockPos).isIn(TagInit.POISON)) {
                     Block block = Blocks.AIR;
                     world.setBlockState(blockPos, block.getDefaultState());
                     playExtinguishEvent(world, pos);
@@ -48,7 +48,7 @@ public class PoisonBlock extends FluidBlock {
                 }
 
                 if (world.getFluidState(blockPos).isIn(FluidTags.LAVA)) {
-                    Block block = BlockRegistry.VANILLATE_CRUMBLE;
+                    Block block = BlockInit.VANILLATE_CRUMBLE;
                     world.setBlockState(pos, block.getDefaultState());
                     this.playExtinguishEvent(world, pos);
                     return false;

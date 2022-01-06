@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.main.common.entity.goal;
 
 import com.dayofpi.super_block_world.main.common.entity.mob.FuzzyEntity;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.AboveGroundTargeting;
@@ -32,9 +32,10 @@ public class FuzzyWanderGoal extends Goal {
     public boolean shouldContinue() {
         return fuzzy.getNavigation().isFollowingPath();
     }
+
     public void start() {
         Vec3d randomLocation = this.getRandomLocation();
-        List<PlayerEntity> players = fuzzy.world.getEntitiesByClass(PlayerEntity.class, fuzzy.getBoundingBox().expand(16), playerEntity -> playerEntity.isUsingItem() && playerEntity.getActiveItem().isOf(ItemRegistry.FUZZY_MAGNET));
+        List<PlayerEntity> players = fuzzy.world.getEntitiesByClass(PlayerEntity.class, fuzzy.getBoundingBox().expand(16), playerEntity -> playerEntity.isUsingItem() && playerEntity.getActiveItem().isOf(ItemInit.FUZZY_MAGNET));
         List<Entity> fuzzies = fuzzy.world.getOtherEntities(fuzzy, fuzzy.getBoundingBox().expand(16), entity -> entity instanceof FuzzyEntity);
         fuzzy.setGlowing(false);
         if (!players.isEmpty()) {
@@ -47,12 +48,12 @@ public class FuzzyWanderGoal extends Goal {
         }
 
         if (players.isEmpty()) {
-            for (BlockPos blockPos : BlockPos.iterateOutwards(fuzzy.getBlockPos(), 16, 16, 16)) {
-                BlockState state = fuzzy.world.getBlockState(blockPos);
-                if (state.isOf(PlantBlocks.FUZZBALL) && state.get(Properties.LIT)) {
-                    fuzzy.getNavigation().startMovingTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 1.2000000476837158D);
+                for (BlockPos blockPos : BlockPos.iterateOutwards(fuzzy.getBlockPos(), 16, 16, 16)) {
+                    BlockState state = fuzzy.world.getBlockState(blockPos);
+                    if (state.isOf(PlantBlocks.FUZZBALL) && state.get(Properties.LIT)) {
+                        fuzzy.getNavigation().startMovingTo(blockPos.getX(), blockPos.getY(), blockPos.getZ(), 1.2000000476837158D);
+                    }
                 }
-            }
         }
     }
 

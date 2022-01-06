@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.buzzy;
 
 import com.dayofpi.super_block_world.main.registry.block.MushroomBlocks;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.AnimalMateGoal;
 import net.minecraft.entity.ai.goal.FollowParentGoal;
@@ -62,7 +62,7 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
     @Override
     public void initGoals() {
         this.goalSelector.add(1, new AnimalMateGoal(this, 1.0D));
-        this.goalSelector.add(3, new TemptGoal(this, 1.2D, Ingredient.ofItems(ItemRegistry.GREEN_MUSHROOM_ON_A_STICK), false));
+        this.goalSelector.add(3, new TemptGoal(this, 1.2D, Ingredient.ofItems(ItemInit.GREEN_MUSHROOM_ON_A_STICK), false));
         this.goalSelector.add(3, new TemptGoal(this, 1.25D, Ingredient.ofItems(MushroomBlocks.GREEN_MUSHROOM), false));
         this.goalSelector.add(5, new FollowParentGoal(this, 1.1D));
         super.initGoals();
@@ -74,7 +74,7 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
             return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
         } else {
             if (this.random.nextInt(20) == 0 && world.getBlockState(this.getBlockPos().up()).isAir()) {
-                BuzzyEntity passiveEntity = EntityRegistry.BUZZY_BEETLE.create(world.toServerWorld());
+                BuzzyEntity passiveEntity = EntityInit.BUZZY_BEETLE.create(world.toServerWorld());
                 if (passiveEntity != null) {
                     passiveEntity.setBreedingAge(-24000);
                     entityData = this.initializeRider(world, difficulty, passiveEntity);
@@ -95,7 +95,7 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
         if (passiveEntity != null) {
             passiveEntity.setPersistent();
         }
-        return EntityRegistry.BUZZY_BEETLE.create(serverWorld);
+        return EntityInit.BUZZY_BEETLE.create(serverWorld);
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
@@ -124,6 +124,7 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
     @Override
     public void tickMovement() {
         super.tickMovement();
+
         if (hidingTime > 0) {
             --hidingTime;
         }
@@ -154,7 +155,10 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
 
     @Override
     public boolean damage(DamageSource source, float amount) {
-        Entity attacker = source.getAttacker();
+        if (this.isBaby() && this.getVehicle() != null && source == DamageSource.IN_WALL) {
+            this.dismountVehicle();
+            return false;
+        }
         if (super.damage(source, amount)) {
             // Hides if attacked by a mob
             this.setHiding(true);
@@ -173,7 +177,7 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
         if (!(entity instanceof LivingEntity livingEntity)) {
             return false;
         } else {
-            return livingEntity.getMainHandStack().isOf(ItemRegistry.GREEN_MUSHROOM_ON_A_STICK) || livingEntity.getOffHandStack().isOf(ItemRegistry.GREEN_MUSHROOM_ON_A_STICK);
+            return livingEntity.getMainHandStack().isOf(ItemInit.GREEN_MUSHROOM_ON_A_STICK) || livingEntity.getOffHandStack().isOf(ItemInit.GREEN_MUSHROOM_ON_A_STICK);
         }
     }
 

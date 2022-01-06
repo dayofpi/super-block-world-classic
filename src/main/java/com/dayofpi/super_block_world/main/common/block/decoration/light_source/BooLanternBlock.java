@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.block.decoration.light_source;
 
 import com.dayofpi.super_block_world.main.common.block_entity.BooLanternBE;
-import com.dayofpi.super_block_world.main.registry.block.BlockEntityRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockEntityInit;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -66,7 +66,7 @@ public class BooLanternBlock extends BlockWithEntity {
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, BlockEntityRegistry.BOO_LANTERN, BooLanternBE::tick);
+        return checkType(type, BlockEntityInit.BOO_LANTERN, BooLanternBE::tick);
     }
 
     @Override

@@ -1,8 +1,7 @@
 package com.dayofpi.super_block_world.main.common.entity.mob;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.AboveGroundTargeting;
@@ -45,11 +44,11 @@ public class StingbyEntity extends EnemyEntity implements Flutterer {
     }
 
     public static boolean canSpawn(EntityType<StingbyEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return world.getBlockState(pos.down()).isOf(BlockRegistry.TOADSTOOL_GRASS) && world.getBaseLightLevel(pos, 0) > 8;
+        return world.getBlockState(pos.down()).isOf(BlockInit.TOADSTOOL_GRASS) && world.getBaseLightLevel(pos, 0) > 8;
     }
 
     public boolean tryAttack(Entity target) {
-        this.playSound(ModSounds.ENTITY_STINGBY_STING, 1.0F, getSoundPitch());
+        this.playSound(SoundInit.ENTITY_STINGBY_STING, 1.0F, getSoundPitch());
         return super.tryAttack(target);
     }
 
@@ -58,11 +57,11 @@ public class StingbyEntity extends EnemyEntity implements Flutterer {
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.ENTITY_STINGBY_HURT;
+        return SoundInit.ENTITY_STINGBY_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return ModSounds.ENTITY_STINGBY_DEATH;
+        return SoundInit.ENTITY_STINGBY_DEATH;
     }
 
     protected void initGoals() {
@@ -83,13 +82,13 @@ public class StingbyEntity extends EnemyEntity implements Flutterer {
     @Override
     public void setTarget(@Nullable LivingEntity target) {
         if (this.getTarget() == null && target instanceof PlayerEntity) {
-            this.playSound(ModSounds.ENTITY_ENEMY_SPOT, this.getSoundVolume(), this.getSoundPitch());
+            this.playSound(SoundInit.ENTITY_ENEMY_SPOT, this.getSoundVolume(), this.getSoundPitch());
         }
         super.setTarget(target);
     }
 
     public void playAmbientSound() {
-        SoundEvent soundEvent = ModSounds.ENTITY_STINGBY_AMBIENT;
+        SoundEvent soundEvent = SoundInit.ENTITY_STINGBY_AMBIENT;
         this.playSound(soundEvent, 0.3F, this.getSoundPitch());
     }
 

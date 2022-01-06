@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.entity.shell;
 
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -16,7 +16,7 @@ public class BuzzyShellEntity extends AbstractShell {
 
     @Override
     protected ItemStack asItemStack() {
-        return ItemRegistry.BUZZY_SHELL.getDefaultStack();
+        return ItemInit.BUZZY_SHELL.getDefaultStack();
     }
 
     @Override

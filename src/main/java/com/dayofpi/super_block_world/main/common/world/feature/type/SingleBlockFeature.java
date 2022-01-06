@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.main.common.world.feature.type;
 
 import com.dayofpi.super_block_world.main.common.block.item_block.CoinBlock;
 import com.dayofpi.super_block_world.main.common.block_entity.CoinBlockBE;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.Inventory;
@@ -26,11 +26,11 @@ public class SingleBlockFeature extends SimpleBlockFeature {
         Inventory blockEntity = (Inventory) context.getWorld().getBlockEntity(pos);
         boolean water = world.isWater(pos);
 
-        if (water && (state.isOf(BlockRegistry.QUESTION_BLOCK) || state.isOf(BlockRegistry.COIN_BLOCK))) {
+        if (water && (state.isOf(BlockInit.QUESTION_BLOCK) || state.isOf(BlockInit.COIN_BLOCK))) {
             world.setBlockState(pos, state.with(Properties.WATERLOGGED, true), 2);
         }
 
-        if (state.isOf(BlockRegistry.COIN_BLOCK) && blockEntity instanceof CoinBlockBE) {
+        if (state.isOf(BlockInit.COIN_BLOCK) && blockEntity instanceof CoinBlockBE) {
             if (world.getRandom().nextInt(30) == 0)
                 world.setBlockState(pos, state.with(CoinBlock.TYPE, 5).with(Properties.WATERLOGGED, water), 2);
 

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.client;
 
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -20,7 +20,7 @@ public class ClientPlayer extends AbstractClientPlayerEntity {
 
     @Inject(at = @At("HEAD"), method = "updateWaterSubmersionState()Z", cancellable = true)
     private void updateWaterSubmersionState(CallbackInfoReturnable<Boolean> info) {
-        if (this.updateMovementInFluid(TagRegistry.POISON, 0.014D)) {
+        if (this.updateMovementInFluid(TagInit.POISON, 0.014D)) {
             info.setReturnValue(false);
             info.cancel();
         }

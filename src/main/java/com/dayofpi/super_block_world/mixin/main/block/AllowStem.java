@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.block;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.StemBlock;
@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class AllowStem {
     @Inject(at = @At("HEAD"), method = ("canPlantOnTop(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Z"), cancellable = true)
     private void canPlantOnTop(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> info) {
-        info.setReturnValue(floor.isOf(Blocks.FARMLAND) || floor.isOf(BlockRegistry.TOADSTOOL_FARMLAND));
+        info.setReturnValue(floor.isOf(Blocks.FARMLAND) || floor.isOf(BlockInit.TOADSTOOL_FARMLAND));
         info.cancel();
     }
 }

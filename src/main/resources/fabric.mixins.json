@@ -16,8 +16,10 @@
     "main.entity.JumpBoots",
     "main.entity.PathNodeMixin",
     "main.entity.RabbitType",
+    "main.entity.SpawnGroupMixin",
     "main.entity.SpecialSpawnCases",
     "main.enums_and_sets.BlockEntityTypeMixin",
+    "main.enums_and_sets.BoatEntityMixin",
     "main.enums_and_sets.BoatTypeMixin",
     "main.enums_and_sets.InstrumentMixin",
     "main.enums_and_sets.SignTypeAccessor",
@@ -36,8 +38,8 @@
   ],
   "client": [
     "client.ClientPlayer",
-    "client.PickupSound",
     "client.CustomMusic",
+    "client.PickupSound",
     "client.RabbitSkin"
   ],
   "injectors": {

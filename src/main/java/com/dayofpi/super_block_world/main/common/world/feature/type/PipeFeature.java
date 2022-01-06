@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.world.feature.type;
 
 import com.dayofpi.super_block_world.main.registry.block.ColoredBlocks;
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -52,7 +52,7 @@ public class PipeFeature extends Feature<DefaultFeatureConfig> {
 					}
 				} else if (l > 0) {
 					BlockPos blockPos3 = blockPos.down();
-					if (!world.getBlockState(blockPos3.down()).isIn(TagRegistry.WARP_PIPES)) {
+					if (!world.getBlockState(blockPos3.down()).isIn(TagInit.WARP_PIPES)) {
 						world.setBlockState(blockPos3, warpPipeState, Block.NOTIFY_LISTENERS);
 						++i;
 					}

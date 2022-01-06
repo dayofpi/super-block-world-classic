@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.block.hazard;
 
 import com.dayofpi.super_block_world.main.common.entity.mob.FuzzyEntity;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PlantBlock;
@@ -39,7 +39,7 @@ public class FuzzbushBlock extends PlantBlock {
         if (random.nextInt(3) == 0) {
             List<FuzzyEntity> list = world.getEntitiesByClass(FuzzyEntity.class, Box.from(Vec3d.of(pos)).expand(16), EntityPredicates.VALID_LIVING_ENTITY);
             if (list.size() < 10) {
-                FuzzyEntity fuzzyEntity = EntityRegistry.FUZZY.create(world);
+                FuzzyEntity fuzzyEntity = EntityInit.FUZZY.create(world);
                 if (fuzzyEntity != null) {
                     fuzzyEntity.refreshPositionAndAngles(pos, 0.0F, 0.0F);
                     world.spawnEntity(fuzzyEntity);

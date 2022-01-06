@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.koopa;
 
-import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
+import com.dayofpi.super_block_world.main.common.entity.mob.EnemyEntity;
 import com.dayofpi.super_block_world.main.common.entity.mob.hammer_bro.HammerBroEntity;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -164,15 +164,15 @@ public class KoopaEntity extends EnemyEntity implements Angerable, ItemSteerable
     }
 
     protected SoundEvent getAmbientSound() {
-        return ModSounds.ENTITY_KOOPA_AMBIENT;
+        return SoundInit.ENTITY_KOOPA_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.ENTITY_KOOPA_HURT;
+        return SoundInit.ENTITY_KOOPA_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return ModSounds.ENTITY_KOOPA_DEATH;
+        return SoundInit.ENTITY_KOOPA_DEATH;
     }
 
     @Nullable
@@ -181,7 +181,7 @@ public class KoopaEntity extends EnemyEntity implements Angerable, ItemSteerable
         HammerBroEntity jockey;
         entityData = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
         if (world.getRandom().nextInt(100) == 0) {
-            jockey = EntityRegistry.HAMMER_BRO.create(this.world);
+            jockey = EntityInit.HAMMER_BRO.create(this.world);
             if (jockey != null) {
                 jockey.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0f);
                 jockey.initialize(world, difficulty, spawnReason, null, null);

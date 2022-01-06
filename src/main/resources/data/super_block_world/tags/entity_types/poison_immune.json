@@ -6,6 +6,7 @@
     "super_block_world:spike_top",
     "super_block_world:rotten_mushroom",
     "#minecraft:skeletons",
+    "minecraft:item",
     "minecraft:zombie",
     "minecraft:zombie_villager",
     "minecraft:husk",

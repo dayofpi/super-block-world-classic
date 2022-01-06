@@ -1,12 +1,12 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.buzzy;
 
 import com.dayofpi.super_block_world.main.common.block.item_block.ReactiveBlock;
-import com.dayofpi.super_block_world.main.common.entity.CeilingEntity;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.common.entity.mob.CeilingEntity;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -62,15 +62,15 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.ENTITY_BUZZY_HURT;
+        return SoundInit.ENTITY_BUZZY_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return ModSounds.ENTITY_BUZZY_DEATH;
+        return SoundInit.ENTITY_BUZZY_DEATH;
     }
 
     public static boolean isSpawnBlockValid(WorldAccess world, BlockPos pos) {
-        return world.getBlockState(pos).isOf(BlockRegistry.VANILLATE) || world.getBlockState(pos).isOf(BlockRegistry.TOPPED_VANILLATE) || world.getBlockState(pos).isOf(BlockRegistry.FROSTY_VANILLATE);
+        return world.getBlockState(pos).isOf(BlockInit.VANILLATE) || world.getBlockState(pos).isOf(BlockInit.TOPPED_VANILLATE) || world.getBlockState(pos).isOf(BlockInit.FROSTY_VANILLATE);
     }
 
     @Override
@@ -88,17 +88,17 @@ public abstract class AbstractBuzzy extends CeilingEntity {
         int fallDamage = this.computeFallDamage(fallDistance, damageMultiplier);
         if (fallDamage > 0) {
             List<Entity> entities = world.getOtherEntities(this, this.getBoundingBox().expand(3, 0, 3), EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR);
-            if (this.getType() == EntityRegistry.SPIKE_TOP)
+            if (this.getType() == EntityInit.SPIKE_TOP)
                 entities.forEach((entity) -> entity.damage(DamageSource.thorns(this), fallDamage + 3));
             else
                 entities.forEach((entity) -> entity.damage(ModEntityDamageSource.mobDrop(this), fallDamage + 1));
-            this.playSound(ModSounds.ENTITY_BUZZY_IMPACT, this.getSoundVolume(), this.getSoundPitch());
+            this.playSound(SoundInit.ENTITY_BUZZY_IMPACT, this.getSoundVolume(), this.getSoundPitch());
             ((ServerWorld) world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
         }
         if (fallDistance > 0.0F) {
             for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos().down(), 1, 0, 1)) {
                 BlockState state = world.getBlockState(blockPos);
-                if (world.getBlockState(blockPos).isIn(TagRegistry.BRICKS)) {
+                if (world.getBlockState(blockPos).isIn(TagInit.BRICKS)) {
                     world.breakBlock(blockPos, true);
                 } else if (state.getBlock() instanceof ReactiveBlock reactiveBlock) {
                     reactiveBlock.activate(state, world, blockPos);
@@ -124,14 +124,14 @@ public abstract class AbstractBuzzy extends CeilingEntity {
             if (!playerBelow && !blockBelow) {
                 this.setVelocity(this.getVelocity().multiply(1.0F, 0.0F, 1.0F));
             } else if (playerBelow && !blockBelow)
-                this.playSound(ModSounds.ENTITY_BUZZY_DROP, 1.0F, this.getSoundPitch());
+                this.playSound(SoundInit.ENTITY_BUZZY_DROP, 1.0F, this.getSoundPitch());
         }
     }
 
     @Override
     public boolean damage(DamageSource source, float amount) {
         if (source instanceof ProjectileDamageSource) {
-            this.playSound(ModSounds.ENTITY_BUZZY_BLOCK, this.getSoundVolume(), this.getSoundPitch());
+            this.playSound(SoundInit.ENTITY_BUZZY_BLOCK, this.getSoundVolume(), this.getSoundPitch());
             if (!this.world.isClient) {
                 ((ServerWorld) world).spawnParticles(ParticleTypes.CRIT, this.getX() + random.nextFloat() - 0.2F, this.getY() + 1.5D, this.getZ() + random.nextFloat() - 0.2F, 2, 0.0D, 0.0D, 0.0D, 0.0D);
             }

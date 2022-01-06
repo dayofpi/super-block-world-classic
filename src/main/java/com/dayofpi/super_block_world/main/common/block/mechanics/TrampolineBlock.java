@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.block.mechanics;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -52,12 +52,12 @@ public class TrampolineBlock extends FallingBlock implements Waterloggable {
     @Override
     public void onEntityLand(BlockView world, Entity entity) {
         BlockState blockState = world.getBlockState(entity.getLandingPos());
-        if (world.getBlockState(entity.getLandingPos()).isOf(BlockRegistry.TRAMPOLINE) && world.getBlockState(entity.getLandingPos()).get(SQUASH)) {
+        if (world.getBlockState(entity.getLandingPos()).isOf(BlockInit.TRAMPOLINE) && world.getBlockState(entity.getLandingPos()).get(SQUASH)) {
             // If squashed
             if (!entity.isSneaking()) {
                 entity.world.setBlockState(entity.getLandingPos(), blockState.with(SQUASH, false));
                 this.bounce(entity, 1.2);
-                entity.playSound(ModSounds.BLOCK_TRAMPOLINE_SUPER_JUMP, 1.0F, this.getSoundPitch(entity));
+                entity.playSound(SoundInit.BLOCK_TRAMPOLINE_SUPER_JUMP, 1.0F, this.getSoundPitch(entity));
                 Random random = new Random();
                 for (int i = 0; i < 6; i++) {
                     double rand = random.nextBoolean() ? 0.02 : -0.02;
@@ -65,11 +65,11 @@ public class TrampolineBlock extends FallingBlock implements Waterloggable {
                 }
             }
         }
-        else if (world.getBlockState(entity.getLandingPos()).isOf(BlockRegistry.TRAMPOLINE) && !world.getBlockState(entity.getLandingPos()).get(SQUASH)) {
+        else if (world.getBlockState(entity.getLandingPos()).isOf(BlockInit.TRAMPOLINE) && !world.getBlockState(entity.getLandingPos()).get(SQUASH)) {
             // If not squashed
             if (!entity.isSneaking()) {
                 this.bounce(entity, 0.8);
-                entity.playSound(ModSounds.BLOCK_TRAMPOLINE_JUMP, 1.0F, this.getSoundPitch(entity));
+                entity.playSound(SoundInit.BLOCK_TRAMPOLINE_JUMP, 1.0F, this.getSoundPitch(entity));
             }  else {
                 entity.world.setBlockState(entity.getLandingPos(), blockState.with(SQUASH, true));
                 entity.playSound(SoundEvents.BLOCK_WOOD_STEP, 1.0F, 1.1F);
