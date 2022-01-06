@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.world.dimension;
 
 import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.registry.key.ModBiomeKeys;
+import com.dayofpi.super_block_world.main.util.key.ModBiomeKeys;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.util.Identifier;

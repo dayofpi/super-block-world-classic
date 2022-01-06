@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.item;
 
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
@@ -19,6 +19,6 @@ public abstract class BrewingRecipeMixin {
 
     @Inject(at=@At("TAIL"), method = "registerDefaults")
     private static void registerDefaults(CallbackInfo info) {
-        registerPotionRecipe(Potions.AWKWARD, ItemRegistry.FUZZBALL, Potions.POISON);
+        registerPotionRecipe(Potions.AWKWARD, ItemInit.FUZZBALL, Potions.POISON);
     }
 }

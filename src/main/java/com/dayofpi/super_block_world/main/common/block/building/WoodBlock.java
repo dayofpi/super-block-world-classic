@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.building;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
@@ -25,13 +25,13 @@ public class WoodBlock extends PillarBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
-        BlockState stripResult = BlockRegistry.STRIPPED_AMANITA_LOG.getDefaultState();
-        if (state.isOf(BlockRegistry.AMANITA_WOOD)) {
-            stripResult = BlockRegistry.STRIPPED_AMANITA_WOOD.getDefaultState();
-        } else if (state.isOf(BlockRegistry.DARK_AMANITA_LOG)) {
-            stripResult = BlockRegistry.STRIPPED_DARK_AMANITA_LOG.getDefaultState();
-        } else if (state.isOf(BlockRegistry.DARK_AMANITA_WOOD)) {
-            stripResult = BlockRegistry.STRIPPED_DARK_AMANITA_WOOD.getDefaultState();
+        BlockState stripResult = BlockInit.STRIPPED_AMANITA_LOG.getDefaultState();
+        if (state.isOf(BlockInit.AMANITA_WOOD)) {
+            stripResult = BlockInit.STRIPPED_AMANITA_WOOD.getDefaultState();
+        } else if (state.isOf(BlockInit.DARK_AMANITA_LOG)) {
+            stripResult = BlockInit.STRIPPED_DARK_AMANITA_LOG.getDefaultState();
+        } else if (state.isOf(BlockInit.DARK_AMANITA_WOOD)) {
+            stripResult = BlockInit.STRIPPED_DARK_AMANITA_WOOD.getDefaultState();
         }
         if (itemStack.isIn(FabricToolTags.AXES)) {
             world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);

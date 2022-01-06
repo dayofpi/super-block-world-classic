@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin.main.block;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
@@ -29,7 +29,7 @@ public class AllowCrop extends PlantBlock {
             for (int j = -1; j <= 1; ++j) {
                 float g = 0.0F;
                 BlockState blockState = world.getBlockState(blockPos.add(i, 0, j));
-                if (blockState.isOf(Blocks.FARMLAND) || blockState.isOf(BlockRegistry.TOADSTOOL_FARMLAND)) {
+                if (blockState.isOf(Blocks.FARMLAND) || blockState.isOf(BlockInit.TOADSTOOL_FARMLAND)) {
                     g = 1.0F;
                     if (blockState.get(FarmlandBlock.MOISTURE) > 0) {
                         g = 3.0F;
@@ -67,7 +67,7 @@ public class AllowCrop extends PlantBlock {
         BlockPos blockPos = pos.down();
         for (Direction direction : Direction.Type.HORIZONTAL) {
             FluidState fluidState = world.getFluidState(blockPos.offset(direction));
-            if (fluidState.isIn(TagRegistry.POISON)) {
+            if (fluidState.isIn(TagInit.POISON)) {
                 // If there is poison next to it, drop nothing
                 world.breakBlock(pos, false);
             }
@@ -76,7 +76,7 @@ public class AllowCrop extends PlantBlock {
 
     @Inject(at = @At("HEAD"), method = ("canPlantOnTop(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Z"), cancellable = true)
     private void canPlantOnTop(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> info) {
-        info.setReturnValue(floor.isOf(Blocks.FARMLAND) || floor.isOf(BlockRegistry.TOADSTOOL_FARMLAND));
+        info.setReturnValue(floor.isOf(Blocks.FARMLAND) || floor.isOf(BlockInit.TOADSTOOL_FARMLAND));
         info.cancel();
     }
 }

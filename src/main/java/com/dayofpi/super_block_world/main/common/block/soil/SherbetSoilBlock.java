@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.soil;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -24,7 +24,7 @@ public class SherbetSoilBlock extends Block {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
         if (itemStack.isOf(Items.SNOWBALL)) {
-            world.setBlockState(pos, BlockRegistry.SNOWY_SHERBET_SOIL.getDefaultState(), 1);
+            world.setBlockState(pos, BlockInit.SNOWY_SHERBET_SOIL.getDefaultState(), 1);
             return ActionResult.success(world.isClient);
         }
         return ActionResult.PASS;
@@ -33,7 +33,7 @@ public class SherbetSoilBlock extends Block {
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         if (entity instanceof LivingEntity && EnchantmentHelper.hasFrostWalker((LivingEntity)entity)) {
-            world.setBlockState(pos, BlockRegistry.SNOWY_SHERBET_SOIL.getDefaultState(), 1);
+            world.setBlockState(pos, BlockInit.SNOWY_SHERBET_SOIL.getDefaultState(), 1);
         }
         super.onSteppedOn(world, pos, state, entity);
     }

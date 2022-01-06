@@ -1,9 +1,8 @@
 package com.dayofpi.super_block_world.main.common.entity.mob;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.main.common.entity.goal.FuzzyWanderGoal;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.goal.SwimGoal;
@@ -85,7 +84,7 @@ public class FuzzyEntity extends EnemyEntity implements IAnimatable {
 
     public void onKilledOther(ServerWorld world, LivingEntity other) {
         super.onKilledOther(world, other);
-        FuzzyEntity fuzzyEntity = EntityRegistry.FUZZY.create(world);
+        FuzzyEntity fuzzyEntity = EntityInit.FUZZY.create(world);
         if (fuzzyEntity != null) {
             fuzzyEntity.refreshPositionAndAngles(other.getX(), other.getY(), other.getZ(), other.getYaw(), other.getPitch());
             if (this.hasCustomName()) {
@@ -111,7 +110,7 @@ public class FuzzyEntity extends EnemyEntity implements IAnimatable {
         if (this.isAlive()) {
             List<ItemEntity> list = this.getWorld().getEntitiesByClass(ItemEntity.class, this.getBoundingBox(), EntityPredicates.VALID_ENTITY);
             if (!list.isEmpty()) {
-                this.playSound(ModSounds.ENTITY_FUZZY_BREAK, 1.0F, 1.0F);
+                this.playSound(SoundInit.ENTITY_FUZZY_BREAK, 1.0F, 1.0F);
                 list.get(0).discard();
             }
         }

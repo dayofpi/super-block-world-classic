@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.block.building;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.fluid.FluidState;
@@ -22,7 +22,7 @@ public class VanillateBlock extends Block {
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         FluidState fluidState = world.getFluidState(pos.up());
-        if (direction == Direction.UP && fluidState.isIn(FluidTags.LAVA) && !fluidState.isIn(TagRegistry.POISON)) {
+        if (direction == Direction.UP && fluidState.isIn(FluidTags.LAVA) && !fluidState.isIn(TagInit.POISON)) {
             world.createAndScheduleBlockTick(pos, this, 1);
         }
 
@@ -32,13 +32,13 @@ public class VanillateBlock extends Block {
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         FluidState fluidState = world.getFluidState(pos.up());
-        if (fluidState.isIn(FluidTags.LAVA) && !fluidState.isIn(TagRegistry.POISON)) {
+        if (fluidState.isIn(FluidTags.LAVA) && !fluidState.isIn(TagInit.POISON)) {
             world.createAndScheduleBlockTick(pos, this, 1);
         }
     }
 
     private  BlockState getToppedState(BlockState originalState) {
-        return originalState.isOf(BlockRegistry.FROSTY_VANILLATE) ? BlockRegistry.FROSTED_VANILLATE.getDefaultState() : BlockRegistry.TOPPED_VANILLATE.getDefaultState();
+        return originalState.isOf(BlockInit.FROSTY_VANILLATE) ? BlockInit.FROSTED_VANILLATE.getDefaultState() : BlockInit.TOPPED_VANILLATE.getDefaultState();
     }
 
     @Override

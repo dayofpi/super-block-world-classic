@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.main.common.block_entity;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.block.BlockEntityRegistry;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.main.registry.main.BlockEntityInit;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,18 +19,18 @@ import java.util.Random;
 public class BooLanternBE extends BlockEntity {
 
     public BooLanternBE(BlockPos pos, BlockState state) {
-        super(BlockEntityRegistry.BOO_LANTERN, pos, state);
+        super(BlockEntityInit.BOO_LANTERN, pos, state);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, BooLanternBE be) {
         Box box = (new Box(pos)).expand(5);
         List<PlayerEntity> list = world.getNonSpectatingEntities(PlayerEntity.class, box);
-        if (state.isOf(BlockRegistry.BOO_LANTERN) && state.get(Properties.LIT) != list.isEmpty() && be != null) {
+        if (state.isOf(BlockInit.BOO_LANTERN) && state.get(Properties.LIT) != list.isEmpty() && be != null) {
             if (!world.isClient)
                 world.setBlockState(pos, state.with(Properties.LIT, list.isEmpty()));
             if (!state.get(Properties.WATERLOGGED)) {
                 Random random = new Random();
-                world.playSound(null, pos, state.get(Properties.LIT) ? ModSounds.BLOCK_BOO_LANTERN_HIDE : ModSounds.BLOCK_BOO_LANTERN_REVEAL, SoundCategory.BLOCKS, 0.6F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+                world.playSound(null, pos, state.get(Properties.LIT) ? SoundInit.BLOCK_BOO_LANTERN_HIDE : SoundInit.BLOCK_BOO_LANTERN_REVEAL, SoundCategory.BLOCKS, 0.6F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
             }
         }
     }

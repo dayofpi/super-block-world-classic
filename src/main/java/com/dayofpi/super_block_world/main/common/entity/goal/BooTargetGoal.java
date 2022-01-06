@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.entity.goal;
 
 import com.dayofpi.super_block_world.main.common.entity.mob.ghost.BooEntity;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.util.Hand;
@@ -19,7 +19,7 @@ public class BooTargetGoal<T extends LivingEntity> extends ActiveTargetGoal<T> {
     }
 
     public boolean shouldContinue() {
-        if (this.targetEntity != null && !this.targetEntity.getStackInHand(Hand.MAIN_HAND).isOf(ItemRegistry.POISON_MUSHROOM))
+        if (this.targetEntity != null && !this.targetEntity.getStackInHand(Hand.MAIN_HAND).isOf(ItemInit.POISON_MUSHROOM))
             return super.shouldContinue();
         else return false;
     }

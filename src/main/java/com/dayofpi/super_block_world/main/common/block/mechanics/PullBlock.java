@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.mechanics;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemPlacementContext;
@@ -46,7 +46,7 @@ public class PullBlock extends Block {
     }
 
     public void activate(BlockState state, World world, BlockPos pos) {
-        world.playSound(null, pos, ModSounds.ITEM_FUZZY_MAGNET, SoundCategory.BLOCKS, 1.0F, 1.0F);
+        world.playSound(null, pos, SoundInit.ITEM_FUZZY_MAGNET, SoundCategory.BLOCKS, 1.0F, 1.0F);
         world.setBlockState(pos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
     }
 

@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.ghost;
 
 import com.dayofpi.super_block_world.main.Client;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -57,7 +57,7 @@ public class SpiritEntity extends Entity {
         ItemStack itemStack = player.getStackInHand(hand);
         if (itemStack.isOf(Items.GLASS_BOTTLE)) {
             player.playSound(SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, 1.0F, 1.0F);
-            ItemStack itemStack2 = ItemUsage.exchangeStack(itemStack, player, ItemRegistry.BOTTLED_GHOST.getDefaultStack());
+            ItemStack itemStack2 = ItemUsage.exchangeStack(itemStack, player, ItemInit.BOTTLED_GHOST.getDefaultStack());
             player.setStackInHand(hand, itemStack2);
             this.discard();
             return ActionResult.success(this.world.isClient);

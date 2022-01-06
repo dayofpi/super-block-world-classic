@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.hazard;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
 import com.dayofpi.super_block_world.main.common.entity.projectile.FireballEntity;
 import net.minecraft.block.Block;
@@ -37,7 +37,7 @@ public class FrozenMuncherBlock extends Block {
     }
 
     private void thaw(ServerWorld world, BlockPos pos) {
-        world.playSound(null, pos, ModSounds.ENTITY_ICEBALL_HIT, SoundCategory.BLOCKS, 1.0F, 1.2F);
+        world.playSound(null, pos, SoundInit.ENTITY_ICEBALL_HIT, SoundCategory.BLOCKS, 1.0F, 1.2F);
         world.setBlockState(pos, PlantBlocks.MUNCHER.getDefaultState());
         world.spawnParticles(ParticleTypes.SPLASH, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, 3, 0.0D, 0.0D, 0.0D, 0.0D);
     }

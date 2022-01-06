@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.main.common.entity.projectile;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.main.Client;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -38,15 +38,17 @@ public class IceballEntity extends PersistentProjectileEntity {
     public IceballEntity(EntityType<? extends IceballEntity> entityType, LivingEntity livingEntity, World world) {
         this(entityType, livingEntity.getX(), livingEntity.getEyeY() - 0.10000000149011612D, livingEntity.getZ(), world);
         this.setOwner(livingEntity);
+        this.setShotFromCrossbow(false);
+        this.setCritical(false);
         this.pickupType = PickupPermission.DISALLOWED;
     }
 
     public IceballEntity(World world, double x, double y, double z) {
-        super(EntityRegistry.ICEBALL, x, y, z, world);
+        super(EntityInit.ICEBALL, x, y, z, world);
     }
 
     protected SoundEvent getHitSound() {
-        return ModSounds.ENTITY_ICEBALL_BOUNCE;
+        return SoundInit.ENTITY_ICEBALL_BOUNCE;
     }
 
     public IceballEntity(EntityType<? extends IceballEntity> entityType, double x, double v, double z, World world) {
@@ -64,9 +66,6 @@ public class IceballEntity extends PersistentProjectileEntity {
         this.playSound(this.getSound(), 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
         this.shake = 7;
         this.hops -= 1;
-        this.setCritical(false);
-        this.setPierceLevel((byte)0);
-        this.setShotFromCrossbow(false);
         if (blockHitResult.getSide() == Direction.UP) {
             this.setVelocity(this.getVelocity().add(0, 0.3 ,0));
         } else if (blockHitResult.getSide() == Direction.DOWN) {
@@ -77,7 +76,7 @@ public class IceballEntity extends PersistentProjectileEntity {
         this.setYaw(this.getYaw() + 180.0F);
         this.prevYaw += 180.0F;
         if (hops <= 0) {
-            this.playSound(ModSounds.ENTITY_ICEBALL_FREEZE, 0.5F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
+            this.playSound(SoundInit.ENTITY_ICEBALL_FREEZE, 0.5F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             this.discard();
         }
     }
@@ -89,13 +88,13 @@ public class IceballEntity extends PersistentProjectileEntity {
         }
 
         if ((world.getBlockState(this.getBlockPos()).isOf(Blocks.WATER))) {
-            this.playSound(ModSounds.ENTITY_ICEBALL_FREEZE, 1.0F, 1.0F + this.random.nextFloat());
+            this.playSound(SoundInit.ENTITY_ICEBALL_FREEZE, 1.0F, 1.0F + this.random.nextFloat());
             world.setBlockState(this.getBlockPos(), Blocks.FROSTED_ICE.getDefaultState());
             this.discard();
         }
 
         if ((world.getBlockState(this.getBlockPos()).isOf(PlantBlocks.MUNCHER))) {
-            this.playSound(ModSounds.ENTITY_ICEBALL_FREEZE, 1.0F, 1.0F + this.random.nextFloat());
+            this.playSound(SoundInit.ENTITY_ICEBALL_FREEZE, 1.0F, 1.0F + this.random.nextFloat());
             world.setBlockState(this.getBlockPos(), PlantBlocks.FROZEN_MUNCHER.getDefaultState());
             this.discard();
         }
@@ -118,7 +117,7 @@ public class IceballEntity extends PersistentProjectileEntity {
             entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 3);
 
         if (entity instanceof LivingEntity && !(entity instanceof SnowGolemEntity) && !(entity instanceof StrayEntity)) {
-            this.playSound(ModSounds.ENTITY_ICEBALL_HIT, 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
+            this.playSound(SoundInit.ENTITY_ICEBALL_HIT, 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
             ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, slownessDuration(), 6), this);
         }
         entity.extinguish();

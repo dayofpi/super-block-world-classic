@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.main.common.entity.projectile;
 
 import com.dayofpi.super_block_world.main.Client;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -22,15 +22,15 @@ public class BombEntity extends ThrownItemEntity {
     }
 
     public BombEntity(World world, double x, double y, double z) {
-        super(EntityRegistry.BOMB, x, y, z, world);
+        super(EntityInit.BOMB, x, y, z, world);
     }
 
     public BombEntity(World world, LivingEntity owner) {
-        super(EntityRegistry.BOMB, owner, world);
+        super(EntityInit.BOMB, owner, world);
     }
 
     protected Item getDefaultItem() {
-        return ItemRegistry.BOMB;
+        return ItemInit.BOMB;
     }
 
     public void tick() {

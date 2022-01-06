@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.main.common.world.fluid;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
-import com.dayofpi.super_block_world.main.registry.misc.FluidRegistry;
-import com.dayofpi.super_block_world.main.registry.misc.ParticleRegistry;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
+import com.dayofpi.super_block_world.main.registry.other.FluidInit;
+import com.dayofpi.super_block_world.main.registry.other.ParticleInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.fluid.Fluid;
@@ -23,15 +23,15 @@ import java.util.Random;
 
 public abstract class PoisonFluid extends AbstractFluid {
     public Fluid getFlowing() {
-        return FluidRegistry.FLOWING_POISON;
+        return FluidInit.FLOWING_POISON;
     }
 
     public Fluid getStill() {
-        return FluidRegistry.STILL_POISON;
+        return FluidInit.STILL_POISON;
     }
 
     public Item getBucketItem() {
-        return ItemRegistry.POISON_BUCKET;
+        return ItemInit.POISON_BUCKET;
     }
 
     @Override
@@ -47,11 +47,11 @@ public abstract class PoisonFluid extends AbstractFluid {
                 double d = (double)pos.getX() + random.nextDouble();
                 double e = (double)pos.getY() + 0.9D  + (random.nextDouble() * 0.2);
                 double f = (double)pos.getZ() + random.nextDouble();
-                world.addParticle(ParticleRegistry.POISON_BUBBLE, d, e, f, 0.0D, 0.0D, 0.0D);
+                world.addParticle(ParticleInit.POISON_BUBBLE, d, e, f, 0.0D, 0.0D, 0.0D);
             }
         }
-        if (random.nextInt(192) == 0) {
-            world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.BLOCK_POISON_AMBIENT, SoundCategory.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 1.0F + random.nextFloat() * 0.15F, true);
+        if (random.nextInt(190) == 0) {
+            world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundInit.FLUID_POISON_AMBIENT, SoundCategory.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 1.0F + random.nextFloat() * 0.15F, true);
         }
     }
 
@@ -61,11 +61,11 @@ public abstract class PoisonFluid extends AbstractFluid {
 
     @Override
     protected BlockState toBlockState(FluidState fluidState) {
-        return BlockRegistry.POISON.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(fluidState));
+        return BlockInit.POISON.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(fluidState));
     }
 
     public Optional<SoundEvent> getBucketFillSound() {
-        return Optional.of(ModSounds.ITEM_POISON_BUCKET_FILL);
+        return Optional.of(SoundInit.ITEM_POISON_BUCKET_FILL);
     }
 
     public static class Flowing extends PoisonFluid {

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.plant;
 
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -41,7 +41,7 @@ public class PiranhaLilyBlock extends PlantBlock {
         FluidState fluidState = world.getFluidState(pos);
         FluidState fluidState2 = world.getFluidState(pos.up());
 
-        return super.canPlantOnTop(floor, world, pos) || floor.isIn(TagRegistry.WARP_PIPES) || (fluidState.getFluid() == Fluids.WATER || floor.getMaterial() == Material.ICE) && fluidState2.getFluid() == Fluids.EMPTY;
+        return super.canPlantOnTop(floor, world, pos) || floor.isIn(TagInit.WARP_PIPES) || (fluidState.getFluid() == Fluids.WATER || floor.getMaterial() == Material.ICE) && fluidState2.getFluid() == Fluids.EMPTY;
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

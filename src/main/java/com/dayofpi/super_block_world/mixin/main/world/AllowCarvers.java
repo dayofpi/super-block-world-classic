@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.world;
 
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.world.gen.carver.Carver;
@@ -19,7 +19,7 @@ public class AllowCarvers {
     // Allows carvers (caves, ravines, etc.) to go through mod blocks
     @Inject(at = @At("HEAD"), method = "canAlwaysCarveBlock(Lnet/minecraft/block/BlockState;)Z", cancellable = true)
     private void canAlwaysCarveBlock(BlockState state, CallbackInfoReturnable<Boolean> info) {
-        info.setReturnValue(this.alwaysCarvableBlocks.contains((state.getBlock())) || state.isIn(TagRegistry.ALWAYS_CARVABLE));
+        info.setReturnValue(this.alwaysCarvableBlocks.contains((state.getBlock())) || state.isIn(TagInit.ALWAYS_CARVABLE));
         info.cancel();
     }
 }

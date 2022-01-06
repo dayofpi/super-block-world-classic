@@ -59,28 +59,36 @@
       }
     ]
   },
+  "music_disc.my_song": {
+    "sounds": [
+      {
+        "name": "super_block_world:item/music_disc/my_song",
+        "stream": true
+      }
+    ]
+  },
   "block.portal.trigger": {
     "sounds": [
-      "super_block_world:portal/trigger"
+      "super_block_world:block/portal/trigger"
     ]
   },
   "block.portal.travel": {
     "sounds": [
-      "super_block_world:portal/travel"
+      "super_block_world:block/portal/travel"
     ]
   },
-  "block.poison.ambient": {
-    "subtitle": "sound.super_block_world.block.poison.ambient",
+  "fluid.poison.ambient": {
+    "subtitle": "sound.super_block_world.fluid.poison.ambient",
     "sounds": [
-      "super_block_world:block/poison1",
-      "super_block_world:block/poison2"
+      "super_block_world:fluid/poison1",
+      "super_block_world:fluid/poison2"
     ]
   },
-  "block.poison.swim": {
-    "subtitle": "sound.super_block_world.block.poison.swim",
+  "fluid.poison.swim": {
+    "subtitle": "sound.super_block_world.fluid.poison.swim",
     "sounds": [
-      "super_block_world:block/poison_swim1",
-      "super_block_world:block/poison_swim2"
+      "super_block_world:fluid/poison_swim1",
+      "super_block_world:fluid/poison_swim2"
     ]
   },
   "item.poison_bucket.fill": {
@@ -336,6 +344,12 @@
       "super_block_world:block/grassy_toadstone/step6"
     ]
   },
+  "block.question_box.spawn": {
+    "subtitle": "sound.super_block_world.entity.question_box.spawn",
+    "sounds": [
+      "super_block_world:block/question_box"
+    ]
+  },
   "block.item_block.bump": {
     "subtitle": "sound.super_block_world.block.item_block.bump",
     "sounds": [
@@ -509,6 +523,86 @@
   },
   "entity.misc.tail_attack": {
     "sounds": [ "super_block_world:entity/tail_attack" ]
+  },
+  "entity.toad.ambient": {
+    "subtitle": "sound.super_block_world.entity.toad.ambient",
+    "sounds": [
+      "super_block_world:entity/mob/toad/say1",
+      "super_block_world:entity/mob/toad/say2",
+      "super_block_world:entity/mob/toad/say3",
+      "super_block_world:entity/mob/toad/say4"
+    ]
+  },
+  "entity.toad.hurt": {
+    "subtitle": "sound.super_block_world.entity.toad.hurt",
+    "sounds": [
+      "super_block_world:entity/mob/toad/hurt1",
+      "super_block_world:entity/mob/toad/hurt2",
+      "super_block_world:entity/mob/toad/hurt3"
+    ]
+  },
+  "entity.toad.death": {
+    "subtitle": "sound.super_block_world.entity.toad.death",
+    "sounds": [
+      "super_block_world:entity/mob/toad/death1",
+      "super_block_world:entity/mob/toad/death2",
+      "super_block_world:entity/mob/toad/death3"
+    ]
+  },
+  "entity.toad.cheer": {
+    "subtitle": "sound.super_block_world.entity.toad.cheer",
+    "sounds": [
+      "super_block_world:entity/mob/toad/cheer1",
+      "super_block_world:entity/mob/toad/cheer2",
+      "super_block_world:entity/mob/toad/cheer3",
+      "super_block_world:entity/mob/toad/cheer4"
+    ]
+  },
+  "entity.mummy_toad.ambient": {
+    "subtitle": "sound.super_block_world.entity.mummy_toad.ambient",
+    "sounds": [
+      "super_block_world:entity/mob/mummy_toad/say1",
+      "super_block_world:entity/mob/mummy_toad/say2",
+      "super_block_world:entity/mob/mummy_toad/say3"
+    ]
+  },
+  "entity.mummy_toad.hurt": {
+    "subtitle": "sound.super_block_world.entity.mummy_toad.hurt",
+    "sounds": [
+      "super_block_world:entity/mob/mummy_toad/hurt1",
+      "super_block_world:entity/mob/mummy_toad/hurt2"
+    ]
+  },
+  "entity.mummy_toad.death": {
+    "subtitle": "sound.super_block_world.entity.mummy_toad.death",
+    "sounds": [
+      "super_block_world:entity/mob/mummy_toad/death1",
+      "super_block_world:entity/mob/mummy_toad/death2"
+    ]
+  },
+  "entity.mummy_toad.magic": {
+    "subtitle": "sound.super_block_world.entity.mummy_toad.magic",
+    "sounds": [
+      "super_block_world:entity/mob/mummy_toad/magic"
+    ]
+  },
+  "entity.mummy_toad.mummify": {
+    "subtitle": "sound.super_block_world.entity.mummy_toad.mummify",
+    "sounds": [
+      "super_block_world:entity/mob/mummy_toad/mummify"
+    ]
+  },
+  "entity.hammer_bro.attack": {
+    "subtitle": "sound.super_block_world.entity.hammer_bro.attack",
+    "sounds": [
+      "super_block_world:entity/mob/hammer_bro/attack"
+    ]
+  },
+  "entity.hammer_bro.death": {
+    "subtitle": "sound.super_block_world.entity.hammer_bro.death",
+    "sounds": [
+      "super_block_world:entity/mob/hammer_bro/death"
+    ]
   },
   "entity.goomba.ambient": {
     "subtitle": "sound.super_block_world.entity.goomba.ambient",

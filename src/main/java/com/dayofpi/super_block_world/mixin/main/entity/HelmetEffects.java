@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -27,7 +27,7 @@ public abstract class HelmetEffects extends Entity {
 
     @Inject(at=@At("TAIL"), method = "tick")
     private void tick(CallbackInfo info) {
-        if (this.getEquippedStack(EquipmentSlot.HEAD).isOf(ItemRegistry.RED_SHELL) && !this.isOnFire() && !this.isInLava()) {
+        if (this.getEquippedStack(EquipmentSlot.HEAD).isOf(ItemInit.RED_SHELL) && !this.isOnFire() && !this.isInLava()) {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 200, 0, false, false, true));
         }
     }

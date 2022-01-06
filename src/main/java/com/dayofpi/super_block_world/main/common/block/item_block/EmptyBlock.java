@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.main.common.block.item_block;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.main.common.block_entity.CoinBlockBE;
 import com.dayofpi.super_block_world.main.common.block_entity.QuestionBlockBE;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -48,7 +48,7 @@ public class EmptyBlock extends Block {
             if (jumpUnder) {
                 if (!wasHit) {
                     wasHit = true;
-                    world.playSound(null, blockPos, ModSounds.BLOCK_EMPTY_BLOCK_BUMP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    world.playSound(null, blockPos, SoundInit.BLOCK_EMPTY_BLOCK_BUMP, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 } else {
                     world.createAndScheduleBlockTick(blockPos, this, 3);
                 }
@@ -71,14 +71,14 @@ public class EmptyBlock extends Block {
                 ParticleUtil.spawnParticle(world, blockPos, ParticleTypes.WAX_ON, UniformIntProvider.create(3, 5));
                 return ActionResult.SUCCESS;
             } else {
-                if (itemStack.isOf(ItemRegistry.COIN)) {
-                    world.setBlockState(blockPos, BlockRegistry.COIN_BLOCK.getDefaultState(), 2);
+                if (itemStack.isOf(ItemInit.COIN)) {
+                    world.setBlockState(blockPos, BlockInit.COIN_BLOCK.getDefaultState(), 2);
                     if (world.getBlockEntity(blockPos) instanceof CoinBlockBE blockEntity) {
                         blockEntity.setStack(0, itemStack.copy());
                         blockEntity.markDirty();
                     }
                 } else {
-                    world.setBlockState(blockPos, BlockRegistry.QUESTION_BLOCK.getDefaultState(), 2);
+                    world.setBlockState(blockPos, BlockInit.QUESTION_BLOCK.getDefaultState(), 2);
                     if (world.getBlockEntity(blockPos) instanceof QuestionBlockBE blockEntity) {
                         blockEntity.setStack(0, itemStack.copy());
                         blockEntity.markDirty();
@@ -87,7 +87,7 @@ public class EmptyBlock extends Block {
                 if (!player.isCreative()) {
                     player.getStackInHand(hand).setCount(0);
                 }
-                world.playSound(null, blockPos, ModSounds.BLOCK_EMPTY_BLOCK_STORE, SoundCategory.NEUTRAL, 2.0F, 1.0F);
+                world.playSound(null, blockPos, SoundInit.BLOCK_EMPTY_BLOCK_STORE, SoundCategory.NEUTRAL, 2.0F, 1.0F);
                 return ActionResult.CONSUME;
             }
         } else return ActionResult.PASS;

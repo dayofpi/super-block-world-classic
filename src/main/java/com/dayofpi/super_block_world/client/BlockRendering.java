@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.client;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import com.dayofpi.super_block_world.main.registry.block.MushroomBlocks;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
 import com.dayofpi.super_block_world.main.registry.block.PottedBlocks;
@@ -19,10 +19,10 @@ public class BlockRendering {
     }
 
     public static void setBlockColors() {
-        setBlockColor(false, 6879535, BlockRegistry.TOADSTOOL_GRASS, BlockRegistry.TOADSTOOL_TURF, BlockRegistry.GRASSY_TOADSTONE, BlockRegistry.GRASSY_HARDSTONE, BlockRegistry.SHOREGRASS, PlantBlocks.BUSH);
-        setBlockColor(true, 6408218, BlockRegistry.AMANITA_LEAVES, BlockRegistry.DARK_AMANITA_LEAVES, BlockRegistry.FRUITING_AMANITA_LEAVES, BlockRegistry.FRUITING_DARK_AMANITA_LEAVES, PlantBlocks.AMANITA_CARPET);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 6879535, BlockRegistry.TOADSTOOL_GRASS, BlockRegistry.GRASSY_TOADSTONE, BlockRegistry.GRASSY_HARDSTONE, BlockRegistry.SHOREGRASS, BlockRegistry.TOADSTOOL_TURF, PlantBlocks.BUSH);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 6408218, BlockRegistry.AMANITA_LEAVES, BlockRegistry.FRUITING_AMANITA_LEAVES, BlockRegistry.DARK_AMANITA_LEAVES, BlockRegistry.FRUITING_DARK_AMANITA_LEAVES, PlantBlocks.AMANITA_CARPET);
+        setBlockColor(false, 6879535, BlockInit.TOADSTOOL_GRASS, BlockInit.TOADSTOOL_TURF, BlockInit.GRASSY_TOADSTONE, BlockInit.GRASSY_HARDSTONE, BlockInit.SHOREGRASS, PlantBlocks.BUSH);
+        setBlockColor(true, 6408218, BlockInit.AMANITA_LEAVES, BlockInit.DARK_AMANITA_LEAVES, BlockInit.FRUITING_AMANITA_LEAVES, BlockInit.FRUITING_DARK_AMANITA_LEAVES, PlantBlocks.AMANITA_CARPET);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 6879535, BlockInit.TOADSTOOL_GRASS, BlockInit.GRASSY_TOADSTONE, BlockInit.GRASSY_HARDSTONE, BlockInit.SHOREGRASS, BlockInit.TOADSTOOL_TURF, PlantBlocks.BUSH);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 6408218, BlockInit.AMANITA_LEAVES, BlockInit.FRUITING_AMANITA_LEAVES, BlockInit.DARK_AMANITA_LEAVES, BlockInit.FRUITING_DARK_AMANITA_LEAVES, PlantBlocks.AMANITA_CARPET);
     }
 
     private static void setRenderLayer(Block block, RenderLayer layer) {
@@ -34,22 +34,22 @@ public class BlockRendering {
     }
 
     public static void setRenderLayers() {
-        setRenderLayer(BlockRegistry.POISON, RenderLayer.getTranslucent());
-        setRenderLayer(BlockRegistry.HIDDEN_BLOCK, RenderLayer.getTranslucent());
+        setRenderLayer(BlockInit.POISON, RenderLayer.getTranslucent());
+        setRenderLayer(BlockInit.HIDDEN_BLOCK, RenderLayer.getTranslucent());
         setRenderLayer(PlantBlocks.FROZEN_MUNCHER, RenderLayer.getTranslucent());
 
-        setRenderLayer(BlockRegistry.STAR_CRYSTAL, RenderLayer.getCutoutMipped());
-        setRenderLayer(BlockRegistry.ICICLE, RenderLayer.getCutoutMipped());
-        setRenderLayer(BlockRegistry.TRAMPOLINE, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockInit.STAR_CRYSTAL, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockInit.ICICLE, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockInit.TRAMPOLINE, RenderLayer.getCutoutMipped());
 
-        setRenderLayer(BlockRegistry.TOADSTOOL_GRASS, RenderLayer.getCutoutMipped());
-        setRenderLayer(BlockRegistry.SHOREGRASS, RenderLayer.getCutoutMipped());
-        setRenderLayer(BlockRegistry.GRASSY_TOADSTONE, RenderLayer.getCutoutMipped());
-        setRenderLayer(BlockRegistry.GRASSY_HARDSTONE, RenderLayer.getCutoutMipped());
-        setRenderLayer(BlockRegistry.AMANITA_LEAVES, RenderLayer.getCutoutMipped());
-        setRenderLayer(BlockRegistry.FRUITING_AMANITA_LEAVES, RenderLayer.getCutoutMipped());
-        setRenderLayer(BlockRegistry.DARK_AMANITA_LEAVES, RenderLayer.getCutoutMipped());
-        setRenderLayer(BlockRegistry.FRUITING_DARK_AMANITA_LEAVES, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockInit.TOADSTOOL_GRASS, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockInit.SHOREGRASS, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockInit.GRASSY_TOADSTONE, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockInit.GRASSY_HARDSTONE, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockInit.AMANITA_LEAVES, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockInit.FRUITING_AMANITA_LEAVES, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockInit.DARK_AMANITA_LEAVES, RenderLayer.getCutoutMipped());
+        setRenderLayer(BlockInit.FRUITING_DARK_AMANITA_LEAVES, RenderLayer.getCutoutMipped());
         setRenderLayer(PlantBlocks.AMANITA_CARPET, RenderLayer.getCutoutMipped());
 
         setCutout(PlantBlocks.HORSETAIL);
@@ -64,12 +64,12 @@ public class BlockRendering {
         setCutout(PlantBlocks.FUZZBALL);
         setCutout(PlantBlocks.FUZZBUSH);
 
-        setCutout(BlockRegistry.SPIKE_TRAP);
-        setCutout(BlockRegistry.GIRDER);
-        setCutout(BlockRegistry.STONE_TORCH);
-        setCutout(BlockRegistry.BOO_LANTERN);
+        setCutout(BlockInit.SPIKE_TRAP);
+        setCutout(BlockInit.GIRDER);
+        setCutout(BlockInit.STONE_TORCH);
+        setCutout(BlockInit.BOO_LANTERN);
 
-        setCutout(BlockRegistry.STRAWBERRY_CORAL);
+        setCutout(BlockInit.STRAWBERRY_CORAL);
 
         setCutout(PlantBlocks.YELLOW_FLOWERBED);
         setCutout(PlantBlocks.WHITE_FLOWERBED);

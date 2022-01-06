@@ -1,8 +1,7 @@
 package com.dayofpi.super_block_world.main.common.entity.mob;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
-import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import com.dayofpi.super_block_world.main.common.entity.projectile.FireballEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -73,7 +72,7 @@ public class BobOmbEntity extends EnemyEntity implements Angerable {
 
     public static boolean canSpawn(EntityType<BobOmbEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         BlockState blockState = world.getBlockState(pos.down());
-        return EnemyEntity.isSpawnDark((ServerWorldAccess) world, pos, random) && (blockState.isOf(BlockRegistry.VANILLATE) || blockState.isIn(BlockTags.PLANKS));
+        return EnemyEntity.isSpawnDark((ServerWorldAccess) world, pos, random) && (blockState.isOf(BlockInit.VANILLATE) || blockState.isOf(BlockInit.FROSTY_VANILLATE) || blockState.isIn(BlockTags.PLANKS));
     }
 
     public boolean tryAttack(Entity target) {
@@ -119,15 +118,15 @@ public class BobOmbEntity extends EnemyEntity implements Angerable {
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.ENTITY_BOB_OMB_HURT;
+        return SoundInit.ENTITY_BOB_OMB_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return ModSounds.ENTITY_BOB_OMB_DEATH;
+        return SoundInit.ENTITY_BOB_OMB_DEATH;
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(ModSounds.ENTITY_BOB_OMB_STEP, 1.0F, 1.0F);
+        this.playSound(SoundInit.ENTITY_BOB_OMB_STEP, 1.0F, 1.0F);
     }
 
     public int getFuseSpeed() {
@@ -159,7 +158,7 @@ public class BobOmbEntity extends EnemyEntity implements Angerable {
                 double e = this.getY() + 1D;
                 double f = this.getZ();
                 world.addParticle(ParticleTypes.FLAME, d, e, f, 0.0D, 0.0D, 0.0D);
-                this.playSound(ModSounds.ENTITY_BOB_OMB_FUSE, 1.0F, 1.0F);
+                this.playSound(SoundInit.ENTITY_BOB_OMB_FUSE, 1.0F, 1.0F);
                 this.emitGameEvent(GameEvent.PRIME_FUSE);
                 this.ignite();
             }

@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:question_box"
+    },
+    "title": {
+      "translate": "advancements.sbw.surprise_robberies.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.surprise_robberies.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:super_block_world/hit_block",
+  "criteria": {
+    "common": {
+      "trigger": "minecraft:player_generates_container_loot",
+      "conditions": {
+        "loot_table": "super_block_world:chests/toad_common"
+      }
+    },
+    "rare": {
+      "trigger": "minecraft:player_generates_container_loot",
+      "conditions": {
+        "loot_table": "super_block_world:chests/toad_rare"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "common",
+      "rare"
+    ]
+  ]
+}

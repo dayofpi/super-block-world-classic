@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.koopa;
 
-import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.main.common.entity.mob.EnemyEntity;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.control.FlightMoveControl;
@@ -49,6 +49,6 @@ public class ParatroopaEntity extends KoopaEntity {
 
     protected void addFlapEffects() {
         if (random.nextFloat() < 0.03F)
-            this.playSound(ModSounds.ENTITY_GOOMBA_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
+            this.playSound(SoundInit.ENTITY_GOOMBA_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
     }
 }

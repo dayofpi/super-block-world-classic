@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.main.common.entity.projectile;
 
 import com.dayofpi.super_block_world.main.Client;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -26,15 +26,15 @@ public class TurnipEntity extends ThrownItemEntity {
     }
 
     public TurnipEntity(World world, LivingEntity owner) {
-        super(EntityRegistry.TURNIP, owner, world);
+        super(EntityInit.TURNIP, owner, world);
     }
 
     public TurnipEntity(World world, double x, double y, double z) {
-        super(EntityRegistry.TURNIP, x, y, z, world);
+        super(EntityInit.TURNIP, x, y, z, world);
     }
 
     protected Item getDefaultItem() {
-        return ItemRegistry.TURNIP;
+        return ItemInit.TURNIP;
     }
 
     public void handleStatus(byte status) {

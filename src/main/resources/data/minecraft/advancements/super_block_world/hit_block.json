@@ -24,11 +24,19 @@
           "hidden": "false"
         }
       }
+    },
+    "hit_coin_block": {
+      "trigger": "minecraft:enter_block",
+      "conditions": {
+        "block": "super_block_world:coin_block"
+      }
     }
   },
   "requirements": [
     [
-      "hit_block"
+      "hit_block",
+      "hit_coin_block"
+
     ]
   ]
 }

@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin.main.enums_and_sets;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import com.dayofpi.super_block_world.main.util.mixin_aid.ModInstrument;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.Instrument;
@@ -40,7 +40,7 @@ public class InstrumentMixin {
     private static void addCustomInstrument(CallbackInfo info) {
         var variants = new ArrayList<>(Arrays.asList(field_12652));
         var last = variants.get(variants.size() - 1);
-        var bling = newInstrument("BLING", last.ordinal() + 1, "bling", ModSounds.BLOCK_COIN_BLOCK_HIT);
+        var bling = newInstrument("BLING", last.ordinal() + 1, "bling", SoundInit.BLOCK_COIN_BLOCK_HIT);
         ModInstrument.BLING = bling;
         variants.add(bling);
 
@@ -49,7 +49,7 @@ public class InstrumentMixin {
 
     @Inject(method = "fromBlockState(Lnet/minecraft/block/BlockState;)Lnet/minecraft/block/enums/Instrument;", at =@At("HEAD"), cancellable = true)
     private static void fromBlockState(BlockState state, CallbackInfoReturnable<Instrument> info) {
-        if (state.isOf(BlockRegistry.COIN_BLOCK) || state.isOf(BlockRegistry.QUESTION_BLOCK)) {
+        if (state.isOf(BlockInit.COIN_BLOCK) || state.isOf(BlockInit.QUESTION_BLOCK)) {
             info.setReturnValue(ModInstrument.BLING);
             info.cancel();
         }

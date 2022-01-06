@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.hazard;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import com.dayofpi.super_block_world.main.util.entity.ModDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -21,7 +21,7 @@ public class PitPlantBlock extends PlantBlock {
     }
 
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isOf(BlockRegistry.QUICKSAND);
+        return floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isOf(BlockInit.QUICKSAND);
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

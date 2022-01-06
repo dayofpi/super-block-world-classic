@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.item;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,7 +20,7 @@ public class FuzzyMagnetItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        user.playSound(ModSounds.ITEM_FUZZY_MAGNET, 1.0f, this.getSoundPitch());
+        user.playSound(SoundInit.ITEM_FUZZY_MAGNET, 1.0f, this.getSoundPitch());
         user.incrementStat(Stats.USED.getOrCreateStat(this));
         return ItemUsage.consumeHeldItem(world, user, hand);
     }

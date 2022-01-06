@@ -1,13 +1,12 @@
 package com.dayofpi.super_block_world.main.common.block.building;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
@@ -35,14 +34,14 @@ public class BrickBlock extends Block {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos blockPos, Entity entity) {
         boolean jumpUnder = entity.getY() < blockPos.getY();
-        if (jumpUnder && entity instanceof LivingEntity livingEntity) {
+        if (jumpUnder && entity instanceof PlayerEntity livingEntity) {
             if (!wasHit) {
                 wasHit = true;
-                world.playSound(null, blockPos, ModSounds.BLOCK_EMPTY_BLOCK_BUMP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.playSound(null, blockPos, SoundInit.BLOCK_EMPTY_BLOCK_BUMP, SoundCategory.BLOCKS, 1.0F, 1.0F);
             } else {
                 world.createAndScheduleBlockTick(blockPos, this, 3);
             }
-            if (livingEntity.getEquippedStack(EquipmentSlot.HEAD).isIn(TagRegistry.SHELLMETS))
+            if (livingEntity.getEquippedStack(EquipmentSlot.HEAD).isIn(TagInit.SHELLMETS))
                 world.breakBlock(blockPos, true);
         }
         super.onEntityCollision(state, world, blockPos, entity);

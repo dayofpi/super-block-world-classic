@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.enums_and_sets;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import com.dayofpi.super_block_world.main.util.mixin_aid.ModBoatType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.vehicle.BoatEntity;
@@ -37,9 +37,9 @@ public class BoatTypeMixin {
         var variants = new ArrayList<>(Arrays.asList(field_7724));
         var last = variants.get(variants.size() - 1);
         var amanita = newType("AMANITA", last.ordinal() + 1,
-                BlockRegistry.AMANITA_PLANKS, "amanita");
+                BlockInit.AMANITA_PLANKS, "amanita");
         var dark_amanita = newType("DARK_AMANITA", last.ordinal() + 2,
-                BlockRegistry.DARK_AMANITA_PLANKS, "dark_amanita");
+                BlockInit.DARK_AMANITA_PLANKS, "dark_amanita");
         ModBoatType.AMANITA = amanita;
         ModBoatType.DARK_AMANITA = dark_amanita;
         variants.add(amanita);

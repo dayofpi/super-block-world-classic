@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.main.common.entity.projectile;
 
 import com.dayofpi.super_block_world.main.Client;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
-import com.dayofpi.super_block_world.main.registry.misc.ParticleRegistry;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
+import com.dayofpi.super_block_world.main.registry.other.ParticleInit;
 import com.dayofpi.super_block_world.main.util.entity.CustomSpawnPacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -27,15 +27,15 @@ public class StarBitEntity extends ThrownItemEntity {
     }
 
     public StarBitEntity(World world, LivingEntity owner) {
-        super(EntityRegistry.STAR_BIT, owner, world);
+        super(EntityInit.STAR_BIT, owner, world);
     }
 
     public StarBitEntity(World world, double x, double y, double z) {
-        super(EntityRegistry.STAR_BIT, x, y, z, world);
+        super(EntityInit.STAR_BIT, x, y, z, world);
     }
 
     protected Item getDefaultItem() {
-        return ItemRegistry.PURPLE_STAR_BIT;
+        return ItemInit.PURPLE_STAR_BIT;
     }
 
     public void handleStatus(byte status) {
@@ -43,7 +43,7 @@ public class StarBitEntity extends ThrownItemEntity {
             ParticleEffect particleEffect = this.getParticleParameters();
 
             for (int i = 0; i < 8; ++i) {
-                world.addParticle(ParticleRegistry.STAR_BIT, this.getX() + (random.nextFloat() * 0.2), this.getY() + (random.nextFloat() * 0.2), this.getZ() + (random.nextFloat() * 0.2), 0.0D, 0.0D, 0.0D);
+                world.addParticle(ParticleInit.STAR_BIT, this.getX() + (random.nextFloat() * 0.2), this.getY() + (random.nextFloat() * 0.2), this.getZ() + (random.nextFloat() * 0.2), 0.0D, 0.0D, 0.0D);
                 this.world.addParticle(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
@@ -54,7 +54,7 @@ public class StarBitEntity extends ThrownItemEntity {
     public void tick() {
         super.tick();
         if (this.random.nextFloat() > 0.5F) {
-            world.addParticle(ParticleRegistry.STAR_BIT, this.getX() + (random.nextFloat() * 0.2), this.getY() + (random.nextFloat() * 0.2), this.getZ() + (random.nextFloat() * 0.2), 0.0D, 0.0D, 0.0D);
+            world.addParticle(ParticleInit.STAR_BIT, this.getX() + (random.nextFloat() * 0.2), this.getY() + (random.nextFloat() * 0.2), this.getZ() + (random.nextFloat() * 0.2), 0.0D, 0.0D, 0.0D);
         }
     }
 

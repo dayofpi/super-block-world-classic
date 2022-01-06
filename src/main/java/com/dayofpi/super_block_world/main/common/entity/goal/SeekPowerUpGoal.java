@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.entity.goal;
 
-import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
+import com.dayofpi.super_block_world.main.common.entity.mob.EnemyEntity;
 import com.dayofpi.super_block_world.main.common.entity.mob.goomba.GoombaEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.ai.goal.Goal;

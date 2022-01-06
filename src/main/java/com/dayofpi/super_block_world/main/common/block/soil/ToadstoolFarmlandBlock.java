@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.soil;
 
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -25,7 +25,7 @@ public class ToadstoolFarmlandBlock extends FarmlandBlock {
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return !this.getDefaultState().canPlaceAt(ctx.getWorld(), ctx.getBlockPos()) ? BlockRegistry.TOADSTOOL_SOIL.getDefaultState() : super.getPlacementState(ctx);
+        return !this.getDefaultState().canPlaceAt(ctx.getWorld(), ctx.getBlockPos()) ? BlockInit.TOADSTOOL_SOIL.getDefaultState() : super.getPlacementState(ctx);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ToadstoolFarmlandBlock extends FarmlandBlock {
     }
 
     public static void setToSoil(BlockState state, World world, BlockPos pos) {
-        world.setBlockState(pos, pushEntitiesUpBeforeBlockChange(state, BlockRegistry.TOADSTOOL_SOIL.getDefaultState(), world, pos));
+        world.setBlockState(pos, pushEntitiesUpBeforeBlockChange(state, BlockInit.TOADSTOOL_SOIL.getDefaultState(), world, pos));
     }
 
     @Override

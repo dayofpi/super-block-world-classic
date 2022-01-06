@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
-import com.dayofpi.super_block_world.main.registry.block.BlockRegistry;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
+import com.dayofpi.super_block_world.main.registry.main.BlockInit;
 import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.ai.pathing.LandPathNodeMaker;
@@ -24,18 +24,18 @@ public class PathNodeMixin {
         if (blockState.isOf(PlantBlocks.MUNCHER)) {
             info.setReturnValue(PathNodeType.DAMAGE_OTHER);
             info.cancel();
-        } else if (blockState == BlockRegistry.SPIKE_TRAP.getDefaultState().with(Properties.POWERED, true)) {
+        } else if (blockState == BlockInit.SPIKE_TRAP.getDefaultState().with(Properties.POWERED, true)) {
             info.setReturnValue(PathNodeType.DAMAGE_OTHER);
             info.cancel();
         } else if (blockState.isOf(PlantBlocks.FIRE_TULIP)) {
             info.setReturnValue(PathNodeType.DAMAGE_FIRE);
             info.cancel();
-        } else if (blockState.isOf(BlockRegistry.STONE_TORCH) && blockState.get(Properties.LIT)) {
+        } else if (blockState.isOf(BlockInit.STONE_TORCH) && blockState.get(Properties.LIT)) {
             info.setReturnValue(PathNodeType.DAMAGE_FIRE);
             info.cancel();
         } else {
             FluidState fluidState = world.getFluidState(pos);
-            if (fluidState.isIn(TagRegistry.POISON)) {
+            if (fluidState.isIn(TagInit.POISON)) {
                 info.setReturnValue(PathNodeType.DAMAGE_OTHER);
                 info.cancel();
             }
@@ -57,15 +57,15 @@ public class PathNodeMixin {
                         info.setReturnValue(PathNodeType.DANGER_OTHER);
                         info.cancel();
                     }
-                    if (blockState.isOf(BlockRegistry.POISON)) {
+                    if (blockState.isOf(BlockInit.POISON)) {
                         info.setReturnValue(PathNodeType.DANGER_OTHER);
                         info.cancel();
                     }
-                    if (blockState.isOf(BlockRegistry.SPIKE_TRAP) && blockState.get(Properties.POWERED)) {
+                    if (blockState.isOf(BlockInit.SPIKE_TRAP) && blockState.get(Properties.POWERED)) {
                         info.setReturnValue(PathNodeType.DAMAGE_OTHER);
                         info.cancel();
                     }
-                    if (blockState.isOf(BlockRegistry.STONE_TORCH) && blockState.get(Properties.LIT)) {
+                    if (blockState.isOf(BlockInit.STONE_TORCH) && blockState.get(Properties.LIT)) {
                         info.setReturnValue(PathNodeType.DAMAGE_FIRE);
                         info.cancel();
                     }

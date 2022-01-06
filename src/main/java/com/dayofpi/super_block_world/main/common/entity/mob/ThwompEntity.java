@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.main.common.entity.mob;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.main.common.block.item_block.ReactiveBlock;
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
 import com.dayofpi.super_block_world.main.util.entity.DirectionHelper;
 import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
 import net.minecraft.block.BlockState;
@@ -106,11 +106,11 @@ public class ThwompEntity extends GolemEntity {
     }
 
     public SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.ENTITY_THWOMP_HURT;
+        return SoundInit.ENTITY_THWOMP_HURT;
     }
 
     public SoundEvent getDeathSound() {
-        return ModSounds.ENTITY_THWOMP_DEATH;
+        return SoundInit.ENTITY_THWOMP_DEATH;
     }
 
     public void tickMovement() {
@@ -170,7 +170,7 @@ public class ThwompEntity extends GolemEntity {
                 Vec3d vec3d = this.getPos();
                 this.setPosition(vec3d.x, this.getHomeLevel(), vec3d.z);
                 this.resetPosition();
-                this.playSound(ModSounds.ENTITY_THWOMP_REST, 1.0F, this.getSoundPitch());
+                this.playSound(SoundInit.ENTITY_THWOMP_REST, 1.0F, this.getSoundPitch());
             }
         }
     }
@@ -199,12 +199,12 @@ public class ThwompEntity extends GolemEntity {
     private void startFalling() {
         this.falling = true;
         this.setStage(3);
-        this.playSound(ModSounds.ENTITY_THWOMP_FALL, 1.0F, this.getSoundPitch());
+        this.playSound(SoundInit.ENTITY_THWOMP_FALL, 1.0F, this.getSoundPitch());
         ParticleUtil.spawnParticle(world, this.getBlockPos(), (new BlockStateParticleEffect(ParticleTypes.FALLING_DUST, Blocks.GRAVEL.getDefaultState())), UniformIntProvider.create(3, 4));
     }
 
     private void thwompLandingEffects(Entity entity) {
-        this.playSound(ModSounds.ENTITY_THWOMP_LAND, 1.0F, 1.0F);
+        this.playSound(SoundInit.ENTITY_THWOMP_LAND, 1.0F, 1.0F);
         this.peekTimer = 30;
         for (int i = 0; i < 6; i++) {
             double rand = this.random.nextBoolean() ? 0.05 : -0.05;
@@ -218,7 +218,7 @@ public class ThwompEntity extends GolemEntity {
 
         for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos().down(), 1, 0, 1)) {
             BlockState state = world.getBlockState(blockPos);
-            if (state.isIn(TagRegistry.BRICKS)) {
+            if (state.isIn(TagInit.BRICKS)) {
                 world.breakBlock(blockPos, true);
             } else if (state.getBlock() instanceof ReactiveBlock reactiveBlock) {
                 reactiveBlock.activate(state, world, blockPos);

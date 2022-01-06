@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.plant;
 
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -40,7 +40,7 @@ public class BushBlock extends PlantBlock implements Fertilizable {
     @Override
     public void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         if (player.getStackInHand(Hand.MAIN_HAND).isOf(Items.SHEARS) || player.getStackInHand(Hand.OFF_HAND).isOf(Items.SHEARS)) {
-            Block.dropStack(world, pos, new ItemStack(ItemRegistry.YOSHI_FRUIT, state.get(FRUITS)));
+            Block.dropStack(world, pos, new ItemStack(ItemInit.YOSHI_FRUIT, state.get(FRUITS)));
         }
     }
 
@@ -53,7 +53,7 @@ public class BushBlock extends PlantBlock implements Fertilizable {
         if (state.get(FRUITS) > 0 && !player.getStackInHand(Hand.MAIN_HAND).isOf(Items.BONE_MEAL) || state.get(FRUITS) == 2) {
             world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.6F, 1.1F);
             world.setBlockState(pos, state.with(FRUITS, state.get(FRUITS) - 1), 2);
-            Block.dropStack(world, pos, new ItemStack(ItemRegistry.YOSHI_FRUIT, 1));
+            Block.dropStack(world, pos, new ItemStack(ItemInit.YOSHI_FRUIT, 1));
             return ActionResult.success(world.isClient);
         } else {
             return ActionResult.PASS;

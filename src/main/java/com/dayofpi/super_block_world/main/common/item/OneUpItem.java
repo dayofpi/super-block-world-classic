@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.item;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
@@ -19,7 +19,7 @@ public class OneUpItem extends Item {
     }
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        user.playSound(ModSounds.ITEM_ONE_UP, 1.0F, 1.0F);
+        user.playSound(SoundInit.ITEM_ONE_UP, 1.0F, 1.0F);
         return super.finishUsing(stack, world, user);
     }
 

@@ -3,8 +3,8 @@ package com.dayofpi.super_block_world.main.registry.world.feature;
 import com.dayofpi.super_block_world.main.Main;
 import com.dayofpi.super_block_world.main.common.world.structure.types.ToadHouseFeature;
 import com.dayofpi.super_block_world.main.common.world.structure.types.WarpPortalFeature;
-import com.dayofpi.super_block_world.main.registry.misc.TagRegistry;
-import com.dayofpi.super_block_world.main.registry.key.ModStructureKeys;
+import com.dayofpi.super_block_world.main.registry.main.TagInit;
+import com.dayofpi.super_block_world.main.util.key.ModStructureKeys;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.structure.v1.FabricStructureBuilder;
@@ -24,6 +24,6 @@ public class StructureRegistry {
         FabricStructureBuilder.create(new Identifier(Main.MOD_ID, "toad_house"), TOAD_HOUSE_FEATURE).step(GenerationStep.Feature.SURFACE_STRUCTURES).defaultConfig(30, 10, 12345).adjustsSurface().register();
 
         BiomeModifications.addStructure(BiomeSelectors.categories(Biome.Category.OCEAN).negate().and(BiomeSelectors.foundInOverworld()), ModStructureKeys.WARP_PORTAL);
-        BiomeModifications.addStructure(BiomeSelectors.tag(TagRegistry.ALL_BIOMES), ModStructureKeys.TOAD_HOUSE);
+        BiomeModifications.addStructure(BiomeSelectors.tag(TagInit.ALL_BIOMES), ModStructureKeys.TOAD_HOUSE);
     }
 }

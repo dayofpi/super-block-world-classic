@@ -18,7 +18,7 @@ public class ModDamageSource extends DamageSource {
         return new ModDamageSource("super_block_world:" + name);
     }
 
-    public static void registerDamageSources() {
+    public static void register() {
         POISON = registerDamageSource("poison");
         SPIKES = registerDamageSource("spikes");
         MUNCHER = registerDamageSource("muncher");

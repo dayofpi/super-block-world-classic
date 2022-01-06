@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.main.common.block.decoration.light_source;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.main.util.entity.ModDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -36,7 +36,7 @@ public class JellybeamBlock extends HorizontalFacingBlock {
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!world.isClient) {
             if (entity.damage(ModDamageSource.JELLYBEAM, 1.0F)) {
-                world.playSound(null, pos, ModSounds.BLOCK_JELLYBEAM_DAMAGE, SoundCategory.BLOCKS, 1.0F, this.getSoundPitch());
+                world.playSound(null, pos, SoundInit.BLOCK_JELLYBEAM_DAMAGE, SoundCategory.BLOCKS, 1.0F, this.getSoundPitch());
             }
 
         }

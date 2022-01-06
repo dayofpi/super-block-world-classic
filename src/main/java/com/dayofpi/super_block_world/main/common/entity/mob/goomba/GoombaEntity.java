@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.main.common.entity.mob.goomba;
 
-import com.dayofpi.super_block_world.client.sound.ModSounds;
-import com.dayofpi.super_block_world.main.common.entity.EnemyEntity;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.main.common.entity.mob.EnemyEntity;
 import com.dayofpi.super_block_world.main.common.entity.goal.SeekPowerUpGoal;
-import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
-import com.dayofpi.super_block_world.main.registry.item.ItemRegistry;
+import com.dayofpi.super_block_world.main.registry.main.EntityInit;
+import com.dayofpi.super_block_world.main.registry.main.ItemInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.command.argument.EntityAnchorArgumentType;
 import net.minecraft.entity.*;
@@ -70,7 +70,7 @@ public class GoombaEntity extends EnemyEntity implements IAnimatable {
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8D));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
-        this.targetSelector.add(2, new SeekPowerUpGoal(this, ItemRegistry.SUPER_MUSHROOM));
+        this.targetSelector.add(2, new SeekPowerUpGoal(this, ItemInit.SUPER_MUSHROOM));
         this.targetSelector.add(2, new RevengeGoal(this));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true, true));
     }
@@ -85,8 +85,8 @@ public class GoombaEntity extends EnemyEntity implements IAnimatable {
 
     @Override
     public void setTarget(@Nullable LivingEntity target) {
-        if (this.isOnGround() && this.getTarget() == null) {
-            this.playSound(ModSounds.ENTITY_ENEMY_SPOT, this.getSoundVolume(), this.getSoundPitch());
+        if (this.isOnGround() && this.getTarget() == null && target != null) {
+            this.playSound(SoundInit.ENTITY_ENEMY_SPOT, this.getSoundVolume(), this.getSoundPitch());
             this.lookAt(EntityAnchorArgumentType.EntityAnchor.EYES, target.getPos());
             Vec3d vec3d = this.getVelocity();
             this.setVelocity(vec3d.x, 0.2F, vec3d.z);
@@ -95,15 +95,15 @@ public class GoombaEntity extends EnemyEntity implements IAnimatable {
     }
 
     protected SoundEvent getAmbientSound() {
-        return this.getTarget() != null ? ModSounds.ENTITY_GOOMBA_AMBIENT : null;
+        return this.getTarget() != null ? SoundInit.ENTITY_GOOMBA_AMBIENT : null;
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.ENTITY_GOOMBA_HURT;
+        return SoundInit.ENTITY_GOOMBA_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return ModSounds.ENTITY_GOOMBA_DEATH;
+        return SoundInit.ENTITY_GOOMBA_DEATH;
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
@@ -124,10 +124,10 @@ public class GoombaEntity extends EnemyEntity implements IAnimatable {
     public void tickMovement() {
         super.tickMovement();
         if (this.isAlive() && this.getSize() == 1) {
-            List<ItemEntity> list = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ItemRegistry.SUPER_MUSHROOM));
+            List<ItemEntity> list = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ItemInit.SUPER_MUSHROOM));
             if (!list.isEmpty()) {
                 this.setSize(2);
-                this.playSound(ModSounds.ITEM_POWER_UP, 0.5F, 1.0F);
+                this.playSound(SoundInit.ITEM_POWER_UP, 0.5F, 1.0F);
                 this.setPersistent();
                 list.get(0).discard();
             }
@@ -146,7 +146,7 @@ public class GoombaEntity extends EnemyEntity implements IAnimatable {
         if (this.random.nextFloat() > 0.5F) {
             this.setSize(1);
             if (this.random.nextInt(7) == 0) {
-                GoombaEntity goombaEntity = EntityRegistry.GOOMBA.create(world.toServerWorld());
+                GoombaEntity goombaEntity = EntityInit.GOOMBA.create(world.toServerWorld());
                 if (goombaEntity != null) {
                     goombaEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0F);
                     goombaEntity.initialize(world, difficulty, SpawnReason.JOCKEY, null, null);
@@ -222,7 +222,7 @@ public class GoombaEntity extends EnemyEntity implements IAnimatable {
     protected void dropInventory() {
         super.dropInventory();
         if (this.isGold()) {
-            this.dropItem(ItemRegistry.COIN);
+            this.dropItem(ItemInit.COIN);
         }
     }
 
@@ -291,7 +291,7 @@ public class GoombaEntity extends EnemyEntity implements IAnimatable {
     }
 
     protected SoundEvent getStepSound() {
-        return ModSounds.ENTITY_GOOMBA_STEP;
+        return SoundInit.ENTITY_GOOMBA_STEP;
     }
 
     public double getMountedHeightOffset() {
@@ -314,8 +314,7 @@ public class GoombaEntity extends EnemyEntity implements IAnimatable {
         if (this.getHealth() <= 0) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("squish", false));
             return PlayState.CONTINUE;
-        }
-        return PlayState.STOP;
+        } else return PlayState.STOP;
     }
 
     @Override
