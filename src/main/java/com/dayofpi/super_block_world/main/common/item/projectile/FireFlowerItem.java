@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.main.common.item.projectile;
 
 import com.dayofpi.super_block_world.client.sound.ModSounds;
 import com.dayofpi.super_block_world.main.common.entity.projectile.FireballEntity;
+import com.dayofpi.super_block_world.main.registry.misc.EntityRegistry;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
@@ -23,7 +24,7 @@ public class FireFlowerItem extends Item {
       world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ITEM_FIRE_FLOWER, SoundCategory.NEUTRAL, 0.5F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
       user.getItemCooldownManager().set(this, 5);
       if (!world.isClient) {
-         FireballEntity fireballEntity = new FireballEntity(null, user, world);
+         FireballEntity fireballEntity = new FireballEntity(EntityRegistry.FIREBALL, user, world);
          fireballEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
          fireballEntity.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
          world.spawnEntity(fireballEntity);
