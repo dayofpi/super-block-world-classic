@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin.main.block;
 
-import com.dayofpi.super_block_world.main.registry.block.MushroomBlocks;
-import com.dayofpi.super_block_world.main.registry.world.feature.configured.ConfiguredTrees;
+import com.dayofpi.super_block_world.registry.block.MushroomBlocks;
+import com.dayofpi.super_block_world.registry.world.feature.configured.ConfiguredTrees;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomPlantBlock;

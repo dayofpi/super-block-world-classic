@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.client.renderer.mob;
 
 import com.dayofpi.super_block_world.client.model.MooMooModel;
-import com.dayofpi.super_block_world.client.ModelLayers;
-import com.dayofpi.super_block_world.main.common.entity.mob.MooMooEntity;
+import com.dayofpi.super_block_world.client.main.ModelLayers;
+import com.dayofpi.super_block_world.common.entity.mob.MooMooEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

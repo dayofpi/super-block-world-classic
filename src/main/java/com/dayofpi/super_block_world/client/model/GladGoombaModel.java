@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.model;
 
-import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.common.entity.mob.goomba.GladGoombaEntity;
+import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.common.entity.mob.goomba.GladGoombaEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;
@@ -39,7 +39,18 @@ public class GladGoombaModel<T extends GladGoombaEntity> extends AnimatedGeoMode
         IBone right_wing = this.getAnimationProcessor().getBone("right_wing");
         left_wing.setHidden(true);
         right_wing.setHidden(true);
-        EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
+        EntityModelData extraData;
+        
+        if (customPredicate != null) {
+            extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
+            if (entity.getHealth() > 0) {
+                head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
+                head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
+            } else {
+                head.setRotationX(0);
+                head.setRotationY(0);
+            }
+        }
 
         float l = entity.age * 5F * 0.017453292F;
         right_wing.setRotationX(MathHelper.cos(l) * 0.2F -0.1F);
@@ -52,14 +63,6 @@ public class GladGoombaModel<T extends GladGoombaEntity> extends AnimatedGeoMode
             head.setScaleX(1.3F);
             head.setScaleY(1.3F);
             head.setScaleZ(1.3F);
-        }
-
-        if (entity.getHealth() > 0) {
-            head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
-            head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
-        } else {
-            head.setRotationX(0);
-            head.setRotationY(0);
         }
     }
 }

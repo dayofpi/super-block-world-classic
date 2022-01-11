@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.world;
 
-import com.dayofpi.super_block_world.main.util.mixin_aid.SeedSupplier;
+import com.dayofpi.super_block_world.common.util.mixin_aid.SeedSupplier;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.PrimitiveCodec;
 import net.minecraft.util.registry.SimpleRegistry;

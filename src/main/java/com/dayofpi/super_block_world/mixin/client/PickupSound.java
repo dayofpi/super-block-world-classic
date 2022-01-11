@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin.client;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
-import com.dayofpi.super_block_world.main.registry.main.ItemInit;
+import com.dayofpi.super_block_world.registry.main.ItemInit;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.network.ClientPlayNetworkHandler;

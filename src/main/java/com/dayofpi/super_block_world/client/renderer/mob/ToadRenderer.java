@@ -2,9 +2,9 @@ package com.dayofpi.super_block_world.client.renderer.mob;
 
 import com.dayofpi.super_block_world.client.model.ToadModel;
 import com.dayofpi.super_block_world.client.renderer.feature.ToadLayer;
-import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.common.entity.mob.npc.ToadEntity;
-import com.dayofpi.super_block_world.main.registry.main.ItemInit;
+import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.common.entity.mob.npc.ToadEntity;
+import com.dayofpi.super_block_world.registry.main.ItemInit;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.MapColor;
@@ -48,7 +48,7 @@ public class ToadRenderer<T extends ToadEntity> extends GeoEntityRenderer<T> {
         float backgroundOpacity = MinecraftClient.getInstance().options.getTextBackgroundOpacity(0.25f);
         int j = (int)(backgroundOpacity * 255.0f) << 24;
         TextRenderer textRenderer = this.getTextRenderer();
-        float x = -textRenderer.getWidth(count) / 2;
+        float x = -textRenderer.getWidth(count) / 2f;
         textRenderer.draw(count, x, (float)y, MapColor.GOLD.color, false, matrix4f, provider, false, j, light);
         matrices.pop();
         matrices.push();

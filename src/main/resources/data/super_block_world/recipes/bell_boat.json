@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:bell_planks"
+    }
+  },
+  "result": {
+    "item": "super_block_world:bell_boat"
+  }
+}

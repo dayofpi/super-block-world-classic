@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.client.sound;
 
-import com.dayofpi.super_block_world.main.Main;
+import com.dayofpi.super_block_world.Main;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -106,7 +106,6 @@ public class SoundInit {
     public static final SoundEvent ENTITY_MUMMY_TOAD_MUMMIFY = createSound("entity.mummy_toad.mummify");
 
     public static final SoundEvent ENTITY_HAMMER_BRO_HURT = createSound("entity.hammer_bro.hurt");
-    public static final SoundEvent ENTITY_HAMMER_BRO_ATTACK = createSound("entity.hammer_bro.attack");
     public static final SoundEvent ENTITY_HAMMER_BRO_DEATH = createSound("entity.hammer_bro.death");
 
     public static final SoundEvent ENTITY_MOO_MOO_AMBIENT = createSound("entity.moo_moo.ambient");

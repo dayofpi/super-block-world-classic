@@ -592,10 +592,10 @@
       "super_block_world:entity/mob/mummy_toad/mummify"
     ]
   },
-  "entity.hammer_bro.attack": {
-    "subtitle": "sound.super_block_world.entity.hammer_bro.attack",
+  "entity.hammer_bro.hurt": {
+    "subtitle": "sound.super_block_world.entity.hammer_bro.hurt",
     "sounds": [
-      "super_block_world:entity/mob/hammer_bro/attack"
+      "super_block_world:entity/mob/hammer_bro/hurt"
     ]
   },
   "entity.hammer_bro.death": {

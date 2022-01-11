@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.world;
 
-import com.dayofpi.super_block_world.main.util.mixin_aid.SeedSupplier;
+import com.dayofpi.super_block_world.common.util.mixin_aid.SeedSupplier;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.PrimitiveCodec;
 import net.minecraft.world.biome.source.BiomeSource;
@@ -27,7 +27,7 @@ public abstract class NoiseChunkGeneratorMixin extends ChunkGenerator {
         return codec.fieldOf(name).orElseGet(SeedSupplier::getSeed);
     }
 
-    @ModifyVariable(method = "<init>(Lnet/minecraft/util/registry/Registry;Lnet/minecraft/world/biome/source/BiomeSource;Lnet/minecraft/world/biome/source/BiomeSource;JLjava/util/function/Supplier;)V", at = @At(value = "FIELD", target = "Lnet/minecraft/world/gen/chunk/NoiseChunkGenerator;seed:J", opcode = Opcodes.PUTFIELD, shift = At.Shift.AFTER), ordinal = 0)
+    @ModifyVariable(method = "<init>(Lnet/minecraft/util/registry/Registry;Lnet/minecraft/world/biome/source/BiomeSource;Lnet/minecraft/world/biome/source/BiomeSource;JLjava/util/function/Supplier;)V", at = @At(value = "FIELD", target = "Lnet/minecraft/world/gen/chunk/NoiseChunkGenerator;seed:J", opcode = Opcodes.PUTFIELD, shift = At.Shift.AFTER), ordinal = 0, argsOnly = true)
     private long replaceSeed(long seed) {
         if (seed == SeedSupplier.MARKER) {
             return LAST_SEED;

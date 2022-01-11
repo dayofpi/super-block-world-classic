@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "super_block_world:block/darkened_bell_cap"
+  }
+}

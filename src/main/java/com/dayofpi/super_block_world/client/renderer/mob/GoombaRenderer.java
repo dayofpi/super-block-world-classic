@@ -1,8 +1,9 @@
 package com.dayofpi.super_block_world.client.renderer.mob;
 
 import com.dayofpi.super_block_world.client.model.GoombaModel;
-import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.common.entity.mob.goomba.GoombaEntity;
+import com.dayofpi.super_block_world.client.renderer.feature.GoombaLayer;
+import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.common.entity.mob.goomba.GoombaEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -17,6 +18,7 @@ public class GoombaRenderer<T extends GoombaEntity> extends LeadableEntityRender
 
     public GoombaRenderer(EntityRendererFactory.Context context) {
         super(context, new GoombaModel<>());
+        addLayer(new GoombaLayer<>(this));
     }
 
     @Override

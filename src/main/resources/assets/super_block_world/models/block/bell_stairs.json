@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "super_block_world:block/bell_planks",
+    "top": "super_block_world:block/bell_planks",
+    "side": "super_block_world:block/bell_planks"
+  }
+}

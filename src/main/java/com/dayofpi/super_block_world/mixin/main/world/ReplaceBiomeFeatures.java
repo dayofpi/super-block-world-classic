@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.world;
 
-import com.dayofpi.super_block_world.main.registry.world.feature.configured.ConfiguredTrees;
+import com.dayofpi.super_block_world.registry.world.feature.configured.ConfiguredTrees;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.world.biome.*;

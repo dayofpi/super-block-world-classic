@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.client.model;
 
-import com.dayofpi.super_block_world.main.common.entity.mob.StingbyEntity;
+import com.dayofpi.super_block_world.common.entity.mob.StingbyEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;

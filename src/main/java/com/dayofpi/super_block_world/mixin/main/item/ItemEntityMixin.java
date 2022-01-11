@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.mixin.main.item;
 
-import com.dayofpi.super_block_world.main.registry.main.BlockInit;
-import com.dayofpi.super_block_world.main.registry.main.ItemInit;
-import com.dayofpi.super_block_world.main.registry.main.TagInit;
+import com.dayofpi.super_block_world.registry.main.BlockInit;
+import com.dayofpi.super_block_world.registry.main.ItemInit;
+import com.dayofpi.super_block_world.registry.main.TagInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;

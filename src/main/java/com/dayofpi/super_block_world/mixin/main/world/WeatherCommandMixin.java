@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.world;
 
-import com.dayofpi.super_block_world.main.common.world.dimension.MushroomKingdom;
+import com.dayofpi.super_block_world.common.world.dimension.MushroomKingdom;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.command.WeatherCommand;
 import net.minecraft.server.world.ServerWorld;

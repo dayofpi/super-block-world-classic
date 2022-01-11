@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.client.renderer.mob;
 
-import com.dayofpi.super_block_world.main.Main;
+import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.model.ThwompModel;
-import com.dayofpi.super_block_world.client.ModelLayers;
-import com.dayofpi.super_block_world.main.common.entity.mob.ThwompEntity;
+import com.dayofpi.super_block_world.client.main.ModelLayers;
+import com.dayofpi.super_block_world.common.entity.mob.ThwompEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

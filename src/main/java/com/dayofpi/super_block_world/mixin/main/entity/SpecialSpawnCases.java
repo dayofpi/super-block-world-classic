@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.common.entity.mob.ThwompEntity;
-import com.dayofpi.super_block_world.main.common.entity.mob.buzzy.AbstractBuzzy;
-import com.dayofpi.super_block_world.main.registry.main.BlockInit;
-import com.dayofpi.super_block_world.main.registry.main.EntityInit;
+import com.dayofpi.super_block_world.common.entity.mob.ThwompEntity;
+import com.dayofpi.super_block_world.common.entity.mob.buzzy.AbstractBuzzy;
+import com.dayofpi.super_block_world.registry.main.BlockInit;
+import com.dayofpi.super_block_world.registry.main.EntityInit;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;

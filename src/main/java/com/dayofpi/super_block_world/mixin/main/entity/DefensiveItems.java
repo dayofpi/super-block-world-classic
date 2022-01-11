@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.registry.other.StatusEffectInit;
-import com.dayofpi.super_block_world.main.registry.main.ItemInit;
-import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
+import com.dayofpi.super_block_world.registry.other.StatusEffectInit;
+import com.dayofpi.super_block_world.registry.main.ItemInit;
+import com.dayofpi.super_block_world.common.util.entity.ModEntityDamageSource;
 import com.dayofpi.super_block_world.client.sound.SoundInit;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;

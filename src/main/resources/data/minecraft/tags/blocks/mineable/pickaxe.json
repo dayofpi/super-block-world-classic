@@ -1,6 +1,9 @@
 {
   "replace": "false",
   "values": [
+    "super_block_world:shroomstone",
+    "super_block_world:cobbled_shroomstone",
+    "super_block_world:exposed_shroomstone",
     "super_block_world:star_crystal",
     "super_block_world:pull_block",
     "super_block_world:glow_block",

@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.renderer.other;
 
-import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.common.entity.projectile.FireBroFireballEntity;
+import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.common.entity.projectile.FireBroFireballEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;

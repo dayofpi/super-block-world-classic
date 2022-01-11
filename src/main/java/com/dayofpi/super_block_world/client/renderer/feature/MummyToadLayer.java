@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.renderer.feature;
 
-import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.common.entity.mob.MummyToadEntity;
+import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.common.entity.mob.MummyToadEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;

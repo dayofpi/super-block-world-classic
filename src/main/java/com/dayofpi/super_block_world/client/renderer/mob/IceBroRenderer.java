@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.client.renderer.mob;
 
-import com.dayofpi.super_block_world.client.ModelLayers;
+import com.dayofpi.super_block_world.client.main.ModelLayers;
 import com.dayofpi.super_block_world.client.model.HammerBroModel;
 import com.dayofpi.super_block_world.client.renderer.feature.HammerBroItem;
-import com.dayofpi.super_block_world.main.Main;
-import com.dayofpi.super_block_world.main.common.entity.mob.hammer_bro.IceBroEntity;
+import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.common.entity.mob.hammer_bro.IceBroEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

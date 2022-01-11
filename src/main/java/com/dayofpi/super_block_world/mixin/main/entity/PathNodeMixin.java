@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.registry.main.TagInit;
-import com.dayofpi.super_block_world.main.registry.main.BlockInit;
-import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
+import com.dayofpi.super_block_world.registry.main.TagInit;
+import com.dayofpi.super_block_world.registry.main.BlockInit;
+import com.dayofpi.super_block_world.registry.block.PlantBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.ai.pathing.LandPathNodeMaker;
 import net.minecraft.entity.ai.pathing.PathNodeType;

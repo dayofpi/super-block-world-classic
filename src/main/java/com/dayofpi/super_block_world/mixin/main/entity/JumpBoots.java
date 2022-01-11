@@ -1,11 +1,11 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
-import com.dayofpi.super_block_world.main.common.entity.mob.buzzy.SpikeTopEntity;
-import com.dayofpi.super_block_world.main.common.entity.mob.npc.ToadEntity;
-import com.dayofpi.super_block_world.main.registry.main.ItemInit;
-import com.dayofpi.super_block_world.main.registry.main.TagInit;
-import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
+import com.dayofpi.super_block_world.common.entity.mob.buzzy.SpikeTopEntity;
+import com.dayofpi.super_block_world.common.entity.mob.npc.ToadEntity;
+import com.dayofpi.super_block_world.registry.main.ItemInit;
+import com.dayofpi.super_block_world.registry.main.TagInit;
+import com.dayofpi.super_block_world.common.util.entity.ModEntityDamageSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
