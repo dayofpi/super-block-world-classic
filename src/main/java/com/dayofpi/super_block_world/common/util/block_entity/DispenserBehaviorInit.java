@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.common.util.block_entity;
 
-import com.dayofpi.super_block_world.common.entity.projectile.*;
+import com.dayofpi.super_block_world.common.entities.*;
 import com.dayofpi.super_block_world.registry.main.BlockInit;
 import com.dayofpi.super_block_world.registry.main.ItemInit;
 import com.dayofpi.super_block_world.common.util.mixin_aid.ModBoatType;

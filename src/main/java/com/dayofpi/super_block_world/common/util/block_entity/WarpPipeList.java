@@ -18,9 +18,6 @@ public class WarpPipeList {
         warpList = new ArrayList<>();
     }
 
-    public int getX() { return chunkX;}
-    public int getZ() { return chunkZ;}
-
     public boolean isPipeInList(BlockPos pipe) {
         return warpList.contains(pipe);
     }

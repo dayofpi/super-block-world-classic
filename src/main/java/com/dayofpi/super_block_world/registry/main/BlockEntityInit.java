@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.registry.main;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.common.block_entity.*;
+import com.dayofpi.super_block_world.common.blocks.block_entities.*;
 import com.dayofpi.super_block_world.registry.block.ColoredBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
@@ -10,6 +10,7 @@ import net.minecraft.util.registry.Registry;
 
 public class BlockEntityInit {
 
+    public static BlockEntityType<PlacedItemBE> PLACED_ITEM;
     public static BlockEntityType<QuestionBlockBE> QUESTION_BLOCK;
     public static BlockEntityType<QuestionBoxBE> QUESTION_BOX;
     public static BlockEntityType<CoinBlockBE> COIN_BLOCK;
@@ -17,6 +18,7 @@ public class BlockEntityInit {
     public static BlockEntityType<WarpPipeBE> WARP_PIPE;
 
     public static void registerBlockEntities() {
+        PLACED_ITEM = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "placed_item"), FabricBlockEntityTypeBuilder.create(PlacedItemBE::new, BlockInit.COIN, BlockInit.STAR_COIN, BlockInit.POWER_STAR).build());
         QUESTION_BLOCK = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "question_block"), FabricBlockEntityTypeBuilder.create(QuestionBlockBE::new, BlockInit.QUESTION_BLOCK).build());
         QUESTION_BOX = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "question_box"), FabricBlockEntityTypeBuilder.create(QuestionBoxBE::new, BlockInit.QUESTION_BOX).build());
         COIN_BLOCK = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "coin_block"), FabricBlockEntityTypeBuilder.create(CoinBlockBE::new, BlockInit.COIN_BLOCK).build());

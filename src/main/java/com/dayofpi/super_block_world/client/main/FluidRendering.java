@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.main;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.registry.other.FluidInit;
+import com.dayofpi.super_block_world.registry.more.FluidInit;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;

@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.mixin.main.warp_pipe;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
-import com.dayofpi.super_block_world.common.block.decoration.WarpPipe;
-import com.dayofpi.super_block_world.registry.other.ParticleInit;
-import com.dayofpi.super_block_world.registry.other.StatusEffectInit;
+import com.dayofpi.super_block_world.common.blocks.WarpPipeBlock;
+import com.dayofpi.super_block_world.registry.more.ParticleInit;
+import com.dayofpi.super_block_world.registry.more.StatusEffectInit;
 import com.dayofpi.super_block_world.registry.main.TagInit;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -38,7 +38,7 @@ public abstract class PipeTeleporting extends LivingEntity {
             boolean onPipe = world.getBlockState(entityPos).isAir() && world.getBlockState(floor).isIn(TagInit.WARP_PIPES) && world.getBlockState(floor).get(Properties.FACING) == Direction.UP;
             boolean inPipe = world.getBlockState(entityPos).isIn(TagInit.WARP_PIPES) && world.getBlockState(entityPos).get(Properties.FACING) == Direction.UP;
             if (onPipe) {
-                BlockPos destination = WarpPipe.warpPipeTree.getNearestBlock(floor, world);
+                BlockPos destination = WarpPipeBlock.warpPipeTree.getNearestBlock(floor, world);
                 if (destination != null) {
                     this.requestTeleport(destination.getX() + 0.5, destination.getY() + 1.0F, destination.getZ() + 0.5);
                     this.setPipeCooldown(20);
@@ -46,7 +46,7 @@ public abstract class PipeTeleporting extends LivingEntity {
                     world.playSound(null, destination, SoundInit.BLOCK_WARP_PIPE_TELEPORT, SoundCategory.PLAYERS, 0.5F, this.getSoundPitch());
                 }
             } else if (inPipe) {
-                BlockPos destination = WarpPipe.warpPipeTree.getNearestBlock(entityPos, world);
+                BlockPos destination = WarpPipeBlock.warpPipeTree.getNearestBlock(entityPos, world);
                 if (destination != null) {
                     this.requestTeleport(destination.getX() + 0.5, destination.getY() + 1.0F, destination.getZ() + 0.5);
                     this.setPipeCooldown(20);

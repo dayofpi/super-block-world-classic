@@ -1,17 +1,22 @@
 package com.dayofpi.super_block_world.registry.main;
 
-import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.common.item.*;
-import com.dayofpi.super_block_world.common.item.armor.JumpBootsItem;
-import com.dayofpi.super_block_world.common.item.armor.ShellItem;
-import com.dayofpi.super_block_world.common.item.projectile.*;
-import com.dayofpi.super_block_world.registry.other.FluidInit;
-import com.dayofpi.super_block_world.registry.block.*;
-import com.dayofpi.super_block_world.common.util.item.CreativeTabs;
-import com.dayofpi.super_block_world.registry.other.FoodComponents;
-import com.dayofpi.super_block_world.common.util.item.Materials;
+import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.common.items.*;
+import com.dayofpi.super_block_world.common.items.armor.CloudBootsItem;
+import com.dayofpi.super_block_world.common.items.armor.JumpBootsItem;
+import com.dayofpi.super_block_world.common.items.armor.PlumberCapItem;
+import com.dayofpi.super_block_world.common.items.armor.ShellItem;
+import com.dayofpi.super_block_world.common.items.projectile.*;
 import com.dayofpi.super_block_world.common.util.mixin_aid.ModBoatType;
+import com.dayofpi.super_block_world.registry.block.ColoredBlocks;
+import com.dayofpi.super_block_world.registry.block.MushroomBlocks;
+import com.dayofpi.super_block_world.registry.block.PlantBlocks;
+import com.dayofpi.super_block_world.registry.block.VariantBlocks;
+import com.dayofpi.super_block_world.registry.more.CreativeTabs;
+import com.dayofpi.super_block_world.registry.more.FluidInit;
+import com.dayofpi.super_block_world.registry.more.FoodComponents;
+import com.dayofpi.super_block_world.registry.more.Materials;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
@@ -24,10 +29,11 @@ import net.minecraft.util.registry.Registry;
 
 
 public class ItemInit {
-    public static final Item POWER_STAR = new PowerStarItem(new FabricItemSettings().rarity(Rarity.RARE));
+    public static final Item POWER_STAR = new PowerStarItem(new FabricItemSettings().rarity(Rarity.RARE).group(CreativeTabs.ITEM_GROUP));
     public static final Item POWER_DUST = new Item(new FabricItemSettings());
     public static final Item YOSHI_FRUIT = new Item(new FabricItemSettings().food(FoodComponents.YOSHI_FRUIT).group(CreativeTabs.ITEM_GROUP));
     public static final Item YOSHI_COOKIE = new Item(new FabricItemSettings().food(FoodComponents.YOSHI_COOKIE).group(CreativeTabs.ITEM_GROUP));
+    public static final Item HORSETAIL_TART = new Item(new FabricItemSettings().food(FoodComponents.HORSETAIL_TART).group(CreativeTabs.ITEM_GROUP));
     public static final Item TURNIP = new TurnipItem(new FabricItemSettings().maxCount(16).group(CreativeTabs.ITEM_GROUP));
     public static final Item HAMMER = new HammerItem(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxDamage(50));
     public static final Item SUPER_PICKAX = new SuperPickaxItem(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
@@ -40,8 +46,9 @@ public class ItemInit {
     public static final Item FIRE_FLOWER = new FireFlowerItem(new FabricItemSettings().maxDamage(16).group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item ICE_FLOWER = new IceFlowerItem(new FabricItemSettings().maxDamage(16).group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item SUPER_STAR = new SuperStarItem(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).rarity(Rarity.RARE));
-    public static final Item COIN = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
-    public static final Item STAR_COIN = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item MAGIC_WINGS = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).rarity(Rarity.UNCOMMON));
+    public static final Item COIN = new BlockItem(BlockInit.COIN,new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item STAR_COIN = new BlockItem(BlockInit.STAR_COIN,new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item GREEN_STAR_BIT = new StarBitItem(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item PURPLE_STAR_BIT = new StarBitItem(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BLUE_STAR_BIT = new StarBitItem(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
@@ -53,10 +60,13 @@ public class ItemInit {
     public static final Item FUZZBALL = new BlockItem(PlantBlocks.FUZZBALL, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item SPIKE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BUZZY_SHELL_PIECE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item PLUMBER_CAP = new PlumberCapItem(Materials.JUMP_ARMOR, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item PRINCESS_CROWN = new ArmorItem(Materials.PRINCESS, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).rarity(Rarity.RARE));
     public static final Item GREEN_SHELL = new ShellItem(EntityInit.BUZZY_SHELL, Materials.GREEN_SHELL, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item RED_SHELL = new ShellItem(EntityInit.BUZZY_SHELL, Materials.RED_SHELL, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BUZZY_SHELL = new ShellItem(EntityInit.BUZZY_SHELL, Materials.BUZZY_ARMOR, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item JUMP_BOOTS = new JumpBootsItem(Materials.JUMP_ARMOR, EquipmentSlot.FEET, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item CLOUD_BOOTS = new CloudBootsItem(Materials.CLOUD_ARMOR, EquipmentSlot.FEET, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BOTTLED_GHOST = new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).group(CreativeTabs.ITEM_GROUP));
     public static final Item GREEN_MUSHROOM_ON_A_STICK = new OnAStickItem<>(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxDamage(25), EntityInit.BUZZY_BEETLE, 2);
     public static final Item AMANITA_BOAT = new BoatItem(ModBoatType.AMANITA, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).maxCount(1));
@@ -76,19 +86,21 @@ public class ItemInit {
     public static void register() {
         registerBuildingBlocks();
         registerDecorations();
-        registerItem("power_star", POWER_STAR);
-        registerItem("power_dust", POWER_DUST);
         registerItem("yoshi_fruit", YOSHI_FRUIT);
         registerItem("yoshi_cookie", YOSHI_COOKIE);
+        registerItem("horsetail_tart", HORSETAIL_TART);
         registerItem("turnip", TURNIP);
         registerItem("hammer", HAMMER);
         registerItem("super_pickax", SUPER_PICKAX);
         registerItem("bomb", BOMB);
         registerItem("fuzzy_magnet", FUZZY_MAGNET);
+        registerItem("plumber_cap", PLUMBER_CAP);
+        registerItem("princess_crown", PRINCESS_CROWN);
         registerItem("green_shell", GREEN_SHELL);
         registerItem("red_shell", RED_SHELL);
         registerItem("buzzy_shell", BUZZY_SHELL);
         registerItem("jump_boots", JUMP_BOOTS);
+        registerItem("cloud_boots", CLOUD_BOOTS);
         registerItem("super_mushroom", SUPER_MUSHROOM);
         registerItem("golden_mushroom", GOLDEN_MUSHROOM);
         registerItem("one_up", ONE_UP);
@@ -96,8 +108,11 @@ public class ItemInit {
         registerItem("fire_flower", FIRE_FLOWER);
         registerItem("ice_flower", ICE_FLOWER);
         registerItem("super_star", SUPER_STAR);
+        registerItem("magic_wings", MAGIC_WINGS);
         registerItem("coin", COIN);
         registerItem("star_coin", STAR_COIN);
+        registerItem("power_star", POWER_STAR);
+        registerItem("power_dust", POWER_DUST);
         registerItem("green_star_bit", GREEN_STAR_BIT);
         registerItem("purple_star_bit", PURPLE_STAR_BIT);
         registerItem("blue_star_bit", BLUE_STAR_BIT);
@@ -156,6 +171,7 @@ public class ItemInit {
 
         registerDecoration("amanita_sapling", PlantBlocks.AMANITA_SAPLING);
         registerDecoration("dark_amanita_sapling", PlantBlocks.DARK_AMANITA_SAPLING);
+        registerDecoration("bell_sapling", PlantBlocks.BELL_SAPLING);
         registerDecoration("amanita_carpet", PlantBlocks.AMANITA_CARPET);
         registerDecoration("bush", PlantBlocks.BUSH);
         registerDecoration("horsetail", PlantBlocks.HORSETAIL);
@@ -176,6 +192,8 @@ public class ItemInit {
         registerDecoration("cave_mushrooms", PlantBlocks.CAVE_MUSHROOMS);
         registerDecoration("muncher", PlantBlocks.MUNCHER);
         registerDecoration("frozen_muncher", PlantBlocks.FROZEN_MUNCHER);
+        registerDecoration("icicle", BlockInit.ICICLE);
+        registerDecoration("freezie", BlockInit.FREEZIE);
         registerDecoration("pit_plant", PlantBlocks.PIT_PLANT);
         registerItem("piranha_lily", new WaterFlowerItem(PlantBlocks.PIRANHA_LILY, new FabricItemSettings().group(CreativeTabs.DECORATION_GROUP)));
         registerDecoration("budding_beanstalk", PlantBlocks.BUDDING_BEANSTALK);
@@ -213,17 +231,49 @@ public class ItemInit {
         registerDecoration("hidden_block", BlockInit.HIDDEN_BLOCK);
         registerDecoration("glow_block", BlockInit.GLOW_BLOCK);
         registerDecoration("jellybeam", BlockInit.JELLYBEAM);
+        registerDecoration("spike_trap", BlockInit.SPIKE_TRAP);
         registerDecoration("pull_block", BlockInit.PULL_BLOCK);
         registerDecoration("jump_block", BlockInit.JUMP_BLOCK);
         registerDecoration("redstone_trampoline", BlockInit.REDSTONE_TRAMPOLINE);
         registerDecoration("trampoline", BlockInit.TRAMPOLINE);
         registerDecoration("donut_block", BlockInit.DONUT_BLOCK);
         registerDecoration("girder", BlockInit.GIRDER);
-        registerDecoration("spike_trap", BlockInit.SPIKE_TRAP);
         registerDecoration("star_crystal", BlockInit.STAR_CRYSTAL);
-        registerDecoration("icicle", BlockInit.ICICLE);
         registerDecoration("boo_lantern", BlockInit.BOO_LANTERN);
         registerDecoration("stone_torch", BlockInit.STONE_TORCH);
+
+        registerDecoration("white_warp_pipe", ColoredBlocks.WHITE_WARP_PIPE);
+        registerDecoration("white_pipe_body", ColoredBlocks.WHITE_PIPE_BODY);
+        registerDecoration("orange_warp_pipe", ColoredBlocks.ORANGE_WARP_PIPE);
+        registerDecoration("orange_pipe_body", ColoredBlocks.ORANGE_PIPE_BODY);
+        registerDecoration("magenta_warp_pipe", ColoredBlocks.MAGENTA_WARP_PIPE);
+        registerDecoration("magenta_pipe_body", ColoredBlocks.MAGENTA_PIPE_BODY);
+        registerDecoration("light_blue_warp_pipe", ColoredBlocks.LIGHT_BLUE_WARP_PIPE);
+        registerDecoration("light_blue_pipe_body", ColoredBlocks.LIGHT_BLUE_PIPE_BODY);
+        registerDecoration("yellow_warp_pipe", ColoredBlocks.YELLOW_WARP_PIPE);
+        registerDecoration("yellow_pipe_body", ColoredBlocks.YELLOW_PIPE_BODY);
+        registerDecoration("lime_warp_pipe", ColoredBlocks.LIME_WARP_PIPE);
+        registerDecoration("lime_pipe_body", ColoredBlocks.LIME_PIPE_BODY);
+        registerDecoration("pink_warp_pipe", ColoredBlocks.PINK_WARP_PIPE);
+        registerDecoration("pink_pipe_body", ColoredBlocks.PINK_PIPE_BODY);
+        registerDecoration("gray_warp_pipe", ColoredBlocks.GRAY_WARP_PIPE);
+        registerDecoration("gray_pipe_body", ColoredBlocks.GRAY_PIPE_BODY);
+        registerDecoration("light_gray_warp_pipe", ColoredBlocks.LIGHT_GRAY_WARP_PIPE);
+        registerDecoration("light_gray_pipe_body", ColoredBlocks.LIGHT_GRAY_PIPE_BODY);
+        registerDecoration("cyan_warp_pipe", ColoredBlocks.CYAN_WARP_PIPE);
+        registerDecoration("cyan_pipe_body", ColoredBlocks.CYAN_PIPE_BODY);
+        registerDecoration("purple_warp_pipe", ColoredBlocks.PURPLE_WARP_PIPE);
+        registerDecoration("purple_pipe_body", ColoredBlocks.PURPLE_PIPE_BODY);
+        registerDecoration("blue_warp_pipe", ColoredBlocks.BLUE_WARP_PIPE);
+        registerDecoration("blue_pipe_body", ColoredBlocks.BLUE_PIPE_BODY);
+        registerDecoration("brown_warp_pipe", ColoredBlocks.BROWN_WARP_PIPE);
+        registerDecoration("brown_pipe_body", ColoredBlocks.BROWN_PIPE_BODY);
+        registerDecoration("warp_pipe", ColoredBlocks.GREEN_WARP_PIPE);
+        registerDecoration("warp_pipe_body", ColoredBlocks.GREEN_PIPE_BODY);
+        registerDecoration("red_warp_pipe", ColoredBlocks.RED_WARP_PIPE);
+        registerDecoration("red_pipe_body", ColoredBlocks.RED_PIPE_BODY);
+        registerDecoration("black_warp_pipe", ColoredBlocks.BLACK_WARP_PIPE);
+        registerDecoration("black_pipe_body", ColoredBlocks.BLACK_PIPE_BODY);
     }
 
     public static void registerBuildingBlocks() {
@@ -240,6 +290,7 @@ public class ItemInit {
         registerBlockItem("shroomstone", BlockInit.SHROOMSTONE);
         registerBlockItem("cobbled_shroomstone", BlockInit.COBBLED_SHROOMSTONE);
         registerBlockItem("exposed_shroomstone", BlockInit.EXPOSED_SHROOMSTONE);
+        registerBlockItem("charrock", BlockInit.CHARROCK);
         registerBlockItem("beanstalk_block", BlockInit.BEANSTALK_BLOCK);
         registerBlockItem("strawberry_coral_block", BlockInit.STRAWBERRY_CORAL_BLOCK);
 
@@ -440,38 +491,5 @@ public class ItemInit {
         registerBlockItem("cerise_brick_stairs", VariantBlocks.CERISE_BRICK_STAIRS);
         registerBlockItem("cerise_tile_slab", VariantBlocks.CERISE_TILE_SLAB);
         registerBlockItem("cerise_tile_stairs", VariantBlocks.CERISE_TILE_STAIRS);
-
-        registerBlockItem("white_warp_pipe", ColoredBlocks.WHITE_WARP_PIPE);
-        registerBlockItem("white_pipe_body", ColoredBlocks.WHITE_PIPE_BODY);
-        registerBlockItem("orange_warp_pipe", ColoredBlocks.ORANGE_WARP_PIPE);
-        registerBlockItem("orange_pipe_body", ColoredBlocks.ORANGE_PIPE_BODY);
-        registerBlockItem("magenta_warp_pipe", ColoredBlocks.MAGENTA_WARP_PIPE);
-        registerBlockItem("magenta_pipe_body", ColoredBlocks.MAGENTA_PIPE_BODY);
-        registerBlockItem("light_blue_warp_pipe", ColoredBlocks.LIGHT_BLUE_WARP_PIPE);
-        registerBlockItem("light_blue_pipe_body", ColoredBlocks.LIGHT_BLUE_PIPE_BODY);
-        registerBlockItem("yellow_warp_pipe", ColoredBlocks.YELLOW_WARP_PIPE);
-        registerBlockItem("yellow_pipe_body", ColoredBlocks.YELLOW_PIPE_BODY);
-        registerBlockItem("lime_warp_pipe", ColoredBlocks.LIME_WARP_PIPE);
-        registerBlockItem("lime_pipe_body", ColoredBlocks.LIME_PIPE_BODY);
-        registerBlockItem("pink_warp_pipe", ColoredBlocks.PINK_WARP_PIPE);
-        registerBlockItem("pink_pipe_body", ColoredBlocks.PINK_PIPE_BODY);
-        registerBlockItem("gray_warp_pipe", ColoredBlocks.GRAY_WARP_PIPE);
-        registerBlockItem("gray_pipe_body", ColoredBlocks.GRAY_PIPE_BODY);
-        registerBlockItem("light_gray_warp_pipe", ColoredBlocks.LIGHT_GRAY_WARP_PIPE);
-        registerBlockItem("light_gray_pipe_body", ColoredBlocks.LIGHT_GRAY_PIPE_BODY);
-        registerBlockItem("cyan_warp_pipe", ColoredBlocks.CYAN_WARP_PIPE);
-        registerBlockItem("cyan_pipe_body", ColoredBlocks.CYAN_PIPE_BODY);
-        registerBlockItem("purple_warp_pipe", ColoredBlocks.PURPLE_WARP_PIPE);
-        registerBlockItem("purple_pipe_body", ColoredBlocks.PURPLE_PIPE_BODY);
-        registerBlockItem("blue_warp_pipe", ColoredBlocks.BLUE_WARP_PIPE);
-        registerBlockItem("blue_pipe_body", ColoredBlocks.BLUE_PIPE_BODY);
-        registerBlockItem("brown_warp_pipe", ColoredBlocks.BROWN_WARP_PIPE);
-        registerBlockItem("brown_pipe_body", ColoredBlocks.BROWN_PIPE_BODY);
-        registerBlockItem("warp_pipe", ColoredBlocks.GREEN_WARP_PIPE);
-        registerBlockItem("warp_pipe_body", ColoredBlocks.GREEN_PIPE_BODY);
-        registerBlockItem("red_warp_pipe", ColoredBlocks.RED_WARP_PIPE);
-        registerBlockItem("red_pipe_body", ColoredBlocks.RED_PIPE_BODY);
-        registerBlockItem("black_warp_pipe", ColoredBlocks.BLACK_WARP_PIPE);
-        registerBlockItem("black_pipe_body", ColoredBlocks.BLACK_PIPE_BODY);
     }
 }

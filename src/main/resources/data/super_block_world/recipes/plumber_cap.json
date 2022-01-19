@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " O ",
+    "O#O",
+    " O "
+  ],
+  "key": {
+    "O": {
+      "item": "super_block_world:troop_hide"
+    },
+    "#": {
+      "item": "super_block_world:green_shell"
+    }
+  },
+  "result": {
+    "item": "super_block_world:plumber_cap",
+    "count": 1
+  }
+}

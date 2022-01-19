@@ -82,10 +82,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:diamond"
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:emerald",
           "functions": [
             {

@@ -14,6 +14,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 
+@SuppressWarnings("deprecation")
 @Mixin(PotatoesBlock.class)
 public class PoisonPotatoCrop extends CropBlock {
     public PoisonPotatoCrop(Settings settings) {

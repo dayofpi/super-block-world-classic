@@ -19,14 +19,12 @@ import java.util.UUID;
 @SuppressWarnings("deprecation")
 @Environment(EnvType.CLIENT)
 public class Client implements ClientModInitializer {
-    public static final Identifier PacketID = new Identifier(Main.MOD_ID, "spawn_packet");
-
     @Override
     public void onInitializeClient() {
         GlobalReceivers.registerGlobalReceivers();
         FluidRendering.renderFluids();
-        BlockRendering.setBlockColors();
-        BlockRendering.setRenderLayers();
+        ColorProviders.setColors();
+        BlockRendering.RenderBlocks();
         EntityRendering.registerEntityRenderers();
         ParticleRendering.renderParticles();
         FabricModelPredicateProviderRegistry.register(ItemInit.FUZZY_MAGNET, new Identifier("pulling"), (stack, world, livingEntity, seed) -> {
@@ -38,7 +36,7 @@ public class Client implements ClientModInitializer {
     }
 
     public void receiveEntityPacket() {
-        ClientSidePacketRegistry.INSTANCE.register(PacketID, (ctx, byteBuf) -> {
+        ClientSidePacketRegistry.INSTANCE.register(Main.PacketID, (ctx, byteBuf) -> {
             EntityType<?> et = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());
             UUID uuid = byteBuf.readUuid();
             int entityId = byteBuf.readVarInt();

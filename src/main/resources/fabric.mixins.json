@@ -26,6 +26,7 @@
     "main.enums_and_sets.SignTypeAccessor",
     "main.item.BrewingRecipeMixin",
     "main.item.ItemEntityMixin",
+    "main.item.OnAStickItemMixin",
     "main.poison.PoisonInteraction",
     "main.warp_pipe.PipeBubbles",
     "main.warp_pipe.PipeTeleporting",

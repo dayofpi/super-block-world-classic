@@ -29,9 +29,9 @@ public class PickupSound {
         if (entity != null) {
             if (entity instanceof ItemEntity item) {
                 if (item.getStack().isOf(ItemInit.COIN)) {
-                    this.world.playSound(entity.getX(), entity.getY(), entity.getZ(), SoundInit.ITEM_COIN_COLLECT, SoundCategory.PLAYERS, 0.2f, 1.0f, false);
+                    this.world.playSound(entity.getX(), entity.getY(), entity.getZ(), SoundInit.ITEM_COLLECT_COIN, SoundCategory.PLAYERS, 0.2f, 1.0f, false);
                 } else if (item.getStack().isOf(ItemInit.STAR_COIN)) {
-                    this.world.playSound(entity.getX(), entity.getY(), entity.getZ(), SoundInit.ITEM_STAR_COIN_COLLECT, SoundCategory.PLAYERS, 0.2f, 1.0f, false);
+                    this.world.playSound(entity.getX(), entity.getY(), entity.getZ(), SoundInit.ITEM_COLLECT_STAR_COIN, SoundCategory.PLAYERS, 0.2f, 1.0f, false);
                 } else if (item.getStack().isOf(ItemInit.BLUE_STAR_BIT) || item.getStack().isOf(ItemInit.PURPLE_STAR_BIT) || item.getStack().isOf(ItemInit.GREEN_STAR_BIT)) {
                     this.world.playSound(entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, SoundCategory.PLAYERS, 1.0f, 1.7f, false);
                 }

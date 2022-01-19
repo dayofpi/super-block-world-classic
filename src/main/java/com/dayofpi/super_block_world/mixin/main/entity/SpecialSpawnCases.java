@@ -1,7 +1,8 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.common.entity.mob.ThwompEntity;
-import com.dayofpi.super_block_world.common.entity.mob.buzzy.AbstractBuzzy;
+import com.dayofpi.super_block_world.common.entities.abst.AbstractBuzzy;
+import com.dayofpi.super_block_world.common.entities.mob.BuzzyEntity;
+import com.dayofpi.super_block_world.common.entities.mob.ThwompEntity;
 import com.dayofpi.super_block_world.registry.main.BlockInit;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
 import net.minecraft.block.Blocks;
@@ -28,7 +29,7 @@ public class SpecialSpawnCases {
     @Inject(at = @At("HEAD"), method = "canSpawn(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/ServerWorldAccess;Lnet/minecraft/entity/SpawnReason;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)Z", cancellable = true)
     private static <T extends MobEntity> void canSpawn(EntityType<T> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> info) {
         if (type == EntityInit.BUZZY_BEETLE) {
-            info.setReturnValue(AbstractBuzzy.canSpawn(type, world, reason, pos, random));
+            info.setReturnValue(BuzzyEntity.canBuzzySpawn(type, world, reason, pos, random));
             info.cancel();
         }
         if (type == EntityInit.SPIKE_TOP) {

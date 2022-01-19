@@ -1,30 +1,16 @@
 package com.dayofpi.super_block_world.registry.main;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.common.entity.mob.buzzy.AbstractBuzzy;
-import com.dayofpi.super_block_world.common.entity.mob.buzzy.BuzzyEntity;
-import com.dayofpi.super_block_world.common.entity.mob.buzzy.SpikeTopEntity;
-import com.dayofpi.super_block_world.common.entity.mob.ghost.AbstractGhost;
-import com.dayofpi.super_block_world.common.entity.mob.goomba.GladGoombaEntity;
-import com.dayofpi.super_block_world.common.entity.mob.goomba.GoombaEntity;
-import com.dayofpi.super_block_world.common.entity.mob.goomba.ParagoombaEntity;
-import com.dayofpi.super_block_world.common.entity.mob.hammer_bro.AbstractBro;
-import com.dayofpi.super_block_world.common.entity.mob.hammer_bro.FireBroEntity;
-import com.dayofpi.super_block_world.common.entity.mob.hammer_bro.HammerBroEntity;
-import com.dayofpi.super_block_world.common.entity.mob.hammer_bro.IceBroEntity;
-import com.dayofpi.super_block_world.common.entity.mob.koopa.KoopaEntity;
-import com.dayofpi.super_block_world.common.entity.mob.koopa.ParatroopaEntity;
-import com.dayofpi.super_block_world.common.entity.mob.npc.ToadEntity;
-import com.dayofpi.super_block_world.common.entity.shell.BuzzyShellEntity;
-import com.dayofpi.super_block_world.common.entity.mob.ghost.SpiritEntity;
-import com.dayofpi.super_block_world.common.entity.shell.AbstractShell;
-import com.dayofpi.super_block_world.common.entity.mob.*;
-import com.dayofpi.super_block_world.common.entity.mob.ghost.BooEntity;
-import com.dayofpi.super_block_world.common.entity.projectile.*;
+import com.dayofpi.super_block_world.common.entities.*;
+import com.dayofpi.super_block_world.common.entities.abst.AbstractBoo;
+import com.dayofpi.super_block_world.common.entities.abst.AbstractBro;
+import com.dayofpi.super_block_world.common.entities.abst.AbstractBuzzy;
+import com.dayofpi.super_block_world.common.entities.abst.AbstractShell;
+import com.dayofpi.super_block_world.common.entities.mob.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.*;
-import net.minecraft.entity.SpawnRestriction.*;
+import net.minecraft.entity.SpawnRestriction.Location;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.util.Identifier;
@@ -41,6 +27,11 @@ public class EntityInit {
     public static final EntityType<IceBroIceballEntity> ICE_BRO_ICEBALL = FabricEntityTypeBuilder.<IceBroIceballEntity>create(SpawnGroup.MISC, IceBroIceballEntity::new).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).trackRangeBlocks(4).trackedUpdateRate(20).build();
 
     public static final EntityType<SpiritEntity> SPIRIT = FabricEntityTypeBuilder.<SpiritEntity>create(SpawnGroup.MISC, SpiritEntity::new).dimensions(EntityDimensions.fixed(1.0F, 1.0F)).trackRangeBlocks(10).trackedUpdateRate(10).fireImmune().build();
+
+    public static final EntityType<VolcanicDebrisEntity> VOLCANIC_DEBRIS = FabricEntityTypeBuilder.createMob()
+            .entityFactory(VolcanicDebrisEntity::new).spawnGroup(SpawnGroup.MISC)
+            .dimensions(EntityDimensions.fixed(0.9F, 0.9F))
+            .fireImmune().build();
     public static final EntityType<BuzzyShellEntity> BUZZY_SHELL = FabricEntityTypeBuilder.createLiving()
             .entityFactory(BuzzyShellEntity::new).spawnGroup(SpawnGroup.MISC)
             .dimensions(EntityDimensions.fixed(1.0F, 0.8F)).build();
@@ -67,7 +58,14 @@ public class EntityInit {
 
     public static final EntityType<GladGoombaEntity> GLAD_GOOMBA = FabricEntityTypeBuilder.createMob().spawnGroup(SpawnGroup.CREATURE)
             .entityFactory(GladGoombaEntity::new)
-            .dimensions(EntityDimensions.changing(0.9F, 0.9F)).spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn)
+            .dimensions(EntityDimensions.changing(0.7F, 0.7F))
+            .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn)
+            .build();
+
+    public static final EntityType<GladParagoombaEntity> GLAD_PARAGOOMBA = FabricEntityTypeBuilder.createMob().spawnGroup(SpawnGroup.CREATURE)
+            .entityFactory(GladParagoombaEntity::new)
+            .dimensions(EntityDimensions.changing(0.7F, 0.7F))
+            .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn)
             .build();
 
     public static final EntityType<GoombaEntity> GOOMBA = FabricEntityTypeBuilder.createMob().spawnGroup(SpawnGroup.MONSTER)
@@ -93,13 +91,13 @@ public class EntityInit {
             .build();
 
     public static final EntityType<BobOmbEntity> BOB_OMB = FabricEntityTypeBuilder.createMob().entityFactory(BobOmbEntity::new).spawnGroup(SpawnGroup.MONSTER)
-            .dimensions(EntityDimensions.fixed(0.6F, 0.7F)).spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BobOmbEntity::canSpawn).build();
+            .dimensions(EntityDimensions.fixed(0.6F, 0.77F)).spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BobOmbEntity::canSpawn).build();
 
     public static final EntityType<BooEntity> BOO = FabricEntityTypeBuilder.createMob()
             .entityFactory(BooEntity::new)
             .spawnGroup(SpawnGroup.MONSTER)
             .dimensions(EntityDimensions.fixed(0.7F,0.7F))
-            .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractGhost::canSpawn)
+            .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractBoo::canSpawn)
             .fireImmune().build();
 
     public static final EntityType<HammerBroEntity> HAMMER_BRO = FabricEntityTypeBuilder.createMob()
@@ -182,10 +180,12 @@ public class EntityInit {
         register("iceball", ICEBALL);
         register("ghost", SPIRIT);
         registerMob("buzzy_shell", BUZZY_SHELL, AbstractShell.createAttributes());
+        registerMob("volcanic_debris", VOLCANIC_DEBRIS, VolcanicDebrisEntity.createAttributes());
         registerMob("moo_moo", MOO_MOO, MooMooEntity.createAttributes());
         registerMob("toad", TOAD, ToadEntity.createAttributes());
         registerMob("mummy_toad", MUMMY_TOAD, MummyToadEntity.createAttributes());
         registerMob("glad_goomba", GLAD_GOOMBA, GladGoombaEntity.createAttributes());
+        registerMob("glad_paragoomba", GLAD_PARAGOOMBA, GladParagoombaEntity.createAttributes());
         registerMob("goomba", GOOMBA, GoombaEntity.createAttributes());
         registerMob("paragoomba", PARAGOOMBA, ParagoombaEntity.createAttributes());
         registerMob("koopa_troopa", KOOPA_TROOPA, KoopaEntity.createAttributes());

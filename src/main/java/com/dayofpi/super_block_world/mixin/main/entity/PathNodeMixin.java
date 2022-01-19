@@ -24,6 +24,9 @@ public class PathNodeMixin {
         if (blockState.isOf(PlantBlocks.MUNCHER)) {
             info.setReturnValue(PathNodeType.DAMAGE_OTHER);
             info.cancel();
+        } else if (blockState.isOf(BlockInit.QUICKSAND)) {
+            info.setReturnValue(PathNodeType.DAMAGE_OTHER);
+            info.cancel();
         } else if (blockState == BlockInit.SPIKE_TRAP.getDefaultState().with(Properties.POWERED, true)) {
             info.setReturnValue(PathNodeType.DAMAGE_OTHER);
             info.cancel();
@@ -54,6 +57,10 @@ public class PathNodeMixin {
                     pos.set(i + l, j + m, k + n);
                     BlockState blockState = world.getBlockState(pos);
                     if (blockState.isOf(PlantBlocks.MUNCHER)) {
+                        info.setReturnValue(PathNodeType.DANGER_OTHER);
+                        info.cancel();
+                    }
+                    if (blockState.isOf(BlockInit.QUICKSAND)) {
                         info.setReturnValue(PathNodeType.DANGER_OTHER);
                         info.cancel();
                     }

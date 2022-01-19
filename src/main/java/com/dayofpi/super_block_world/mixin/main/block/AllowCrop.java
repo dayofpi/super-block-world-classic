@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@SuppressWarnings("deprecation")
 @Mixin(CropBlock.class)
 public class AllowCrop extends PlantBlock {
     protected AllowCrop(Settings settings) {

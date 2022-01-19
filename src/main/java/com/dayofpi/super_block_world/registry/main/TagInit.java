@@ -10,47 +10,30 @@ import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
-@SuppressWarnings("SameParameterValue")
 public class TagInit {
     public static Tag<Biome> ALL_BIOMES;
     public static Tag<Item> SHELLMETS;
+    public static Tag<Block> ALWAYS_CARVABLE;
     public static Tag<Block> BRICKS;
     public static Tag<Block> WARP_PIPES;
-    public static Tag<Block> ALWAYS_CARVABLE;
     public static Tag<Block> TOPPINGS;
-    public static Tag<EntityType<?>> POISON_IMMUNE;
-    public static Tag<EntityType<?>> IMMUNE_TO_BOOTS;
     public static Tag<Fluid> POISON;
+    public static Tag<EntityType<?>> IGNORES_BOOTS;
+    public static Tag<EntityType<?>> POISON_IMMUNE;
+    public static Tag<EntityType<?>> STOMP_IMMUNE;
 
     public static void register() {
-        ALL_BIOMES = addBiomeTag("all_biomes");
-        SHELLMETS = addItemTag("shellmets");
-        BRICKS = addBlockTag("bricks");
-        WARP_PIPES = addBlockTag("warp_pipes");
-        ALWAYS_CARVABLE = addBlockTag("always_carvable");
-        TOPPINGS = addBlockTag("toppings");
-        POISON_IMMUNE = addEntityTag("poison_immune");
-        IMMUNE_TO_BOOTS = addEntityTag("immune_to_boots");
-        POISON = addFluidTag("poison");
-    }
+        ALL_BIOMES = TagFactory.BIOME.create(new Identifier(Main.MOD_ID, "all_biomes"));
+        SHELLMETS = TagFactory.ITEM.create(new Identifier(Main.MOD_ID, "shellmets"));
 
-    private static Tag<Item> addItemTag(String id) {
-        return TagFactory.ITEM.create(new Identifier(Main.MOD_ID, id));
-    }
+        ALWAYS_CARVABLE = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "always_carvable"));
+        BRICKS = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "bricks"));
+        WARP_PIPES = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "warp_pipes"));
+        TOPPINGS = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "toppings"));
+        POISON = TagFactory.FLUID.create(new Identifier(Main.MOD_ID, "poison"));
 
-    private static Tag<Biome> addBiomeTag(String id) {
-        return TagFactory.BIOME.create(new Identifier(Main.MOD_ID, id));
-    }
-
-    private static Tag<Block> addBlockTag(String id) {
-        return TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, id));
-    }
-
-    private static Tag<EntityType<?>> addEntityTag(String id) {
-        return TagFactory.ENTITY_TYPE.create(new Identifier(Main.MOD_ID, id));
-    }
-
-    private static Tag<Fluid> addFluidTag(String id) {
-        return TagFactory.FLUID.create(new Identifier(Main.MOD_ID, id));
+        IGNORES_BOOTS = TagFactory.ENTITY_TYPE.create(new Identifier(Main.MOD_ID, "ignores_boots"));
+        POISON_IMMUNE = TagFactory.ENTITY_TYPE.create(new Identifier(Main.MOD_ID, "poison_immune"));
+        STOMP_IMMUNE = TagFactory.ENTITY_TYPE.create(new Identifier(Main.MOD_ID, "stomp_immune"));
     }
 }

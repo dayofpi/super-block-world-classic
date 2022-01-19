@@ -5,19 +5,21 @@ import com.dayofpi.super_block_world.registry.main.BlockInit;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
 import com.dayofpi.super_block_world.registry.main.ItemInit;
 import com.dayofpi.super_block_world.registry.main.TagInit;
-import com.dayofpi.super_block_world.registry.other.FluidInit;
-import com.dayofpi.super_block_world.registry.other.ParticleInit;
-import com.dayofpi.super_block_world.registry.other.StatusEffectInit;
-import com.dayofpi.super_block_world.registry.other.WorldInit;
+import com.dayofpi.super_block_world.registry.more.FluidInit;
+import com.dayofpi.super_block_world.registry.more.ParticleInit;
+import com.dayofpi.super_block_world.registry.more.StatusEffectInit;
+import com.dayofpi.super_block_world.world.WorldInit;
 import com.dayofpi.super_block_world.common.util.block_entity.DispenserBehaviorInit;
 import com.dayofpi.super_block_world.common.util.entity.ModDamageSource;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
 
 public class Main implements ModInitializer {
     public static final String MOD_ID = "super_block_world";
+    public static final Identifier PacketID = new Identifier(MOD_ID, "spawn_packet");
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
     @Override

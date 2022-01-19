@@ -47,6 +47,10 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:egg"
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:stone_pickaxe"
         },
         {

@@ -1,13 +1,13 @@
 package com.dayofpi.super_block_world.registry.block;
 
-import com.dayofpi.super_block_world.common.block.building.SemisolidSlab;
-import com.dayofpi.super_block_world.common.block.building.ModStairsBlock;
+import com.dayofpi.super_block_world.common.blocks.CloudSlab;
+import com.dayofpi.super_block_world.common.blocks.ModStairsBlock;
 import com.dayofpi.super_block_world.registry.main.BlockInit;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 
 public class VariantBlocks {
-    public static final Block CLOUD_SLAB = new SemisolidSlab(FabricBlockSettings.copyOf(BlockInit.CLOUD_BLOCK));
+    public static final Block CLOUD_SLAB = new CloudSlab(FabricBlockSettings.copyOf(BlockInit.CLOUD_BLOCK));
     public static final Block CLOUD_STAIRS = new ModStairsBlock(BlockInit.CLOUD_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(BlockInit.CLOUD_BLOCK));
 
     public static final Block BRONZE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(BlockInit.BRONZE_BLOCK));

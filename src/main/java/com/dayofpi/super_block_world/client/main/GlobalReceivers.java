@@ -2,8 +2,8 @@ package com.dayofpi.super_block_world.client.main;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.common.block.mechanics.ReactiveBlock;
-import com.dayofpi.super_block_world.common.entity.mob.FakeBlockEntity;
+import com.dayofpi.super_block_world.common.blocks.mechanics.ReactiveBlock;
+import com.dayofpi.super_block_world.common.entities.mob.FakeBlockEntity;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
 import com.dayofpi.super_block_world.registry.main.TagInit;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;

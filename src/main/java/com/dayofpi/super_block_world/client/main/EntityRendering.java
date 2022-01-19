@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.client.main;
 
-import com.dayofpi.super_block_world.client.model.*;
-import com.dayofpi.super_block_world.client.renderer.mob.*;
-import com.dayofpi.super_block_world.client.renderer.other.*;
+import com.dayofpi.super_block_world.client.models.*;
+import com.dayofpi.super_block_world.client.renderers.*;
+import com.dayofpi.super_block_world.client.renderers.other.*;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -23,12 +23,14 @@ public class EntityRendering {
         EntityRendererRegistry.register(EntityInit.ICE_BRO_ICEBALL, EnemyIceballRenderer::new);
         EntityRendererRegistry.register(EntityInit.SPIRIT, EmptyEntityRenderer::new);
         EntityRendererRegistry.register(EntityInit.BUZZY_SHELL, (context) -> new BuzzyShellRenderer<>(context, ModelLayers.BUZZY_SHELL));
+        EntityRendererRegistry.register(EntityInit.VOLCANIC_DEBRIS, VolcanicDebrisRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModelLayers.BUZZY_SHELL, BuzzyShellModel::getTexturedModelData);
         EntityRendererRegistry.register(EntityInit.MOO_MOO, MooMooRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModelLayers.MOO_MOO, MooMooModel::getTexturedModelData);
         EntityRendererRegistry.register(EntityInit.TOAD, ToadRenderer::new);
         EntityRendererRegistry.register(EntityInit.MUMMY_TOAD, MummyToadRenderer::new);
         EntityRendererRegistry.register(EntityInit.GLAD_GOOMBA, GladGoombaRenderer::new);
+        EntityRendererRegistry.register(EntityInit.GLAD_PARAGOOMBA, GladGoombaRenderer::new);
         EntityRendererRegistry.register(EntityInit.GOOMBA, GoombaRenderer::new);
         EntityRendererRegistry.register(EntityInit.PARAGOOMBA, GoombaRenderer::new);
         EntityRendererRegistry.register(EntityInit.KOOPA_TROOPA, KoopaRenderer::new);

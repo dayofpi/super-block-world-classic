@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.main;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.registry.other.ParticleInit;
+import com.dayofpi.super_block_world.registry.more.ParticleInit;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;

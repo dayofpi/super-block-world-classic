@@ -1,11 +1,10 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
-import com.dayofpi.super_block_world.common.entity.mob.buzzy.SpikeTopEntity;
-import com.dayofpi.super_block_world.common.entity.mob.npc.ToadEntity;
+import com.dayofpi.super_block_world.common.entities.mob.ToadEntity;
+import com.dayofpi.super_block_world.common.util.entity.ModEntityDamageSource;
 import com.dayofpi.super_block_world.registry.main.ItemInit;
 import com.dayofpi.super_block_world.registry.main.TagInit;
-import com.dayofpi.super_block_world.common.util.entity.ModEntityDamageSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -36,19 +35,22 @@ public abstract class JumpBoots extends LivingEntity {
             List<Entity> list = world.getOtherEntities(this, this.getBoundingBox().offset(0, -0.5, 0), entity -> entity instanceof LivingEntity);
             list.forEach(entity -> {
                 Vec3d velocity = this.getVelocity();
-                if (entity.isAlive() && entity.getBlockY() < this.getY() && velocity.y <= 0) {
+                boolean isHazard = entity.getType().isIn(TagInit.IGNORES_BOOTS);
+                if (entity.isAlive() && !isHazard && entity.getBlockY() < this.getY() && velocity.y <= 0) {
                     this.setVelocity(velocity.x, 0.6, velocity.z);
-                    boolean isImmune = entity.getType().isIn(TagInit.IMMUNE_TO_BOOTS);
-                    boolean isPet = entity instanceof TameableEntity tameableEntity && tameableEntity.getOwner() == this;
-                    if (!isPet && !isImmune) {
-                        entity.damage(ModEntityDamageSource.stomp(this), 5F);
-                        this.playSound(SoundInit.ENTITY_JUMP_BOOTS_ATTACK, 1.0F, 1.0F);
-                    } else if (!(entity instanceof SpikeTopEntity)) {
-                        this.playSound(SoundInit.ENTITY_JUMP_BOOTS_BOUNCE, 1.0F, 1.0F);
-                        if (entity instanceof ToadEntity && random.nextBoolean()) {
-                            ((ToadEntity)entity).setEmotion(2);
-                        }
+                    if (!this.world.isClient) {
+                        boolean isImmune = entity.getType().isIn(TagInit.STOMP_IMMUNE);
+                        boolean isPet = entity instanceof TameableEntity tameableEntity && tameableEntity.getOwner() == this;
 
+                        if (!isPet && !isImmune) {
+                            entity.damage(ModEntityDamageSource.stomp(this), 5F);
+                            entity.playSound(SoundInit.ENTITY_JUMP_BOOTS_ATTACK, 1.0F, 1.0F);
+                        } else {
+                            entity.playSound(SoundInit.ENTITY_JUMP_BOOTS_BOUNCE, 1.0F, 1.0F);
+                            if (entity instanceof ToadEntity && random.nextBoolean()) {
+                                ((ToadEntity) entity).setEmotion(2);
+                            }
+                        }
                     }
                 }
             });
@@ -58,6 +60,11 @@ public abstract class JumpBoots extends LivingEntity {
     private boolean hasJumpBoots() {
         ItemStack feetSlot = this.getEquippedStack(EquipmentSlot.FEET);
         return (feetSlot.isOf(ItemInit.JUMP_BOOTS));
+    }
+
+    private boolean hasCloudBoots() {
+        ItemStack feetSlot = this.getEquippedStack(EquipmentSlot.FEET);
+        return (feetSlot.isOf(ItemInit.CLOUD_BOOTS));
     }
 
     @Inject(at=@At("HEAD"), method = "jump")
@@ -72,7 +79,7 @@ public abstract class JumpBoots extends LivingEntity {
         if (this.hasJumpBoots()) {
             float jumpHeight = 0.92F;
             if (this.isSneaking()) {
-                jumpHeight = 0.6F;
+                jumpHeight = 0.5F;
             }
             return jumpHeight * this.getJumpVelocityMultiplier();
         } else return super.getJumpVelocity();
@@ -80,7 +87,7 @@ public abstract class JumpBoots extends LivingEntity {
 
     @Inject(at=@At("HEAD"), method = "handleFallDamage", cancellable = true)
     public void handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> info) {
-        if (this.hasJumpBoots()) {
+        if (this.hasJumpBoots() || this.hasCloudBoots()) {
             info.setReturnValue(false);
             info.cancel();
         }
