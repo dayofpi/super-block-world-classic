@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.mixin.main.poison;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
-import com.dayofpi.super_block_world.main.registry.other.ParticleInit;
-import com.dayofpi.super_block_world.main.registry.main.TagInit;
-import com.dayofpi.super_block_world.main.util.entity.ModDamageSource;
+import com.dayofpi.super_block_world.registry.more.ParticleInit;
+import com.dayofpi.super_block_world.registry.main.TagInit;
+import com.dayofpi.super_block_world.common.util.entity.ModDamageSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;

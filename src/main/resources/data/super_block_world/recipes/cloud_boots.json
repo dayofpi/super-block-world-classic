@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " O ",
+    "O#O",
+    " O "
+  ],
+  "key": {
+    "O": {
+      "item": "super_block_world:cloud_puff"
+    },
+    "#": {
+      "item": "super_block_world:jump_boots"
+    }
+  },
+  "result": {
+    "item": "super_block_world:cloud_boots",
+    "count": 1
+  }
+}

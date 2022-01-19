@@ -1,7 +1,8 @@
 {
   "replace": "false",
   "values": [
-    "super_block_world:vanillate",
-    "super_block_world:vanillate_crumble"
+    "super_block_world:toadstone",
+    "super_block_world:vanillate_crumble",
+    "super_block_world:cobbled_shroomstone"
   ]
 }

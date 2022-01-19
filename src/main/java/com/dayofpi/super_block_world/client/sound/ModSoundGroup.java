@@ -12,4 +12,5 @@ public class ModSoundGroup {
     public static final BlockSoundGroup SHOREGRASS = new BlockSoundGroup(0.9F, 1.0F, SoundInit.BLOCK_SHOREGRASS_BREAK, SoundInit.BLOCK_SHOREGRASS_STEP, SoundInit.BLOCK_SHOREGRASS_PLACE, SoundInit.BLOCK_SHOREGRASS_HIT, SoundInit.BLOCK_SHOREGRASS_FALL);
     public static final BlockSoundGroup SHERBET_SOIL = new BlockSoundGroup(0.9F, 1.0F, SoundInit.BLOCK_SHERBET_SOIL_BREAK, SoundInit.BLOCK_SHERBET_SOIL_STEP, SoundInit.BLOCK_SHERBET_SOIL_PLACE, SoundInit.BLOCK_SHERBET_SOIL_HIT, SoundInit.BLOCK_SHERBET_SOIL_FALL);
     public static final BlockSoundGroup SNOWY_SHERBET_SOIL = new BlockSoundGroup(0.9F, 1.0F, SoundInit.BLOCK_SHERBET_SOIL_BREAK, SoundEvents.BLOCK_SNOW_STEP, SoundInit.BLOCK_SHERBET_SOIL_PLACE, SoundInit.BLOCK_SHERBET_SOIL_HIT, SoundEvents.BLOCK_SNOW_FALL);
+    public static final BlockSoundGroup BELL_CAP = new BlockSoundGroup(1.0F, 1.0F, SoundEvents.BLOCK_AZALEA_LEAVES_BREAK, SoundInit.BLOCK_BELL_CAP_STEP, SoundEvents.BLOCK_AZALEA_LEAVES_BREAK, SoundInit.BLOCK_BELL_CAP_HIT, SoundInit.BLOCK_BELL_CAP_FALL);
 }

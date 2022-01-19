@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.registry.main.TagInit;
-import com.dayofpi.super_block_world.main.registry.main.BlockInit;
-import com.dayofpi.super_block_world.main.registry.block.PlantBlocks;
+import com.dayofpi.super_block_world.registry.main.TagInit;
+import com.dayofpi.super_block_world.registry.main.BlockInit;
+import com.dayofpi.super_block_world.registry.block.PlantBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.ai.pathing.LandPathNodeMaker;
 import net.minecraft.entity.ai.pathing.PathNodeType;
@@ -22,6 +22,9 @@ public class PathNodeMixin {
     private static void getCommonNodeType(BlockView world, BlockPos pos, CallbackInfoReturnable<PathNodeType> info) {
         BlockState blockState = world.getBlockState(pos);
         if (blockState.isOf(PlantBlocks.MUNCHER)) {
+            info.setReturnValue(PathNodeType.DAMAGE_OTHER);
+            info.cancel();
+        } else if (blockState.isOf(BlockInit.QUICKSAND)) {
             info.setReturnValue(PathNodeType.DAMAGE_OTHER);
             info.cancel();
         } else if (blockState == BlockInit.SPIKE_TRAP.getDefaultState().with(Properties.POWERED, true)) {
@@ -54,6 +57,10 @@ public class PathNodeMixin {
                     pos.set(i + l, j + m, k + n);
                     BlockState blockState = world.getBlockState(pos);
                     if (blockState.isOf(PlantBlocks.MUNCHER)) {
+                        info.setReturnValue(PathNodeType.DANGER_OTHER);
+                        info.cancel();
+                    }
+                    if (blockState.isOf(BlockInit.QUICKSAND)) {
                         info.setReturnValue(PathNodeType.DANGER_OTHER);
                         info.cancel();
                     }

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.client.sound;
 
-import com.dayofpi.super_block_world.main.Main;
+import com.dayofpi.super_block_world.Main;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -9,9 +9,13 @@ public class SoundInit {
     public static final SoundEvent MUSIC_MENU = createSound("music.menu");
     public static final SoundEvent MUSIC_GRASSLAND = createSound("music.grassland");
     public static final SoundEvent MUSIC_FOREST = createSound("music.forest");
+    public static final SoundEvent MUSIC_NIGHT = createSound("music.night");
     public static final SoundEvent MUSIC_CAVE = createSound("music.cave");
     public static final SoundEvent MUSIC_WATER = createSound("music.water");
     public static final SoundEvent MUSIC_ILLUSION = createSound("music.illusion");
+
+    public static final SoundEvent MUSIC_STARMAN = createSound("music.starman");
+    public static final SoundEvent MUSIC_STARMAN_LEAD = createSound("music.starman_lead");
 
     public static final SoundEvent MUSIC_DISC_MY_SONG = createSound("music_disc.my_song");
 
@@ -53,6 +57,11 @@ public class SoundInit {
     public static final SoundEvent BLOCK_SHERBET_SOIL_PLACE = createSound("block.sherbet_soil.place");
     public static final SoundEvent BLOCK_SHERBET_SOIL_STEP = createSound("block.sherbet_soil.step");
 
+    public static final SoundEvent BLOCK_BELL_CAP_FALL = createSound("block.bell_cap.fall");
+    public static final SoundEvent BLOCK_BELL_CAP_HIT = createSound("block.bell_cap.hit");
+    public static final SoundEvent BLOCK_BELL_CAP_STEP = createSound("block.bell_cap.step");
+    public static final SoundEvent BLOCK_BELL_CAP_JINGLE = createSound("block.bell_cap.jingle");
+
     public static final SoundEvent BLOCK_EMPTY_BLOCK_BUMP = createSound("block.item_block.bump");
     public static final SoundEvent BLOCK_COIN_BLOCK_HIT = createSound("block.item_block.coin");
     public static final SoundEvent BLOCK_EMPTY_BLOCK_STORE = createSound("block.item_block.store");
@@ -70,29 +79,36 @@ public class SoundInit {
     public static final SoundEvent BLOCK_BOO_LANTERN_REVEAL = createSound("block.boo_lantern.reveal");
     public static final SoundEvent BLOCK_JELLYBEAM_DAMAGE = createSound("block.jellybeam.damage");
 
-    public static final SoundEvent ITEM_COIN_COLLECT = createSound("item.collect.coin");
-    public static final SoundEvent ITEM_STAR_COIN_COLLECT = createSound("item.collect.star_coin");
+    public static final SoundEvent ITEM_COLLECT_COIN = createSound("item.collect.coin");
+    public static final SoundEvent ITEM_COLLECT_STAR_COIN = createSound("item.collect.star_coin");
+
     public static final SoundEvent ITEM_PROJECTILE_GENERIC = createSound("item.projectile.generic");
     public static final SoundEvent ITEM_PROJECTILE_HAMMER = createSound("item.projectile.hammer");
     public static final SoundEvent ITEM_PROJECTILE_BOMB = createSound("item.projectile.bomb");
+
     public static final SoundEvent ITEM_POWER_UP = createSound("item.power_up.use");
     public static final SoundEvent ITEM_ONE_UP = createSound("item.one_up.use");
     public static final SoundEvent ITEM_FIRE_FLOWER = createSound("item.fire_flower.shoot");
     public static final SoundEvent ITEM_ICE_FLOWER = createSound("item.ice_flower.shoot");
-    public static final SoundEvent ITEM_SUPER_STAR = createSound("item.super_star.use");
-    public static final SoundEvent ITEM_SUPER_PICKAX = createSound("item.super_pickax.use");
     public static final SoundEvent ITEM_FUZZY_MAGNET = createSound("item.fuzzy_magnet.pull");
+
+    public static final SoundEvent ENTITY_VOLCANIC_DEBRIS_FALL = createSound("entity.volcanic_debris.fall");
+    public static final SoundEvent ENTITY_VOLCANIC_DEBRIS_SMASH = createSound("entity.volcanic_debris.smash");
     public static final SoundEvent ENTITY_FIREBALL_BOUNCE = createSound("entity.fireball.bounce");
     public static final SoundEvent ENTITY_FIREBALL_HIT = createSound("entity.fireball.hit");
     public static final SoundEvent ENTITY_ICEBALL_BOUNCE = createSound("entity.iceball.bounce");
     public static final SoundEvent ENTITY_ICEBALL_HIT = createSound("entity.iceball.hit");
     public static final SoundEvent ENTITY_ICEBALL_FREEZE = createSound("entity.iceball.freeze");
+
     public static final SoundEvent ENTITY_JUMP_BOOTS_JUMP = createSound("entity.jump_boots.jump");
     public static final SoundEvent ENTITY_JUMP_BOOTS_ATTACK = createSound("entity.jump_boots.attack");
     public static final SoundEvent ENTITY_JUMP_BOOTS_BOUNCE = createSound("entity.jump_boots.bounce");
-    public static final SoundEvent ENTITY_ENEMY_SPOT = createSound("entity.enemy.spot");
+
+    public static final SoundEvent ENTITY_MISC_SPOT = createSound("entity.misc.spot");
+    public static final SoundEvent ENTITY_MISC_BOOST = createSound("entity.misc.boost");
     public static final SoundEvent ENTITY_MISC_TRANSFORM = createSound("entity.misc.transform");
     public static final SoundEvent ENTITY_MISC_TAIL_ATTACK = createSound("entity.misc.tail_attack");
+    public static final SoundEvent ENTITY_MISC_FLUTTER = createSound("entity.misc.flutter");
 
     public static final SoundEvent ENTITY_TOAD_AMBIENT = createSound("entity.toad.ambient");
     public static final SoundEvent ENTITY_TOAD_HURT = createSound("entity.toad.hurt");
@@ -106,8 +122,9 @@ public class SoundInit {
     public static final SoundEvent ENTITY_MUMMY_TOAD_MUMMIFY = createSound("entity.mummy_toad.mummify");
 
     public static final SoundEvent ENTITY_HAMMER_BRO_HURT = createSound("entity.hammer_bro.hurt");
-    public static final SoundEvent ENTITY_HAMMER_BRO_ATTACK = createSound("entity.hammer_bro.attack");
     public static final SoundEvent ENTITY_HAMMER_BRO_DEATH = createSound("entity.hammer_bro.death");
+
+    public static final SoundEvent ENTITY_NIPPER_PLANT_DEATH = createSound("entity.nipper_plant.death");
 
     public static final SoundEvent ENTITY_MOO_MOO_AMBIENT = createSound("entity.moo_moo.ambient");
     public static final SoundEvent ENTITY_MOO_MOO_HURT = createSound("entity.moo_moo.hurt");
@@ -119,7 +136,6 @@ public class SoundInit {
     public static final SoundEvent ENTITY_GOOMBA_HURT = createSound("entity.goomba.hurt");
     public static final SoundEvent ENTITY_GOOMBA_DEATH = createSound("entity.goomba.death");
     public static final SoundEvent ENTITY_GOOMBA_STEP = createSound("entity.goomba.step");
-    public static final SoundEvent ENTITY_GOOMBA_FLUTTER = createSound("entity.goomba.flutter");
 
     public static final SoundEvent ENTITY_BUZZY_HURT = createSound("entity.buzzy.hurt");
     public static final SoundEvent ENTITY_BUZZY_DEATH = createSound("entity.buzzy.death");
@@ -169,9 +185,15 @@ public class SoundInit {
        registerSound(MUSIC_GRASSLAND);
        registerSound(MUSIC_FOREST);
        registerSound(MUSIC_CAVE);
+       registerSound(MUSIC_NIGHT);
        registerSound(MUSIC_WATER);
        registerSound(MUSIC_ILLUSION);
+
+       registerSound(MUSIC_STARMAN);
+       registerSound(MUSIC_STARMAN_LEAD);
+
        registerSound(MUSIC_DISC_MY_SONG);
+
        registerSound(BLOCK_PORTAL_TRIGGER);
        registerSound(BLOCK_PORTAL_TRAVEL);
        registerSound(FLUID_POISON_AMBIENT);
@@ -208,6 +230,11 @@ public class SoundInit {
         registerSound(BLOCK_SHERBET_SOIL_PLACE);
         registerSound(BLOCK_SHERBET_SOIL_STEP);
 
+        registerSound(BLOCK_BELL_CAP_FALL);
+        registerSound(BLOCK_BELL_CAP_HIT);
+        registerSound(BLOCK_BELL_CAP_STEP);
+        registerSound(BLOCK_BELL_CAP_JINGLE);
+
        registerSound(BLOCK_EMPTY_BLOCK_BUMP);
        registerSound(BLOCK_COIN_BLOCK_HIT);
        registerSound(BLOCK_EMPTY_BLOCK_STORE);
@@ -224,8 +251,8 @@ public class SoundInit {
        registerSound(BLOCK_BOO_LANTERN_REVEAL);
        registerSound(BLOCK_JELLYBEAM_DAMAGE);
 
-       registerSound(ITEM_COIN_COLLECT);
-       registerSound(ITEM_STAR_COIN_COLLECT);
+       registerSound(ITEM_COLLECT_COIN);
+       registerSound(ITEM_COLLECT_STAR_COIN);
        registerSound(ITEM_PROJECTILE_GENERIC);
        registerSound(ITEM_PROJECTILE_HAMMER);
        registerSound(ITEM_PROJECTILE_BOMB);
@@ -233,10 +260,10 @@ public class SoundInit {
        registerSound(ITEM_ONE_UP);
        registerSound(ITEM_FIRE_FLOWER);
        registerSound(ITEM_ICE_FLOWER);
-       registerSound(ITEM_SUPER_STAR);
-       registerSound(ITEM_SUPER_PICKAX);
        registerSound(ITEM_FUZZY_MAGNET);
 
+       registerSound(ENTITY_VOLCANIC_DEBRIS_FALL);
+       registerSound(ENTITY_VOLCANIC_DEBRIS_SMASH);
        registerSound(ENTITY_FIREBALL_BOUNCE);
        registerSound(ENTITY_FIREBALL_HIT);
        registerSound(ENTITY_ICEBALL_BOUNCE);
@@ -245,7 +272,8 @@ public class SoundInit {
        registerSound(ENTITY_JUMP_BOOTS_JUMP);
        registerSound(ENTITY_JUMP_BOOTS_ATTACK);
        registerSound(ENTITY_JUMP_BOOTS_BOUNCE);
-       registerSound(ENTITY_ENEMY_SPOT);
+       registerSound(ENTITY_MISC_SPOT);
+       registerSound(ENTITY_MISC_BOOST);
        registerSound(ENTITY_MISC_TRANSFORM);
        registerSound(ENTITY_MISC_TAIL_ATTACK);
 
@@ -263,6 +291,8 @@ public class SoundInit {
         registerSound(ENTITY_HAMMER_BRO_HURT);
         registerSound(ENTITY_HAMMER_BRO_DEATH);
 
+        registerSound(ENTITY_NIPPER_PLANT_DEATH);
+
        registerSound(ENTITY_MOO_MOO_AMBIENT);
        registerSound(ENTITY_MOO_MOO_HURT);
        registerSound(ENTITY_MOO_MOO_DEATH);
@@ -273,7 +303,7 @@ public class SoundInit {
        registerSound(ENTITY_GOOMBA_HURT);
        registerSound(ENTITY_GOOMBA_DEATH);
        registerSound(ENTITY_GOOMBA_STEP);
-       registerSound(ENTITY_GOOMBA_FLUTTER);
+       registerSound(ENTITY_MISC_FLUTTER);
 
        registerSound(ENTITY_BUZZY_HURT);
        registerSound(ENTITY_BUZZY_DEATH);

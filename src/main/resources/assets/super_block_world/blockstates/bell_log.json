@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "super_block_world:block/bell_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "super_block_world:block/bell_log"
+    },
+    "axis=z": {
+      "model": "super_block_world:block/bell_log_horizontal",
+      "x": 90
+    }
+  }
+}

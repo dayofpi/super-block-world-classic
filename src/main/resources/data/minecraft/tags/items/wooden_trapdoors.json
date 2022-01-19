@@ -2,6 +2,7 @@
   "replace": "false",
   "values": [
     "super_block_world:amanita_trapdoor",
-    "super_block_world:dark_amanita_trapdoor"
+    "super_block_world:dark_amanita_trapdoor",
+    "super_block_world:bell_trapdoor"
   ]
 }

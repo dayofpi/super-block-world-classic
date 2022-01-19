@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "super_block_world",
-  "version": "1.0.15",
+  "version": "1.0.19",
 
   "name": "Super Block World",
   "description": "A new Mario-themed dimension full of fun content",
@@ -22,10 +22,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.dayofpi.super_block_world.main.Main"
+      "com.dayofpi.super_block_world.Main"
     ],
     "client": [
-      "com.dayofpi.super_block_world.main.Client"
+      "com.dayofpi.super_block_world.Client"
     ]
   },
   "mixins": [

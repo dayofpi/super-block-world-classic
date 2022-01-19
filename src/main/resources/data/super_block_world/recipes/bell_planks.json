@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "super_block_world:bell_logs"
+    }
+  ],
+  "result": {
+    "item": "super_block_world:bell_planks",
+    "count": 4
+  }
+}

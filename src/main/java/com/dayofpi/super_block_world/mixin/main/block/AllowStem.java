@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.block;
 
-import com.dayofpi.super_block_world.main.registry.main.BlockInit;
+import com.dayofpi.super_block_world.registry.main.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.StemBlock;

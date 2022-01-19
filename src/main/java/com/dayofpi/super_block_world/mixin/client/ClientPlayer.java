@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.client;
 
-import com.dayofpi.super_block_world.main.registry.main.TagInit;
+import com.dayofpi.super_block_world.registry.main.TagInit;
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

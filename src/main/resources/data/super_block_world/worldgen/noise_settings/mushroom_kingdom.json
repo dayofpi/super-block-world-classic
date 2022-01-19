@@ -2670,6 +2670,90 @@
       {
         "type": "minecraft:condition",
         "if_true": {
+          "type": "minecraft:vertical_gradient",
+          "random_name": "minecraft:bedrock_floor",
+          "true_at_and_below": {
+            "above_bottom": 0
+          },
+          "false_at_and_above": {
+            "above_bottom": 5
+          }
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:bedrock"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:y_above",
+          "anchor": {
+            "below_top": 0
+          },
+          "surface_depth_multiplier": 0,
+          "add_stone_depth": false
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:hole"
+          },
+          "then_run": {
+            "type": "minecraft:block",
+            "result_state": {
+              "Name": "minecraft:lava",
+              "Properties": {
+                "level": "0"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:vertical_gradient",
+          "random_name": "minecraft:deepslate",
+          "true_at_and_below": {
+            "absolute": -4
+          },
+          "false_at_and_above": {
+            "absolute": 0
+          }
+        },
+        "then_run": {
+          "type": "minecraft:sequence",
+          "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "noise": "minecraft:nether_wart",
+                "min_threshold": -0.2,
+                "max_threshold": 0.5
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "super_block_world:charrock"
+                }
+              }
+            },
+            {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "super_block_world:royalite"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
             "super_block_world:mushroom_grasslands",
@@ -2866,6 +2950,21 @@
               }
             },
             {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "noise": "minecraft:nether_wart",
+                "min_threshold": 0,
+                "max_threshold": 0.19
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "super_block_world:vanillate"
+                }
+              }
+            },
+            {
               "type": "minecraft:block",
               "result_state": {
                 "Name": "super_block_world:frosty_vanillate"
@@ -2879,7 +2978,8 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "super_block_world:cheep_cheep_reef"
+            "super_block_world:cheep_cheep_reef",
+            "super_block_world:autumn_mountain"
           ]
         },
         "then_run": {
@@ -3012,6 +3112,125 @@
                   "type": "minecraft:block",
                   "result_state": {
                     "Name": "super_block_world:toadstone"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:biome",
+          "biome_is": [
+            "super_block_world:tall_tall_mountain"
+          ]
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:above_preliminary_surface"
+          },
+          "then_run": {
+            "type": "minecraft:sequence",
+            "sequence": [
+              {
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:water",
+                  "offset": -1,
+                  "surface_depth_multiplier": 0,
+                  "add_stone_depth": false
+                },
+                "then_run": {
+                  "type": "minecraft:condition",
+                  "if_true": {
+                    "type": "minecraft:stone_depth",
+                    "offset": 0,
+                    "surface_type": "floor",
+                    "add_surface_depth": false,
+                    "add_surface_secondary_depth": false
+                  },
+                  "then_run": {
+                    "type": "minecraft:sequence",
+                    "sequence": [
+                      {
+                        "type": "minecraft:condition",
+                        "if_true": {
+                          "type": "minecraft:noise_threshold",
+                          "noise": "minecraft:surface",
+                          "min_threshold": -0.02,
+                          "max_threshold": 0.02
+                        },
+                        "then_run": {
+                          "type": "minecraft:block",
+                          "result_state": {
+                            "Name": "minecraft:water",
+                            "Properties": {
+                              "level": "0"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "minecraft:condition",
+                        "if_true": {
+                          "type": "minecraft:noise_threshold",
+                          "noise": "minecraft:surface",
+                          "min_threshold": -0.9,
+                          "max_threshold": 0.78
+                        },
+                        "then_run": {
+                          "type": "minecraft:block",
+                          "result_state": {
+                            "Name": "super_block_world:shroomstone"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:stone_depth",
+                  "offset": 1,
+                  "surface_type": "floor",
+                  "add_surface_depth": true,
+                  "add_surface_secondary_depth": true
+                },
+                "then_run": {
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "super_block_world:cobbled_shroomstone"
+                  }
+                }
+              },
+              {
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:y_above",
+                  "anchor": {
+                    "absolute": 74
+                  },
+                  "surface_depth_multiplier": 0,
+                  "add_stone_depth": false
+                },
+                "then_run": {
+                  "type": "minecraft:condition",
+                  "if_true": {
+                    "type": "minecraft:noise_threshold",
+                    "noise": "minecraft:calcite",
+                    "min_threshold": -0.8,
+                    "max_threshold": 0.6
+                  },
+                  "then_run": {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "super_block_world:cobbled_shroomstone"
+                    }
                   }
                 }
               }
@@ -3158,44 +3377,6 @@
                 }
               }
             ]
-          }
-        }
-      },
-      {
-        "type": "minecraft:condition",
-        "if_true": {
-          "type": "minecraft:vertical_gradient",
-          "random_name": "minecraft:deepslate",
-          "true_at_and_below": {
-            "absolute": -8
-          },
-          "false_at_and_above": {
-            "absolute": -4
-          }
-        },
-        "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "super_block_world:royalite"
-          }
-        }
-      },
-      {
-        "type": "minecraft:condition",
-        "if_true": {
-          "type": "minecraft:vertical_gradient",
-          "random_name": "minecraft:bedrock_floor",
-          "true_at_and_below": {
-            "above_bottom": 0
-          },
-          "false_at_and_above": {
-            "above_bottom": 5
-          }
-        },
-        "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "minecraft:bedrock"
           }
         }
       }

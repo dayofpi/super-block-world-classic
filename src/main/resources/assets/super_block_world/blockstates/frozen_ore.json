@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "super_block_world:block/frosted_vanillate"
+      "model": "super_block_world:block/frozen_ore"
     }
   }
 }

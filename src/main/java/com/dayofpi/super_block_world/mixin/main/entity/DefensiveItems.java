@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.registry.other.StatusEffectInit;
-import com.dayofpi.super_block_world.main.registry.main.ItemInit;
-import com.dayofpi.super_block_world.main.util.entity.ModEntityDamageSource;
 import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.common.util.entity.ModEntityDamageSource;
+import com.dayofpi.super_block_world.registry.main.ItemInit;
+import com.dayofpi.super_block_world.registry.more.StatusEffectInit;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -74,7 +74,7 @@ public abstract class DefensiveItems extends Entity {
     }
 
     private void protect(ItemStack helmet, CallbackInfoReturnable<Boolean> info) {
-        this.world.playSound(null, this.getBlockPos(), SoundInit.ENTITY_BUZZY_BLOCK, SoundCategory.NEUTRAL, 0.6F, this.getSoundPitch());
+        this.world.playSound(null, this.getBlockPos(), SoundInit.ENTITY_BUZZY_BLOCK, SoundCategory.NEUTRAL, 1.0F, this.getSoundPitch());
         helmet.setDamage(helmet.getDamage() + random.nextInt(4));
         if (helmet.getDamage() >= helmet.getMaxDamage()) {
             this.sendEquipmentBreakStatus(EquipmentSlot.HEAD);

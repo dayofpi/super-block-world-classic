@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:bell_planks"
+    }
+  },
+  "result": {
+    "item": "super_block_world:bell_trapdoor",
+    "count": 2
+  }
+}

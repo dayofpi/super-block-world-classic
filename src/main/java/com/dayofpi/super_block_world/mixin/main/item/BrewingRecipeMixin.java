@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.item;
 
-import com.dayofpi.super_block_world.main.registry.main.ItemInit;
+import com.dayofpi.super_block_world.registry.main.ItemInit;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@SuppressWarnings("SameParameterValue")
 @Mixin(BrewingRecipeRegistry.class)
 public abstract class BrewingRecipeMixin {
     @Shadow

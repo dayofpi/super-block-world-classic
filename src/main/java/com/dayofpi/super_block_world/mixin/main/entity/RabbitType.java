@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.main.common.world.dimension.MushroomKingdom;
+import com.dayofpi.super_block_world.world.MushroomKingdom;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.RabbitEntity;
@@ -21,7 +21,7 @@ public abstract class RabbitType extends LivingEntity {
     @Inject(at=@At("HEAD"), method = "chooseType", cancellable = true)
     private void chooseType(WorldAccess world, CallbackInfoReturnable<Integer> info) {
         if (this.getWorld().getRegistryKey() == MushroomKingdom.WORLD_KEY) {
-            info.setReturnValue(random.nextBoolean() ? 1 : 4);
+            info.setReturnValue(random.nextInt(6));
             info.cancel();
         }
     }

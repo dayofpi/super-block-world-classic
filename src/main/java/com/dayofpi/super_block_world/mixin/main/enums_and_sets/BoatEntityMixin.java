@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin.main.enums_and_sets;
 
-import com.dayofpi.super_block_world.main.registry.main.ItemInit;
-import com.dayofpi.super_block_world.main.util.mixin_aid.ModBoatType;
+import com.dayofpi.super_block_world.registry.main.ItemInit;
+import com.dayofpi.super_block_world.common.util.mixin_aid.ModBoatType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,6 +22,8 @@ public abstract class BoatEntityMixin {
         } else if (this.getBoatType() == ModBoatType.DARK_AMANITA) {
             info.setReturnValue(ItemInit.DARK_AMANITA_BOAT);
             info.cancel();
-        }
-    }
+        } else if (this.getBoatType() == ModBoatType.BELL) {
+            info.setReturnValue(ItemInit.BELL_BOAT);
+            info.cancel();
+        }    }
 }
