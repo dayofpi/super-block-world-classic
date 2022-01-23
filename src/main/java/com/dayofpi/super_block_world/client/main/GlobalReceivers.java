@@ -39,7 +39,7 @@ public class GlobalReceivers {
                     if (entity.getId() != entityId)
                         continue;
 
-                    entity.playSound(SoundInit.ENTITY_MISC_TAIL_ATTACK, 1.0F, 1.0F);
+                    entity.playSound(SoundInit.ENTITY_MISC_TAIL_ATTACK, 1.0F, entity.getSoundPitch());
                     World world = entity.getWorld();
                     for (BlockPos blockPos : BlockPos.iterateOutwards(entity.getBlockPos(), 1, 0, 1)) {
                         List<Entity> list = world.getOtherEntities(entity, entity.getBoundingBox().expand(1, 0, 1), Entity::isPlayer);

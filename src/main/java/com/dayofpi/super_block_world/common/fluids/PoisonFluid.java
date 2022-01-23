@@ -22,27 +22,9 @@ import java.util.Optional;
 import java.util.Random;
 
 public abstract class PoisonFluid extends AbstractFluid {
-    public Fluid getFlowing() {
-        return FluidInit.FLOWING_POISON;
-    }
-
-    public Fluid getStill() {
-        return FluidInit.STILL_POISON;
-    }
-
-    public Item getBucketItem() {
-        return ItemInit.POISON_BUCKET;
-    }
-
-    @Override
-    public boolean isStill(FluidState state) {
-        return false;
-    }
-
     @Override
     public void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
-        BlockPos abovePos = pos.up();
-        if (world.getBlockState(abovePos).isAir()) {
+        if (world.getBlockState(pos.up()).isAir()) {
             if (random.nextInt(25) == 0) {
                 double d = (double)pos.getX() + random.nextDouble();
                 double e = (double)pos.getY() + 0.9D  + (random.nextDouble() * 0.2);
@@ -55,17 +37,29 @@ public abstract class PoisonFluid extends AbstractFluid {
         }
     }
 
-    public ParticleEffect getParticle() {
-        return ParticleTypes.FALLING_OBSIDIAN_TEAR;
-    }
-
     @Override
     protected BlockState toBlockState(FluidState fluidState) {
         return BlockInit.POISON.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(fluidState));
     }
 
+    public Fluid getFlowing() {
+        return FluidInit.FLOWING_POISON;
+    }
+
+    public Fluid getStill() {
+        return FluidInit.STILL_POISON;
+    }
+
+    public Item getBucketItem() {
+        return ItemInit.POISON_BUCKET;
+    }
+
     public Optional<SoundEvent> getBucketFillSound() {
         return Optional.of(SoundInit.ITEM_POISON_BUCKET_FILL);
+    }
+
+    public ParticleEffect getParticle() {
+        return ParticleTypes.FALLING_OBSIDIAN_TEAR;
     }
 
     public static class Flowing extends PoisonFluid {

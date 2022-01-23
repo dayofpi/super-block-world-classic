@@ -1,9 +1,10 @@
 package com.dayofpi.super_block_world.world.feature;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.world.feature.utility.config.ExtraRandomPatchFeatureConfig;
-import com.dayofpi.super_block_world.world.feature.utility.config.GiantMushroomFeatureConfig;
-import com.dayofpi.super_block_world.world.feature.utility.type.*;
+import com.dayofpi.super_block_world.world.feature.utility.feature_config.ExtraRandomPatchFeatureConfig;
+import com.dayofpi.super_block_world.world.feature.utility.feature_config.GiantMushroomFeatureConfig;
+import com.dayofpi.super_block_world.world.feature.types.*;
+import com.dayofpi.super_block_world.world.feature.utility.feature_config.PipeFeatureConfig;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
@@ -18,7 +19,7 @@ public class FeatureInit {
     public static final Feature<ExtraRandomPatchFeatureConfig> EXTRA_RANDOM_PATCH = new ExtraRandomPatchFeature(ExtraRandomPatchFeatureConfig.CODEC);
     public static final Feature<DefaultFeatureConfig> STRAWBERRY_CORAL = new StrawberryCoralFeature(DefaultFeatureConfig.CODEC);
     public static final Feature<DefaultFeatureConfig> JELLYBEAM = new JellybeamFeature(DefaultFeatureConfig.CODEC);
-    public static final Feature<DefaultFeatureConfig> PIPE = new PipeFeature(DefaultFeatureConfig.CODEC);
+    public static final Feature<PipeFeatureConfig> PIPE = new PipeFeature(PipeFeatureConfig.CODEC);
     public static final Feature<DefaultFeatureConfig> UNDERWATER_PIPE = new UnderwaterPipeFeature(DefaultFeatureConfig.CODEC);
 
     public static void registerFeatures() {

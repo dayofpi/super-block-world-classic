@@ -32,9 +32,7 @@ public class EntityInit {
             .entityFactory(VolcanicDebrisEntity::new).spawnGroup(SpawnGroup.MISC)
             .dimensions(EntityDimensions.fixed(0.9F, 0.9F))
             .fireImmune().build();
-    public static final EntityType<BuzzyShellEntity> BUZZY_SHELL = FabricEntityTypeBuilder.createLiving()
-            .entityFactory(BuzzyShellEntity::new).spawnGroup(SpawnGroup.MISC)
-            .dimensions(EntityDimensions.fixed(1.0F, 0.8F)).build();
+
 
     public static final EntityType<MooMooEntity> MOO_MOO = FabricEntityTypeBuilder.createMob()
             .entityFactory(MooMooEntity::new)
@@ -78,15 +76,30 @@ public class EntityInit {
             .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, ParagoombaEntity::canParagoombaSpawn)
             .build();
 
+    public static final EntityType<KoopaShellEntity> KOOPA_SHELL = FabricEntityTypeBuilder.createLiving()
+            .entityFactory(KoopaShellEntity::new).spawnGroup(SpawnGroup.MISC)
+            .dimensions(EntityDimensions.fixed(0.9F, 0.55F))
+            .build();
+
+    public static final EntityType<BuzzyShellEntity> BUZZY_SHELL = FabricEntityTypeBuilder.createLiving()
+            .entityFactory(BuzzyShellEntity::new).spawnGroup(SpawnGroup.MISC)
+            .dimensions(EntityDimensions.fixed(1.0F, 0.8F)).build();
+
+    public static final EntityType<DryBonesShellEntity> DRY_BONES_SHELL = FabricEntityTypeBuilder.createLiving()
+            .entityFactory(DryBonesShellEntity::new).spawnGroup(SpawnGroup.MISC)
+            .dimensions(EntityDimensions.fixed(1.2F, 1.5F))
+            .fireImmune()
+            .build();
+
     public static final EntityType<KoopaEntity> KOOPA_TROOPA = FabricEntityTypeBuilder.createMob()
             .entityFactory(KoopaEntity::new).spawnGroup(SpawnGroup.CREATURE)
-            .dimensions(EntityDimensions.fixed(1.1F, 1.5F))
+            .dimensions(EntityDimensions.fixed(0.9F, 1.2F))
             .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, KoopaEntity::canSpawn)
             .build();
 
     public static final EntityType<ParatroopaEntity> PARATROOPA = FabricEntityTypeBuilder.createMob()
             .entityFactory(ParatroopaEntity::new).spawnGroup(SpawnGroup.CREATURE)
-            .dimensions(EntityDimensions.fixed(1.1F, 1.5F))
+            .dimensions(EntityDimensions.fixed(0.9F, 1.2F))
             .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ParatroopaEntity::canSpawn)
             .build();
 
@@ -98,6 +111,13 @@ public class EntityInit {
             .spawnGroup(SpawnGroup.MONSTER)
             .dimensions(EntityDimensions.fixed(0.7F,0.7F))
             .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AbstractBoo::canSpawn)
+            .fireImmune().build();
+
+    public static final EntityType<DryBonesEntity> DRY_BONES = FabricEntityTypeBuilder.createMob()
+            .entityFactory(DryBonesEntity::new)
+            .spawnGroup(SpawnGroup.MONSTER)
+            .dimensions(EntityDimensions.fixed(0.9F, 1.2F))
+            .spawnRestriction(Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, DryBonesEntity::canSpawn)
             .fireImmune().build();
 
     public static final EntityType<HammerBroEntity> HAMMER_BRO = FabricEntityTypeBuilder.createMob()
@@ -179,7 +199,6 @@ public class EntityInit {
         register("enemy_iceball", ICE_BRO_ICEBALL);
         register("iceball", ICEBALL);
         register("ghost", SPIRIT);
-        registerMob("buzzy_shell", BUZZY_SHELL, AbstractShell.createAttributes());
         registerMob("volcanic_debris", VOLCANIC_DEBRIS, VolcanicDebrisEntity.createAttributes());
         registerMob("moo_moo", MOO_MOO, MooMooEntity.createAttributes());
         registerMob("toad", TOAD, ToadEntity.createAttributes());
@@ -189,9 +208,13 @@ public class EntityInit {
         registerMob("goomba", GOOMBA, GoombaEntity.createAttributes());
         registerMob("paragoomba", PARAGOOMBA, ParagoombaEntity.createAttributes());
         registerMob("koopa_troopa", KOOPA_TROOPA, KoopaEntity.createAttributes());
+        registerMob("koopa_shell", KOOPA_SHELL, AbstractShell.createAttributes());
+        registerMob("buzzy_shell", BUZZY_SHELL, AbstractShell.createAttributes());
+        registerMob("dry_bones_shell", DRY_BONES_SHELL, AbstractShell.createAttributes());
         registerMob("paratroopa", PARATROOPA, ParatroopaEntity.createAttributes());
         registerMob("bob_omb", BOB_OMB, BobOmbEntity.createAttributes());
         registerMob("boo", BOO, BooEntity.createAttributes());
+        registerMob("dry_bones", DRY_BONES, DryBonesEntity.createAttributes());
         registerMob("hammer_bro", HAMMER_BRO, AbstractBro.createAttributes());
         registerMob("fire_bro", FIRE_BRO, AbstractBro.createAttributes());
         registerMob("ice_bro", ICE_BRO, AbstractBro.createAttributes());

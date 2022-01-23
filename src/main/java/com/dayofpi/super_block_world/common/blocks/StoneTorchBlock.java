@@ -62,7 +62,7 @@ public class StoneTorchBlock extends Block implements Waterloggable {
                 world.syncWorldEvent(null, WorldEvents.FIRE_EXTINGUISHED, pos, 0);
                 return ActionResult.success(world.isClient);
             }
-        } else {
+        } else if (!state.get(WATERLOGGED)) {
             if (ignite || ignite2) {
                 world.setBlockState(pos, state.cycle(LIT), 1);
                 world.playSound(player, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, world.getRandom().nextFloat() * 0.4F + 0.8F);
@@ -128,7 +128,7 @@ public class StoneTorchBlock extends Block implements Waterloggable {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         boolean bl = fluidState.getFluid() == Fluids.WATER;
-        return this.getDefaultState().with(WATERLOGGED, bl);
+        return this.getDefaultState().with(WATERLOGGED, bl).with(LIT, !bl);
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

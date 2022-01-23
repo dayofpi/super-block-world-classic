@@ -7,7 +7,6 @@ import net.minecraft.entity.damage.EntityDamageSource;
 
 public class ModEntityDamageSource extends EntityDamageSource {
     private boolean fromAbove;
-    private boolean stomp;
 
     public ModEntityDamageSource(String name, Entity source) {
         super(name, source);
@@ -22,17 +21,12 @@ public class ModEntityDamageSource extends EntityDamageSource {
         return this;
     }
 
-    public boolean isStomp() {
-        return this.stomp;
-    }
-
-    protected ModEntityDamageSource setStomp() {
-        this.stomp = true;
-        return this;
+    public static DamageSource shell(Entity attacker) {
+        return new ModEntityDamageSource("super_block_world:shell", attacker).setNeutral();
     }
 
     public static DamageSource stomp(Entity attacker) {
-        return new ModEntityDamageSource("super_block_world:stomp", attacker).setFromAbove().setStomp();
+        return new ModEntityDamageSource("super_block_world:stomp", attacker).setFromAbove();
     }
 
     public static DamageSource mobDrop(LivingEntity attacker) {

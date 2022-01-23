@@ -39,7 +39,7 @@ public class FuzzyWanderGoal extends Goal {
         List<Entity> fuzzies = fuzzy.world.getOtherEntities(fuzzy, fuzzy.getBoundingBox().expand(16), entity -> entity instanceof FuzzyEntity);
         fuzzy.setGlowing(false);
         if (!players.isEmpty()) {
-            fuzzy.getNavigation().startMovingTo(players.get(0), 1.4D);
+            fuzzy.getNavigation().startMovingTo(players.get(0).getX(), players.get(0).getY() -1, players.get(0).getZ(), 1.4D);
             fuzzy.setGlowing(true);
         } else if (!fuzzies.isEmpty()) {
             fuzzy.getNavigation().startMovingTo(fuzzies.get(0), 1.2000000476837158D);

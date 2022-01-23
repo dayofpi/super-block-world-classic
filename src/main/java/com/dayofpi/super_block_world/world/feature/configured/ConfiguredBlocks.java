@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.world.feature.configured;
 
-import com.dayofpi.super_block_world.world.feature.utility.config.ExtraRandomPatchFeatureConfig;
+import com.dayofpi.super_block_world.world.feature.utility.feature_config.ExtraRandomPatchFeatureConfig;
 import com.dayofpi.super_block_world.registry.main.BlockInit;
 import com.dayofpi.super_block_world.world.feature.FeatureInit;
 import com.dayofpi.super_block_world.world.feature.utility.BlockLists;

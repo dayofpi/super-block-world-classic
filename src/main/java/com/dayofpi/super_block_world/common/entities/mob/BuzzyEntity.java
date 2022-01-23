@@ -7,10 +7,7 @@ import com.dayofpi.super_block_world.registry.main.ItemInit;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.AnimalMateGoal;
 import net.minecraft.entity.ai.goal.FollowParentGoal;
-import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.TemptGoal;
-import net.minecraft.entity.attribute.EntityAttributeInstance;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
@@ -39,20 +36,16 @@ import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
-import java.util.UUID;
 
 public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddleable {
     private static final TrackedData<Boolean> HIDING;
     private static final TrackedData<Boolean> SADDLED;
     private static final TrackedData<Integer> BOOST_TIME;
-    private static final EntityAttributeModifier COVERED_ARMOR_BONUS;
-    private int hidingTime;
 
     static {
         HIDING = DataTracker.registerData(BuzzyEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
         SADDLED = DataTracker.registerData(BuzzyEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
         BOOST_TIME = DataTracker.registerData(BuzzyEntity.class, TrackedDataHandlerRegistry.INTEGER);
-        COVERED_ARMOR_BONUS = new EntityAttributeModifier(UUID.randomUUID(), "Covered armor bonus", 10.0D, EntityAttributeModifier.Operation.ADDITION);
     }
 
     private final SaddledComponent saddledComponent;
@@ -119,39 +112,6 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
         return this.dataTracker.get(HIDING);
     }
 
-    public void setHiding(boolean hiding) {
-        if (hiding) {
-            this.hidingTime = 100 + random.nextInt(50);
-        } else {
-            this.hidingTime = 0;
-        }
-        this.dataTracker.set(HIDING, hiding);
-    }
-
-    @Override
-    public void tickMovement() {
-        super.tickMovement();
-
-        if (hidingTime > 0) {
-            --hidingTime;
-        }
-
-        if (this.isHiding()) {
-            EntityAttributeInstance armorAttribute = this.getAttributeInstance(EntityAttributes.GENERIC_ARMOR);
-            if (this.hidingTime == 1) {
-                this.setHiding(false);
-            }
-            if (armorAttribute != null) {
-                if (!armorAttribute.hasModifier(COVERED_ARMOR_BONUS)) {
-                    armorAttribute.addTemporaryModifier(COVERED_ARMOR_BONUS);
-                } else if (armorAttribute.hasModifier(COVERED_ARMOR_BONUS)) {
-                    armorAttribute.removeModifier(COVERED_ARMOR_BONUS);
-                }
-            }
-
-        }
-    }
-
     public void onTrackedDataSet(TrackedData<?> data) {
         if (BOOST_TIME.equals(data) && this.world.isClient) {
             this.saddledComponent.boost();
@@ -165,17 +125,7 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
         if (this.isBaby() && this.getVehicle() != null && source == DamageSource.IN_WALL) {
             this.dismountVehicle();
             return false;
-        }
-        if (super.damage(source, amount)) {
-            // Hides if attacked by a mob
-            this.setHiding(true);
         } return super.damage(source, amount);
-    }
-
-    protected void updateGoalControls() {
-        if (this.isHiding()) {
-            this.goalSelector.setControlEnabled(Goal.Control.MOVE, false);
-        } else super.updateGoalControls();
     }
 
     @Override

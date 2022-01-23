@@ -20,4 +20,11 @@ public class MushroomBlocks {
     public static final Block PINK_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.PINK), () -> ConfiguredTrees.HUGE_PINK_MUSHROOM);
     public static final Block PURPLE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.PURPLE), () -> ConfiguredTrees.HUGE_PURPLE_MUSHROOM);
     public static final Block ORANGE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.copyOf(YELLOW_MUSHROOM).mapColor(MapColor.ORANGE), () -> ConfiguredTrees.HUGE_ORANGE_MUSHROOM);
+    public static final Block BROWN_TOAD_STOOL = new Block(FabricBlockSettings.of(Material.DECORATION, MapColor.DIRT_BROWN).strength(2.0F).sounds(BlockSoundGroup.WART_BLOCK).nonOpaque());
+    public static final Block ORANGE_TOAD_STOOL = new Block(FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.ORANGE));
+    public static final Block PURPLE_TOAD_STOOL = new Block( FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.PURPLE));
+    public static final Block PINK_TOAD_STOOL = new Block( FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.PINK));
+    public static final Block GREEN_TOAD_STOOL = new Block(FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.EMERALD_GREEN));
+    public static final Block YELLOW_TOAD_STOOL = new Block(FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.YELLOW));
+    public static final Block RED_TOAD_STOOL = new Block(FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.RED));
 }

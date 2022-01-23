@@ -3,6 +3,7 @@ package com.dayofpi.super_block_world.common.entities.mob;
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.common.blocks.block_entities.QuestionBoxBE;
+import com.dayofpi.super_block_world.common.blocks.mechanics.QuestionBoxBlock;
 import com.dayofpi.super_block_world.common.entities.abst.AbstractBoo;
 import com.dayofpi.super_block_world.common.entities.abst.AbstractEnemy;
 import com.dayofpi.super_block_world.common.entities.abst.AbstractToad;
@@ -138,7 +139,7 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
         if (!this.world.isClient) {
             this.setReceivedCoins(0);
             this.playSound(SoundInit.ENTITY_TOAD_CHEER, 1.0F, 1.0F);
-            world.setBlockState(blockPos, BlockInit.QUESTION_BOX.getDefaultState());
+            world.setBlockState(blockPos, BlockInit.QUESTION_BOX.getDefaultState().with(QuestionBoxBlock.TEMPORARY, true));
             world.playSound(null, blockPos, SoundInit.BLOCK_QUESTION_BOX_SPAWN, SoundCategory.BLOCKS, 1.0F, 1.0F);
             String commonLoot = "chests/toad_common";
             String rareLoot = "chests/toad_rare";

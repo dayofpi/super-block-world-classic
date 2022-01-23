@@ -24,7 +24,6 @@
     "main.enums_and_sets.BoatTypeMixin",
     "main.enums_and_sets.InstrumentMixin",
     "main.enums_and_sets.SignTypeAccessor",
-    "main.item.BrewingRecipeMixin",
     "main.item.ItemEntityMixin",
     "main.item.OnAStickItemMixin",
     "main.poison.PoisonInteraction",

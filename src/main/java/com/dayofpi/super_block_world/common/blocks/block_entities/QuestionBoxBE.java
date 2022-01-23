@@ -3,7 +3,7 @@
  */
 package com.dayofpi.super_block_world.common.blocks.block_entities;
 
-import com.dayofpi.super_block_world.common.blocks.mechanics.QuestionBox;
+import com.dayofpi.super_block_world.common.blocks.mechanics.QuestionBoxBlock;
 import com.dayofpi.super_block_world.registry.main.BlockEntityInit;
 import net.minecraft.block.BarrelBlock;
 import net.minecraft.block.Block;
@@ -122,7 +122,7 @@ extends LootableContainerBlockEntity {
         if (!this.removed && !player.isSpectator()) {
             this.stateManager.closeContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
         }
-        if (this.inventory.stream().allMatch(ItemStack::isEmpty) && this.world != null) {
+        if (this.inventory.stream().allMatch(ItemStack::isEmpty) && this.world != null && this.world.getBlockState(pos).get(QuestionBoxBlock.TEMPORARY)) {
             world.breakBlock(this.getPos(), false);
         }
     }
@@ -135,7 +135,7 @@ extends LootableContainerBlockEntity {
 
     void setOpen(BlockState state, boolean open) {
         if (this.world != null)
-            this.world.setBlockState(this.getPos(), state.with(QuestionBox.OPEN, open), Block.NOTIFY_ALL);
+            this.world.setBlockState(this.getPos(), state.with(QuestionBoxBlock.OPEN, open), Block.NOTIFY_ALL);
     }
 
     void playSound(BlockState state, SoundEvent soundEvent) {

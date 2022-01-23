@@ -1,17 +1,19 @@
 package com.dayofpi.super_block_world.client.main;
 
+import com.dayofpi.super_block_world.client.renderers.other.DryBonesPileBERenderer;
 import com.dayofpi.super_block_world.client.renderers.other.PlacedItemBERenderer;
-import com.dayofpi.super_block_world.registry.main.BlockEntityInit;
-import com.dayofpi.super_block_world.registry.main.BlockInit;
 import com.dayofpi.super_block_world.registry.block.MushroomBlocks;
 import com.dayofpi.super_block_world.registry.block.PlantBlocks;
 import com.dayofpi.super_block_world.registry.block.PottedBlocks;
+import com.dayofpi.super_block_world.registry.main.BlockEntityInit;
+import com.dayofpi.super_block_world.registry.main.BlockInit;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 
 @Environment(EnvType.CLIENT)
 public class BlockRendering {
@@ -26,6 +28,7 @@ public class BlockRendering {
 
     public static void RenderBlocks() {
         BlockEntityRendererRegistry.register(BlockEntityInit.PLACED_ITEM, PlacedItemBERenderer::new);
+        BlockEntityRendererRegistry.register(BlockEntityInit.DRY_BONES_PILE, (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new DryBonesPileBERenderer<>());
         setRenderLayer(BlockInit.POISON, RenderLayer.getTranslucent());
         setRenderLayer(BlockInit.HIDDEN_BLOCK, RenderLayer.getTranslucent());
         setRenderLayer(PlantBlocks.FROZEN_MUNCHER, RenderLayer.getTranslucent());

@@ -33,9 +33,10 @@ public class PlacedFeatureInit {
         registerPlacedFeature("cave_decoration_rare", PlacedDecoration.CAVE_DECORATION_RARE);
         registerPlacedFeature("cave_decoration_low", PlacedDecoration.CAVE_DECORATION_LOW);
 
-        registerPlacedFeature("pipe", PlacedPipes.PIPE);
-        registerPlacedFeature("pipe_patch_high", PlacedPipes.PIPE_PATCH_HIGH);
-        registerPlacedFeature("pipe_patch_low", PlacedPipes.PIPE_PATCH_LOW);
+        registerPlacedFeature("green_pipe", PlacedPipes.GREEN_PIPE);
+        registerPlacedFeature("green_pipe_patch", PlacedPipes.GREEN_PIPE_PATCH);
+        registerPlacedFeature("red_pipe", PlacedPipes.RED_PIPE);
+        registerPlacedFeature("red_pipe_patch", PlacedPipes.RED_PIPE_PATCH);
         registerPlacedFeature("underwater_pipe", PlacedPipes.UNDERWATER_PIPE);
         registerPlacedFeature("ocean_floor_pipe", PlacedPipes.OCEAN_FLOOR_PIPE);
 

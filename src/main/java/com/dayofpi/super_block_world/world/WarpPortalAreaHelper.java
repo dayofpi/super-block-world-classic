@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.world;
 
-import com.dayofpi.super_block_world.registry.main.BlockInit;
+import com.dayofpi.super_block_world.registry.block.VariantBlocks;
 import com.google.common.collect.Sets;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalsMod;
@@ -13,6 +13,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
@@ -159,8 +160,10 @@ public class WarpPortalAreaHelper extends PortalFrameTester {
     }
 
     public void createPortal(World world, BlockPos pos, BlockState frameBlock, Direction.Axis axis) {
+        pos = pos.up();
         Direction.Axis rotatedAxis = axis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
         for (int i = -1; i < 4; i++) {
+
             world.setBlockState(pos.up(i).offset(axis, -1), frameBlock);
             world.setBlockState(pos.up(i).offset(axis, 2), frameBlock);
             if (i >= 0) {
@@ -171,16 +174,19 @@ public class WarpPortalAreaHelper extends PortalFrameTester {
             }
         }
         for (int i = -1; i < 3; i++) {
+            if (i == -1 || i == 2)
+                frameBlock = frameBlock.with(Properties.AXIS, rotatedAxis);
+            else frameBlock = frameBlock.with(Properties.AXIS, axis);
             world.setBlockState(pos.up(-1).offset(axis, i), frameBlock);
             world.setBlockState(pos.up(3).offset(axis, i), frameBlock);
 
             fillAirAroundPortal(world, pos.up(3).offset(axis, i).offset(rotatedAxis, 1));
             fillAirAroundPortal(world, pos.up(3).offset(axis, i).offset(rotatedAxis, -1));
         }
-        placeLandingPad(world, pos.down().offset(rotatedAxis, 1));
-        placeLandingPad(world, pos.down().offset(rotatedAxis, -1));
-        placeLandingPad(world, pos.down().offset(axis, 1).offset(rotatedAxis, 1));
-        placeLandingPad(world, pos.down().offset(axis, 1).offset(rotatedAxis, -1));
+        placeLandingPad(world, pos.down().offset(rotatedAxis, 1), axis == Direction.Axis.X ? Direction.NORTH : Direction.WEST);
+        placeLandingPad(world, pos.down().offset(rotatedAxis, -1), axis == Direction.Axis.X ? Direction.SOUTH : Direction.EAST);
+        placeLandingPad(world, pos.down().offset(axis, 1).offset(rotatedAxis, 1), axis == Direction.Axis.X ? Direction.NORTH : Direction.WEST);
+        placeLandingPad(world, pos.down().offset(axis, 1).offset(rotatedAxis, -1), axis == Direction.Axis.X ? Direction.SOUTH : Direction.EAST);
 
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 3; j++) {
@@ -188,7 +194,7 @@ public class WarpPortalAreaHelper extends PortalFrameTester {
                 fillAirAroundPortal(world, pos.offset(axis, i).up(j).offset(rotatedAxis, -1));
             }
         }
-        //inits this instance based off of the newly created portal;
+        //initializes this instance based off of the newly created portal;
         this.lowerCorner = pos;
         this.width = 2;
         this.height = 3;
@@ -204,8 +210,8 @@ public class WarpPortalAreaHelper extends PortalFrameTester {
             world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.FORCE_STATE);
     }
 
-    protected void placeLandingPad(World world, BlockPos pos) {
+    protected void placeLandingPad(World world, BlockPos pos, Direction direction) {
         if (!world.getBlockState(pos).getMaterial().isSolid())
-            world.setBlockState(pos, BlockInit.BRONZE_BLOCK.getDefaultState());
+            world.setBlockState(pos, VariantBlocks.GOLDEN_BRICK_STAIRS.getDefaultState().with(Properties.HORIZONTAL_FACING, direction));
     }
 }

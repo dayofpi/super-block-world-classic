@@ -52,4 +52,15 @@ public class DirectionHelper {
             return 0;
         }
     }
+
+    public static int directionToIntProperty(Direction direction) {
+        if (direction == Direction.WEST)
+            return 5;
+        if (direction == Direction.EAST)
+            return 10;
+        if (direction == Direction.NORTH)
+            return 15;
+        else
+            return 0;
+    }
 }

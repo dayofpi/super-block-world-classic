@@ -611,6 +611,12 @@
     "subtitle": "sound.super_block_world.entity.misc.tail_attack",
     "sounds": [ "super_block_world:entity/tail_attack" ]
   },
+  "entity.shell.break": {
+    "subtitle": "sound.super_block_world.entity.shell.break",
+    "sounds": [
+      "super_block_world:entity/shell_kick"
+    ]
+  },
   "entity.toad.ambient": {
     "subtitle": "sound.super_block_world.entity.toad.ambient",
     "sounds": [
@@ -728,6 +734,40 @@
       "super_block_world:entity/mob/goomba/step3"
     ]
   },
+  "entity.mini_goomba.death": {
+    "subtitle": "sound.super_block_world.entity.mini_goomba.death",
+    "sounds": [
+      "super_block_world:entity/mob/goomba/mini/death"
+    ]
+  },
+  "entity.mini_goomba.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "super_block_world:entity/mob/goomba/mini/step1",
+      "super_block_world:entity/mob/goomba/mini/step2",
+      "super_block_world:entity/mob/goomba/mini/step3"
+    ]
+  },
+  "entity.big_goomba.hurt": {
+    "subtitle": "sound.super_block_world.entity.big_goomba.hurt",
+    "sounds": [
+      "super_block_world:entity/mob/goomba/big/hurt1",
+      "super_block_world:entity/mob/goomba/big/hurt2"
+    ]
+  },
+  "entity.big_goomba.death": {
+    "subtitle": "sound.super_block_world.entity.big_goomba.death",
+    "sounds": [
+      "super_block_world:entity/mob/goomba/big/death"
+    ]
+  },
+  "entity.big_goomba.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "super_block_world:entity/mob/goomba/big/step1",
+      "super_block_world:entity/mob/goomba/big/step2"
+    ]
+  },
   "entity.misc.flutter": {
     "subtitle": "sound.super_block_world.entity.misc.flutter",
     "sounds": [
@@ -827,6 +867,29 @@
       "super_block_world:entity/mob/koopa/death1",
       "super_block_world:entity/mob/koopa/death2",
       "super_block_world:entity/mob/koopa/death3"
+    ]
+  },
+  "entity.dry_bones.hurt": {
+    "subtitle": "sound.super_block_world.entity.dry_bones.hurt",
+    "sounds": [
+      "super_block_world:entity/mob/dry_bones/hurt1",
+      "super_block_world:entity/mob/dry_bones/hurt2",
+      "super_block_world:entity/mob/dry_bones/hurt3",
+      "super_block_world:entity/mob/dry_bones/hurt4"
+    ]
+  },
+  "entity.dry_bones.death": {
+    "subtitle": "sound.super_block_world.entity.dry_bones.death",
+    "sounds": [
+      "super_block_world:entity/mob/dry_bones/death1",
+      "super_block_world:entity/mob/dry_bones/death2",
+      "super_block_world:entity/mob/dry_bones/death3"
+    ]
+  },
+  "entity.dry_bones.wake": {
+    "subtitle": "sound.super_block_world.entity.dry_bones.wake",
+    "sounds": [
+      "super_block_world:entity/mob/dry_bones/wake"
     ]
   },
   "entity.stingby.ambient": {

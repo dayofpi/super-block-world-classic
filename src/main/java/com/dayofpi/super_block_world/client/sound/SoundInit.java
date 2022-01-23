@@ -110,6 +110,10 @@ public class SoundInit {
     public static final SoundEvent ENTITY_MISC_TAIL_ATTACK = createSound("entity.misc.tail_attack");
     public static final SoundEvent ENTITY_MISC_FLUTTER = createSound("entity.misc.flutter");
 
+    public static final SoundEvent ENTITY_SHELL_BREAK = createSound("entity.shell.break");
+    public static final SoundEvent ENTITY_SHELL_SPIN = createSound("entity.shell.spin");
+    public static final SoundEvent ENTITY_SHELL_BUMP = createSound("entity.shell.bump");
+
     public static final SoundEvent ENTITY_TOAD_AMBIENT = createSound("entity.toad.ambient");
     public static final SoundEvent ENTITY_TOAD_HURT = createSound("entity.toad.hurt");
     public static final SoundEvent ENTITY_TOAD_DEATH = createSound("entity.toad.death");
@@ -137,6 +141,13 @@ public class SoundInit {
     public static final SoundEvent ENTITY_GOOMBA_DEATH = createSound("entity.goomba.death");
     public static final SoundEvent ENTITY_GOOMBA_STEP = createSound("entity.goomba.step");
 
+    public static final SoundEvent ENTITY_MINI_GOOMBA_DEATH = createSound("entity.mini_goomba.death");
+    public static final SoundEvent ENTITY_MINI_GOOMBA_STEP = createSound("entity.mini_goomba.step");
+
+    public static final SoundEvent ENTITY_BIG_GOOMBA_HURT = createSound("entity.big_goomba.hurt");
+    public static final SoundEvent ENTITY_BIG_GOOMBA_DEATH = createSound("entity.big_goomba.death");
+    public static final SoundEvent ENTITY_BIG_GOOMBA_STEP = createSound("entity.big_goomba.step");
+
     public static final SoundEvent ENTITY_BUZZY_HURT = createSound("entity.buzzy.hurt");
     public static final SoundEvent ENTITY_BUZZY_DEATH = createSound("entity.buzzy.death");
     public static final SoundEvent ENTITY_BUZZY_BLOCK = createSound("entity.buzzy.block");
@@ -152,6 +163,10 @@ public class SoundInit {
     public static final SoundEvent ENTITY_KOOPA_AMBIENT = createSound("entity.koopa.ambient");
     public static final SoundEvent ENTITY_KOOPA_HURT = createSound("entity.koopa.hurt");
     public static final SoundEvent ENTITY_KOOPA_DEATH = createSound("entity.koopa.death");
+
+    public static final SoundEvent ENTITY_DRY_BONES_HURT = createSound("entity.dry_bones.hurt");
+    public static final SoundEvent ENTITY_DRY_BONES_DEATH = createSound("entity.dry_bones.death");
+    public static final SoundEvent ENTITY_DRY_BONES_WAKE = createSound("entity.dry_bones.wake");
 
     public static final SoundEvent ENTITY_STINGBY_AMBIENT = createSound("entity.stingby.ambient");
     public static final SoundEvent ENTITY_STINGBY_HURT = createSound("entity.stingby.hurt");
@@ -305,6 +320,17 @@ public class SoundInit {
        registerSound(ENTITY_GOOMBA_STEP);
        registerSound(ENTITY_MISC_FLUTTER);
 
+       registerSound(ENTITY_SHELL_BREAK);
+       registerSound(ENTITY_SHELL_SPIN);
+       registerSound(ENTITY_SHELL_BUMP);
+
+        registerSound(ENTITY_MINI_GOOMBA_DEATH);
+        registerSound(ENTITY_MINI_GOOMBA_STEP);
+
+        registerSound(ENTITY_BIG_GOOMBA_HURT);
+        registerSound(ENTITY_BIG_GOOMBA_DEATH);
+        registerSound(ENTITY_BIG_GOOMBA_STEP);
+
        registerSound(ENTITY_BUZZY_HURT);
        registerSound(ENTITY_BUZZY_DEATH);
        registerSound(ENTITY_BUZZY_BLOCK);
@@ -320,6 +346,10 @@ public class SoundInit {
        registerSound(ENTITY_KOOPA_AMBIENT);
        registerSound(ENTITY_KOOPA_HURT);
        registerSound(ENTITY_KOOPA_DEATH);
+
+        registerSound(ENTITY_DRY_BONES_HURT);
+        registerSound(ENTITY_DRY_BONES_DEATH);
+        registerSound(ENTITY_DRY_BONES_WAKE);
 
         registerSound(ENTITY_STINGBY_AMBIENT);
         registerSound(ENTITY_STINGBY_HURT);

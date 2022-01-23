@@ -28,18 +28,19 @@ public class BlockInit {
     public static final Block STAR_COIN = new PlacedItemBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.GOLD).sounds(BlockSoundGroup.METAL).nonOpaque().noCollision());
     public static final Block POWER_STAR = new PowerStarBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.GOLD).sounds(BlockSoundGroup.METAL).nonOpaque().noCollision());
     public static final Block FREEZIE = new FreezieBlock(FabricBlockSettings.of(Material.ICE).strength(1.5f).sounds(BlockSoundGroup.GLASS).nonOpaque());
+    public static final Block DRY_BONES_PILE = new DryBonesPileBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC).strength(1.5f).sounds(BlockSoundGroup.BONE).nonOpaque());
 
     public static final Block WARP_FRAME = new PillarBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(5.0F, 200F).sounds(BlockSoundGroup.METAL));
     public static final Block EMPTY_BLOCK = new EmptyBlock(FabricBlockSettings.of(Material.METAL, MapColor.SPRUCE_BROWN).requiresTool().strength(3.0F, 200.0F).sounds(BlockSoundGroup.METAL));
     public static final Block HIDDEN_BLOCK = new HiddenBlock(FabricBlockSettings.copyOf(EMPTY_BLOCK).noCollision());
     public static final Block QUESTION_BLOCK = new QuestionBlock(FabricBlockSettings.of(Material.METAL, MapColor.YELLOW).requiresTool().strength(3.0F, 200.0F).luminance(3).sounds(BlockSoundGroup.METAL).nonOpaque());
-    public static final Block QUESTION_BOX = new QuestionBox(FabricBlockSettings.of(Material.WOOD, MapColor.ORANGE).strength(3.0F).luminance(3).sounds(BlockSoundGroup.WOOD));
+    public static final Block QUESTION_BOX = new QuestionBoxBlock(FabricBlockSettings.of(Material.WOOD, MapColor.ORANGE).strength(3.0F).luminance(3).sounds(BlockSoundGroup.WOOD));
     public static final Block COIN_BLOCK = new CoinBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).requiresTool().strength(3.0F, 200.0F).luminance(3).sounds(BlockSoundGroup.METAL).nonOpaque());
     public static final Block FAKE_BLOCK = new FakeBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_BROWN).strength(0.6F).sounds(ModSoundGroup.TOADSTONE));
     public static final Block GLOW_BLOCK = new GlowBlock(FabricBlockSettings.of(Material.METAL, MapColor.PALE_YELLOW).requiresTool().strength(3.0F, 200.0F).sounds(BlockSoundGroup.METAL).luminance(15));
     public static final Block PULL_BLOCK = new PullBlock(FabricBlockSettings.of(Material.METAL, MapColor.DIAMOND_BLUE).requiresTool().strength(3.0F, 200.0F).sounds(BlockSoundGroup.METAL).luminance(createLightLevelFromBooleanProperty(Properties.POWERED, 10, 0)));
     public static final Block JELLYBEAM = new JellybeamBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.LIGHT_BLUE).luminance(12).sounds(BlockSoundGroup.SLIME));
-    public static final Block HAPPY_CLOUD = new HappyCloud(FabricBlockSettings.of(Material.SNOW_BLOCK, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.SNOW).dynamicBounds());
+    public static final Block HAPPY_CLOUD = new HappyCloudBlock(FabricBlockSettings.of(Material.SNOW_BLOCK, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.SNOW).dynamicBounds());
     public static final Block CLOUD_BLOCK = new CloudBlock(FabricBlockSettings.copyOf(HAPPY_CLOUD));
     public static final Block QUICKSAND = new QuicksandBlock(FabricBlockSettings.of(Material.AGGREGATE, MapColor.TERRACOTTA_YELLOW).strength(2.0F, 3.0F).sounds(BlockSoundGroup.SAND).allowsSpawning(BlockInit::never).noCollision());
     public static final Block STAR_CRYSTAL = new StarCrystalBlock(7, 3, FabricBlockSettings.of(Material.AMETHYST).strength(1.5f).nonOpaque().luminance(5).slipperiness(0.9F).sounds(BlockSoundGroup.AMETHYST_CLUSTER));
@@ -227,6 +228,7 @@ public class BlockInit {
         registerBlock("star_coin", STAR_COIN);
         registerBlock("power_star", POWER_STAR);
         registerBlock("freezie", FREEZIE);
+        registerBlock("dry_bones_pile", DRY_BONES_PILE);
         registerBlock("warp_frame", WARP_FRAME);
         registerBlock("empty_block", EMPTY_BLOCK);
         registerBlock("hidden_block", HIDDEN_BLOCK);
@@ -446,6 +448,13 @@ public class BlockInit {
         registerBlock("pink_mushroom_cap", MushroomBlocks.PINK_MUSHROOM_CAP);
         registerBlock("purple_mushroom_cap", MushroomBlocks.PURPLE_MUSHROOM_CAP);
         registerBlock("orange_mushroom_cap", MushroomBlocks.ORANGE_MUSHROOM_CAP);
+        registerBlock("brown_toad_stool", MushroomBlocks.BROWN_TOAD_STOOL);
+        registerBlock("red_toad_stool", MushroomBlocks.RED_TOAD_STOOL);
+        registerBlock("yellow_toad_stool", MushroomBlocks.YELLOW_TOAD_STOOL);
+        registerBlock("green_toad_stool", MushroomBlocks.GREEN_TOAD_STOOL);
+        registerBlock("pink_toad_stool", MushroomBlocks.PINK_TOAD_STOOL);
+        registerBlock("purple_toad_stool", MushroomBlocks.PURPLE_TOAD_STOOL);
+        registerBlock("orange_toad_stool", MushroomBlocks.ORANGE_TOAD_STOOL);
         registerBlock("yellow_mushroom", MushroomBlocks.YELLOW_MUSHROOM);
         registerBlock("green_mushroom", MushroomBlocks.GREEN_MUSHROOM);
         registerBlock("pink_mushroom", MushroomBlocks.PINK_MUSHROOM);

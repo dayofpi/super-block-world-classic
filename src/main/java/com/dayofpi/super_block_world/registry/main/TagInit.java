@@ -13,6 +13,7 @@ import net.minecraft.world.biome.Biome;
 public class TagInit {
     public static Tag<Biome> ALL_BIOMES;
     public static Tag<Item> SHELLMETS;
+    public static Tag<Item> STAR_BITS;
     public static Tag<Block> ALWAYS_CARVABLE;
     public static Tag<Block> BRICKS;
     public static Tag<Block> WARP_PIPES;
@@ -25,6 +26,7 @@ public class TagInit {
     public static void register() {
         ALL_BIOMES = TagFactory.BIOME.create(new Identifier(Main.MOD_ID, "all_biomes"));
         SHELLMETS = TagFactory.ITEM.create(new Identifier(Main.MOD_ID, "shellmets"));
+        STAR_BITS = TagFactory.ITEM.create(new Identifier(Main.MOD_ID, "star_bits"));
 
         ALWAYS_CARVABLE = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "always_carvable"));
         BRICKS = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "bricks"));
