@@ -39,8 +39,8 @@ public class DefaultTemplates {
     }
 
     static void addPipes(GenerationSettings.Builder builder) {
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedPipes.PIPE_PATCH_HIGH);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedPipes.PIPE_PATCH_LOW);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedPipes.GREEN_PIPE_PATCH);
+        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedPipes.RED_PIPE_PATCH);
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedPipes.UNDERWATER_PIPE);
     }
 

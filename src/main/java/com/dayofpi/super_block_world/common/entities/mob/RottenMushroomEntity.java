@@ -32,15 +32,6 @@ public class RottenMushroomEntity extends AbstractEnemy {
         return isDirt && isSpawnDark((ServerWorldAccess) world, pos, random);
     }
 
-    public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
-        if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
-            return false;
-        } else {
-            int i = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
-            return i <= random.nextInt(8);
-        }
-    }
-
     public static DefaultAttributeContainer.Builder createAttributes() {
         return HostileEntity.createHostileAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0D)

@@ -3,19 +3,6 @@
   "values": [
     "super_block_world:fuzzy",
     "super_block_world:buzzy_beetle",
-    "super_block_world:spike_top",
-    "super_block_world:rotten_mushroom",
-    "#minecraft:skeletons",
-    "minecraft:item",
-    "minecraft:zombie",
-    "minecraft:zombie_villager",
-    "minecraft:husk",
-    "minecraft:drowned",
-    "minecraft:phantom",
-    "minecraft:skeleton_horse",
-    "minecraft:zombie_horse",
-    "minecraft:zombified_piglin",
-    "minecraft:zoglin",
-    "minecraft:wither"
+    "super_block_world:spike_top"
   ]
 }

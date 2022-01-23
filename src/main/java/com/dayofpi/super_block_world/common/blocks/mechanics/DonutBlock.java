@@ -95,7 +95,7 @@ public class DonutBlock extends FallingBlock implements Waterloggable {
                 world.spawnParticles(ParticleTypes.POOF, blockPos.getX() + 0.5, blockPos.getY() + 1.0, blockPos.getZ() + 0.5, 3, 0.0D, 0.0D, 0.0D, 0.0D);
                 world.createAndScheduleBlockTick(blockPos, this, 12);
             } else if (state.get(WILL_FALL)) {
-                FallingBlockEntity fallingBlockEntity = new FallingBlockEntity(world, (double) blockPos.getX() + 0.5D, blockPos.getY(), (double) blockPos.getZ() + 0.5D, world.getBlockState(blockPos));
+                FallingBlockEntity fallingBlockEntity = new FallingBlockEntity(world, (double)blockPos.getX() + 0.5D, blockPos.getY(), (double)blockPos.getZ() + 0.5D, world.getBlockState(blockPos));
                 this.configureFallingBlockEntity(fallingBlockEntity);
                 world.spawnEntity(fallingBlockEntity);
             }

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.world.feature.configured;
 
-import com.dayofpi.super_block_world.world.feature.utility.config.GiantMushroomFeatureConfig;
+import com.dayofpi.super_block_world.world.feature.utility.feature_config.GiantMushroomFeatureConfig;
 import com.dayofpi.super_block_world.registry.block.MushroomBlocks;
 import com.dayofpi.super_block_world.registry.main.BlockInit;
 import com.dayofpi.super_block_world.world.feature.FeatureInit;

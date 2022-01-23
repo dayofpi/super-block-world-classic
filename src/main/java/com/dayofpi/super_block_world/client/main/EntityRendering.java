@@ -22,9 +22,7 @@ public class EntityRendering {
         EntityRendererRegistry.register(EntityInit.ICEBALL, IceballRenderer::new);
         EntityRendererRegistry.register(EntityInit.ICE_BRO_ICEBALL, EnemyIceballRenderer::new);
         EntityRendererRegistry.register(EntityInit.SPIRIT, EmptyEntityRenderer::new);
-        EntityRendererRegistry.register(EntityInit.BUZZY_SHELL, (context) -> new BuzzyShellRenderer<>(context, ModelLayers.BUZZY_SHELL));
         EntityRendererRegistry.register(EntityInit.VOLCANIC_DEBRIS, VolcanicDebrisRenderer::new);
-        EntityModelLayerRegistry.registerModelLayer(ModelLayers.BUZZY_SHELL, BuzzyShellModel::getTexturedModelData);
         EntityRendererRegistry.register(EntityInit.MOO_MOO, MooMooRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModelLayers.MOO_MOO, MooMooModel::getTexturedModelData);
         EntityRendererRegistry.register(EntityInit.TOAD, ToadRenderer::new);
@@ -34,13 +32,14 @@ public class EntityRendering {
         EntityRendererRegistry.register(EntityInit.GOOMBA, GoombaRenderer::new);
         EntityRendererRegistry.register(EntityInit.PARAGOOMBA, GoombaRenderer::new);
         EntityRendererRegistry.register(EntityInit.KOOPA_TROOPA, KoopaRenderer::new);
-        EntityModelLayerRegistry.registerModelLayer(ModelLayers.KOOPA, KoopaModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(ModelLayers.KOOPA_SADDLE, KoopaModel::getTexturedModelData);
+        EntityRendererRegistry.register(EntityInit.KOOPA_SHELL, KoopaShellRenderer::new);
+        EntityRendererRegistry.register(EntityInit.BUZZY_SHELL, BuzzyShellRenderer::new);
+        EntityRendererRegistry.register(EntityInit.DRY_BONES_SHELL, DryBonesShellRenderer::new);
         EntityRendererRegistry.register(EntityInit.PARATROOPA, KoopaRenderer::new);
-        EntityModelLayerRegistry.registerModelLayer(ModelLayers.PARATROOPA, KoopaModel::getTexturedModelData);
         EntityRendererRegistry.register(EntityInit.BOB_OMB, BobOmbRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModelLayers.BOB_OMB, BobOmbModel::getTexturedModelData);
         EntityRendererRegistry.register(EntityInit.BOO, BooRenderer::new);
+        EntityRendererRegistry.register(EntityInit.DRY_BONES, DryBonesRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModelLayers.BOO, BooModel::getTexturedModelData);
         EntityRendererRegistry.register(EntityInit.HAMMER_BRO, HammerBroRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModelLayers.HAMMER_BRO, HammerBroModel::getTexturedModelData);

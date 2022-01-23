@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
+import com.dayofpi.super_block_world.common.entities.DryBonesShellEntity;
 import com.dayofpi.super_block_world.registry.block.PlantBlocks;
 import com.dayofpi.super_block_world.registry.main.ItemInit;
 import net.minecraft.block.FlowerBlock;
@@ -14,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -36,6 +38,10 @@ public abstract class HelmetEffects extends Entity {
 
     @Shadow protected boolean jumping;
 
+    public boolean isInLava() {
+        return !(this.getVehicle() instanceof DryBonesShellEntity) && !this.firstUpdate && this.fluidHeight.getDouble(FluidTags.LAVA) > 0.0;
+    }
+
     @Inject(at=@At("TAIL"), method = "tick")
     private void tick(CallbackInfo info) {
         double horizontalMultiplier = 1;
@@ -43,6 +49,10 @@ public abstract class HelmetEffects extends Entity {
 
         if (this.getVelocity().horizontalLengthSquared() < maxSpeed) {
             horizontalMultiplier = 1.25D;
+        }
+
+        if (this.getVehicle() instanceof DryBonesShellEntity) {
+            this.setOnFire(false);
         }
 
         if (this.getEquippedStack(EquipmentSlot.FEET).isOf(ItemInit.CLOUD_BOOTS)) {

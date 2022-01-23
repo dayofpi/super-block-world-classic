@@ -47,7 +47,7 @@ public class PlacedPlants {
     public static final PlacedFeature FLOWERS_FOSSIL = ConfiguredPlants.FLOWERS_FOSSIL.withPlacement(RarityFilterPlacementModifier.of(9), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature FLOWERBED = ConfiguredPlants.FLOWERBED.withPlacement();
 
-    public static final PlacedFeature MUSHROOMS_GRASSLAND = ConfiguredPlants.MUSHROOMS_GRASSLAND.withPlacement(RarityFilterPlacementModifier.of(8), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
+    public static final PlacedFeature MUSHROOMS_GRASSLAND = ConfiguredPlants.MUSHROOMS_GRASSLAND.withPlacement(RarityFilterPlacementModifier.of(4), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature MUSHROOMS_AMANITA = ConfiguredPlants.MUSHROOMS_AMANITA.withPlacement(RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature MUSHROOMS_AUTUMN = ConfiguredPlants.MUSHROOMS_AUTUMN.withPlacement(RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());
     public static final PlacedFeature MUSHROOMS_MOUNTAIN = ConfiguredPlants.MUSHROOMS_MOUNTAIN.withPlacement(RarityFilterPlacementModifier.of(12), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING), BiomePlacementModifier.of());

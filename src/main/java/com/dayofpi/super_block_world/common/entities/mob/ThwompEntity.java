@@ -2,10 +2,10 @@ package com.dayofpi.super_block_world.common.entities.mob;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.common.blocks.mechanics.ReactiveBlock;
-import com.dayofpi.super_block_world.common.util.entity.StaticBodyControl;
-import com.dayofpi.super_block_world.registry.main.TagInit;
 import com.dayofpi.super_block_world.common.util.entity.DirectionHelper;
 import com.dayofpi.super_block_world.common.util.entity.ModEntityDamageSource;
+import com.dayofpi.super_block_world.common.util.entity.StaticBodyControl;
+import com.dayofpi.super_block_world.registry.main.TagInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ParticleUtil;
@@ -33,6 +33,7 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Random;
 
 @SuppressWarnings("deprecation, unused")
@@ -186,8 +187,9 @@ public class ThwompEntity extends GolemEntity {
         this.setVelocity(0, -fallingSpeed, 0);
         if (this.isOnGround()) {
             if (riseTimer == 0) {
-                LivingEntity damageable = world.getClosestEntity(LivingEntity.class, TargetPredicate.createAttackable(), this, this.getX(), this.getY(), this.getZ(), this.getBoundingBox().expand(0.5).offset(0,0.5, 0));
-                this.thwompLandingEffects(damageable);
+                List<Entity> damageable = world.getOtherEntities(this, this.getBoundingBox().expand(0.5).offset(0,0.5, 0), Entity::isLiving);
+                damageable.forEach(entity -> entity.damage(ModEntityDamageSource.mobDrop(this), 9));
+                this.thwompLandingEffects();
             }
             if (riseTimer < 25)
                 ++this.riseTimer;
@@ -209,17 +211,12 @@ public class ThwompEntity extends GolemEntity {
         ParticleUtil.spawnParticle(world, this.getBlockPos(), (new BlockStateParticleEffect(ParticleTypes.FALLING_DUST, Blocks.GRAVEL.getDefaultState())), UniformIntProvider.create(3, 4));
     }
 
-    private void thwompLandingEffects(Entity entity) {
+    private void thwompLandingEffects() {
         this.playSound(SoundInit.ENTITY_THWOMP_LAND, 1.0F, 1.0F);
         this.peekTimer = 30;
         for (int i = 0; i < 6; i++) {
             double rand = this.random.nextBoolean() ? 0.05 : -0.05;
             world.addParticle(ParticleTypes.POOF, this.getX(), this.getY(), this.getZ(), i * rand, 0.02D, i * rand);
-        }
-
-        if (entity != null) {
-            if (!(entity instanceof ThwompEntity))
-                entity.damage(ModEntityDamageSource.mobDrop(this), 12F);
         }
 
         for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos().down(), 1, 0, 1)) {

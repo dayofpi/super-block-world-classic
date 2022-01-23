@@ -78,7 +78,7 @@ public class BiomeParameters {
                             MultiNoiseUtil.ParameterRange.of(-0.5f, 0.5f),
                             MultiNoiseUtil.ParameterRange.of(0.35f),
                             MultiNoiseUtil.ParameterRange.of(-0.5f, 0.5f),
-                            MultiNoiseUtil.ParameterRange.of(0.0f, 0.2f),
+                            MultiNoiseUtil.ParameterRange.of(0.2f),
                             MultiNoiseUtil.ParameterRange.of(0.0f),
                             MultiNoiseUtil.ParameterRange.of(0.2f),
                             0.25f), () -> registry.getOrThrow(ModBiomeKeys.CHEEP_CHEEP_REEF)),

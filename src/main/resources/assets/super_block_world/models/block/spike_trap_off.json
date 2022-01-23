@@ -2,7 +2,7 @@
 	"parent": "minecraft:block/cube_bottom_top",
 	"textures": {
 		"top": "super_block_world:block/spike_trap_top",
-		"bottom": "super_block_world:block/spike_trap_bottom",
+		"bottom": "super_block_world:block/black_bronze",
 		"side": "super_block_world:block/spike_trap"
 	}
 }

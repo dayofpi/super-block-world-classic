@@ -34,18 +34,25 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.Random;
 import java.util.UUID;
 
 @SuppressWarnings("unused")
-public class KoopaEntity extends AbstractEnemy implements Angerable, ItemSteerable, Saddleable {
+public class KoopaEntity extends AbstractEnemy implements Angerable, ItemSteerable, Saddleable, IAnimatable {
     private static final TrackedData<Integer> TYPE;
     private static final TrackedData<Integer> ANGER_TIME;
     private static final TrackedData<Boolean> SADDLED;
     private static final TrackedData<Integer> BOOST_TIME;
     private static final UniformIntProvider ANGER_TIME_RANGE;
-    private int angerTime;
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     static {
         TYPE = DataTracker.registerData(KoopaEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -65,8 +72,26 @@ public class KoopaEntity extends AbstractEnemy implements Angerable, ItemSteerab
         this.saddledComponent = new SaddledComponent(this.dataTracker, BOOST_TIME, SADDLED);
     }
 
+    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
+        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
+            return PlayState.CONTINUE;
+        } else event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
+    }
+
+    @Override
+    public AnimationFactory getFactory() {
+        return factory;
+    }
+
     public static boolean canSpawn(EntityType<? extends KoopaEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return world.getBlockState(pos.down()).isSideSolidFullSquare(world, pos, Direction.UP);
+        return pos.getY() > 0;
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
@@ -86,6 +111,13 @@ public class KoopaEntity extends AbstractEnemy implements Angerable, ItemSteerab
         this.targetSelector.add(1, new KoopaRevengeGoal(this).setGroupRevenge());
         this.targetSelector.add(3, new UniversalAngerGoal<>(this, true));
         this.targetSelector.add(4, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
+    }
+
+    @Override
+    public void onDeath(DamageSource source) {
+        super.onDeath(source);
+        if (source == DamageSource.LAVA)
+            this.convertTo(EntityInit.DRY_BONES, false);
     }
 
     @Override
@@ -141,7 +173,7 @@ public class KoopaEntity extends AbstractEnemy implements Angerable, ItemSteerab
         return this.dataTracker.get(TYPE);
     }
 
-    private void setKoopaType(int color) {
+    public void setKoopaType(int color) {
         this.dataTracker.set(TYPE, color);
     }
 
@@ -181,7 +213,8 @@ public class KoopaEntity extends AbstractEnemy implements Angerable, ItemSteerab
 
     @Nullable
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        this.setKoopaType(random.nextInt(2));
+        if (random.nextInt(8) == 0)
+            this.setKoopaType(1);
         HammerBroEntity jockey;
         entityData = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
         if (world.getRandom().nextInt(20) == 0) {
@@ -275,7 +308,7 @@ public class KoopaEntity extends AbstractEnemy implements Angerable, ItemSteerab
 
     @Override
     public float getSaddledSpeed() {
-        return (float) this.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED) *  0.2f + (this.getKoopaType() * 0.05F);
+        return (float) this.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED) * 0.2f + (this.getKoopaType() * 0.05F);
     }
 
     @Override

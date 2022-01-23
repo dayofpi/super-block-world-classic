@@ -97,6 +97,7 @@ public class SpawnTemplates {
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityInit.BUZZY_BEETLE, 55, 2, 3));
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityInit.SPIKE_TOP, 40, 2, 3));
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityInit.BOB_OMB, 30, 2, 4));
+        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityInit.DRY_BONES, 20, 2, 3));
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityInit.THWOMP, 2, 1, 2));
     }
 }

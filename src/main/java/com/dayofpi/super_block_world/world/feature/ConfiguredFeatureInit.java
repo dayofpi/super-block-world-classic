@@ -34,7 +34,8 @@ public class ConfiguredFeatureInit {
         registerConfiguredFeature("block_line_crystal", ConfiguredBlocks.BLOCK_LINE_CRYSTAL);
         registerConfiguredFeature("block_line_lava", ConfiguredBlocks.BLOCK_LINE_LAVA);
         registerConfiguredFeature("block_pile", ConfiguredBlocks.BLOCK_PILE);
-        registerConfiguredFeature("pipe_patch", ConfiguredPipes.PIPE_PATCH);
+        registerConfiguredFeature("green_pipe_patch", ConfiguredPipes.GREEN_PIPE_PATCH);
+        registerConfiguredFeature("red_pipe_patch", ConfiguredPipes.RED_PIPE_PATCH);
         registerConfiguredFeature("topping", ConfiguredDecoration.TOPPING);
         registerConfiguredFeature("frosting", ConfiguredDecoration.FROSTING);
         registerConfiguredFeature("quicksand", ConfiguredDecoration.QUICKSAND);
@@ -117,6 +118,7 @@ public class ConfiguredFeatureInit {
         registerConfiguredFeature("flowers_fossil", ConfiguredPlants.FLOWERS_FOSSIL);
 
         registerConfiguredFeature("vegetation_grassland", ConfiguredVegetation.VEGETATION_GRASSLAND);
+        registerConfiguredFeature("vegetation_meadow", ConfiguredVegetation.VEGETATION_MEADOW);
         registerConfiguredFeature("vegetation_sherbet", ConfiguredVegetation.VEGETATION_SHERBET);
         registerConfiguredFeature("vegetation_reef", ConfiguredVegetation.VEGETATION_REEF);
         registerConfiguredFeature("vegetation_amanita", ConfiguredVegetation.VEGETATION_AMANITA);

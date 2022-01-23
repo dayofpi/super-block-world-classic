@@ -52,7 +52,7 @@ public abstract class AbstractFluid extends FlowableFluid {
      */
     @Override
     public int getTickRate(WorldView worldView) {
-        return 20;
+        return 30;
     }
 
     /**

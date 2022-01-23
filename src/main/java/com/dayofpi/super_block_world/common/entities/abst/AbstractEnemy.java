@@ -4,7 +4,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -76,16 +75,6 @@ public abstract class AbstractEnemy extends PathAwareEntity {
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return null;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return null;
-    }
-
-    @Override
     protected SoundEvent getSwimSound() {
         return SoundEvents.ENTITY_HOSTILE_SWIM;
     }
@@ -97,6 +86,6 @@ public abstract class AbstractEnemy extends PathAwareEntity {
 
     @Override
     public SoundCategory getSoundCategory() {
-        return SoundCategory.NEUTRAL;
+        return SoundCategory.HOSTILE;
     }
 }

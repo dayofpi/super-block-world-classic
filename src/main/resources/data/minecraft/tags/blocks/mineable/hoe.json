@@ -10,6 +10,13 @@
     "super_block_world:pink_mushroom_cap",
     "super_block_world:purple_mushroom_cap",
     "super_block_world:orange_mushroom_cap",
+    "super_block_world:brown_toad_stool",
+    "super_block_world:red_toad_stool",
+    "super_block_world:yellow_toad_stool",
+    "super_block_world:green_toad_stool",
+    "super_block_world:pink_toad_stool",
+    "super_block_world:purple_toad_stool",
+    "super_block_world:orange_toad_stool",
     "super_block_world:redstone_trampoline"
   ]
 }

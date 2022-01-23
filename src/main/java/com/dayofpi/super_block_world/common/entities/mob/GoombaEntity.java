@@ -98,19 +98,31 @@ public class GoombaEntity extends AbstractEnemy implements IAnimatable {
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundInit.ENTITY_GOOMBA_HURT;
+        if (this.getSize() == 1)
+            return SoundInit.ENTITY_GOOMBA_HURT;
+        else if (this.getSize() == 0)
+            return null;
+        else return SoundInit.ENTITY_BIG_GOOMBA_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundInit.ENTITY_GOOMBA_DEATH;
+        if (this.getSize() == 1)
+            return SoundInit.ENTITY_GOOMBA_DEATH;
+        else if (this.getSize() == 0)
+            return SoundInit.ENTITY_MINI_GOOMBA_DEATH;
+        else return SoundInit.ENTITY_BIG_GOOMBA_DEATH;
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(this.getStepSound(), 1.0F, this.getSoundPitch() * 1.3F);
+        this.playSound(this.getStepSound(), 1.0F, this.getSoundPitch());
     }
 
     protected SoundEvent getStepSound() {
-        return SoundInit.ENTITY_GOOMBA_STEP;
+        if (this.getSize() == 1)
+            return SoundInit.ENTITY_GOOMBA_STEP;
+        else if (this.getSize() == 0)
+            return SoundInit.ENTITY_MINI_GOOMBA_STEP;
+        else return SoundInit.ENTITY_BIG_GOOMBA_STEP;
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
@@ -182,11 +194,11 @@ public class GoombaEntity extends AbstractEnemy implements IAnimatable {
         return this.dataTracker.get(SIZE);
     }
 
-    private boolean isGrowable() {
+    public boolean isGrowable() {
         return this.dataTracker.get(GROWABLE);
     }
 
-    private void setGrowable(boolean growable) {
+    public void setGrowable(boolean growable) {
         this.dataTracker.set(GROWABLE, growable);
     }
 
@@ -194,7 +206,7 @@ public class GoombaEntity extends AbstractEnemy implements IAnimatable {
         return this.dataTracker.get(GOLD);
     }
 
-    private void setGold(boolean gold) {
+    public void setGold(boolean gold) {
         this.dataTracker.set(GOLD, gold);
     }
 
@@ -208,18 +220,20 @@ public class GoombaEntity extends AbstractEnemy implements IAnimatable {
         EntityAttributeInstance health = this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
         EntityAttributeInstance speed = this.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
         EntityAttributeInstance attackDamage = this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-        attackDamage.setBaseValue(clampedSize + 1);
         if (clampedSize == 0) {
-            health.setBaseValue(1);
-            speed.setBaseValue(0.4D);
+            health.setBaseValue(1.0D);
+            speed.setBaseValue(0.3D);
+            attackDamage.setBaseValue(0.0D);
             this.experiencePoints = 1;
         } else if (clampedSize == 1) {
-            health.setBaseValue(4);
+            health.setBaseValue(4.0D);
             speed.setBaseValue(0.22D);
+            attackDamage.setBaseValue(3.0D);
             this.experiencePoints = 3;
         } else if (clampedSize == 2) {
-            health.setBaseValue(7);
+            health.setBaseValue(7.0D);
             speed.setBaseValue(0.18D);
+            attackDamage.setBaseValue(6.0D);
             this.experiencePoints = 5;
         }
         this.setHealth(this.getMaxHealth());
@@ -231,15 +245,6 @@ public class GoombaEntity extends AbstractEnemy implements IAnimatable {
         if (this.isGold()) {
             this.dropItem(ItemInit.COIN);
         }
-    }
-
-    public float getSoundPitch() {
-        if (this.getSize() == 0)
-            return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.5F;
-        else if (this.getSize() == 1)
-            return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F;
-        else
-            return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 0.5F;
     }
 
     public void onTrackedDataSet(TrackedData<?> data) {
@@ -306,7 +311,7 @@ public class GoombaEntity extends AbstractEnemy implements IAnimatable {
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
+        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.1F && event.getLimbSwingAmount() < 0.1F)) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
             return PlayState.CONTINUE;
         }

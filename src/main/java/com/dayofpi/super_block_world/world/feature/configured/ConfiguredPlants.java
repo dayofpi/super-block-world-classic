@@ -6,6 +6,7 @@ import com.dayofpi.super_block_world.world.feature.FeatureInit;
 import com.dayofpi.super_block_world.world.feature.placed.PlacedPlants;
 import com.dayofpi.super_block_world.world.feature.utility.BlockLists;
 import com.dayofpi.super_block_world.world.feature.utility.DataPools;
+import com.dayofpi.super_block_world.world.feature.utility.PlacementModifiers;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.tag.BlockTags;
@@ -53,10 +54,10 @@ public class ConfiguredPlants {
     public static final ConfiguredFeature<?, ?> FLOWERS_REEF = Feature.FLOWER.configure(new RandomPatchFeatureConfig(64, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.FLOWER_CHEEP_CHEEP_REEF))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.allOf(BlockPredicate.IS_AIR, BlockPredicate.not(BlockPredicate.matchingFluid(Fluids.WATER, new Vec3i(0, -1, 0))))))));
     public static final ConfiguredFeature<?, ?> FLOWERS_ILLUSION = Feature.FLOWER.configure(new RandomPatchFeatureConfig(64, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.FLOWER_FOREST_OF_ILLUSION))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR))));
 
-    public static final ConfiguredFeature<?, ?> MUSHROOMS_GRASSLAND = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(64, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.MUSHROOMS_GRASSLAND))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR))));
-    public static final ConfiguredFeature<?, ?> MUSHROOMS_MOUNTAIN = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(50, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.MUSHROOMS_MOUNTAIN))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR))));
-    public static final ConfiguredFeature<?, ?> MUSHROOMS_AMANITA = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(64, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.MUSHROOMS_AMANITA))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR))));
-    public static final ConfiguredFeature<?, ?> MUSHROOMS_AUTUMN = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(64, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.MUSHROOMS_AUTUMN))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR))));
+    public static final ConfiguredFeature<?, ?> MUSHROOMS_GRASSLAND = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(64, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.MUSHROOMS_GRASSLAND))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR), PlacementModifiers.MUSHROOM_SURVIVES)));
+    public static final ConfiguredFeature<?, ?> MUSHROOMS_MOUNTAIN = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(50, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.MUSHROOMS_MOUNTAIN))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR), PlacementModifiers.MUSHROOM_SURVIVES)));
+    public static final ConfiguredFeature<?, ?> MUSHROOMS_AMANITA = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(64, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.MUSHROOMS_AMANITA))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR), PlacementModifiers.MUSHROOM_SURVIVES)));
+    public static final ConfiguredFeature<?, ?> MUSHROOMS_AUTUMN = Feature.RANDOM_PATCH.configure(new RandomPatchFeatureConfig(64, 7, 3, () -> Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPools.MUSHROOMS_AUTUMN))).withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.IS_AIR), PlacementModifiers.MUSHROOM_SURVIVES)));
 }
 
 

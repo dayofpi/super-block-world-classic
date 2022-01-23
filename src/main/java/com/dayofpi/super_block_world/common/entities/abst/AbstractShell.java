@@ -1,124 +1,167 @@
 package com.dayofpi.super_block_world.common.entities.abst;
 
-import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.sound.SoundInit;
-import com.dayofpi.super_block_world.registry.main.TagInit;
-import com.dayofpi.super_block_world.registry.main.ItemInit;
+import com.dayofpi.super_block_world.common.blocks.mechanics.ReactiveBlock;
+import com.dayofpi.super_block_world.common.entities.mob.KoopaShellEntity;
 import com.dayofpi.super_block_world.common.util.entity.ModEntityDamageSource;
-import com.dayofpi.super_block_world.common.util.entity.CustomSpawnPacket;
+import com.dayofpi.super_block_world.registry.main.TagInit;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
-import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
-import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public abstract class AbstractShell extends LivingEntity {
-    private static final TrackedData<Boolean> ACTIVE;
+import java.util.List;
+
+public abstract class AbstractShell extends AbstractEnemy implements IAnimatable {
+    private static final TrackedData<Boolean> HAS_MOB;
+    private static final TrackedData<Boolean> SHAKING;
+    private final AnimationFactory factory = new AnimationFactory(this);
+    private int timer;
 
     static {
-        ACTIVE = DataTracker.registerData(AbstractShell.class, TrackedDataHandlerRegistry.BOOLEAN);
+        HAS_MOB = DataTracker.registerData(KoopaShellEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+        SHAKING = DataTracker.registerData(KoopaShellEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(ACTIVE, false);
+        this.dataTracker.startTracking(HAS_MOB, false);
+        this.dataTracker.startTracking(SHAKING, false);
     }
 
-    @Override
-    public boolean isPushable() {
-        return false;
-    }
-
-    @Override
-    public void pushAwayFrom(Entity entity) {
-        if (!this.isActive()) {
-            this.playSound(SoundInit.ENTITY_BUZZY_DROP, 1.0F, this.getSoundPitch());
-            this.setActive(true);
-        } else {
-            if (entity instanceof LivingEntity livingEntity) {
-                entity.damage(ModEntityDamageSource.mobDrop(this), 4.0F);
-                if (livingEntity.getEquippedStack(EquipmentSlot.FEET).isOf(ItemInit.JUMP_BOOTS) && livingEntity.getY() > this.getY()) {
-                    this.setActive(false);
-                    this.playSound(SoundInit.ENTITY_BUZZY_DROP, 1.0F, this.getSoundPitch());
-                }
-            }
-        }
-    }
-
-    public void tick() {
-        if (this.isActive()) {
-            if (this.world.isClient && random.nextFloat() > 0.6F)
-                world.addParticle(ParticleTypes.SWEEP_ATTACK, this.getX(), this.getY() + 0.5, this.getZ(), 0, 0, 0);
-            Vec3d vec3d = this.getVelocity();
-            double speedLimit = 0.16D;
-            boolean xLimit = vec3d.x > speedLimit || vec3d.x < -speedLimit;
-            boolean zLimit = vec3d.z > speedLimit || vec3d.z < -speedLimit;
-            this.setVelocity(vec3d.multiply(xLimit ? 1.0D : 2.0D, 1.0D, zLimit ? 1.0D : 2.0D));
-            for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 1, 0, 1)) {
-                if (world.getBlockState(blockPos).isIn(TagInit.BRICKS)) {
-                    world.breakBlock(blockPos, true);
-                }
-            }
-        }
-        super.tick();
-    }
-
-        public boolean isActive() {
-        return this.dataTracker.get(ACTIVE);
-    }
-
-    public void setActive(boolean active) {
-        this.dataTracker.set(ACTIVE, active);
-    }
-
-    protected AbstractShell(EntityType<? extends LivingEntity> entityType, World world) {
+    protected AbstractShell(EntityType<? extends AbstractEnemy> entityType, World world) {
         super(entityType, world);
+        this.experiencePoints = 0;
     }
 
+    protected abstract void leaveShell();
+
+    protected abstract Item getShellItem();
+
+    public boolean isShaking() {
+        return this.dataTracker.get(SHAKING);
+    }
+
+    public void setShaking(boolean shaking) {
+        this.dataTracker.set(SHAKING, shaking);
+    }
+
+    @Override
+    protected void dropInventory() {
+        super.dropInventory();
+        if (!this.hasMob()) {
+            this.dropItem(this.getShellItem());
+        }
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundInit.ENTITY_SHELL_BREAK;
+    }
+
+    @Override
+    protected void playStepSound(BlockPos pos, BlockState state) {
+        this.playSound(this.getStepSound(), 0.4f, this.getSoundPitch());
+    }
+
+    SoundEvent getStepSound() {
+        return SoundInit.ENTITY_SHELL_SPIN;
+    }
+
+    @Override
+    public void tickMovement() {
+        super.tickMovement();
+        if (this.hasMob()) {
+            ++timer;
+            if (timer >= 100) {
+                this.setShaking(true);
+                this.setVelocity(this.getVelocity().multiply(0.4));
+            }
+            if (timer == 150) {
+                this.leaveShell();
+            }
+        }
+
+        if (this.isAlive() && this.getVelocity().horizontalLengthSquared() > 0.02D) {
+            List<Entity> damageable = world.getOtherEntities(this, this.getBoundingBox().contract(0.D, 0.2D, 0.D), Entity::isLiving);
+            damageable.forEach(entity -> entity.damage(ModEntityDamageSource.shell(this), 4));
+
+            for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 1, 0, 1)) {
+                BlockState state = world.getBlockState(blockPos);
+                if (this.collidesWithStateAtPos(blockPos, state)) {
+                    if (state.isSolidBlock(world, blockPos)) {
+                        this.setVelocity(this.getVelocity().multiply(-1, 1, -1));
+                    }
+                }
+                if (state.isIn(TagInit.BRICKS)) {
+                    world.breakBlock(blockPos, true);
+                } else if (state.getBlock() instanceof ReactiveBlock reactiveBlock) {
+                    reactiveBlock.activate(state, world, blockPos);
+                }
+            }
+        }
+
+        final double maxSpeed = 0.05D;
+        double horizontalMultiplier = 2D;
+        Vec3d vec3d = this.getVelocity();
+        if (this.getVelocity().horizontalLengthSquared() < maxSpeed)
+            this.setVelocity(vec3d.multiply(horizontalMultiplier, 1, horizontalMultiplier));
+    }
+
+    @Nullable
+    @Override
     public ItemStack getPickBlockStack() {
-        return this.asItemStack();
+        return new ItemStack(this.getShellItem());
+    }
+
+    public boolean hasMob() {
+        return this.dataTracker.get(HAS_MOB);
+    }
+
+    public void setHasMob(boolean hasMob) {
+        this.dataTracker.set(HAS_MOB, hasMob);
+    }
+
+    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
+        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("spin", true));
+            return PlayState.CONTINUE;
+        }
+        return PlayState.STOP;
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
-        return LivingEntity.createLivingAttributes();
+        return AbstractEnemy.createEnemyAttributes()
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 1.0D);
     }
 
     @Override
-    public Packet<?> createSpawnPacket() {
-        return CustomSpawnPacket.create(this, Main.PacketID);
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
     }
 
-    public boolean damage(DamageSource source, float amount) {
-    if (this.isInvulnerableTo(source)) {
-        return false;
-    } else if (source instanceof ModEntityDamageSource damageSource) {
-        if (damageSource.isStomp() && this.isActive()) {
-            this.setActive(false);
-        }
-    } else if (!this.world.isClient && !this.isRemoved()) {
-        boolean bl = source.getAttacker() instanceof PlayerEntity && ((PlayerEntity)source.getAttacker()).getAbilities().creativeMode;
-        if (!bl && this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
-            this.dropItem(this.asItemStack().getItem());
-        }
-        this.playSound(SoundInit.ENTITY_BUZZY_DROP, 1.0F, 1.0F);
-        this.discard();
-        return true;
+    @Override
+    public AnimationFactory getFactory() {
+        return factory;
     }
-    return true;
-    }
-
-    protected abstract ItemStack asItemStack();
 }

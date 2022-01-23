@@ -62,9 +62,10 @@ public class ItemInit {
     public static final Item BUZZY_SHELL_PIECE = new Item(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item PLUMBER_CAP = new PlumberCapItem(Materials.JUMP_ARMOR, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item PRINCESS_CROWN = new ArmorItem(Materials.PRINCESS, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).rarity(Rarity.RARE));
-    public static final Item GREEN_SHELL = new ShellItem(EntityInit.BUZZY_SHELL, Materials.GREEN_SHELL, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
-    public static final Item RED_SHELL = new ShellItem(EntityInit.BUZZY_SHELL, Materials.RED_SHELL, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
-    public static final Item BUZZY_SHELL = new ShellItem(EntityInit.BUZZY_SHELL, Materials.BUZZY_ARMOR, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item GREEN_SHELL = new ShellItem(Materials.GREEN_SHELL, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item RED_SHELL = new ShellItem(Materials.RED_SHELL, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item BUZZY_SHELL = new ShellItem(Materials.BUZZY_ARMOR, EquipmentSlot.HEAD, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
+    public static final Item DRY_BONES_SHELL = new DryBonesShellItem(new FabricItemSettings().group(CreativeTabs.ITEM_GROUP).fireproof());
     public static final Item JUMP_BOOTS = new JumpBootsItem(Materials.JUMP_ARMOR, EquipmentSlot.FEET, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item CLOUD_BOOTS = new CloudBootsItem(Materials.CLOUD_ARMOR, EquipmentSlot.FEET, new FabricItemSettings().group(CreativeTabs.ITEM_GROUP));
     public static final Item BOTTLED_GHOST = new Item(new FabricItemSettings().recipeRemainder(Items.GLASS_BOTTLE).group(CreativeTabs.ITEM_GROUP));
@@ -99,6 +100,7 @@ public class ItemInit {
         registerItem("green_shell", GREEN_SHELL);
         registerItem("red_shell", RED_SHELL);
         registerItem("buzzy_shell", BUZZY_SHELL);
+        registerItem("dry_bones_shell", DRY_BONES_SHELL);
         registerItem("jump_boots", JUMP_BOOTS);
         registerItem("cloud_boots", CLOUD_BOOTS);
         registerItem("super_mushroom", SUPER_MUSHROOM);
@@ -144,6 +146,7 @@ public class ItemInit {
         registerItem("spawn_eggs/ice_bro", createSpawnEggItem(EntityInit.ICE_BRO));
         registerItem("spawn_eggs/bob_omb", createSpawnEggItem(EntityInit.BOB_OMB));
         registerItem("spawn_eggs/boo", createSpawnEggItem(EntityInit.BOO));
+        registerItem("spawn_eggs/dry_bones", createSpawnEggItem(EntityInit.DRY_BONES));
         registerItem("spawn_eggs/buzzy_beetle", createSpawnEggItem(EntityInit.BUZZY_BEETLE));
         registerItem("spawn_eggs/spike_top", createSpawnEggItem(EntityInit.SPIKE_TOP));
         registerItem("spawn_eggs/nipper_plant", createSpawnEggItem(EntityInit.NIPPER_PLANT));
@@ -168,6 +171,14 @@ public class ItemInit {
         registerDecoration("yellow_mushroom", MushroomBlocks.YELLOW_MUSHROOM);
         registerDecoration("orange_mushroom", MushroomBlocks.ORANGE_MUSHROOM);
         registerDecoration("purple_mushroom", MushroomBlocks.PURPLE_MUSHROOM);
+
+        registerDecoration("brown_toad_stool", MushroomBlocks.BROWN_TOAD_STOOL);
+        registerDecoration("red_toad_stool", MushroomBlocks.RED_TOAD_STOOL);
+        registerDecoration("green_toad_stool", MushroomBlocks.GREEN_TOAD_STOOL);
+        registerDecoration("pink_toad_stool", MushroomBlocks.PINK_TOAD_STOOL);
+        registerDecoration("yellow_toad_stool", MushroomBlocks.YELLOW_TOAD_STOOL);
+        registerDecoration("orange_toad_stool", MushroomBlocks.ORANGE_TOAD_STOOL);
+        registerDecoration("purple_toad_stool", MushroomBlocks.PURPLE_TOAD_STOOL);
 
         registerDecoration("amanita_sapling", PlantBlocks.AMANITA_SAPLING);
         registerDecoration("dark_amanita_sapling", PlantBlocks.DARK_AMANITA_SAPLING);
@@ -194,6 +205,8 @@ public class ItemInit {
         registerDecoration("frozen_muncher", PlantBlocks.FROZEN_MUNCHER);
         registerDecoration("icicle", BlockInit.ICICLE);
         registerDecoration("freezie", BlockInit.FREEZIE);
+        registerDecoration("dry_bones_pile", BlockInit.DRY_BONES_PILE);
+        registerDecoration("star_crystal", BlockInit.STAR_CRYSTAL);
         registerDecoration("pit_plant", PlantBlocks.PIT_PLANT);
         registerItem("piranha_lily", new WaterFlowerItem(PlantBlocks.PIRANHA_LILY, new FabricItemSettings().group(CreativeTabs.DECORATION_GROUP)));
         registerDecoration("budding_beanstalk", PlantBlocks.BUDDING_BEANSTALK);
@@ -223,6 +236,8 @@ public class ItemInit {
         registerDecoration("dark_amanita_button", BlockInit.DARK_AMANITA_BUTTON);
         registerDecoration("bell_button", BlockInit.BELL_BUTTON);
 
+        registerDecoration("boo_lantern", BlockInit.BOO_LANTERN);
+        registerDecoration("stone_torch", BlockInit.STONE_TORCH);
         registerDecoration("question_block", BlockInit.QUESTION_BLOCK);
         registerDecoration("question_box", BlockInit.QUESTION_BOX);
         registerDecoration("coin_block", BlockInit.COIN_BLOCK);
@@ -238,9 +253,7 @@ public class ItemInit {
         registerDecoration("trampoline", BlockInit.TRAMPOLINE);
         registerDecoration("donut_block", BlockInit.DONUT_BLOCK);
         registerDecoration("girder", BlockInit.GIRDER);
-        registerDecoration("star_crystal", BlockInit.STAR_CRYSTAL);
-        registerDecoration("boo_lantern", BlockInit.BOO_LANTERN);
-        registerDecoration("stone_torch", BlockInit.STONE_TORCH);
+
 
         registerDecoration("white_warp_pipe", ColoredBlocks.WHITE_WARP_PIPE);
         registerDecoration("white_pipe_body", ColoredBlocks.WHITE_PIPE_BODY);
