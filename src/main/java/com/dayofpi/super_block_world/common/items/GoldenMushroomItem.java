@@ -1,11 +1,11 @@
 package com.dayofpi.super_block_world.common.items;
 
+import com.dayofpi.super_block_world.common.util.TooltipUtil;
+import com.dayofpi.super_block_world.registry.more.FoodComponents;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,7 +17,6 @@ public class GoldenMushroomItem extends Item {
     }
 
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add( new TranslatableText("tooltip.super_block_world.super_mushroom").formatted(Formatting.BLUE));
-        tooltip.add( new TranslatableText("tooltip.super_block_world.golden_mushroom").formatted(Formatting.BLUE));
+        TooltipUtil.tooltipFromEffects(tooltip, FoodComponents.GOLDEN_MUSHROOM.getStatusEffects());
     }
 }
