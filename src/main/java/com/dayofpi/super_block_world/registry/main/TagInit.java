@@ -15,6 +15,9 @@ public class TagInit {
     public static Tag<Item> SHELLMETS;
     public static Tag<Item> STAR_BITS;
     public static Tag<Block> ALWAYS_CARVABLE;
+    public static Tag<Block> AMANITA_LOGS;
+    public static Tag<Block> DARK_AMANITA_LOGS;
+    public static Tag<Block> BELL_LOGS;
     public static Tag<Block> BRICKS;
     public static Tag<Block> WARP_PIPES;
     public static Tag<Block> TOPPINGS;
@@ -29,6 +32,9 @@ public class TagInit {
         STAR_BITS = TagFactory.ITEM.create(new Identifier(Main.MOD_ID, "star_bits"));
 
         ALWAYS_CARVABLE = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "always_carvable"));
+        AMANITA_LOGS = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "amanita_logs"));
+        DARK_AMANITA_LOGS = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "dark_amanita_logs"));
+        BELL_LOGS = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "bell_logs"));
         BRICKS = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "bricks"));
         WARP_PIPES = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "warp_pipes"));
         TOPPINGS = TagFactory.BLOCK.create(new Identifier(Main.MOD_ID, "toppings"));

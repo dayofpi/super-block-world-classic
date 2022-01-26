@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.common.entities;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.common.blocks.mechanics.ReactiveBlock;
-import com.dayofpi.super_block_world.common.util.entity.ModEntityDamageSource;
+import com.dayofpi.super_block_world.registry.more.MobDamageSource;
 import com.dayofpi.super_block_world.common.util.entity.StaticBodyControl;
 import com.dayofpi.super_block_world.registry.main.BlockInit;
 import com.dayofpi.super_block_world.registry.main.TagInit;
@@ -147,7 +147,7 @@ public class VolcanicDebrisEntity extends MobEntity implements IAnimatable {
         }
         List<Entity> list = world.getOtherEntities(this, this.getBoundingBox().contract(0.0D, 0.4D, 0.0D), entity -> entity instanceof LivingEntity livingEntity && livingEntity.canTakeDamage());
         if (this.isOnGround() || !list.isEmpty()) {
-            list.forEach(entity -> entity.damage(ModEntityDamageSource.mobDrop(this), 5));
+            list.forEach(entity -> entity.damage(MobDamageSource.mobDrop(this), 5));
             this.playSound(SoundInit.ENTITY_VOLCANIC_DEBRIS_SMASH, 0.6F, 1.0F);
             this.discard();
             if (world.isClient)

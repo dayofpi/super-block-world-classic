@@ -1,6 +1,8 @@
 package com.dayofpi.super_block_world.common.entities.mob;
 
+import com.dayofpi.super_block_world.common.entities.BuzzyShellEntity;
 import com.dayofpi.super_block_world.common.entities.abst.AbstractBuzzy;
+import com.dayofpi.super_block_world.common.util.entity.Stompable;
 import com.dayofpi.super_block_world.registry.block.MushroomBlocks;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
 import com.dayofpi.super_block_world.registry.main.ItemInit;
@@ -37,7 +39,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddleable {
+public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddleable, Stompable {
     private static final TrackedData<Boolean> HIDING;
     private static final TrackedData<Boolean> SADDLED;
     private static final TrackedData<Integer> BOOST_TIME;
@@ -256,5 +258,16 @@ public class BuzzyEntity extends AbstractBuzzy implements ItemSteerable, Saddlea
     @Override
     public float getSaddledSpeed() {
         return (float) this.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED) * 0.55F;
+    }
+
+    @Override
+    public void stompResult(LivingEntity livingEntity) {
+        if (!this.world.isClient) {
+                BuzzyShellEntity buzzyShellEntity = this.convertTo(EntityInit.BUZZY_SHELL, true);
+            if (buzzyShellEntity != null)
+                buzzyShellEntity.setHasMob(true);
+            if (this.isSaddled())
+                this.dropInventory();
+        }
     }
 }

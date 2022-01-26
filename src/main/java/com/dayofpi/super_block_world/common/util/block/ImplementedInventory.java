@@ -1,4 +1,4 @@
-package com.dayofpi.super_block_world.common.util.block_entity;
+package com.dayofpi.super_block_world.common.util.block;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;

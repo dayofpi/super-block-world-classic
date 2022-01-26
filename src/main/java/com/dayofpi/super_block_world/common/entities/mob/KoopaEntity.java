@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.common.entities.mob;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.common.entities.abst.AbstractEnemy;
+import com.dayofpi.super_block_world.common.util.entity.Stompable;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
@@ -46,7 +47,7 @@ import java.util.Random;
 import java.util.UUID;
 
 @SuppressWarnings("unused")
-public class KoopaEntity extends AbstractEnemy implements Angerable, ItemSteerable, Saddleable, IAnimatable {
+public class KoopaEntity extends AbstractEnemy implements Stompable, Angerable, ItemSteerable, Saddleable, IAnimatable {
     private static final TrackedData<Integer> TYPE;
     private static final TrackedData<Integer> ANGER_TIME;
     private static final TrackedData<Boolean> SADDLED;
@@ -343,6 +344,19 @@ public class KoopaEntity extends AbstractEnemy implements Angerable, ItemSteerab
     @Override
     public void chooseRandomAngerTime() {
         this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
+    }
+
+    @Override
+    public void stompResult(LivingEntity livingEntity) {
+        if (!this.world.isClient) {
+            KoopaShellEntity koopaShellEntity = this.convertTo(EntityInit.KOOPA_SHELL, true);
+            if (koopaShellEntity != null) {
+                koopaShellEntity.setKoopaType(this.getKoopaType());
+                koopaShellEntity.setHasMob(true);
+                if (this.isSaddled())
+                    this.dropInventory();
+            }
+        }
     }
 
     class KoopaRevengeGoal extends RevengeGoal {

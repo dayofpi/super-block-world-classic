@@ -14,10 +14,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(CactusBlock.class)
 public class AllowCacti {
 
-    @Inject(at = @At("HEAD"), method = "canPlaceAt(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/WorldView;Lnet/minecraft/util/math/BlockPos;)Z", cancellable = true)
+    @Inject(at = @At("HEAD"), method = "canPlaceAt", cancellable = true)
     public void canPlaceAt(BlockState state, WorldView world, BlockPos pos, CallbackInfoReturnable<Boolean> info) {
-        BlockState blockState2 = world.getBlockState(pos.down());
-        info.setReturnValue(blockState2.isOf(Blocks.CACTUS) || blockState2.isIn(BlockTags.SAND) && !world.getBlockState(pos.up()).getMaterial().isLiquid());
+        BlockState floor = world.getBlockState(pos.down());
+        info.setReturnValue(floor.isOf(Blocks.CACTUS) || floor.isIn(BlockTags.SAND) && !world.getBlockState(pos.up()).getMaterial().isLiquid());
         info.cancel();
     }
 }

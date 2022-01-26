@@ -12,9 +12,11 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 public class ParticleRendering {
     public static void renderParticles() {
+        ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> registry.register(new Identifier(Main.MOD_ID, "particle/feather_0"))));
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> registry.register(new Identifier(Main.MOD_ID, "particle/poison_0"))));
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> registry.register(new Identifier(Main.MOD_ID, "particle/star_bit_0"))));
 
+        ParticleFactoryRegistry.getInstance().register(ParticleInit.FEATHER, SoulParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ParticleInit.POISON_BUBBLE, SoulParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ParticleInit.STAR_BIT, SoulParticle.Factory::new);
 

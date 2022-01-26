@@ -12,10 +12,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
-import net.minecraft.world.gen.feature.BlockColumnFeatureConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.*;
@@ -41,7 +38,7 @@ public class ConfiguredTrees {
     public static final ConfiguredFeature<TreeFeatureConfig, ?> DARK_AMANITA_MOUNTAIN = Feature.TREE.configure(new TreeFeatureConfig.Builder(BlockStateProvider.of(States.DARK_AMANITA_LOG), new BendingTrunkPlacer(2, 2, 5, 3, UniformIntProvider.create(1, 2)), BlockStateProvider.of(States.DARK_AMANITA_LEAVES), new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 50), new TwoLayersFeatureSize(1, 0, 1)).dirtProvider(BlockStateProvider.of(BlockInit.SHORESAND)).build());
     public static final ConfiguredFeature<TreeFeatureConfig, ?> DARK_AMANITA_SAPLING;
 
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> BELL_TREE;
+    public static final ConfiguredFeature<?, ?> BELL_TREE;
     public static final ConfiguredFeature<?, ?> HUGE_RED_MUSHROOM_FLAT = FeatureInit.GIANT_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.RED_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(6, 10), UniformIntProvider.create(2, 3), true));
     public static final ConfiguredFeature<?, ?> HUGE_GREEN_MUSHROOM_FLAT = FeatureInit.GIANT_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.GREEN_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(6, 10), UniformIntProvider.create(2, 3), true));
 
@@ -64,8 +61,7 @@ public class ConfiguredTrees {
     static {
         DARK_AMANITA_SAPLING = Feature.TREE.configure((new TreeFeatureConfig.Builder(BlockStateProvider.of(States.DARK_AMANITA_LOG), new DarkOakTrunkPlacer(4, 7, 8), new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(States.DARK_AMANITA_LEAVES, 10).add(States.FRUITING_DARK_AMANITA_LEAVES, 1)), new LargeOakFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1), 3), new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty()))).ignoreVines().dirtProvider(BlockStateProvider.of(BlockInit.TOADSTOOL_SOIL.getDefaultState())).build());
 
-        BELL_TREE = Feature.TREE.configure(new TreeFeatureConfig.Builder(BlockStateProvider.of(States.BELL_LOG), new StraightTrunkPlacer(6, 5, 2), new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(States.BELL_CAP, 2).add(BlockInit.DARKENED_BELL_CAP.getDefaultState(), 1).build()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().dirtProvider(BlockStateProvider.of(BlockInit.SHORESAND.getDefaultState())).build());
-
+        BELL_TREE = FeatureInit.BELL_TREE.configure(FeatureConfig.DEFAULT);
         HUGE_RED_MUSHROOM_CANYON = FeatureInit.GIANT_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.RED_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(15, 20), ConstantIntProvider.create(2), true));
         HUGE_GREEN_MUSHROOM_CANYON = FeatureInit.GIANT_MUSHROOM.configure(new GiantMushroomFeatureConfig(BlockStateProvider.of(States.GREEN_MUSHROOM_CAP), BlockStateProvider.of(States.MUSHROOM_STEM), UniformIntProvider.create(15, 20), ConstantIntProvider.create(2), true));
     }

@@ -1,7 +1,7 @@
 /*
  * Decompiled with CFR 0.0.9 (FabricMC cc05e23f).
  */
-package com.dayofpi.super_block_world.common.util.block_entity;
+package com.dayofpi.super_block_world.common.util.block;
 
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.ItemDispenserBehavior;

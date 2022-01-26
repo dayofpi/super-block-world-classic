@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
+import com.dayofpi.super_block_world.common.util.block.FlammablesInit;
 import com.dayofpi.super_block_world.registry.main.BlockInit;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
 import com.dayofpi.super_block_world.registry.main.ItemInit;
@@ -9,8 +10,8 @@ import com.dayofpi.super_block_world.registry.more.FluidInit;
 import com.dayofpi.super_block_world.registry.more.ParticleInit;
 import com.dayofpi.super_block_world.registry.more.StatusEffectInit;
 import com.dayofpi.super_block_world.world.WorldInit;
-import com.dayofpi.super_block_world.common.util.block_entity.DispenserBehaviorInit;
-import com.dayofpi.super_block_world.common.util.entity.ModDamageSource;
+import com.dayofpi.super_block_world.common.util.block.DispenserBehaviorInit;
+import com.dayofpi.super_block_world.registry.more.DamageSource;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
@@ -28,7 +29,7 @@ public class Main implements ModInitializer {
         // However, some things (like resources) may still be uninitialized.
         GeckoLib.initialize();
         FluidInit.register();
-        ModDamageSource.register();
+        DamageSource.register();
         BlockInit.register();
         TagInit.register();
         SoundInit.register();
@@ -38,6 +39,7 @@ public class Main implements ModInitializer {
         ParticleInit.register();
         WorldInit.register();
         DispenserBehaviorInit.register();
+        FlammablesInit.register();
         LOGGER.info("Super Block World successfully initialized");
     }
 }

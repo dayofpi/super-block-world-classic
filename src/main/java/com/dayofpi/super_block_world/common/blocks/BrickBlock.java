@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.common.blocks;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.common.blocks.mechanics.ReactiveBlock;
+import com.dayofpi.super_block_world.registry.main.BlockInit;
 import com.dayofpi.super_block_world.registry.main.ItemInit;
 import com.dayofpi.super_block_world.registry.main.TagInit;
 import net.minecraft.block.Block;
@@ -53,7 +54,7 @@ public class BrickBlock extends Block {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos blockPos, Entity entity) {
         boolean jumpUnder = entity.getY() < blockPos.getY();
-        if (!world.isClient) {
+        if (!world.isClient && state.getBlock() != BlockInit.HARDSTONE_BRICKS) {
             if (jumpUnder && entity instanceof LivingEntity livingEntity) {
                 if (livingEntity.getEquippedStack(EquipmentSlot.HEAD).isIn(TagInit.SHELLMETS)) {
                     world.breakBlock(blockPos, true);

@@ -22,6 +22,7 @@ public abstract class GeneratorOptionsMixin {
         return codec.fieldOf(name).orElseGet(SeedSupplier::getSeed);
     }
 
+    @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     @Inject(method = "<init>(JZZLnet/minecraft/util/registry/SimpleRegistry;Ljava/util/Optional;)V",
             at = @At(value = "RETURN"))
     private void giveUsTrueWorldSeed(long seed, boolean generateStructures, boolean bonusChest, SimpleRegistry<DimensionOptions> options, Optional<String> legacyCustomOptions, CallbackInfo ci) {

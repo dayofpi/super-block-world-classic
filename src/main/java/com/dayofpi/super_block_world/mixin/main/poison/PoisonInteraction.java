@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin.main.poison;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
-import com.dayofpi.super_block_world.common.util.entity.ModDamageSource;
+import com.dayofpi.super_block_world.registry.more.DamageSource;
 import com.dayofpi.super_block_world.registry.main.TagInit;
 import com.dayofpi.super_block_world.registry.more.ParticleInit;
 import net.minecraft.entity.*;
@@ -29,7 +29,7 @@ public abstract class PoisonInteraction extends Entity {
     void baseTick(CallbackInfo info) {
         if (!this.getType().isIn(TagInit.POISON_IMMUNE) && this.getGroup() != EntityGroup.UNDEAD) {
             if (this.updateMovementInFluid(TagInit.POISON, 0.0023)) {
-                if (this.damage(ModDamageSource.POISON, 4.0F)) {
+                if (this.damage(DamageSource.POISON, 4.0F)) {
                     World world = this.getWorld();
                     if (world.isClient)
                         world.addParticle(ParticleTypes.LARGE_SMOKE, this.getBlockPos().getX() + 0.5, this.getBlockPos().getY() + 1, this.getBlockPos().getZ() + 0.5, 0.0D, 0.0D, 0.0D);

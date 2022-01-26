@@ -224,18 +224,6 @@ public class MooMooEntity extends CowEntity {
             return super.canStart();
         }
 
-        public void start() {
-            super.start();
-            this.mooMooEntity.playSound(SoundInit.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume(), mooMooEntity.getSoundPitch() * 0.5f);
-        }
-
-        public void stop() {
-            super.stop();
-            Random random = new Random();
-            if (random.nextInt(5) == 0)
-                this.mooMooEntity.playSound(SoundInit.ENTITY_MOO_MOO_BELL, mooMooEntity.getSoundVolume(), mooMooEntity.getSoundPitch() * 0.5f);
-        }
-
         @Nullable
         protected Vec3d getWanderTarget() {
             if (this.mob.isInsideWaterOrBubbleColumn()) {

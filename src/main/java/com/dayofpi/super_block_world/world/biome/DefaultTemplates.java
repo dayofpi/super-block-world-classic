@@ -32,7 +32,6 @@ public class DefaultTemplates {
         builder.feature(GenerationStep.Feature.LAKES, PlacedDecoration.LAKE_LAVA);
         builder.feature(GenerationStep.Feature.LAKES, PlacedDecoration.LAKE_POISON);
         builder.feature(GenerationStep.Feature.FLUID_SPRINGS, PlacedDecoration.SPRING_HIGH);
-        builder.feature(GenerationStep.Feature.FLUID_SPRINGS, PlacedDecoration.SPRING_LOW);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_SUGAR_CANE);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedPlants.CORAL_FEW);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedPlants.SEAGRASS);
@@ -40,7 +39,6 @@ public class DefaultTemplates {
 
     static void addPipes(GenerationSettings.Builder builder) {
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedPipes.GREEN_PIPE_PATCH);
-        builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedPipes.RED_PIPE_PATCH);
         builder.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedPipes.UNDERWATER_PIPE);
     }
 
@@ -84,11 +82,11 @@ public class DefaultTemplates {
             builder.feature(GenerationStep.Feature.RAW_GENERATION, PlacedDecoration.TOPPING);
             builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_BRONZE);
             builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_VANILLATE_COAL);
+            builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_VANILLATE_IRON);
             builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.TOPPING_AMETHYST);
+            builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.TOPPING_GOLD);
             builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_TOADSTONE);
             builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_GLOOMSTONE);
-            builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.ORE_VANILLATE_IRON);
-            builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedOres.TOPPING_GOLD);
         }
 
     }

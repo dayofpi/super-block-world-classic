@@ -51,10 +51,6 @@ public abstract class HelmetEffects extends Entity {
             horizontalMultiplier = 1.25D;
         }
 
-        if (this.getVehicle() instanceof DryBonesShellEntity) {
-            this.setOnFire(false);
-        }
-
         if (this.getEquippedStack(EquipmentSlot.FEET).isOf(ItemInit.CLOUD_BOOTS)) {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 200, 0, false, false, true));
         }

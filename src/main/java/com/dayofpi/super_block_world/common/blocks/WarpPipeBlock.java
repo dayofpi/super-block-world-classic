@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.common.blocks;
 
 import com.dayofpi.super_block_world.common.blocks.block_entities.WarpPipeBE;
-import com.dayofpi.super_block_world.common.util.block_entity.WarpPipeTree;
+import com.dayofpi.super_block_world.common.util.block.WarpPipeTree;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

@@ -3,12 +3,11 @@ package com.dayofpi.super_block_world.common.entities.abst;
 import com.dayofpi.super_block_world.common.entities.mob.BooEntity;
 import com.dayofpi.super_block_world.common.entities.mob.SpiritEntity;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
-import com.dayofpi.super_block_world.common.util.entity.ModDamageSource;
+import com.dayofpi.super_block_world.registry.more.DamageSource;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.particle.ParticleTypes;
@@ -51,14 +50,14 @@ public abstract class AbstractBoo extends AnimalEntity {
             if (lightLevel > lightLimit) {
                 if (this instanceof BooEntity booEntity) {
                     if (!booEntity.isTamed()) {
-                        this.damage(ModDamageSource.light(), 3.0F);
+                        this.damage(DamageSource.light(), 3.0F);
                     }
-                } else this.damage(ModDamageSource.light(), 3.0F);
+                } else this.damage(DamageSource.light(), 3.0F);
             }
         }
     }
 
-    public void onDeath(DamageSource source) {
+    public void onDeath(net.minecraft.entity.damage.DamageSource source) {
         if (!world.isClient) {
             SpiritEntity spiritEntity = new SpiritEntity(EntityInit.SPIRIT, world, this.getX(), this.getY(), this.getZ());
             world.spawnEntity(spiritEntity);
@@ -71,8 +70,8 @@ public abstract class AbstractBoo extends AnimalEntity {
         return false;
     }
 
-    public boolean damage(DamageSource source, float amount) {
-        if (source instanceof ModDamageSource modDamageSource) {
+    public boolean damage(net.minecraft.entity.damage.DamageSource source, float amount) {
+        if (source instanceof DamageSource modDamageSource) {
             if (modDamageSource.isLight()) {
                 if (this.world.isClient) {
                     world.addParticle(ParticleTypes.GLOW, this.getX() + random.nextFloat(), this.getY() +  random.nextFloat(), this.getZ() + random.nextFloat(), 0.0D, 0.0D, 0.0D);
@@ -104,7 +103,7 @@ public abstract class AbstractBoo extends AnimalEntity {
     protected void playStepSound(BlockPos pos, BlockState state) {
     }
 
-    public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
+    public boolean handleFallDamage(float fallDistance, float damageMultiplier, net.minecraft.entity.damage.DamageSource damageSource) {
         return false;
     }
 

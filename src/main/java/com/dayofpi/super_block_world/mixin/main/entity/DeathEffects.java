@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.main.entity;
 
-import com.dayofpi.super_block_world.registry.main.EntityInit;
+import com.dayofpi.super_block_world.common.entities.FireballEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -19,7 +19,7 @@ public abstract class DeathEffects extends Entity {
 
     @Inject(at=@At("HEAD"), method = "onDeath")
     private void onDeath(DamageSource source, CallbackInfo info) {
-        if (source.isProjectile() && source.getSource() != null && source.getSource().getType() == EntityInit.FIREBALL)
+        if (source.getSource() != null && source.getSource() instanceof FireballEntity)
             this.setOnFireFor(5);
     }
 }

@@ -2,7 +2,10 @@ package com.dayofpi.super_block_world.common.entities.mob;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.common.entities.abst.AbstractEnemy;
+import com.dayofpi.super_block_world.registry.main.EntityInit;
+import com.dayofpi.super_block_world.registry.more.ParticleInit;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
@@ -80,5 +83,20 @@ public class ParatroopaEntity extends KoopaEntity {
     protected void addFlapEffects() {
         if (random.nextFloat() < 0.03F)
             this.playSound(SoundInit.ENTITY_MISC_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
+    }
+
+    @Override
+    public void stompResult(LivingEntity livingEntity) {
+        if (!this.world.isClient) {
+            KoopaEntity koopaEntity = this.convertTo(EntityInit.KOOPA_TROOPA, true);
+            if (koopaEntity != null) {
+                koopaEntity.setKoopaType(this.getKoopaType());
+                if (this.isSaddled())
+                    koopaEntity.saddle(null);
+            }
+        } else {
+            world.addParticle(ParticleInit.FEATHER, this.getX() + 0.5, this.getY() + 1, this.getZ(), 0.01D, -0.01D, 0.0D);
+            world.addParticle(ParticleInit.FEATHER, this.getX() - 0.5, this.getY() + 1, this.getZ(), -0.01D, -0.01D, 0.0D);
+        }
     }
 }

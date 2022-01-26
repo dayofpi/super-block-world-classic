@@ -202,11 +202,6 @@ public class MummyToadEntity extends HostileEntity implements IAnimatable {
     }
 
     @Override
-    public boolean isInvisible() {
-        return super.isInvisible();
-    }
-
-    @Override
     public void onKilledOther(ServerWorld world, LivingEntity other) {
         super.onKilledOther(world, other);
         if (other instanceof ToadEntity toadEntity) {

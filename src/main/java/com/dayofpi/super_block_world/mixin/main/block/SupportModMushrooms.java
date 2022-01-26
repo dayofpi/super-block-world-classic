@@ -22,10 +22,8 @@ public class SupportModMushrooms extends PlantBlock {
         super(settings);
     }
 
-    @Inject(at = @At("HEAD"), method = ("trySpawningBigMushroom(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;Ljava/util/Random;)Z"), cancellable = true)
+    @Inject(at = @At("HEAD"), method = ("trySpawningBigMushroom"), cancellable = true)
     private void trySpawningBigMushroom(ServerWorld world, BlockPos pos, BlockState state, Random random, CallbackInfoReturnable<Boolean> info) {
-        //Your code goes here, replace any 'return true/return' false with:
-        //info.setReturnValue(true or false);
         world.removeBlock(pos, false);
         ConfiguredFeature<?, ?> mushroomFeature;
         if (this == Blocks.BROWN_MUSHROOM) {
@@ -54,7 +52,6 @@ public class SupportModMushrooms extends PlantBlock {
             world.setBlockState(pos, state, 3);
             info.setReturnValue(false);
         }
-        //make sure to add this to the end
         info.cancel();
     }
 }

@@ -4,7 +4,6 @@ import com.dayofpi.super_block_world.common.entities.abst.AbstractShell;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
 import com.dayofpi.super_block_world.registry.main.ItemInit;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -35,14 +34,6 @@ public class KoopaShellEntity extends AbstractShell {
 
     public int getKoopaType() {
         return this.dataTracker.get(TYPE);
-    }
-
-    @Override
-    public boolean damage(DamageSource source, float amount) {
-        if (this.hasMob()) {
-            this.leaveShell();
-            return false;
-        } else return super.damage(source, amount);
     }
 
     public void setKoopaType(int color) {

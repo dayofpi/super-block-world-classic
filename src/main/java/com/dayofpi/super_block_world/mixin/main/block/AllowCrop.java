@@ -1,27 +1,21 @@
 package com.dayofpi.super_block_world.mixin.main.block;
 
 import com.dayofpi.super_block_world.registry.main.BlockInit;
-import com.dayofpi.super_block_world.registry.main.TagInit;
 import net.minecraft.block.*;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@SuppressWarnings("deprecation")
 @Mixin(CropBlock.class)
 public class AllowCrop extends PlantBlock {
     protected AllowCrop(Settings settings) {
         super(settings);
     }
 
-    @Inject(at = @At("HEAD"), method = ("getAvailableMoisture(Lnet/minecraft/block/Block;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)F"), cancellable = true)
+    @Inject(at = @At("HEAD"), method = ("getAvailableMoisture"), cancellable = true)
     private static void getAvailableMoisture(Block block, BlockView world, BlockPos pos, CallbackInfoReturnable<Float> info) {
         float f = 1.0F;
         BlockPos blockPos = pos.down();
@@ -63,19 +57,7 @@ public class AllowCrop extends PlantBlock {
         info.cancel();
     }
 
-    @Override
-    public void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        BlockPos blockPos = pos.down();
-        for (Direction direction : Direction.Type.HORIZONTAL) {
-            FluidState fluidState = world.getFluidState(blockPos.offset(direction));
-            if (fluidState.isIn(TagInit.POISON)) {
-                // If there is poison next to it, drop nothing
-                world.breakBlock(pos, false);
-            }
-        }
-    }
-
-    @Inject(at = @At("HEAD"), method = ("canPlantOnTop(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Z"), cancellable = true)
+    @Inject(at = @At("HEAD"), method = ("canPlantOnTop"), cancellable = true)
     private void canPlantOnTop(BlockState floor, BlockView world, BlockPos pos, CallbackInfoReturnable<Boolean> info) {
         info.setReturnValue(floor.isOf(Blocks.FARMLAND) || floor.isOf(BlockInit.TOADSTOOL_FARMLAND));
         info.cancel();

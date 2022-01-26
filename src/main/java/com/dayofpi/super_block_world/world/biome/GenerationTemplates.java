@@ -5,7 +5,6 @@ import com.dayofpi.super_block_world.world.feature.placed.*;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.OceanPlacedFeatures;
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 import static net.minecraft.world.gen.GenerationStep.Feature.*;
 
@@ -39,7 +38,6 @@ public class GenerationTemplates {
 
     static void addAmanitaForestFeatures(GenerationSettings.Builder builder) {
         builder.feature(LAKES, PlacedDecoration.LAKE_POISON_FOREST);
-        builder.feature(VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_TALL_GRASS_2);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.MUNCHER_MANY);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.STUMP);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.PIRANHA_LILY);
@@ -52,7 +50,6 @@ public class GenerationTemplates {
 
     static void addForestOfIllusionFeatures(GenerationSettings.Builder builder) {
         builder.feature(LAKES, PlacedDecoration.LAKE_POISON_FOREST);
-        builder.feature(VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_TALL_GRASS_2);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.FUZZBUSH);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.PIRANHA_LILY);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.PLANTS_WATER_SURFACE);
@@ -64,8 +61,6 @@ public class GenerationTemplates {
 
     static void addAutumnForestFeatures(GenerationSettings.Builder builder) {
         builder.feature(LAKES, PlacedDecoration.LAKE_POISON_FOREST);
-        builder.feature(VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_TALL_GRASS_2);
-        builder.feature(VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_NORMAL);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.STUMP);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.PLANTS_WATER_SURFACE);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.AMANITA_CARPET);
@@ -76,8 +71,6 @@ public class GenerationTemplates {
     }
 
     static void addAutumnMountainFeatures(GenerationSettings.Builder builder) {
-        builder.feature(VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_TALL_GRASS_2);
-        builder.feature(VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_NORMAL);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.TALL_GRASS_PATCH);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.STUMP);
         builder.feature(VEGETAL_DECORATION, PlacedPlants.FUZZBUSH);

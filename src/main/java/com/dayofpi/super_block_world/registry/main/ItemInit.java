@@ -459,6 +459,7 @@ public class ItemInit {
         registerBlockItem("sherbet_brick_wall", VariantBlocks.SHERBET_BRICK_WALL);
 
         registerBlockItem("golden_bricks", BlockInit.GOLDEN_BRICKS);
+        registerBlockItem("golden_tiles", BlockInit.GOLDEN_TILES);
         registerBlockItem("golden_brick_slab", VariantBlocks.GOLDEN_BRICK_SLAB);
         registerBlockItem("golden_brick_stairs", VariantBlocks.GOLDEN_BRICK_STAIRS);
         registerBlockItem("golden_brick_wall", VariantBlocks.GOLDEN_BRICK_WALL);

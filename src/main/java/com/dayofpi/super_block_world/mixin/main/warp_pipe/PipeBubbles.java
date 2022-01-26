@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BubbleColumnBlock.class)
 public class PipeBubbles {
 
-    @Inject(at=@At("HEAD"), method = "getBubbleState(Lnet/minecraft/block/BlockState;)Lnet/minecraft/block/BlockState;", cancellable = true)
+    @Inject(at=@At("HEAD"), method = "getBubbleState", cancellable = true)
     private static void getBubbleState(BlockState state, CallbackInfoReturnable<BlockState> info) {
         if (state.isIn(TagInit.WARP_PIPES) && state.get(Properties.FACING) == Direction.UP && state.get(Properties.WATERLOGGED)) {
             info.setReturnValue(Blocks.BUBBLE_COLUMN.getDefaultState().with(BubbleColumnBlock.DRAG, false));
@@ -24,7 +24,7 @@ public class PipeBubbles {
         }
     }
 
-    @Inject(at=@At("HEAD"), method = "canPlaceAt(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/WorldView;Lnet/minecraft/util/math/BlockPos;)Z", cancellable = true)
+    @Inject(at=@At("HEAD"), method = "canPlaceAt", cancellable = true)
     public void canPlaceAt(BlockState state, WorldView world, BlockPos pos, CallbackInfoReturnable<Boolean> info) {
         BlockState blockState = world.getBlockState(pos.down());
         if (blockState.isIn(TagInit.WARP_PIPES) && blockState.get(Properties.FACING) == Direction.UP && blockState.get(Properties.WATERLOGGED)) {
@@ -32,5 +32,4 @@ public class PipeBubbles {
             info.cancel();
         }
     }
-
 }

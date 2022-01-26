@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LandPathNodeMaker.class)
 public class PathNodeMixin {
 
-    @Inject(at=@At("HEAD"), method = "getCommonNodeType(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/entity/ai/pathing/PathNodeType;", cancellable = true)
+    @Inject(at=@At("HEAD"), method = "getCommonNodeType", cancellable = true)
     private static void getCommonNodeType(BlockView world, BlockPos pos, CallbackInfoReturnable<PathNodeType> info) {
         BlockState blockState = world.getBlockState(pos);
         if (blockState.isOf(PlantBlocks.MUNCHER)) {
@@ -45,7 +45,7 @@ public class PathNodeMixin {
         }
     }
 
-    @Inject(at=@At("HEAD"), method = "getNodeTypeFromNeighbors(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos$Mutable;Lnet/minecraft/entity/ai/pathing/PathNodeType;)Lnet/minecraft/entity/ai/pathing/PathNodeType;", cancellable = true)
+    @Inject(at=@At("HEAD"), method = "getNodeTypeFromNeighbors", cancellable = true)
     private static void getNodeTypeFromNeighbors(BlockView world, BlockPos.Mutable pos, PathNodeType nodeType, CallbackInfoReturnable<PathNodeType> info) {
         int i = pos.getX();
         int j = pos.getY();

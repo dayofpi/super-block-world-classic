@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.common.blocks.mechanics;
 
 import com.dayofpi.super_block_world.client.sound.SoundInit;
-import com.dayofpi.super_block_world.common.util.entity.ModDamageSource;
+import com.dayofpi.super_block_world.registry.more.DamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -55,7 +55,7 @@ public class SpikeTrapBlock extends Block {
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         if (state.get(POWERED)) {
             if (entity instanceof LivingEntity || entity instanceof ItemEntity) {
-                entity.damage(ModDamageSource.SPIKES, 4F);
+                entity.damage(DamageSource.SPIKES, 4F);
             }
         }
     }

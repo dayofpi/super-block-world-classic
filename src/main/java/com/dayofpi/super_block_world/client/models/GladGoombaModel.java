@@ -14,6 +14,7 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 import javax.annotation.Nullable;
 
+@SuppressWarnings("unchecked")
 @Environment(EnvType.CLIENT)
 public class GladGoombaModel<T extends GladGoombaEntity> extends AnimatedGeoModel<T> {
     @Override

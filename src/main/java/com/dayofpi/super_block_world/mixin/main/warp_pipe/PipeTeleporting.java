@@ -17,7 +17,6 @@ import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(PlayerEntity.class)
 public abstract class PipeTeleporting extends LivingEntity {
-
     private int pipeCooldown;
 
     public PipeTeleporting(EntityType<? extends LivingEntity> type, World world) {
@@ -37,24 +36,24 @@ public abstract class PipeTeleporting extends LivingEntity {
             BlockPos floor = this.getBlockPos().down();
             boolean onPipe = world.getBlockState(entityPos).isAir() && world.getBlockState(floor).isIn(TagInit.WARP_PIPES) && world.getBlockState(floor).get(Properties.FACING) == Direction.UP;
             boolean inPipe = world.getBlockState(entityPos).isIn(TagInit.WARP_PIPES) && world.getBlockState(entityPos).get(Properties.FACING) == Direction.UP;
-            if (onPipe) {
-                BlockPos destination = WarpPipeBlock.warpPipeTree.getNearestBlock(floor, world);
-                if (destination != null) {
-                    this.requestTeleport(destination.getX() + 0.5, destination.getY() + 1.0F, destination.getZ() + 0.5);
-                    this.setPipeCooldown(20);
-                    world.sendEntityStatus(this, (byte) 46);
-                    world.playSound(null, destination, SoundInit.BLOCK_WARP_PIPE_TELEPORT, SoundCategory.PLAYERS, 0.5F, this.getSoundPitch());
-                }
+            BlockPos blockPos = WarpPipeBlock.warpPipeTree.getNearestBlock(floor, world);
+
+            if (onPipe && blockPos != null) {
+                this.warpToPipe(blockPos);
             } else if (inPipe) {
-                BlockPos destination = WarpPipeBlock.warpPipeTree.getNearestBlock(entityPos, world);
-                if (destination != null) {
-                    this.requestTeleport(destination.getX() + 0.5, destination.getY() + 1.0F, destination.getZ() + 0.5);
-                    this.setPipeCooldown(20);
-                    world.sendEntityStatus(this, (byte) 46);
-                    world.playSound(null, destination, SoundInit.BLOCK_WARP_PIPE_TELEPORT, SoundCategory.PLAYERS, 0.5F, this.getSoundPitch());
-                }
+                blockPos = WarpPipeBlock.warpPipeTree.getNearestBlock(entityPos, world);
+                if (blockPos != null)
+                    this.warpToPipe(blockPos);
             }
         }
+    }
+
+    private void warpToPipe(BlockPos blockPos) {
+        this.requestTeleport(blockPos.getX() + 0.5, blockPos.getY() + 1.0F, blockPos.getZ() + 0.5);
+        this.setPipeCooldown(20);
+        world.sendEntityStatus(this, (byte) 46);
+        world.playSound(null, blockPos, SoundInit.BLOCK_WARP_PIPE_TELEPORT, SoundCategory.PLAYERS, 0.5F, this.getSoundPitch());
+
     }
 
     public int getPipeCooldown() {

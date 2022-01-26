@@ -12,6 +12,7 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 import javax.annotation.Nullable;
 
+@SuppressWarnings("unchecked")
 @Environment(EnvType.CLIENT)
 public class FakeBlockModel<T extends FakeBlockEntity> extends AnimatedGeoModel<T> {
     @Override

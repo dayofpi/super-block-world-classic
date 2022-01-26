@@ -49,6 +49,12 @@ public class DryBonesShellEntity extends AbstractEnemy implements IAnimatable, M
         return (double)this.getHeight() - 1.4D + (double)(0.12F * MathHelper.cos(g * 0.8F) * f);
     }
 
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundInit.ENTITY_SHELL_BREAK;
+    }
+
     @Override
     @Nullable
     public Entity getPrimaryPassenger() {

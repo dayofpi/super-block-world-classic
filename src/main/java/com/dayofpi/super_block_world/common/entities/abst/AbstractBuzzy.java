@@ -5,7 +5,7 @@ import com.dayofpi.super_block_world.common.entities.mob.CeilingEntity;
 import com.dayofpi.super_block_world.registry.main.BlockInit;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
 import com.dayofpi.super_block_world.registry.main.TagInit;
-import com.dayofpi.super_block_world.common.util.entity.ModEntityDamageSource;
+import com.dayofpi.super_block_world.registry.more.MobDamageSource;
 import com.dayofpi.super_block_world.client.sound.SoundInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -76,7 +76,6 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     @Override
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
         if (this.isUpsideDown()) {
-            // Don't take fall damage if upside down
             if (!this.world.isClient()) {
                 this.doLandingEffects(fallDistance, damageMultiplier);
             }
@@ -91,7 +90,7 @@ public abstract class AbstractBuzzy extends CeilingEntity {
             if (this.getType() == EntityInit.SPIKE_TOP)
                 entities.forEach((entity) -> entity.damage(DamageSource.thorns(this), fallDamage + 3));
             else
-                entities.forEach((entity) -> entity.damage(ModEntityDamageSource.mobDrop(this), fallDamage + 1));
+                entities.forEach((entity) -> entity.damage(MobDamageSource.mobDrop(this), fallDamage + 1));
             this.playSound(SoundInit.ENTITY_BUZZY_IMPACT, this.getSoundVolume(), this.getSoundPitch());
             ((ServerWorld) world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
         }
@@ -114,7 +113,7 @@ public abstract class AbstractBuzzy extends CeilingEntity {
         super.tickMovement();
         BlockPos blockPos = this.getBlockPos();
 
-        if (this.isOnCeiling(blockPos) && hurtTime == 0) {
+        if (this.isOnCeiling(blockPos)) {
             this.setUpsideDown(true);
             BlockPos floor = this.getBlockPos().down();
             boolean blockBelow = world.getBlockState(floor).isSideSolidFullSquare(world, floor, Direction.UP);
@@ -132,9 +131,6 @@ public abstract class AbstractBuzzy extends CeilingEntity {
     public boolean damage(DamageSource source, float amount) {
         if (source instanceof ProjectileDamageSource) {
             this.playSound(SoundInit.ENTITY_BUZZY_BLOCK, this.getSoundVolume(), this.getSoundPitch());
-            if (!this.world.isClient) {
-                ((ServerWorld) world).spawnParticles(ParticleTypes.CRIT, this.getX() + random.nextFloat() - 0.2F, this.getY() + 1.5D, this.getZ() + random.nextFloat() - 0.2F, 2, 0.0D, 0.0D, 0.0D, 0.0D);
-            }
             return false;
         } else {
             return super.damage(source, amount);

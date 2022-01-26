@@ -13,6 +13,7 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 import javax.annotation.Nullable;
 
+@SuppressWarnings("unchecked")
 @Environment(EnvType.CLIENT)
 public class ToadModel<T extends ToadEntity> extends AnimatedGeoModel<T> {
     @Override

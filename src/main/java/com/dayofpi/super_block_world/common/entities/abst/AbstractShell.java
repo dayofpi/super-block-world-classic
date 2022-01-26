@@ -3,13 +3,16 @@ package com.dayofpi.super_block_world.common.entities.abst;
 import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.common.blocks.mechanics.ReactiveBlock;
 import com.dayofpi.super_block_world.common.entities.mob.KoopaShellEntity;
-import com.dayofpi.super_block_world.common.util.entity.ModEntityDamageSource;
+import com.dayofpi.super_block_world.common.util.entity.Stompable;
+import com.dayofpi.super_block_world.registry.more.MobDamageSource;
 import com.dayofpi.super_block_world.registry.main.TagInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -30,7 +33,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.List;
 
-public abstract class AbstractShell extends AbstractEnemy implements IAnimatable {
+public abstract class AbstractShell extends AbstractEnemy implements IAnimatable, Stompable {
     private static final TrackedData<Boolean> HAS_MOB;
     private static final TrackedData<Boolean> SHAKING;
     private final AnimationFactory factory = new AnimationFactory(this);
@@ -51,6 +54,14 @@ public abstract class AbstractShell extends AbstractEnemy implements IAnimatable
     protected AbstractShell(EntityType<? extends AbstractEnemy> entityType, World world) {
         super(entityType, world);
         this.experiencePoints = 0;
+    }
+
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        if (this.hasMob()) {
+            this.leaveShell();
+            return false;
+        } else return super.damage(source, amount);
     }
 
     protected abstract void leaveShell();
@@ -91,7 +102,7 @@ public abstract class AbstractShell extends AbstractEnemy implements IAnimatable
     @Override
     public void tickMovement() {
         super.tickMovement();
-        if (this.hasMob()) {
+        if (this.hasMob() && !this.world.isClient) {
             ++timer;
             if (timer >= 100) {
                 this.setShaking(true);
@@ -103,8 +114,8 @@ public abstract class AbstractShell extends AbstractEnemy implements IAnimatable
         }
 
         if (this.isAlive() && this.getVelocity().horizontalLengthSquared() > 0.02D) {
-            List<Entity> damageable = world.getOtherEntities(this, this.getBoundingBox().contract(0.D, 0.2D, 0.D), Entity::isLiving);
-            damageable.forEach(entity -> entity.damage(ModEntityDamageSource.shell(this), 4));
+            List<Entity> damageable = world.getOtherEntities(this, this.getBoundingBox().contract(0.D, 0.2D, 0.D).expand(0.15D, 0.0D, 0.15D), Entity::isLiving);
+            damageable.forEach(entity -> entity.damage(MobDamageSource.shell(this), 4));
 
             for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 1, 0, 1)) {
                 BlockState state = world.getBlockState(blockPos);
@@ -163,5 +174,12 @@ public abstract class AbstractShell extends AbstractEnemy implements IAnimatable
     @Override
     public AnimationFactory getFactory() {
         return factory;
+    }
+
+    @Override
+    public void stompResult(LivingEntity livingEntity) {
+        if (this.getVelocity().horizontalLengthSquared() > 0.0D) {
+            this.setVelocity(0.0D, this.getVelocity().y, 0.0D);
+        } else this.pushAwayFrom(livingEntity);
     }
 }

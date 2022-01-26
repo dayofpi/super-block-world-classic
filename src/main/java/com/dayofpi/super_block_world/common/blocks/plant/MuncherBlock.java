@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.common.blocks.plant;
 
-import com.dayofpi.super_block_world.common.util.entity.ModDamageSource;
+import com.dayofpi.super_block_world.registry.more.DamageSource;
 import com.dayofpi.super_block_world.registry.main.BlockInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -31,7 +31,7 @@ MuncherBlock extends PlantBlock {
 
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!world.isClient) {
-            entity.damage(ModDamageSource.MUNCHER, 2.0F);
+            entity.damage(DamageSource.MUNCHER, 2.0F);
         }
     }
 }

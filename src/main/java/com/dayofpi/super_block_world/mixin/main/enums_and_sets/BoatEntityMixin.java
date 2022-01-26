@@ -25,5 +25,6 @@ public abstract class BoatEntityMixin {
         } else if (this.getBoatType() == ModBoatType.BELL) {
             info.setReturnValue(ItemInit.BELL_BOAT);
             info.cancel();
-        }    }
+        }
+    }
 }

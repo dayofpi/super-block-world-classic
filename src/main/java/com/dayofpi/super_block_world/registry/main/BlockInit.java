@@ -117,14 +117,14 @@ public class BlockInit {
 
     public static final Block GLOOMSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.DARK_AQUA).requiresTool().strength(1.2F, 1.0F).sounds(ModSoundGroup.TOADSTONE));
     public static final Block SMOOTH_GLOOMSTONE = new Block(FabricBlockSettings.copyOf(GLOOMSTONE));
-    public static final Block CHISELED_GLOOMSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(GLOOMSTONE));
     public static final Block GLOOMSTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(GLOOMSTONE));
+    public static final Block CHISELED_GLOOMSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(GLOOMSTONE));
 
     public static final Block HARDSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.LIGHT_GRAY).sounds(ModSoundGroup.HARDSTONE).requiresTool().strength(4.0F, 10.0F));
     public static final Block POLISHED_HARDSTONE = new Block(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block CHISELED_HARDSTONE = new Block(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block HARDSTONE_PILLAR = new PillarBlock(FabricBlockSettings.copyOf(HARDSTONE));
-    public static final Block HARDSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(HARDSTONE));
+    public static final Block HARDSTONE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block CHISELED_HARDSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(HARDSTONE_BRICKS));
     public static final Block CRACKED_HARDSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(HARDSTONE_BRICKS).strength(2.0F, 5.0F));
 
@@ -143,6 +143,7 @@ public class BlockInit {
     public static final Block CERISE_TILES = new Block(FabricBlockSettings.copyOf(CERISE_BLOCK));
 
     public static final Block GOLDEN_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(TOADSTONE_BRICKS).sounds(BlockSoundGroup.METAL).mapColor(MapColor.GOLD));
+    public static final Block GOLDEN_TILES = new Block(FabricBlockSettings.copyOf(TOADSTONE_BRICKS).sounds(BlockSoundGroup.METAL).mapColor(MapColor.GOLD));
     public static final Block CRYSTAL_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(TOADSTONE_BRICKS).sounds(BlockSoundGroup.AMETHYST_BLOCK).mapColor(MapColor.PURPLE));
 
     public static final Block STRIPPED_AMANITA_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
@@ -200,8 +201,7 @@ public class BlockInit {
     public static final Block BELL_SIGN = new SignBlock(FabricBlockSettings.copyOf(BELL_PLANKS).strength(1.0F).noCollision(), ModSignType.BELL);
     public static final Block BELL_WALL_SIGN = new WallSignBlock(FabricBlockSettings.copyOf(BELL_SIGN), ModSignType.BELL);
 
-
-    public static final Block POISON = new PoisonBlock(FluidInit.STILL_POISON, FabricBlockSettings.of(Material.LAVA, MapColor.PURPLE).noCollision().ticksRandomly().strength(100.0F).luminance(7));
+    public static final Block POISON = new PoisonBlock(FluidInit.STILL_POISON, FabricBlockSettings.of(Material.LAVA, MapColor.PURPLE).noCollision().strength(100.0F).luminance(7));
 
     private static boolean never(BlockState state, BlockView world, BlockPos pos) {
         return false;
@@ -326,6 +326,7 @@ public class BlockInit {
         registerBlock("gloomstone_brick_stairs", VariantBlocks.GLOOMSTONE_BRICK_STAIRS);
         registerBlock("gloomstone_brick_wall", VariantBlocks.GLOOMSTONE_BRICK_WALL);
         registerBlock("golden_bricks", GOLDEN_BRICKS);
+        registerBlock("golden_tiles", GOLDEN_TILES);
         registerBlock("golden_brick_slab", VariantBlocks.GOLDEN_BRICK_SLAB);
         registerBlock("golden_brick_stairs", VariantBlocks.GOLDEN_BRICK_STAIRS);
         registerBlock("golden_brick_wall", VariantBlocks.GOLDEN_BRICK_WALL);

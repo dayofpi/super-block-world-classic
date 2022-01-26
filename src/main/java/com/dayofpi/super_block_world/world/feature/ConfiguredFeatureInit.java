@@ -53,15 +53,12 @@ public class ConfiguredFeatureInit {
         registerConfiguredFeature("topping_amethyst", ConfiguredOres.TOPPING_AMETHYST);
         registerConfiguredFeature("disk_sand", ConfiguredOres.DISK_SAND);
         registerConfiguredFeature("disk_seastone", ConfiguredOres.DISK_SEASTONE);
-        registerConfiguredFeature("horsetail", ConfiguredPlants.HORSETAIL);
         registerConfiguredFeature("horsetail_patch", ConfiguredPlants.HORSETAIL_PATCH);
-        registerConfiguredFeature("stump", ConfiguredPlants.STUMP);
         registerConfiguredFeature("stump_patch", ConfiguredPlants.STUMP_PATCH);
         registerConfiguredFeature("beanstalk", ConfiguredTrees.BEANSTALK);
         registerConfiguredFeature("beanstalk_budding", ConfiguredTrees.BEANSTALK_BUDDING);
         registerConfiguredFeature("beanstalk_underground", ConfiguredTrees.BEANSTALK_UNDERGROUND);
         registerConfiguredFeature("beanstalk_budding_underground", ConfiguredTrees.BEANSTALK_BUDDING_UNDERGROUND);
-        registerConfiguredFeature("cactus", ConfiguredPlants.CACTUS);
         registerConfiguredFeature("cactus_patch", ConfiguredPlants.CACTUS_PATCH);
         registerConfiguredFeature("muncher", ConfiguredPlants.MUNCHER);
         registerConfiguredFeature("frozen_muncher", ConfiguredPlants.FROZEN_MUNCHER);

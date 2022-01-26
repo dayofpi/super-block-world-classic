@@ -62,7 +62,7 @@ public class GoombaEntity extends AbstractEnemy implements IAnimatable {
     }
 
     public static boolean canSpawn(EntityType<? extends GoombaEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return world.getBlockState(pos.down()).allowsSpawning(world, pos, type) && pos.getY() > 0 && !(world.getLightLevel(LightType.BLOCK, pos) > 0);
+        return pos.getY() > 0 && !(world.getLightLevel(LightType.BLOCK, pos) > 0);
     }
 
     public void initGoals() {
@@ -142,13 +142,21 @@ public class GoombaEntity extends AbstractEnemy implements IAnimatable {
     @Override
     public void tickMovement() {
         super.tickMovement();
-        if (this.isAlive() && this.getSize() == 1) {
-            List<ItemEntity> list = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ItemInit.SUPER_MUSHROOM));
-            if (!list.isEmpty()) {
-                this.setSize(2);
-                this.playSound(SoundInit.ITEM_POWER_UP, 0.5F, 1.0F);
-                this.setPersistent();
-                list.get(0).discard();
+        if (this.isAlive()) {
+            if (this.getSize() < 2) {
+                List<ItemEntity> list = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ItemInit.SUPER_MUSHROOM));
+                if (!list.isEmpty()) {
+                    this.setSize(this.getSize() + 1);
+                    this.playSound(SoundInit.ITEM_POWER_UP, 0.5F, 1.0F);
+                    list.get(0).discard();
+                }
+            }
+            if (this.getSize() == 0) {
+                PlayerEntity playerEntity = world.getClosestPlayer(this, 1);
+                if (playerEntity != null) {
+                    Vec3d vec3d = playerEntity.getVelocity();
+                    playerEntity.slowMovement(playerEntity.getBlockStateAtPos(), new Vec3d(0.1D, 0.5D, 0.1D));
+                }
             }
         }
     }
@@ -164,7 +172,7 @@ public class GoombaEntity extends AbstractEnemy implements IAnimatable {
         }
         if (this.random.nextFloat() > 0.5F) {
             this.setSize(1);
-            if (this.random.nextInt(7) == 0) {
+            if (this.random.nextInt(5) == 0) {
                 GoombaEntity goombaEntity = EntityInit.GOOMBA.create(world.toServerWorld());
                 if (goombaEntity != null) {
                     goombaEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0F);
@@ -303,11 +311,11 @@ public class GoombaEntity extends AbstractEnemy implements IAnimatable {
     }
 
     public void calculateDimensions() {
-        double d = this.getX();
-        double e = this.getY();
-        double f = this.getZ();
+        double x = this.getX();
+        double y = this.getY();
+        double z = this.getZ();
         super.calculateDimensions();
-        this.setPosition(d, e, f);
+        this.setPosition(x, y, z);
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {

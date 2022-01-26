@@ -47,13 +47,12 @@ public class DryBonesModel<T extends DryBonesEntity> extends AnimatedGeoModel<T>
 
         head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
         jaw.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
-        head.setRotationZ(extraData.headPitch * ((float) Math.PI / 180F));
-        jaw.setRotationZ(extraData.headPitch * ((float) Math.PI / 180F));
+        head.setRotationZ(extraData.headPitch * ((float) Math.PI / 180F) * 0.5F);
+        jaw.setRotationZ(extraData.headPitch * ((float) Math.PI / 180F) * 0.5F);
 
         if (!entity.isAttacking()) {
             head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
             jaw.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
-
         }
     }
 

@@ -26,7 +26,7 @@ public class SpecialSpawnCases {
         return world.isSkyVisible(pos) && (world.getBlockState(pos.down()).isOf(BlockInit.SNOWY_SHERBET_SOIL) || world.getBlockState(pos.down()).isOf(Blocks.ICE));
     }
 
-    @Inject(at = @At("HEAD"), method = "canSpawn(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/ServerWorldAccess;Lnet/minecraft/entity/SpawnReason;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)Z", cancellable = true)
+    @Inject(at = @At("HEAD"), method = "canSpawn", cancellable = true)
     private static <T extends MobEntity> void canSpawn(EntityType<T> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> info) {
         if (type == EntityInit.BUZZY_BEETLE) {
             info.setReturnValue(BuzzyEntity.canBuzzySpawn(type, world, reason, pos, random));

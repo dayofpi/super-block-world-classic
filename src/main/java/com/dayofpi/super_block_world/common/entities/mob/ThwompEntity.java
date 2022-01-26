@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.common.entities.mob;
 import com.dayofpi.super_block_world.client.sound.SoundInit;
 import com.dayofpi.super_block_world.common.blocks.mechanics.ReactiveBlock;
 import com.dayofpi.super_block_world.common.util.entity.DirectionHelper;
-import com.dayofpi.super_block_world.common.util.entity.ModEntityDamageSource;
+import com.dayofpi.super_block_world.registry.more.MobDamageSource;
 import com.dayofpi.super_block_world.common.util.entity.StaticBodyControl;
 import com.dayofpi.super_block_world.registry.main.TagInit;
 import net.minecraft.block.BlockState;
@@ -188,7 +188,7 @@ public class ThwompEntity extends GolemEntity {
         if (this.isOnGround()) {
             if (riseTimer == 0) {
                 List<Entity> damageable = world.getOtherEntities(this, this.getBoundingBox().expand(0.5).offset(0,0.5, 0), Entity::isLiving);
-                damageable.forEach(entity -> entity.damage(ModEntityDamageSource.mobDrop(this), 9));
+                damageable.forEach(entity -> entity.damage(MobDamageSource.mobDrop(this), 9));
                 this.thwompLandingEffects();
             }
             if (riseTimer < 25)

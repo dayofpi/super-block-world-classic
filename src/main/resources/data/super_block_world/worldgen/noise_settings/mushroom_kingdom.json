@@ -2786,7 +2786,8 @@
                     "offset": 0,
                     "surface_type": "floor",
                     "add_surface_depth": false,
-          "add_surface_secondary_depth": false                  },
+                    "secondary_depth_range": 0
+                  },
                   "then_run": {
                     "type": "minecraft:sequence",
                     "sequence": [
@@ -2873,7 +2874,8 @@
                   "offset": 1,
                   "surface_type": "floor",
                   "add_surface_depth": true,
-          "add_surface_secondary_depth": false                },
+                  "secondary_depth_range": 0
+                },
                 "then_run": {
                   "type": "minecraft:block",
                   "result_state": {
@@ -2919,7 +2921,8 @@
                         "offset": 0,
                         "surface_type": "floor",
                         "add_surface_depth": false,
-              "add_surface_secondary_depth": false                      },
+                        "secondary_depth_range": 0
+                      },
                       "then_run": {
                         "type": "minecraft:block",
                         "result_state": {
@@ -2935,7 +2938,8 @@
                       "offset": 1,
                       "surface_type": "floor",
                       "add_surface_depth": false,
-            "add_surface_secondary_depth": false                    },
+                      "secondary_depth_range": 0
+                    },
                     "then_run": {
                       "type": "minecraft:block",
                       "result_state": {
@@ -3002,7 +3006,8 @@
                     "offset": 0,
                     "surface_type": "floor",
                     "add_surface_depth": false,
-          "add_surface_secondary_depth": false                  },
+                    "secondary_depth_range": 0
+                  },
                   "then_run": {
                     "type": "minecraft:block",
                     "result_state": {
@@ -3018,7 +3023,8 @@
                   "offset": 1,
                   "surface_type": "floor",
                   "add_surface_depth": false,
-          "add_surface_secondary_depth": false                },
+                  "secondary_depth_range": 0
+                },
                 "then_run": {
                   "type": "minecraft:block",
                   "result_state": {
@@ -3061,7 +3067,8 @@
                     "offset": 0,
                     "surface_type": "floor",
                     "add_surface_depth": false,
-          "add_surface_secondary_depth": false                  },
+                    "secondary_depth_range": 0
+                  },
                   "then_run": {
                     "type": "minecraft:sequence",
                     "sequence": [
@@ -3100,7 +3107,8 @@
                   "offset": 1,
                   "surface_type": "floor",
                   "add_surface_depth": true,
-          "add_surface_secondary_depth": false                },
+                  "secondary_depth_range": 0
+                },
                 "then_run": {
                   "type": "minecraft:block",
                   "result_state": {
@@ -3143,7 +3151,8 @@
                     "offset": 0,
                     "surface_type": "floor",
                     "add_surface_depth": false,
-          "add_surface_secondary_depth": false                  },
+                    "secondary_depth_range": 0
+                  },
                   "then_run": {
                     "type": "minecraft:sequence",
                     "sequence": [
@@ -3191,7 +3200,8 @@
                   "offset": 1,
                   "surface_type": "floor",
                   "add_surface_depth": true,
-          "add_surface_secondary_depth": true                },
+                  "secondary_depth_range": 1
+                },
                 "then_run": {
                   "type": "minecraft:block",
                   "result_state": {
@@ -3260,7 +3270,8 @@
                     "offset": 0,
                     "surface_type": "floor",
                     "add_surface_depth": false,
-          "add_surface_secondary_depth": false                  },
+                    "secondary_depth_range": 0
+                  },
                   "then_run": {
                     "type": "minecraft:sequence",
                     "sequence": [
@@ -3296,7 +3307,8 @@
                   "offset": 1,
                   "surface_type": "floor",
                   "add_surface_depth": true,
-          "add_surface_secondary_depth": true                },
+                  "secondary_depth_range": 1
+                },
                 "then_run": {
                   "type": "minecraft:block",
                   "result_state": {
@@ -3339,7 +3351,8 @@
                     "offset": 0,
                     "surface_type": "floor",
                     "add_surface_depth": false,
-          "add_surface_secondary_depth": false                  },
+                    "secondary_depth_range": 0
+                  },
                   "then_run": {
                     "type": "minecraft:block",
                     "result_state": {
@@ -3355,7 +3368,8 @@
                   "offset": 1,
                   "surface_type": "floor",
                   "add_surface_depth": true,
-          "add_surface_secondary_depth": false                },
+                  "secondary_depth_range": 0
+                },
                 "then_run": {
                   "type": "minecraft:block",
                   "result_state": {

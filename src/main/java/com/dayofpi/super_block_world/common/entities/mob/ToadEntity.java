@@ -10,6 +10,7 @@ import com.dayofpi.super_block_world.common.entities.abst.AbstractToad;
 import com.dayofpi.super_block_world.common.entities.goals.FollowPrincessGoal;
 import com.dayofpi.super_block_world.common.entities.goals.OpenDoorsGoal;
 import com.dayofpi.super_block_world.common.entities.goals.ToadLookGoal;
+import com.dayofpi.super_block_world.common.util.entity.Stompable;
 import com.dayofpi.super_block_world.registry.main.BlockInit;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
 import com.dayofpi.super_block_world.registry.main.ItemInit;
@@ -57,7 +58,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import java.util.List;
 import java.util.Map;
 
-public class ToadEntity extends AbstractToad implements IAnimatable {
+public class ToadEntity extends AbstractToad implements IAnimatable, Stompable {
     private static final TrackedData<Integer> COLOR;
     private static final TrackedData<Integer> EMOTION;
     private static final TrackedData<Integer> TOAD_STATE;
@@ -331,5 +332,10 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
     @Override
     public AnimationFactory getFactory() {
         return factory;
+    }
+
+    @Override
+    public void stompResult(LivingEntity livingEntity) {
+        this.setEmotion(2);
     }
 }

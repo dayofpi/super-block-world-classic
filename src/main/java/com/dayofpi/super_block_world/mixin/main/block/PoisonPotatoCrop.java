@@ -29,7 +29,7 @@ public class PoisonPotatoCrop extends CropBlock {
                 FluidState fluidState = world.getFluidState(blockPos.offset(direction));
                 if (fluidState.isIn(TagInit.POISON)) {
                     // If there is poison next to it, always drop a poisonous potato
-                    world.breakBlock(pos, false);
+                    Block.dropStack(world, pos, new ItemStack(Items.POTATO, 1));
                     Block.dropStack(world, pos, new ItemStack(Items.POISONOUS_POTATO, 2));
                 }
             }

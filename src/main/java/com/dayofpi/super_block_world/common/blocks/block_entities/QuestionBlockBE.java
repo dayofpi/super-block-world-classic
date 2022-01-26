@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.common.blocks.block_entities;
 
 import com.dayofpi.super_block_world.registry.main.BlockEntityInit;
-import com.dayofpi.super_block_world.common.util.block_entity.ImplementedInventory;
+import com.dayofpi.super_block_world.common.util.block.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventories;
