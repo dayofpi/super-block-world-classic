@@ -11,13 +11,6 @@
   "tooltip.super_block_world.projectile_deflect": "Projectile Deflection",
   "tooltip.super_block_world.jump": "Super Jump",
   "tooltip.super_block_world.stomp": "Stomping",
-  "tooltip.super_block_world.one_up": "Absorption (5:00)",
-  "tooltip.super_block_world.fire_resist": "Fire Resistance (0:10)",
-  "tooltip.super_block_world.slow_falling": "Slow Falling (0:10)",
-  "tooltip.super_block_world.star": "Star Power (0:22)",
-  "tooltip.super_block_world.super_mushroom": "Instant Health",
-  "tooltip.super_block_world.golden_mushroom": "Speed (1:40)",
-  "tooltip.super_block_world.poison_mushroom": "Poison II (0:50)",
 
   "advancements.sbw.root.title": "Super Block World",
   "advancements.sbw.root.description": "Here we go!",

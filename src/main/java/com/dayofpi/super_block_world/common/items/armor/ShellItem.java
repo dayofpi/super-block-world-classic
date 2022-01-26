@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.common.items.armor;
 
 import com.dayofpi.super_block_world.common.entities.mob.KoopaShellEntity;
+import com.dayofpi.super_block_world.common.util.TooltipUtil;
 import com.dayofpi.super_block_world.registry.main.EntityInit;
 import com.dayofpi.super_block_world.registry.main.ItemInit;
 import com.dayofpi.super_block_world.registry.more.Materials;
@@ -9,6 +10,8 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
@@ -38,7 +41,7 @@ public class ShellItem extends ArmorItem {
         if (stack.isOf(ItemInit.BUZZY_SHELL)) {
             tooltip.add(new TranslatableText("tooltip.super_block_world.projectile_deflect").formatted(Formatting.GOLD));
         } else if (stack.isOf(ItemInit.RED_SHELL)) {
-            tooltip.add(new TranslatableText("tooltip.super_block_world.fire_resist").formatted(Formatting.BLUE));
+            TooltipUtil.tooltipFromEffect(tooltip, new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE), 1);
         }
     }
 
