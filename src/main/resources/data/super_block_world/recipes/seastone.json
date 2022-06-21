@@ -9,11 +9,11 @@
       "item": "super_block_world:toadstone"
     },
     "X": {
-      "item": "minecraft:seagrass"
+      "item": "minecraft:scute"
     }
   },
   "result": {
     "item": "super_block_world:seastone",
-    "count": 2
+    "count": 3
   }
 }

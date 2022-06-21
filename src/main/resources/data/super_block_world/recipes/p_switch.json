@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    "///"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "/": {
+      "item": "minecraft:stone_slab"
+    },
+    "X": {
+      "item": "super_block_world:power_shard"
+    }
+  },
+  "result": {
+    "item": "super_block_world:p_switch",
+    "count": 3
+  }
+}

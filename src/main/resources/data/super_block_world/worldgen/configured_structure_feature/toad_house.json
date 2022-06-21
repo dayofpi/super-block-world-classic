@@ -1,7 +1,0 @@
-{
-  "type": "super_block_world:toad_house",
-  "config": {
-    "start_pool": "super_block_world:toad_house",
-    "size": 1
-  }
-}

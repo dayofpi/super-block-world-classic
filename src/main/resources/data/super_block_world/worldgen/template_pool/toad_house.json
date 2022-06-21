@@ -6,8 +6,8 @@
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "projection": "rigid",
         "location": "super_block_world:toad_house",
+        "projection": "rigid",
         "processors": "super_block_world:toad_house"
       }
     }

@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "ambientocclusion": true,
-  "textures": {
-    "cross": "super_block_world:block/icicle"
-  }
-}

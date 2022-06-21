@@ -1,6 +1,6 @@
 {
-  "parent": "super_block_world:item/template_worn_flower",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "super_block_world:block/yellow_songflower_still"
+    "layer0": "super_block_world:item/yellow_songflower"
   }
 }

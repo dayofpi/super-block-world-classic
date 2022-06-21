@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "super_block_world:seastone_bricks"
-  },
-  "result": "super_block_world:seastone_brick_stairs",
-  "count": 1
-}

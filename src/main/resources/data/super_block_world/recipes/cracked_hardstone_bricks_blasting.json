@@ -1,6 +1,5 @@
 {
   "type": "minecraft:blasting",
-  "group": "cracked_hardstone_bricks",
   "ingredient": {
     "item": "super_block_world:hardstone_bricks"
   },

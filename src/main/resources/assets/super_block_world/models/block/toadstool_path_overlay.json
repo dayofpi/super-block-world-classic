@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "super_block_world:block/toadstool_soil",
+    "overlay": "super_block_world:block/toadstool_path_overlay"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        15,
+        16
+      ],
+      "shade": false,
+      "faces": {
+        "up": {
+          "texture": "#overlay",
+          "tintindex": 0,
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      }
+    }
+  ]
+}

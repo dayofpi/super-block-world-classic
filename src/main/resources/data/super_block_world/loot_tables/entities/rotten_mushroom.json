@@ -7,23 +7,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "super_block_world:purple_mushroom",
-          "conditions": [
-            {
-              "condition": "minecraft:random_chance_with_looting",
-              "chance": 0.1,
-              "looting_multiplier": 0.01
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "bonus_rolls": 0,
-      "entries": [
-        {
-          "type": "minecraft:item",
           "name": "minecraft:rotten_flesh",
           "functions": [
             {
@@ -31,7 +14,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "min": 0,
-                "max": 2
+                "max": 1
               },
               "add": false
             },
@@ -58,8 +41,11 @@
       ],
       "conditions": [
         {
+          "condition": "minecraft:killed_by_player"
+        },
+        {
           "condition": "minecraft:random_chance_with_looting",
-          "chance": 0.04,
+          "chance": 0.2,
           "looting_multiplier": 0.01
         }
       ]

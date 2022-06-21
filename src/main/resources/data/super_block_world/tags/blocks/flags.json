@@ -1,0 +1,22 @@
+{
+  "replace": "false",
+  "values": [
+    "super_block_world:white_flag",
+    "super_block_world:orange_flag",
+    "super_block_world:magenta_flag",
+    "super_block_world:light_blue_flag",
+    "super_block_world:yellow_flag",
+    "super_block_world:lime_flag",
+    "super_block_world:pink_flag",
+    "super_block_world:gray_flag",
+    "super_block_world:light_gray_flag",
+    "super_block_world:cyan_flag",
+    "super_block_world:purple_flag",
+    "super_block_world:blue_flag",
+    "super_block_world:brown_flag",
+    "super_block_world:green_flag",
+    "super_block_world:red_flag",
+    "super_block_world:black_flag",
+    "super_block_world:rainbow_flag"
+  ]
+}

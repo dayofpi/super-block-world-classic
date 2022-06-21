@@ -1,0 +1,142 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:cloud_boots"
+    },
+    "title": {
+      "translate": "advancements.sbw.odyssey.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.odyssey.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/ghost_house",
+  "criteria": {
+    "amanita_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:amanita_forest"
+          }
+        }
+      }
+    },
+    "bell_plains": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:bell_plains"
+          }
+        }
+      }
+    },
+    "cherry_fields": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:cherry_fields"
+          }
+        }
+      }
+    },
+    "dry_dry_desert": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:dry_dry_desert"
+          }
+        }
+      }
+    },
+    "forest_of_illusion": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:forest_of_illusion"
+          }
+        }
+      }
+    },
+    "moo_moo_meadow": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:moo_moo_meadow"
+          }
+        }
+      }
+    },
+    "mushroom_grasslands": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:mushroom_grasslands"
+          }
+        }
+      }
+    },
+    "mushroom_hills": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:mushroom_hills"
+          }
+        }
+      }
+    },
+    "yoshis_island": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:yoshis_island"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "amanita_forest"
+    ],
+    [
+      "bell_plains"
+    ],
+    [
+      "cherry_fields"
+    ],
+    [
+      "dry_dry_desert"
+    ],
+    [
+      "forest_of_illusion"
+    ],
+    [
+      "moo_moo_meadow"
+    ],
+    [
+      "mushroom_grasslands"
+    ],
+    [
+      "mushroom_hills"
+    ],
+    [
+      "yoshis_island"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

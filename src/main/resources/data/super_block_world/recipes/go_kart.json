@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "0X0",
+    "0#0"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:bronze_ingot"
+    },
+    "X": {
+      "item": "minecraft:coal"
+    },
+    "0": {
+      "item": "super_block_world:kart_tire"
+    }
+  },
+  "result": {
+    "item": "super_block_world:go_kart"
+  }
+}

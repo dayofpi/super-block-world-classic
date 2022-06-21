@@ -1,0 +1,16 @@
+{
+  "feature": "super_block_world:amanita_with_vines",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "super_block_world:amanita_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    }
+  ]}

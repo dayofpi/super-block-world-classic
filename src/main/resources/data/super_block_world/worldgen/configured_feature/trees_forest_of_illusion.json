@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.2,
+        "feature": "super_block_world:dark_amanita_big"
+      }
+    ],
+    "default": "super_block_world:dark_amanita_huge"
+  }
+}

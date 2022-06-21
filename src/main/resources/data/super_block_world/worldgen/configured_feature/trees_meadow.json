@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.2,
+        "feature": {
+          "feature": "minecraft:huge_brown_mushroom",
+          "placement": []
+        }
+      },
+      {
+        "chance": 0.2,
+        "feature": {
+          "feature": "super_block_world:huge_yellow_mushroom",
+          "placement": []
+        }
+      }
+    ],
+    "default": "super_block_world:amanita"
+  }
+}

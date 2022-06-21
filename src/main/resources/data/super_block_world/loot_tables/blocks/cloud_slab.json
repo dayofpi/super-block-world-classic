@@ -10,12 +10,9 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "super_block_world:cloud_slab",
               "functions": [
                 {
                   "function": "minecraft:set_count",
-                  "count": 2,
-                  "add": false,
                   "conditions": [
                     {
                       "condition": "minecraft:block_state_property",
@@ -24,9 +21,15 @@
                         "type": "double"
                       }
                     }
-                  ]
+                  ],
+                  "count": 2.0,
+                  "add": false
+                },
+                {
+                  "function": "minecraft:explosion_decay"
                 }
               ],
+              "name": "super_block_world:cloud_slab",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",

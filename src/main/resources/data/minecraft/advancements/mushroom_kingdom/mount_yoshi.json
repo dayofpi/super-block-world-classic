@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:yoshi_egg"
+    },
+    "title": {
+      "translate": "advancements.sbw.mount_yoshi.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.mount_yoshi.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/surprise_robberies",
+  "criteria": {
+    "mounted_yoshi": {
+      "trigger": "minecraft:started_riding",
+      "conditions": {
+        "player": {
+          "vehicle": {
+            "type": "super_block_world:yoshi"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "mounted_yoshi"
+    ]
+  ]
+}

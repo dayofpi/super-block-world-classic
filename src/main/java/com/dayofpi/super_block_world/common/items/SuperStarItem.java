@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.common.items;
 
-import com.dayofpi.super_block_world.client.sound.SoundInit;
-import com.dayofpi.super_block_world.common.util.TooltipUtil;
-import com.dayofpi.super_block_world.registry.more.StatusEffectInit;
+import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.util.TooltipUtil;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class SuperStarItem extends Item {
-    private static final StatusEffectInstance STAR_POWER_INSTANCE = new StatusEffectInstance(StatusEffectInit.STAR_POWER, 500, 0, false, false, true);
+    private static final StatusEffectInstance STAR_POWER_INSTANCE = new StatusEffectInstance(Main.STAR_POWER, 500, 0, false, false, true);
 
     public SuperStarItem(Settings settings) {
         super(settings);
@@ -32,9 +32,9 @@ public class SuperStarItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
 
-        if (!user.hasStatusEffect(StatusEffectInit.STAR_POWER)) {
-            world.playSound(null, user.getBlockPos(), SoundInit.MUSIC_STARMAN_LEAD, SoundCategory.MUSIC, 1.0F, 1.0F);
-            user.addStatusEffect(STAR_POWER_INSTANCE);
+        if (!user.hasStatusEffect(Main.STAR_POWER)) {
+            world.playSound(null, user.getBlockPos(), Sounds.MUSIC_STARMAN_LEAD, SoundCategory.MUSIC, 1.0F, 1.0F);
+            user.addStatusEffect(new StatusEffectInstance(Main.STAR_POWER, 500, 0, false, false, true));
             user.incrementStat(Stats.USED.getOrCreateStat(this));
             if (!user.getAbilities().creativeMode) {
                 itemStack.decrement(1);

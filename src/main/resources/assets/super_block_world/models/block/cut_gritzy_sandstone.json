@@ -1,8 +1,7 @@
 {
-  "parent": "minecraft:block/cube_bottom_top",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "bottom": "super_block_world:block/gritzy_sandstone_bottom",
-    "top": "super_block_world:block/gritzy_sandstone_top",
+    "end": "super_block_world:block/gritzy_sandstone_top",
     "side": "super_block_world:block/cut_gritzy_sandstone"
   }
 }

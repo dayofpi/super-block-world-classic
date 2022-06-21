@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "super_block_world:vanillate_bricks"
-  },
-  "result": "super_block_world:vanillate_brick_slab",
-  "count": 2
-}

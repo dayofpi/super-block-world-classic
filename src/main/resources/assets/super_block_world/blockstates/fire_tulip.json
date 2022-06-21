@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "super_block_world:block/plants/fire_tulip"
+      "model": "super_block_world:block/fire_tulip"
     }
   }
 }

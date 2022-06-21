@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "super_block_world:toad_town",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1303599786,
+    "spacing": 30,
+    "separation": 8
+  }
+}

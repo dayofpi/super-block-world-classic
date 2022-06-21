@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "super_block_world:bell_cap",
+              "name": "super_block_world:darkened_bell_cap",
               "conditions": [
                 {
                   "condition": "minecraft:alternative",

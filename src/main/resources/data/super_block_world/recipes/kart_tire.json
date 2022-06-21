@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "X": {
+      "item": "super_block_world:spindrift_blossom"
+    },
+    "#": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "super_block_world:kart_tire"
+  }
+}

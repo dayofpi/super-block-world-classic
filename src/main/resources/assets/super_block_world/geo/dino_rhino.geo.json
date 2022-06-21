@@ -1,0 +1,84 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.dino_rhino",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 17.5, -3],
+					"cubes": [
+						{"origin": [-2, 17, -3], "size": [12, 4, 0], "pivot": [0, 18.5, -3], "rotation": [0, -90, 0], "uv": [39, 25]},
+						{"origin": [-7, 6, -7], "size": [14, 11, 14], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "l_f_leg",
+					"parent": "root",
+					"pivot": [4.5, 5.5, -4.5],
+					"cubes": [
+						{"origin": [0, 0, -8], "size": [7, 6, 7], "uv": [0, 48]}
+					]
+				},
+				{
+					"name": "r_f_leg",
+					"parent": "root",
+					"pivot": [-2.5, 5.5, -4.5],
+					"cubes": [
+						{"origin": [-7, 0, -8], "size": [7, 6, 7], "uv": [0, 48]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "root",
+					"pivot": [0, 14, -6.5],
+					"rotation": [-25, 0, 0],
+					"cubes": [
+						{"origin": [-8, 4.30953, -13.62523], "size": [16, 16, 7], "uv": [0, 25]}
+					]
+				},
+				{
+					"name": "r_ear",
+					"parent": "head",
+					"pivot": [-6.5, 16.80953, -9.12523],
+					"rotation": [0, 0, 22.5],
+					"cubes": [
+						{"origin": [-13.34683, 15.14685, -10.54785], "size": [6, 5, 2], "uv": [46, 41], "mirror": true}
+					]
+				},
+				{
+					"name": "l_ear",
+					"parent": "head",
+					"pivot": [7.5, 16.80953, -9.12523],
+					"rotation": [0, 0, -22.5],
+					"cubes": [
+						{"origin": [7.34683, 15.14685, -10.54785], "size": [6, 5, 2], "uv": [46, 41]}
+					]
+				},
+				{
+					"name": "l_b_leg",
+					"parent": "root",
+					"pivot": [4.5, 5.5, 2],
+					"cubes": [
+						{"origin": [0, 0, 0], "size": [7, 6, 7], "uv": [0, 48]}
+					]
+				},
+				{
+					"name": "r_b_leg",
+					"parent": "root",
+					"pivot": [-2.5, 5.5, 2],
+					"cubes": [
+						{"origin": [-7, 0, 0], "size": [7, 6, 7], "uv": [0, 48]}
+					]
+				}
+			]
+		}
+	]
+}

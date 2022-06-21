@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "state_provider": {
+      "fallback": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "super_block_world:seastone"
+        }
+      },
+      "rules": []
+    },
+    "target": {
+      "type": "minecraft:matching_blocks",
+      "blocks": [
+        "super_block_world:cherry_soil",
+        "super_block_world:toadstool_soil",
+        "super_block_world:gritzy_sandstone",
+        "super_block_world:vanillate"
+      ]
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 4,
+        "max_inclusive": 7
+      }
+    },
+    "half_height": 1
+  }
+}

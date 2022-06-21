@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "super_block_world:block/plants/pit_plant"
+      "model": "super_block_world:block/pit_plant"
     }
   }
 }

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "super_block_world:sherbet_bricks"
-  },
-  "result": "super_block_world:sherbet_brick_wall",
-  "count": 1
-}

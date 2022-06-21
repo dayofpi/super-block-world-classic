@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:jump_boots"
+    },
+    "title": {
+      "translate": "advancements.sbw.stomp_mob.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.stomp_mob.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/enter_kingdom",
+  "criteria": {
+    "stomp_mob": {
+      "trigger": "super_block_world:stomp_entity"
+    }
+  },
+  "requirements": [
+    [
+      "stomp_mob"
+    ]
+  ]
+}

@@ -2,12 +2,11 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "super_block_world:vanillate_from_smelting_crumbs",
-      "super_block_world:vanillate_from_blasting_crumbs"
+      "super_block_world:vanillate"
     ]
   },
   "criteria": {
-    "has_crumbs": {
+    "has_material": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -19,24 +18,17 @@
         ]
       }
     },
-    "has_the_recipe_smelting": {
+    "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "super_block_world:vanillate_from_smelting_crumbs"
-      }
-    },
-    "has_the_recipe_blasting": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "super_block_world:vanillate_from_blasting_crumbs"
+        "recipe": "super_block_world:vanillate"
       }
     }
   },
   "requirements": [
     [
-      "has_crumbs",
-      "has_the_recipe_smelting",
-      "has_the_recipe_blasting"
+      "has_material",
+      "has_the_recipe"
     ]
   ]
 }

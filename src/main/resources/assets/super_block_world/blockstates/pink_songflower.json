@@ -1,10 +1,7 @@
 {
   "variants": {
-    "dancing=false": {
-      "model": "super_block_world:block/plants/pink_songflower_still"
-    },
-    "dancing=true": {
-      "model": "super_block_world:block/plants/pink_songflower"
+    "": {
+      "model": "super_block_world:block/pink_songflower"
     }
   }
 }

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "super_block_world:block/hardstone_slab"
+    },
+    "type=double": {
+      "model": "super_block_world:block/hardstone"
+    },
+    "type=top": {
+      "model": "super_block_world:block/hardstone_slab_top"
+    }
+  }
+}

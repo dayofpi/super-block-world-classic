@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "super_block_world:frosty_vanillate"
-  },
-  "result": "super_block_world:frosty_vanillate_stairs",
-  "count": 1
-}

@@ -1,14 +1,16 @@
 package com.dayofpi.super_block_world.common.blocks;
 
-import com.dayofpi.super_block_world.registry.main.ItemInit;
+import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.EntityShapeContext;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -19,29 +21,42 @@ public class CloudBlock extends Block {
         super(settings);
     }
 
-    public VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
-        return VoxelShapes.empty();
-    }
-
-    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        Entity entity;
-        if (context instanceof EntityShapeContext && (entity = ((EntityShapeContext)context).getEntity()) != null) {
-            if (CloudBlock.canWalkOnCloud(entity) && context.isAbove(VoxelShapes.fullCube(), pos, false)) {
-                return super.getCollisionShape(state, world, pos, context);
-            }
-        } return VoxelShapes.empty();
-    }
-
     public static boolean canWalkOnCloud(Entity entity) {
-        if (!entity.isPlayer()) {
-            return true;
-        } else if (entity instanceof LivingEntity) {
-            return ((LivingEntity)entity).getEquippedStack(EquipmentSlot.FEET).isOf(ItemInit.CLOUD_BOOTS);
+        if (entity instanceof LivingEntity) {
+            return ((LivingEntity) entity).getEquippedStack(EquipmentSlot.FEET).isOf(ModItems.CLOUD_BOOTS);
         }
         return false;
     }
 
-    public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        if (!(context instanceof EntityShapeContext))
+            return VoxelShapes.empty();
+        Entity entity = ((EntityShapeContext) context).getEntity();
+        if (entity != null) {
+            boolean bl = entity instanceof FallingBlockEntity;
+            if (bl || canWalkOnCloud(entity) && context.isAbove(VoxelShapes.fullCube(), pos, false)) {
+                return super.getCollisionShape(state, world, pos, context);
+            }
+        }
+        return VoxelShapes.empty();
+    }
+
+    @Override
+    public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
+        return 1.0F;
+    }
+
+    @Override
+    public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction) {
+        if (stateFrom.isOf(this)) {
+            return true;
+        }
+        return super.isSideInvisible(state, stateFrom, direction);
+    }
+
+    @Override
+    public VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
         return VoxelShapes.empty();
     }
 }

@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:green_warp_pipe"
+    },
+    "title": {
+      "translate": "advancements.sbw.use_warp_pipe.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.use_warp_pipe.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/bronze_age",
+  "criteria": {
+    "warp": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:green_warp_pipe"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "warp"
+    ]
+  ]
+}

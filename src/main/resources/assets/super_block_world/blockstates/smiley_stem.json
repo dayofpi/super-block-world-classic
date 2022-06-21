@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "is_bud=false": {
+      "model": "super_block_world:block/smiley_stem"
+    },
+    "is_bud=true": {
+      "model": "super_block_world:block/smiley_stem_bud"
+    }
+  }
+}

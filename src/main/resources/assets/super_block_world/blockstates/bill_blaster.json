@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "super_block_world:block/bill_blaster"
+    },
+    "axis=z": {
+      "model": "super_block_world:block/bill_blaster",
+      "y": 90
+    }
+  }
+}
