@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/orientable_with_bottom",
-  "textures": {
-    "front": "super_block_world:block/propeller_block",
-    "side": "super_block_world:block/propeller_block_bottom",
-    "top": "super_block_world:block/propeller_block_top",
-    "bottom": "super_block_world:block/propeller_block_bottom"
-  }
-}

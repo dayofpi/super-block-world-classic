@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_farmland",
+  "textures": {
+    "dirt": "super_block_world:block/toadstool_soil_top",
+    "top": "super_block_world:block/toadstool_farmland"
+  }
+}

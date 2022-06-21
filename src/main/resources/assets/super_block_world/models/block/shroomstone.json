@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "top": "super_block_world:block/shroomstone_top",
+    "side": "super_block_world:block/shroomstone"
+  }
+}

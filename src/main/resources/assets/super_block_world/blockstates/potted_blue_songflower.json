@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "super_block_world:block/potted_blue_songflower"
+      "model": "super_block_world:block/pots/potted_blue_songflower"
     }
   }
 }

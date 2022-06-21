@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#X",
+    "X#"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:toadstool_soil"
+    },
+    "X": {
+      "item": "minecraft:sand"
+    }
+  },
+  "result": {
+    "item": "super_block_world:gritzy_sand",
+    "count": 4
+  }
+}

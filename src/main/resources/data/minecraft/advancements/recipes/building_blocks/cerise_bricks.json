@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "has_material": {
+    "has_cerise": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_material",
+      "has_cerise",
       "has_the_recipe"
     ]
   ]

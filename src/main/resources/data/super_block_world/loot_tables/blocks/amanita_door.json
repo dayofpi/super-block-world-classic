@@ -7,7 +7,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "super_block_world:amanita_door",
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
@@ -16,7 +15,8 @@
                 "half": "lower"
               }
             }
-          ]
+          ],
+          "name": "super_block_world:amanita_door"
         }
       ],
       "conditions": [

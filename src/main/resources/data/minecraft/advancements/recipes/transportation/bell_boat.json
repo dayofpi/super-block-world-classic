@@ -1,22 +1,28 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:bell_planks"
+            ]
+          }
+        ]
+      }
+    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "super_block_world:bell_boat"
       }
-    },
-    "in_water": {
-      "trigger": "minecraft:enter_block",
-      "conditions": {
-        "block": "minecraft:water"
-      }
     }
   },
   "requirements": [
     [
-      "in_water",
+      "has_material",
       "has_the_recipe"
     ]
   ],

@@ -1,49 +1,35 @@
 package com.dayofpi.super_block_world.common.items;
 
-import com.dayofpi.super_block_world.common.entities.misc.SuperPickaxEntity;
-import com.dayofpi.super_block_world.registry.ModEntities;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
+import com.dayofpi.super_block_world.registry.more.Materials;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.stat.Stats;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.world.RaycastContext;
-import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
+import net.minecraft.item.MiningToolItem;
+import net.minecraft.tag.BlockTags;
 
-public class SuperPickaxItem extends Item {
+public class SuperPickaxItem extends MiningToolItem {
     public SuperPickaxItem(Settings settings) {
-        super(settings);
+        super(4, 6, Materials.SUPER_PICKAX, BlockTags.PICKAXE_MINEABLE, settings);
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack itemStack = user.getStackInHand(hand);
-        BlockHitResult blockHitResult = raycast(world, user, RaycastContext.FluidHandling.ANY);
-        if (blockHitResult.getType() == HitResult.Type.MISS) {
-            return TypedActionResult.pass(itemStack);
-        } else if (blockHitResult.getType() != HitResult.Type.BLOCK) {
-            return TypedActionResult.pass(itemStack);
-        }
+    public boolean isSuitableFor(BlockState state) {
+        return true;
+    }
 
-        if (world instanceof ServerWorld) {
-            SuperPickaxEntity superPickax = ModEntities.SUPER_PICKAX.create(world);
-            if (superPickax == null)
-                return TypedActionResult.pass(itemStack);
-            superPickax.setPosition(blockHitResult.getPos());
-            world.spawnEntity(superPickax);
-            world.emitGameEvent(user, GameEvent.ENTITY_PLACE, blockHitResult.getBlockPos());
-        }
+    public boolean hasGlint(ItemStack stack) {
+        return true;
+    }
 
-        user.incrementStat(Stats.USED.getOrCreateStat(this));
-        if (!user.getAbilities().creativeMode) {
-            itemStack.decrement(1);
-        }
+    @Override
+    public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
+        return this.miningSpeed;
+    }
 
-        return TypedActionResult.success(itemStack, world.isClient());
+    @Override
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        stack.damage(5, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+        return true;
     }
 }

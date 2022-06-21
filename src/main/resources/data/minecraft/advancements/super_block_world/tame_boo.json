@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:poison_mushroom"
+    },
+    "title": {
+      "translate": "advancements.sbw.tame_boo.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.tame_boo.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:super_block_world/enter_kingdom",
+  "criteria": {
+    "tame_boo": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": {
+          "type": "super_block_world:boo"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tame_boo"
+    ]
+  ]
+}

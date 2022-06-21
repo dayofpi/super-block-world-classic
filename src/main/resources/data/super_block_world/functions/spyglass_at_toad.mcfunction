@@ -1,1 +1,0 @@
-give @p super_block_world:super_mushroom

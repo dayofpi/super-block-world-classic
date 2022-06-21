@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "super_block_world:block/budding_beanstalk_open"
+  }
+}

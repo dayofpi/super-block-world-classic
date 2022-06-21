@@ -7,19 +7,11 @@
   "has_raids": true,
   "has_skylight": true,
   "has_ceiling": false,
-  "coordinate_scale": 4,
-  "ambient_light": 0.02,
+  "coordinate_scale": 2,
+  "ambient_light": 0.04,
   "logical_height": 352,
   "effects": "minecraft:overworld",
-  "infiniburn": "#minecraft:infiniburn_overworld",
+  "infiniburn": "minecraft:infiniburn_overworld",
   "min_y": -32,
-  "height": 352,
-  "monster_spawn_light_level": {
-    "type": "minecraft:uniform",
-    "value": {
-      "min_inclusive": 0,
-      "max_inclusive": 7
-    }
-  },
-  "monster_spawn_block_light_limit": 0
+  "height": 352
 }

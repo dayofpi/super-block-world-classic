@@ -14,14 +14,14 @@ import net.minecraft.world.WorldAccess;
 
 @SuppressWarnings("deprecation")
 public class PipeBodyBlock extends AbstractPipe {
-    private static final BooleanProperty DOWN;
-    private static final BooleanProperty NORTH;
-    private static final BooleanProperty EAST;
-    private static final BooleanProperty SOUTH;
-    private static final BooleanProperty WEST;
-    private static final BooleanProperty UP;
+    public static final BooleanProperty DOWN;
+    protected static final BooleanProperty NORTH;
+    protected static final BooleanProperty EAST;
+    protected static final BooleanProperty SOUTH;
+    protected static final BooleanProperty WEST;
+    protected static final BooleanProperty UP;
 
-    private static final VoxelShape Y_SHAPE = Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+    private static final VoxelShape Y_SHAPE = Block.createCuboidShape(1.0D,0.0D,1.0D, 15.0D, 16.0D,15.0D);
     private static final VoxelShape X_SHAPE = Block.createCuboidShape(0.0D, 1.0D, 1.0D, 16.0D, 15.0D, 15.0D);
     private static final VoxelShape Z_SHAPE = Block.createCuboidShape(1.0D, 1.0D, 0.0D, 15.0D, 15.0D, 16.0D);
 
@@ -39,7 +39,6 @@ public class PipeBodyBlock extends AbstractPipe {
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.UP).with(WATERLOGGED, false).with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(UP, false).with(DOWN, false));
     }
 
-    @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         if (state.get(FACING) == Direction.UP || state.get(FACING) == Direction.DOWN) {
             return Y_SHAPE;
@@ -50,13 +49,16 @@ public class PipeBodyBlock extends AbstractPipe {
         } else return super.getOutlineShape(state, world, pos, context);
     }
 
-    @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighbor, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+
+
         if (state.get(FACING) == Direction.UP || state.get(FACING) == Direction.DOWN) {
             return this.upDownPredicates(state, direction, neighbor);
-        } else if (state.get(FACING) == Direction.NORTH || state.get(FACING) == Direction.SOUTH) {
+        }
+        else if (state.get(FACING) == Direction.NORTH || state.get(FACING) == Direction.SOUTH) {
             return this.northSouthPredicates(state, direction, neighbor);
-        } else if (state.get(FACING) == Direction.EAST || state.get(FACING) == Direction.WEST) {
+        }
+        else if (state.get(FACING) == Direction.EAST || state.get(FACING) == Direction.WEST) {
             return this.eastWestPredicates(state, direction, neighbor);
         }
         return super.getStateForNeighborUpdate(state, direction, neighbor, world, pos, neighborPos);
@@ -147,7 +149,6 @@ public class PipeBodyBlock extends AbstractPipe {
 
     }
 
-    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING, WATERLOGGED, UP, DOWN, NORTH, EAST, SOUTH, WEST);
     }

@@ -1,0 +1,10 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:item/generated",
+	"display": {
+		"head": {
+			"rotation": [0, 0, 40.75],
+			"translation": [-9.5, 10.25, -2.5]
+		}
+	}
+}

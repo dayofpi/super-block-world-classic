@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "moisture=0": {
+      "model": "super_block_world:block/toadstool_farmland"
+    },
+    "moisture=1": {
+      "model": "super_block_world:block/toadstool_farmland"
+    },
+    "moisture=2": {
+      "model": "super_block_world:block/toadstool_farmland"
+    },
+    "moisture=3": {
+      "model": "super_block_world:block/toadstool_farmland"
+    },
+    "moisture=4": {
+      "model": "super_block_world:block/toadstool_farmland"
+    },
+    "moisture=5": {
+      "model": "super_block_world:block/toadstool_farmland"
+    },
+    "moisture=6": {
+      "model": "super_block_world:block/toadstool_farmland"
+    },
+    "moisture=7": {
+      "model": "super_block_world:block/toadstool_farmland_moist"
+    }
+  }
+}

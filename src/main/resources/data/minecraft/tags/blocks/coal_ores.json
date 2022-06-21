@@ -1,6 +1,6 @@
 {
-  "replace": false,
+  "replace": "false",
   "values": [
-    "super_block_world:coal_topped_vanillate"
+    "super_block_world:vanillate_coal_ore"
   ]
 }

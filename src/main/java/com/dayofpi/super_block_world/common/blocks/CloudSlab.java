@@ -16,11 +16,10 @@ public class CloudSlab extends SlabBlock {
         super(settings);
     }
 
-    @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         Entity entity;
-        if (context instanceof EntityShapeContext && (entity = ((EntityShapeContext) context).getEntity()) != null) {
-            if (CloudBlock.canWalkOnCloud(entity) && (context.isAbove(VoxelShapes.fullCube(), pos, false) || context.isAbove(TOP_SHAPE, pos, false) || context.isAbove(BOTTOM_SHAPE, pos, false))) {
+        if (context instanceof EntityShapeContext && (entity = ((EntityShapeContext)context).getEntity()) != null) {
+            if (CloudBlock.canWalkOnCloud(entity) && (context.isAbove(VoxelShapes.fullCube(), pos, false)|| context.isAbove(TOP_SHAPE, pos, false) || context.isAbove(BOTTOM_SHAPE, pos, false))) {
                 return super.getCollisionShape(state, world, pos, context);
             }
         }

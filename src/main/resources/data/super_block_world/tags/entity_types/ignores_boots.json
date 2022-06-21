@@ -1,0 +1,11 @@
+{
+  "replace": "false",
+  "values": [
+    "super_block_world:spike_top",
+    "super_block_world:thwomp",
+    "super_block_world:fuzzy",
+    "super_block_world:dry_bones_shell",
+    "minecraft:guardian",
+    "minecraft:elder_guardian"
+  ]
+}

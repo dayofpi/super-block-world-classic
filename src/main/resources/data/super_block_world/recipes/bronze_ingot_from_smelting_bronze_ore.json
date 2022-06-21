@@ -1,6 +1,6 @@
 {
   "type": "minecraft:smelting",
-  "group": "super_block_world:bronze_ingot",
+  "group": "bronze_ingot",
   "ingredient": {
     "item": "super_block_world:bronze_ore"
   },

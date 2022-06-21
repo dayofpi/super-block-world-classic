@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
   "key": {
     "#": {
       "item": "super_block_world:bell_planks"
     }
   },
-  "pattern": [
-    "###"
-  ],
   "result": {
-    "count": 6,
-    "item": "super_block_world:bell_slab"
+    "item": "super_block_world:bell_slab",
+    "count": 6
   }
 }

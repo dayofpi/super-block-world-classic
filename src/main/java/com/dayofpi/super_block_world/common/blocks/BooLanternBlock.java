@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.common.blocks;
 
-import com.dayofpi.super_block_world.common.block_entities.BooLanternBE;
-import com.dayofpi.super_block_world.registry.ModBlockEntities;
+import com.dayofpi.super_block_world.common.blocks.block_entities.BooLanternBE;
+import com.dayofpi.super_block_world.registry.main.BlockEntityInit;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -15,20 +15,19 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Random;
 @SuppressWarnings("deprecation")
 public class BooLanternBlock extends BlockWithEntity {
-    private static final BooleanProperty LIT;
-    private static final BooleanProperty HANGING;
-    private static final BooleanProperty WATERLOGGED;
-    private static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D);
+    public static final BooleanProperty LIT;
+    public static final BooleanProperty HANGING;
+    protected static final BooleanProperty WATERLOGGED;
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D);
 
     static {
         LIT = Properties.LIT;
@@ -53,22 +52,21 @@ public class BooLanternBlock extends BlockWithEntity {
 
     @Override
     public BlockRenderType getRenderType(BlockState state) {
+        // With inheriting from BlockWithEntity this defaults to INVISIBLE, so we need to change that!
         return BlockRenderType.MODEL;
     }
 
-    @Override
     public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         return state.get(LIT) ? 15 : 0;
     }
 
-    @Override
     public boolean hasComparatorOutput(BlockState state) {
         return true;
     }
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.BOO_LANTERN, BooLanternBE::tick);
+        return checkType(type, BlockEntityInit.BOO_LANTERN, BooLanternBE::tick);
     }
 
     @Override
@@ -76,18 +74,12 @@ public class BooLanternBlock extends BlockWithEntity {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
-    @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (state.get(WATERLOGGED)) {
             world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
-        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-    }
 
-    @Override
-    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        Direction direction = attachedDirection(state).getOpposite();
-        return Block.sideCoversSmallSquare(world, pos.offset(direction), direction.getOpposite());
+        return attachedDirection(state).getOpposite() == direction && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Override
@@ -98,9 +90,9 @@ public class BooLanternBlock extends BlockWithEntity {
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        Direction[] placementDirections = ctx.getPlacementDirections();
+        Direction[] var3 = ctx.getPlacementDirections();
 
-        for (Direction direction : placementDirections) {
+        for (Direction direction : var3) {
             if (direction.getAxis() == Direction.Axis.Y) {
                 BlockState blockState = this.getDefaultState().with(HANGING, direction == Direction.UP);
                 if (blockState.canPlaceAt(ctx.getWorld(), ctx.getBlockPos())) {
@@ -112,7 +104,6 @@ public class BooLanternBlock extends BlockWithEntity {
         return null;
     }
 
-    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(LIT, HANGING, WATERLOGGED);
     }
@@ -120,10 +111,10 @@ public class BooLanternBlock extends BlockWithEntity {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         if (state.get(LIT)) {
-            double x = (double) pos.getX() + random.nextFloat();
-            double y = (double) pos.getY() + random.nextFloat();
-            double z = (double) pos.getZ() + random.nextFloat();
-            world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, x, y, z, 0.0D, 0.0D, 0.0D);
+            double d = (double) pos.getX() + random.nextFloat();
+            double e = (double) pos.getY() + random.nextFloat();
+            double f = (double) pos.getZ() + random.nextFloat();
+            world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, d, e, f, 0.0D, 0.0D, 0.0D);
         }
     }
 }

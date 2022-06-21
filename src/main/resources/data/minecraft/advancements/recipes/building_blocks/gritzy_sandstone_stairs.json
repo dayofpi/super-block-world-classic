@@ -1,10 +1,5 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "super_block_world:gritzy_sandstone_stairs"
-    ]
-  },
   "criteria": {
     "has_material": {
       "trigger": "minecraft:inventory_changed",
@@ -30,5 +25,10 @@
       "has_material",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "super_block_world:gritzy_sandstone_stairs"
+    ]
+  }
 }

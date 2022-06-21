@@ -1,8 +1,0 @@
-{
-  "parent": "super_block_world:block/overlaid_cross",
-  "textures": {
-    "cross": "super_block_world:block/bush_fruits",
-    "overlay": "super_block_world:block/bush",
-    "particle": "#overlay"
-  }
-}

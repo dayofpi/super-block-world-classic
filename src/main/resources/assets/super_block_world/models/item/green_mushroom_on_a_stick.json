@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld_rod",
+  "textures": {
+    "layer0": "super_block_world:item/green_mushroom_on_a_stick"
+  }
+}

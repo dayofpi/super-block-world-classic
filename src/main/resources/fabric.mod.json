@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "super_block_world",
-  "version": "1.1.0",
+  "version": "1.0.20",
 
   "name": "Super Block World",
   "description": "A new Mario-themed dimension full of fun content",
@@ -9,9 +9,13 @@
     "dayofpi",
     "KjoltConjures",
     "Pink_Fedora",
-    "IridaceaeArt",
-    "Additional sound effects from https://www.zapsplat.com"
+    "IridaceaeArt"
   ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/super-block-world",
+    "sources": "https://github.com/dayofpi/super_block_world"
+  },
+
   "license": "CC0-1.0",
   "icon": "assets/super_block_world/icon.png",
 
@@ -28,9 +32,12 @@
     "fabric.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.12.12",
+    "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": "*",
+    "minecraft": "1.18.x",
     "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
   }
 }

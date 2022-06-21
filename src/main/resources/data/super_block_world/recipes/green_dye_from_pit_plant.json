@@ -1,12 +1,10 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:smelting",
   "group": "green_dye",
-  "ingredients": [
-    {
-      "item": "super_block_world:pit_plant"
-    }
-  ],
-  "result": {
-    "item": "minecraft:green_dye"
-  }
+  "ingredient": {
+    "item": "super_block_world:pit_plant"
+  },
+  "result": "minecraft:green_dye",
+  "experience": 0.1,
+  "cookingtime": 200
 }

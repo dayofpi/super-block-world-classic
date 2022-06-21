@@ -17,7 +17,7 @@ public class QuicksandBlock extends Block {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (entity.getBlockX() == pos.getX() && entity.getBlockZ() == pos.getZ() && entity.getY() < pos.getY() - 0.55) {
+        if (entity.getBlockX() == pos.getX() && entity.getBlockZ() == pos.getZ() && entity.getY() < pos.getY() - 0.55  ) {
             if (entity instanceof LivingEntity) {
                 entity.damage(DamageSource.IN_WALL, 2.0F);
             }

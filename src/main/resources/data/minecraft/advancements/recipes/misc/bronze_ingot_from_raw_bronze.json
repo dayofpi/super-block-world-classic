@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "super_block_world:bronze_ingot_from_smelting_raw_bronze",
+      "super_block_world:bronze_ingot_from_blasting_raw_bronze"
+    ]
+  },
+  "criteria": {
+    "has_raw_bronze": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:raw_bronze"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe_smelting": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "super_block_world:bronze_ingot_from_smelting_raw_bronze"
+      }
+    },
+    "has_the_recipe_blasting": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "super_block_world:bronze_ingot_from_blasting_raw_bronze"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_bronze",
+      "has_the_recipe_smelting",
+      "has_the_recipe_blasting"
+    ]
+  ]
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "super_block_world:block/dash_block_east",
-    "side": "super_block_world:block/dash_block"
-  }
-}

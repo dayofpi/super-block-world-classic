@@ -1,0 +1,7 @@
+{
+  "type": "super_block_world:warp_portal",
+  "config": {
+    "start_pool": "super_block_world:warp_portal",
+    "size": 1
+  }
+}

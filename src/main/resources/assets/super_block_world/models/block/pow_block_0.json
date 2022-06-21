@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "super_block_world:block/pow_block_top_0",
-    "side": "super_block_world:block/pow_block_0"
-  }
-}

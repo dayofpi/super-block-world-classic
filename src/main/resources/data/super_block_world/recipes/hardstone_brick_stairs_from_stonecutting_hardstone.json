@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "super_block_world:hardstone"
+  },
+  "result": "super_block_world:hardstone_brick_stairs",
+  "count": 1
+}

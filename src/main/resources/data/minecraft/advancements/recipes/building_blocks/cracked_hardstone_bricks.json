@@ -2,7 +2,8 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "super_block_world:cracked_hardstone_bricks"
+      "super_block_world:cracked_hardstone_bricks",
+      "super_block_world:cracked_hardstone_bricks_blasting"
     ]
   },
   "criteria": {
@@ -18,17 +19,24 @@
         ]
       }
     },
-    "has_the_recipe": {
+    "has_the_recipe_smelting": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "super_block_world:cracked_hardstone_bricks"
+      }
+    },
+    "has_the_recipe_blasting": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "super_block_world:cracked_hardstone_bricks_blasting"
       }
     }
   },
   "requirements": [
     [
       "has_material",
-      "has_the_recipe"
+      "has_the_recipe_smelting",
+      "has_the_recipe_blasting"
     ]
   ]
 }

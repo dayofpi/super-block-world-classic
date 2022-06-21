@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "open=false": {
+      "model": "super_block_world:block/plants/budding_beanstalk_closed"
+    },
+    "open=true": {
+      "model": "super_block_world:block/plants/budding_beanstalk_open"
+    }
+  }
+}

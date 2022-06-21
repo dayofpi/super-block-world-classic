@@ -1,13 +1,15 @@
 package com.dayofpi.super_block_world.common.blocks;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.EntityShapeContext;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.SlabBlock;
+import net.minecraft.block.*;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.WorldAccess;
 
 @SuppressWarnings("deprecation")
 public class GirderBlock extends SlabBlock {
@@ -15,15 +17,29 @@ public class GirderBlock extends SlabBlock {
         super(settings);
     }
 
-    @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         if (context instanceof EntityShapeContext && !context.isDescending()) {
-            if (context.isAbove(BOTTOM_SHAPE, pos, false) && !context.isAbove(TOP_SHAPE, pos, false)) {
-                return BOTTOM_SHAPE;
-            } else if (context.isAbove(VoxelShapes.fullCube(), pos, false) || context.isAbove(TOP_SHAPE, pos, false) || context.isAbove(BOTTOM_SHAPE, pos, false)) {
+            if (context.isAbove(VoxelShapes.fullCube(), pos, false)|| context.isAbove(TOP_SHAPE, pos, false) || context.isAbove(BOTTOM_SHAPE, pos, false)) {
                 return super.getCollisionShape(state, world, pos, context);
             }
         }
         return VoxelShapes.empty();
+    }
+
+    @Override
+    public boolean tryFillWithFluid(WorldAccess world, BlockPos pos, BlockState state, FluidState fluidState) {
+        if (!state.get(Properties.WATERLOGGED) && fluidState.getFluid() == Fluids.WATER) {
+            if (!world.isClient()) {
+                world.setBlockState(pos, state.with(Properties.WATERLOGGED, true), Block.NOTIFY_ALL);
+                world.createAndScheduleFluidTick(pos, fluidState.getFluid(), fluidState.getFluid().getTickRate(world));
+            }
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean canFillWithFluid(BlockView world, BlockPos pos, BlockState state, Fluid fluid) {
+        return !state.get(Properties.WATERLOGGED) && fluid == Fluids.WATER;
     }
 }
