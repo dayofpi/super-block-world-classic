@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "super_block_world:block/exclamation_block_top",
+    "side": "super_block_world:block/exclamation_block_on"
+  }
+}

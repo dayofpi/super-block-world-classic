@@ -89,11 +89,6 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 20,
-          "name": "super_block_world:fire_flower"
-        },
-        {
-          "type": "minecraft:item",
           "weight": 1,
           "name": "super_block_world:golden_mushroom"
         }

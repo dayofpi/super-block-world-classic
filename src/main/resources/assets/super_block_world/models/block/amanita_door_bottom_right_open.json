@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right_open",
+  "textures": {
+    "top": "super_block_world:block/amanita_door_top",
+    "bottom": "super_block_world:block/amanita_door_bottom"
+  }
+}

@@ -1,7 +1,25 @@
 {
   "variants": {
-    "": {
+    "type=0": {
       "model": "super_block_world:block/question_block"
+    },
+    "type=1": {
+      "model": "super_block_world:block/question_block"
+    },
+    "type=2": {
+      "model": "super_block_world:block/toadstone_bricks"
+    },
+    "type=3": {
+      "model": "super_block_world:block/gloomstone_bricks"
+    },
+    "type=4": {
+      "model": "super_block_world:block/seastone_bricks"
+    },
+    "type=5": {
+      "model": "super_block_world:block/golden_bricks"
+    },
+    "type=6": {
+      "model": "super_block_world:block/crystal_bricks"
     }
   }
 }

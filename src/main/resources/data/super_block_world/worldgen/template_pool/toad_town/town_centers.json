@@ -1,0 +1,24 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "super_block_world:toad_town/town_centers/fountain",
+        "processors": "super_block_world:toad_town",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "super_block_world:toad_town/town_centers/mosaic",
+        "processors": "super_block_world:toad_town",
+        "projection": "rigid"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty",
+  "name": "super_block_world:toad_town/town_centers"
+}

@@ -1,0 +1,44 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:ztar"
+    },
+    "title": {
+      "translate": "advancements.sbw.enter_koopa_kingdom.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.enter_koopa_kingdom.description"
+    },
+    "background": "super_block_world:textures/block/hardstone_bricks.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "entered_dimension": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "super_block_world:bowsers_kingdom"
+      }
+    },
+    "collected_star": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:ztar"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_dimension",
+      "collected_star"
+    ]
+  ]
+}

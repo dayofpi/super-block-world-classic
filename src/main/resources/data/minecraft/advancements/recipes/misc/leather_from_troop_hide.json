@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "has_troop_hide": {
+    "has_material": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_troop_hide",
+      "has_material",
       "has_the_recipe"
     ]
   ]

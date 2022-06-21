@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "super_block_world:crystal_bricks"
+  },
+  "result": "super_block_world:crystal_brick_slab",
+  "count": 2
+}

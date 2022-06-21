@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:question_block"
+    },
+    "title": {
+      "translate": "advancements.sbw.hit_block.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.hit_block.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/stomp_mob",
+  "criteria": {
+    "hit_block": {
+      "trigger": "super_block_world:hit_block_with_head"
+    }
+  },
+  "requirements": [
+    [
+      "hit_block"
+    ]
+  ]
+}

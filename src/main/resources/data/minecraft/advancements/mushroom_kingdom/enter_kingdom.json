@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:toadstool_grass"
+    },
+    "title": {
+      "translate": "advancements.sbw.enter_kingdom.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.enter_kingdom.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/root",
+  "criteria": {
+    "entered_dimension": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "super_block_world:mushroom_kingdom"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_dimension"
+    ]
+  ]
+}

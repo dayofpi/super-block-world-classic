@@ -1,0 +1,346 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:rainbow_flag"
+    },
+    "title": {
+      "translate": "advancements.sbw.all_flags.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.all_flags.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "minecraft:mushroom_kingdom/use_warp_pipe",
+  "criteria": {
+    "white_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:white_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "orange_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:orange_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "magenta_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:magenta_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "light_blue_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:light_blue_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "yellow_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:yellow_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "lime_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:lime_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "pink_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:pink_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "gray_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:gray_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "light_gray_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:light_gray_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "cyan_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:cyan_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "purple_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:purple_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "blue_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:blue_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "brown_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:brown_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "green_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:green_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "red_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:red_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    },
+    "black_flag": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:black_flag"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:flagpole"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "white_flag"
+    ],
+    [
+      "orange_flag"
+    ],
+    [
+      "magenta_flag"
+    ],
+    [
+      "light_blue_flag"
+    ],
+    [
+      "yellow_flag"
+    ],
+    [
+      "lime_flag"
+    ],
+    [
+      "pink_flag"
+    ],
+    [
+      "gray_flag"
+    ],
+    [
+      "light_gray_flag"
+    ],
+    [
+      "cyan_flag"
+    ],
+    [
+      "purple_flag"
+    ],
+    [
+      "blue_flag"
+    ],
+    [
+      "brown_flag"
+    ],
+    [
+      "green_flag"
+    ],
+    [
+      "red_flag"
+    ],
+    [
+      "black_flag"
+    ]
+  ],
+  "rewards": {
+    "function": "super_block_world:all_flags",
+    "experience": 50
+  }
+}

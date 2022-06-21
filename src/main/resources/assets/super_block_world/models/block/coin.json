@@ -1,5 +1,5 @@
 {
-  "textures": {
-    "particle": "super_block_world:item/coin"
-  }
+	"textures": {
+		"particle": "super_block_world:item/coin"
+	}
 }

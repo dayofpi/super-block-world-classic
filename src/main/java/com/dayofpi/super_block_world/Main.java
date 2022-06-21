@@ -1,45 +1,43 @@
 package com.dayofpi.super_block_world;
 
-import com.dayofpi.super_block_world.client.sound.SoundInit;
-import com.dayofpi.super_block_world.common.util.block.FlammablesInit;
-import com.dayofpi.super_block_world.registry.main.BlockInit;
-import com.dayofpi.super_block_world.registry.main.EntityInit;
-import com.dayofpi.super_block_world.registry.main.ItemInit;
-import com.dayofpi.super_block_world.registry.main.TagInit;
-import com.dayofpi.super_block_world.registry.more.FluidInit;
-import com.dayofpi.super_block_world.registry.more.ParticleInit;
-import com.dayofpi.super_block_world.registry.more.StatusEffectInit;
-import com.dayofpi.super_block_world.world.WorldInit;
-import com.dayofpi.super_block_world.common.util.block.DispenserBehaviorInit;
-import com.dayofpi.super_block_world.registry.more.DamageSource;
+import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.common.entities.effects.StarPowerEffect;
+import com.dayofpi.super_block_world.registry.*;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import software.bernie.geckolib3.GeckoLib;
+import net.minecraft.util.registry.Registry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.UUID;
 
 public class Main implements ModInitializer {
     public static final String MOD_ID = "super_block_world";
-    public static final Identifier PacketID = new Identifier(MOD_ID, "spawn_packet");
-    public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+    public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "general")).icon(() -> new ItemStack(ModBlocks.QUESTION_BLOCK)).build();
+    public static final StatusEffect STAR_POWER = new StarPowerEffect().addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, UUID.randomUUID().toString(), 0.3D, EntityAttributeModifier.Operation.MULTIPLY_TOTAL).addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, UUID.randomUUID().toString(), 3.0, EntityAttributeModifier.Operation.ADDITION);
 
     @Override
     public void onInitialize() {
-        // This code runs as soon as Minecraft is in a mod-load-ready state.
-        // However, some things (like resources) may still be uninitialized.
-        GeckoLib.initialize();
-        FluidInit.register();
-        DamageSource.register();
-        BlockInit.register();
-        TagInit.register();
-        SoundInit.register();
-        ItemInit.register();
-        EntityInit.register();
-        StatusEffectInit.register();
-        ParticleInit.register();
-        WorldInit.register();
-        DispenserBehaviorInit.register();
-        FlammablesInit.register();
-        LOGGER.info("Super Block World successfully initialized");
+        Registry.register(Registry.STATUS_EFFECT, new Identifier(Main.MOD_ID, "star_power"), STAR_POWER);
+        Sounds.initSounds();
+        ModParticles.register();
+        ModEntities.register();
+        ModFluids.register();
+        ModBlocks.register();
+        ModBlockEntities.register();
+        ModItems.register();
+        ModTags.register();
+        WorldInit.initialize();
+        ModCriteria.register();
+        DispenserBehaviors.register();
+        LOGGER.info("Mod initialized");
     }
 }

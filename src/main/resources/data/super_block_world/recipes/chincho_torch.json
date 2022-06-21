@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    " # ",
+    " S "
+  ],
+  "key": {
+    "X": {
+      "item": "super_block_world:stellar_shard"
+    },
+    "#": {
+      "item": "minecraft:bone"
+    },
+    "S": {
+      "tag": "minecraft:soul_fire_base_blocks"
+    }
+  },
+  "result": {
+    "item": "super_block_world:chincho_torch",
+    "count": 1
+  }
+}

@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_empty_block": {
+    "has_material": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "super_block_world:empty_block"
+              "super_block_world:bronze_ingot"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_empty_block",
+      "has_material",
       "has_the_recipe"
     ]
   ]

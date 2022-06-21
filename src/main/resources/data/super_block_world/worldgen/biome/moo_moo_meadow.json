@@ -1,0 +1,156 @@
+{
+  "temperature": 0.6,
+  "downfall": 0.8,
+  "precipitation": "rain",
+  "creature_spawn_probability": 1,
+  "effects": {
+    "sky_color": 11134462,
+    "fog_color": 16167935,
+    "water_color": 4046591,
+    "water_fog_color": 4046591,
+    "grass_color": 13685323,
+    "foliage_color": 10005806,
+    "mood_sound": {
+      "sound": "super_block_world:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    }
+  },
+  "spawners": {
+    "creature": [
+      {
+        "type": "minecraft:rabbit",
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:koopa_troopa",
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:moo_moo",
+        "weight": 10,
+        "minCount": 3,
+        "maxCount": 5
+      },
+      {
+        "type": "minecraft:sheep",
+        "weight": 6,
+        "minCount": 3,
+        "maxCount": 5
+      }
+    ],
+    "monster": [
+      {
+        "type": "super_block_world:goomba",
+        "weight": 100,
+        "minCount": 2,
+        "maxCount": 5
+      },
+      {
+        "type": "super_block_world:shy_guy",
+        "weight": 100,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:bob_omb",
+        "weight": 50,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:piranha_plant",
+        "weight": 30,
+        "minCount": 2,
+        "maxCount": 5
+      },
+      {
+        "type": "super_block_world:putrid_piranha",
+        "weight": 15,
+        "minCount": 2,
+        "maxCount": 5
+      },
+      {
+        "type": "super_block_world:unagi",
+        "weight": 20,
+        "minCount": 3,
+        "maxCount": 4
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "super_block_world:cheep_cheep",
+        "weight": 10,
+        "minCount": 3,
+        "maxCount": 5
+      },
+      {
+        "type": "super_block_world:blooper",
+        "weight": 5,
+        "minCount": 4,
+        "maxCount": 5
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [
+      "super_block_world:spring_water"
+    ],
+    [
+      "super_block_world:topped_vanillate"
+    ],
+    [
+      "super_block_world:disk_sand",
+      "super_block_world:disk_seastone",
+      "super_block_world:disk_coral",
+      "super_block_world:ore_coal",
+      "super_block_world:ore_amethyst",
+      "super_block_world:ore_iron",
+      "super_block_world:ore_gold",
+      "super_block_world:ore_bronze",
+      "super_block_world:ore_crumble",
+      "super_block_world:ore_toadstone",
+      "super_block_world:ore_gloomstone"
+    ],
+    [
+      "super_block_world:beanstalk_underground",
+      "super_block_world:block_line",
+      "super_block_world:block_line_deep",
+      "super_block_world:block_pile",
+      "super_block_world:crystal_pile"
+    ],
+    [
+      "super_block_world:patch_star_cluster"
+    ],
+    [
+      "minecraft:seagrass_warm",
+      "minecraft:kelp_warm",
+      "super_block_world:trees_meadow",
+      "super_block_world:smiley_sunflower",
+      "super_block_world:brown_mushroom",
+      "super_block_world:red_mushroom",
+      "super_block_world:yellow_mushroom",
+      "super_block_world:patch_grass_meadow",
+      "super_block_world:patch_red_grass",
+      "super_block_world:patch_bush",
+      "super_block_world:patch_horsetail_common",
+      "super_block_world:patch_stump",
+      "super_block_world:patch_songflower",
+      "super_block_world:patch_muncher",
+      "super_block_world:strawberry_coral"
+    ]
+  ]
+}

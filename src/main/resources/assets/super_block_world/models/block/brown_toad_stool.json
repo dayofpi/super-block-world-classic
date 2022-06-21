@@ -1,8 +1,0 @@
-{
-	"parent": "super_block_world:block/template_toad_stool",
-	"textures": {
-		"0": "block/brown_mushroom_block",
-		"1": "block/mushroom_block_inside",
-		"2": "block/mushroom_stem"
-	}
-}

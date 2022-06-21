@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:super_star"
+    },
+    "title": {
+      "translate": "advancements.sbw.super_star.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.super_star.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/hit_block",
+  "criteria": {
+    "use_star": {
+      "trigger": "minecraft:effects_changed",
+      "conditions": {
+        "effects": {
+          "super_block_world:star_power": {}
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "use_star"
+    ]
+  ]
+}

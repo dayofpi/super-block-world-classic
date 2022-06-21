@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "super_block_world:dark_amanita_leaves",
+              "name": "super_block_world:fruiting_dark_amanita_leaves",
               "conditions": [
                 {
                   "condition": "minecraft:alternative",

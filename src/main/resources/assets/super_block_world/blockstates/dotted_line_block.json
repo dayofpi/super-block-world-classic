@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "distance=7": {
+      "model": "super_block_world:block/dotted_line_block_off"
+    },
+    "distance=6": {
+      "model": "super_block_world:block/dotted_line_block_on"
+    },
+    "distance=5": {
+      "model": "super_block_world:block/dotted_line_block_on"
+    },
+    "distance=4": {
+      "model": "super_block_world:block/dotted_line_block_on"
+    },
+    "distance=3": {
+      "model": "super_block_world:block/dotted_line_block_on"
+    },
+    "distance=2": {
+      "model": "super_block_world:block/dotted_line_block_on"
+    },
+    "distance=1": {
+      "model": "super_block_world:block/dotted_line_block_on"
+    }
+  }
+}

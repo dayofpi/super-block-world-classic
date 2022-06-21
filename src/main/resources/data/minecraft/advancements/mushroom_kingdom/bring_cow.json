@@ -1,0 +1,56 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:red_mushroom_block"
+    },
+    "title": {
+      "translate": "advancements.sbw.bring_cow.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.bring_cow.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/enter_kingdom",
+  "criteria": {
+    "bring_cow": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "player": {
+          "location": {
+            "dimension": "super_block_world:mushroom_kingdom"
+          }
+        },
+        "parent": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:mooshroom"
+            }
+          }
+        ],
+        "partner": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:mooshroom"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "bring_cow"
+    ]
+  ],
+  "rewards": {
+    "experience": 1000
+  }
+}

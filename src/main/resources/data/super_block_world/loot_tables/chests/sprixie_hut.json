@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "super_block_world:cat_stamp"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "super_block_world:mom_stamp"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "super_block_world:princess_stamp"
+        }
+      ]
+    }
+  ]
+}

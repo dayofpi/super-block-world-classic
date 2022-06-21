@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "top": "super_block_world:block/topped_vanillate_amethyst",
+    "top": "super_block_world:block/amethyst_topped_vanillate",
     "bottom": "super_block_world:block/vanillate",
     "side": "super_block_world:block/topped_vanillate"
   }

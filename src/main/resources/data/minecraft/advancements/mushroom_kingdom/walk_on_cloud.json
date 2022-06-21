@@ -1,0 +1,50 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:happy_cloud"
+    },
+    "title": {
+      "translate": "advancements.sbw.walk_on_cloud.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.walk_on_cloud.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/stomp_mob",
+  "criteria": {
+    "walk_on_cloud": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "stepping_on": {
+                "block": {
+                  "tag": "super_block_world:cloud"
+                }
+              },
+              "equipment": {
+                "feet": {
+                  "items": [
+                    "super_block_world:cloud_boots"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "walk_on_cloud"
+    ]
+  ]
+}

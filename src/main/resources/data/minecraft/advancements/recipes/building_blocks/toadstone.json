@@ -2,8 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "super_block_world:toadstone",
-      "super_block_world:toadstone_blasting"
+      "super_block_world:toadstone"
     ]
   },
   "criteria": {
@@ -19,24 +18,17 @@
         ]
       }
     },
-    "has_the_recipe_smelting": {
+    "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "super_block_world:toadstone"
-      }
-    },
-    "has_the_recipe_blasting": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "super_block_world:toadstone_blasting"
       }
     }
   },
   "requirements": [
     [
       "has_material",
-      "has_the_recipe_smelting",
-      "has_the_recipe_blasting"
+      "has_the_recipe"
     ]
   ]
 }
