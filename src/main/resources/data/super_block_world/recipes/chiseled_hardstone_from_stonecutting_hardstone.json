@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "super_block_world:hardstone"
-  },
-  "result": "super_block_world:chiseled_hardstone",
-  "count": 1
-}

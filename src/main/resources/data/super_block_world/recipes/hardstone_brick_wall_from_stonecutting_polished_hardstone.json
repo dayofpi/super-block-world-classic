@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "super_block_world:polished_hardstone"
-  },
-  "result": "super_block_world:hardstone_brick_wall",
-  "count": 1
-}

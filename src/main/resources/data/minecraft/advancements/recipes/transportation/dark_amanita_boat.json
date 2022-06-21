@@ -1,28 +1,22 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_material": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "super_block_world:dark_amanita_planks"
-            ]
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "super_block_world:dark_amanita_boat"
       }
+    },
+    "in_water": {
+      "trigger": "minecraft:enter_block",
+      "conditions": {
+        "block": "minecraft:water"
+      }
     }
   },
   "requirements": [
     [
-      "has_material",
+      "in_water",
       "has_the_recipe"
     ]
   ],

@@ -3,13 +3,14 @@
   "pools": [
     {
       "rolls": 1,
-      "bonus_rolls": 0.0,
+      "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:alternatives",
           "children": [
             {
               "type": "minecraft:item",
+              "name": "super_block_world:vanillate",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
@@ -24,17 +25,16 @@
                     ]
                   }
                 }
-              ],
-              "name": "super_block_world:vanillate"
+              ]
             },
             {
               "type": "minecraft:item",
+              "name": "super_block_world:vanillate_crumble",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"
                 }
-              ],
-              "name": "super_block_world:vanillate_crumble"
+              ]
             }
           ]
         }

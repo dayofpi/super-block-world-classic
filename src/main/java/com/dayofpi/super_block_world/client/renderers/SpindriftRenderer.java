@@ -1,0 +1,23 @@
+package com.dayofpi.super_block_world.client.renderers;
+
+import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.client.models.SpindriftModel;
+import com.dayofpi.super_block_world.client.registry.EntityClient;
+import com.dayofpi.super_block_world.common.entities.passive.SpindriftEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.util.Identifier;
+
+@Environment(EnvType.CLIENT)
+public class SpindriftRenderer<T extends SpindriftEntity> extends MobEntityRenderer<T, SpindriftModel<T>> {
+    public SpindriftRenderer(EntityRendererFactory.Context context) {
+        super(context, new SpindriftModel<>(context.getPart(EntityClient.SPINDRIFT)), 0.4f);
+    }
+
+    @Override
+    public Identifier getTexture(T entity) {
+        return new Identifier(Main.MOD_ID, "textures/entity/spindrift.png");
+    }
+}

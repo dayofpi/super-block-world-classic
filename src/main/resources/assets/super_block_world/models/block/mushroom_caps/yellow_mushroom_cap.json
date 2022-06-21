@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_single_face",
-  "textures": {
-    "texture": "super_block_world:block/yellow_mushroom_cap"
-  }
-}

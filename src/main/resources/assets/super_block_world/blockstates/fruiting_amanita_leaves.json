@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "super_block_world:block/leaves/fruiting_amanita_leaves"
+      "model": "super_block_world:block/fruiting_amanita_leaves"
     }
   }
 }

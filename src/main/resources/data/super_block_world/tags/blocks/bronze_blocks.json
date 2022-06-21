@@ -1,0 +1,22 @@
+{
+  "replace": "false",
+  "values": [
+    "super_block_world:bronze_block",
+    "super_block_world:white_bronze",
+    "super_block_world:orange_bronze",
+    "super_block_world:magenta_bronze",
+    "super_block_world:light_blue_bronze",
+    "super_block_world:yellow_bronze",
+    "super_block_world:lime_bronze",
+    "super_block_world:pink_bronze",
+    "super_block_world:gray_bronze",
+    "super_block_world:light_gray_bronze",
+    "super_block_world:cyan_bronze",
+    "super_block_world:purple_bronze",
+    "super_block_world:blue_bronze",
+    "super_block_world:brown_bronze",
+    "super_block_world:green_bronze",
+    "super_block_world:red_bronze",
+    "super_block_world:black_bronze"
+  ]
+}

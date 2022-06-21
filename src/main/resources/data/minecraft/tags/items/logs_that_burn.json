@@ -1,17 +1,8 @@
 {
-  "replace": "false",
+  "replace": false,
   "values": [
-    "super_block_world:amanita_log",
-    "super_block_world:amanita_wood",
-    "super_block_world:stripped_amanita_log",
-    "super_block_world:stripped_amanita_wood",
-    "super_block_world:dark_amanita_log",
-    "super_block_world:dark_amanita_wood",
-    "super_block_world:stripped_dark_amanita_log",
-    "super_block_world:stripped_dark_amanita_wood",
-    "super_block_world:bell_log",
-    "super_block_world:bell_wood",
-    "super_block_world:stripped_bell_log",
-    "super_block_world:stripped_bell_wood"
+    "#super_block_world:amanita_logs",
+    "#super_block_world:dark_amanita_logs",
+    "#super_block_world:bell_logs"
   ]
 }

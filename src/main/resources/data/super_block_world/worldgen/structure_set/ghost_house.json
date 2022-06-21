@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "super_block_world:ghost_house",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1374444575,
+    "spacing": 20,
+    "separation": 18
+  }
+}

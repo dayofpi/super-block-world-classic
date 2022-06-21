@@ -1,0 +1,1 @@
+give @p super_block_world:rainbow_flag

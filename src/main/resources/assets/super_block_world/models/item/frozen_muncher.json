@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "super_block_world:item/frozen_muncher"
-  }
+  "parent": "super_block_world:block/frozen_muncher"
 }

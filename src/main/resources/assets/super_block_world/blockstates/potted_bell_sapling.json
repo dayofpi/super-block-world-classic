@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "super_block_world:block/pots/potted_bell_sapling"
+      "model": "super_block_world:block/potted_bell_sapling"
     }
   }
 }

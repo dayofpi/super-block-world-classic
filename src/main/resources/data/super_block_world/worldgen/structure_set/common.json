@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "super_block_world:toad_house",
+      "weight": 2
+    },
+    {
+      "structure": "super_block_world:boss_arena",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 30,
+    "separation": 8,
+    "salt": 165745296
+  }
+}

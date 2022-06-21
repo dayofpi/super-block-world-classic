@@ -1,0 +1,45 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:question_block"
+    },
+    "title": {
+      "translate": "advancements.sbw.kaizo.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.kaizo.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/bottle_ghost",
+  "criteria": {
+    "hide_block": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_block_world:bottled_ghost"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "super_block_world:question_block"
+            ],
+            "state": {
+              "type": "1"
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "hide_block"
+    ]
+  ]
+}

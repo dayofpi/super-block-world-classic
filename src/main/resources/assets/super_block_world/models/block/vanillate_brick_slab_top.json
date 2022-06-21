@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "super_block_world:block/vanillate_bricks",
-    "top": "super_block_world:block/vanillate_bricks",
-    "side": "super_block_world:block/vanillate_bricks"
-  }
-}

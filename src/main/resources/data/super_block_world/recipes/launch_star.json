@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "Y#Y",
+    "#*#",
+    "Y#Y"
+  ],
+  "key": {
+    "Y": {
+      "item": "super_block_world:yellow_star_bit"
+    },
+    "#": {
+      "item": "super_block_world:stellar_shard"
+    },
+    "*": {
+      "item": "super_block_world:power_star"
+    }
+  },
+  "result": {
+    "item": "super_block_world:launch_star"
+  }
+}

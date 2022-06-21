@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "has_bronze_block": {
+    "has_material": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_bronze_block",
+      "has_material",
       "has_the_recipe"
     ]
   ]

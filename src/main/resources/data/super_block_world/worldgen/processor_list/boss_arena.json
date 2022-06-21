@@ -1,0 +1,30 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:block_ignore",
+      "blocks": [
+        {
+          "Name": "minecraft:air"
+        }
+      ]
+    },
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "super_block_world:hardstone_bricks",
+            "probability": 0.25
+          },
+          "output_state": {
+            "Name": "super_block_world:cracked_hardstone_bricks"
+          }
+        }
+      ]
+    }
+  ]
+}

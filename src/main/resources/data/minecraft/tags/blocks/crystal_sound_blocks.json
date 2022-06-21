@@ -1,7 +1,6 @@
 {
-  "replace": "false",
+  "replace": false,
   "values": [
-    "super_block_world:amethyst_topped_vanillate",
     "super_block_world:crystal_bricks",
     "super_block_world:crystal_brick_slab",
     "super_block_world:crystal_brick_stairs",
