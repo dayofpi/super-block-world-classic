@@ -7,7 +7,7 @@
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "super_block_world:orange_mushroom",
+          "name": "minecraft:brown_mushroom",
           "functions": [
             {
               "function": "minecraft:set_count",

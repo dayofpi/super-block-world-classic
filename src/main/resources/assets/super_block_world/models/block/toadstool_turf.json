@@ -1,20 +1,89 @@
 {
   "parent": "minecraft:block/block",
   "textures": {
-    "all": "super_block_world:block/toadstool_turf",
-    "particle": "super_block_world:block/toadstool_turf"
+    "particle": "#side",
+    "side": "super_block_world:block/toadstool_turf",
+    "end": "super_block_world:block/toadstool_grass_top"
   },
   "elements": [
     {
-      "from": [ 0, 0, 0 ],
-      "to": [ 16, 16, 16 ],
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
       "faces": {
-        "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#all", "cullface": "down", "tintindex": 0 },
-        "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#all",    "cullface": "up", "tintindex": 0 },
-        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#all",   "cullface": "north", "tintindex": 0 },
-        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#all",   "cullface": "south", "tintindex": 0 },
-        "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#all",   "cullface": "west", "tintindex": 0 },
-        "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#all",   "cullface": "east", "tintindex": 0 }
+        "down": {
+          "texture": "#end",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "down",
+          "tintindex": 0
+        },
+        "up": {
+          "texture": "#end",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "up",
+          "tintindex": 0
+        },
+        "north": {
+          "texture": "#side",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "north",
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#side",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "south",
+          "tintindex": 0
+        },
+        "west": {
+          "texture": "#side",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "west",
+          "tintindex": 0
+        },
+        "east": {
+          "texture": "#side",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "cullface": "east",
+          "tintindex": 0
+        }
       }
     }
   ]

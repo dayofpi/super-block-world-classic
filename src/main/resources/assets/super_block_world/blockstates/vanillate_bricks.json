@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-        "model": "super_block_world:block/vanillate_bricks"
-      }
+      "model": "super_block_world:block/vanillate_bricks"
+    }
   }
 }

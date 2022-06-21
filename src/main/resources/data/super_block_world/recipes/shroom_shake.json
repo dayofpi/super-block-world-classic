@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "super_block_world:super_mushroom"
+    },
+    {
+      "item": "super_block_world:yoshi_fruit"
+    }
+  ],
+  "result": {
+    "item": "super_block_world:shroom_shake"
+  }
+}

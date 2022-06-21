@@ -1,7 +1,6 @@
 package com.dayofpi.super_block_world.common.blocks;
 
-import com.dayofpi.super_block_world.common.entities.FireballEntity;
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
+import com.dayofpi.super_block_world.common.entities.projectile.ModFireballEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -17,6 +16,7 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.ShovelItem;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -27,18 +27,18 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
-
-import java.util.Random;
+import net.minecraft.world.event.GameEvent;
 
 @SuppressWarnings("deprecation")
 public class StoneTorchBlock extends Block implements Waterloggable {
-    public static final BooleanProperty LIT;
-    protected static final BooleanProperty WATERLOGGED;
-    protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 13.0D, 16.0D);
+    private static final BooleanProperty LIT;
+    private static final BooleanProperty WATERLOGGED;
+    private static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 13.0D, 16.0D);
 
     static {
         LIT = Properties.LIT;
@@ -53,19 +53,26 @@ public class StoneTorchBlock extends Block implements Waterloggable {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
-        boolean extinguish = itemStack.isIn(FabricToolTags.SHOVELS);
+        boolean extinguish = itemStack.getItem() instanceof ShovelItem;
         boolean ignite = itemStack.isOf(Items.FLINT_AND_STEEL);
         boolean ignite2 = itemStack.isOf(Items.FIRE_CHARGE);
         if (state.get(LIT)) {
             if (extinguish) {
                 world.setBlockState(pos, state.cycle(LIT), 1);
                 world.syncWorldEvent(null, WorldEvents.FIRE_EXTINGUISHED, pos, 0);
+                world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+                itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
                 return ActionResult.success(world.isClient);
             }
         } else if (!state.get(WATERLOGGED)) {
             if (ignite || ignite2) {
                 world.setBlockState(pos, state.cycle(LIT), 1);
                 world.playSound(player, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, world.getRandom().nextFloat() * 0.4F + 0.8F);
+                world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+                if (ignite)
+                    itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
+                else
+                    itemStack.decrement(1);
                 return ActionResult.success(world.isClient);
             }
         }
@@ -82,24 +89,23 @@ public class StoneTorchBlock extends Block implements Waterloggable {
         return SHAPE;
     }
 
+    @Override
     public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         return state.get(LIT) ? 15 : 0;
     }
 
+    @Override
     public boolean hasComparatorOutput(BlockState state) {
         return true;
     }
 
+    @Override
     public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
         BlockPos blockPos = hit.getBlockPos();
-        boolean isProjectileFiery = projectile.isOnFire() || projectile instanceof FireballEntity;
-        if (!world.isClient && isProjectileFiery && projectile.canModifyAt(world, blockPos) && !(Boolean)state.get(LIT)) {
+        boolean isProjectileFiery = projectile.isOnFire() || projectile instanceof ModFireballEntity;
+        if (!world.isClient && isProjectileFiery && projectile.canModifyAt(world, blockPos) && !(Boolean) state.get(LIT)) {
             world.setBlockState(blockPos, state.with(Properties.LIT, true), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
-            if (projectile instanceof FireballEntity) {
-                projectile.discard();
-            }
         }
-
     }
 
     @Override
@@ -131,7 +137,9 @@ public class StoneTorchBlock extends Block implements Waterloggable {
         return this.getDefaultState().with(WATERLOGGED, bl).with(LIT, !bl);
     }
 
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(LIT, WATERLOGGED);
     }
+
 }

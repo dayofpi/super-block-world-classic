@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "super_block_world:shroomstone"
-  },
-  "result": "super_block_world:exposed_shroomstone",
-  "experience": 0.7,
-  "cookingtime": 200
-}

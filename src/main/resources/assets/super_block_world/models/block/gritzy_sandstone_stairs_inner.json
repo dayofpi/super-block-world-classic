@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/inner_stairs",
   "textures": {
-    "bottom": "super_block_world:block/gritzy_sandstone_bottom",
     "top": "super_block_world:block/gritzy_sandstone_top",
+    "bottom": "super_block_world:block/gritzy_sandstone_bottom",
     "side": "super_block_world:block/gritzy_sandstone"
   }
 }

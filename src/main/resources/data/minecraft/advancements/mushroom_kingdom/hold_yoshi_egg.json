@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:yoshi_egg"
+    },
+    "title": {
+      "translate": "advancements.sbw.hold_yoshi_egg.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.hold_yoshi_egg.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/mount_yoshi",
+  "criteria": {
+    "hold_egg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:yoshi_egg"
+            ],
+            "nbt": "{HasEntity:true}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "hold_egg"
+    ]
+  ]
+}

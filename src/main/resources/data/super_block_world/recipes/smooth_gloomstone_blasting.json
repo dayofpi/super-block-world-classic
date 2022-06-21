@@ -1,6 +1,6 @@
 {
   "type": "minecraft:blasting",
-  "group": "gloomstone",
+  "group": "smooth_gloomstone",
   "ingredient": {
     "item": "super_block_world:gloomstone"
   },

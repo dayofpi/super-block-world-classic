@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glass"
+    },
+    "X": {
+      "item": "super_block_world:golden_mushroom"
+    }
+  },
+  "result": {
+    "item": "super_block_world:dash_block",
+    "count": 8
+  }
+}

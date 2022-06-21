@@ -1,6 +1,6 @@
 {
   "type": "minecraft:blasting",
-  "group": "toadstone",
+  "group": "smooth_gritzy_sandstone",
   "ingredient": {
     "item": "super_block_world:gritzy_sandstone"
   },

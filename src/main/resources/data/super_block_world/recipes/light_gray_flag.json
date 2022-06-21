@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "super_block_world:flag",
+  "pattern": [
+    " W ",
+    " # ",
+    " # "
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:light_gray_wool"
+    },
+    "#": {
+      "item": "super_block_world:bronze_ingot"
+    }
+  },
+  "result": {
+    "item": "super_block_world:light_gray_flag",
+    "count": 1
+  }
+}

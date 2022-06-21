@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "super_block_world:block/dark_amanita_sign"
+      "model": "super_block_world:block/dark_amanita_planks"
     }
   }
 }

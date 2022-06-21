@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 64,
+    "xz_spread": 14,
+    "y_spread": 3,
+    "feature": {
+      "feature": "super_block_world:stump_dark_amanita",
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "predicates": [
+              {
+                "blocks": "minecraft:air",
+                "type": "minecraft:matching_blocks"
+              },
+              {
+                "blocks": [
+                  "super_block_world:toadstool_grass"
+                ],
+                "offset": [
+                  0,
+                  -1,
+                  0
+                ],
+                "type": "minecraft:matching_blocks"
+              }
+            ],
+            "type": "minecraft:all_of"
+          }
+        }
+      ]
+    }
+  }
+}

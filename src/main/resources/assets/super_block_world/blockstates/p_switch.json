@@ -1,0 +1,37 @@
+{
+  "variants": {
+    "powered=true": {
+      "model": "super_block_world:block/p_switch_on"
+    },
+    "powered=false,time=1": {
+      "model": "super_block_world:block/p_switch_1"
+    },
+    "powered=false,time=2": {
+      "model": "super_block_world:block/p_switch_2"
+    },
+    "powered=false,time=3": {
+      "model": "super_block_world:block/p_switch_3"
+    },
+    "powered=false,time=4": {
+      "model": "super_block_world:block/p_switch_4"
+    },
+    "powered=false,time=5": {
+      "model": "super_block_world:block/p_switch_5"
+    },
+    "powered=false,time=6": {
+      "model": "super_block_world:block/p_switch_6"
+    },
+    "powered=false,time=7": {
+      "model": "super_block_world:block/p_switch_7"
+    },
+    "powered=false,time=8": {
+      "model": "super_block_world:block/p_switch_8"
+    },
+    "powered=false,time=9": {
+      "model": "super_block_world:block/p_switch_9"
+    },
+    "powered=false,time=10": {
+      "model": "super_block_world:block/p_switch_10"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "super_block_world:toadstone_bricks"
+  },
+  "result": "super_block_world:toadstone_brick_wall",
+  "count": 1
+}

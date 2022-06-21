@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "super_block_world:block/rainbow_tiles_top",
+    "top": "super_block_world:block/rainbow_tiles_top",
+    "side": "super_block_world:block/rainbow_tiles"
+  }
+}
