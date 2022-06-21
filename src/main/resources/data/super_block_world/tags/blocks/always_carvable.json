@@ -1,0 +1,27 @@
+{
+  "replace": "false",
+  "values": [
+    "super_block_world:toadstool_grass",
+    "super_block_world:toadstool_path",
+    "super_block_world:toadstool_soil",
+    "super_block_world:coarse_toadstool_soil",
+    "super_block_world:grassy_toadstone",
+    "super_block_world:grassy_hardstone",
+    "super_block_world:cobbled_shroomstone",
+    "super_block_world:shroomstone",
+    "super_block_world:toadstone",
+    "super_block_world:shoregrass",
+    "super_block_world:shoresand",
+    "super_block_world:sherbet_soil",
+    "super_block_world:snowy_sherbet_soil",
+    "super_block_world:gritzy_sand",
+    "super_block_world:gritzy_sandstone",
+    "super_block_world:royalite",
+    "super_block_world:charrock",
+    "super_block_world:vanillate",
+    "super_block_world:topped_vanillate",
+    "super_block_world:frosty_vanillate",
+    "super_block_world:frosted_vanillate",
+    "super_block_world:hardstone"
+  ]
+}

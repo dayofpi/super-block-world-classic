@@ -2,7 +2,8 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "super_block_world:green_dye_from_pit_plant"
+      "super_block_world:green_dye_from_pit_plant",
+      "super_block_world:green_dye_from_pit_plant_blasting"
     ]
   },
   "criteria": {
@@ -18,7 +19,13 @@
         ]
       }
     },
-    "has_the_recipe": {
+    "has_the_smelting_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "super_block_world:green_dye_from_pit_plant"
+      }
+    },
+    "has_the_blasting_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "super_block_world:green_dye_from_pit_plant"
@@ -28,7 +35,8 @@
   "requirements": [
     [
       "has_material",
-      "has_the_recipe"
+      "has_the_smelting_recipe",
+      "has_the_blasting_recipe"
     ]
   ]
 }

@@ -1,27 +1,36 @@
 package com.dayofpi.super_block_world.client.models;
 
-import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.common.entities.hostile.RottenMushroomEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.util.Identifier;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-
+import net.minecraft.client.model.*;
+import net.minecraft.client.render.entity.model.SinglePartEntityModel;
+import net.minecraft.entity.Entity;
 @Environment(EnvType.CLIENT)
-public class RottenMushroomModel<T extends RottenMushroomEntity> extends AnimatedGeoModel<T> {
+public class RottenMushroomModel<T extends Entity> extends SinglePartEntityModel<T> {
+    private final ModelPart ROOT;
 
-    @Override
-    public Identifier getModelResource(T object) {
-        return new Identifier(Main.MOD_ID, "geo/rotten_mushroom.geo.json");
+    public RottenMushroomModel(ModelPart root) {
+        this.ROOT = root;
+    }
+
+    public static ModelData getModelData() {
+        ModelData modelData = new ModelData();
+        ModelPartData rootData = modelData.getRoot();
+        ModelPartData body = rootData.addChild("body", ModelPartBuilder.create().uv(0, 21).cuboid(-4.0F, -1.25F, -4.0F, 8.0F, 8.0F, 8.0F), ModelTransform.pivot(0.0F, 17.25F, 0.0F));
+        body.addChild("cap", ModelPartBuilder.create().uv(0, 0).cuboid(-6.0F, -7.25F, -6.0F, 12.0F, 9.0F, 12.0F), ModelTransform.NONE);
+        return modelData;
+    }
+
+    public static TexturedModelData getTexturedModelData() {
+        return TexturedModelData.of(getModelData(), 64, 64);
     }
 
     @Override
-    public Identifier getTextureResource(T object) {
-        return new Identifier(Main.MOD_ID, "textures/entity/rotten_mushroom.png");
+    public ModelPart getPart() {
+        return this.ROOT;
     }
 
     @Override
-    public Identifier getAnimationResource(T animatable) {
-        return new Identifier(Main.MOD_ID, "animations/rotten_mushroom.animation.json");
+    public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
     }
 }

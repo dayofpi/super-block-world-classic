@@ -1,9 +1,0 @@
-{
-  "replace": "false",
-  "values": [
-    "minecraft:brown_mushroom_block",
-    "minecraft:red_mushroom_block",
-    "super_block_world:green_mushroom_block",
-    "super_block_world:yellow_mushroom_block"
-  ]
-}

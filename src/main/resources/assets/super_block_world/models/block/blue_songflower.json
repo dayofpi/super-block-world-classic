@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "super_block_world:block/blue_songflower"
-  }
-}

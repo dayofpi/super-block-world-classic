@@ -1,6 +1,6 @@
 {   "parent": "block/block",
     "textures": {
-        "particle": "super_block_world:block/toadstool_grass_top",
+        "particle": "super_block_world:block/toadstool_soil",
         "bottom": "super_block_world:block/toadstool_soil_top",
         "top": "super_block_world:block/toadstool_grass_top",
         "side": "super_block_world:block/toadstool_grass",

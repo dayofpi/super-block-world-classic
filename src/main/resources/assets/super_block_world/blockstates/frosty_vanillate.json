@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "super_block_world:block/frosty_vanillate"
+      },
+      {
+        "model": "super_block_world:block/frosty_vanillate",
+        "y": 180
+      }
+    ]
+  }
+}

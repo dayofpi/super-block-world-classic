@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/cube_column",
+  "parent": "minecraft:block/cube_top",
   "textures": {
-    "end": "super_block_world:block/charrock_top",
+    "top": "super_block_world:block/charrock_top",
     "side": "super_block_world:block/charrock"
   }
 }

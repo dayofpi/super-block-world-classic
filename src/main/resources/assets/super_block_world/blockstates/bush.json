@@ -1,13 +1,13 @@
 {
   "variants": {
     "fruits=0": {
-      "model": "super_block_world:block/bush_0"
+      "model": "super_block_world:block/plants/bush_0"
     },
     "fruits=1": {
-      "model": "super_block_world:block/bush_1"
+      "model": "super_block_world:block/plants/bush_1"
     },
     "fruits=2": {
-      "model": "super_block_world:block/bush_2"
+      "model": "super_block_world:block/plants/bush_2"
     }
   }
 }

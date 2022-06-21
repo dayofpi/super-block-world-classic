@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.client.renderers;
 
-import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.layers.GoombaLayer;
 import com.dayofpi.super_block_world.client.models.GoombaModel;
-import com.dayofpi.super_block_world.common.entities.hostile.GoombaEntity;
+import com.dayofpi.super_block_world.client.renderers.layers.GoombaLayer;
+import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.common.entities.mob.GoombaEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -12,7 +12,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
-public class GoombaRenderer<T extends GoombaEntity> extends ModEntityRenderer<T> {
+public class GoombaRenderer<T extends GoombaEntity> extends LeadableEntityRenderer<T> {
     private static final Identifier COMMON = new Identifier(Main.MOD_ID, "textures/entity/goomba/goomba.png");
     private static final Identifier GOLD = new Identifier(Main.MOD_ID, "textures/entity/goomba/gold_goomba.png");
 
@@ -39,7 +39,7 @@ public class GoombaRenderer<T extends GoombaEntity> extends ModEntityRenderer<T>
         }
     }
 
-    protected float getDeathMaxRotation(T entity) {
+    protected float getDeathMaxRotation(T entityLivingBaseIn) {
         return 0.0F;
     }
 

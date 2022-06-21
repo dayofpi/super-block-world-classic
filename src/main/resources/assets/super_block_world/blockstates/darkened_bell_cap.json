@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "super_block_world:block/darkened_bell_cap"
+      "model": "super_block_world:block/leaves/darkened_bell_cap"
     }
   }
 }

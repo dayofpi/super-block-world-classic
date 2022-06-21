@@ -1,6 +1,6 @@
 {
   "type": "minecraft:blasting",
-  "group": "smooth_toadstone",
+  "group": "toadstone",
   "ingredient": {
     "item": "super_block_world:toadstone"
   },

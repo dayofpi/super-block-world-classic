@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.client.models.FuzzyModel;
-import com.dayofpi.super_block_world.common.entities.hostile.FuzzyEntity;
+import com.dayofpi.super_block_world.common.entities.mob.FuzzyEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

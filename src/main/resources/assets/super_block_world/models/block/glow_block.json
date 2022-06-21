@@ -1,8 +1,9 @@
 {
   "parent": "minecraft:block/orientable",
   "textures": {
-    "top": "super_block_world:block/glow_block",
-    "front": "super_block_world:block/glow_block_face",
-    "side": "super_block_world:block/glow_block"
+    "top": "super_block_world:block/glow_block_side",
+    "front": "super_block_world:block/glow_block",
+    "side": "super_block_world:block/glow_block_side",
+    "particle": "super_block_world:block/glow_block_side"
   }
 }

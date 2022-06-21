@@ -1,34 +1,29 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.client.models.MooMooModel;
-import com.dayofpi.super_block_world.common.entities.passive.MooMooEntity;
+import com.dayofpi.super_block_world.client.main.ModelLayers;
+import com.dayofpi.super_block_world.common.entities.mob.MooMooEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import software.bernie.geckolib3.geo.render.built.GeoModel;
-
 @Environment(EnvType.CLIENT)
-public class MooMooRenderer<T extends MooMooEntity> extends ModEntityRenderer<T> {
-    public MooMooRenderer(EntityRendererFactory.Context ctx) {
-        super(ctx, new MooMooModel<>());
-        this.shadowRadius = 0.5F;
+public class MooMooRenderer<T extends MooMooEntity> extends MobEntityRenderer<T, MooMooModel<T>> {
+    public MooMooRenderer(EntityRendererFactory.Context context) {
+        super(context, new MooMooModel<>(context.getPart(ModelLayers.MOO_MOO)), 0.7F);
     }
 
     @Override
-    public void render(GeoModel model, T entity, float partialTicks, RenderLayer type, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-        if (entity.isBaby()) {
-            stack.scale(0.5F, 0.5F, 0.5F);
+    protected void setupTransforms(T entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta) {
+        if (entity.isLying()) {
+            matrices.translate(0.0D, -0.3F, 0.0D);
         }
-        super.render(model, entity, partialTicks, type, stack, renderTypeBuffer, vertexBuilder, packedLightIn, packedOverlayIn, red, green, blue, alpha);
+        super.setupTransforms(entity, matrices, animationProgress, bodyYaw, tickDelta);
     }
 
-    @Override
-    public Identifier getTexture(T entity) {
-        return entity.getTexture();
+    public Identifier getTexture(MooMooEntity mooMooEntity) {
+        return mooMooEntity.getTexture();
     }
 }

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "super_block_world:gritzy_sandstone"
-  },
-  "result": "super_block_world:gritzy_sandstone_slab",
-  "count": 2
-}

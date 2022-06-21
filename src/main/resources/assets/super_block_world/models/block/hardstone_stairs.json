@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "super_block_world:block/hardstone",
-    "top": "super_block_world:block/hardstone",
-    "side": "super_block_world:block/hardstone"
-  }
-}

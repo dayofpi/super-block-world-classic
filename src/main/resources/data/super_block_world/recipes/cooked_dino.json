@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "super_block_world:raw_dino"
-  },
-  "result": "super_block_world:cooked_dino",
-  "experience": 0.35,
-  "cookingtime": 200
-}

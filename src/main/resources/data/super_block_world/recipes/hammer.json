@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "## ",
+    "###",
     "#/#",
     " / "
   ],
   "key": {
-    "/": {
-      "item": "minecraft:stick"
-    },
     "#": {
       "item": "super_block_world:bronze_ingot"
+    },
+    "/": {
+      "item": "minecraft:stick"
     }
   },
   "result": {

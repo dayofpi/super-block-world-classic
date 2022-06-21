@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "super_block_world:block/fuzzbush"
+      "model": "super_block_world:block/plants/fuzzbush"
     }
   }
 }

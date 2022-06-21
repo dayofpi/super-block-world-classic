@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "glow_block",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:empty_block"
+    },
+    "X": {
+      "item": "super_block_world:bottled_ghost"
+    }
+  },
+  "result": {
+    "item": "super_block_world:hidden_block",
+    "count": 8
+  }
+}

@@ -1,8 +1,9 @@
 {
   "replace": "false",
   "values": [
+    "super_block_world:boo",
     "super_block_world:toad",
-    "super_block_world:yoshi",
-    "super_block_world:spindrift"
+    "minecraft:armor_stand",
+    "minecraft:shulker"
   ]
 }

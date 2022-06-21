@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "super_block_world:raw_bronze",
   "ingredients": [
     {
       "item": "super_block_world:raw_bronze_block"

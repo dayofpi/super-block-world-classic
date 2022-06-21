@@ -1,13 +1,13 @@
 {
   "variants": {
     "part=0": {
-      "model": "super_block_world:block/horsetail_bottom"
+      "model": "super_block_world:block/plants/horsetail_bottom"
     },
     "part=1": {
-      "model": "super_block_world:block/horsetail_middle"
+      "model": "super_block_world:block/plants/horsetail_middle"
     },
     "part=2": {
-      "model": "super_block_world:block/horsetail_top"
+      "model": "super_block_world:block/plants/horsetail_top"
     }
   }
 }

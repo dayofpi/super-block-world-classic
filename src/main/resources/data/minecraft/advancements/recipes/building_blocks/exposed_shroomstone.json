@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "super_block_world:exposed_shroomstone_from_smelting",
+      "super_block_world:exposed_shroomstone_from_blasting"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:shroomstone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe_smelting": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "super_block_world:exposed_shroomstone_from_smelting"
+      }
+    },
+    "has_the_recipe_blasting": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "super_block_world:exposed_shroomstone_from_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_material",
+      "has_the_recipe_smelting",
+      "has_the_recipe_blasting"
+    ]
+  ]
+}

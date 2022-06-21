@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "toad_stool",
+  "pattern": [
+    " # ",
+    " / "
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:purple_mushroom_cap"
+    },
+    "/": {
+      "item": "super_block_world:mushroom_stem"
+    }
+  },
+  "result": {
+    "item": "super_block_world:purple_toad_stool",
+    "count": 1
+  }
+}

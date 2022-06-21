@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "super_block_world:block/potted_horsetail"
+      "model": "super_block_world:block/pots/potted_horsetail"
     }
   }
 }

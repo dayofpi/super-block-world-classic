@@ -1,8 +1,0 @@
-{
-  "parent": "super_block_world:block/bill_blaster_base",
-  "textures": {
-    "face": "super_block_world:block/bill_blaster",
-    "side": "super_block_world:block/bill_blaster_side",
-    "top": "super_block_world:block/bill_blaster_top"
-  }
-}

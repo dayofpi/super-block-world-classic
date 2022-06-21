@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "super_block_world:block/bell_cap"
+      "model": "super_block_world:block/leaves/bell_cap"
     }
   }
 }

@@ -1,0 +1,41 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:ice_flower"
+    },
+    "title": {
+      "translate": "advancements.sbw.hit_ice_bro.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.hit_ice_bro.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:super_block_world/hit_block",
+  "criteria": {
+    "hit_ice_bro": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "is_projectile": true,
+            "direct_entity": {
+              "type": "super_block_world:iceball"
+            }
+          }
+        },
+        "entity": {
+          "type": "super_block_world:ice_bro"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "hit_ice_bro"
+    ]
+  ]
+}

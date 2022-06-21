@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.client.renderers;
 
-import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.layers.ToadLayer;
 import com.dayofpi.super_block_world.client.models.ToadModel;
-import com.dayofpi.super_block_world.common.entities.passive.ToadEntity;
-import com.dayofpi.super_block_world.registry.ModItems;
+import com.dayofpi.super_block_world.client.renderers.layers.ToadLayer;
+import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.common.entities.mob.ToadEntity;
+import com.dayofpi.super_block_world.registry.main.ItemInit;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.MapColor;
@@ -38,24 +38,24 @@ public class ToadRenderer<T extends ToadEntity> extends GeoEntityRenderer<T> {
         String received = String.valueOf(entity.getReceivedCoins());
         String wanted = String.valueOf(entity.getWantedCoins());
         Text count = Text.of(received + "/" + wanted);
-        float coinY = entity.getHeight() + 0.5f;
-        int textY = 10;
+        float f = entity.getHeight() + 0.5f;
+        int y = 10;
         matrices.push();
-        matrices.translate(0.0, coinY, 0.0);
+        matrices.translate(0.0, f, 0.0);
         matrices.multiply(this.dispatcher.getRotation());
         matrices.scale(-0.025f, -0.025f, 0.025f);
         Matrix4f matrix4f = matrices.peek().getPositionMatrix();
         float backgroundOpacity = MinecraftClient.getInstance().options.getTextBackgroundOpacity(0.25f);
-        int j = (int) (backgroundOpacity * 255.0f) << 24;
+        int j = (int)(backgroundOpacity * 255.0f) << 24;
         TextRenderer textRenderer = this.getTextRenderer();
         float x = -textRenderer.getWidth(count) / 2f;
-        textRenderer.draw(count, x, (float) textY, MapColor.GOLD.color, false, matrix4f, provider, false, j, light);
+        textRenderer.draw(count, x, (float)y, MapColor.GOLD.color, false, matrix4f, provider, false, j, light);
         matrices.pop();
         matrices.push();
-        matrices.translate(0.0, coinY, 0.0);
+        matrices.translate(0.0, f, 0.0);
         matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(entity.age * 10));
         matrices.scale(0.4f, 0.4f, 0.4f);
-        MinecraftClient.getInstance().getItemRenderer().renderItem(ModItems.COIN.getDefaultStack(), ModelTransformation.Mode.GUI, light, OverlayTexture.DEFAULT_UV, matrices, provider, 0);
+        MinecraftClient.getInstance().getItemRenderer().renderItem(ItemInit.COIN.getDefaultStack(), ModelTransformation.Mode.GUI, light, OverlayTexture.DEFAULT_UV, matrices, provider, 0);
         matrices.pop();
     }
 
