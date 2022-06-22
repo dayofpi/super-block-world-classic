@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/carpet",
+  "textures": {
+    "wool": "super_block_world:block/yellow_flowerbed"
+  }
+}

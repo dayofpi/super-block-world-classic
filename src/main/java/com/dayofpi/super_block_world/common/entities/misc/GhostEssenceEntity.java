@@ -36,7 +36,7 @@ public class GhostEssenceEntity extends Entity {
     }
 
     public void tick() {
-        this.setVelocity(0.0D, 1.0D, 0.0D);
+        this.setVelocity(0.0D, 0.02D, 0.0D);
         this.move(MovementType.SELF, this.getVelocity());
 
         ++this.lifeTime;

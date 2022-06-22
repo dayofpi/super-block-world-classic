@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 2,
+          "data": {
+            "Name": "super_block_world:fuzzball"
+          }
+        },
+        {
+          "weight": 4,
+          "data": {
+            "Name": "super_block_world:fuzzbush"
+          }
+        },
+        {
+          "weight": 25,
+          "data": {
+            "Name": "minecraft:moss_carpet"
+          }
+        },
+        {
+          "weight": 50,
+          "data": {
+            "Name": "super_block_world:short_grass"
+          }
+        },
+        {
+          "weight": 10,
+          "data": {
+            "Name": "minecraft:grass"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -170,6 +170,24 @@
             "depth": 0,
             "offset": 0.4
           }
+        },
+        {
+          "biome": "super_block_world:fuzzbush_caves",
+          "parameters": {
+            "temperature": [
+              0.3,
+              0.4
+            ],
+            "humidity": 0.4,
+            "continentalness": 0.0,
+            "erosion": 0.0,
+            "weirdness": 0,
+            "depth": [
+              0.1,
+              0.9
+            ],
+            "offset": 0.4
+          }
         }
       ]
     }

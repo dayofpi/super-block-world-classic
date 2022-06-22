@@ -54,7 +54,7 @@ public class ModItems {
     public static final Item FIRE_FLOWER = new FireFlowerItem(new FabricItemSettings().group(Main.ITEM_GROUP));
     public static final Item ICE_FLOWER = new IceFlowerItem(new FabricItemSettings().group(Main.ITEM_GROUP));
     public static final Item SUPER_LEAF = new Item(new FabricItemSettings());
-    public static final Item SUPER_STAR = new SuperStarItem(new FabricItemSettings().group(Main.ITEM_GROUP));
+    public static final Item SUPER_STAR = new SuperStarItem(new FabricItemSettings().group(Main.ITEM_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item HAMMER = new HammerItem(new FabricItemSettings().maxCount(16).group(Main.ITEM_GROUP));
     public static final Item TURNIP = new TurnipItem(new FabricItemSettings().maxCount(16).group(Main.ITEM_GROUP));
     public static final Item BOMB = new BombItem(new FabricItemSettings().maxCount(16).group(Main.ITEM_GROUP));
@@ -367,6 +367,8 @@ public class ModItems {
         registerItem(0.65f,"pink_songflower", new BlockItem(ModBlocks.PINK_SONGFLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"pawflower", new BlockItem(ModBlocks.PAWFLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"fire_tulip", new BlockItem(ModBlocks.FIRE_TULIP, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.3f, "yellow_flowerbed", new BlockItem(ModBlocks.YELLOW_FLOWERBED, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.3f, "white_flowerbed", new BlockItem(ModBlocks.WHITE_FLOWERBED, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f,"amanita_sapling", new BlockItem(ModBlocks.AMANITA_SAPLING, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f,"dark_amanita_sapling", new BlockItem(ModBlocks.DARK_AMANITA_SAPLING, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f,"bell_sapling", new BlockItem(ModBlocks.BELL_SAPLING, new FabricItemSettings().group(Main.ITEM_GROUP)));

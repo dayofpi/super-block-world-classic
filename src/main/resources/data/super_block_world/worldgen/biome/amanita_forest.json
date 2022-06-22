@@ -93,7 +93,7 @@
         "maxCount": 5
       },
       {
-        "type": "super_block_world:mummy_toad",
+        "type": "super_block_world:mummy_me",
         "weight": 30,
         "minCount": 3,
         "maxCount": 4
@@ -178,6 +178,7 @@
       "super_block_world:patch_horsetail",
       "super_block_world:patch_stump",
       "super_block_world:patch_songflower",
+      "super_block_world:patch_flowerbed",
       "super_block_world:patch_muncher",
       "super_block_world:patch_muncher_common",
       "super_block_world:strawberry_coral"

@@ -43,7 +43,7 @@ public class FuzzbushBlock extends PlantBlock {
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (random.nextInt(3) == 0) {
-            List<FuzzyEntity> list = world.getEntitiesByClass(FuzzyEntity.class, Box.from(Vec3d.of(pos)).expand(16), EntityPredicates.VALID_LIVING_ENTITY);
+            List<FuzzyEntity> list = world.getEntitiesByClass(FuzzyEntity.class, Box.from(Vec3d.of(pos)).expand(64), EntityPredicates.VALID_LIVING_ENTITY);
             if (list.size() < 10) {
                 FuzzyEntity fuzzyEntity = ModEntities.FUZZY.create(world);
                 if (fuzzyEntity != null && SpawnRestriction.canSpawn(ModEntities.FUZZY, world, SpawnReason.NATURAL, pos, random)) {

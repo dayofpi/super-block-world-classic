@@ -66,6 +66,16 @@
         }
       }
     },
+    "fuzzbush_caves": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:fuzzbush_caves"
+          }
+        }
+      }
+    },
     "moo_moo_meadow": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -122,6 +132,9 @@
     ],
     [
       "forest_of_illusion"
+    ],
+    [
+      "fuzzbush_caves"
     ],
     [
       "moo_moo_meadow"

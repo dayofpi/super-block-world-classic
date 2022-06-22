@@ -1,21 +1,24 @@
 {
-  "feature": "super_block_world:lake_poison",
+  "feature": "super_block_world:ore_iron",
   "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 15
+    },
+    {
+      "type": "minecraft:in_square"
+    },
     {
       "type": "minecraft:height_range",
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "absolute": 0
+          "absolute": -20
         },
         "max_inclusive": {
-          "below_top": 0
+          "absolute": 64
         }
       }
-    },
-    {
-      "type": "minecraft:count",
-      "count": 6
     },
     {
       "type": "minecraft:biome"

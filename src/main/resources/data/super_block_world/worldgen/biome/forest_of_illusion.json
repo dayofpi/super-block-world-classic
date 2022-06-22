@@ -81,7 +81,7 @@
         "maxCount": 5
       },
       {
-        "type": "super_block_world:mummy_toad",
+        "type": "super_block_world:mummy_me",
         "weight": 30,
         "minCount": 3,
         "maxCount": 4

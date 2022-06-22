@@ -288,6 +288,8 @@ public class ModBlocks {
     public static final Block POTTED_PAWFLOWER = new FlowerPotBlock(PAWFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block FIRE_TULIP = new FireTulipBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> 5));
     public static final Block POTTED_FIRE_TULIP = new FlowerPotBlock(FIRE_TULIP, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque().luminance(4));
+    public static final Block YELLOW_FLOWERBED = new FlowerbedBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.YELLOW).nonOpaque().breakInstantly().sounds(BlockSoundGroup.MOSS_CARPET).breakInstantly());
+    public static final Block WHITE_FLOWERBED = new FlowerbedBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.WHITE).nonOpaque().breakInstantly().sounds(BlockSoundGroup.MOSS_CARPET).breakInstantly());
     public static final Block AMANITA_SAPLING = new SaplingBlock(new AmanitaGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
     public static final Block POTTED_AMANITA_SAPLING = new FlowerPotBlock(AMANITA_SAPLING, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block DARK_AMANITA_SAPLING = new SaplingBlock(new DarkAmanitaGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
@@ -580,6 +582,8 @@ public class ModBlocks {
         registerBlock("pink_songflower", PINK_SONGFLOWER, 60, 100);
         registerBlock("pawflower", PAWFLOWER, 60, 100);
         registerBlock("fire_tulip", FIRE_TULIP, 60, 0);
+        registerBlock("yellow_flowerbed", YELLOW_FLOWERBED, 60, 100);
+        registerBlock("white_flowerbed", WHITE_FLOWERBED, 60, 100);
         registerBlock("amanita_sapling", AMANITA_SAPLING);
         registerBlock("dark_amanita_sapling", DARK_AMANITA_SAPLING);
         registerBlock("bell_sapling", BELL_SAPLING);

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": [
+    {
+      "item": "super_block_world:royalite_bricks"
+    },
+    {
+      "item": "super_block_world:royalite"
+    }
+  ],
+  "result": "super_block_world:chiseled_royalite_bricks",
+  "count": 1
+}

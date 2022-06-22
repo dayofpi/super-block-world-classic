@@ -70,6 +70,8 @@ public class ModelClient {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PINK_SONGFLOWER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PAWFLOWER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FIRE_TULIP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.YELLOW_FLOWERBED, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WHITE_FLOWERBED, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AMANITA_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_AMANITA_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BELL_SAPLING, RenderLayer.getCutout());
