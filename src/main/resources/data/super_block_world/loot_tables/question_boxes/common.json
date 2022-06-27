@@ -55,7 +55,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:egg"
+          "name": "minecraft:string"
         },
         {
           "type": "minecraft:item",
@@ -88,6 +88,10 @@
         {
           "type": "minecraft:item",
           "name": "super_block_world:fire_flower"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "super_block_world:lil_oink_egg"
         },
         {
           "type": "minecraft:item",

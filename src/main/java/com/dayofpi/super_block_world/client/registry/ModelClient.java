@@ -23,10 +23,10 @@ public class ModelClient {
     private static final int FOLIAGE_COLOR = 1696058;
 
     private static void renderColors() {
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GRASS_COLOR, ModBlocks.TOADSTOOL_GRASS, ModBlocks.TOADSTOOL_PATH, ModBlocks.TOADSTOOL_TURF, ModBlocks.SHORT_GRASS);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GRASS_COLOR, ModBlocks.TOADSTOOL_GRASS, ModBlocks.GRASSY_TOADSTONE, ModBlocks.GRASSY_HARDSTONE, ModBlocks.TOADSTOOL_PATH, ModBlocks.TOADSTOOL_TURF, ModBlocks.SHORT_GRASS);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FOLIAGE_COLOR, ModBlocks.AMANITA_LEAVES, ModBlocks.FRUITING_AMANITA_LEAVES, ModBlocks.DARK_AMANITA_LEAVES, ModBlocks.FRUITING_DARK_AMANITA_LEAVES, ModBlocks.BUSH);
 
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GRASS_COLOR, ModBlocks.TOADSTOOL_GRASS, ModBlocks.TOADSTOOL_PATH, ModBlocks.TOADSTOOL_TURF, ModBlocks.SHORT_GRASS);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GRASS_COLOR, ModBlocks.TOADSTOOL_GRASS, ModBlocks.GRASSY_TOADSTONE, ModBlocks.GRASSY_HARDSTONE, ModBlocks.TOADSTOOL_PATH, ModBlocks.TOADSTOOL_TURF, ModBlocks.SHORT_GRASS);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FOLIAGE_COLOR, ModBlocks.AMANITA_LEAVES, ModBlocks.FRUITING_AMANITA_LEAVES, ModBlocks.DARK_AMANITA_LEAVES, ModBlocks.FRUITING_DARK_AMANITA_LEAVES, ModBlocks.BUSH);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableItem) stack.getItem()).getColor(stack), ModItems.PLUMBER_CAP);
     }
@@ -52,8 +52,10 @@ public class ModelClient {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BOO_LANTERN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GIRDER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TRAMPOLINE, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STAR_PANEL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STAR_PANEL, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TOADSTOOL_GRASS, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GRASSY_TOADSTONE, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GRASSY_HARDSTONE, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TOADSTOOL_PATH, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AMANITA_LEAVES, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FRUITING_AMANITA_LEAVES, RenderLayer.getCutoutMipped());

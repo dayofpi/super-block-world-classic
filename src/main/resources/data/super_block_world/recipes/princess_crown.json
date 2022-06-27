@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "/#/",
+    "X0X",
+    "###"
+  ],
+  "key": {
+    "/": {
+      "item": "minecraft:gold_nugget"
+    },
+    "#": {
+      "item": "minecraft:gold_ingot"
+    },
+    "X": {
+      "item": "minecraft:diamond"
+    },
+    "0": {
+      "item": "super_block_world:cerise"
+    }
+  },
+  "result": {
+    "item": "super_block_world:princess_crown"
+  }
+}

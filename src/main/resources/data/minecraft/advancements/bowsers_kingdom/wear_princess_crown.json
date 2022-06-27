@@ -1,0 +1,45 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:princess_crown"
+    },
+    "title": {
+      "translate": "advancements.sbw.wear_princess_crown.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.wear_princess_crown.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:bowsers_kingdom/root",
+  "criteria": {
+    "wear_princess_crown": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "equipment": {
+                "head": {
+                  "items": [
+                    "super_block_world:princess_crown"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "wear_princess_crown"
+    ]
+  ]
+}

@@ -3,11 +3,16 @@ package com.dayofpi.super_block_world.common.entities.passive;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.Toad;
 import com.dayofpi.super_block_world.common.entities.ToadTrades;
+import com.dayofpi.super_block_world.common.entities.brains.ToadBrain;
 import com.dayofpi.super_block_world.common.entities.hostile.RottenMushroomEntity;
-import com.dayofpi.super_block_world.common.entities.tasks.ToadLookGoal;
 import com.dayofpi.super_block_world.registry.ModEntities;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Dynamic;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.brain.Brain;
+import net.minecraft.entity.ai.brain.MemoryModuleType;
+import net.minecraft.entity.ai.brain.sensor.Sensor;
+import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.pathing.MobNavigation;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
@@ -19,6 +24,7 @@ import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.ActionResult;
@@ -42,14 +48,18 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import java.util.List;
 
 public class MailtoadEntity extends MerchantEntity implements Toad, IAnimatable {
+    protected static final ImmutableList<SensorType<? extends Sensor<? super PassiveEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY);
+    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING);
     private static final TrackedData<Integer> EMOTION;
     private static final TrackedData<Integer> TOAD_STATE;
     private static final TrackedData<Boolean> TOADETTE;
+    private static final TrackedData<Integer> ATTENTION_COOLDOWN;
 
     static {
         EMOTION = DataTracker.registerData(MailtoadEntity.class, TrackedDataHandlerRegistry.INTEGER);
         TOAD_STATE = DataTracker.registerData(MailtoadEntity.class, TrackedDataHandlerRegistry.INTEGER);
         TOADETTE = DataTracker.registerData(MailtoadEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+        ATTENTION_COOLDOWN = DataTracker.registerData(MailtoadEntity.class, TrackedDataHandlerRegistry.INTEGER);
     }
 
     final AnimationFactory FACTORY = new AnimationFactory(this);
@@ -60,15 +70,30 @@ public class MailtoadEntity extends MerchantEntity implements Toad, IAnimatable 
     }
 
     @Override
-    protected void initGoals() {
-        this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(1, new FleeEntityGoal<>(this, HostileEntity.class, 3.0f, 1.3, 1.5));
-        this.goalSelector.add(1, new StopFollowingCustomerGoal(this));
-        this.goalSelector.add(1, new LookAtCustomerGoal(this));
-        this.goalSelector.add(2, new ToadLookGoal<>(this, ToadEntity.class, 10));
-        this.goalSelector.add(2, new ToadLookGoal<>(this, PlayerEntity.class, 8));
-        this.goalSelector.add(2, new LookAroundGoal(this));
-        this.goalSelector.add(2, new WanderAroundGoal(this, 0.7D));
+    protected Brain.Profile<PassiveEntity> createBrainProfile() {
+        return Brain.createProfile(MEMORY_MODULES, SENSORS);
+    }
+
+    @Override
+    protected Brain<?> deserializeBrain(Dynamic<?> dynamic) {
+        return ToadBrain.create(this.createBrainProfile().deserialize(dynamic));
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Brain<MailtoadEntity> getBrain() {
+        return (Brain<MailtoadEntity>) super.getBrain();
+    }
+
+    @Override
+    protected void mobTick() {
+        this.world.getProfiler().push("toadBrain");
+        this.getBrain().tick((ServerWorld) this.world, this);
+        this.world.getProfiler().pop();
+        this.world.getProfiler().push("toadActivityUpdate");
+        ToadBrain.updateActivities(this);
+        this.world.getProfiler().pop();
+        super.mobTick();
     }
 
     @Override
@@ -77,16 +102,27 @@ public class MailtoadEntity extends MerchantEntity implements Toad, IAnimatable 
         this.dataTracker.startTracking(EMOTION, 0);
         this.dataTracker.startTracking(TOAD_STATE, 0);
         this.dataTracker.startTracking(TOADETTE, false);
+        this.dataTracker.startTracking(ATTENTION_COOLDOWN, 0);
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putBoolean("Toadette", this.isToadette());
+        nbt.putInt("AttentionCooldown", this.getAttentionCooldown());
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         this.setToadette(nbt.getBoolean("Toadette"));
+        this.setAttentionCooldown(nbt.getInt("AttentionCooldown"));
+    }
+
+    public int getAttentionCooldown() {
+        return this.dataTracker.get(ATTENTION_COOLDOWN);
+    }
+
+    protected void setAttentionCooldown(int attentionCooldown) {
+        this.dataTracker.set(ATTENTION_COOLDOWN, attentionCooldown);
     }
 
     @Nullable
@@ -221,6 +257,7 @@ public class MailtoadEntity extends MerchantEntity implements Toad, IAnimatable 
             if (!this.world.isClient) {
                 this.setCustomer(player);
                 this.sendOffers(player, this.getDisplayName(), 1);
+                this.setAttentionCooldown(30);
             }
             return ActionResult.success(this.world.isClient);
         }
@@ -276,6 +313,12 @@ public class MailtoadEntity extends MerchantEntity implements Toad, IAnimatable 
             emotion = 0;
         }
         this.dataTracker.set(EMOTION, emotion);
+    }
+
+    @Override
+    protected void sendAiDebugData() {
+        super.sendAiDebugData();
+        DebugInfoSender.sendBrainDebugData(this);
     }
 
     public boolean isWaving() {

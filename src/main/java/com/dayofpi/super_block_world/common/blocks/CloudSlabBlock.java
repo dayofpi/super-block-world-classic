@@ -11,8 +11,8 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 @SuppressWarnings("deprecation")
-public class CloudSlab extends SlabBlock {
-    public CloudSlab(Settings settings) {
+public class CloudSlabBlock extends SlabBlock {
+    public CloudSlabBlock(Settings settings) {
         super(settings);
     }
 

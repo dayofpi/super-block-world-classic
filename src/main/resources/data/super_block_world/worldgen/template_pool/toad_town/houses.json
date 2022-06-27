@@ -21,6 +21,15 @@
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
+        "location": "super_block_world:toad_town/houses/house_03",
+        "processors": "super_block_world:toad_town",
+        "projection": "rigid"
+      },
+      "weight": 6
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
         "location": "super_block_world:toad_town/houses/post_office",
         "processors": "super_block_world:toad_town",
         "projection": "rigid"
@@ -52,7 +61,7 @@
         "processors": "super_block_world:pen",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 2
     },
     {
       "element": {

@@ -87,7 +87,7 @@ public abstract class ClientMixin {
         }
 
         RegistryEntry<Biome> registryEntry = this.player.world.getBiome(pos);
-        if (world.getBiome(pos).isIn(ModTags.MUSHROOM_KINGDOM)) {
+        if (world.getBiome(pos).isIn(ModTags.SURFACE_BIOMES)) {
             cir.setReturnValue(registryEntry.value().getMusic().orElse(getEnvironmentMusic(world, pos)));
             cir.cancel();
         }

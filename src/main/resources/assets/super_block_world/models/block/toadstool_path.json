@@ -1,12 +1,10 @@
 {
   "parent": "minecraft:block/block",
-  "ambientocclusion": false,
   "textures": {
     "particle": "super_block_world:block/toadstool_soil",
-    "overlay": "super_block_world:block/toadstool_grass_overlay",
     "top": "super_block_world:block/toadstool_path",
-    "side": "super_block_world:block/toadstool_soil",
-    "bottom": "super_block_world:block/toadstool_soil_top"
+    "side": "super_block_world:block/toadstool_path",
+    "end": "super_block_world:block/toadstool_soil_top"
   },
   "elements": [
     {
@@ -79,64 +77,6 @@
             16
           ],
           "cullface": "east"
-        }
-      }
-    },
-    {
-      "from": [
-        0,
-        0,
-        0
-      ],
-      "to": [
-        16,
-        15,
-        16
-      ],
-      "faces": {
-        "north": {
-          "texture": "#overlay",
-          "uv": [
-            0,
-            1,
-            16,
-            16
-          ],
-          "cullface": "north",
-          "tintindex": 0
-        },
-        "south": {
-          "texture": "#overlay",
-          "uv": [
-            0,
-            1,
-            16,
-            16
-          ],
-          "cullface": "south",
-          "tintindex": 0
-        },
-        "west": {
-          "texture": "#overlay",
-          "uv": [
-            0,
-            1,
-            16,
-            16
-          ],
-          "cullface": "west",
-          "tintindex": 0
-        },
-        "east": {
-          "texture": "#overlay",
-          "uv": [
-            0,
-            1,
-            16,
-            16
-          ],
-          "cullface": "east",
-          "tintindex": 0
         }
       }
     }

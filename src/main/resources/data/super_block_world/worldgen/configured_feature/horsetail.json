@@ -15,7 +15,7 @@
           "state": {
             "Name": "super_block_world:horsetail",
             "Properties": {
-              "part": "0"
+              "part": "bottom"
             }
           }
         }
@@ -27,7 +27,7 @@
           "state": {
             "Name": "super_block_world:horsetail",
             "Properties": {
-              "part": "1"
+              "part": "middle"
             }
           }
         }
@@ -39,7 +39,7 @@
           "state": {
             "Name": "super_block_world:horsetail",
             "Properties": {
-              "part": "2"
+              "part": "top"
             }
           }
         }

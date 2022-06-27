@@ -3,7 +3,6 @@ package com.dayofpi.super_block_world.common.blocks;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.Fertilizable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -16,14 +15,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
-
-import java.util.List;
 
 @SuppressWarnings("deprecation")
 public class ToadstoolGrassBlock extends Block implements Fertilizable {
@@ -57,8 +50,6 @@ public class ToadstoolGrassBlock extends Block implements Fertilizable {
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         BlockPos roof = pos.up();
-        BlockState blockState = Blocks.GRASS.getDefaultState();
-
         label46:
         for (int i = 0; i < 128; ++i) {
             BlockPos roof1 = roof;
@@ -71,24 +62,8 @@ public class ToadstoolGrassBlock extends Block implements Fertilizable {
             }
 
             BlockState blockState2 = world.getBlockState(roof1);
-            if (blockState2.isOf(blockState.getBlock()) && random.nextInt(10) == 0) {
-                ((Fertilizable) blockState.getBlock()).grow(world, random, roof1, blockState2);
-            }
-
             if (blockState2.isAir()) {
-                RegistryEntry<PlacedFeature> registryEntry;
-                if (random.nextInt(8) == 0) {
-                    List<ConfiguredFeature<?, ?>> list = world.getBiome(roof1).value().getGenerationSettings().getFlowerFeatures();
-                    if (list.isEmpty()) {
-                        continue;
-                    }
-
-                    registryEntry = ((RandomPatchFeatureConfig) list.get(0).config()).feature();
-                    registryEntry.value().generateUnregistered(world, world.getChunkManager().getChunkGenerator(), random, roof1);
-                } else {
-                    world.setBlockState(roof1, ModBlocks.SHORT_GRASS.getDefaultState());
-                }
-
+                world.setBlockState(roof1, ModBlocks.SHORT_GRASS.getDefaultState());
             }
         }
     }

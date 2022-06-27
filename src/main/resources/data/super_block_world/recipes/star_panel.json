@@ -1,12 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "###",
-    "###"
+    "#/#",
+    "#/#"
   ],
   "key": {
-    "#": {
+    "/": {
       "item": "super_block_world:stellar_shard"
+    },
+    "#": {
+      "item": "minecraft:glass_pane"
     }
   },
   "result": {

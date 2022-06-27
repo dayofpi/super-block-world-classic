@@ -25,7 +25,7 @@ public abstract class AmmoDispenserBehavior extends ItemDispenserBehavior {
         ProjectileEntity projectileEntity = this.createProjectile(world, position, stack);
         projectileEntity.setVelocity(direction.getOffsetX(), (float) direction.getOffsetY() + 0.1f, direction.getOffsetZ(), 1.1F, 5.0F);
         world.spawnEntity(projectileEntity);
-        stack.setDamage(stack.getDamage() + 1);
+        stack.damage(1, world.getRandom(), null);
         return stack;
     }
 

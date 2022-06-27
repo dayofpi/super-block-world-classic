@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:ztar"
+    },
+    "title": {
+      "translate": "advancements.sbw.enter_dark_portal.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.enter_dark_portal.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/defeat_king_boo",
+  "criteria": {
+    "entered_dimension": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "super_block_world:bowsers_kingdom"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entered_dimension"
+    ]
+  ]
+}

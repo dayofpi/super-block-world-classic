@@ -50,7 +50,7 @@ public class LilOinkEggBlock extends Block {
     }
 
     private boolean shouldHatchProgress(World world) {
-        return world.random.nextInt(490) == 0;
+        return world.random.nextInt(300) == 0;
     }
 
     @Override

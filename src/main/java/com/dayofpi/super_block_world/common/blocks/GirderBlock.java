@@ -17,13 +17,15 @@ public class GirderBlock extends SlabBlock {
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if (context instanceof EntityShapeContext && !context.isDescending()) {
+        if (context instanceof EntityShapeContext) {
+            if (context.isDescending())
+                return VoxelShapes.empty();
             if (context.isAbove(BOTTOM_SHAPE, pos, false) && !context.isAbove(TOP_SHAPE, pos, false)) {
                 return BOTTOM_SHAPE;
             } else if (context.isAbove(VoxelShapes.fullCube(), pos, false) || context.isAbove(TOP_SHAPE, pos, false) || context.isAbove(BOTTOM_SHAPE, pos, false)) {
                 return super.getCollisionShape(state, world, pos, context);
             }
         }
-        return VoxelShapes.empty();
+        return super.getCollisionShape(state, world, pos, context);
     }
 }

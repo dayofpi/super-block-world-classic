@@ -4,16 +4,15 @@ import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.EntityData;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
+import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -28,6 +27,8 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
+
 public abstract class ModBossEntity extends HostileEntity {
     private static final TrackedData<BlockPos> ARENA_POS;
 
@@ -39,6 +40,10 @@ public abstract class ModBossEntity extends HostileEntity {
 
     protected ModBossEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
+    }
+
+    public static Optional<? extends LivingEntity> getAttackTarget(ModBossEntity boss) {
+        return boss.getBrain().getOptionalMemory(MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER);
     }
 
     @Override
@@ -111,7 +116,10 @@ public abstract class ModBossEntity extends HostileEntity {
 
     protected void dropEquipment(DamageSource source, int lootingMultiplier, boolean allowDrops) {
         super.dropEquipment(source, lootingMultiplier, allowDrops);
-        ItemEntity itemEntity = this.dropItem(ModItems.POWER_STAR);
+        Item item = ModItems.POWER_STAR;
+        if (this instanceof KingBooEntity)
+            item = ModItems.ZTAR;
+        ItemEntity itemEntity = this.dropItem(item);
         if (itemEntity != null) {
             itemEntity.setCovetedItem();
         }

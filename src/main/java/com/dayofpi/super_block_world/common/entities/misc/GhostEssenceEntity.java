@@ -50,7 +50,6 @@ public class GhostEssenceEntity extends Entity {
             double f = direction.getOffsetZ() == 0 ? random.nextDouble() : (double)direction.getOffsetZ() * 0.3D;
             world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX() + d, this.getY() + e, this.getZ() + f, 0.0D, 0.0D, 0.0D);
             world.addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + d, this.getY() + e, this.getZ() + f, 0.0D, 0.0D, 0.0D);
-            world.addParticle(ParticleTypes.ENCHANTED_HIT, this.getX() + d, this.getY() + e, this.getZ() + f, 0.0D, 0.0D, 0.0D);
         }
         super.tick();
     }

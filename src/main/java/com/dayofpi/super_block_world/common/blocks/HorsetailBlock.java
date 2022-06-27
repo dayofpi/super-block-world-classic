@@ -1,12 +1,13 @@
 package com.dayofpi.super_block_world.common.blocks;
 
 import com.dayofpi.super_block_world.registry.ModBlocks;
+import com.dayofpi.super_block_world.util.HorsetailPart;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -19,16 +20,16 @@ import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
 public class HorsetailBlock extends PlantBlock {
-    private static final IntProperty PART;
+    private static final EnumProperty<HorsetailPart> PART;
     private static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 14.0D, 14.0D);
 
     static {
-        PART = IntProperty.of("part", 0, 2);
+        PART = EnumProperty.of("part", HorsetailPart.class);
     }
 
     public HorsetailBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(PART, 0));
+        this.setDefaultState(this.stateManager.getDefaultState().with(PART, HorsetailPart.BOTTOM));
     }
 
     @Override
@@ -47,28 +48,28 @@ public class HorsetailBlock extends PlantBlock {
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockPos blockPos = pos.down();
         BlockState floor = world.getBlockState(blockPos);
-        if (state.get(PART) == 0) {
+        if (state.get(PART) == HorsetailPart.BOTTOM) {
             return floor.isIn(BlockTags.DIRT);
-        } else if (state.get(PART) == 1) {
-            return floor.isOf(ModBlocks.HORSETAIL) && floor.get(PART) == 0;
-        } else return floor.isOf(ModBlocks.HORSETAIL) && floor.get(PART) == 1;
+        } else if (state.get(PART) == HorsetailPart.MIDDLE) {
+            return floor.isOf(ModBlocks.HORSETAIL) && floor.get(PART) == HorsetailPart.BOTTOM;
+        } else return floor.isOf(ModBlocks.HORSETAIL) && floor.get(PART) == HorsetailPart.MIDDLE;
     }
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         BlockState breakState = Blocks.AIR.getDefaultState();
-        if (direction == Direction.DOWN && !state.canPlaceAt(world, pos) || state.get(PART) < 2 && !world.getBlockState(pos.up()).isOf(ModBlocks.HORSETAIL)) {
+        if (direction == Direction.DOWN && !state.canPlaceAt(world, pos) || state.get(PART) != HorsetailPart.TOP && !world.getBlockState(pos.up()).isOf(ModBlocks.HORSETAIL)) {
             return breakState;
         } else return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
-        if (state.get(PART) == 0) {
-            BlockPos blockPos = pos.up();
-            BlockPos blockPos2 = pos.up(2);
-            world.setBlockState(blockPos, ModBlocks.HORSETAIL.getDefaultState().with(PART, 1));
-            world.setBlockState(blockPos2, ModBlocks.HORSETAIL.getDefaultState().with(PART, 2));
+        if (state.get(PART) == HorsetailPart.BOTTOM) {
+            BlockPos middle = pos.up();
+            BlockPos top = pos.up(2);
+            world.setBlockState(middle, ModBlocks.HORSETAIL.getDefaultState().with(PART, HorsetailPart.MIDDLE));
+            world.setBlockState(top, ModBlocks.HORSETAIL.getDefaultState().with(PART, HorsetailPart.TOP));
         }
     }
 

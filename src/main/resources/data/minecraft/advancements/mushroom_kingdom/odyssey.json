@@ -46,6 +46,16 @@
         }
       }
     },
+    "deep_woods": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:deep_woods"
+          }
+        }
+      }
+    },
     "dry_dry_desert": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -126,6 +136,9 @@
     ],
     [
       "cherry_fields"
+    ],
+    [
+      "deep_woods"
     ],
     [
       "dry_dry_desert"

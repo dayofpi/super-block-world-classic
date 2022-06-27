@@ -24,9 +24,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -157,6 +159,7 @@ public class GladGoombaEntity extends TameableEntity implements IAnimatable {
             if (this.isBreedingItem(itemStack) && this.getHealth() < this.getMaxHealth()) {
                 if (!player.getAbilities().creativeMode) {
                     itemStack.decrement(1);
+                    this.world.playSoundFromEntity(null, this, Sounds.ENTITY_GENERIC_EAT, SoundCategory.NEUTRAL, 1.0f, MathHelper.nextBetween(this.world.random, 0.8f, 1.2f));
                 }
                 if (item.getFoodComponent() != null)
                     this.heal(item.getFoodComponent().getHunger());
@@ -173,6 +176,7 @@ public class GladGoombaEntity extends TameableEntity implements IAnimatable {
         if (!itemStack.isOf(ModItems.YOSHI_COOKIE)) return super.interactMob(player, hand);
         if (!player.getAbilities().creativeMode) {
             itemStack.decrement(1);
+            this.world.playSoundFromEntity(null, this, Sounds.ENTITY_GENERIC_EAT, SoundCategory.NEUTRAL, 1.0f, MathHelper.nextBetween(this.world.random, 0.8f, 1.2f));
         }
         if (this.random.nextInt(3) == 0) {
             this.setOwner(player);

@@ -43,7 +43,7 @@ public class BellCapBlock extends LeavesBlock {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos blockPos, Random random) {
         super.randomDisplayTick(state, world, blockPos, random);
-        if (random.nextFloat() < 0.4f)
+        if (random.nextInt(20) == 0)
             world.playSound(null, blockPos, Sounds.BLOCK_BELL_CAP_JINGLE, SoundCategory.BLOCKS, 1.0F, 0.5F + world.random.nextFloat() * 1.2F);
     }
 }

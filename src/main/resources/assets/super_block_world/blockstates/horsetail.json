@@ -1,12 +1,12 @@
 {
   "variants": {
-    "part=0": {
+    "part=bottom": {
       "model": "super_block_world:block/horsetail_bottom"
     },
-    "part=1": {
+    "part=middle": {
       "model": "super_block_world:block/horsetail_middle"
     },
-    "part=2": {
+    "part=top": {
       "model": "super_block_world:block/horsetail_top"
     }
   }

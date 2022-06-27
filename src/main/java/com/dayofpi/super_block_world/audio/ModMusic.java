@@ -8,5 +8,6 @@ public class ModMusic {
     public static final MusicSound CAVE = new MusicSound(Sounds.MUSIC_CAVE, 9900, 19990, false);
     public static final MusicSound GHOST_HOUSE = new MusicSound(Sounds.MUSIC_GHOST_HOUSE, 5000, 9000, false);
     public static final MusicSound BOSS_1 = new MusicSound(Sounds.MUSIC_BOSS_1, 0, 0, true);
+    public static final MusicSound BOSS_2 = new MusicSound(Sounds.MUSIC_BOSS_2, 0, 0, true);
     public static final MusicSound STAR = new MusicSound(Sounds.MUSIC_STARMAN, 1, 1, true);
 }

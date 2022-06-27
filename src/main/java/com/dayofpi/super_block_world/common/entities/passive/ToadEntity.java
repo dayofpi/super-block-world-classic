@@ -32,6 +32,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
@@ -61,12 +62,12 @@ import java.util.Map;
 
 public class ToadEntity extends AbstractToad implements IAnimatable {
     public static final Map<Integer, Identifier> TEXTURES;
+    protected static final ImmutableList<SensorType<? extends Sensor<? super PassiveEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY);
+    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING);
     private static final TrackedData<Integer> COLOR;
     private static final TrackedData<Integer> EMOTION;
     private static final TrackedData<Integer> TOAD_STATE;
     private static final TrackedData<Boolean> TOADETTE;
-    protected static final ImmutableList<SensorType<? extends Sensor<? super ToadEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY);
-    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING);
 
     static {
         COLOR = DataTracker.registerData(ToadEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -91,9 +92,7 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
     }
 
     public static DefaultAttributeContainer.Builder createToadAttributes() {
-        return MobEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0D)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D);
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D);
     }
 
     @Override
@@ -117,6 +116,12 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
         this.setToadette(nbt.getBoolean("Toadette"));
     }
 
+    @Override
+    protected void sendAiDebugData() {
+        super.sendAiDebugData();
+        DebugInfoSender.sendBrainDebugData(this);
+    }
+
     @Nullable
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         this.setToadette(random.nextBoolean());
@@ -126,7 +131,7 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
     }
 
     @Override
-    protected Brain.Profile<ToadEntity> createBrainProfile() {
+    protected Brain.Profile<PassiveEntity> createBrainProfile() {
         return Brain.createProfile(MEMORY_MODULES, SENSORS);
     }
 
@@ -189,6 +194,8 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
     public void tickMovement() {
         super.tickMovement();
         if (this.isAlive()) {
+            if (this.getAttentionCooldown() > 0)
+                this.setAttentionCooldown(this.getAttentionCooldown() - 1);
             List<Entity> baddies = world.getOtherEntities(this, this.getBoundingBox().expand(4, 4, 4), entity -> entity instanceof HostileEntity);
             if (!this.isScared()) {
                 if (this.isCheering() || this.forwardSpeed != 0) {
@@ -240,6 +247,7 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
         if (itemStack.isOf(ModItems.COIN) && !this.isBaby() && !this.isScared() && !this.isCheering()) {
             if (!this.world.isClient && this.getReceivedCoins() < this.getWantedCoins()) {
                 this.setReceivedCoins(this.getReceivedCoins() + 1);
+                this.setAttentionCooldown(30);
                 itemStack.decrement(1);
                 this.playSound(Sounds.ITEM_COIN, 0.8F, 1.0F);
             }

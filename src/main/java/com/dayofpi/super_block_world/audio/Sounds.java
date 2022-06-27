@@ -20,7 +20,6 @@ public class Sounds {
     public static final SoundEvent BLOCK_SPIKE_TRAP_RETRACT = createSound("block.spike_trap.retract");
     public static final SoundEvent BLOCK_BOWSER_LOCK_OPEN = createSound("block.bowser_lock.open");
     public static final SoundEvent BLOCK_DARK_PORTAL_TRAVEL = createSound("block.dark_portal.travel");
-    public static final SoundEvent BLOCK_DARK_PORTAL_TRIGGER = createSound("block.dark_portal.trigger");
     public static final SoundEvent BLOCK_DASH_BLOCK_ACTIVATE = createSound("block.dash_block.activate");
     public static final SoundEvent BLOCK_DONUT_BLOCK_TRIGGER = createSound("block.donut_block.trigger");
     public static final SoundEvent BLOCK_EMPTY_BLOCK_STORE = createSound("block.empty_block.store");
@@ -52,6 +51,11 @@ public class Sounds {
     public static final SoundEvent BLOCK_TOADSTONE_HIT = createSound("block.toadstone.hit");
     public static final SoundEvent BLOCK_TOADSTONE_PLACE = createSound("block.toadstone.place");
     public static final SoundEvent BLOCK_TOADSTONE_STEP = createSound("block.toadstone.step");
+    public static final SoundEvent BLOCK_GRASSY_TOADSTONE_BREAK = createSound("block.grassy_toadstone.break");
+    public static final SoundEvent BLOCK_GRASSY_TOADSTONE_FALL = createSound("block.grassy_toadstone.fall");
+    public static final SoundEvent BLOCK_GRASSY_TOADSTONE_HIT = createSound("block.grassy_toadstone.hit");
+    public static final SoundEvent BLOCK_GRASSY_TOADSTONE_PLACE = createSound("block.grassy_toadstone.place");
+    public static final SoundEvent BLOCK_GRASSY_TOADSTONE_STEP = createSound("block.grassy_toadstone.step");
     public static final SoundEvent BLOCK_TRAMPOLINE_RELEASE = createSound("block.trampoline.release");
     public static final SoundEvent BLOCK_YOSHI_EGG_HATCH = createSound("block.yoshi_egg.hatch");
     public static final SoundEvent ENTITY_BIG_GOOMBA_DEATH = createSound("entity.big_goomba.death");
@@ -97,6 +101,7 @@ public class Sounds {
     public static final SoundEvent ENTITY_KING_BOO_CHARGE = createSound("entity.king_boo.charge");
     public static final SoundEvent ENTITY_KING_BOO_UNLEASH = createSound("entity.king_boo.unleash");
     public static final SoundEvent ENTITY_KING_BOO_WEAKENED = createSound("entity.king_boo.weakened");
+    public static final SoundEvent ENTITY_KING_BOO_AMBIENT = createSound("entity.king_boo.ambient");
     public static final SoundEvent ENTITY_KING_BOO_DEATH = createSound("entity.king_boo.death");
     public static final SoundEvent ENTITY_KING_BOO_HURT = createSound("entity.king_boo.hurt");
     public static final SoundEvent ENTITY_KOOPA_TROOPA_AMBIENT = createSound("entity.koopa_troopa.ambient");
@@ -157,6 +162,7 @@ public class Sounds {
     public static final SoundEvent ITEM_THROW = createSound("item.generic.throw");
     public static final SoundEvent MUSIC_AMANITA_FOREST = createSound("music.forest");
     public static final SoundEvent MUSIC_BOSS_1 = createSound("music.boss.1");
+    public static final SoundEvent MUSIC_BOSS_2 = createSound("music.boss.2");
     public static final SoundEvent MUSIC_CAVE = createSound("music.cave");
     public static final SoundEvent MUSIC_DAYTIME = createSound("music.day");
     public static final SoundEvent MUSIC_DISC_MY_SONG = createSound("music.disc.my_song");
@@ -192,7 +198,6 @@ public class Sounds {
         registerSound(BLOCK_SPIKE_TRAP_RETRACT);
         registerSound(BLOCK_BOWSER_LOCK_OPEN);
         registerSound(BLOCK_DARK_PORTAL_TRAVEL);
-        registerSound(BLOCK_DARK_PORTAL_TRIGGER);
         registerSound(BLOCK_DASH_BLOCK_ACTIVATE);
         registerSound(BLOCK_DONUT_BLOCK_TRIGGER);
         registerSound(BLOCK_EMPTY_BLOCK_STORE);
@@ -224,6 +229,11 @@ public class Sounds {
         registerSound(BLOCK_TOADSTONE_HIT);
         registerSound(BLOCK_TOADSTONE_PLACE);
         registerSound(BLOCK_TOADSTONE_STEP);
+        registerSound(BLOCK_GRASSY_TOADSTONE_BREAK);
+        registerSound(BLOCK_GRASSY_TOADSTONE_FALL);
+        registerSound(BLOCK_GRASSY_TOADSTONE_HIT);
+        registerSound(BLOCK_GRASSY_TOADSTONE_PLACE);
+        registerSound(BLOCK_GRASSY_TOADSTONE_STEP);
         registerSound(BLOCK_TRAMPOLINE_RELEASE);
         registerSound(BLOCK_YOSHI_EGG_HATCH);
         registerSound(ENTITY_BLOOPER_FLOP);
@@ -264,6 +274,7 @@ public class Sounds {
         registerSound(ENTITY_KING_BOO_CHARGE);
         registerSound(ENTITY_KING_BOO_UNLEASH);
         registerSound(ENTITY_KING_BOO_WEAKENED);
+        registerSound(ENTITY_KING_BOO_AMBIENT);
         registerSound(ENTITY_KING_BOO_DEATH);
         registerSound(ENTITY_KING_BOO_HURT);
         registerSound(ENTITY_KOOPA_TROOPA_AMBIENT);
@@ -321,6 +332,7 @@ public class Sounds {
         registerSound(ITEM_THROW);
         registerSound(MUSIC_AMANITA_FOREST);
         registerSound(MUSIC_BOSS_1);
+        registerSound(MUSIC_BOSS_2);
         registerSound(MUSIC_CAVE);
         registerSound(MUSIC_DAYTIME);
         registerSound(MUSIC_DISC_MY_SONG);

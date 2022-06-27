@@ -3,6 +3,7 @@ package com.dayofpi.super_block_world.common.blocks;
 import com.dayofpi.super_block_world.common.block_entities.WarpPipeBE;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -52,6 +53,19 @@ public class WarpPipeBlock extends AbstractPipe implements BlockEntityProvider {
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos blockPos, Random random) {
         BubbleColumnBlock.update(world, blockPos.up(), state);
+    }
+
+    @Override
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        if (state.get(LINKED)) {
+            BlockPos pos1 = pos.offset(state.get(FACING));
+            int i = random.nextInt(2) * 2 - 1;
+
+            double vx = random.nextFloat() * (float)i;
+            double vy = ((double)random.nextFloat() - 0.5) * 0.125;
+            double vz = random.nextFloat() * (float)i;
+            world.addParticle(ParticleTypes.PORTAL, pos1.getX() + random.nextDouble(), pos1.getY(), pos1.getZ() + random.nextDouble(), vx, vy, vz);
+        }
     }
 
     @Override

@@ -8,4 +8,6 @@ public interface Toad {
     boolean isWaving();
 
     void setToadState(int state);
+
+    int getAttentionCooldown();
 }

@@ -13,7 +13,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.structure.Structure;
 
 public class ModTags {
-    public static TagKey<Biome> MUSHROOM_KINGDOM;
+    public static TagKey<Biome> SURFACE_BIOMES;
     public static TagKey<Biome> SURFACE_GOOMBA_SPAWN;
     public static TagKey<Biome> SURFACE_SHY_GUY_SPAWN;
     public static TagKey<Block> FLAGS;
@@ -41,7 +41,6 @@ public class ModTags {
         FLAGS = registerTag(Registry.BLOCK_KEY, "flags");
         FLAG_ITEMS = registerTag(Registry.ITEM_KEY, "flags");
         GHOST_HOUSE = registerTag(Registry.STRUCTURE_KEY, "ghost_house");
-        MUSHROOM_KINGDOM = registerTag(Registry.BIOME_KEY, "mushroom_kingdom");
         ON_YOSHIS_ISLAND_MAP = registerTag(Registry.STRUCTURE_KEY, "on_yoshis_island_map");
         PIPE_BODIES = registerTag(Registry.BLOCK_KEY, "pipe_bodies");
         POISON = registerTag(Registry.FLUID_KEY, "poison");
@@ -51,6 +50,7 @@ public class ModTags {
         STAR_BITS = registerTag(Registry.ITEM_KEY, "star_bits");
         STOMP_IGNORED = registerTag(Registry.ENTITY_TYPE_KEY, "stomp_ignored");
         STOMP_IMMUNE = registerTag(Registry.ENTITY_TYPE_KEY, "stomp_immune");
+        SURFACE_BIOMES = registerTag(Registry.BIOME_KEY, "surface_biomes");
         SURFACE_GOOMBA_SPAWN = registerTag(Registry.BIOME_KEY, "surface_goomba_spawn");
         SURFACE_SHY_GUY_SPAWN = registerTag(Registry.BIOME_KEY, "surface_shy_guy_spawn");
         VANILLATE = registerTag(Registry.BLOCK_KEY, "vanillate");

@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "super_block_world:ztar"
+      "item": "super_block_world:chiseled_hardstone_bricks"
     },
     "title": {
-      "translate": "advancements.sbw.enter_koopa_kingdom.title"
+      "translate": "advancements.sbw.bowsers_kingdom_root.title"
     },
     "description": {
-      "translate": "advancements.sbw.enter_koopa_kingdom.description"
+      "translate": "advancements.sbw.bowsers_kingdom_root.description"
     },
     "background": "super_block_world:textures/block/hardstone_bricks.png",
     "frame": "task",
@@ -21,24 +21,11 @@
       "conditions": {
         "to": "super_block_world:bowsers_kingdom"
       }
-    },
-    "collected_star": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "super_block_world:ztar"
-            ]
-          }
-        ]
-      }
     }
   },
   "requirements": [
     [
-      "entered_dimension",
-      "collected_star"
+      "entered_dimension"
     ]
   ]
 }

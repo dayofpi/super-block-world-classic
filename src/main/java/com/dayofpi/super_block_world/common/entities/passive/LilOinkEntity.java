@@ -1,8 +1,10 @@
 package com.dayofpi.super_block_world.common.entities.passive;
 
 import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.brains.LilOinkBrain;
 import com.dayofpi.super_block_world.registry.ModEntities;
+import com.dayofpi.super_block_world.registry.ModItems;
 import com.dayofpi.super_block_world.util.LilOinkVariant;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
@@ -22,16 +24,21 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.LocalDifficulty;
@@ -67,6 +74,10 @@ public class LilOinkEntity extends AnimalEntity {
         return (Brain<LilOinkEntity>) super.getBrain();
     }
 
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return stack.isOf(ModItems.YOSHI_FRUIT);
+    }
 
     private ItemStack getItemFromType(LilOinkVariant variant) {
         if (variant.getItem() == Items.ENCHANTED_BOOK) return this.getEnchantedBookStack();
@@ -149,6 +160,16 @@ public class LilOinkEntity extends AnimalEntity {
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_PIG_DEATH;
+    }
+
+    @Override
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        ActionResult actionResult = super.interactMob(player, hand);
+        if (actionResult.isAccepted() && this.isBreedingItem(itemStack)) {
+            this.world.playSoundFromEntity(null, this, Sounds.ENTITY_GENERIC_EAT, SoundCategory.NEUTRAL, 1.0f, MathHelper.nextBetween(this.world.random, 1.2f, 1.8f));
+        }
+        return actionResult;
     }
 
     @Nullable

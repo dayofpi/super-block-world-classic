@@ -13,7 +13,7 @@
               "condition": "minecraft:block_state_property",
               "block": "super_block_world:horsetail",
               "properties": {
-                "part": "2"
+                "part": "bottom"
               }
             }
           ]

@@ -1,56 +1,7 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "super_block_world:block/toadstool_path"
-      }
-    },
-    {
-      "when": {
-        "north": "true"
-      },
-      "apply": [
-        {
-          "model": "super_block_world:block/toadstool_path_overlay",
-          "uvlock": false
-        }
-      ]
-    },
-    {
-      "when": {
-        "east": "true"
-      },
-      "apply": [
-        {
-          "model": "super_block_world:block/toadstool_path_overlay",
-          "uvlock": false,
-          "y": 90
-        }
-      ]
-    },
-    {
-      "when": {
-        "south": "true"
-      },
-      "apply": [
-        {
-          "model": "super_block_world:block/toadstool_path_overlay",
-          "uvlock": false,
-          "y": 180
-        }
-      ]
-    },
-    {
-      "when": {
-        "west": "true"
-      },
-      "apply": [
-        {
-          "model": "super_block_world:block/toadstool_path_overlay",
-          "uvlock": false,
-          "y": 270
-        }
-      ]
+  "variants": {
+    "": {
+      "model": "super_block_world:block/toadstool_path"
     }
-  ]
+  }
 }

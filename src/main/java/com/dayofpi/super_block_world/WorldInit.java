@@ -40,6 +40,6 @@ public class WorldInit {
 
         CustomPortalApiRegistry.registerPortalFrameTester(PORTAL_FRAME_TESTER, ModFrameTester::new);
         CustomPortalBuilder.beginPortal().frameBlock(ModBlocks.WARP_FRAME).lightWithItem(ModItems.POWER_STAR).destDimID(WorldInit.MUSHROOM_KINGDOM).tintColor(16744174).customFrameTester(PORTAL_FRAME_TESTER).registerInPortalAmbienceSound(playerEntity -> new CPASoundEventData(Sounds.BLOCK_PORTAL_TRIGGER, 1.0F, 1.0F)).registerPostTPPortalAmbience(playerEntity -> new CPASoundEventData(Sounds.BLOCK_PORTAL_TRAVEL, 1.0F, 1.0F)).registerPortal();
-        CustomPortalBuilder.beginPortal().frameBlock(ModBlocks.REINFORCED_WARP_FRAME).lightWithItem(ModItems.ZTAR).destDimID(WorldInit.BOWSERS_KINGDOM).tintColor(16744174).customFrameTester(PORTAL_FRAME_TESTER).registerInPortalAmbienceSound(playerEntity -> new CPASoundEventData(Sounds.BLOCK_DARK_PORTAL_TRIGGER, 1.0F, 1.0F)).registerPostTPPortalAmbience(playerEntity -> new CPASoundEventData(Sounds.BLOCK_DARK_PORTAL_TRAVEL, 1.0F, 1.0F)).registerPortal();
+        CustomPortalBuilder.beginPortal().frameBlock(ModBlocks.REINFORCED_WARP_FRAME).lightWithItem(ModItems.ZTAR).destDimID(WorldInit.BOWSERS_KINGDOM).tintColor(5182255).customFrameTester(PORTAL_FRAME_TESTER).registerInPortalAmbienceSound(playerEntity -> new CPASoundEventData(Sounds.BLOCK_PORTAL_TRIGGER, 1.0F, 1.0F)).registerPostTPPortalAmbience(playerEntity -> new CPASoundEventData(Sounds.BLOCK_DARK_PORTAL_TRAVEL, 1.0F, 1.0F)).registerPortal();
     }
 }

@@ -17,8 +17,8 @@
     },
     "music": {
       "sound": "super_block_world:music.forest",
-      "min_delay": 9900,
-      "max_delay": 19990,
+      "min_delay": 9000,
+      "max_delay": 19900,
       "replace_current_music": false
     }
   },
@@ -44,7 +44,7 @@
       },
       {
         "type": "super_block_world:spindrift",
-        "weight": 1,
+        "weight": 2,
         "minCount": 2,
         "maxCount": 4
       }

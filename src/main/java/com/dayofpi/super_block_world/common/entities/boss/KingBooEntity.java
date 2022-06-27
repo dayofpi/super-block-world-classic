@@ -1,18 +1,17 @@
 package com.dayofpi.super_block_world.common.entities.boss;
 
+import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.brains.KingBooBrain;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.ai.brain.sensor.Sensor;
 import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.control.FlightMoveControl;
-import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -27,7 +26,6 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.GameStateChangeS2CPacket;
 import net.minecraft.server.network.DebugInfoSender;
@@ -66,14 +64,13 @@ public class KingBooEntity extends ModBossEntity implements IAnimatable {
 
     public KingBooEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
-        this.lookControl = new YawAdjustingLookControl(this, 10);
-        this.moveControl = new FlightMoveControl(this, 20, true);
+        this.moveControl = new FlightMoveControl(this, 10, true);
         this.bossBar = new ServerBossBar(this.getDisplayName(), BossBar.Color.PURPLE, BossBar.Style.PROGRESS);
         this.experiencePoints = 35;
     }
 
     public static DefaultAttributeContainer.Builder createKingBooAttributes() {
-        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0D).add(EntityAttributes.GENERIC_MAX_HEALTH, 70.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.18D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.18D).add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.6D).add(EntityAttributes.GENERIC_ARMOR, 20.0D);
+        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0D).add(EntityAttributes.GENERIC_MAX_HEALTH, 70.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.23D).add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.6D).add(EntityAttributes.GENERIC_ARMOR, 20.0D);
     }
 
     @Override
@@ -93,7 +90,7 @@ public class KingBooEntity extends ModBossEntity implements IAnimatable {
 
     @Override
     public MusicSound getBossMusic() {
-        return null;
+        return ModMusic.BOSS_2;
     }
 
     @Override
@@ -116,12 +113,6 @@ public class KingBooEntity extends ModBossEntity implements IAnimatable {
     protected void sendAiDebugData() {
         super.sendAiDebugData();
         DebugInfoSender.sendBrainDebugData(this);
-    }
-
-    @Override
-    @Nullable
-    public LivingEntity getTarget() {
-        return this.brain.getOptionalMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
     }
 
     @Override
@@ -156,6 +147,12 @@ public class KingBooEntity extends ModBossEntity implements IAnimatable {
 
     public float getAlpha() {
         return this.alpha;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return Sounds.ENTITY_KING_BOO_AMBIENT;
     }
 
     @Override
@@ -206,12 +203,6 @@ public class KingBooEntity extends ModBossEntity implements IAnimatable {
     }
 
     @Override
-    protected void dropEquipment(DamageSource source, int lootingMultiplier, boolean allowDrops) {
-        super.dropEquipment(source, lootingMultiplier, allowDrops);
-        this.dropItem(Items.AMETHYST_SHARD);
-    }
-
-    @Override
     public boolean damage(DamageSource source, float amount) {
         if (!this.isWeakened() && !source.isOutOfWorld())
             return false;
@@ -220,12 +211,12 @@ public class KingBooEntity extends ModBossEntity implements IAnimatable {
 
     @Override
     public int getMaxLookPitchChange() {
-        return 1;
+        return super.getMaxLookPitchChange();
     }
 
     @Override
     public int getMaxHeadRotation() {
-        return 1;
+        return super.getMaxHeadRotation();
     }
 
     @Override

@@ -95,7 +95,9 @@
               0.2
             ],
             "weirdness": 0,
-            "depth": 0,
+            "depth": [
+              0.0, 0.1
+            ],
             "offset": 0
           }
         },
@@ -116,7 +118,9 @@
               0.2
             ],
             "weirdness": 0.2,
-            "depth": 0,
+            "depth": [
+              0.0, 0.1
+            ],
             "offset": 0
           }
         },
@@ -134,7 +138,9 @@
             ],
             "erosion": -0.4,
             "weirdness": 0,
-            "depth": 0,
+            "depth": [
+              0.0, 0.1
+            ],
             "offset": 0
           }
         },
@@ -167,7 +173,9 @@
               -0.7
             ],
             "weirdness": 0.2,
-            "depth": 0,
+            "depth": [
+              0.0, 0.1
+            ],
             "offset": 0.4
           }
         },
@@ -186,7 +194,25 @@
               0.1,
               0.9
             ],
-            "offset": 0.4
+            "offset": 0.3
+          }
+        },
+        {
+          "biome": "super_block_world:deep_woods",
+          "parameters": {
+            "temperature": [
+              0.0,
+              0.2
+            ],
+            "humidity": 0.5,
+            "continentalness": 0.0,
+            "erosion": 0.0,
+            "weirdness": 0,
+            "depth": [
+              0.1,
+              0.9
+            ],
+            "offset": 0.3
           }
         }
       ]

@@ -44,7 +44,7 @@ public class SpindriftEntity extends PassiveEntity {
 
     @SuppressWarnings("unused")
     public static boolean canSpindriftSpawn(EntityType<? extends SpindriftEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return world.getBlockState(pos.down()).isIn(BlockTags.ANIMALS_SPAWNABLE_ON) && world.getBaseLightLevel(pos, 0) > 8;
+        return world.getBlockState(pos.down()).isIn(BlockTags.DIRT) && world.getBaseLightLevel(pos, 0) > 8;
     }
 
     @Override
@@ -69,9 +69,11 @@ public class SpindriftEntity extends PassiveEntity {
         if (itemStack.isOf(Items.BONE_MEAL)) {
             world.syncWorldEvent(player, WorldEvents.BONE_MEAL_USED, this.getBlockPos(), 0);
             itemStack.decrement(1);
-            SpindriftEntity spindrift = ModEntities.SPINDRIFT.create(world);
-            if (spindrift != null && random.nextInt(3) == 0) {
-                world.spawnEntity(spindrift);
+            if (random.nextInt(3) == 0) {
+                SpindriftEntity spindrift = ModEntities.SPINDRIFT.create(world);
+                if (spindrift != null) {
+                    world.spawnEntity(spindrift);
+                }
             }
             return ActionResult.success(world.isClient);
         }

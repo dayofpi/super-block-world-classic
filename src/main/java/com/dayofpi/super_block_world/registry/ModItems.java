@@ -96,6 +96,8 @@ public class ModItems {
     private static final ArmorMaterial JUMP_ARMOR = new JumpArmorMaterial();
     public static final Item JUMP_BOOTS = new JumpBootsItem(JUMP_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
     public static final Item PLUMBER_CAP = new PlumberCapItem(JUMP_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
+    private static final ArmorMaterial PRINCESS_ARMOR = new PrincessArmorMaterial();
+    public static final Item PRINCESS_CROWN = new ArmorItem(PRINCESS_ARMOR, EquipmentSlot.HEAD, new FabricItemSettings().group(Main.ITEM_GROUP));
     private static final ArmorMaterial CLOUD_ARMOR = new CloudArmorMaterial();
     public static final Item CLOUD_BOOTS = new CloudBootsItem(CLOUD_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
     private static final ArmorMaterial GREEN_SHELL_ARMOR = new GreenShellArmorMaterial();
@@ -166,6 +168,8 @@ public class ModItems {
         registerItem("coarse_toadstool_soil", new BlockItem(ModBlocks.COARSE_TOADSTOOL_SOIL, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("toadstool_grass", new BlockItem(ModBlocks.TOADSTOOL_GRASS, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.5f,"toadstool_turf", new BlockItem(ModBlocks.TOADSTOOL_TURF, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("grassy_toadstone", new BlockItem(ModBlocks.GRASSY_TOADSTONE, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("grassy_hardstone", new BlockItem(ModBlocks.GRASSY_HARDSTONE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cherry_soil", new BlockItem(ModBlocks.CHERRY_SOIL, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cherry_grass", new BlockItem(ModBlocks.CHERRY_GRASS, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("gritzy_sand", new BlockItem(ModBlocks.GRITZY_SAND, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -176,6 +180,7 @@ public class ModItems {
         registerItem("chiseled_gritzy_sandstone", new BlockItem(ModBlocks.CHISELED_GRITZY_SANDSTONE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("gritzy_sandstone_slab", new BlockItem(ModBlocks.GRITZY_SANDSTONE_SLAB, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("gritzy_sandstone_stairs", new BlockItem(ModBlocks.GRITZY_SANDSTONE_STAIRS, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("shroomstone", new BlockItem(ModBlocks.SHROOMSTONE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("charrock", new BlockItem(ModBlocks.CHARROCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cloud_block", new BlockItem(ModBlocks.CLOUD_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("happy_cloud", new BlockItem(ModBlocks.HAPPY_CLOUD, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -224,6 +229,10 @@ public class ModItems {
         registerItem("cerise_block", new BlockItem(ModBlocks.CERISE_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cerise_bricks", new BlockItem(ModBlocks.CERISE_BRICKS, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cerise_tiles", new BlockItem(ModBlocks.CERISE_TILES, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("cerise_brick_slab", new BlockItem(ModBlocks.CERISE_BRICK_SLAB, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("cerise_brick_stairs", new BlockItem(ModBlocks.CERISE_BRICK_STAIRS, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("cerise_tile_slab", new BlockItem(ModBlocks.CERISE_TILE_SLAB, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("cerise_tile_stairs", new BlockItem(ModBlocks.CERISE_TILE_STAIRS, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("golden_bricks", new BlockItem(ModBlocks.GOLDEN_BRICKS, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("golden_tiles", new BlockItem(ModBlocks.GOLDEN_TILES, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("golden_brick_slab", new BlockItem(ModBlocks.GOLDEN_BRICK_SLAB, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -426,6 +435,7 @@ public class ModItems {
         registerItem("red_shell", RED_SHELL);
         registerItem("buzzy_shell", BUZZY_SHELL);
         registerItem("plumber_cap", PLUMBER_CAP);
+        registerItem("princess_crown", PRINCESS_CROWN);
         registerItem("shy_guy_mask", SHY_GUY_MASK);
         registerItem("jump_boots", JUMP_BOOTS);
         registerItem("cloud_boots", CLOUD_BOOTS);
