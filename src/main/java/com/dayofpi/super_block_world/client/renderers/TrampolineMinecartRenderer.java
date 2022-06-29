@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.client.renderers;
 
-import com.dayofpi.super_block_world.client.registry.EntityClient;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.blocks.TrampolineBlock;
 import com.dayofpi.super_block_world.common.entities.misc.TrampolineMinecartEntity;
 import com.dayofpi.super_block_world.registry.ModBlocks;
@@ -12,7 +12,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class TrampolineMinecartRenderer extends MinecartEntityRenderer<TrampolineMinecartEntity> {
     public TrampolineMinecartRenderer(EntityRendererFactory.Context context) {
-        super(context, EntityClient.TRAMPOLINE_MINECART);
+        super(context, ModModelLayers.TRAMPOLINE_MINECART);
     }
 
     protected void renderBlock(TrampolineMinecartEntity entity, float delta, BlockState state, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {

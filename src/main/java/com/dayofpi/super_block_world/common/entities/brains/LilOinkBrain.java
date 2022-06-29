@@ -29,7 +29,8 @@ public class LilOinkBrain {
     }
 
     private static void addIdleActivities(Brain<LilOinkEntity> brain) {
-        brain.setTaskList(Activity.IDLE, ImmutableList.of(Pair.of(2, new WalkTowardClosestAdultTask<>(UniformIntProvider.create(5, 16), 1.25f)), Pair.of(0, new TimeLimitedTask<LivingEntity>(new FollowMobTask(EntityType.PLAYER, 6.0f), UniformIntProvider.create(30, 60))), Pair.of(2, new CompositeTask<>(ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryModuleState.VALUE_ABSENT), ImmutableSet.of(), CompositeTask.Order.ORDERED, CompositeTask.RunMode.TRY_ALL, ImmutableList.of(Pair.of(new StrollTask(0.5f), 2), Pair.of(new GoTowardsLookTarget(0.5f, 3), 3), Pair.of(new WaitTask(30, 60), 5))))));
+        brain.setTaskList(Activity.IDLE, ImmutableList.of(Pair.of(2, new WalkTowardClosestAdultTask<>(UniformIntProvider.create(5, 16), 1.25f)), Pair.of(0, new TimeLimitedTask<LivingEntity>(new FollowMobTask(EntityType.PLAYER, 6.0f), UniformIntProvider.create(30, 60))),
+                Pair.of(2, new CompositeTask<>(ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryModuleState.VALUE_ABSENT), ImmutableSet.of(), CompositeTask.Order.ORDERED, CompositeTask.RunMode.TRY_ALL, ImmutableList.of(Pair.of(new StrollTask(0.5f), 2), Pair.of(new GoTowardsLookTarget(0.5f, 3), 3), Pair.of(new WaitTask(30, 60), 5))))));
     }
 
     public static void updateActivities(LilOinkEntity lilOink) {

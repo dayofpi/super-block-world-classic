@@ -11,9 +11,10 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.geo.render.built.GeoModel;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class MooMooRenderer<T extends MooMooEntity> extends ModEntityRenderer<T> {
+public class MooMooRenderer<T extends MooMooEntity> extends GeoEntityRenderer<T> {
     public MooMooRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new MooMooModel<>());
         this.shadowRadius = 0.5F;

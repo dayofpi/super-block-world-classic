@@ -10,9 +10,10 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import software.bernie.geckolib3.geo.render.built.GeoModel;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class BabyYoshiRenderer<T extends BabyYoshiEntity> extends ModEntityRenderer<T> {
+public class BabyYoshiRenderer<T extends BabyYoshiEntity> extends GeoEntityRenderer<T> {
     public BabyYoshiRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new BabyYoshiModel<>());
         this.shadowRadius = 0.6F;

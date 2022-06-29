@@ -109,12 +109,10 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(at = @At("HEAD"), method = "travel")
     private void travel(Vec3d movementInput, CallbackInfo ci) {
         if (this.canMoveVoluntarily() || this.isLogicalSideForUpdatingMovement()) {
-            boolean bl;
+            boolean bl = this.getVelocity().y <= 0.0;
             double d = 0.08;
-            bl = this.getVelocity().y <= 0.0;
             if (bl && this.hasStatusEffect(StatusEffects.SLOW_FALLING)) {
                 d = 0.01;
-                this.onLanding();
             }
             if (this.isInPoison() && this.shouldSwimInFluids()) {
                 Vec3d vec3d3;
@@ -224,6 +222,7 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
 
+        this.world.getProfiler().push("jump");
         if (this.jumping && this.shouldSwimInFluids()) {
             double fluidHeight = this.getFluidHeight(ModTags.POISON);
             double height = this.getSwimHeight();
@@ -231,6 +230,7 @@ public abstract class LivingEntityMixin extends Entity {
                 this.swimUpward(ModTags.POISON);
             }
         }
+        this.world.getProfiler().pop();
 
         if (this.hasJumpBoots() || this.isYoshi()) {
             if (stompCooldown > 0) --stompCooldown;

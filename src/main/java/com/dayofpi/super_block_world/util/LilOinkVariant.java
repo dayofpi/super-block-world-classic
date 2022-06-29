@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 
 public enum LilOinkVariant {
-    WHITE("white", ModItems.SUPER_MUSHROOM), BLACK("black", ModItems.POISON_MUSHROOM), FLORAL("floral", ModItems.SHROOM_SHAKE), PINK("pink", ModItems.FIRE_FLOWER), TIGER("tiger", ModItems.SUPER_HEART), MYSTERY("mystery", Items.ENCHANTED_BOOK), FUNGAL("fungal", ModItems.GOLDEN_MUSHROOM), STARRY("starry", ModItems.SUPER_STAR), SILVER("silver", Items.IRON_BLOCK), GOLD("gold", ModItems.GOLDEN_MUSHROOM);
+    WHITE("white", ModItems.SUPER_MUSHROOM), BLACK("black", ModItems.POISON_MUSHROOM), FLORAL("floral", ModItems.SHROOM_SHAKE), PINK("pink", ModItems.FIRE_FLOWER), TIGER("tiger", ModItems.SUPER_HEART), MYSTERY("mystery", Items.ENCHANTED_BOOK), FUNGAL("fungal", ModItems.GOLDEN_MUSHROOM), STARRY("starry", ModItems.SUPER_STAR), SILVER("silver", Items.IRON_BLOCK), GOLD("gold", Items.GOLDEN_APPLE);
 
     private final String name;
     private final Item item;

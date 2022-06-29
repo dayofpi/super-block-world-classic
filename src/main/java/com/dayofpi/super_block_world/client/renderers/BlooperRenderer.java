@@ -8,9 +8,10 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3f;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class BlooperRenderer<T extends BlooperEntity> extends ModEntityRenderer<T> {
+public class BlooperRenderer<T extends BlooperEntity> extends GeoEntityRenderer<T> {
     public BlooperRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new BlooperModel<>());
         this.shadowRadius = 0.4F;

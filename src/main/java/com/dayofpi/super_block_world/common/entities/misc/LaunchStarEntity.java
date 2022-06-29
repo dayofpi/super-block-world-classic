@@ -3,10 +3,7 @@ package com.dayofpi.super_block_world.common.entities.misc;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityDimensions;
-import net.minecraft.entity.EntityPose;
-import net.minecraft.entity.EntityType;
+import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
@@ -30,19 +27,12 @@ import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import org.apache.commons.lang3.Validate;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class LaunchStarEntity extends AbstractDecorationEntity implements IAnimatable {
+public class LaunchStarEntity extends AbstractDecorationEntity {
     private static final TrackedData<Integer> COOLDOWN;
     private static final int MAX_COOLDOWN = 30;
 
@@ -50,12 +40,12 @@ public class LaunchStarEntity extends AbstractDecorationEntity implements IAnima
         COOLDOWN = DataTracker.registerData(LaunchStarEntity.class, TrackedDataHandlerRegistry.INTEGER);
     }
 
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
+    public final AnimationState idlingAnimationState = new AnimationState();
+    public final AnimationState launchingAnimationState = new AnimationState();
     private int ambientSoundChance;
 
     public LaunchStarEntity(EntityType<? extends AbstractDecorationEntity> entityType, World world) {
         super(entityType, world);
-        this.ignoreCameraFrustum = true;
     }
 
     public LaunchStarEntity(World world, BlockPos pos, Direction direction) {
@@ -86,19 +76,9 @@ public class LaunchStarEntity extends AbstractDecorationEntity implements IAnima
         this.setFacing(Direction.byId(nbt.getByte("Facing")));
     }
 
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
-    }
-
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(COOLDOWN, 0);
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
     }
 
     public int getMinAmbientSoundDelay() {
@@ -113,8 +93,16 @@ public class LaunchStarEntity extends AbstractDecorationEntity implements IAnima
     @Override
     public void tick() {
         super.tick();
-        if (this.world.isClient && random.nextFloat() > 0.8F) {
-            this.world.addParticle(ParticleTypes.WAX_OFF, this.getParticleX(0.5), this.getRandomBodyY(), this.getParticleZ(0.5), Vec3d.of(this.facing.getVector()).x, Vec3d.of(this.facing.getVector()).y, Vec3d.of(this.facing.getVector()).z);
+        if (this.world.isClient) {
+            if (this.getCooldown() > 0) {
+                this.idlingAnimationState.stop();
+                this.launchingAnimationState.startIfNotRunning(this.age);
+            } else {
+                this.launchingAnimationState.stop();
+                this.idlingAnimationState.startIfNotRunning(this.age);
+            }
+            if (random.nextFloat() > 0.8F)
+                this.world.addParticle(ParticleTypes.WAX_OFF, this.getParticleX(0.5), this.getRandomBodyY(), this.getParticleZ(0.5), Vec3d.of(this.facing.getVector()).x, Vec3d.of(this.facing.getVector()).y, Vec3d.of(this.facing.getVector()).z);
         }
 
         List<Entity> list = world.getOtherEntities(this, this.getBoundingBox(), EntityPredicates.EXCEPT_SPECTATOR);
@@ -167,15 +155,6 @@ public class LaunchStarEntity extends AbstractDecorationEntity implements IAnima
         if (this.getCooldown() > 0)
             return false;
         return super.damage(source, amount);
-    }
-
-    protected <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (this.getCooldown() > 0) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("launch", true));
-            return PlayState.CONTINUE;
-        }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
-        return PlayState.CONTINUE;
     }
 
     @Override

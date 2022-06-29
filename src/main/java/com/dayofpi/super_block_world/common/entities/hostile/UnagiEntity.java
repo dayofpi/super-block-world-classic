@@ -36,6 +36,9 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 @SuppressWarnings("deprecation")
 public class UnagiEntity extends WaterCreatureEntity implements IAnimatable {
+    public final AnimationState swimmingAnimationState = new AnimationState();
+    public final AnimationState attackingAnimationState = new AnimationState();
+    public final AnimationState sufferingAnimationState = new AnimationState();
     private final AnimationFactory FACTORY = new AnimationFactory(this);
 
     public UnagiEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {

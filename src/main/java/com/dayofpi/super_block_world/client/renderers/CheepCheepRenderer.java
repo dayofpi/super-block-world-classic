@@ -10,9 +10,10 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import software.bernie.geckolib3.geo.render.built.GeoModel;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class CheepCheepRenderer<T extends CheepCheepEntity> extends ModEntityRenderer<T> {
+public class CheepCheepRenderer<T extends CheepCheepEntity> extends GeoEntityRenderer<T> {
     public CheepCheepRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new CheepCheepModel<>());
         this.shadowRadius = 0.4F;

@@ -4,6 +4,7 @@ import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModFluids;
 import com.dayofpi.super_block_world.registry.ModItems;
 import com.dayofpi.super_block_world.registry.ModParticles;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.fluid.FlowableFluid;
@@ -19,10 +20,7 @@ import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class PoisonFluid extends FlowableFluid {
@@ -43,6 +41,7 @@ public abstract class PoisonFluid extends FlowableFluid {
 
     @Override
     protected void beforeBreakingBlock(WorldAccess world, BlockPos pos, BlockState state) {
+        world.syncWorldEvent(WorldEvents.LAVA_EXTINGUISHED, pos, 0);
     }
 
     @Override
@@ -105,6 +104,28 @@ public abstract class PoisonFluid extends FlowableFluid {
                 world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_LAVA_AMBIENT, SoundCategory.BLOCKS, 0.2f + random.nextFloat() * 0.2f, 0.9f + random.nextFloat() * 0.15f, false);
             }
         }
+    }
+
+    @Override
+    protected void flow(WorldAccess world, BlockPos pos, BlockState state, Direction direction, FluidState fluidState) {
+        if (direction == Direction.DOWN) {
+            FluidState fluidState2 = world.getFluidState(pos);
+            if (fluidState2.isIn(FluidTags.WATER)) {
+                if (state.getBlock() instanceof FluidBlock) {
+                    world.setBlockState(pos, ModBlocks.VANILLATE.getDefaultState(), Block.NOTIFY_ALL);
+                }
+                world.syncWorldEvent(WorldEvents.LAVA_EXTINGUISHED, pos, 0);
+                return;
+            }
+            else if (fluidState2.isIn(FluidTags.LAVA)) {
+                if (state.getBlock() instanceof FluidBlock) {
+                    world.setBlockState(pos, ModBlocks.HARDSTONE.getDefaultState(), Block.NOTIFY_ALL);
+                }
+                world.syncWorldEvent(WorldEvents.LAVA_EXTINGUISHED, pos, 0);
+                return;
+            }
+        }
+        super.flow(world, pos, state, direction, fluidState);
     }
 
     public static class Flowing extends PoisonFluid {

@@ -72,6 +72,7 @@ public class SpindriftEntity extends PassiveEntity {
             if (random.nextInt(3) == 0) {
                 SpindriftEntity spindrift = ModEntities.SPINDRIFT.create(world);
                 if (spindrift != null) {
+                    spindrift.updatePosition(this.getX(), this.getY(), this.getZ());
                     world.spawnEntity(spindrift);
                 }
             }

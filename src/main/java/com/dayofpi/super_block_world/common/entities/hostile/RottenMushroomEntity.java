@@ -20,16 +20,9 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class RottenMushroomEntity extends HostileEntity implements IAnimatable {
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
+public class RottenMushroomEntity extends HostileEntity {
+    public final AnimationState walkingAnimationState = new AnimationState();
 
     public RottenMushroomEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
@@ -60,6 +53,16 @@ public class RottenMushroomEntity extends HostileEntity implements IAnimatable {
         this.goalSelector.add(3, new WanderAroundFarGoal(this, 1.0D));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         this.targetSelector.add(2, new RevengeGoal(this));
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (this.world.isClient) {
+            if (this.onGround && this.getVelocity().horizontalLengthSquared() > 1.0E-6) {
+                this.walkingAnimationState.startIfNotRunning(this.age);
+            } else this.walkingAnimationState.stop();
+        }
     }
 
     public boolean tryAttack(Entity target) {
@@ -95,23 +98,5 @@ public class RottenMushroomEntity extends HostileEntity implements IAnimatable {
 
     protected SoundEvent getStepSound() {
         return SoundEvents.ENTITY_ZOMBIE_STEP;
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
-
-    protected <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
-            return PlayState.CONTINUE;
-        }
-        return PlayState.STOP;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 }

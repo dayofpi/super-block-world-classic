@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.models.GoKartModel;
-import com.dayofpi.super_block_world.client.registry.EntityClient;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.misc.GoKartEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
@@ -27,7 +27,7 @@ public class GoKartRenderer extends EntityRenderer<GoKartEntity> {
     public GoKartRenderer(EntityRendererFactory.Context ctx) {
         super(ctx);
         this.shadowRadius = 0.7f;
-        this.model = new GoKartModel<>(ctx.getPart(EntityClient.GO_KART));
+        this.model = new GoKartModel<>(ctx.getPart(ModModelLayers.GO_KART));
     }
 
     private Identifier getFlagTexture(int i) {

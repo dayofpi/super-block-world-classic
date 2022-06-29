@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.client.models.LilOinkModel;
-import com.dayofpi.super_block_world.client.registry.EntityClient;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.passive.LilOinkEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 public class LilOinkRenderer<T extends LilOinkEntity> extends MobEntityRenderer<T, LilOinkModel<T>> {
     public LilOinkRenderer(EntityRendererFactory.Context context) {
-        super(context, new LilOinkModel<>(context.getPart(EntityClient.LIL_OINK)), 0.4f);
+        super(context, new LilOinkModel<>(context.getPart(ModModelLayers.LIL_OINK)), 0.4f);
     }
 
     @Override

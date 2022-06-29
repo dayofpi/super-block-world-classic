@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.models.SuperPickaxModel;
-import com.dayofpi.super_block_world.client.registry.EntityClient;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.misc.SuperPickaxEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
@@ -21,7 +21,7 @@ public class SuperPickaxRenderer extends EntityRenderer<SuperPickaxEntity> {
     public SuperPickaxRenderer(EntityRendererFactory.Context ctx) {
         super(ctx);
         this.shadowRadius = 0.4f;
-        this.model = new SuperPickaxModel(ctx.getPart(EntityClient.SUPER_PICKAX));
+        this.model = new SuperPickaxModel(ctx.getPart(ModModelLayers.SUPER_PICKAX));
     }
 
     @Override

@@ -51,6 +51,8 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import java.util.UUID;
 
 public class KoopaTroopaEntity extends PassiveEntity implements IAnimatable, Saddleable, ItemSteerable, Angerable {
+    public final AnimationState idlingAnimationState = new AnimationState();
+    public final AnimationState walkingAnimationState = new AnimationState();
     private static final ImmutableList<SensorType<? extends Sensor<? super KoopaTroopaEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY);
     private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.NEAREST_VISIBLE_ADULT);
     private static final TrackedData<Integer> KOOPA_COLOR;

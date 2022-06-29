@@ -1,15 +1,18 @@
 package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.entities.tasks.LandAttackGoal;
+import com.dayofpi.super_block_world.common.entities.brains.CheepCheepBrain;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.brain.Brain;
+import net.minecraft.entity.ai.brain.MemoryModuleType;
+import net.minecraft.entity.ai.brain.sensor.Sensor;
+import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.control.YawAdjustingLookControl;
-import net.minecraft.entity.ai.goal.ActiveTargetGoal;
-import net.minecraft.entity.ai.goal.LookAroundGoal;
-import net.minecraft.entity.ai.goal.SwimAroundGoal;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.SwimNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -22,6 +25,8 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.network.DebugInfoSender;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -42,6 +47,8 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class CheepCheepEntity extends WaterCreatureEntity implements IAnimatable {
     private static final TrackedData<Boolean> SNOWY;
+    private static final ImmutableList<? extends SensorType<? extends Sensor<? super CheepCheepEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_PLAYERS, SensorType.IS_IN_WATER);
+    private static final ImmutableList<? extends MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER, MemoryModuleType.LOOK_TARGET, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.ATTACK_TARGET, MemoryModuleType.ATTACK_COOLING_DOWN);
 
     static {
         SNOWY = DataTracker.registerData(CheepCheepEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -75,6 +82,23 @@ public class CheepCheepEntity extends WaterCreatureEntity implements IAnimatable
         return !this.isLeashed();
     }
 
+    @Override
+    protected Brain.Profile<CheepCheepEntity> createBrainProfile() {
+        return Brain.createProfile(MEMORY_MODULES, SENSORS);
+    }
+
+    @Override
+    protected Brain<?> deserializeBrain(Dynamic<?> dynamic) {
+        return CheepCheepBrain.create(this.createBrainProfile().deserialize(dynamic));
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public Brain<CheepCheepEntity> getBrain() {
+        return (Brain<CheepCheepEntity>) super.getBrain();
+    }
+
+
     @Nullable
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
@@ -82,14 +106,6 @@ public class CheepCheepEntity extends WaterCreatureEntity implements IAnimatable
         if (registryEntry.value().getPrecipitation() == Biome.Precipitation.SNOW)
             this.setSnowy(true);
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
-    }
-
-    @Override
-    protected void initGoals() {
-        this.goalSelector.add(1, new LandAttackGoal(this, 1.0D, false));
-        this.goalSelector.add(2, new SwimAroundGoal(this, 1.0D, 40));
-        this.goalSelector.add(5, new LookAroundGoal(this));
-        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true, true));
     }
 
     @Override
@@ -126,6 +142,12 @@ public class CheepCheepEntity extends WaterCreatureEntity implements IAnimatable
         return new SwimNavigation(this, world);
     }
 
+    @Override
+    protected void sendAiDebugData() {
+        super.sendAiDebugData();
+        DebugInfoSender.sendBrainDebugData(this);
+    }
+
     public void travel(Vec3d movementInput) {
         if (this.canMoveVoluntarily() && this.isTouchingWater()) {
             this.updateVelocity(0.01F, movementInput);
@@ -149,6 +171,17 @@ public class CheepCheepEntity extends WaterCreatureEntity implements IAnimatable
         this.velocityDirty = true;
         this.playSound(Sounds.ENTITY_CHEEP_CHEEP_FLOP, this.getSoundVolume(), this.getSoundPitch() * 0.8F);
 
+    }
+
+    @Override
+    protected void mobTick() {
+        this.world.getProfiler().push("cheepCheepBrain");
+        this.getBrain().tick((ServerWorld) this.world, this);
+        this.world.getProfiler().pop();
+        this.world.getProfiler().push("cheepCheepActivityUpdate");
+        CheepCheepBrain.updateActivities(this);
+        this.world.getProfiler().pop();
+        super.mobTick();
     }
 
     public void tickMovement() {

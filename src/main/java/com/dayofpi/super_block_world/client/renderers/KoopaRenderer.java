@@ -8,9 +8,10 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.util.Identifier;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class KoopaRenderer<T extends KoopaTroopaEntity> extends ModEntityRenderer<T> {
+public class KoopaRenderer<T extends KoopaTroopaEntity> extends GeoEntityRenderer<T> {
     private static final Identifier GREEN = new Identifier(Main.MOD_ID, "textures/entity/koopa/green.png");
     private static final Identifier GREEN_ANGRY = new Identifier(Main.MOD_ID, "textures/entity/koopa/green_angry.png");
     private static final Identifier RED = new Identifier(Main.MOD_ID, "textures/entity/koopa/red.png");

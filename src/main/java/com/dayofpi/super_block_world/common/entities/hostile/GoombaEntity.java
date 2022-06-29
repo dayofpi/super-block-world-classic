@@ -42,6 +42,8 @@ public class GoombaEntity extends HostileEntity implements IAnimatable {
     private static final TrackedData<Integer> SIZE;
     private static final TrackedData<Boolean> GROWABLE;
     private static final TrackedData<Boolean> GOLD;
+    public final AnimationState walkingAnimationState = new AnimationState();
+    public final AnimationState squishedAnimationState = new AnimationState();
 
     static {
         SIZE = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.INTEGER);

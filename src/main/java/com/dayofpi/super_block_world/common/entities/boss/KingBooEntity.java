@@ -6,6 +6,7 @@ import com.dayofpi.super_block_world.common.entities.brains.KingBooBrain;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
@@ -54,6 +55,10 @@ public class KingBooEntity extends ModBossEntity implements IAnimatable {
 
     private static final TrackedData<Boolean> WEAKENED;
     private static final float MIN_ALPHA = 0.5F;
+
+    public final AnimationState idlingAnimationState = new AnimationState();
+    public final AnimationState chargingAnimationState = new AnimationState();
+    public final AnimationState unleashingAnimationState = new AnimationState();
 
     static {
          WEAKENED = DataTracker.registerData(KingBooEntity.class, TrackedDataHandlerRegistry.BOOLEAN);

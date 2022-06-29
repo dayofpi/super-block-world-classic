@@ -4,6 +4,7 @@
 package com.dayofpi.super_block_world.common.entities.misc;
 
 import com.dayofpi.super_block_world.common.blocks.FlagBlock;
+import com.dayofpi.super_block_world.common.items.GoKartItem;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
@@ -29,7 +30,6 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.packet.c2s.play.BoatPaddleStateC2SPacket;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.predicate.entity.EntityPredicates;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.ActionResult;
@@ -58,14 +58,13 @@ public class GoKartEntity extends Entity {
     private static final TrackedData<Float> DAMAGE_WOBBLE_STRENGTH = DataTracker.registerData(GoKartEntity.class, TrackedDataHandlerRegistry.FLOAT);
     private static final TrackedData<Boolean> LEFT_PADDLE_MOVING = DataTracker.registerData(GoKartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> RIGHT_PADDLE_MOVING = DataTracker.registerData(GoKartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-    private final float[] paddlePhases = new float[2];
     private float yawVelocity;
     private int field_7708;
     private double x;
     private double y;
     private double z;
-    private double boatYaw;
-    private double boatPitch;
+    private double kartYaw;
+    private double kartPitch;
     private boolean pressingLeft;
     private boolean pressingRight;
     private boolean pressingForward;
@@ -196,7 +195,9 @@ public class GoKartEntity extends Entity {
         bl = source.getAttacker() instanceof PlayerEntity && ((PlayerEntity) source.getAttacker()).getAbilities().creativeMode;
         if (bl || this.getDamageWobbleStrength() > 40.0f) {
             if (!bl && this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
-                this.dropItem(ModItems.GO_KART);
+                ItemStack stack = new ItemStack(ModItems.GO_KART);
+                GoKartItem.setColor(stack, this.getKartColor().getId());
+                this.dropStack(stack);
                 this.dropFlag();
             }
             this.discard();
@@ -210,36 +211,51 @@ public class GoKartEntity extends Entity {
         switch(this.getFlagType().getAsInt()) {
             case 0:
                 this.dropItem(ModBlocks.WHITE_FLAG);
+                return;
             case 1:
                 this.dropItem(ModBlocks.ORANGE_FLAG);
+                return;
             case 2:
                 this.dropItem(ModBlocks.MAGENTA_FLAG);
+                return;
             case 3:
                 this.dropItem(ModBlocks.LIGHT_BLUE_FLAG);
+                return;
             case 4:
                 this.dropItem(ModBlocks.YELLOW_FLAG);
+                return;
             case 5:
                 this.dropItem(ModBlocks.LIME_FLAG);
             case 6:
                 this.dropItem(ModBlocks.PINK_FLAG);
+                return;
             case 7:
                 this.dropItem(ModBlocks.GRAY_FLAG);
+                return;
             case 8:
                 this.dropItem(ModBlocks.LIGHT_GRAY_FLAG);
+                return;
             case 9:
                 this.dropItem(ModBlocks.CYAN_FLAG);
+                return;
             case 10:
                 this.dropItem(ModBlocks.PURPLE_FLAG);
+                return;
             case 11:
                 this.dropItem(ModBlocks.BLUE_FLAG);
+                return;
             case 12:
                 this.dropItem(ModBlocks.BROWN_FLAG);
+                return;
             case 13:
                 this.dropItem(ModBlocks.GREEN_FLAG);
+                return;
             case 14:
                 this.dropItem(ModBlocks.RED_FLAG);
+                return;
             case 15:
                 this.dropItem(ModBlocks.BLACK_FLAG);
+                return;
             default:
                 this.dropItem(ModBlocks.RAINBOW_FLAG);
         }
@@ -273,8 +289,8 @@ public class GoKartEntity extends Entity {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.boatYaw = yaw;
-        this.boatPitch = pitch;
+        this.kartYaw = yaw;
+        this.kartPitch = pitch;
         this.field_7708 = 10;
     }
 
@@ -311,20 +327,7 @@ public class GoKartEntity extends Entity {
         } else {
             this.setVelocity(Vec3d.ZERO);
         }
-        for (int i = 0; i <= 1; ++i) {
-            if (this.isPaddleMoving(i)) {
-                SoundEvent soundEvent;
-                if (!this.isSilent() && (double) (this.paddlePhases[i] % ((float) Math.PI * 2)) <= 0.7853981852531433 && (double) ((this.paddlePhases[i] + 0.3926991f) % ((float) Math.PI * 2)) >= 0.7853981852531433 && (soundEvent = this.getPaddleSoundEvent()) != null) {
-                    Vec3d vec3d = this.getRotationVec(1.0f);
-                    double d = i == 1 ? -vec3d.z : vec3d.z;
-                    double e = i == 1 ? vec3d.x : -vec3d.x;
-                    this.world.playSound(null, this.getX() + d, this.getY(), this.getZ() + e, soundEvent, this.getSoundCategory(), 1.0f, 0.8f + 0.4f * this.random.nextFloat());
-                }
-                this.paddlePhases[i] = this.paddlePhases[i] + 0.3926991f;
-                continue;
-            }
-            this.paddlePhases[i] = 0.0f;
-        }
+
         this.checkBlockCollision();
         List<Entity> list = this.world.getOtherEntities(this, this.getBoundingBox().expand(0.2f, -0.01f, 0.2f), EntityPredicates.canBePushedBy(this));
         if (!list.isEmpty()) {
@@ -338,19 +341,6 @@ public class GoKartEntity extends Entity {
                 this.pushAwayFrom(entity);
             }
         }
-    }
-
-    @Nullable
-    private SoundEvent getPaddleSoundEvent() {
-        switch (this.checkLocation()) {
-            case IN_WATER, UNDER_WATER, UNDER_FLOWING_WATER -> {
-                return SoundEvents.ENTITY_BOAT_PADDLE_WATER;
-            }
-            case ON_LAND -> {
-                return SoundEvents.ENTITY_BOAT_PADDLE_LAND;
-            }
-        }
-        return null;
     }
 
     public void setPaddleMovings(boolean leftMoving, boolean rightMoving) {
@@ -369,9 +359,9 @@ public class GoKartEntity extends Entity {
         double d = this.getX() + (this.x - this.getX()) / (double) this.field_7708;
         double e = this.getY() + (this.y - this.getY()) / (double) this.field_7708;
         double f = this.getZ() + (this.z - this.getZ()) / (double) this.field_7708;
-        double g = MathHelper.wrapDegrees(this.boatYaw - (double) this.getYaw());
+        double g = MathHelper.wrapDegrees(this.kartYaw - (double) this.getYaw());
         this.setYaw(this.getYaw() + (float) g / (float) this.field_7708);
-        this.setPitch(this.getPitch() + (float) (this.boatPitch - (double) this.getPitch()) / (float) this.field_7708);
+        this.setPitch(this.getPitch() + (float) (this.kartPitch - (double) this.getPitch()) / (float) this.field_7708);
         --this.field_7708;
         this.setPosition(d, e, f);
         this.setRotation(this.getYaw(), this.getPitch());
@@ -599,6 +589,7 @@ public class GoKartEntity extends Entity {
                 } else {
                     this.setFlagType(flagBlock.getColor().getId());
                 }
+                this.playSound(SoundEvents.UI_LOOM_TAKE_RESULT, 1.0F, 1.0F);
                 if (!player.getAbilities().creativeMode) {
                     itemStack.decrement(1);
                 }

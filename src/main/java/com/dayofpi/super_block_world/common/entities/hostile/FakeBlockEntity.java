@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -31,6 +32,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class FakeBlockEntity extends HostileEntity implements IAnimatable {
+    public final AnimationState attackingAnimationState = new AnimationState();
     final AnimationFactory factory = new AnimationFactory(this);
     private boolean twirling = false;
 
@@ -74,6 +76,16 @@ public class FakeBlockEntity extends HostileEntity implements IAnimatable {
 
     public void setTwirling(boolean twirling) {
         this.twirling = twirling;
+    }
+
+    @Override
+    public void tick() {
+        if (this.world.isClient) {
+            if (this.isTwirling()) {
+                this.attackingAnimationState.startIfNotRunning(this.age);
+            } else this.attackingAnimationState.stop();
+        }
+        super.tick();
     }
 
     public void tickMovement() {

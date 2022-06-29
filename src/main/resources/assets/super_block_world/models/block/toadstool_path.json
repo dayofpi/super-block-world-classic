@@ -1,10 +1,10 @@
 {
   "parent": "minecraft:block/block",
   "textures": {
-    "particle": "super_block_world:block/toadstool_soil",
+    "particle": "super_block_world:block/toadstool_path",
     "top": "super_block_world:block/toadstool_path",
-    "side": "super_block_world:block/toadstool_path",
-    "end": "super_block_world:block/toadstool_soil_top"
+    "side": "super_block_world:block/toadstool_soil",
+    "bottom": "super_block_world:block/toadstool_path"
   },
   "elements": [
     {

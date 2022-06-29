@@ -1,45 +1,24 @@
 package com.dayofpi.super_block_world.client.registry;
 
-import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.models.GoKartModel;
-import com.dayofpi.super_block_world.client.models.LilOinkModel;
-import com.dayofpi.super_block_world.client.models.SpindriftModel;
-import com.dayofpi.super_block_world.client.models.SuperPickaxModel;
 import com.dayofpi.super_block_world.client.renderers.*;
 import com.dayofpi.super_block_world.registry.ModBlockEntities;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.entity.EmptyEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.client.render.entity.model.MinecartEntityModel;
-import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class EntityClient {
-    public static final EntityModelLayer FLAG = new EntityModelLayer(new Identifier(Main.MOD_ID, "flag"), "main");
-    public static final EntityModelLayer GO_KART = new EntityModelLayer(new Identifier(Main.MOD_ID, "go_kart"), "main");
-    public static final EntityModelLayer LIL_OINK = new EntityModelLayer(new Identifier(Main.MOD_ID, "lil_oink"), "main");
-    public static final EntityModelLayer SPINDRIFT = new EntityModelLayer(new Identifier(Main.MOD_ID, "spindrift"), "main");
-    public static final EntityModelLayer SUPER_PICKAX = new EntityModelLayer(new Identifier(Main.MOD_ID, "super_pickax"), "main");
-    public static final EntityModelLayer TRAMPOLINE_MINECART = new EntityModelLayer(new Identifier(Main.MOD_ID, "trampoline_minecart"), "main");
 
     @SuppressWarnings({"unchecked"})
     public static void renderEntities() {
         BlockEntityRendererRegistry.register(ModBlockEntities.CHINCHO_TORCH, (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new ChinchoTorchRenderer());
         BlockEntityRendererRegistry.register(ModBlockEntities.FLAG, FlagRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.PLACED_ITEM, ctx -> new PlacedItemRenderer());
-        EntityModelLayerRegistry.registerModelLayer(FLAG, FlagRenderer::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(GO_KART, GoKartModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(LIL_OINK, LilOinkModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(SPINDRIFT, SpindriftModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(SUPER_PICKAX, SuperPickaxModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(TRAMPOLINE_MINECART, MinecartEntityModel::getTexturedModelData);
         EntityRendererRegistry.register(ModEntities.GHOST_ESSENCE, EmptyEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.BABY_YOSHI, BabyYoshiRenderer::new);
         EntityRendererRegistry.register(ModEntities.BLOOPER, BlooperRenderer::new);

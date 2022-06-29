@@ -12,9 +12,10 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.geo.render.built.GeoModel;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class DinoRhinoRenderer<T extends DinoRhinoEntity> extends ModEntityRenderer<T> {
+public class DinoRhinoRenderer<T extends DinoRhinoEntity> extends GeoEntityRenderer<T> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/dino_rhino.png");
 
     public DinoRhinoRenderer(EntityRendererFactory.Context context) {

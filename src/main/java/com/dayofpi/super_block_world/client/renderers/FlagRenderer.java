@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.registry.EntityClient;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.block_entities.FlagBE;
 import com.dayofpi.super_block_world.common.blocks.FlagBlock;
 import com.dayofpi.super_block_world.registry.ModTags;
@@ -44,7 +44,7 @@ public class FlagRenderer implements BlockEntityRenderer<FlagBE> {
     private final ModelPart pole;
 
     public FlagRenderer(BlockEntityRendererFactory.Context ctx) {
-        ModelPart modelPart = ctx.getLayerModelPart(EntityClient.FLAG);
+        ModelPart modelPart = ctx.getLayerModelPart(ModModelLayers.FLAG);
         ModelPart root = modelPart.getChild(ROOT);
         this.flag = root.getChild(FLAG);
         this.pole = root.getChild(POLE);

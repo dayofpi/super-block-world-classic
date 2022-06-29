@@ -22,6 +22,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.ElderGuardianEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AbstractHorseEntity;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -71,6 +72,7 @@ public class YoshiEntity extends AnimalEntity implements IAnimatable, JumpingMou
 
     private final int maxEggLayTime = 200;
     private final AnimationFactory FACTORY = new AnimationFactory(this);
+    public final AnimationState usingTongueAnimationState = new AnimationState();
     private boolean fluttering;
     private float jumpStrength;
 
@@ -204,7 +206,7 @@ public class YoshiEntity extends AnimalEntity implements IAnimatable, JumpingMou
     }
 
     private boolean isEdible(Entity entity) {
-        return !entity.isPlayer() && !(entity instanceof EnderDragonEntity) && !(entity instanceof WitherEntity) && !(entity instanceof ModBossEntity);
+        return !entity.isPlayer() && !(entity instanceof EnderDragonEntity) && !(entity instanceof WitherEntity) && !(entity instanceof ElderGuardianEntity) && !(entity instanceof ModBossEntity);
     }
 
     public void extendTongue() {
@@ -274,16 +276,21 @@ public class YoshiEntity extends AnimalEntity implements IAnimatable, JumpingMou
 
     @Override
     public void tick() {
-        super.tick();
-        if (this.isFluttering() && world.isClient) {
-            this.world.addParticle(ParticleTypes.WAX_OFF, this.getParticleX(0.5), this.getBlockY(), this.getParticleZ(0.5), (this.random.nextDouble() - 0.5) * 2.0, -this.random.nextDouble(), (this.random.nextDouble() - 0.5) * 2.0);
-        }
-        if (!this.getStoredEntity().isEmpty() && !this.world.isClient()) {
+        if (world.isClient) {
+             if (this.isTongueOut()) {
+                 this.usingTongueAnimationState.startIfNotRunning(this.age);
+             } else this.usingTongueAnimationState.stop();
+             if (this.isFluttering()) {
+                this.world.addParticle(ParticleTypes.WAX_OFF, this.getParticleX(0.5), this.getBlockY(), this.getParticleZ(0.5), (this.random.nextDouble() - 0.5) * 2.0, -this.random.nextDouble(), (this.random.nextDouble() - 0.5) * 2.0);
+            }
+        } else if (!this.getStoredEntity().isEmpty()) {
             if (this.getEggLayTime() > 0) this.setEggLayTime(this.getEggLayTime() - 1);
             else if (this.getEggLayTime() == 0) {
                 this.layEgg();
             }
         }
+
+        super.tick();
         if (this.isTongueOut()) {
             int maxExtendTime = 7;
             if (this.getExtendTime() < maxExtendTime) this.setExtendTime(this.getExtendTime() + 1);

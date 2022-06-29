@@ -10,6 +10,7 @@ public class Client implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         GlobalReceivers.register();
+        ModModelLayers.register();
         EntityClient.renderEntities();
         ModelClient.renderBlocksAndItems();
         FluidClient.renderFluids();
