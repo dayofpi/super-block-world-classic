@@ -18,6 +18,8 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.*;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -30,6 +32,12 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import java.util.List;
 
 public class ParagoombaEntity extends GoombaEntity {
+    public float flapProgress;
+    public float maxWingDeviation;
+    public float prevMaxWingDeviation;
+    public float prevFlapProgress;
+    private float flapSpeed = 1.0f;
+    private float flapEffectTime = 1.0f;
     private static final TrackedData<Boolean> MOTHER;
 
     static {
@@ -92,6 +100,7 @@ public class ParagoombaEntity extends GoombaEntity {
     @Override
     public void tickMovement() {
         super.tickMovement();
+        this.flapWings();
         if (this.isMother() && this.isAlive() && !this.isOnGround() && this.isAttacking()) {
             LivingEntity target = this.getTarget();
             if (target != null && this.distanceTo(target) > 2) {
@@ -113,12 +122,28 @@ public class ParagoombaEntity extends GoombaEntity {
     }
 
     protected boolean hasWings() {
-        return true;
+        return this.speed > this.flapEffectTime;
+    }
+
+    private void flapWings() {
+        this.prevFlapProgress = this.flapProgress;
+        this.prevMaxWingDeviation = this.maxWingDeviation;
+        this.maxWingDeviation += (float)(this.onGround || this.hasVehicle() ? -1 : 4) * 0.3f;
+        this.maxWingDeviation = MathHelper.clamp(this.maxWingDeviation, 0.0f, 1.0f);
+        if (!this.onGround && this.flapSpeed < 1.0f) {
+            this.flapSpeed = 1.0f;
+        }
+        this.flapSpeed *= 0.9f;
+        Vec3d vec3d = this.getVelocity();
+        if (!this.onGround && vec3d.y < 0.0) {
+            this.setVelocity(vec3d.multiply(1.0, 0.8, 1.0));
+        }
+        this.flapProgress += this.flapSpeed * 2.0f;
     }
 
     protected void addFlapEffects() {
-        if (random.nextFloat() < 0.06F)
-            this.playSound(Sounds.ENTITY_GENERIC_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
+        this.playSound(Sounds.ENTITY_GENERIC_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
+        this.flapEffectTime = this.speed + this.maxWingDeviation / 2.0F;
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {

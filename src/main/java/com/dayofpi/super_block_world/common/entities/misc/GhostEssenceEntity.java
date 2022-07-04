@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.common.entities.misc;
 
+import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -22,8 +23,8 @@ import net.minecraft.world.World;
 public class GhostEssenceEntity extends Entity {
     private int lifeTime;
 
-    public GhostEssenceEntity(EntityType<? extends GhostEssenceEntity> type, World world, double x, double y, double z) {
-        super(type, world);
+    public GhostEssenceEntity(World world, double x, double y, double z) {
+        super(ModEntities.GHOST_ESSENCE, world);
         this.setPosition(x, y, z);
     }
 

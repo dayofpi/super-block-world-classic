@@ -13,6 +13,7 @@ import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.particle.DustParticleEffect;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
@@ -25,6 +26,12 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 
 public class GladParagoombaEntity extends GladGoombaEntity {
+    public float flapProgress;
+    public float maxWingDeviation;
+    public float prevMaxWingDeviation;
+    public float prevFlapProgress;
+    private float flapSpeed = 1.0f;
+    private float flapEffectTime = 1.0f;
     public GladParagoombaEntity(EntityType<? extends TameableEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new FlightMoveControl(this, 10, false);
@@ -45,6 +52,7 @@ public class GladParagoombaEntity extends GladGoombaEntity {
     @Override
     public void tickMovement() {
         super.tickMovement();
+        this.flapWings();
         if (!this.isOnGround() && random.nextInt(5) == 0) {
             world.addParticle(new DustParticleEffect(new Vec3f(Vec3d.unpackRgb(0xFFFFFF)), 1.0F), this.getX() + 0.5D, this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             world.addParticle(new DustParticleEffect(new Vec3f(Vec3d.unpackRgb(0xFFFFFF)), 1.0F), this.getX() - 0.5D, this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
@@ -61,12 +69,28 @@ public class GladParagoombaEntity extends GladGoombaEntity {
     }
 
     protected boolean hasWings() {
-        return true;
+        return this.speed > this.flapEffectTime;
+    }
+
+    private void flapWings() {
+        this.prevFlapProgress = this.flapProgress;
+        this.prevMaxWingDeviation = this.maxWingDeviation;
+        this.maxWingDeviation += (float)(this.onGround || this.hasVehicle() ? -1 : 4) * 0.3f;
+        this.maxWingDeviation = MathHelper.clamp(this.maxWingDeviation, 0.0f, 1.0f);
+        if (!this.onGround && this.flapSpeed < 1.0f) {
+            this.flapSpeed = 1.0f;
+        }
+        this.flapSpeed *= 0.9f;
+        Vec3d vec3d = this.getVelocity();
+        if (!this.onGround && vec3d.y < 0.0) {
+            this.setVelocity(vec3d.multiply(1.0, 0.8, 1.0));
+        }
+        this.flapProgress += this.flapSpeed * 2.0f;
     }
 
     protected void addFlapEffects() {
-        if (random.nextFloat() < 0.06F)
-            this.playSound(Sounds.ENTITY_GENERIC_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
+        this.playSound(Sounds.ENTITY_GENERIC_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
+        this.flapEffectTime = this.speed + this.maxWingDeviation / 2.0F;
     }
 
     @Override

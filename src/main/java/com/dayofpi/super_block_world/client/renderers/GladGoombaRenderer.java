@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.client.renderers;
 
-import com.dayofpi.super_block_world.client.layers.GoombaLayer;
+import com.dayofpi.super_block_world.client.features.GoombaLayer;
 import com.dayofpi.super_block_world.client.models.GladGoombaModel;
 import com.dayofpi.super_block_world.common.entities.passive.GladGoombaEntity;
 import net.fabricmc.api.EnvType;

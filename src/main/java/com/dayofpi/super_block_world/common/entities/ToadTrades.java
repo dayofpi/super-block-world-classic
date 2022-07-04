@@ -20,6 +20,8 @@ public class ToadTrades {
                     new SellStampFactory(new ItemStack(ModItems.CLOUD_PUFF), new ItemStack(ModItems.CLOUD_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModItems.FIRE_FLOWER), new ItemStack(ModItems.FLOWER_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModItems.FUZZBALL), new ItemStack(ModItems.FUZZY_STAMP), 8, 2),
+                    new SellStampFactory(new ItemStack(Items.BROWN_MUSHROOM), new ItemStack(ModItems.GOOMBA_STAMP), 8, 2),
+                    new SellStampFactory(new ItemStack(Items.FEATHER), new ItemStack(ModItems.CHEEP_CHEEP_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModBlocks.SMILEY_SUNFLOWER), new ItemStack(ModItems.SMILEY_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModItems.SUPER_MUSHROOM), new ItemStack(ModItems.MUSHROOM_STAMP), 8, 2),
             }, 2, new TradeOffers.Factory[]{
@@ -27,6 +29,7 @@ public class ToadTrades {
                     new SellStampFactory(new ItemStack(Items.GREEN_DYE), new ItemStack(ModItems.LUIGI_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(Items.WHITE_DYE), new ItemStack(ModItems.PRINCESS_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(Items.ARROW), new ItemStack(ModItems.ARROW_STAMP), 8, 2),
+                    new SellStampFactory(new ItemStack(Items.INK_SAC), new ItemStack(ModItems.BLOOPER_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModItems.BOTTLED_GHOST), new ItemStack(ModItems.BOO_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModItems.BUZZY_SHELL_PIECE), new ItemStack(ModItems.BUZZY_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModItems.PURPLE_STAR_BIT), new ItemStack(ModItems.MOM_STAMP), 8, 2)

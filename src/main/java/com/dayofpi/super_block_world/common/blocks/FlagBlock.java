@@ -25,7 +25,7 @@ import java.util.List;
 @SuppressWarnings("deprecation")
 public class FlagBlock extends FlagpoleBlock implements BlockEntityProvider {
     public static final List<String> TRANS = List.of("Trans", "trans", "transgender", "Transgender");
-    public static final List<String> BI = List.of("Bi", "bi", "bisexual", "Bisexual");
+    public static final List<String> BI = List.of("Bi", "bisexual", "Bisexual");
     public static final List<String> LESBIAN = List.of("Lesbian", "lesbian");
 
     public static final IntProperty ROTATION = Properties.ROTATION;

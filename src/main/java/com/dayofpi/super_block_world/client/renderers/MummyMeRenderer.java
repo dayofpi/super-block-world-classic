@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.layers.MummyMeLayer;
+import com.dayofpi.super_block_world.client.features.MummyMeLayer;
 import com.dayofpi.super_block_world.client.models.MummyMeModel;
 import com.dayofpi.super_block_world.common.entities.hostile.MummyMeEntity;
 import net.fabricmc.api.EnvType;

@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.layers.ToadLayer;
+import com.dayofpi.super_block_world.client.features.ToadLayer;
 import com.dayofpi.super_block_world.client.models.ToadModel;
 import com.dayofpi.super_block_world.common.entities.passive.ToadEntity;
 import com.dayofpi.super_block_world.registry.ModItems;

@@ -16,15 +16,8 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class MudTrooperEntity extends HostileEntity implements IAnimatable {
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
-
+public class MudTrooperEntity extends HostileEntity {
     public MudTrooperEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -86,15 +79,5 @@ public class MudTrooperEntity extends HostileEntity implements IAnimatable {
     @Override
     public EntityGroup getGroup() {
         return EntityGroup.UNDEAD;
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, animationEvent -> PlayState.STOP));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 }

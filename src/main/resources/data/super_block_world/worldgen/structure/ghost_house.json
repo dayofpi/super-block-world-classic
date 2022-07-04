@@ -7,10 +7,10 @@
       "bounding_box": "full",
       "spawns": [
         {
-          "type": "minecraft:zombie",
+          "type": "super_block_world:boo",
           "weight": 1,
           "minCount": 1,
-          "maxCount": 1
+          "maxCount": 3
         }
       ]
     }

@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.common.entities.passive;
 
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.Toad;
+import com.dayofpi.super_block_world.common.entities.ToadLookControl;
 import com.dayofpi.super_block_world.common.entities.ToadTrades;
 import com.dayofpi.super_block_world.common.entities.brains.ToadBrain;
 import com.dayofpi.super_block_world.common.entities.hostile.RottenMushroomEntity;
@@ -66,6 +67,7 @@ public class MailtoadEntity extends MerchantEntity implements Toad, IAnimatable 
 
     public MailtoadEntity(EntityType<? extends MerchantEntity> entityType, World world) {
         super(entityType, world);
+        this.lookControl = new ToadLookControl(this);
         ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
     }
 
@@ -163,6 +165,7 @@ public class MailtoadEntity extends MerchantEntity implements Toad, IAnimatable 
                 }
 
                 if (this.world.getTimeOfDay() == 18000) {
+                    this.playSound(Sounds.ENTITY_MAILTOAD_RESTOCK, 1.0F, this.getSoundPitch());
                     for (TradeOffer tradeOffer : this.getOffers()) {
                         tradeOffer.clearSpecialPrice();
                         tradeOffer.resetUses();

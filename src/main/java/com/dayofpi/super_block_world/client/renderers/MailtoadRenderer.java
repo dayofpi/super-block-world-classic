@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.layers.MailtoadLayer;
+import com.dayofpi.super_block_world.client.features.MailtoadLayer;
 import com.dayofpi.super_block_world.client.models.MailtoadModel;
 import com.dayofpi.super_block_world.common.entities.passive.MailtoadEntity;
 import net.fabricmc.api.EnvType;

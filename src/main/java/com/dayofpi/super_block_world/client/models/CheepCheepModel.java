@@ -32,14 +32,12 @@ public class CheepCheepModel<T extends CheepCheepEntity> extends AnimatedGeoMode
     @Override
     public void setLivingAnimations(T entity, Integer uniqueID, AnimationEvent customPredicate) {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
-        final IBone ROOT = this.getAnimationProcessor().getBone("root");
         final IBone MOUTH = this.getAnimationProcessor().getBone("mouth");
         final IBone RIGHT_WING = this.getAnimationProcessor().getBone("r_wing");
         final IBone LEFT_WING = this.getAnimationProcessor().getBone("l_wing");
         final IBone TAIL = this.getAnimationProcessor().getBone("tail");
         float progress = (float) (customPredicate.animationTick * 5F * 0.07F);
 
-        ROOT.setRotationX(entity.bodyAngle);
         RIGHT_WING.setRotationY(MathHelper.cos(entity.limbAngle * 0.5F) * 1.4F * entity.limbDistance + 0.5F);
         LEFT_WING.setRotationY(MathHelper.cos(entity.limbAngle * 0.5F + 3.1415927F) * 1.4F * entity.limbDistance - 0.5F);
         TAIL.setRotationY(MathHelper.cos(entity.limbAngle * 0.6F) * 1.6F * entity.limbDistance);

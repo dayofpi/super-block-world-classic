@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin;
 
-import com.dayofpi.super_block_world.common.entities.tasks.CleanSeedsGoal;
+import com.dayofpi.super_block_world.common.entities.goals.CleanSeedsGoal;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;

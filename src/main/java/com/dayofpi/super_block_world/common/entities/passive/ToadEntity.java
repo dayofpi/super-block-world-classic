@@ -4,6 +4,7 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.block_entities.QuestionBoxBE;
 import com.dayofpi.super_block_world.common.blocks.QuestionBoxBlock;
+import com.dayofpi.super_block_world.common.entities.ToadLookControl;
 import com.dayofpi.super_block_world.common.entities.brains.ToadBrain;
 import com.dayofpi.super_block_world.common.entities.hostile.RottenMushroomEntity;
 import com.dayofpi.super_block_world.registry.ModBlocks;
@@ -88,6 +89,7 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
 
     public ToadEntity(EntityType<? extends PassiveEntity> entityType, World world) {
         super(entityType, world);
+        this.lookControl = new ToadLookControl(this);
         ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
     }
 

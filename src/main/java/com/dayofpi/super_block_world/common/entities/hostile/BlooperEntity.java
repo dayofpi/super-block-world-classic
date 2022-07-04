@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.entities.tasks.BlooperAttackGoal;
-import com.dayofpi.super_block_world.common.entities.tasks.FollowNannyGoal;
+import com.dayofpi.super_block_world.common.entities.goals.BlooperAttackGoal;
+import com.dayofpi.super_block_world.common.entities.goals.FollowNannyGoal;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;

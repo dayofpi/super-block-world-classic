@@ -2,8 +2,10 @@ package com.dayofpi.super_block_world.registry;
 
 import com.dayofpi.super_block_world.common.entities.projectile.*;
 import com.dayofpi.super_block_world.util.AmmoDispenserBehavior;
+import com.dayofpi.super_block_world.util.EnumUtil;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.BlockPlacementDispenserBehavior;
+import net.minecraft.block.dispenser.BoatDispenserBehavior;
 import net.minecraft.block.dispenser.ItemDispenserBehavior;
 import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
 import net.minecraft.entity.EntityType;
@@ -21,6 +23,13 @@ import net.minecraft.world.event.GameEvent;
 
 public class DispenserBehaviors {
     public static void register() {
+        DispenserBlock.registerBehavior(ModItems.AMANITA_BOAT, new BoatDispenserBehavior(EnumUtil.AMANITA_BOAT));
+        DispenserBlock.registerBehavior(ModItems.DARK_AMANITA_BOAT, new BoatDispenserBehavior(EnumUtil.DARK_AMANITA_BOAT));
+        DispenserBlock.registerBehavior(ModItems.BELL_BOAT, new BoatDispenserBehavior(EnumUtil.BELL_BOAT));
+        DispenserBlock.registerBehavior(ModItems.AMANITA_CHEST_BOAT, new BoatDispenserBehavior(EnumUtil.AMANITA_BOAT, true));
+        DispenserBlock.registerBehavior(ModItems.DARK_AMANITA_CHEST_BOAT, new BoatDispenserBehavior(EnumUtil.DARK_AMANITA_BOAT, true));
+        DispenserBlock.registerBehavior(ModItems.BELL_CHEST_BOAT, new BoatDispenserBehavior(EnumUtil.BELL_BOAT, true));
+
         DispenserBlock.registerBehavior(ModBlocks.TRAMPOLINE.asItem(), new BlockPlacementDispenserBehavior());
         DispenserBlock.registerBehavior(ModItems.FIRE_FLOWER, new AmmoDispenserBehavior.FireFlower());
         DispenserBlock.registerBehavior(ModItems.ICE_FLOWER, new AmmoDispenserBehavior.IceFlower());
@@ -65,6 +74,23 @@ public class DispenserBehaviors {
                     entityType.spawnFromItemStack(pointer.getWorld(), stack, null, pointer.getPos().offset(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
                 } catch (Exception exception) {
                     LOGGER.error("Error while dispensing Mechakoopa from dispenser at {}", pointer.getPos(), exception);
+                    return ItemStack.EMPTY;
+                }
+
+                stack.decrement(1);
+                pointer.getWorld().emitGameEvent(null, GameEvent.ENTITY_PLACE, pointer.getPos());
+                return stack;
+            }
+        });
+        DispenserBlock.registerBehavior(ModItems.GO_KART, new ItemDispenserBehavior() {
+            public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
+                Direction direction = pointer.getBlockState().get(DispenserBlock.FACING);
+                EntityType<?> entityType = ModEntities.GO_KART;
+
+                try {
+                    entityType.spawnFromItemStack(pointer.getWorld(), stack, null, pointer.getPos().offset(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
+                } catch (Exception exception) {
+                    LOGGER.error("Error while dispensing Go-Kart from dispenser at {}", pointer.getPos(), exception);
                     return ItemStack.EMPTY;
                 }
 

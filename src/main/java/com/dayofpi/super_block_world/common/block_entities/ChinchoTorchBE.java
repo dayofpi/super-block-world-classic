@@ -16,18 +16,10 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.List;
 
-public class ChinchoTorchBE extends BlockEntity implements IAnimatable {
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
+public class ChinchoTorchBE extends BlockEntity {
     private boolean lit;
 
     public ChinchoTorchBE(BlockPos pos, BlockState state) {
@@ -79,23 +71,5 @@ public class ChinchoTorchBE extends BlockEntity implements IAnimatable {
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         this.setLit(nbt.getBoolean("Lit"));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
-
-    protected <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (this.isLit()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("active", true));
-            return PlayState.CONTINUE;
-        }
-        return PlayState.STOP;
     }
 }

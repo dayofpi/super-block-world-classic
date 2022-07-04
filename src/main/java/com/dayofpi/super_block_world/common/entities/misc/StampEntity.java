@@ -145,6 +145,9 @@ public class StampEntity extends AbstractDecorationEntity implements IAnimatable
             case ARROW -> {
                 return ModItems.ARROW_STAMP;
             }
+            case BLOOPER -> {
+                return ModItems.BLOOPER_STAMP;
+            }
             case BOO -> {
                 return ModItems.BOO_STAMP;
             }
@@ -154,11 +157,23 @@ public class StampEntity extends AbstractDecorationEntity implements IAnimatable
             case CAT -> {
                 return ModItems.CAT_STAMP;
             }
+            case CHEEP_CHEEP -> {
+                return ModItems.CHEEP_CHEEP_STAMP;
+            }
             case CLOUD -> {
                 return ModItems.CLOUD_STAMP;
             }
             case FLOWER -> {
                 return ModItems.FLOWER_STAMP;
+            }
+            case FUZZY -> {
+                return ModItems.FUZZY_STAMP;
+            }
+            case GOOMBA -> {
+                return ModItems.GOOMBA_STAMP;
+            }
+            case GRAFFITI -> {
+                return ModItems.GRAFFITI_STAMP;
             }
             case LUIGI -> {
                 return ModItems.LUIGI_STAMP;
@@ -260,12 +275,16 @@ public class StampEntity extends AbstractDecorationEntity implements IAnimatable
 
     public enum Stamp {
         ARROW("arrow"),
+        BLOOPER("blooper"),
         BOO("boo"),
         BUZZY("buzzy"),
         CAT("cat"),
+        CHEEP_CHEEP("cheep_cheep"),
         CLOUD("cloud"),
         FLOWER("flower"),
         FUZZY("fuzzy"),
+        GOOMBA("goomba"),
+        GRAFFITI("graffiti"),
         LUIGI("luigi"),
         MARIO("mario"),
         MOM("mom"),

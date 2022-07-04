@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.common.entities.hostile;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.passive.BobOmbBuddyEntity;
 import com.dayofpi.super_block_world.common.entities.projectile.ModFireballEntity;
-import com.dayofpi.super_block_world.common.entities.tasks.BobOmbIgniteGoal;
+import com.dayofpi.super_block_world.common.entities.goals.BobOmbIgniteGoal;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.Entity;

@@ -17,7 +17,7 @@
     },
     "music": {
       "sound": "super_block_world:music.forest",
-      "min_delay": 9000,
+      "min_delay": 6000,
       "max_delay": 19900,
       "replace_current_music": false
     }

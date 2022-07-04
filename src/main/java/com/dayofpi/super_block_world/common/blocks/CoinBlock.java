@@ -27,7 +27,8 @@ public class CoinBlock extends Block implements BlockEntityProvider {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (entity instanceof PlayerEntity) {
-            ((PlayerEntity) entity).giveItemStack(new ItemStack(this.asItem()));
+            if (!((PlayerEntity) entity).getAbilities().creativeMode)
+                ((PlayerEntity) entity).giveItemStack(new ItemStack(this.asItem()));
             world.playSound(null, pos, soundEvent, SoundCategory.BLOCKS, 0.7F, 1.0F);
             world.removeBlock(pos, false);
         }

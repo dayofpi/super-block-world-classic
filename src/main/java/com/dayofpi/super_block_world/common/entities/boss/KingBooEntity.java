@@ -139,6 +139,9 @@ public class KingBooEntity extends ModBossEntity implements IAnimatable {
 
     @Override
     public void tick() {
+        if (this.world.isClient) {
+            this.idlingAnimationState.startIfNotRunning(this.age);
+        }
         int i = this.getWorld().getLightLevel(LightType.BLOCK, this.getBlockPos());
 
         if (i > 6)

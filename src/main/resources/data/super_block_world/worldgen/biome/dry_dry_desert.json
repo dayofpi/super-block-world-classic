@@ -69,6 +69,12 @@
         "maxCount": 5
       },
       {
+        "type": "super_block_world:mummy_me",
+        "weight": 20,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:unagi",
         "weight": 20,
         "minCount": 3,

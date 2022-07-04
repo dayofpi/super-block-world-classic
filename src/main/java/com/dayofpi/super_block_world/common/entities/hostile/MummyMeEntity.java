@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.passive.ToadEntity;
-import com.dayofpi.super_block_world.common.entities.tasks.MummyMeTargetGoal;
+import com.dayofpi.super_block_world.common.entities.goals.MummyMeTargetGoal;
 import com.dayofpi.super_block_world.registry.ModCriteria;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
@@ -84,8 +84,8 @@ public class MummyMeEntity extends HostileEntity implements IAnimatable {
     }
 
     public static boolean canMummyMeSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        boolean isDirt = world.getBlockState(pos.down()).isIn(BlockTags.DIRT);
-        return isDirt && isSpawnDark((ServerWorldAccess) world, pos, random);
+        boolean isBlockValid = world.getBlockState(pos.down()).isIn(BlockTags.DIRT) || world.getBlockState(pos.down()).isIn(BlockTags.SAND);
+        return isBlockValid && isSpawnDark((ServerWorldAccess) world, pos, random);
     }
 
     protected void initGoals() {

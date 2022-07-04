@@ -55,14 +55,18 @@ public class RottenMushroomEntity extends HostileEntity {
         this.targetSelector.add(2, new RevengeGoal(this));
     }
 
+    private boolean shouldWalk() {
+        return this.onGround && this.getVelocity().horizontalLengthSquared() > 1.0E-6;
+    }
+
     @Override
     public void tick() {
-        super.tick();
-        if (this.world.isClient) {
-            if (this.onGround && this.getVelocity().horizontalLengthSquared() > 1.0E-6) {
+        if (this.world.isClient()) {
+            if (this.shouldWalk()) {
                 this.walkingAnimationState.startIfNotRunning(this.age);
             } else this.walkingAnimationState.stop();
         }
+        super.tick();
     }
 
     public boolean tryAttack(Entity target) {

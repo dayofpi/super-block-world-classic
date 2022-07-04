@@ -14,6 +14,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3f;
 
 @Environment(EnvType.CLIENT)
@@ -25,6 +26,12 @@ public class LaunchStarRenderer<T extends LaunchStarEntity> extends EntityRender
         this.shadowRadius = 0.5f;
         this.model = new LaunchStarModel<>(ctx.getPart(ModModelLayers.LAUNCH_STAR));
     }
+
+    @Override
+    protected int getBlockLight(T entity, BlockPos pos) {
+        return 15;
+    }
+
     @Override
     public Identifier getTexture(T entity) {
         return new Identifier(Main.MOD_ID, "textures/entity/launch_star.png");
@@ -37,10 +44,10 @@ public class LaunchStarRenderer<T extends LaunchStarEntity> extends EntityRender
     @Override
     public void render(T entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int light) {
         matrices.push();
-        matrices.translate(0.0, -0.5, -1.0);
         matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.getPitch()));
         matrices.scale(-1.0f, -1.0f, 1.0f);
         matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - entity.getYaw()));
+        matrices.translate(0.0, -1.5, 0.5);
         this.model.setAngles(entity, tickDelta, 0.0f, this.getAnimationProgress(entity, tickDelta), 0.0f, 0.0f);
 
         VertexConsumer base = vertexConsumerProvider.getBuffer(this.model.getLayer(getTexture(entity)));

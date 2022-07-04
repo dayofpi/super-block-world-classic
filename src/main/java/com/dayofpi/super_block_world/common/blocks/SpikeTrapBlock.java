@@ -17,7 +17,6 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 
 import java.util.stream.IntStream;
@@ -25,7 +24,6 @@ import java.util.stream.IntStream;
 @SuppressWarnings("deprecation")
 public class SpikeTrapBlock extends Block {
     private static final BooleanProperty POWERED;
-    private static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
 
     static {
         POWERED = Properties.POWERED;
@@ -66,10 +64,12 @@ public class SpikeTrapBlock extends Block {
     }
 
     public void activate(BlockState state, World world, BlockPos pos) {
-        Random random = world.getRandom();
-        world.playSound(null, pos, Sounds.BLOCK_SPIKE_TRAP_EXTEND, SoundCategory.BLOCKS, 1.0F, 1.0F);
-        world.setBlockState(pos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
-        IntStream.range(0, 4).forEach(i ->((ServerWorld)world).spawnParticles(ParticleTypes.CRIT, pos.getX() + random.nextFloat(), pos.getY() + 1, pos.getZ() + random.nextFloat(), 1, 0, 0, 0, 0));
+        if (!world.getBlockState(pos.up()).isSolidBlock(world, pos.up())) {
+            Random random = world.getRandom();
+            world.playSound(null, pos, Sounds.BLOCK_SPIKE_TRAP_EXTEND, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.setBlockState(pos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
+            IntStream.range(0, 4).forEach(i -> ((ServerWorld) world).spawnParticles(ParticleTypes.CRIT, pos.getX() + random.nextFloat(), pos.getY() + 1, pos.getZ() + random.nextFloat(), 1, 0, 0, 0, 0));
+        }
     }
 
     @Override

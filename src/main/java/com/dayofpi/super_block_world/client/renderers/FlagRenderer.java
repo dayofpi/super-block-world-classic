@@ -90,12 +90,12 @@ public class FlagRenderer implements BlockEntityRenderer<FlagBE> {
             VertexConsumer consumer = POLE_TEXTURE.getVertexConsumer(provider, RenderLayer::getEntitySolid);
             this.pole.render(matrices, consumer, light, overlay);
             matrices.pop();
-            renderFlag(matrices, world, blockPos, entity, provider, light, overlay);
+            renderFlag(matrices, world, blockPos, entity, tickDelta, provider, light, overlay);
             matrices.pop();
         }
     }
 
-    private void renderFlag(MatrixStack matrices, World world, BlockPos blockPos, FlagBE entity, VertexConsumerProvider provider, int light, int overlay) {
+    private void renderFlag(MatrixStack matrices, World world, BlockPos blockPos, FlagBE entity, float tickDelta, VertexConsumerProvider provider, int light, int overlay) {
         matrices.push();
         SpriteIdentifier id = COLOR_TEXTURES[entity.getColor().getId()];
         if (entity.isRainbow()) id = this.getSpecialFlag(entity);
@@ -104,7 +104,7 @@ public class FlagRenderer implements BlockEntityRenderer<FlagBE> {
         if (world.getBlockState(blockPos).isIn(ModTags.FLAGS))
             rotation = world.getBlockState(blockPos).get(FlagBlock.ROTATION);
         float angle = (rotation * 22.5F) % 360;
-        float wave = (MathHelper.cos(world.getTime())) + angle;
+        float wave = (MathHelper.cos(tickDelta)) + angle;
 
         matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(wave));
         this.flag.render(matrices, id.getVertexConsumer(provider, RenderLayer::getEntityCutout), light, overlay);

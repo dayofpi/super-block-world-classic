@@ -23,22 +23,13 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class FakeBlockEntity extends HostileEntity implements IAnimatable {
+public class FakeBlockEntity extends HostileEntity {
     public final AnimationState attackingAnimationState = new AnimationState();
-    final AnimationFactory factory = new AnimationFactory(this);
     private boolean twirling = false;
 
     public FakeBlockEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
-        this.ignoreCameraFrustum = true;
     }
 
     public static DefaultAttributeContainer.Builder createFakeBlockAttributes() {
@@ -82,7 +73,13 @@ public class FakeBlockEntity extends HostileEntity implements IAnimatable {
     public void tick() {
         if (this.world.isClient) {
             if (this.isTwirling()) {
-                this.attackingAnimationState.startIfNotRunning(this.age);
+                if (!this.attackingAnimationState.isRunning()) {
+                    this.attackingAnimationState.start(this.age);
+                    PacketByteBuf buf = PacketByteBufs.create();
+                    buf.writeInt(this.getId());
+                    buf.writeIdentifier(this.getEntityWorld().getRegistryKey().getValue());
+                    ClientPlayNetworking.send(GlobalReceivers.FAKE_BLOCK_EVENT, buf);
+                }
             } else this.attackingAnimationState.stop();
         }
         super.tick();
@@ -107,32 +104,5 @@ public class FakeBlockEntity extends HostileEntity implements IAnimatable {
                 this.setVelocity(vec3d.multiply(1.0D, 0.6D, 1.0D));
             }
         }
-    }
-
-    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (this.isTwirling()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("attack", true));
-            return PlayState.CONTINUE;
-        }
-        return PlayState.STOP;
-    }
-
-    private void soundListener() {
-        PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeInt(this.getId());
-        buf.writeIdentifier(this.getEntityWorld().getRegistryKey().getValue());
-        ClientPlayNetworking.send(GlobalReceivers.FAKE_BLOCK_EVENT, buf);
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        AnimationController<FakeBlockEntity> controller = new AnimationController<>(this, "controller", 0, this::predicate);
-        controller.registerSoundListener(event -> soundListener());
-        animationData.addAnimationController(controller);
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return factory;
     }
 }

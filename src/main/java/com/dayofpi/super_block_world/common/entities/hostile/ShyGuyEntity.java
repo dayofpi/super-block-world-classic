@@ -21,15 +21,8 @@ import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class ShyGuyEntity extends HostileEntity implements IAnimatable {
-    final AnimationFactory FACTORY = new AnimationFactory(this);
-
+public class ShyGuyEntity extends HostileEntity {
     public ShyGuyEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -76,15 +69,5 @@ public class ShyGuyEntity extends HostileEntity implements IAnimatable {
     @Override
     protected SoundEvent getDeathSound() {
         return Sounds.ENTITY_SHY_GUY_DEATH;
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, animationEvent -> PlayState.STOP));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 }

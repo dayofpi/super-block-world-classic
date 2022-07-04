@@ -3,6 +3,7 @@ package com.dayofpi.super_block_world.mixin.client;
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.common.entities.boss.ModBossEntity;
+import com.dayofpi.super_block_world.common.entities.misc.GoKartEntity;
 import com.dayofpi.super_block_world.common.entities.passive.YoshiEntity;
 import com.dayofpi.super_block_world.registry.ModTags;
 import net.fabricmc.api.EnvType;
@@ -107,6 +108,8 @@ public abstract class ClientMixin {
             return;
         Entity entity = this.player.getVehicle();
         if (entity instanceof YoshiEntity && !((YoshiEntity) entity).isTongueOut())
+            this.interactionManager.interactEntity(player, entity, player.getActiveHand());
+        if (entity instanceof GoKartEntity)
             this.interactionManager.interactEntity(player, entity, player.getActiveHand());
     }
 

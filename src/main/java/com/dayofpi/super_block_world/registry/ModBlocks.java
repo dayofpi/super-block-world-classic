@@ -41,7 +41,7 @@ public class ModBlocks {
     public static final Block DASH_BLOCK = new DashBlock(FabricBlockSettings.of(Material.GLASS, MapColor.YELLOW).luminance(blockState -> blockState.get(DashBlock.USED) ? 15 : 0).sounds(BlockSoundGroup.GLASS).strength(0.3F));
     public static final Block PULL_BLOCK = new PullBlock(FabricBlockSettings.of(Material.METAL, MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.METAL).strength(3.5F, 5.0F).requiresTool());
     public static final Block PROPELLER_BLOCK = new PropellerBlock(FabricBlockSettings.of(Material.STONE, MapColor.DARK_AQUA).strength(3.0F).requiresTool());
-    public static final Block SPIKE_TRAP = new SpikeTrapBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F).requiresTool().sounds(BlockSoundGroup.METAL));
+    public static final Block SPIKE_TRAP = new SpikeTrapBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F).requiresTool().sounds(BlockSoundGroup.METAL).nonOpaque());
     public static final Block ON_OFF_SWITCH = new OnOffSwitchBlock(FabricBlockSettings.of(Material.METAL, (state) -> state.get(Properties.POWERED) ? MapColor.RED : MapColor.BLUE).sounds(BlockSoundGroup.METAL).strength(3.5F, 5.0F).requiresTool());
     public static final Block DOTTED_LINE_BLOCK = new DottedLineBlock(FabricBlockSettings.of(Material.METAL, (state) -> state.get(Properties.DISTANCE_1_7) < 7 ? MapColor.BLUE : MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.METAL).strength(3.5F, 5.0F).requiresTool().nonOpaque());
     public static final Block RED_DOTTED_LINE_BLOCK = new DottedLineBlock(FabricBlockSettings.of(Material.METAL, (state) -> state.get(Properties.DISTANCE_1_7) < 7 ? MapColor.BRIGHT_RED : MapColor.RED).sounds(BlockSoundGroup.METAL).strength(3.5F, 5.0F).requiresTool().nonOpaque());
@@ -65,8 +65,10 @@ public class ModBlocks {
     public static final Block CERISE_TILES = new Block(FabricBlockSettings.copyOf(CERISE_BLOCK));
     public static final Block CERISE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(CERISE_BLOCK));
     public static final Block CERISE_BRICK_STAIRS = new ModStairsBlock(CERISE_BRICKS);
+    public static final Block CERISE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(CERISE_BRICKS));
     public static final Block CERISE_TILE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(CERISE_BLOCK));
     public static final Block CERISE_TILE_STAIRS = new ModStairsBlock(CERISE_TILES);
+    public static final Block CERISE_TILE_WALL = new WallBlock(FabricBlockSettings.copyOf(CERISE_TILES));
     public static final Block BLACK_BRONZE = new Block(FabricBlockSettings.copyOf(BRONZE_BLOCK).mapColor(MapColor.BLACK));
     public static final Block RED_BRONZE = new Block(FabricBlockSettings.copyOf(BRONZE_BLOCK).mapColor(MapColor.RED));
     public static final Block GREEN_BRONZE = new Block(FabricBlockSettings.copyOf(BRONZE_BLOCK).mapColor(MapColor.GREEN));
@@ -98,6 +100,7 @@ public class ModBlocks {
     public static final Block GRITZY_SANDSTONE = new Block(FabricBlockSettings.of(Material.AGGREGATE, MapColor.YELLOW).strength(1.0F, 3.0F).requiresTool());
     public static final Block GRITZY_SANDSTONE_STAIRS = new ModStairsBlock(GRITZY_SANDSTONE);
     public static final Block GRITZY_SANDSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
+    public static final Block GRITZY_SANDSTONE_WALL = new WallBlock(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
     public static final Block CHISELED_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
     public static final Block CUT_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
     public static final Block SMOOTH_GRITZY_SANDSTONE = new Block(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
@@ -145,10 +148,12 @@ public class ModBlocks {
     public static final Block HARDSTONE_STAIRS = new ModStairsBlock(HARDSTONE);
     public static final Block HARDSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block ROYALITE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).sounds(SoundGroups.TOADSTONE).strength(1.8F, 10.0F));
+    public static final Block SMOOTH_ROYALITE = new Block(FabricBlockSettings.copyOf(ROYALITE));
     public static final Block ROYALITE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(ROYALITE));
     public static final Block ROYALITE_BRICK_STAIRS = new ModStairsBlock(ROYALITE);
     public static final Block ROYALITE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(ROYALITE));
     public static final Block CHISELED_ROYALITE_BRICKS = new Block(FabricBlockSettings.copyOf(ROYALITE));
+    public static final Block CRACKED_ROYALITE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(ROYALITE));
     public static final Block ROYALITE_BRICKS = new BrickBlock(FabricBlockSettings.copyOf(ROYALITE));
     public static final Block GOLDEN_BRICKS = new BrickBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).sounds(BlockSoundGroup.METAL).strength(1.5F, 6.0F).requiresTool());
     public static final Block GOLDEN_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(GOLDEN_BRICKS));
@@ -168,6 +173,9 @@ public class ModBlocks {
     public static final Block VANILLATE_CRUMBLE = new SandBlock(12176828, FabricBlockSettings.of(Material.AGGREGATE, MapColor.TERRACOTTA_LIGHT_BLUE).strength(1.2F).requiresTool());
     public static final Block VANILLATE_BRICKS = new Block(FabricBlockSettings.copyOf(VANILLATE));
     public static final Block VANILLATE_TILES = new Block(FabricBlockSettings.copyOf(VANILLATE));
+    public static final Block VANILLATE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(VANILLATE));
+    public static final Block VANILLATE_BRICK_STAIRS = new ModStairsBlock(VANILLATE);
+    public static final Block VANILLATE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(VANILLATE));
     public static final Block AMANITA_LOG = createLogBlock(MapColor.TERRACOTTA_YELLOW, MapColor.SPRUCE_BROWN);
     public static final Block BELL_LOG = new LogBlock(FabricBlockSettings.copyOf(AMANITA_LOG).mapColor(MapColor.OFF_WHITE));
     public static final Block AMANITA_WOOD = new LogBlock(FabricBlockSettings.copyOf(AMANITA_LOG).mapColor(MapColor.SPRUCE_BROWN));
@@ -221,7 +229,7 @@ public class ModBlocks {
     public static final Block FROZEN_MUNCHER = new FrozenMuncherBlock(FabricBlockSettings.of(Material.ICE).sounds(BlockSoundGroup.GLASS).ticksRandomly().slipperiness(0.98f).strength(0.7f).nonOpaque());
     public static final Block GLOW_BLOCK = new GlowBlock(FabricBlockSettings.of(Material.METAL, MapColor.WHITE).sounds(BlockSoundGroup.METAL).luminance(15));
     public static final Block BILL_BLASTER = new BillBlasterBlock(FabricBlockSettings.of(Material.METAL, MapColor.DEEPSLATE_GRAY).sounds(BlockSoundGroup.METAL).strength(6.0F, 1200.0F));
-    public static final Block RAINBOW_TILES = new PillarBlock(FabricBlockSettings.of(Material.AMETHYST, MapColor.WHITE).sounds(BlockSoundGroup.AMETHYST_BLOCK).strength(0.3F));
+    public static final Block RAINBOW_TILES = new PillarBlock(FabricBlockSettings.of(Material.GLASS, MapColor.WHITE).sounds(BlockSoundGroup.GLASS).strength(0.3F));
     public static final Block RAINBOW_TILE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(RAINBOW_TILES));
     public static final Block RAINBOW_TILE_STAIRS = new ModStairsBlock(RAINBOW_TILES);
     public static final Block YOSHI_EGG = new YoshiEggBlock(FabricBlockSettings.of(Material.EGG, MapColor.OFF_WHITE).strength(0.2F).nonOpaque());
@@ -375,8 +383,10 @@ public class ModBlocks {
         registerBlock("cerise_tiles", CERISE_TILES);
         registerBlock("cerise_brick_slab", CERISE_BRICK_SLAB);
         registerBlock("cerise_brick_stairs", CERISE_BRICK_STAIRS);
+        registerBlock("cerise_brick_wall", CERISE_BRICK_WALL);
         registerBlock("cerise_tile_slab", CERISE_TILE_SLAB);
         registerBlock("cerise_tile_stairs", CERISE_TILE_STAIRS);
+        registerBlock("cerise_tile_wall", CERISE_TILE_WALL);
         registerBlock("bronze_slab", BRONZE_SLAB);
         registerBlock("bronze_stairs", BRONZE_STAIRS);
         registerBlock("white_bronze", WHITE_BRONZE);
@@ -411,6 +421,7 @@ public class ModBlocks {
         registerBlock("chiseled_gritzy_sandstone", CHISELED_GRITZY_SANDSTONE);
         registerBlock("gritzy_sandstone_slab", GRITZY_SANDSTONE_SLAB);
         registerBlock("gritzy_sandstone_stairs", GRITZY_SANDSTONE_STAIRS);
+        registerBlock("gritzy_sandstone_wall", GRITZY_SANDSTONE_WALL);
         registerBlock("shroomstone", SHROOMSTONE);
         registerBlock("charrock", CHARROCK);
         registerBlock("cloud_block", CLOUD_BLOCK);
@@ -454,8 +465,10 @@ public class ModBlocks {
         registerBlock("hardstone_brick_stairs", HARDSTONE_BRICK_STAIRS);
         registerBlock("hardstone_brick_wall", HARDSTONE_BRICK_WALL);
         registerBlock("royalite", ROYALITE);
+        registerBlock("smooth_royalite", SMOOTH_ROYALITE);
         registerBlock("royalite_bricks", ROYALITE_BRICKS);
         registerBlock("chiseled_royalite_bricks", CHISELED_ROYALITE_BRICKS);
+        registerBlock("cracked_royalite_bricks", CRACKED_ROYALITE_BRICKS);
         registerBlock("royalite_brick_slab", ROYALITE_BRICK_SLAB);
         registerBlock("royalite_brick_stairs", ROYALITE_BRICK_STAIRS);
         registerBlock("royalite_brick_wall", ROYALITE_BRICK_WALL);
@@ -476,6 +489,9 @@ public class ModBlocks {
         registerBlock("amethyst_topped_vanillate", AMETHYST_TOPPED_VANILLATE);
         registerBlock("vanillate_crumble", VANILLATE_CRUMBLE);
         registerBlock("vanillate_bricks", VANILLATE_BRICKS);
+        registerBlock("vanillate_brick_slab", VANILLATE_BRICK_SLAB);
+        registerBlock("vanillate_brick_stairs", VANILLATE_BRICK_STAIRS);
+        registerBlock("vanillate_brick_wall", VANILLATE_BRICK_WALL);
         registerBlock("vanillate_tiles", VANILLATE_TILES);
         registerBlock("amanita_log", AMANITA_LOG, 5, 5);
         registerBlock("amanita_wood", AMANITA_WOOD, 5, 5);

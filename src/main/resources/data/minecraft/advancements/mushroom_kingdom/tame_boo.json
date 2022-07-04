@@ -20,7 +20,7 @@
       "trigger": "minecraft:tame_animal",
       "conditions": {
         "entity": {
-          "type": "super_block_world:glad_goomba"
+          "type": "super_block_world:boo"
         }
       }
     }

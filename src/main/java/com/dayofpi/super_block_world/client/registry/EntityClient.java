@@ -7,21 +7,19 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.entity.EmptyEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 
 @Environment(EnvType.CLIENT)
 public class EntityClient {
-
-    @SuppressWarnings({"unchecked"})
     public static void renderEntities() {
-        BlockEntityRendererRegistry.register(ModBlockEntities.CHINCHO_TORCH, (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new ChinchoTorchRenderer());
+        BlockEntityRendererRegistry.register(ModBlockEntities.CHINCHO_TORCH, ChinchoTorchRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.FLAG, FlagRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.PLACED_ITEM, ctx -> new PlacedItemRenderer());
         EntityRendererRegistry.register(ModEntities.GHOST_ESSENCE, EmptyEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.BABY_YOSHI, BabyYoshiRenderer::new);
         EntityRendererRegistry.register(ModEntities.BLOOPER, BlooperRenderer::new);
+        EntityRendererRegistry.register(ModEntities.BOO, BooRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOB_OMB, BobOmbRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOB_OMB_BUDDY, BobOmbBuddyRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOMB, FlyingItemEntityRenderer::new);
@@ -38,7 +36,7 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.HAMMER, HammerRenderer::new);
         EntityRendererRegistry.register(ModEntities.KING_BOB_OMB, KingBobOmbRenderer::new);
         EntityRendererRegistry.register(ModEntities.KING_BOO, KingBooRenderer::new);
-        EntityRendererRegistry.register(ModEntities.KOOPA_TROOPA, KoopaRenderer::new);
+        EntityRendererRegistry.register(ModEntities.KOOPA_TROOPA, KoopaTroopaRenderer::new);
         EntityRendererRegistry.register(ModEntities.LAUNCH_STAR, LaunchStarRenderer::new);
         EntityRendererRegistry.register(ModEntities.LIL_OINK, LilOinkRenderer::new);
         EntityRendererRegistry.register(ModEntities.MAILTOAD, MailtoadRenderer::new);
@@ -48,7 +46,7 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.MUD_TROOPER, MudTrooperRenderer::new);
         EntityRendererRegistry.register(ModEntities.MUMMY_ME, MummyMeRenderer::new);
         EntityRendererRegistry.register(ModEntities.PARAGOOMBA, GoombaRenderer::new);
-        EntityRendererRegistry.register(ModEntities.PARATROOPA, KoopaRenderer::new);
+        EntityRendererRegistry.register(ModEntities.PARATROOPA, KoopaTroopaRenderer::new);
         EntityRendererRegistry.register(ModEntities.PIRANHA_PLANT, PiranhaPlantRenderer::new);
         EntityRendererRegistry.register(ModEntities.PROPELLER_BLOCK, PropellerBlockRenderer::new);
         EntityRendererRegistry.register(ModEntities.PUTRID_PIRANHA, PiranhaPlantRenderer::new);

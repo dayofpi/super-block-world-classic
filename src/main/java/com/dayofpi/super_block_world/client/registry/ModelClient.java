@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.client.registry;
 
+import com.dayofpi.super_block_world.client.renderers.ChinchoTorchRenderer;
 import com.dayofpi.super_block_world.client.renderers.FlagRenderer;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModItems;
@@ -32,6 +33,7 @@ public class ModelClient {
     }
 
     private static void addToAtlas() {
+        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(ChinchoTorchRenderer.TEXTURE.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.POLE_TEXTURE.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.RAINBOW_FLAG.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.TRANS_FLAG.getTextureId()));

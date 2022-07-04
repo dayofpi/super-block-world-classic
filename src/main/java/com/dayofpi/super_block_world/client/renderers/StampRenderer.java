@@ -40,7 +40,7 @@ public class StampRenderer<T extends StampEntity> extends GeoProjectilesRenderer
         stack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - entity.getYaw()));
         stack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion((float) rotation * 360.0f / 8.0f));
 
-        stack.translate(0.0, -0.5, 0.99);
+        stack.translate(0.0, -0.5, 0.9999);
         stack.scale(0.85F, 0.85F, 1.0F);
         MinecraftClient.getInstance().getTextureManager().bindTexture(getTexture(entity));
         Color renderColor = getRenderColor(entity, partialTicks, stack, bufferIn, null, light);

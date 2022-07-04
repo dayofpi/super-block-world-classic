@@ -104,6 +104,30 @@ public class UnagiEntity extends WaterCreatureEntity implements IAnimatable {
     }
 
     @Override
+    public void tick() {
+        super.tick();
+        if (this.world.isClient) {
+            if (!this.isTouchingWater()) {
+                this.swimmingAnimationState.stop();
+                this.attackingAnimationState.stop();
+                this.sufferingAnimationState.startIfNotRunning(this.age);
+            }
+
+            if (this.isTouchingWater()) {
+                this.sufferingAnimationState.stop();
+                if (this.isAttacking()) {
+                    this.swimmingAnimationState.stop();
+                    this.attackingAnimationState.startIfNotRunning(this.age);
+                }
+                else {
+                    this.attackingAnimationState.stop();
+                    this.swimmingAnimationState.startIfNotRunning(this.age);
+                }
+            }
+        }
+    }
+
+    @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
     }
 

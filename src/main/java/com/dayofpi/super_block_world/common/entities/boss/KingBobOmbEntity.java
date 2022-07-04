@@ -2,9 +2,9 @@ package com.dayofpi.super_block_world.common.entities.boss;
 
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.entities.tasks.PickUpTargetGoal;
-import com.dayofpi.super_block_world.common.entities.tasks.StayByArenaGoal;
-import com.dayofpi.super_block_world.common.entities.tasks.SummonBobOmbsGoal;
+import com.dayofpi.super_block_world.common.entities.goals.PickUpTargetGoal;
+import com.dayofpi.super_block_world.common.entities.goals.StayByArenaGoal;
+import com.dayofpi.super_block_world.common.entities.goals.SummonBobOmbsGoal;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
@@ -30,15 +30,8 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class KingBobOmbEntity extends ModBossEntity implements IAnimatable {
+public class KingBobOmbEntity extends ModBossEntity {
     private static final TrackedData<Integer> THROW_COOLDOWN;
     private static final TrackedData<Boolean> SUMMONING;
     private static final TrackedData<Boolean> LAUGHING;
@@ -49,8 +42,6 @@ public class KingBobOmbEntity extends ModBossEntity implements IAnimatable {
         LAUGHING = DataTracker.registerData(KingBobOmbEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
-
     public KingBobOmbEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
         this.lookControl = new YawAdjustingLookControl(this, 10);
@@ -60,12 +51,7 @@ public class KingBobOmbEntity extends ModBossEntity implements IAnimatable {
     }
 
     public static DefaultAttributeContainer.Builder createKingBobOmbAttributes() {
-        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 2.0F).add(EntityAttributes.GENERIC_MAX_HEALTH, 64.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.18D).add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.6D).add(EntityAttributes.GENERIC_ARMOR, 20.0D);
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
+        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 64.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.18D).add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.6D).add(EntityAttributes.GENERIC_ARMOR, 20.0D);
     }
 
     protected void initGoals() {
@@ -198,27 +184,5 @@ public class KingBobOmbEntity extends ModBossEntity implements IAnimatable {
     public MusicSound getBossMusic() {
         return ModMusic.BOSS_1;
     }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
-
-    protected <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (this.isLaughing()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("laugh", true));
-            return PlayState.CONTINUE;
-        }
-        if (this.isSummoning()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("summon", true));
-            return PlayState.CONTINUE;
-        }
-        if (this.getThrowCooldown() > 30) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("throw", true));
-            return PlayState.CONTINUE;
-        }
-        return PlayState.STOP;
-    }
-
 
 }

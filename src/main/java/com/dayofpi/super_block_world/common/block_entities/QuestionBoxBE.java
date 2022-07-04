@@ -40,8 +40,7 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class QuestionBoxBE
-        extends LootableContainerBlockEntity {
+public class QuestionBoxBE extends LootableContainerBlockEntity {
     private final ViewerCountManager stateManager = new ViewerCountManager() {
 
         @Override

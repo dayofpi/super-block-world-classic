@@ -2,37 +2,25 @@ package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.models.DinoRhinoModel;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.hostile.DinoRhinoEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
-import software.bernie.geckolib3.geo.render.built.GeoModel;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class DinoRhinoRenderer<T extends DinoRhinoEntity> extends GeoEntityRenderer<T> {
+public class DinoRhinoRenderer extends MobEntityRenderer<DinoRhinoEntity, DinoRhinoModel> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/dino_rhino.png");
 
     public DinoRhinoRenderer(EntityRendererFactory.Context context) {
-        super(context, new DinoRhinoModel<>());
-        this.shadowRadius = 0.6F;
+        super(context, new DinoRhinoModel(context.getPart(ModModelLayers.DINO_RHINO)), 0.6f);
+
     }
 
     @Override
-    public void render(GeoModel model, T entity, float partialTicks, RenderLayer type, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-        if (entity.isBaby()) {
-            stack.scale(0.5F, 0.5F, 0.5F);
-        }
-        super.render(model, entity, partialTicks, type, stack, renderTypeBuffer, vertexBuilder, packedLightIn, packedOverlayIn, red, green, blue, alpha);
-    }
-
-    @Override
-    public Identifier getTexture(T entity) {
+    public Identifier getTexture(DinoRhinoEntity entity) {
         return TEXTURE;
     }
 }

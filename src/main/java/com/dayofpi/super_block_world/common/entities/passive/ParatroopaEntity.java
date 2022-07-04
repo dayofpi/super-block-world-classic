@@ -10,20 +10,21 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
 
-public class ParatroopaEntity extends KoopaTroopaEntity {
-    public ParatroopaEntity(EntityType<? extends KoopaTroopaEntity> entityType, World world) {
+public class ParatroopaEntity extends AbstractKoopa {
+    public float flapProgress;
+    public float maxWingDeviation;
+    public float prevMaxWingDeviation;
+    public float prevFlapProgress;
+    private float flapSpeed = 1.0f;
+    private float flapEffectTime = 1.0f;
+    public ParatroopaEntity(EntityType<? extends AbstractKoopa> entityType, World world) {
         super(entityType, world);
         this.moveControl = new FlightMoveControl(this, 10, false);
     }
@@ -33,7 +34,7 @@ public class ParatroopaEntity extends KoopaTroopaEntity {
     }
 
     @SuppressWarnings("unused")
-    public static boolean canParatroopaSpawn(EntityType<? extends KoopaTroopaEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canParatroopaSpawn(EntityType<? extends AbstractKoopa> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return !(world.getLightLevel(LightType.BLOCK, pos) > 0) && world.isSkyVisible(pos);
     }
 
@@ -45,19 +46,6 @@ public class ParatroopaEntity extends KoopaTroopaEntity {
         return birdNavigation;
     }
 
-    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("fly", true));
-            return PlayState.CONTINUE;
-        } else event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
-
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
         return false;
     }
@@ -65,19 +53,32 @@ public class ParatroopaEntity extends KoopaTroopaEntity {
     @Override
     public void tickMovement() {
         super.tickMovement();
-        Vec3d vec3d = this.getVelocity();
         this.airStrafingSpeed = this.getSaddledSpeed();
-        if (!this.onGround && vec3d.y < 0.0D) {
-            this.setVelocity(vec3d.multiply(1.0D, 0.8D, 1.0D));
-        }
+        this.flapWings();
     }
 
     protected boolean hasWings() {
-        return true;
+        return this.speed > this.flapEffectTime;
+    }
+
+    private void flapWings() {
+        this.prevFlapProgress = this.flapProgress;
+        this.prevMaxWingDeviation = this.maxWingDeviation;
+        this.maxWingDeviation += (float)(this.onGround || this.hasVehicle() ? -1 : 4) * 0.3f;
+        this.maxWingDeviation = MathHelper.clamp(this.maxWingDeviation, 0.0f, 1.0f);
+        if (!this.onGround && this.flapSpeed < 1.0f) {
+            this.flapSpeed = 1.0f;
+        }
+        this.flapSpeed *= 0.9f;
+        Vec3d vec3d = this.getVelocity();
+        if (!this.onGround && vec3d.y < 0.0) {
+            this.setVelocity(vec3d.multiply(1.0, 0.8, 1.0));
+        }
+        this.flapProgress += this.flapSpeed * 2.0f;
     }
 
     protected void addFlapEffects() {
-        if (random.nextFloat() < 0.06F)
-            this.playSound(Sounds.ENTITY_GENERIC_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
+        this.playSound(Sounds.ENTITY_GENERIC_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
+        this.flapEffectTime = this.speed + this.maxWingDeviation / 2.0F;
     }
 }

@@ -5,6 +5,7 @@ import com.dayofpi.super_block_world.common.entities.brains.FuzzyBrain;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
@@ -54,6 +55,10 @@ public class FuzzyEntity extends HostileEntity {
 
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
         return false;
+    }
+
+    @Override
+    protected void fall(double heightDifference, boolean onGround, BlockState state, BlockPos landedPosition) {
     }
 
     @Override

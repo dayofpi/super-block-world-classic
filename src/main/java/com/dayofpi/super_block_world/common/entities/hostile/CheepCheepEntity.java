@@ -30,7 +30,6 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.RegistryEntry;
@@ -55,7 +54,6 @@ public class CheepCheepEntity extends WaterCreatureEntity implements IAnimatable
     }
 
     private final AnimationFactory FACTORY = new AnimationFactory(this);
-    public float bodyAngle = 0F;
 
     public CheepCheepEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
         super(entityType, world);
@@ -185,19 +183,8 @@ public class CheepCheepEntity extends WaterCreatureEntity implements IAnimatable
     }
 
     public void tickMovement() {
-        Vec3d vec3d = this.getVelocity();
         if (!this.isTouchingWater() && this.onGround && this.verticalCollision) this.flop();
         super.tickMovement();
-
-        if (vec3d.y > 0) {
-            this.bodyAngle += 0.01F;
-        } else if (vec3d.y < 0) {
-            this.bodyAngle -= 0.01F;
-        } else {
-            this.bodyAngle = MathHelper.lerp(0.1F, this.bodyAngle, 0);
-        }
-
-        this.bodyAngle = MathHelper.clamp(bodyAngle, -0.6F, 0.6F);
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {

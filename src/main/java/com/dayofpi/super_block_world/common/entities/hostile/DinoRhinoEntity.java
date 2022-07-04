@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -33,18 +34,12 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class DinoRhinoEntity extends AnimalEntity implements Monster, IAnimatable {
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
-
+public class DinoRhinoEntity extends AnimalEntity implements Monster {
     public DinoRhinoEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
-        this.experiencePoints = 5;
+        this.setPathfindingPenalty(PathNodeType.LAVA, 8.0f);
+        this.experiencePoints = 10;
     }
 
     public static DefaultAttributeContainer.Builder createDinoRhinoAttributes() {
@@ -54,11 +49,6 @@ public class DinoRhinoEntity extends AnimalEntity implements Monster, IAnimatabl
     @SuppressWarnings("unused")
     public static boolean canDinoRhinoSpawn(EntityType<DinoRhinoEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return pos.getY() >= 63;
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, animationEvent -> PlayState.STOP));
     }
 
     protected void initGoals() {
@@ -103,11 +93,6 @@ public class DinoRhinoEntity extends AnimalEntity implements Monster, IAnimatabl
 
     public boolean isBreedingItem(ItemStack stack) {
         return stack.isOf(ModBlocks.FIRE_TULIP.asItem());
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 
     @Override

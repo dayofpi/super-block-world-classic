@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.common.entities.passive;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.entities.tasks.FollowMamaGoal;
+import com.dayofpi.super_block_world.common.entities.goals.FollowMamaGoal;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.block.BlockState;

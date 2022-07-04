@@ -1,6 +1,5 @@
 {
   "type": "minecraft:smelting",
-  "group": "smooth_gritzy_sandstone",
   "ingredient": {
     "item": "super_block_world:gritzy_sandstone"
   },

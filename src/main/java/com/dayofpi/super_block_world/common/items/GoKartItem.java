@@ -49,13 +49,21 @@ public class GoKartItem extends Item {
     }
 
     @Override
+    public ItemStack getDefaultStack() {
+        ItemStack itemStack = new ItemStack(this);
+        GoKartItem.setColor(itemStack, 0);
+        return itemStack;
+    }
+
+    @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         NbtCompound nbtCompound = stack.getNbt();
         if (nbtCompound == null) {
             return;
         }
+        int id = nbtCompound.getByte(COLOR_KEY);
         if (nbtCompound.contains(COLOR_KEY, NbtElement.INT_TYPE)) {
-            tooltip.add(Text.translatable("item.super_block_world.go_kart.color").append(" ").append(DyeColor.byId(nbtCompound.getByte(COLOR_KEY)).asString()).formatted(Formatting.GRAY));
+            tooltip.add(Text.translatable("color.minecraft." + DyeColor.byId(id).getName()).formatted(Formatting.GRAY));
         }
     }
 
@@ -63,9 +71,10 @@ public class GoKartItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         BlockHitResult hitResult = GoKartItem.raycast(world, user, RaycastContext.FluidHandling.NONE);
-        if (((HitResult)hitResult).getType() == HitResult.Type.MISS) {
+        if (hitResult.getType() == HitResult.Type.MISS) {
             return TypedActionResult.pass(itemStack);
         }
+
         Vec3d vec3d = user.getRotationVec(1.0f);
         List<Entity> list = world.getOtherEntities(user, user.getBoundingBox().stretch(vec3d.multiply(5.0)).expand(1.0), RIDERS);
         if (!list.isEmpty()) {

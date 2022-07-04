@@ -1,6 +1,5 @@
 {
   "type": "minecraft:smelting",
-  "group": "smooth_toadstone",
   "ingredient": {
     "item": "super_block_world:toadstone"
   },

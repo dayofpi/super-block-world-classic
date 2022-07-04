@@ -23,17 +23,17 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 60,
+          "weight": 64,
           "name": "super_block_world:super_mushroom"
         },
         {
           "type": "minecraft:item",
-          "weight": 30,
+          "weight": 45,
           "name": "super_block_world:fire_flower"
         },
         {
           "type": "minecraft:item",
-          "weight": 12,
+          "weight": 17,
           "name": "super_block_world:ice_flower"
         },
         {

@@ -44,38 +44,49 @@ public class GoKartRenderer extends EntityRenderer<GoKartEntity> {
     }
 
     @Override
-    public void render(GoKartEntity goKartEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-        matrixStack.push();
-        matrixStack.translate(0.0, 1.5, 0.0);
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - f));
+    public void render(GoKartEntity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider provider, int light) {
+        matrices.push();
+        matrices.translate(0.0, 1.5, 0.0);
+        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - yaw));
 
-        float wobbleTicks = (float)goKartEntity.getDamageWobbleTicks() - g;
-        float strength = goKartEntity.getDamageWobbleStrength() - g;
-        if (strength < 0.0f) {
-            strength = 0.0f;
+        float wobbleTicks = (float)entity.getDamageWobbleTicks() - tickDelta;
+        float wobbleStrength = entity.getDamageWobbleStrength() - tickDelta;
+
+        if (wobbleStrength < 0.0f) {
+            wobbleStrength = 0.0f;
         }
         if (wobbleTicks > 0.0f) {
-            matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(MathHelper.sin(wobbleTicks) * wobbleTicks * strength / 10.0f * (float)goKartEntity.getDamageWobbleSide()));
+            matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(MathHelper.sin(wobbleTicks) * wobbleTicks * wobbleStrength / 10.0f * (float)entity.getDamageWobbleSide()));
         }
 
-        matrixStack.scale(-1.0f, -1.0f, 1.0f);
-        this.model.setAngles(goKartEntity, g, 0.0f, -0.1f, 0.0f, 0.0f);
+        matrices.scale(-1.0f, -1.0f, 1.0f);
+        this.model.setAngles(entity, tickDelta, 0.0f, -0.1f, 0.0f, 0.0f);
 
-        VertexConsumer base = vertexConsumerProvider.getBuffer(this.model.getLayer(getTexture(goKartEntity)));
-        this.model.render(matrixStack, base, i, OverlayTexture.DEFAULT_UV, 1.0f, 1.0f, 1.0f, 1.0f);
+        this.renderKart(entity, matrices, provider, light);
+        this.renderFrame(entity, matrices, provider, light);
+        this.renderFlag(entity, matrices, provider, light);
+        matrices.pop();
+        super.render(entity, yaw, tickDelta, matrices, provider, light);
+    }
 
-        float[] color = goKartEntity.getKartColor().getColorComponents();
-        VertexConsumer frame = vertexConsumerProvider.getBuffer(RenderLayer.getEntityCutoutNoCull(FRAME));
-        this.model.render(matrixStack, frame, i, OverlayTexture.DEFAULT_UV, color[0], color[1], color[2], 1.0f);
+    private void renderKart(GoKartEntity entity, MatrixStack matrices, VertexConsumerProvider provider, int light){
+        VertexConsumer vertices = provider.getBuffer(this.model.getLayer(getTexture(entity)));
+        this.model.render(matrices, vertices, light, OverlayTexture.DEFAULT_UV, 1.0f, 1.0f, 1.0f, 1.0f);
+    }
 
-        OptionalInt flagType = goKartEntity.getFlagType();
+    private void renderFrame(GoKartEntity entity, MatrixStack matrices, VertexConsumerProvider provider, int light) {
+        float[] color = entity.getKartColor().getColorComponents();
+        VertexConsumer vertices = provider.getBuffer(RenderLayer.getEntityCutoutNoCull(FRAME));
+        this.model.render(matrices, vertices, light, OverlayTexture.DEFAULT_UV, color[0], color[1], color[2], 1.0f);
+    }
+
+    private void renderFlag(GoKartEntity entity, MatrixStack matrixStack, VertexConsumerProvider provider, int light) {
+        OptionalInt flagType = entity.getFlagType();
         if (flagType.isPresent()) {
-            VertexConsumer flag = vertexConsumerProvider.getBuffer(RenderLayer.getEntityCutoutNoCull(getFlagTexture(flagType.getAsInt())));
-            this.model.render(matrixStack, flag, i, OverlayTexture.DEFAULT_UV, 1.0f, 1.0f, 1.0f, 1.0f);
+            int i = flagType.getAsInt();
+            VertexConsumer vertices = provider.getBuffer(RenderLayer.getEntityCutoutNoCull(getFlagTexture(i)));
+            this.model.render(matrixStack, vertices, light, OverlayTexture.DEFAULT_UV, 1.0f, 1.0f, 1.0f, 1.0f);
         }
-
-        matrixStack.pop();
-        super.render(goKartEntity, f, g, matrixStack, vertexConsumerProvider, i);
     }
 
     @Override

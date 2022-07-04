@@ -8,6 +8,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -27,10 +29,9 @@ public class PowerStarItem extends BlockItem {
     protected BlockState getPlacementState(ItemPlacementContext context) {
         World world = context.getWorld();
         BlockPos blockPos = context.getBlockPos();
-        if (PortalPlacer.attemptPortalLight(world, blockPos, PortalIgnitionSource.ItemUseSource(ModItems.POWER_STAR))) {
-            return null;
-        }
-        if (PortalPlacer.attemptPortalLight(world, blockPos, PortalIgnitionSource.ItemUseSource(ModItems.ZTAR))) {
+        if (PortalPlacer.attemptPortalLight(world, blockPos, PortalIgnitionSource.ItemUseSource(ModItems.POWER_STAR)) || PortalPlacer.attemptPortalLight(world, blockPos, PortalIgnitionSource.ItemUseSource(ModItems.ZTAR))) {
+            context.getStack().decrement(1);
+            world.playSound(null, blockPos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 1.0F, 1.0F);
             return null;
         }
         return super.getPlacementState(context);
