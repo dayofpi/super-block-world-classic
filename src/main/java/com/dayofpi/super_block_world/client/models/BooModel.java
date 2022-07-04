@@ -4,22 +4,25 @@ import com.dayofpi.super_block_world.common.entities.hostile.BooEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModelPartNames;
+import net.minecraft.client.render.entity.model.ModelWithArms;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Arm;
+import net.minecraft.util.math.Vec3f;
 
-public class BooModel extends SinglePartEntityModel<BooEntity> {
+public class BooModel extends SinglePartEntityModel<BooEntity> implements ModelWithArms {
 	private final ModelPart root;
 	private final ModelPart tongue;
-	private final ModelPart right_arm;
-	private final ModelPart left_arm;
+	private final ModelPart rightArm;
+	private final ModelPart leftArm;
 	private float alpha;
 
 
 	public BooModel(ModelPart root) {
 		this.root = root.getChild(EntityModelPartNames.ROOT);
 		this.tongue = this.root.getChild(EntityModelPartNames.TONGUE);
-		this.right_arm = this.root.getChild(EntityModelPartNames.RIGHT_ARM);
-		this.left_arm = this.root.getChild(EntityModelPartNames.LEFT_ARM);
+		this.rightArm = this.root.getChild(EntityModelPartNames.RIGHT_ARM);
+		this.leftArm = this.root.getChild(EntityModelPartNames.LEFT_ARM);
 	}
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
@@ -40,6 +43,7 @@ public class BooModel extends SinglePartEntityModel<BooEntity> {
 	@Override
 	public void setAngles(BooEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.alpha = entity.getAlpha();
+		this.tongue.visible = !entity.isTamed() && !entity.isInSittingPose();
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
 	}
 
@@ -47,5 +51,14 @@ public class BooModel extends SinglePartEntityModel<BooEntity> {
 	public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
 		alpha = this.alpha;
 		super.render(matrices, vertices, light, overlay, red, green, blue, alpha);
+	}
+
+	@Override
+	public void setArmAngle(Arm arm, MatrixStack matrices) {
+		this.root.rotate(matrices);
+		matrices.translate(0.0, -0.09375, 0.09375);
+		matrices.multiply(Vec3f.POSITIVE_X.getRadialQuaternion(this.rightArm.pitch + 0.43633232f));
+		matrices.scale(0.7f, 0.7f, 0.7f);
+		matrices.translate(0.0625, 0.0, 0.0);
 	}
 }

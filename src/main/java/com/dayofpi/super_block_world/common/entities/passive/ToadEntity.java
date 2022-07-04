@@ -26,7 +26,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -58,13 +57,12 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-import java.util.List;
 import java.util.Map;
 
 public class ToadEntity extends AbstractToad implements IAnimatable {
     public static final Map<Integer, Identifier> TEXTURES;
-    protected static final ImmutableList<SensorType<? extends Sensor<? super PassiveEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY);
-    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING);
+    protected static final ImmutableList<SensorType<? extends Sensor<? super PassiveEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, Main.TOAD_SPECIFIC_SENSOR);
+    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING, MemoryModuleType.NEAREST_VISIBLE_NEMESIS);
     private static final TrackedData<Integer> COLOR;
     private static final TrackedData<Integer> EMOTION;
     private static final TrackedData<Integer> TOAD_STATE;
@@ -198,7 +196,6 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
         if (this.isAlive()) {
             if (this.getAttentionCooldown() > 0)
                 this.setAttentionCooldown(this.getAttentionCooldown() - 1);
-            List<Entity> baddies = world.getOtherEntities(this, this.getBoundingBox().expand(4, 4, 4), entity -> entity instanceof HostileEntity);
             if (!this.isScared()) {
                 if (this.isCheering() || this.forwardSpeed != 0) {
                     if (!this.world.isClient && this.random.nextFloat() < 0.005F) {
@@ -217,17 +214,11 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
                             }
                     }
                 }
-
-                if (!baddies.isEmpty()) {
-                    this.setToadState(2);
-                }
                 if (!this.isHappy() && this.random.nextFloat() < 0.003F) {
                     this.setEmotion(1);
                 } else if (this.random.nextFloat() < 0.005F) {
                     this.setEmotion(0);
                 }
-            } else if (baddies.isEmpty()) {
-                this.setToadState(0);
             }
         }
     }

@@ -19,6 +19,7 @@
     "MinecartEntityMixin",
     "MushroomBlockMixin",
     "RabbitEntityMixin",
+    "SensorTypeMixin",
     "SignTypeAccessor"
   ],
   "client": [

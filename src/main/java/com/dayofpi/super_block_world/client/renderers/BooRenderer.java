@@ -10,6 +10,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.feature.HeldItemFeatureRenderer;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,6 +22,7 @@ public class BooRenderer extends MobEntityRenderer<BooEntity, BooModel> {
     public BooRenderer(EntityRendererFactory.Context context) {
         super(context, new BooModel(context.getPart(ModModelLayers.BOO)), 0.5f);
         this.addFeature(new BooFaceFeatureRenderer<>(this));
+        this.addFeature(new HeldItemFeatureRenderer<BooEntity, BooModel>(this, context.getHeldItemRenderer()));
     }
 
     @Override
