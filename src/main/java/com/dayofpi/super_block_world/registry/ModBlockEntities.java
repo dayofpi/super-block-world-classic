@@ -9,6 +9,7 @@ import net.minecraft.util.registry.Registry;
 
 public class ModBlockEntities {
     public static void register() {
+        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "dry_bones_pile"), DRY_BONES_PILE);
         Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "boo_lantern"), BOO_LANTERN);
         Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "chincho_torch"), CHINCHO_TORCH);
         Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "flag"), FLAG);
@@ -19,6 +20,7 @@ public class ModBlockEntities {
         Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "yoshi_egg"), YOSHI_EGG);
     }
 
+    public static final BlockEntityType<DryBonesPileBE> DRY_BONES_PILE = FabricBlockEntityTypeBuilder.create(DryBonesPileBE::new, ModBlocks.DRY_BONES_PILE).build();
     public static final BlockEntityType<BooLanternBE> BOO_LANTERN = FabricBlockEntityTypeBuilder.create(BooLanternBE::new, ModBlocks.BOO_LANTERN).build();
     public static final BlockEntityType<ChinchoTorchBE> CHINCHO_TORCH = FabricBlockEntityTypeBuilder.create(ChinchoTorchBE::new, ModBlocks.CHINCHO_TORCH).build();
     public static final BlockEntityType<FlagBE> FLAG = FabricBlockEntityTypeBuilder.create(FlagBE::new, ModBlocks.WHITE_FLAG, ModBlocks.ORANGE_FLAG, ModBlocks.MAGENTA_FLAG, ModBlocks.LIGHT_BLUE_FLAG, ModBlocks.YELLOW_FLAG, ModBlocks.LIME_FLAG, ModBlocks.PINK_FLAG, ModBlocks.GRAY_FLAG, ModBlocks.LIGHT_GRAY_FLAG, ModBlocks.CYAN_FLAG, ModBlocks.PURPLE_FLAG, ModBlocks.BLUE_FLAG, ModBlocks.BROWN_FLAG, ModBlocks.GREEN_FLAG, ModBlocks.RED_FLAG, ModBlocks.BLACK_FLAG, ModBlocks.RAINBOW_FLAG).build();

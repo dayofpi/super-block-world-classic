@@ -1,27 +1,30 @@
 package com.dayofpi.super_block_world.client.renderers;
 
+import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.models.BabyYoshiModel;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.passive.BabyYoshiEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
-import software.bernie.geckolib3.geo.render.built.GeoModel;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
-public class BabyYoshiRenderer<T extends BabyYoshiEntity> extends GeoEntityRenderer<T> {
+public class BabyYoshiRenderer extends MobEntityRenderer<BabyYoshiEntity, BabyYoshiModel> {
+    private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/baby_yoshi/green.png");
     public BabyYoshiRenderer(EntityRendererFactory.Context ctx) {
-        super(ctx, new BabyYoshiModel<>());
-        this.shadowRadius = 0.6F;
+        super(ctx, new BabyYoshiModel(ctx.getPart(ModModelLayers.BABY_YOSHI)), 0.5F);
     }
 
     @Override
-    public void render(GeoModel model, T entity, float partialTicks, RenderLayer type, MatrixStack matrices, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
+    public Identifier getTexture(BabyYoshiEntity entity) {
+        return TEXTURE;
+    }
+
+    @Override
+    protected void scale(BabyYoshiEntity entity, MatrixStack matrices, float amount) {
         matrices.scale(0.6F, 0.6F, 0.6F);
-        super.render(model, entity, partialTicks, type, matrices, renderTypeBuffer, vertexBuilder, packedLightIn, packedOverlayIn, red, green, blue, alpha);
     }
 }

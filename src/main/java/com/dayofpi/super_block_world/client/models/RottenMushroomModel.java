@@ -22,8 +22,7 @@ public class RottenMushroomModel extends SinglePartEntityModel<RottenMushroomEnt
 	@Override
 	public void setAngles(RottenMushroomEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
-		float velocity = Math.min((float) entity.getVelocity().lengthSquared() * 200.0f, 8.0f);
-		this.updateAnimation(entity.walkingAnimationState, ModAnimations.RottenMushroom.WALK, ageInTicks, velocity);
+		this.updateAnimation(entity.walkingAnimationState, ModAnimations.RottenMushroom.WALK, ageInTicks);
 	}
 
 	@Override

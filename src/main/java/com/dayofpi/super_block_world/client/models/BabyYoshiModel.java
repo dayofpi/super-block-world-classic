@@ -1,52 +1,70 @@
 package com.dayofpi.super_block_world.client.models;
 
-import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.client.registry.ModAnimations;
 import com.dayofpi.super_block_world.common.entities.passive.BabyYoshiEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.model.*;
+import net.minecraft.client.render.entity.model.EntityModelPartNames;
+import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.util.math.MathHelper;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 @Environment(EnvType.CLIENT)
-public class BabyYoshiModel<T extends BabyYoshiEntity> extends AnimatedGeoModel<T> {
-    @Override
-    public Identifier getModelResource(T entity) {
-        return new Identifier(Main.MOD_ID, "geo/baby_yoshi.geo.json");
+public class BabyYoshiModel extends SinglePartEntityModel<BabyYoshiEntity> {
+    private final ModelPart root;
+    private final ModelPart head;
+    private final ModelPart tail;
+    private final ModelPart body;
+    private final ModelPart right_arm;
+    private final ModelPart left_arm;
+
+    public BabyYoshiModel(ModelPart root) {
+        this.root = root.getChild("root");
+        this.head = this.root.getChild(EntityModelPartNames.HEAD);
+        this.tail = this.root.getChild(EntityModelPartNames.TAIL);
+        this.body = this.root.getChild(EntityModelPartNames.BODY);
+        this.right_arm = this.root.getChild(EntityModelPartNames.RIGHT_ARM);
+        this.left_arm = this.root.getChild(EntityModelPartNames.LEFT_ARM);
+    }
+
+    public static TexturedModelData getTexturedModelData() {
+        ModelData modelData = new ModelData();
+        ModelPartData modelPartData = modelData.getRoot();
+        ModelPartData root = modelPartData.addChild("root", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
+
+        root.addChild("head", ModelPartBuilder.create().uv(0, 21).cuboid(-5.0F, -6.0F, -9.75F, 10.0F, 8.0F, 12.0F, new Dilation(0.0F))
+                .uv(32, 21).cuboid(-5.0F, -10.0F, -5.75F, 10.0F, 4.0F, 7.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -11.0F, 0.75F));
+
+        root.addChild("right_leg", ModelPartBuilder.create().uv(36, 33).cuboid(-2.0F, 0.0F, -4.0F, 4.0F, 6.0F, 8.0F, new Dilation(0.0F)), ModelTransform.pivot(-8.0F, -6.0F, 1.0F));
+
+        root.addChild("left_leg", ModelPartBuilder.create().uv(36, 33).mirrored().cuboid(-2.0F, 0.0F, -4.0F, 4.0F, 6.0F, 8.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.pivot(8.0F, -6.0F, 1.0F));
+
+        root.addChild("tail", ModelPartBuilder.create().uv(35, 0).cuboid(-3.0F, -2.0F, 0.0F, 6.0F, 4.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -7.0F, 6.0F));
+
+        root.addChild("body", ModelPartBuilder.create().uv(0, 0).cuboid(-6.0F, -5.0F, -5.5F, 12.0F, 10.0F, 11.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -6.0F, 0.5F));
+
+        root.addChild("right_arm", ModelPartBuilder.create().uv(0, 21).cuboid(-1.5F, -1.5F, -1.5F, 3.0F, 5.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(-5.5F, -6.5F, -4.5F));
+
+        root.addChild("left_arm", ModelPartBuilder.create().uv(0, 21).mirrored().cuboid(-1.5F, -1.5F, -1.5F, 3.0F, 5.0F, 3.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.pivot(5.5F, -6.5F, -4.5F));
+        return TexturedModelData.of(modelData, 128, 64);
     }
 
     @Override
-    public Identifier getTextureResource(T entity) {
-        return new Identifier(Main.MOD_ID, "textures/entity/baby_yoshi/green.png");
+    public void setAngles(BabyYoshiEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+        this.getPart().traverse().forEach(ModelPart::resetTransform);
+        this.updateAnimation(entity.waddlingAnimationState, ModAnimations.BabyYoshi.WADDLE, animationProgress);
+        this.head.pitch = headPitch * ((float) Math.PI / 180F) * 0.5F;
+        this.head.yaw = headYaw * ((float) Math.PI / 180F) * 0.5F;
+        this.head.roll = MathHelper.cos(limbAngle * 0.6662F + 3.1415927F) * 0.5F * limbDistance;
+        this.body.yaw = MathHelper.cos(entity.limbAngle * 0.6662F) * 0.5F * entity.limbDistance;
+        this.tail.yaw = MathHelper.cos(entity.limbAngle * 0.6662F + 3.1415927F) * entity.limbDistance;
+        this.right_arm.pitch = MathHelper.cos(entity.limbAngle * 0.6662F + 3.1415927F) * 1.4F * entity.limbDistance;
+        this.left_arm.pitch = MathHelper.cos(entity.limbAngle * 0.6662F) * 1.4F * entity.limbDistance;
+
     }
 
     @Override
-    public Identifier getAnimationResource(T entity) {
-        return new Identifier(Main.MOD_ID, "animations/baby_yoshi.animation.json");
-    }
-
-    @Override
-    public void setLivingAnimations(T entity, Integer uniqueID, AnimationEvent customPredicate) {
-        super.setLivingAnimations(entity, uniqueID, customPredicate);
-        final IBone HEAD = this.getAnimationProcessor().getBone("head");
-        EntityModelData modelData = (EntityModelData) customPredicate.getExtraData().get(0);
-        HEAD.setRotationX(modelData.headPitch * ((float) Math.PI / 180F) * 0.5F);
-        HEAD.setRotationY(modelData.netHeadYaw * ((float) Math.PI / 180F) * 0.5F);
-        HEAD.setRotationZ(MathHelper.cos(entity.limbAngle * 0.6662F + 3.1415927F) * 0.5F * entity.limbDistance);
-
-        final IBone BODY = this.getAnimationProcessor().getBone("body");
-        BODY.setRotationY(MathHelper.cos(entity.limbAngle * 0.6662F) * 0.5F * entity.limbDistance);
-
-        final IBone TAIL = this.getAnimationProcessor().getBone("tail");
-        TAIL.setRotationY(MathHelper.cos(entity.limbAngle * 0.6662F + 3.1415927F) * entity.limbDistance);
-
-
-        final IBone RIGHT_ARM = this.getAnimationProcessor().getBone("right_arm");
-        final IBone LEFT_ARM = this.getAnimationProcessor().getBone("left_arm");
-        RIGHT_ARM.setRotationX(MathHelper.cos(entity.limbAngle * 0.6662F + 3.1415927F) * 1.4F * entity.limbDistance);
-        LEFT_ARM.setRotationX(MathHelper.cos(entity.limbAngle * 0.6662F) * 1.4F * entity.limbDistance);
+    public ModelPart getPart() {
+        return this.root;
     }
 }

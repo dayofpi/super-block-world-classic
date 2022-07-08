@@ -15,6 +15,7 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.s2c.play.GameStateChangeS2CPacket;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.slf4j.Logger;
@@ -32,6 +33,8 @@ public class Main implements ModInitializer {
 
     public static final SensorType<ToadSpecificSensor> TOAD_SPECIFIC_SENSOR = SensorTypeMixin.register("toad_specific_sensor", ToadSpecificSensor::new);
     public static final MemoryModuleType<FuzzyEntity> NEAREST_FUZZY = registerModuleType("nearest_fuzzy");
+
+    public static final GameStateChangeS2CPacket.Reason KING_BOO_CURSE = new GameStateChangeS2CPacket.Reason(64);
 
     private static <U> MemoryModuleType<U> registerModuleType(String id) {
         return Registry.register(Registry.MEMORY_MODULE_TYPE, new Identifier(id), new MemoryModuleType<>(Optional.empty()));

@@ -168,7 +168,6 @@ public abstract class LivingEntityMixin extends Entity {
                 jumpHeight = 0.5F;
             }
             cir.setReturnValue(jumpHeight * this.getJumpVelocityMultiplier());
-            cir.cancel();
         }
     }
 
@@ -176,7 +175,6 @@ public abstract class LivingEntityMixin extends Entity {
     public void handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> cir) {
         if (this.hasJumpBoots()) {
             cir.setReturnValue(false);
-            cir.cancel();
         }
     }
 
@@ -184,7 +182,6 @@ public abstract class LivingEntityMixin extends Entity {
     public void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (!source.isOutOfWorld() && this.hasStatusEffect(Main.STAR_POWER)) {
             cir.setReturnValue(false);
-            cir.cancel();
         }
         Entity entity = source.getSource();
         if (entity == null)
@@ -198,7 +195,6 @@ public abstract class LivingEntityMixin extends Entity {
             entity.pushAwayFrom(this);
             this.getEquippedStack(EquipmentSlot.HEAD).damage(5, (LivingEntity) (Object) this, p -> p.sendEquipmentBreakStatus(EquipmentSlot.HEAD));
             cir.setReturnValue(false);
-            cir.cancel();
         }
     }
 

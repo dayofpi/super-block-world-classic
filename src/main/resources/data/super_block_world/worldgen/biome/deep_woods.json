@@ -103,11 +103,11 @@
       "super_block_world:crystal_pile"
     ],
     [
-      "super_block_world:patch_star_cluster"
+      "super_block_world:patch_star_cluster",
+      "super_block_world:underwater_pipe"
     ],
     [
       "minecraft:seagrass_warm",
-      "minecraft:kelp_warm",
       "super_block_world:deep_woods_vegetation",
       "minecraft:classic_vines_cave_feature",
       "super_block_world:brown_mushroom",

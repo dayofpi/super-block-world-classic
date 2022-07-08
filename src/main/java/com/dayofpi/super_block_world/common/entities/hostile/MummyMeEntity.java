@@ -283,7 +283,7 @@ public class MummyMeEntity extends HostileEntity implements IAnimatable {
     private void tryVanish() {
         int value = random.nextInt(8) * (random.nextBoolean() ? 1 : -1);
         BlockPos blockPos = this.getBlockPos().add(value * 1.5, 0, value * 1.5);
-        if (blockPos != this.getBlockPos() && world.getBlockState(blockPos).isAir() && world.getBlockState(blockPos.down()).isSideSolidFullSquare(world, blockPos.down(), Direction.UP)) {
+        if (blockPos != this.getBlockPos() && world.getBlockState(blockPos).isTranslucent(world, blockPos) && world.getBlockState(blockPos.down()).isSideSolidFullSquare(world, blockPos.down(), Direction.UP)) {
             this.targetPos = blockPos;
         }
     }

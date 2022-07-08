@@ -1,12 +1,12 @@
 package com.dayofpi.super_block_world.common.entities.boss;
 
+import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.brains.KingBooBrain;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
@@ -55,10 +55,6 @@ public class KingBooEntity extends ModBossEntity implements IAnimatable {
 
     private static final TrackedData<Boolean> WEAKENED;
     private static final float MIN_ALPHA = 0.5F;
-
-    public final AnimationState idlingAnimationState = new AnimationState();
-    public final AnimationState chargingAnimationState = new AnimationState();
-    public final AnimationState unleashingAnimationState = new AnimationState();
 
     static {
          WEAKENED = DataTracker.registerData(KingBooEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -125,7 +121,7 @@ public class KingBooEntity extends ModBossEntity implements IAnimatable {
         if ((this.age + this.getId()) % 1200 == 0) {
             StatusEffectInstance statusEffectInstance = new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 6000, 2);
             List<ServerPlayerEntity> list = StatusEffectUtil.addEffectToPlayersWithinDistance((ServerWorld)this.world, this, this.getPos(), 50.0, statusEffectInstance, 1200);
-            list.forEach(serverPlayerEntity -> serverPlayerEntity.networkHandler.sendPacket(new GameStateChangeS2CPacket(GameStateChangeS2CPacket.ELDER_GUARDIAN_EFFECT, this.isSilent() ? GameStateChangeS2CPacket.DEMO_OPEN_SCREEN : (int)1.0f)));
+            list.forEach(serverPlayerEntity -> serverPlayerEntity.networkHandler.sendPacket(new GameStateChangeS2CPacket(Main.KING_BOO_CURSE, this.isSilent() ? GameStateChangeS2CPacket.DEMO_OPEN_SCREEN : (int)1.0f)));
         }
         this.world.getProfiler().push("kingBooBrain");
         this.getBrain().tick((ServerWorld) this.world, this);
@@ -139,9 +135,6 @@ public class KingBooEntity extends ModBossEntity implements IAnimatable {
 
     @Override
     public void tick() {
-        if (this.world.isClient) {
-            this.idlingAnimationState.startIfNotRunning(this.age);
-        }
         int i = this.getWorld().getLightLevel(LightType.BLOCK, this.getBlockPos());
 
         if (i > 6)

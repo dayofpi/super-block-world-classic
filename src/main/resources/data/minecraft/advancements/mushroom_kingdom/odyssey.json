@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "super_block_world:cloud_boots"
+      "item": "super_block_world:plumber_cap"
     },
     "title": {
       "translate": "advancements.sbw.odyssey.title"
@@ -116,6 +116,16 @@
         }
       }
     },
+    "soda_jungle": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:soda_jungle"
+          }
+        }
+      }
+    },
     "yoshis_island": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -157,6 +167,9 @@
     ],
     [
       "mushroom_hills"
+    ],
+    [
+      "soda_jungle"
     ],
     [
       "yoshis_island"

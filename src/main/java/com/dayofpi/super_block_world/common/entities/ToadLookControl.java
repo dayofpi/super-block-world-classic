@@ -8,6 +8,7 @@ public class ToadLookControl extends LookControl {
     private int waveTimer;
     public ToadLookControl(MobEntity entity) {
         super(entity);
+        this.waveTimer = 0;
     }
 
     @Override
@@ -15,7 +16,7 @@ public class ToadLookControl extends LookControl {
         super.tick();
         if (waveTimer > 0) {
             --waveTimer;
-        } else if (waveTimer == 0) {
+        } else if (waveTimer == 0 && ((Toad) this.entity).isWaving()) {
             ((Toad) this.entity).setToadState(0);
         }
     }
@@ -23,7 +24,7 @@ public class ToadLookControl extends LookControl {
     @Override
     public void lookAt(Vec3d direction) {
         super.lookAt(direction);
-        if (this.entity.getRandom().nextInt(10) == 0 && waveTimer == 0) {
+        if (this.entity.getRandom().nextInt(30) == 0 && waveTimer == 0) {
             this.waveTimer = 20;
             ((Toad) this.entity).setToadState(1);
         }

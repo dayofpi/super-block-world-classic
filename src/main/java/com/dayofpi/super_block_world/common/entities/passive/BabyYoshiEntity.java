@@ -5,6 +5,7 @@ import com.dayofpi.super_block_world.common.entities.goals.FollowMamaGoal;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
@@ -28,17 +29,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class BabyYoshiEntity extends AnimalEntity implements IAnimatable {
+public class BabyYoshiEntity extends AnimalEntity {
     public static final int MAX_AGE = Math.abs(-24000);
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
+    public final AnimationState waddlingAnimationState = new AnimationState();
     private int yoshiAge;
 
     public BabyYoshiEntity(EntityType<? extends AnimalEntity> entityType, World world) {
@@ -60,21 +54,18 @@ public class BabyYoshiEntity extends AnimalEntity implements IAnimatable {
         this.goalSelector.add(7, new LookAroundGoal(this));
     }
 
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
-
-    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.1F && event.getLimbSwingAmount() < 0.1F)) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("waddle", true));
-            return PlayState.CONTINUE;
-        } else return PlayState.STOP;
+    protected boolean shouldWaddle() {
+        return this.getVelocity().horizontalLengthSquared() > 1.0E-6;
     }
 
     @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
+    public void tick() {
+        if (this.world.isClient) {
+            if (this.shouldWaddle())
+                this.waddlingAnimationState.startIfNotRunning(this.age);
+            else this.waddlingAnimationState.stop();
+        }
+        super.tick();
     }
 
     public void tickMovement() {

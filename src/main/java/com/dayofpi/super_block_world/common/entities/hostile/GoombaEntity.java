@@ -28,17 +28,10 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.List;
 
-public class GoombaEntity extends HostileEntity implements IAnimatable {
+public class GoombaEntity extends HostileEntity {
     private static final TrackedData<Integer> SIZE;
     private static final TrackedData<Boolean> GROWABLE;
     private static final TrackedData<Boolean> GOLD;
@@ -50,8 +43,6 @@ public class GoombaEntity extends HostileEntity implements IAnimatable {
         GROWABLE = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
         GOLD = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
-
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
 
     public GoombaEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
@@ -155,6 +146,26 @@ public class GoombaEntity extends HostileEntity implements IAnimatable {
         this.setGold(nbt.getBoolean("Gold"));
         this.setGrowable(nbt.getBoolean("Growable"));
         super.readCustomDataFromNbt(nbt);
+    }
+
+    private boolean shouldWalk() {
+        return this.getVelocity().horizontalLengthSquared() > 1.0E-6;
+    }
+
+    @Override
+    public void tick() {
+        if (this.world.isClient) {
+            if (this.isDead()) {
+                this.squishedAnimationState.startIfNotRunning(this.age);
+            }
+            if (this.shouldWalk()) {
+                this.walkingAnimationState.startIfNotRunning(this.age);
+            }
+            else {
+                this.walkingAnimationState.stop();
+            }
+        }
+        super.tick();
     }
 
     @Override
@@ -353,26 +364,5 @@ public class GoombaEntity extends HostileEntity implements IAnimatable {
         double z = this.getZ();
         super.calculateDimensions();
         this.setPosition(x, y, z);
-    }
-
-    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.1F && event.getLimbSwingAmount() < 0.1F)) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
-            return PlayState.CONTINUE;
-        }
-        if (this.getHealth() <= 0) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("squish", false));
-            return PlayState.CONTINUE;
-        } else return PlayState.STOP;
-    }
-
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 }

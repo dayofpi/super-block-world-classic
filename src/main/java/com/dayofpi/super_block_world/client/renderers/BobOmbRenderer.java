@@ -1,33 +1,36 @@
 package com.dayofpi.super_block_world.client.renderers;
 
+import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.models.BobOmbModel;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.hostile.BobOmbEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import software.bernie.geckolib3.geo.render.built.GeoModel;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class BobOmbRenderer<T extends BobOmbEntity> extends GeoEntityRenderer<T> {
+public class BobOmbRenderer extends MobEntityRenderer<PathAwareEntity, BobOmbModel> {
+    private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/bob_omb.png");
+
     public BobOmbRenderer(EntityRendererFactory.Context ctx) {
-        super(ctx, new BobOmbModel<>());
-        this.shadowRadius = 0.4F;
+        super(ctx, new BobOmbModel(ctx.getPart(ModModelLayers.BOB_OMB)), 0.4F);
     }
 
     @Override
-    public void render(GeoModel model, T animatable, float partialTicks, RenderLayer type, MatrixStack matrixStackIn, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-        scale(animatable, matrixStackIn, partialTicks);
-        super.render(model, animatable, partialTicks, type, matrixStackIn, renderTypeBuffer, vertexBuilder, packedLightIn, packedOverlayIn, red, green, blue, alpha);
+    public Identifier getTexture(PathAwareEntity entity) {
+        return TEXTURE;
     }
 
-    protected void scale(BobOmbEntity bobOmbEntity, MatrixStack matrixStack, float f) {
-        float time = bobOmbEntity.getClientFuseTime(f);
+    @Override
+    protected void scale(PathAwareEntity bobOmbEntity, MatrixStack matrixStack, float amount) {
+        if (!(bobOmbEntity instanceof BobOmbEntity))
+            return;
+        float time = ((BobOmbEntity) bobOmbEntity).getClientFuseTime(amount);
         float h = 1.0F + MathHelper.sin(time * 100.0F) * time * 0.01F;
         time = MathHelper.clamp(time, 0.0F, 1.0F);
         time *= time;

@@ -34,7 +34,7 @@ public class ToadBrain {
     }
 
     private static void addAvoidActivities(Brain<PassiveEntity> brain) {
-        brain.setTaskList(Activity.AVOID, 10, ImmutableList.of(GoToRememberedPositionTask.toEntity(MemoryModuleType.AVOID_TARGET, 1.3f, 15, false), ToadBrain.makeRandomWalkTask(), new TimeLimitedTask<>(new FollowMobTask(8.0f), UniformIntProvider.create(30, 60)), new CowardTask(UniformIntProvider.create(5, 16))), MemoryModuleType.AVOID_TARGET);
+        brain.setTaskList(Activity.AVOID, 0, ImmutableList.of(GoToRememberedPositionTask.toEntity(MemoryModuleType.AVOID_TARGET, 1.3f, 15, false), ToadBrain.makeRandomWalkTask(), new TimeLimitedTask<>(new FollowMobTask(8.0f), UniformIntProvider.create(30, 60)), new CowardTask(UniformIntProvider.create(5, 16))), MemoryModuleType.AVOID_TARGET);
     }
 
     private static RandomTask<PassiveEntity> makeRandomWalkTask() {

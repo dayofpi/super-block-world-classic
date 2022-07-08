@@ -35,8 +35,8 @@ import java.util.List;
 
 public class FuzzyEntity extends HostileEntity {
     public final AnimationState idlingAnimationState = new AnimationState();
-    private static final ImmutableList<SensorType<? extends Sensor<? super FuzzyEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY);
-    private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, Main.NEAREST_FUZZY);
+    private static final ImmutableList<SensorType<? extends Sensor<? super FuzzyEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS);
+    private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.LOOK_TARGET, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, Main.NEAREST_FUZZY);
 
     public FuzzyEntity(EntityType<? extends FuzzyEntity> entityType, World world) {
         super(entityType, world);

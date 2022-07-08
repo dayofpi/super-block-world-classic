@@ -19,13 +19,10 @@ public abstract class BoatMixin {
     private void asItem(CallbackInfoReturnable<Item> info) {
         if (this.getBoatType() == EnumUtil.AMANITA_BOAT) {
             info.setReturnValue(ModItems.AMANITA_BOAT);
-            info.cancel();
         } else if (this.getBoatType() == EnumUtil.DARK_AMANITA_BOAT) {
-            info.setReturnValue(ModItems.AMANITA_BOAT);
-            info.cancel();
+            info.setReturnValue(ModItems.DARK_AMANITA_BOAT);
         } else if (this.getBoatType() == EnumUtil.BELL_BOAT) {
-            info.setReturnValue(ModItems.AMANITA_BOAT);
-            info.cancel();
+            info.setReturnValue(ModItems.BELL_BOAT);
         }
     }
 }

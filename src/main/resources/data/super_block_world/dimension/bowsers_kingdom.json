@@ -17,6 +17,18 @@
             "depth": 0,
             "offset": 0
           }
+        },
+        {
+          "biome": "super_block_world:shiverburn_wastes",
+          "parameters": {
+            "temperature": -0.2,
+            "humidity": 0.0,
+            "continentalness": 0.0,
+            "erosion": 0.0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
         }
       ]
     }

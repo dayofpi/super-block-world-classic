@@ -1,17 +1,25 @@
 package com.dayofpi.super_block_world.mixin.client;
 
+import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.registry.ModItems;
+import com.dayofpi.super_block_world.registry.ModParticles;
 import com.dayofpi.super_block_world.registry.ModTags;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.network.packet.s2c.play.GameStateChangeS2CPacket;
 import net.minecraft.network.packet.s2c.play.ItemPickupAnimationS2CPacket;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.MathHelper;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,8 +32,26 @@ public class NetworkHandlerMixin {
     @Shadow
     private ClientWorld world;
 
+    @Final
+    @Shadow
+    private MinecraftClient client;
+
     private void playSound(Entity entity, SoundEvent soundEvent) {
         this.world.playSound(entity.getX(), entity.getY(), entity.getZ(), soundEvent, SoundCategory.PLAYERS, (float) 0.2, (float) 1.0, false);
+    }
+
+    @Inject(at = @At(value = "TAIL"), method = "onGameStateChange")
+    public void onGameStateChange(GameStateChangeS2CPacket packet, CallbackInfo info) {
+        ClientPlayerEntity playerEntity = this.client.player;
+        GameStateChangeS2CPacket.Reason reason = packet.getReason();
+        float f = packet.getValue();
+        int i = MathHelper.floor(f + 0.5f);
+        if (reason == Main.KING_BOO_CURSE && playerEntity != null) {
+            this.world.addParticle(ModParticles.KING_BOO_CURSE, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), 0.0, 0.0, 0.0);
+            if (i == 1) {
+                this.world.playSound(playerEntity, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, SoundCategory.HOSTILE, 1.0f, 1.0f);
+            }
+        }
     }
 
     @Inject(at = @At("HEAD"), method = "onItemPickupAnimation")

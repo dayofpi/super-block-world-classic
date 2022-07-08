@@ -22,6 +22,7 @@ import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
@@ -29,16 +30,10 @@ import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import org.apache.commons.lang3.Validate;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class StampEntity extends AbstractDecorationEntity implements IAnimatable {
+public class StampEntity extends AbstractDecorationEntity {
     private static final TrackedData<String> STAMP = DataTracker.registerData(StampEntity.class, TrackedDataHandlerRegistry.STRING);
     private static final TrackedData<Integer> ROTATION = DataTracker.registerData(StampEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
 
     public StampEntity(EntityType<StampEntity> type, World world) {
         super(type, world);
@@ -47,16 +42,6 @@ public class StampEntity extends AbstractDecorationEntity implements IAnimatable
     public StampEntity(World world, BlockPos pos, Direction facing) {
         super(ModEntities.STAMP, world, pos);
         this.setFacing(facing);
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, animationEvent -> PlayState.STOP));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 
     @Override
@@ -273,7 +258,7 @@ public class StampEntity extends AbstractDecorationEntity implements IAnimatable
         return this.world.getOtherEntities(this, this.getBoundingBox(), PREDICATE).isEmpty();
     }
 
-    public enum Stamp {
+    public enum Stamp implements StringIdentifiable {
         ARROW("arrow"),
         BLOOPER("blooper"),
         BOO("boo"),
@@ -307,6 +292,11 @@ public class StampEntity extends AbstractDecorationEntity implements IAnimatable
         }
 
         public String getName() {
+            return name;
+        }
+
+        @Override
+        public String asString() {
             return name;
         }
     }

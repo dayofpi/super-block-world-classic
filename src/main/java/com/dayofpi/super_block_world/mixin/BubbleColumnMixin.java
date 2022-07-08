@@ -20,7 +20,6 @@ public class BubbleColumnMixin {
     private static void getBubbleState(BlockState state, CallbackInfoReturnable<BlockState> info) {
         if (state.isIn(ModTags.WARP_PIPES) && state.get(Properties.FACING) == Direction.UP && state.get(Properties.WATERLOGGED)) {
             info.setReturnValue(Blocks.BUBBLE_COLUMN.getDefaultState().with(BubbleColumnBlock.DRAG, false));
-            info.cancel();
         }
     }
 
@@ -29,7 +28,6 @@ public class BubbleColumnMixin {
         BlockState blockState = world.getBlockState(pos.down());
         if (blockState.isIn(ModTags.WARP_PIPES) && blockState.get(Properties.FACING) == Direction.UP && blockState.get(Properties.WATERLOGGED)) {
             info.setReturnValue(true);
-            info.cancel();
         }
     }
 }

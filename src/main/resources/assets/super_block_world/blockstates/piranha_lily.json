@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "floating=false": {
+      "model": "super_block_world:block/piranha_lily"
+    },
+    "floating=true": {
+      "model": "super_block_world:block/piranha_lily_floating"
+    }
+  }
+}

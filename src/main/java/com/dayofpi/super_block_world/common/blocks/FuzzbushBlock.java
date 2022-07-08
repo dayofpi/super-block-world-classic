@@ -17,6 +17,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -42,7 +43,9 @@ public class FuzzbushBlock extends PlantBlock {
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (random.nextInt(3) == 0) {
+        if (!world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING))
+            return;
+        if (random.nextInt(5) == 0) {
             List<FuzzyEntity> list = world.getEntitiesByClass(FuzzyEntity.class, Box.from(Vec3d.of(pos)).expand(64), EntityPredicates.VALID_LIVING_ENTITY);
             if (list.size() < 5) {
                 FuzzyEntity fuzzyEntity = ModEntities.FUZZY.create(world);

@@ -15,7 +15,7 @@ public class PrincessArmorMaterial implements ArmorMaterial {
 
     @Override
     public int getProtectionAmount(EquipmentSlot slot) {
-        return 1;
+        return 2;
     }
 
     @Override

@@ -93,6 +93,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:dry_bones",
+        "weight": 16,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:unagi",
         "weight": 20,
         "minCount": 3,
@@ -151,11 +157,11 @@
       "super_block_world:crystal_pile"
     ],
     [
-      "super_block_world:patch_star_cluster"
+      "super_block_world:patch_star_cluster",
+      "super_block_world:underwater_pipe"
     ],
     [
       "minecraft:seagrass_warm",
-      "minecraft:kelp_warm",
       "super_block_world:trees_forest_of_illusion",
       "super_block_world:beanstalk_common",
       "super_block_world:red_mushroom",

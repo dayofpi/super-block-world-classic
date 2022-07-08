@@ -461,23 +461,11 @@ public class GoKartEntity extends Entity {
 
     private void updateVelocity() {
         double gravity = this.hasNoGravity() ? 0.0 : (double) -0.04f;
-        float velocityDecay = 0.05f;
+        float velocityDecay = 0.9f;
 
         if (this.lastLocation == Location.IN_AIR && this.location != Location.IN_AIR && this.location != Location.ON_LAND) {
             this.location = Location.IN_WATER;
         } else {
-            if (this.location == Location.IN_WATER) {
-                velocityDecay = 0.9f;
-            } else if (this.location == Location.UNDER_FLOWING_WATER) {
-                gravity = -7.0E-4;
-                velocityDecay = 0.9f;
-            } else if (this.location == Location.UNDER_WATER) {
-                velocityDecay = 0.9f;
-            } else if (this.location == Location.IN_AIR) {
-                velocityDecay = 1.0f;
-            } else if (this.location == Location.ON_LAND) {
-                velocityDecay = 0.9f;
-            }
             Vec3d vec3d = this.getVelocity();
             this.setVelocity(vec3d.x * (double) velocityDecay, vec3d.y + gravity, vec3d.z * (double) velocityDecay);
             this.yawVelocity *= (velocityDecay - 0.1f);

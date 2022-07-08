@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.common.entities.passive;
 
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.common.entities.BobOmb;
 import com.dayofpi.super_block_world.common.entities.boss.KingBobOmbEntity;
 import com.dayofpi.super_block_world.common.entities.hostile.BobOmbEntity;
 import net.minecraft.block.BlockState;
@@ -24,21 +25,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class BobOmbBuddyEntity extends PathAwareEntity implements IAnimatable {
+public class BobOmbBuddyEntity extends PathAwareEntity implements BobOmb {
     private static final TrackedData<Boolean> PARACHUTED;
 
     static {
         PARACHUTED = DataTracker.registerData(BobOmbBuddyEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
-    public int windUp = 0;
+    private int windUp = 0;
 
     public BobOmbBuddyEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
@@ -116,16 +111,6 @@ public class BobOmbBuddyEntity extends PathAwareEntity implements IAnimatable {
     }
 
     @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, animationEvent -> PlayState.STOP));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
-    }
-
-    @Override
     public void playAmbientSound() {
         this.playSound(this.getAmbientSound(), 0.3F, 1.0F);
     }
@@ -149,5 +134,10 @@ public class BobOmbBuddyEntity extends PathAwareEntity implements IAnimatable {
     @Override
     protected SoundEvent getDeathSound() {
         return Sounds.ENTITY_BOB_OMB_DEATH;
+    }
+
+    @Override
+    public int getWindUp() {
+        return this.windUp;
     }
 }

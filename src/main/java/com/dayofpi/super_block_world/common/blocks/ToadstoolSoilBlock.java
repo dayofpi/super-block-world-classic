@@ -3,8 +3,10 @@ package com.dayofpi.super_block_world.common.blocks;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.Fertilizable;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.server.world.ServerWorld;
@@ -32,6 +34,11 @@ public class ToadstoolSoilBlock extends Block implements Fertilizable {
         if (itemStack.getItem() instanceof ShovelItem) {
             world.setBlockState(blockPos, ModBlocks.TOADSTOOL_PATH.getDefaultState(), 1);
             world.playSound(player, blockPos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
+            return ActionResult.success(world.isClient);
+        } else if (itemStack.getItem() instanceof HoeItem) {
+            world.setBlockState(blockPos, Blocks.FARMLAND.getDefaultState(), 1);
+            world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
             itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
             return ActionResult.success(world.isClient);
         }

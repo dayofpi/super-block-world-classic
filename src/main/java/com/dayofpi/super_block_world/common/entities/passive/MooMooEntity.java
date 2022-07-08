@@ -26,16 +26,10 @@ import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.IAnimationTickable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.Map;
 
-public class MooMooEntity extends CowEntity implements IAnimatable, IAnimationTickable {
+public class MooMooEntity extends CowEntity {
     private static final Map<Integer, Identifier> TEXTURES;
     private static final TrackedData<Integer> TYPE;
 
@@ -47,8 +41,6 @@ public class MooMooEntity extends CowEntity implements IAnimatable, IAnimationTi
             map.put(2, new Identifier(Main.MOD_ID, "textures/entity/moo_moo/chocolate.png"));
         });
     }
-
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
 
     public MooMooEntity(EntityType<? extends CowEntity> entityType, World world) {
         super(entityType, world);
@@ -64,9 +56,6 @@ public class MooMooEntity extends CowEntity implements IAnimatable, IAnimationTi
     }
 
     public void setMooMooType(int type) {
-        if (type < 0 || type > 2) {
-            type = 0;
-        }
         this.dataTracker.set(TYPE, type);
     }
 
@@ -107,20 +96,5 @@ public class MooMooEntity extends CowEntity implements IAnimatable, IAnimationTi
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(TYPE, 1);
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, animationEvent -> PlayState.STOP));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
-    }
-
-    @Override
-    public int tickTimer() {
-        return age;
     }
 }

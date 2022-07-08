@@ -14,9 +14,10 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
-@Environment(value= EnvType.CLIENT)
-public class BooFaceFeatureRenderer <T extends BooEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
-    private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/boo/face.png");
+@Environment(EnvType.CLIENT)
+public class BooFaceFeatureRenderer<T extends BooEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
+    private static final Identifier FACE_TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/boo/face.png");
+    private static final Identifier OVERLAY_TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/boo/boo_overlay.png");
 
     public BooFaceFeatureRenderer(FeatureRendererContext<T, M> featureRendererContext) {
         super(featureRendererContext);
@@ -24,11 +25,20 @@ public class BooFaceFeatureRenderer <T extends BooEntity, M extends EntityModel<
 
     @Override
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
-        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(this.getEyesTexture(entity));
-        this.getContextModel().render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0f, 1.0f, 1.0f, entity.getAlpha());
+        if (!entity.isClientShy()) {
+            VertexConsumer vertexConsumer = vertexConsumers.getBuffer(this.getEyesTexture(entity));
+            this.getContextModel().render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0f, 1.0f, 1.0f, entity.getAlpha());
+        }
+        if (entity.isTamed()) {
+            float[] color = entity.getBooColor().getColorComponents();
+            VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(OVERLAY_TEXTURE));
+            this.getContextModel().render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, color[0], color[1], color[2], 0.5F);
+        }
     }
 
     public RenderLayer getEyesTexture(T entity) {
-        return RenderLayer.getEyes(TEXTURE);
+        if (entity.isInSittingPose())
+            return RenderLayer.getEntityTranslucent(entity.getBooFace().texture());
+        return RenderLayer.getEntityTranslucent(FACE_TEXTURE);
     }
 }

@@ -17,6 +17,11 @@
         {
           "type": "minecraft:item",
           "weight": 3,
+          "name": "minecraft:cocoa_beans"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
           "name": "minecraft:gold_ingot"
         },
         {

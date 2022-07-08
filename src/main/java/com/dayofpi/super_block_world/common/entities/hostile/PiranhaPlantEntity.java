@@ -28,15 +28,12 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.stream.Stream;
 
-public class PiranhaPlantEntity extends HostileEntity implements IAnimatable {
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
+public class PiranhaPlantEntity extends HostileEntity {
+    public final AnimationState bitingAnimationState = new AnimationState();
     private boolean songPlaying;
 
     public PiranhaPlantEntity(EntityType<? extends HostileEntity> entityType, World world) {
@@ -81,11 +78,6 @@ public class PiranhaPlantEntity extends HostileEntity implements IAnimatable {
 
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
         return 0.0F;
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 5, this::predicate));
     }
 
     @Override
@@ -134,9 +126,17 @@ public class PiranhaPlantEntity extends HostileEntity implements IAnimatable {
 
         if (!world.isClient())
             return;
+        this.tickAnimation();
         if (this.isSleeping() && random.nextInt(10) == 0) {
             world.addParticle(ParticleTypes.BUBBLE, this.getParticleX(1.0D), this.getY() + 1.0D, this.getParticleZ(1.0D), 0.0D, 0.05D, 0.0D);
         }
+    }
+
+    protected void tickAnimation() {
+        if (this.isAttacking()) {
+            this.bitingAnimationState.startIfNotRunning(this.age);
+        }
+        else this.bitingAnimationState.stop();
     }
 
     protected <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
@@ -145,11 +145,6 @@ public class PiranhaPlantEntity extends HostileEntity implements IAnimatable {
             return PlayState.CONTINUE;
         }
         return PlayState.STOP;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 
     static class PiranhaPlantAttackGoal extends MeleeAttackGoal {

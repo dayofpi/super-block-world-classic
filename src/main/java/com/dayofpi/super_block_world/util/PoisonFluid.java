@@ -94,13 +94,13 @@ public abstract class PoisonFluid extends FlowableFluid {
     public void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
         BlockPos blockPos = pos.up();
         if (world.getBlockState(blockPos).isAir() && !world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos)) {
-            if (random.nextInt(20) == 0) {
+            if (random.nextInt(60) == 0) {
                 double d = (double) pos.getX() + random.nextDouble();
                 double e = (double) pos.getY() + 1.0;
                 double f = (double) pos.getZ() + random.nextDouble();
                 world.addParticle(ModParticles.POISON_BUBBLE, d, e, f, 0.0, 0.0, 0.0);
             }
-            if (random.nextInt(100) == 0) {
+            if (random.nextInt(200) == 0) {
                 world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_LAVA_AMBIENT, SoundCategory.BLOCKS, 0.2f + random.nextFloat() * 0.2f, 0.9f + random.nextFloat() * 0.15f, false);
             }
         }

@@ -64,23 +64,18 @@ public class InstrumentMixin {
     private static void fromBlockState(BlockState state, CallbackInfoReturnable<Instrument> info) {
         if (state.isOf(ModBlocks.QUESTION_BLOCK)) {
             info.setReturnValue(EnumUtil.BLING);
-            info.cancel();
         }
         if (state.isOf(ModBlocks.EMPTY_BLOCK)) {
             info.setReturnValue(EnumUtil.BLOCK);
-            info.cancel();
         }
         if (state.isOf(ModBlocks.WARP_FRAME)) {
             info.setReturnValue(EnumUtil.CHOIR);
-            info.cancel();
         }
         if (state.isIn(ModTags.ROYALITE)) {
             info.setReturnValue(EnumUtil.PAN_FLUTE);
-            info.cancel();
         }
         if (state.isOf(ModBlocks.YOSHI_EGG)) {
             info.setReturnValue(EnumUtil.DINODRUM);
-            info.cancel();
         }
     }
 }

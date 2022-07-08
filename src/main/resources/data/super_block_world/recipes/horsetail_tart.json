@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "super_block_world:horsetail"
+    }
+  ],
+  "result": {
+    "item": "super_block_world:horsetail_tart"
+  }
+}

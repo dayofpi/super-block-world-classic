@@ -126,17 +126,18 @@
       "super_block_world:crystal_pile"
     ],
     [
-      "super_block_world:patch_star_cluster"
+      "super_block_world:patch_star_cluster",
+      "super_block_world:underwater_pipe"
     ],
     [
       "minecraft:seagrass_warm",
-      "minecraft:kelp_warm",
       "super_block_world:trees_bell",
       "super_block_world:brown_mushroom",
       "super_block_world:patch_grass",
       "super_block_world:patch_red_grass",
       "super_block_world:patch_bush",
       "super_block_world:patch_songflower",
+      "super_block_world:patch_pawflower",
       "super_block_world:patch_flowerbed",
       "super_block_world:patch_muncher",
       "super_block_world:strawberry_coral"

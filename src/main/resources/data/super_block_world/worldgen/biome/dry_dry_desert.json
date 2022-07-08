@@ -57,6 +57,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:dry_bones",
+        "weight": 70,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:piranha_plant",
         "weight": 40,
         "minCount": 2,
@@ -132,11 +138,11 @@
       "super_block_world:crystal_pile"
     ],
     [
-      "super_block_world:patch_star_cluster"
+      "super_block_world:patch_star_cluster",
+      "super_block_world:underwater_pipe"
     ],
     [
       "minecraft:seagrass_warm",
-      "minecraft:kelp_warm",
       "minecraft:patch_dead_bush",
       "minecraft:patch_cactus_desert",
       "super_block_world:quicksand",

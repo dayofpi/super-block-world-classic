@@ -1,0 +1,94 @@
+{
+  "temperature": 2,
+  "downfall": 0.4,
+  "precipitation": "none",
+  "effects": {
+    "sky_color": 5060680,
+    "fog_color": 6473349,
+    "water_color": 4046591,
+    "water_fog_color": 4046591,
+    "grass_color": 6225725,
+    "foliage_color": 8570160,
+    "mood_sound": {
+      "sound": "super_block_world:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    },
+    "music": {
+      "sound": "super_block_world:music.lava",
+      "min_delay": 8000,
+      "max_delay": 19900,
+      "replace_current_music": false
+    }
+  },
+  "spawners": {
+    "creature": [],
+    "monster": [
+      {
+        "type": "super_block_world:goomba",
+        "weight": 50,
+        "minCount": 2,
+        "maxCount": 5
+      },
+      {
+        "type": "super_block_world:paragoomba",
+        "weight": 50,
+        "minCount": 2,
+        "maxCount": 5
+      },
+      {
+        "type": "super_block_world:dry_bones",
+        "weight": 50,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:parabones",
+        "weight": 25,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:enderman",
+        "weight": 10,
+        "minCount": 3,
+        "maxCount": 3
+      }
+    ],
+    "water_creature": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:nether_cave"
+    ]
+  },
+  "features": [
+    [],
+    [
+      "super_block_world:ice_sheet"
+    ],
+    [
+      "super_block_world:ore_magma",
+      "super_block_world:ore_cerise",
+      "super_block_world:ore_royalite"
+    ],
+    [
+      "super_block_world:block_pile"
+    ],
+    [
+      "super_block_world:block_line_hardstone",
+      "super_block_world:patch_star_cluster_common"
+    ],
+    [
+      "super_block_world:patch_fire",
+      "super_block_world:patch_fire_tulip_caves",
+      "super_block_world:patch_red_grass",
+      "super_block_world:patch_muncher"
+    ],
+    [
+      "super_block_world:freeze_lava"
+    ]
+  ]
+}

@@ -16,7 +16,7 @@ public class FollowMagnetTask extends Task<FuzzyEntity> {
     private final float speed;
 
     public FollowMagnetTask(UniformIntProvider executionRange, float speed) {
-        super(ImmutableMap.of(MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleState.VALUE_PRESENT, MemoryModuleType.WALK_TARGET, MemoryModuleState.VALUE_ABSENT));
+        super(ImmutableMap.of(MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleState.VALUE_PRESENT));
         this.executionRange = executionRange;
         this.speed = speed;
     }

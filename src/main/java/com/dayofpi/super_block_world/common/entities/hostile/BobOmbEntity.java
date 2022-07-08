@@ -1,9 +1,10 @@
 package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.common.entities.BobOmb;
+import com.dayofpi.super_block_world.common.entities.goals.BobOmbIgniteGoal;
 import com.dayofpi.super_block_world.common.entities.passive.BobOmbBuddyEntity;
 import com.dayofpi.super_block_world.common.entities.projectile.ModFireballEntity;
-import com.dayofpi.super_block_world.common.entities.goals.BobOmbIgniteGoal;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.Entity;
@@ -36,15 +37,10 @@ import net.minecraft.world.*;
 import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.Collection;
 
-public class BobOmbEntity extends HostileEntity implements IAnimatable {
+public class BobOmbEntity extends HostileEntity implements BobOmb {
     private static final TrackedData<Integer> FUSE_SPEED;
     private static final TrackedData<Boolean> IGNITED;
     private static final TrackedData<Boolean> PARACHUTED;
@@ -55,8 +51,7 @@ public class BobOmbEntity extends HostileEntity implements IAnimatable {
         PARACHUTED = DataTracker.registerData(BobOmbEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
-    public int windUp = 0;
+    private int windUp = 0;
     private int lastFuseTime;
     private int currentFuseTime;
     private int fuseTime = 25;
@@ -194,6 +189,11 @@ public class BobOmbEntity extends HostileEntity implements IAnimatable {
         return this.dataTracker.get(IGNITED);
     }
 
+    @Override
+    public int getWindUp() {
+        return this.windUp;
+    }
+
     public boolean hasParachute() {
         return this.dataTracker.get(PARACHUTED);
     }
@@ -294,15 +294,5 @@ public class BobOmbEntity extends HostileEntity implements IAnimatable {
 
     public float getClientFuseTime(float timeDelta) {
         return MathHelper.lerp(timeDelta, (float) this.lastFuseTime, (float) this.currentFuseTime) / (float) (this.fuseTime - 2);
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, animationEvent -> PlayState.STOP));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 }

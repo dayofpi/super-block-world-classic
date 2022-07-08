@@ -11,6 +11,7 @@
     "super_block_world:cerise_brick_wall",
     "super_block_world:cerise_tile_wall",
     "super_block_world:golden_brick_wall",
-    "super_block_world:crystal_brick_wall"
+    "super_block_world:crystal_brick_wall",
+    "super_block_world:rainbow_tile_wall"
   ]
 }

@@ -4,9 +4,11 @@ import com.dayofpi.super_block_world.client.renderers.ChinchoTorchRenderer;
 import com.dayofpi.super_block_world.client.renderers.FlagRenderer;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModItems;
+import com.dayofpi.super_block_world.util.StampModelProvider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
@@ -24,10 +26,10 @@ public class ModelClient {
     private static final int FOLIAGE_COLOR = 1696058;
 
     private static void renderColors() {
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GRASS_COLOR, ModBlocks.TOADSTOOL_GRASS, ModBlocks.GRASSY_TOADSTONE, ModBlocks.GRASSY_HARDSTONE, ModBlocks.TOADSTOOL_PATH, ModBlocks.TOADSTOOL_TURF, ModBlocks.SHORT_GRASS);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GRASS_COLOR, ModBlocks.TOADSTOOL_GRASS, ModBlocks.GRASSY_TOADSTONE, ModBlocks.GRASSY_HARDSTONE, ModBlocks.SHOREGRASS, ModBlocks.TOADSTOOL_TURF, ModBlocks.SHORT_GRASS);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FOLIAGE_COLOR, ModBlocks.AMANITA_LEAVES, ModBlocks.FRUITING_AMANITA_LEAVES, ModBlocks.DARK_AMANITA_LEAVES, ModBlocks.FRUITING_DARK_AMANITA_LEAVES, ModBlocks.BUSH);
 
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GRASS_COLOR, ModBlocks.TOADSTOOL_GRASS, ModBlocks.GRASSY_TOADSTONE, ModBlocks.GRASSY_HARDSTONE, ModBlocks.TOADSTOOL_PATH, ModBlocks.TOADSTOOL_TURF, ModBlocks.SHORT_GRASS);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GRASS_COLOR, ModBlocks.TOADSTOOL_GRASS, ModBlocks.GRASSY_TOADSTONE, ModBlocks.GRASSY_HARDSTONE, ModBlocks.SHOREGRASS, ModBlocks.TOADSTOOL_TURF, ModBlocks.SHORT_GRASS);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FOLIAGE_COLOR, ModBlocks.AMANITA_LEAVES, ModBlocks.FRUITING_AMANITA_LEAVES, ModBlocks.DARK_AMANITA_LEAVES, ModBlocks.FRUITING_DARK_AMANITA_LEAVES, ModBlocks.BUSH);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableItem) stack.getItem()).getColor(stack), ModItems.PLUMBER_CAP);
     }
@@ -47,6 +49,7 @@ public class ModelClient {
     public static void renderBlocksAndItems() {
         renderColors();
         addToAtlas();
+        ModelLoadingRegistry.INSTANCE.registerResourceProvider(resourceManager -> new StampModelProvider());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPIKE_TRAP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DOTTED_LINE_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RED_DOTTED_LINE_BLOCK, RenderLayer.getCutout());
@@ -59,6 +62,7 @@ public class ModelClient {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GRASSY_TOADSTONE, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GRASSY_HARDSTONE, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TOADSTOOL_PATH, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SHOREGRASS, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AMANITA_LEAVES, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FRUITING_AMANITA_LEAVES, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_AMANITA_LEAVES, RenderLayer.getCutoutMipped());
@@ -87,8 +91,10 @@ public class ModelClient {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MUNCHER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FROZEN_MUNCHER, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PIT_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PIRANHA_LILY, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FUZZBALL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FUZZBUSH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FREEZIE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STRAWBERRY_CORAL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STAR_CLUSTER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_HORSETAIL, RenderLayer.getCutout());
@@ -106,6 +112,7 @@ public class ModelClient {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_BEANSTALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_MUNCHER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_PIT_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_PIRANHA_LILY, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_STRAWBERRY_CORAL, RenderLayer.getCutout());
         FabricModelPredicateProviderRegistry.register(ModItems.FUZZY_MAGNET, new Identifier("pulling"), (stack, world, livingEntity, seed) -> {
             if (livingEntity == null)

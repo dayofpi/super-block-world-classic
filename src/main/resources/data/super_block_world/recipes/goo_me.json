@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "G#P",
+    "#X#",
+    "P#G"
+  ],
+  "key": {
+    "G": {
+      "item": "super_block_world:green_star_bit"
+    },
+    "P": {
+      "item": "super_block_world:purple_star_bit"
+    },
+    "#": {
+      "item": "minecraft:slime_ball"
+    },
+    "X": {
+      "item": "super_block_world:bottled_ghost"
+    }
+  },
+  "result": {
+    "item": "super_block_world:goo_me",
+    "count": 1
+  }
+}

@@ -3,8 +3,11 @@
   "values": [
     "super_block_world:amanita_forest",
     "super_block_world:bell_plains",
+    "super_block_world:bowsers_badlands",
     "super_block_world:dry_dry_desert",
     "super_block_world:forest_of_illusion",
-    "super_block_world:mushroom_grasslands"
+    "super_block_world:mushroom_grasslands",
+    "super_block_world:shiverburn_wastes",
+    "super_block_world:soda_jungle"
   ]
 }

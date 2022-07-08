@@ -18,7 +18,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -86,8 +85,7 @@ public class TrampolineBlock extends FallingBlock {
     }
 
     protected void bounce(Entity entity, double strength) {
-        Vec3d vec3d = entity.getVelocity();
-        entity.setVelocity(vec3d.x, strength, vec3d.z);
+        entity.addVelocity(0.0D, strength, 0.0D);
         this.playSound(entity, Sounds.BLOCK_TRAMPOLINE_RELEASE, (float) strength + 0.2F);
     }
 

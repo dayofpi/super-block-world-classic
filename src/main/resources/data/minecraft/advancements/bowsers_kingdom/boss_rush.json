@@ -1,0 +1,47 @@
+{
+  "display": {
+    "icon": {
+      "item": "super_block_world:princess_crown"
+    },
+    "title": {
+      "translate": "advancements.sbw.boss_rush.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.boss_rush.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:bowsers_kingdom/root",
+  "criteria": {
+    "king_bob_omb": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "super_block_world:king_bob_omb"
+        }
+      }
+    },
+    "king_boo": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "super_block_world:king_boo"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "king_bob_omb"
+    ],
+    [
+      "king_boo"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

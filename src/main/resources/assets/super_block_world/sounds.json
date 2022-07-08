@@ -371,6 +371,53 @@
     ],
     "subtitle": "sbw_subtitle.block.spike_trap.retract"
   },
+  "block.shoregrass.break": {
+    "sounds": [
+      "super_block_world:block/shoregrass/dig1",
+      "super_block_world:block/shoregrass/dig2",
+      "super_block_world:block/shoregrass/dig3",
+      "super_block_world:block/shoregrass/dig4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.shoregrass.fall": {
+    "sounds": [
+      "super_block_world:block/shoregrass/step1",
+      "super_block_world:block/shoregrass/step2",
+      "super_block_world:block/shoregrass/step3",
+      "super_block_world:block/shoregrass/step4",
+      "super_block_world:block/shoregrass/step5"
+    ]
+  },
+  "block.shoregrass.hit": {
+    "sounds": [
+      "super_block_world:block/shoregrass/step1",
+      "super_block_world:block/shoregrass/step2",
+      "super_block_world:block/shoregrass/step3",
+      "super_block_world:block/shoregrass/step4",
+      "super_block_world:block/shoregrass/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.shoregrass.place": {
+    "sounds": [
+      "super_block_world:block/shoregrass/dig1",
+      "super_block_world:block/shoregrass/dig2",
+      "super_block_world:block/shoregrass/dig3",
+      "super_block_world:block/shoregrass/dig4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.shoregrass.step": {
+    "sounds": [
+      "super_block_world:block/shoregrass/step1",
+      "super_block_world:block/shoregrass/step2",
+      "super_block_world:block/shoregrass/step3",
+      "super_block_world:block/shoregrass/step4",
+      "super_block_world:block/shoregrass/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
   "block.toadstone.break": {
     "sounds": [
       "super_block_world:block/toadstone/dig1",
@@ -814,6 +861,35 @@
       "super_block_world:entity/koopa_troopa/say2"
     ],
     "subtitle": "sbw_subtitle.entity.koopa_troopa.ambient"
+  },
+  "entity.shell.hit": {
+    "sounds": [
+      "super_block_world:entity/shell/hit"
+    ],
+    "subtitle": "sbw_subtitle.entity.shell.hit"
+  },
+  "entity.dry_bones.wake": {
+    "sounds": [
+      "super_block_world:entity/dry_bones/wake"
+    ],
+    "subtitle": "sbw_subtitle.entity.dry_bones.wake"
+  },
+  "entity.dry_bones.hurt": {
+    "sounds": [
+      "super_block_world:entity/dry_bones/hurt1",
+      "super_block_world:entity/dry_bones/hurt2",
+      "super_block_world:entity/dry_bones/hurt3",
+      "super_block_world:entity/dry_bones/hurt4"
+    ],
+    "subtitle": "sbw_subtitle.entity.dry_bones.hurt"
+  },
+  "entity.dry_bones.death": {
+    "sounds": [
+      "super_block_world:entity/dry_bones/death1",
+      "super_block_world:entity/dry_bones/death2",
+      "super_block_world:entity/dry_bones/death3"
+    ],
+    "subtitle": "sbw_subtitle.entity.dry_bones.death"
   },
   "entity.koopa_troopa.death": {
     "sounds": [
@@ -1262,6 +1338,14 @@
     "sounds": [
       {
         "name": "super_block_world:music/toxicity",
+        "stream": true
+      }
+    ]
+  },
+  "music.lava": {
+    "sounds": [
+      {
+        "name": "super_block_world:music/hot_stew",
         "stream": true
       }
     ]

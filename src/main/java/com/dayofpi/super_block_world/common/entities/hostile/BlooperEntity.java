@@ -22,20 +22,13 @@ import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class BlooperEntity extends SquidEntity implements IAnimatable {
+public class BlooperEntity extends SquidEntity {
     private static final TrackedData<Boolean> BABY;
 
     static {
         BABY = DataTracker.registerData(BlooperEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
-
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
 
     public BlooperEntity(EntityType<? extends SquidEntity> entityType, World world) {
         super(entityType, world);
@@ -122,15 +115,5 @@ public class BlooperEntity extends SquidEntity implements IAnimatable {
 
     protected void tickWaterBreathingAir(int air) {
         this.setAir(300);
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, animationEvent -> PlayState.STOP));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 }

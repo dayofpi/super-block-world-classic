@@ -3,6 +3,7 @@ package com.dayofpi.super_block_world.common.entities.passive;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.Flutterer;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
@@ -18,14 +19,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
 
-public class GladParagoombaEntity extends GladGoombaEntity {
+public class GladParagoombaEntity extends GladGoombaEntity implements Flutterer {
     public float flapProgress;
     public float maxWingDeviation;
     public float prevMaxWingDeviation;
@@ -94,28 +89,7 @@ public class GladParagoombaEntity extends GladGoombaEntity {
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 1, this::predicate));
-    }
-
-    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (this.isInSittingPose()) {
-            if (sittingTimer != 0)
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("sit", true));
-            else
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("sitting", true));
-            return PlayState.CONTINUE;
-        }
-
-        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("fly", true));
-            return PlayState.CONTINUE;
-        }
-
-        if (this.getHealth() <= 0) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("squish", false));
-            return PlayState.CONTINUE;
-        }
-        return PlayState.STOP;
+    public boolean isInAir() {
+        return !this.isOnGround();
     }
 }

@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.common.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.SandBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -10,9 +10,9 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
-public class QuicksandBlock extends Block {
+public class QuicksandBlock extends SandBlock {
     public QuicksandBlock(Settings settings) {
-        super(settings);
+        super(14324025, settings);
     }
 
     @Override

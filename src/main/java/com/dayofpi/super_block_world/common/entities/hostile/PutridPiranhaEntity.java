@@ -14,15 +14,12 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.LightType;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 
 import java.util.Random;
 
 public class PutridPiranhaEntity extends PiranhaPlantEntity {
     private static final TrackedData<Integer> POISON_TIME;
+    public final AnimationState poisoningAnimationState = new AnimationState();
 
     static {
         POISON_TIME = DataTracker.registerData(PutridPiranhaEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -38,12 +35,20 @@ public class PutridPiranhaEntity extends PiranhaPlantEntity {
     }
 
     @Override
-    protected <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (this.getPoisonTime() == 0 && this.isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("poison", true));
-            return PlayState.CONTINUE;
+    protected void tickAnimation() {
+        if (this.isAttacking()) {
+            if (this.getPoisonTime() > 200) {
+                this.poisoningAnimationState.startIfNotRunning(this.age);
+                this.bitingAnimationState.stop();
+            }
+            else {
+                this.bitingAnimationState.startIfNotRunning(this.age);
+            }
         }
-        return super.predicate(event);
+        else {
+            this.bitingAnimationState.stop();
+            this.poisoningAnimationState.stop();
+        }
     }
 
     @Override

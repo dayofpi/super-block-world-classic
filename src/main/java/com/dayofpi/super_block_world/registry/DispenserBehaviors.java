@@ -65,6 +65,7 @@ public class DispenserBehaviors {
                 return Util.make(new SuperHeartEntity(world, position.getX(), position.getY(), position.getZ()), (superHeartEntity) -> superHeartEntity.setItem(stack));
             }
         });
+
         DispenserBlock.registerBehavior(ModItems.MECHAKOOPA, new ItemDispenserBehavior() {
             public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
                 Direction direction = pointer.getBlockState().get(DispenserBlock.FACING);
@@ -82,6 +83,25 @@ public class DispenserBehaviors {
                 return stack;
             }
         });
+
+        DispenserBlock.registerBehavior(ModItems.GOO_ME, new ItemDispenserBehavior() {
+            public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
+                Direction direction = pointer.getBlockState().get(DispenserBlock.FACING);
+                EntityType<?> entityType = ModEntities.GOO_ME;
+
+                try {
+                    entityType.spawnFromItemStack(pointer.getWorld(), stack, null, pointer.getPos().offset(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
+                } catch (Exception exception) {
+                    LOGGER.error("Error while dispensing GooMe from dispenser at {}", pointer.getPos(), exception);
+                    return ItemStack.EMPTY;
+                }
+
+                stack.decrement(1);
+                pointer.getWorld().emitGameEvent(null, GameEvent.ENTITY_PLACE, pointer.getPos());
+                return stack;
+            }
+        });
+
         DispenserBlock.registerBehavior(ModItems.GO_KART, new ItemDispenserBehavior() {
             public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
                 Direction direction = pointer.getBlockState().get(DispenserBlock.FACING);

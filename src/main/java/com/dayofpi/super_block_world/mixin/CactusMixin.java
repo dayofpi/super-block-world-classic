@@ -17,7 +17,6 @@ public class CactusMixin {
         BlockState floor = world.getBlockState(pos.down());
         if (floor.isIn(BlockTags.SAND)) {
             cir.setReturnValue(true);
-            cir.cancel();
         }
     }
 }

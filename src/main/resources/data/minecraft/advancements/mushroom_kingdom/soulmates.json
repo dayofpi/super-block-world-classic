@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:lead"
+    },
+    "title": {
+      "translate": "advancements.sbw.soulmates.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.soulmates.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:mushroom_kingdom/tame_boo",
+  "criteria": {
+    "soulmates": {
+      "trigger": "super_block_world:soulmates"
+    }
+  },
+  "requirements": [
+    [
+      "soulmates"
+    ]
+  ]
+}

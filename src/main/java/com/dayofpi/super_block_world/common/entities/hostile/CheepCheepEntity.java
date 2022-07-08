@@ -38,13 +38,8 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class CheepCheepEntity extends WaterCreatureEntity implements IAnimatable {
+public class CheepCheepEntity extends WaterCreatureEntity {
     private static final TrackedData<Boolean> SNOWY;
     private static final ImmutableList<? extends SensorType<? extends Sensor<? super CheepCheepEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_PLAYERS, SensorType.IS_IN_WATER);
     private static final ImmutableList<? extends MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER, MemoryModuleType.LOOK_TARGET, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.ATTACK_TARGET, MemoryModuleType.ATTACK_COOLING_DOWN);
@@ -52,8 +47,6 @@ public class CheepCheepEntity extends WaterCreatureEntity implements IAnimatable
     static {
         SNOWY = DataTracker.registerData(CheepCheepEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
-
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
 
     public CheepCheepEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
         super(entityType, world);
@@ -204,15 +197,5 @@ public class CheepCheepEntity extends WaterCreatureEntity implements IAnimatable
 
     protected SoundEvent getSwimSound() {
         return SoundEvents.ENTITY_FISH_SWIM;
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, animationEvent -> PlayState.STOP));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 }

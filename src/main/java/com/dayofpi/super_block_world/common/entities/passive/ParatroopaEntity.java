@@ -1,7 +1,9 @@
 package com.dayofpi.super_block_world.common.entities.passive;
 
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.registry.ModEntities;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.Flutterer;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
@@ -17,7 +19,7 @@ import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
-public class ParatroopaEntity extends AbstractKoopa {
+public class ParatroopaEntity extends AbstractKoopa implements Flutterer {
     public float flapProgress;
     public float maxWingDeviation;
     public float prevMaxWingDeviation;
@@ -36,6 +38,13 @@ public class ParatroopaEntity extends AbstractKoopa {
     @SuppressWarnings("unused")
     public static boolean canParatroopaSpawn(EntityType<? extends AbstractKoopa> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return !(world.getLightLevel(LightType.BLOCK, pos) > 0) && world.isSkyVisible(pos);
+    }
+
+    @Override
+    public void onDeath(DamageSource source) {
+        super.onDeath(source);
+        if (source == DamageSource.LAVA)
+            this.convertTo(ModEntities.DRY_BONES, false);
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -80,5 +89,10 @@ public class ParatroopaEntity extends AbstractKoopa {
     protected void addFlapEffects() {
         this.playSound(Sounds.ENTITY_GENERIC_FLUTTER, 1.0F, this.getSoundPitch() * 0.8F);
         this.flapEffectTime = this.speed + this.maxWingDeviation / 2.0F;
+    }
+
+    @Override
+    public boolean isInAir() {
+        return !this.isOnGround();
     }
 }

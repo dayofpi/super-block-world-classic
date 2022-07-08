@@ -32,26 +32,22 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.UUID;
 
-public class GladGoombaEntity extends TameableEntity implements IAnimatable {
+public class GladGoombaEntity extends TameableEntity {
     private static final TrackedData<Boolean> BIG;
     private static final Ingredient BREEDING_INGREDIENT;
+    public final AnimationState walkingAnimationState = new AnimationState();
+    public final AnimationState squishedAnimationState = new AnimationState();
+    public final AnimationState sittingAnimationState = new AnimationState();
+    public final AnimationState sitAnimationState = new AnimationState();
 
     static {
         BIG = DataTracker.registerData(GladGoombaEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
         BREEDING_INGREDIENT = Ingredient.ofItems(ModItems.YOSHI_COOKIE);
     }
 
-    final AnimationFactory factory = new AnimationFactory(this);
     int sittingTimer = 6;
 
     public GladGoombaEntity(EntityType<? extends TameableEntity> entityType, World world) {
@@ -235,34 +231,22 @@ public class GladGoombaEntity extends TameableEntity implements IAnimatable {
         return gladGoombaEntity;
     }
 
-    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (this.isInSittingPose()) {
-            if (sittingTimer != 0)
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("sit", true));
-            else
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("sitting", true));
-            return PlayState.CONTINUE;
-        }
-
-        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
-            return PlayState.CONTINUE;
-        }
-
-        if (this.getHealth() <= 0) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("squish", false));
-            return PlayState.CONTINUE;
-        }
-        return PlayState.STOP;
+    protected boolean shouldWalk() {
+        return this.getVelocity().horizontalLengthSquared() > 1.0E-6;
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 1, this::predicate));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return factory;
+    public void tick() {
+        if (this.world.isClient()) {
+            if (this.isInSittingPose()) {
+                this.sitAnimationState.startIfNotRunning(this.age);
+            } else this.sitAnimationState.stop();
+            if (this.isDead()) {
+                this.squishedAnimationState.startIfNotRunning(this.age);
+            } else if (this.shouldWalk()) {
+                this.walkingAnimationState.startIfNotRunning(this.age);
+            } else this.walkingAnimationState.stop();
+        }
+        super.tick();
     }
 }

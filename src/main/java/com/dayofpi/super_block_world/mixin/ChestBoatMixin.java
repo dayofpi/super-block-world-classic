@@ -23,13 +23,10 @@ public abstract class ChestBoatMixin extends BoatEntity {
     private void asItem(CallbackInfoReturnable<Item> info) {
         if (this.getBoatType() == EnumUtil.AMANITA_BOAT) {
             info.setReturnValue(ModItems.AMANITA_CHEST_BOAT);
-            info.cancel();
         } else if (this.getBoatType() == EnumUtil.DARK_AMANITA_BOAT) {
-            info.setReturnValue(ModItems.AMANITA_BOAT);
-            info.cancel();
+            info.setReturnValue(ModItems.DARK_AMANITA_CHEST_BOAT);
         } else if (this.getBoatType() == EnumUtil.BELL_BOAT) {
-            info.setReturnValue(ModItems.AMANITA_BOAT);
-            info.cancel();
+            info.setReturnValue(ModItems.BELL_CHEST_BOAT);
         }
     }
 }

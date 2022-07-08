@@ -29,27 +29,25 @@ public class LandPathNodeMixin {
                     FluidState fluidState = world.getFluidState(pos);
                     if (blockState.isOf(ModBlocks.JELLYBEAM)) {
                         cir.setReturnValue(PathNodeType.DANGER_OTHER);
-                        cir.cancel();
-                    }
-                    if (blockState.isOf(ModBlocks.FIRE_TULIP)) {
-                        cir.setReturnValue(PathNodeType.DANGER_FIRE);
-                        cir.cancel();
                     }
                     if (blockState.isOf(ModBlocks.MUNCHER)) {
                         cir.setReturnValue(PathNodeType.DANGER_OTHER);
-                        cir.cancel();
                     }
                     if (blockState.isOf(ModBlocks.PIT_PLANT)) {
                         cir.setReturnValue(PathNodeType.DANGER_OTHER);
-                        cir.cancel();
                     }
                     if (fluidState.isIn(ModTags.POISON)) {
                         cir.setReturnValue(PathNodeType.DANGER_OTHER);
-                        cir.cancel();
                     }
                 }
             }
         }
+    }
+
+    @Inject(at=@At("HEAD"), method = "inflictsFireDamage", cancellable = true)
+    private static void inflictsFireDamage(BlockState state, CallbackInfoReturnable<Boolean> cir) {
+        if (state.isOf(ModBlocks.FIRE_TULIP) || state.isOf(ModBlocks.BLAZING_CHARROCK))
+            cir.setReturnValue(true);
     }
 
     @Inject(at = @At("HEAD"), method = "getCommonNodeType", cancellable = true)
@@ -58,10 +56,6 @@ public class LandPathNodeMixin {
         FluidState fluidState = world.getFluidState(pos);
         if (blockState.isOf(ModBlocks.JELLYBEAM)) {
             cir.setReturnValue(PathNodeType.DAMAGE_OTHER);
-            cir.cancel();
-        }
-        if (blockState.isOf(ModBlocks.FIRE_TULIP)) {
-            cir.setReturnValue(PathNodeType.DAMAGE_FIRE);
             cir.cancel();
         }
         if (blockState.isOf(ModBlocks.MUNCHER)) {

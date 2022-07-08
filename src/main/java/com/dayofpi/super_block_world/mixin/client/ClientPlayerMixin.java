@@ -1,7 +1,9 @@
 package com.dayofpi.super_block_world.mixin.client;
 
 import com.dayofpi.super_block_world.audio.KartSoundInstance;
+import com.dayofpi.super_block_world.client.renderers.GooMeRenderer;
 import com.dayofpi.super_block_world.common.entities.misc.GoKartEntity;
+import com.dayofpi.super_block_world.util.FormManager;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.input.Input;
@@ -10,6 +12,7 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.encryption.PlayerPublicKey;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -29,6 +32,14 @@ public abstract class ClientPlayerMixin extends AbstractClientPlayerEntity {
 
     public ClientPlayerMixin(ClientWorld world, GameProfile profile, @Nullable PlayerPublicKey publicKey) {
         super(world, profile, publicKey);
+    }
+
+    @Override
+    public Identifier getSkinTexture() {
+        if (this.dataTracker.get(FormManager.GOO_ME_UUID).isPresent()) {
+            return GooMeRenderer.TEXTURE;
+        }
+        return super.getSkinTexture();
     }
 
     @Inject(at=@At("HEAD"), method = "startRiding")

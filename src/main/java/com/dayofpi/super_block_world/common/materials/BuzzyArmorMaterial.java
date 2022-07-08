@@ -25,7 +25,7 @@ public class BuzzyArmorMaterial implements ArmorMaterial {
 
     @Override
     public SoundEvent getEquipSound() {
-        return SoundEvents.ITEM_ARMOR_EQUIP_GENERIC;
+        return SoundEvents.ITEM_ARMOR_EQUIP_IRON;
     }
 
     @Override

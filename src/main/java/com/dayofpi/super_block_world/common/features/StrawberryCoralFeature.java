@@ -14,6 +14,7 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
 public class StrawberryCoralFeature extends Feature<DefaultFeatureConfig> {
+    private static final BlockState STRAWBERRY_CORAL = ModBlocks.STRAWBERRY_CORAL.getDefaultState();
     public StrawberryCoralFeature(Codec<DefaultFeatureConfig> codec) {
         super(codec);
     }
@@ -28,20 +29,18 @@ public class StrawberryCoralFeature extends Feature<DefaultFeatureConfig> {
         BlockPos blockPos = new BlockPos(origin.getX(), topY, origin.getZ());
 
         if (world.getBlockState(blockPos).isOf(Blocks.WATER)) {
-            BlockState state = ModBlocks.STRAWBERRY_CORAL.getDefaultState();
-
             int i = 1 + random.nextInt(10);
 
             for (int l = 0; l <= i; ++l) {
-                if (world.getBlockState(blockPos).isOf(Blocks.WATER) && world.getBlockState(blockPos.up()).isOf(Blocks.WATER) && state.canPlaceAt(world, blockPos)) {
-                    world.setBlockState(blockPos, state, Block.NOTIFY_LISTENERS);
+                if (world.getBlockState(blockPos).isOf(Blocks.WATER) && world.getBlockState(blockPos.up()).isOf(Blocks.WATER) && STRAWBERRY_CORAL.canPlaceAt(world, blockPos)) {
+                    world.setBlockState(blockPos, STRAWBERRY_CORAL, Block.NOTIFY_LISTENERS);
                     if (l == i) {
                         ++length;
                     }
                 } else if (l > 0) {
                     BlockPos floor = blockPos.down();
-                    if (state.canPlaceAt(world, floor)) {
-                        world.setBlockState(floor, state, Block.NOTIFY_LISTENERS);
+                    if (STRAWBERRY_CORAL.canPlaceAt(world, floor)) {
+                        world.setBlockState(floor, STRAWBERRY_CORAL, Block.NOTIFY_LISTENERS);
                         ++length;
                     }
                     break;

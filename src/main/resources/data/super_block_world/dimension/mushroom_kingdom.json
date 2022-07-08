@@ -125,6 +125,25 @@
           }
         },
         {
+          "biome": "super_block_world:soda_jungle",
+          "parameters": {
+            "temperature": [
+              0.5, 0.6
+            ],
+            "humidity": 0.45,
+            "continentalness": 0.1,
+            "erosion": [
+              0.2,
+              0.4
+            ],
+            "weirdness": 0.1,
+            "depth": [
+              0.0, 0.1
+            ],
+            "offset": 0
+          }
+        },
+        {
           "biome": "super_block_world:dry_dry_desert",
           "parameters": {
             "temperature": [

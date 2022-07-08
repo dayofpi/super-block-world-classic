@@ -4,8 +4,6 @@ import com.dayofpi.super_block_world.common.entities.hostile.FuzzyEntity;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.ai.brain.MemoryModuleState;
-import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.ai.brain.task.LookTargetUtil;
 import net.minecraft.entity.ai.brain.task.Task;
 import net.minecraft.server.world.ServerWorld;
@@ -17,7 +15,7 @@ public class StickToFuzzballTask extends Task<FuzzyEntity> {
     private final float speed;
 
     public StickToFuzzballTask(int range, float speed) {
-        super(ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryModuleState.VALUE_ABSENT));
+        super(ImmutableMap.of());
         this.range = range;
         this.speed = speed;
     }

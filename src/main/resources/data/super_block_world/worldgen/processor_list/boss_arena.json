@@ -36,7 +36,7 @@
           "input_predicate": {
             "predicate_type": "minecraft:random_block_match",
             "block": "super_block_world:hardstone_brick_stairs",
-            "probability": 0.25
+            "probability": 0.4
           },
           "output_state": {
             "Name": "minecraft:air"

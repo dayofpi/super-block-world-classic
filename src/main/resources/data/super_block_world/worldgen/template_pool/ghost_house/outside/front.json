@@ -8,7 +8,7 @@
         "element_type": "minecraft:single_pool_element",
         "location": "super_block_world:ghost_house/outside/front",
         "projection": "rigid",
-        "processors": "minecraft:empty"
+        "processors": "super_block_world:ghost_house"
       }
     }
   ]

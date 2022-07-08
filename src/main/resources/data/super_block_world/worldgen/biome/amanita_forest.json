@@ -163,11 +163,11 @@
       "super_block_world:crystal_pile"
     ],
     [
-      "super_block_world:patch_star_cluster"
+      "super_block_world:patch_star_cluster",
+      "super_block_world:underwater_pipe"
     ],
     [
       "minecraft:seagrass_warm",
-      "minecraft:kelp_warm",
       "super_block_world:trees_forest",
       "super_block_world:smiley_sunflower",
       "super_block_world:beanstalk_common",

@@ -1,0 +1,15 @@
+{
+	"textures": {
+		"particle": "#stamp"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 15.5],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#stamp"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#stamp"}
+			}
+		}
+	]
+}

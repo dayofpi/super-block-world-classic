@@ -15,7 +15,6 @@ public class MinecartEntityMixin {
     private static void create(World world, double x, double y, double z, AbstractMinecartEntity.Type type, CallbackInfoReturnable<AbstractMinecartEntity> cir) {
         if (type == EnumUtil.TRAMPOLINE) {
             cir.setReturnValue(new TrampolineMinecartEntity(world, x, y, z));
-            cir.cancel();
         }
     }
 }

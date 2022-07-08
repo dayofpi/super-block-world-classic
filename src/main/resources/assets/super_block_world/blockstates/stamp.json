@@ -1,0 +1,55 @@
+{
+  "variants": {
+    "stamp=arrow": {
+      "model": "super_block_world:block/stamp_arrow"
+    },
+    "stamp=blooper": {
+      "model": "super_block_world:block/stamp_blooper"
+    },
+    "stamp=boo": {
+      "model": "super_block_world:block/stamp_boo"
+    },
+    "stamp=buzzy": {
+      "model": "super_block_world:block/stamp_buzzy"
+    },
+    "stamp=cat": {
+      "model": "super_block_world:block/stamp_cat"
+    },
+    "stamp=cheep_cheep": {
+      "model": "super_block_world:block/stamp_cheep_cheep"
+    },
+    "stamp=cloud": {
+      "model": "super_block_world:block/stamp_cloud"
+    },
+    "stamp=flower": {
+      "model": "super_block_world:block/stamp_flower"
+    },
+    "stamp=fuzzy": {
+      "model": "super_block_world:block/stamp_fuzzy"
+    },
+    "stamp=goomba": {
+      "model": "super_block_world:block/stamp_goomba"
+    },
+    "stamp=graffiti": {
+      "model": "super_block_world:block/stamp_graffiti"
+    },
+    "stamp=luigi": {
+      "model": "super_block_world:block/stamp_luigi"
+    },
+    "stamp=mario": {
+      "model": "super_block_world:block/stamp_mario"
+    },
+    "stamp=mom": {
+      "model": "super_block_world:block/stamp_mom"
+    },
+    "stamp=mushroom": {
+      "model": "super_block_world:block/stamp_mushroom"
+    },
+    "stamp=princess": {
+      "model": "super_block_world:block/stamp_princess"
+    },
+    "stamp=smiley": {
+      "model": "super_block_world:block/stamp_smiley"
+    }
+  }
+}

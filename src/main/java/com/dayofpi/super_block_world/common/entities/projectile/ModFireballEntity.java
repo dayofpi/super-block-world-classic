@@ -111,16 +111,15 @@ public class ModFireballEntity extends PersistentProjectileEntity {
                 world.addParticle(ParticleTypes.FLAME, this.getX() + (random.nextFloat() * 0.2), this.getY() + (random.nextFloat() * 0.2), this.getZ() + (random.nextFloat() * 0.2), 0.0D, 0.0D, 0.0D);
             }
         }
-
     }
 
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
         this.discard();
         if (!entity.isFireImmune()) {
-            entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 3);
-            if (random.nextInt(5) == 0 && !entity.isOnFire())
-                entity.setOnFireFor(1);
+            entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 4);
+            if (random.nextInt(3) == 0 && !entity.isOnFire())
+                entity.setOnFireFor(4);
             if (entity.isFrozen())
                 entity.setFrozenTicks(0);
             for (int i = 0; i < 4; i++) {

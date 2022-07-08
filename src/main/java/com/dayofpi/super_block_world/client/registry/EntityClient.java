@@ -14,6 +14,7 @@ import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 public class EntityClient {
     public static void renderEntities() {
         BlockEntityRendererRegistry.register(ModBlockEntities.CHINCHO_TORCH, ChinchoTorchRenderer::new);
+        BlockEntityRendererRegistry.register(ModBlockEntities.DRY_BONES_PILE, DryBonesPileRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.FLAG, FlagRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.PLACED_ITEM, ctx -> new PlacedItemRenderer());
         EntityRendererRegistry.register(ModEntities.GHOST_ESSENCE, EmptyEntityRenderer::new);
@@ -23,8 +24,10 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.BOB_OMB, BobOmbRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOB_OMB_BUDDY, BobOmbBuddyRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOMB, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.GOO_ME, GooMeRenderer::new);
         EntityRendererRegistry.register(ModEntities.CHEEP_CHEEP, CheepCheepRenderer::new);
         EntityRendererRegistry.register(ModEntities.DINO_RHINO, DinoRhinoRenderer::new);
+        EntityRendererRegistry.register(ModEntities.DRY_BONES, DryBonesRenderer::new);
         EntityRendererRegistry.register(ModEntities.FAKE_BLOCK, FakeBlockRenderer::new);
         EntityRendererRegistry.register(ModEntities.FIREBALL, ModFireballRenderer::new);
         EntityRendererRegistry.register(ModEntities.ICEBALL, IceballRenderer::new);
@@ -47,6 +50,8 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.MUMMY_ME, MummyMeRenderer::new);
         EntityRendererRegistry.register(ModEntities.PARAGOOMBA, GoombaRenderer::new);
         EntityRendererRegistry.register(ModEntities.PARATROOPA, KoopaTroopaRenderer::new);
+        EntityRendererRegistry.register(ModEntities.PARABONES, DryBonesRenderer::new);
+        EntityRendererRegistry.register(ModEntities.DRY_BONES_SHELL, DryBonesShellRenderer::new);
         EntityRendererRegistry.register(ModEntities.PIRANHA_PLANT, PiranhaPlantRenderer::new);
         EntityRendererRegistry.register(ModEntities.PROPELLER_BLOCK, PropellerBlockRenderer::new);
         EntityRendererRegistry.register(ModEntities.PUTRID_PIRANHA, PiranhaPlantRenderer::new);

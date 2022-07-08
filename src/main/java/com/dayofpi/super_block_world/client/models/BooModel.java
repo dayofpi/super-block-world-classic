@@ -8,6 +8,7 @@ import net.minecraft.client.render.entity.model.ModelWithArms;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Arm;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3f;
 
 public class BooModel extends SinglePartEntityModel<BooEntity> implements ModelWithArms {
@@ -16,7 +17,6 @@ public class BooModel extends SinglePartEntityModel<BooEntity> implements ModelW
 	private final ModelPart rightArm;
 	private final ModelPart leftArm;
 	private float alpha;
-
 
 	public BooModel(ModelPart root) {
 		this.root = root.getChild(EntityModelPartNames.ROOT);
@@ -43,14 +43,34 @@ public class BooModel extends SinglePartEntityModel<BooEntity> implements ModelW
 	@Override
 	public void setAngles(BooEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.alpha = entity.getAlpha();
-		this.tongue.visible = !entity.isTamed() && !entity.isInSittingPose();
-		this.getPart().traverse().forEach(ModelPart::resetTransform);
+		this.tongue.visible = !entity.isInSittingPose() && !entity.isClientShy();
+		float progress = ageInTicks * 5F * 0.04F;
+		this.tongue.yaw = MathHelper.cos(progress * 0.5F) * 0.05F;
+		this.tongue.pitch = 0.2F + MathHelper.cos(progress * 0.5F) * 0.05F;
+		if (!entity.getMainHandStack().isEmpty() || entity.isClientShy()) {
+			this.leftArm.yaw = 1.3F;
+			this.rightArm.yaw = -1.3F;
+			this.leftArm.pitch = -1.2F;
+			this.rightArm.pitch = -1.2F;
+		}
+		else {
+			this.leftArm.yaw = 0F;
+			this.rightArm.yaw = 0F;
+			this.leftArm.pitch = 0F;
+			this.rightArm.pitch = 0F;
+		}
+		if (entity.getLastAttackTime() > (entity.age - 100)) {
+			this.root.roll = MathHelper.cos(progress) * 0.1F;
+			this.leftArm.roll = -0.5F;
+			this.rightArm.roll = 0.5F;
+		} else {
+			this.root.roll = netHeadYaw * ((float) Math.PI / 180F) * 0.1F;
+		}
 	}
 
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
-		alpha = this.alpha;
-		super.render(matrices, vertices, light, overlay, red, green, blue, alpha);
+		super.render(matrices, vertices, light, overlay, red, green, blue, this.alpha - 0.1f);
 	}
 
 	@Override
@@ -59,6 +79,6 @@ public class BooModel extends SinglePartEntityModel<BooEntity> implements ModelW
 		matrices.translate(0.0, -0.09375, 0.09375);
 		matrices.multiply(Vec3f.POSITIVE_X.getRadialQuaternion(this.rightArm.pitch + 0.43633232f));
 		matrices.scale(0.7f, 0.7f, 0.7f);
-		matrices.translate(0.0625, 0.0, 0.0);
+		matrices.translate(0.0625, -0.5, -1.0);
 	}
 }

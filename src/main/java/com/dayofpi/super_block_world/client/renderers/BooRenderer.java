@@ -22,11 +22,13 @@ public class BooRenderer extends MobEntityRenderer<BooEntity, BooModel> {
     public BooRenderer(EntityRendererFactory.Context context) {
         super(context, new BooModel(context.getPart(ModModelLayers.BOO)), 0.5f);
         this.addFeature(new BooFaceFeatureRenderer<>(this));
-        this.addFeature(new HeldItemFeatureRenderer<BooEntity, BooModel>(this, context.getHeldItemRenderer()));
+        this.addFeature(new HeldItemFeatureRenderer<>(this, context.getHeldItemRenderer()));
     }
 
     @Override
     public Identifier getTexture(BooEntity entity) {
+        if (entity.isClientShy())
+            return SHY_TEXTURE;
         return TEXTURE;
     }
 

@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.client.registry;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.particles.GooParticle;
+import com.dayofpi.super_block_world.client.particles.KingBooCurseParticle;
 import com.dayofpi.super_block_world.registry.ModParticles;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -18,6 +19,7 @@ public class ParticleClient {
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_GOO, GooParticle.FallingGooFactory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.LANDING_GOO, GooParticle.LandingGooFactory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.KING_BOO_CURSE, new KingBooCurseParticle.Factory());
         ParticleFactoryRegistry.getInstance().register(ModParticles.POISON_BUBBLE, SoulParticle.Factory::new);
     }
 }

@@ -1,0 +1,8 @@
+{
+  "feature": "super_block_world:freeze_lava",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
