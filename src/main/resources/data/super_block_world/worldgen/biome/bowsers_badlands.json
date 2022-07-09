@@ -20,6 +20,12 @@
       "min_delay": 8000,
       "max_delay": 19900,
       "replace_current_music": false
+    },
+    "particle": {
+      "options": {
+        "type": "minecraft:ash"
+      },
+      "probability": 0.01428
     }
   },
   "spawners": {

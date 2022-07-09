@@ -4,7 +4,6 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.block_entities.QuestionBoxBE;
 import com.dayofpi.super_block_world.common.blocks.QuestionBoxBlock;
-import com.dayofpi.super_block_world.common.entities.ToadLookControl;
 import com.dayofpi.super_block_world.common.entities.brains.ToadBrain;
 import com.dayofpi.super_block_world.common.entities.hostile.RottenMushroomEntity;
 import com.dayofpi.super_block_world.registry.ModBlocks;
@@ -49,17 +48,10 @@ import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.Map;
 
-public class ToadEntity extends AbstractToad implements IAnimatable {
+public class ToadEntity extends AbstractToad {
     public static final Map<Integer, Identifier> TEXTURES;
     protected static final ImmutableList<SensorType<? extends Sensor<? super PassiveEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, Main.TOAD_SPECIFIC_SENSOR);
     protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING, MemoryModuleType.NEAREST_VISIBLE_NEMESIS);
@@ -83,11 +75,8 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
         });
     }
 
-    final AnimationFactory FACTORY = new AnimationFactory(this);
-
     public ToadEntity(EntityType<? extends PassiveEntity> entityType, World world) {
         super(entityType, world);
-        this.lookControl = new ToadLookControl(this);
         ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
     }
 
@@ -320,34 +309,5 @@ public class ToadEntity extends AbstractToad implements IAnimatable {
             babie.setColor(((ToadEntity) parent).getColor());
         }
         return babie;
-    }
-
-    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
-            if (this.isScared())
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("run", true));
-            else
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
-        } else {
-            if (this.isWaving())
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("wave", true));
-            else if (this.isScared())
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("scared", true));
-            else if (this.isCheering())
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("cheer", true));
-            else
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
-        }
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 1, this::predicate));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 }

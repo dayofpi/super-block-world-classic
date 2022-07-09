@@ -54,7 +54,7 @@ public abstract class RecipeBookMixin {
         }
 
         if (recipeType == RecipeType.CRAFTING) {
-            if (itemStack.isOf(ModItems.PLUMBER_CAP) || itemStack.isOf(ModItems.BUZZY_SHELL) || itemStack.isOf(ModItems.BOMB) || itemStack.isOf(ModItems.HAMMER))
+            if (itemStack.isOf(ModItems.PRINCESS_CROWN) || itemStack.isOf(ModItems.JUMP_BOOTS) || itemStack.isOf(ModItems.CLOUD_BOOTS) || itemStack.isIn(ModTags.SHELLMETS) || itemStack.isOf(ModItems.BOMB) || itemStack.isOf(ModItems.HAMMER))
                 cir.setReturnValue(RecipeBookGroup.CRAFTING_EQUIPMENT);
             if (isRedstone(itemStack)) {
                 cir.setReturnValue(RecipeBookGroup.CRAFTING_REDSTONE);

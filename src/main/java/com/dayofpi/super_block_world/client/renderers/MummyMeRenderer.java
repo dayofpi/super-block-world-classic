@@ -1,25 +1,31 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.features.MummyMeLayer;
+import com.dayofpi.super_block_world.client.features.ModEyesFeatureRenderer;
 import com.dayofpi.super_block_world.client.models.MummyMeModel;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.hostile.MummyMeEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class MummyMeRenderer<T extends MummyMeEntity> extends GeoEntityRenderer<T> {
-    public MummyMeRenderer(EntityRendererFactory.Context context) {
-        super(context, new MummyMeModel<>());
-        this.addLayer(new MummyMeLayer<>(this));
-        this.shadowRadius = 0.5f;
+public class MummyMeRenderer extends MobEntityRenderer<MummyMeEntity, MummyMeModel> {
+    private static final Identifier EYES = new Identifier(Main.MOD_ID, "textures/entity/toad/mummy_eyes.png");
+    public MummyMeRenderer(EntityRendererFactory.Context ctx) {
+        super(ctx, new MummyMeModel(ctx.getPart(ModModelLayers.MUMMY_ME)), 0.5f);
+        this.addFeature(new ModEyesFeatureRenderer<>(EYES, this));
     }
 
     @Override
-    public Identifier getTexture(T entity) {
+    protected boolean isShaking(MummyMeEntity entity) {
+        return super.isShaking(entity) || entity.isConverting();
+    }
+
+    @Override
+    public Identifier getTexture(MummyMeEntity entity) {
         return new Identifier(Main.MOD_ID, "textures/entity/toad/mummy.png");
     }
 }

@@ -1,25 +1,24 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.features.MailtoadLayer;
-import com.dayofpi.super_block_world.client.models.MailtoadModel;
+import com.dayofpi.super_block_world.client.models.ToadModel;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.passive.MailtoadEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class MailtoadRenderer<T extends MailtoadEntity> extends GeoEntityRenderer<T> {
+public class MailtoadRenderer extends MobEntityRenderer<MailtoadEntity, ToadModel<MailtoadEntity>> {
     public MailtoadRenderer(EntityRendererFactory.Context context) {
-        super(context, new MailtoadModel<>());
-        this.addLayer(new MailtoadLayer<>(this));
+        super(context, new ToadModel<>(context.getPart(ModModelLayers.TOAD)), 0.5f);
         this.shadowRadius = 0.5f;
     }
 
     @Override
-    public Identifier getTexture(T entity) {
+    public Identifier getTexture(MailtoadEntity entity) {
         if (entity.isScared())
             return new Identifier(Main.MOD_ID, "textures/entity/toad/toad_scared.png");
         else if (entity.isHappy())

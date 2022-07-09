@@ -1,0 +1,42 @@
+{
+  "name": "super_block_world:dungeon/corridor",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "super_block_world:dungeon/corridor_01",
+        "projection": "rigid",
+        "processors": "super_block_world:dungeon"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "super_block_world:dungeon/corridor_02",
+        "projection": "rigid",
+        "processors": "super_block_world:dungeon"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "super_block_world:dungeon/corridor_03",
+        "projection": "rigid",
+        "processors": "super_block_world:dungeon"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "super_block_world:dungeon/corridor_04",
+        "projection": "rigid",
+        "processors": "super_block_world:dungeon"
+      }
+    }
+  ]
+}

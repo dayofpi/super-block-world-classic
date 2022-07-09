@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "super_block_world:dungeon",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1499319479,
+    "spacing": 24,
+    "separation": 4
+  }
+}

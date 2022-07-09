@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.entities.passive.ToadEntity;
 import com.dayofpi.super_block_world.common.entities.goals.MummyMeTargetGoal;
+import com.dayofpi.super_block_world.common.entities.passive.ToadEntity;
 import com.dayofpi.super_block_world.registry.ModCriteria;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
@@ -42,18 +42,11 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.UUID;
 
 @SuppressWarnings("unused")
-public class MummyMeEntity extends HostileEntity implements IAnimatable {
+public class MummyMeEntity extends HostileEntity {
     private static final TrackedData<Boolean> TOADETTE;
     private static final TrackedData<Boolean> CONVERTING;
     private static final TrackedData<Boolean> HIDDEN;
@@ -68,7 +61,6 @@ public class MummyMeEntity extends HostileEntity implements IAnimatable {
         COINS_WANTED = DataTracker.registerData(MummyMeEntity.class, TrackedDataHandlerRegistry.INTEGER);
     }
 
-    AnimationFactory factory = new AnimationFactory(this);
     @Nullable
     private BlockPos targetPos = null;
     @Nullable
@@ -86,6 +78,11 @@ public class MummyMeEntity extends HostileEntity implements IAnimatable {
     public static boolean canMummyMeSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         boolean isBlockValid = world.getBlockState(pos.down()).isIn(BlockTags.DIRT) || world.getBlockState(pos.down()).isIn(BlockTags.SAND);
         return isBlockValid && isSpawnDark((ServerWorldAccess) world, pos, random);
+    }
+
+    @Override
+    public boolean isInvisible() {
+        return super.isInvisible() || this.isHidden();
     }
 
     protected void initGoals() {
@@ -288,6 +285,10 @@ public class MummyMeEntity extends HostileEntity implements IAnimatable {
         }
     }
 
+    protected boolean shouldWalk() {
+        return this.getVelocity().horizontalLengthSquared() > 1.0E-6;
+    }
+
     @Override
     public void tickMovement() {
         if (!world.isClient()) {
@@ -367,22 +368,5 @@ public class MummyMeEntity extends HostileEntity implements IAnimatable {
             }
             toadEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 200, 0));
         }
-    }
-
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 1, this::predicate));
-    }
-
-    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
-        } else event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return factory;
     }
 }

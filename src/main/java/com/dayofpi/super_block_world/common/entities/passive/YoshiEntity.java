@@ -41,17 +41,10 @@ import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.List;
 
-public class YoshiEntity extends AnimalEntity implements IAnimatable, JumpingMount {
+public class YoshiEntity extends AnimalEntity implements JumpingMount {
     private static final Ingredient BREEDING_INGREDIENT;
     private static final TrackedData<NbtCompound> STORED_ENTITY;
     private static final TrackedData<Integer> EXTEND_TIME;
@@ -71,7 +64,6 @@ public class YoshiEntity extends AnimalEntity implements IAnimatable, JumpingMou
     }
 
     private final int maxEggLayTime = 200;
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
     public final AnimationState usingTongueAnimationState = new AnimationState();
     private boolean fluttering;
     private float jumpStrength;
@@ -190,19 +182,6 @@ public class YoshiEntity extends AnimalEntity implements IAnimatable, JumpingMou
     @Override
     public boolean isBreedingItem(ItemStack stack) {
         return BREEDING_INGREDIENT.test(stack);
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
-
-    protected <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (this.isTongueOut()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("eat", true));
-            return PlayState.CONTINUE;
-        }
-        return PlayState.STOP;
     }
 
     private boolean isEdible(Entity entity) {
@@ -481,11 +460,6 @@ public class YoshiEntity extends AnimalEntity implements IAnimatable, JumpingMou
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
         return ModEntities.BABY_YOSHI.create(world);
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 
     @Override

@@ -33,7 +33,7 @@
       },
       {
         "type": "super_block_world:moo_moo",
-        "weight": 10,
+        "weight": 30,
         "minCount": 3,
         "maxCount": 5
       },

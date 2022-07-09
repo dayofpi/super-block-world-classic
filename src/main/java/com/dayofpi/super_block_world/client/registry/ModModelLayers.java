@@ -10,6 +10,7 @@ import net.minecraft.client.render.entity.model.MinecartEntityModel;
 import net.minecraft.util.Identifier;
 
 public class ModModelLayers {
+
     private static EntityModelLayer createMain(String id) {
         return new EntityModelLayer(new Identifier(Main.MOD_ID, id), "main");
     }
@@ -18,6 +19,10 @@ public class ModModelLayers {
         return new EntityModelLayer(new Identifier(Main.MOD_ID, id), name);
     }
 
+    public static final EntityModelLayer TOAD = createMain("toad");
+    public static final EntityModelLayer MUMMY_ME = createMain("mummy_me");
+    public static final EntityModelLayer MECHAKOOPA = createMain("mechakoopa");
+    public static final EntityModelLayer MECHAKOOPA_MISSILE = createMain("mechakoopa_missile");
     public static final EntityModelLayer BABY_YOSHI = createMain("baby_yoshi");
     public static final EntityModelLayer YOSHI = createMain("yoshi");
     public static final EntityModelLayer BOO = createMain("boo");
@@ -49,9 +54,16 @@ public class ModModelLayers {
     public static final EntityModelLayer SPINDRIFT = createMain("spindrift");
     public static final EntityModelLayer SUPER_PICKAX = createMain("super_pickax");
     public static final EntityModelLayer TRAMPOLINE_MINECART = createMain("trampoline_minecart");
+    public static final EntityModelLayer UNAGI = createMain("unagi");
 
     public static void register() {
+        EntityModelLayerRegistry.registerModelLayer(TOAD, ToadModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(MUMMY_ME, MummyMeModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(MECHAKOOPA, MechakoopaModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(MECHAKOOPA_MISSILE, MechakoopaMissileModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(UNAGI, UnagiModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(BABY_YOSHI, BabyYoshiModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(YOSHI, YoshiModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(BOO, BooModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(BLOOPER, BlooperModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(BOB_OMB, BobOmbModel::getTexturedModelData);

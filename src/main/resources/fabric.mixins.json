@@ -22,7 +22,9 @@
     "PlayerEntityMixin",
     "RabbitEntityMixin",
     "SensorTypeMixin",
-    "SignTypeAccessor"
+    "SignTypeAccessor",
+    "TntBlockInterface",
+    "TntBlockMixin"
   ],
   "client": [
     "client.ClientMixin",

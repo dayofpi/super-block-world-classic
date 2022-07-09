@@ -11,6 +11,8 @@
     "super_block_world:toadstool_turf",
     "super_block_world:gritzy_sand",
     "super_block_world:quicksand",
+    "super_block_world:shoresand",
+    "super_block_world:shoregrass",
     "#super_block_world:cloud"
   ]
 }

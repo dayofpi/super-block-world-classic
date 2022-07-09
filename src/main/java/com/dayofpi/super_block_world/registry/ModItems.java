@@ -133,6 +133,7 @@ public class ModItems {
         registerItem("empty_block", new BlockItem(ModBlocks.EMPTY_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("question_block", new BlockItem(ModBlocks.QUESTION_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("exclamation_block", new BlockItem(ModBlocks.EXCLAMATION_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("fake_block", new BlockItem(ModBlocks.FAKE_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("glow_block", new BlockItem(ModBlocks.GLOW_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("dash_block", new BlockItem(ModBlocks.DASH_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("pull_block", new BlockItem(ModBlocks.PULL_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -334,7 +335,6 @@ public class ModItems {
         registerItem("jellybeam", new BlockItem(ModBlocks.JELLYBEAM, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("frozen_muncher", new BlockItem(ModBlocks.FROZEN_MUNCHER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("freezie", new BlockItem(ModBlocks.FREEZIE, new FabricItemSettings().group(Main.ITEM_GROUP)));
-        registerItem("fake_block", new BlockItem(ModBlocks.FAKE_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("bill_blaster", new BlockItem(ModBlocks.BILL_BLASTER, new FabricItemSettings()));
         registerItem("star_cluster", new BlockItem(ModBlocks.STAR_CLUSTER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("star_panel", new BlockItem(ModBlocks.STAR_PANEL, new FabricItemSettings().group(Main.ITEM_GROUP)));

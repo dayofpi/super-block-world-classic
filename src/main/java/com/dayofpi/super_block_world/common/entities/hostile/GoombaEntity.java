@@ -151,14 +151,13 @@ public class GoombaEntity extends HostileEntity {
     private boolean shouldWalk() {
         return this.getVelocity().horizontalLengthSquared() > 1.0E-6;
     }
-
     @Override
     public void tick() {
         if (this.world.isClient) {
-            if (this.isDead()) {
+            if (this.deathTime > 0) {
+                this.walkingAnimationState.stop();
                 this.squishedAnimationState.startIfNotRunning(this.age);
-            }
-            if (this.shouldWalk()) {
+            } else if (this.shouldWalk()) {
                 this.walkingAnimationState.startIfNotRunning(this.age);
             }
             else {
@@ -225,6 +224,14 @@ public class GoombaEntity extends HostileEntity {
             this.setSize(2);
         } else this.initializeGoomba(world, difficulty);
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    @Override
+    public void handleStatus(byte status) {
+        if (status == EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES) {
+
+        }
+        super.handleStatus(status);
     }
 
     protected void initializeGoomba(ServerWorldAccess world, LocalDifficulty difficulty) {

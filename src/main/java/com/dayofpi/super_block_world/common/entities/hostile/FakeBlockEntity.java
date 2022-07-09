@@ -15,6 +15,9 @@ import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
@@ -27,6 +30,7 @@ import net.minecraft.world.World;
 public class FakeBlockEntity extends HostileEntity {
     public final AnimationState attackingAnimationState = new AnimationState();
     private boolean twirling = false;
+    private static final TrackedData<Integer> ATTACK_COOLDOWN = DataTracker.registerData(FakeBlockEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     public FakeBlockEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
@@ -43,6 +47,20 @@ public class FakeBlockEntity extends HostileEntity {
         this.goalSelector.add(3, new PounceAtTargetGoal(this, 0.5F));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         this.targetSelector.add(2, new RevengeGoal(this));
+    }
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(ATTACK_COOLDOWN, 0);
+    }
+
+    public void setAttackCooldown(int cooldown) {
+        this.dataTracker.set(ATTACK_COOLDOWN, cooldown);
+    }
+
+    private int getAttackCooldown() {
+        return this.dataTracker.get(ATTACK_COOLDOWN);
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
@@ -71,6 +89,11 @@ public class FakeBlockEntity extends HostileEntity {
 
     @Override
     public void tick() {
+        if (this.getAttackCooldown() > 0) {
+            this.setAttackCooldown(this.getAttackCooldown() - 1);
+            if (this.getAttackCooldown() < 50)
+                this.setTarget(null);
+        }
         if (this.world.isClient) {
             if (this.isTwirling()) {
                 if (!this.attackingAnimationState.isRunning()) {

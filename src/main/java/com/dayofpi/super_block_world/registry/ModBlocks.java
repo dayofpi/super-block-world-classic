@@ -41,7 +41,7 @@ public class ModBlocks {
     public static final Block DASH_BLOCK = new DashBlock(FabricBlockSettings.of(Material.GLASS, MapColor.YELLOW).luminance(blockState -> blockState.get(DashBlock.USED) ? 15 : 0).sounds(BlockSoundGroup.GLASS).strength(0.3F));
     public static final Block PULL_BLOCK = new PullBlock(FabricBlockSettings.of(Material.METAL, MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.METAL).strength(3.5F, 5.0F).requiresTool());
     public static final Block PROPELLER_BLOCK = new PropellerBlock(FabricBlockSettings.of(Material.STONE, MapColor.DARK_AQUA).strength(3.0F).requiresTool());
-    public static final Block SPIKE_TRAP = new SpikeTrapBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F).requiresTool().sounds(BlockSoundGroup.METAL).nonOpaque());
+    public static final Block SPIKE_TRAP = new SpikeTrapBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F).requiresTool().sounds(BlockSoundGroup.METAL));
     public static final Block ON_OFF_SWITCH = new OnOffSwitchBlock(FabricBlockSettings.of(Material.METAL, (state) -> state.get(Properties.POWERED) ? MapColor.RED : MapColor.BLUE).sounds(BlockSoundGroup.METAL).strength(3.5F, 5.0F).requiresTool());
     public static final Block DOTTED_LINE_BLOCK = new DottedLineBlock(FabricBlockSettings.of(Material.METAL, (state) -> state.get(Properties.DISTANCE_1_7) < 7 ? MapColor.BLUE : MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.METAL).strength(3.5F, 5.0F).requiresTool().nonOpaque());
     public static final Block RED_DOTTED_LINE_BLOCK = new DottedLineBlock(FabricBlockSettings.of(Material.METAL, (state) -> state.get(Properties.DISTANCE_1_7) < 7 ? MapColor.BRIGHT_RED : MapColor.RED).sounds(BlockSoundGroup.METAL).strength(3.5F, 5.0F).requiresTool().nonOpaque());

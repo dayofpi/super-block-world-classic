@@ -24,13 +24,10 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.List;
 
-public class MechakoopaMissileEntity extends PersistentProjectileEntity implements IAnimatable {
+public class MechakoopaMissileEntity extends PersistentProjectileEntity {
     @Nullable
     LivingEntity target;
 
@@ -60,7 +57,7 @@ public class MechakoopaMissileEntity extends PersistentProjectileEntity implemen
         Box box = this.getBoundingBox().expand(0.7D, 0.5D, 0.7D);
         List<Entity> list = world.getOtherEntities(this, box, Entity::isLiving);
         if (!list.isEmpty()) {
-            list.forEach(entity -> entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 6));
+            list.forEach(entity -> entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 8));
         }
 
         this.playSound(Sounds.ENTITY_BULLET_IMPACT, 1.0F, 1.0F);
@@ -74,6 +71,10 @@ public class MechakoopaMissileEntity extends PersistentProjectileEntity implemen
         if (age >= 200) {
             blow();
             return;
+        }
+
+        if (this.world.isClient) {
+            world.addParticle(ParticleTypes.SMOKE, this.getX() + (random.nextFloat() * 0.2), this.getY() + (random.nextFloat() * 0.2), this.getZ() + (random.nextFloat() * 0.2), 0.0D, 0.0D, 0.0D);
         }
 
         if (this.target != null && this.target.isDead())
@@ -147,15 +148,6 @@ public class MechakoopaMissileEntity extends PersistentProjectileEntity implemen
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
         this.blow();
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return new AnimationFactory(this);
     }
 
     @Override

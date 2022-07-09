@@ -10,6 +10,7 @@ import net.minecraft.util.registry.Registry;
 @Environment(EnvType.CLIENT)
 public class Sounds {
     public static final SoundEvent AMBIENT_CAVE = createSound("ambient.cave");
+    public static final SoundEvent BLOCK_STONE_TORCH_AMBIENT = createSound("block.stone_torch.ambient");
     public static final SoundEvent BLOCK_BELL_CAP_FALL = createSound("block.bell_cap.fall");
     public static final SoundEvent BLOCK_BELL_CAP_HIT = createSound("block.bell_cap.hit");
     public static final SoundEvent BLOCK_BELL_CAP_JINGLE = createSound("block.bell_cap.jingle");
@@ -211,6 +212,7 @@ public class Sounds {
 
     public static void initSounds() {
         registerSound(AMBIENT_CAVE);
+        registerSound(BLOCK_STONE_TORCH_AMBIENT);
         registerSound(BLOCK_BELL_CAP_FALL);
         registerSound(BLOCK_BELL_CAP_HIT);
         registerSound(BLOCK_BELL_CAP_JINGLE);

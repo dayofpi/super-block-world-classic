@@ -26,20 +26,12 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 @SuppressWarnings("deprecation")
-public class UnagiEntity extends WaterCreatureEntity implements IAnimatable {
+public class UnagiEntity extends WaterCreatureEntity {
     public final AnimationState swimmingAnimationState = new AnimationState();
     public final AnimationState attackingAnimationState = new AnimationState();
     public final AnimationState sufferingAnimationState = new AnimationState();
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
 
     public UnagiEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
         super(entityType, world);
@@ -112,8 +104,7 @@ public class UnagiEntity extends WaterCreatureEntity implements IAnimatable {
                 this.attackingAnimationState.stop();
                 this.sufferingAnimationState.startIfNotRunning(this.age);
             }
-
-            if (this.isTouchingWater()) {
+            else {
                 this.sufferingAnimationState.stop();
                 if (this.isAttacking()) {
                     this.swimmingAnimationState.stop();
@@ -145,25 +136,5 @@ public class UnagiEntity extends WaterCreatureEntity implements IAnimatable {
     @Override
     protected SoundEvent getDeathSound() {
         return Sounds.ENTITY_UNAGI_DEATH;
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 10, this::predicate));
-    }
-
-    protected <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (this.isTouchingWater()) {
-            if (this.isAttacking())
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("bite", true));
-            else
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("swim", true));
-        } else event.getController().setAnimation(new AnimationBuilder().addAnimation("suffer", true));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 }

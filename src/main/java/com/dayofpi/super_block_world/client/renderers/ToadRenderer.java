@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.features.ToadLayer;
 import com.dayofpi.super_block_world.client.models.ToadModel;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.passive.ToadEntity;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.fabricmc.api.EnvType;
@@ -13,25 +13,29 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Matrix4f;
 import net.minecraft.util.math.Vec3f;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class ToadRenderer<T extends ToadEntity> extends GeoEntityRenderer<T> {
-    public ToadRenderer(EntityRendererFactory.Context context) {
-        super(context, new ToadModel<>());
-        this.addLayer(new ToadLayer<>(this));
+public class ToadRenderer extends MobEntityRenderer<ToadEntity, ToadModel<ToadEntity>> {
+    public ToadRenderer(EntityRendererFactory.Context ctx) {
+        super(ctx, new ToadModel<>(ctx.getPart(ModModelLayers.TOAD)), 0.5f);
         this.shadowRadius = 0.5f;
     }
 
     @Override
-    public void render(T entity, float entityYaw, float partialTicks, MatrixStack matrices, VertexConsumerProvider provider, int light) {
-        super.render(entity, entityYaw, partialTicks, matrices, provider, light);
+    protected boolean isShaking(ToadEntity entity) {
+        return super.isShaking(entity) || entity.isScared();
+    }
+
+    @Override
+    public void render(ToadEntity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider provider, int light) {
+        super.render(entity, yaw, tickDelta, matrices, provider, light);
         if (this.dispatcher.targetedEntity != entity || entity.isBaby() || entity.isScared() || entity.isCheering()) {
             return;
         }
@@ -60,7 +64,7 @@ public class ToadRenderer<T extends ToadEntity> extends GeoEntityRenderer<T> {
     }
 
     @Override
-    public Identifier getTexture(T entity) {
+    public Identifier getTexture(ToadEntity entity) {
         if (entity.isScared())
             return new Identifier(Main.MOD_ID, "textures/entity/toad/toad_scared.png");
         else if (entity.isHappy())

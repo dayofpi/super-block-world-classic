@@ -12,7 +12,6 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.predicate.entity.EntityPredicates;
@@ -38,10 +37,10 @@ public class GlobalReceivers {
 
             if (serverWorld != null)
                 server.execute(() -> {
-                    for (LivingEntity entity : serverWorld.getEntitiesByType(ModEntities.FAKE_BLOCK, EntityPredicates.VALID_LIVING_ENTITY)) {
+                    for (FakeBlockEntity entity : serverWorld.getEntitiesByType(ModEntities.FAKE_BLOCK, EntityPredicates.VALID_LIVING_ENTITY)) {
                         if (entity.getId() != entityId)
                             continue;
-
+                        entity.setAttackCooldown(70);
                         entity.playSound(Sounds.ENTITY_GENERIC_TAIL_ATTACK, 1.0F, entity.getSoundPitch());
                         World world = entity.getWorld();
                         for (BlockPos blockPos : BlockPos.iterateOutwards(entity.getBlockPos(), 1, 0, 1)) {

@@ -25,10 +25,6 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 
 import java.util.stream.Stream;
 
@@ -137,14 +133,6 @@ public class PiranhaPlantEntity extends HostileEntity {
             this.bitingAnimationState.startIfNotRunning(this.age);
         }
         else this.bitingAnimationState.stop();
-    }
-
-    protected <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (this.isAttacking()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("bite", true));
-            return PlayState.CONTINUE;
-        }
-        return PlayState.STOP;
     }
 
     static class PiranhaPlantAttackGoal extends MeleeAttackGoal {

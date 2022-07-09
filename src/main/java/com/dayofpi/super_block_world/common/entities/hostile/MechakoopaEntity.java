@@ -33,15 +33,10 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
 
-public class MechakoopaEntity extends TameableEntity implements IAnimatable, RangedAttackMob {
+public class MechakoopaEntity extends TameableEntity implements RangedAttackMob {
     private static final TrackedData<Integer> POWER;
     private static final TrackedData<Integer> BEAM_TARGET_ID;
 
@@ -50,7 +45,6 @@ public class MechakoopaEntity extends TameableEntity implements IAnimatable, Ran
         BEAM_TARGET_ID = DataTracker.registerData(MechakoopaEntity.class, TrackedDataHandlerRegistry.INTEGER);
     }
 
-    private final AnimationFactory FACTORY = new AnimationFactory(this);
     @Nullable
     private LivingEntity cachedBeamTarget;
     private int beamTicks;
@@ -87,7 +81,7 @@ public class MechakoopaEntity extends TameableEntity implements IAnimatable, Ran
     @Override
     public void attack(LivingEntity target, float pullProgress) {
         MechakoopaMissileEntity missileEntity = new MechakoopaMissileEntity(world, this, target);
-        missileEntity.setVelocity(this, this.getPitch(), this.getHeadYaw(), 0.0F, 0.1F, 0.0F);
+        missileEntity.setVelocity(this, this.getPitch(), this.getHeadYaw(), 0.0F, 0.12F, 0.0F);
         world.spawnEntity(missileEntity);
         this.playSound(Sounds.ENTITY_BULLET_SHOOT, 1.0F, 1.2F);
     }
@@ -293,16 +287,6 @@ public class MechakoopaEntity extends TameableEntity implements IAnimatable, Ran
     protected void playStepSound(BlockPos pos, BlockState state) {
         if (!this.isSitting())
             this.playSound(Sounds.ENTITY_MECHAKOOPA_STEP, 0.15F, 1.0F);
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, animationEvent -> PlayState.STOP));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 
     static class MeleeAttackGoal extends net.minecraft.entity.ai.goal.MeleeAttackGoal {

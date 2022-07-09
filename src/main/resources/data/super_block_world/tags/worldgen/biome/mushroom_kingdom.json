@@ -1,0 +1,8 @@
+{
+  "replace": "false",
+  "values": [
+    "#super_block_world:surface_biomes",
+    "super_block_world:deep_woods",
+    "super_block_world:fuzzbush_caves"
+  ]
+}

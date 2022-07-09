@@ -44,7 +44,6 @@ public class MooMooEntity extends CowEntity {
 
     public MooMooEntity(EntityType<? extends CowEntity> entityType, World world) {
         super(entityType, world);
-        this.ignoreCameraFrustum = true;
     }
 
     public Identifier getTexture() {
@@ -95,6 +94,6 @@ public class MooMooEntity extends CowEntity {
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(TYPE, 1);
+        this.dataTracker.startTracking(TYPE, 0);
     }
 }

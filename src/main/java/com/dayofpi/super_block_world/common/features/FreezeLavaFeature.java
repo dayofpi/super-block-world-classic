@@ -12,7 +12,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.LightType;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.WorldView;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
@@ -24,7 +23,7 @@ public class FreezeLavaFeature extends Feature<DefaultFeatureConfig> {
 
     @Override
     public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
-        StructureWorldAccess structureWorldAccess = context.getWorld();
+        StructureWorldAccess world = context.getWorld();
         BlockPos blockPos = context.getOrigin();
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         BlockPos.Mutable mutable2 = new BlockPos.Mutable();
@@ -34,16 +33,21 @@ public class FreezeLavaFeature extends Feature<DefaultFeatureConfig> {
                 int l = blockPos.getZ() + j;
                 int m = blockPos.getY();
                 mutable.set(k, m, l);
+                if (!world.getBlockState(mutable).isAir())
+                    continue;
                 mutable2.set(mutable).move(Direction.DOWN, 1);
-                Biome biome = structureWorldAccess.getBiome(mutable).value();
-                if (this.canSetIce(structureWorldAccess, mutable2, false)) {
-                    structureWorldAccess.setBlockState(mutable2, Blocks.PACKED_ICE.getDefaultState(), Block.NOTIFY_LISTENERS);
+                if (this.canSetIce(world, mutable2, false)) {
+                    world.setBlockState(mutable2, Blocks.PACKED_ICE.getDefaultState(), Block.NOTIFY_LISTENERS);
                 }
-                if (!biome.canSetSnow(structureWorldAccess, mutable)) continue;
-                structureWorldAccess.setBlockState(mutable, Blocks.SNOW.getDefaultState(), Block.NOTIFY_LISTENERS);
+                if (!this.canSetSnow(world, mutable)) continue;
+                world.setBlockState(mutable, Blocks.SNOW.getDefaultState(), Block.NOTIFY_LISTENERS);
             }
         }
         return true;
+    }
+
+    public boolean canSetSnow(WorldView world, BlockPos pos) {
+        return pos.getY() >= world.getBottomY() && pos.getY() < world.getTopY() && world.getLightLevel(LightType.BLOCK, pos) < 10 && world.getBlockState(pos).isAir() && Blocks.SNOW.getDefaultState().canPlaceAt(world, pos);
     }
 
     public boolean canSetIce(WorldView world, BlockPos pos, boolean doWaterCheck) {

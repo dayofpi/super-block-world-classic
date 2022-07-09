@@ -464,6 +464,17 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
+  "block.stone_torch.ambient": {
+    "sounds": [
+      "block/campfire/crackle1",
+      "block/campfire/crackle2",
+      "block/campfire/crackle3",
+      "block/campfire/crackle4",
+      "block/campfire/crackle5",
+      "block/campfire/crackle6"
+    ],
+    "subtitle": "sbw_subtitle.block.stone_torch.crackle"
+  },
   "block.trampoline.release": {
     "sounds": [
       "super_block_world:block/trampoline"

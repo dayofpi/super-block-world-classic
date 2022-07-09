@@ -5,7 +5,6 @@ import com.dayofpi.super_block_world.common.entities.goals.FollowMamaGoal;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
@@ -17,6 +16,7 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.recipe.Ingredient;
@@ -32,7 +32,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class BabyYoshiEntity extends AnimalEntity {
     public static final int MAX_AGE = Math.abs(-24000);
-    public final AnimationState waddlingAnimationState = new AnimationState();
     private int yoshiAge;
 
     public BabyYoshiEntity(EntityType<? extends AnimalEntity> entityType, World world) {
@@ -54,18 +53,11 @@ public class BabyYoshiEntity extends AnimalEntity {
         this.goalSelector.add(7, new LookAroundGoal(this));
     }
 
-    protected boolean shouldWaddle() {
-        return this.getVelocity().horizontalLengthSquared() > 1.0E-6;
-    }
-
+    @Nullable
     @Override
-    public void tick() {
-        if (this.world.isClient) {
-            if (this.shouldWaddle())
-                this.waddlingAnimationState.startIfNotRunning(this.age);
-            else this.waddlingAnimationState.stop();
-        }
-        super.tick();
+    public ItemStack getPickBlockStack() {
+        SpawnEggItem spawnEggItem = SpawnEggItem.forEntity(ModEntities.YOSHI);
+        return new ItemStack(spawnEggItem);
     }
 
     public void tickMovement() {
@@ -73,7 +65,6 @@ public class BabyYoshiEntity extends AnimalEntity {
         if (!this.world.isClient) {
             this.setYoshiAge(this.yoshiAge + 1);
         }
-
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {

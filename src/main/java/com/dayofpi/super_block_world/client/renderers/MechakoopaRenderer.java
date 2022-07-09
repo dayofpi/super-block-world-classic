@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.models.MechakoopaModel;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.hostile.MechakoopaEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -10,14 +11,14 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.*;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @Environment(EnvType.CLIENT)
-public class MechakoopaRenderer<T extends MechakoopaEntity> extends GeoEntityRenderer<T> {
+public class MechakoopaRenderer extends MobEntityRenderer<MechakoopaEntity, MechakoopaModel> {
     private static final RenderLayer BEAM_LAYER = RenderLayer.getEntityCutoutNoCull(new Identifier(Main.MOD_ID, "textures/entity/mechakoopa/beam.png"));
     private static final Identifier MECHAKOOPA = new Identifier(Main.MOD_ID, "textures/entity/mechakoopa/mechakoopa");
     private static final Identifier BLASTA = new Identifier(Main.MOD_ID, "textures/entity/mechakoopa/blasta");
@@ -25,8 +26,7 @@ public class MechakoopaRenderer<T extends MechakoopaEntity> extends GeoEntityRen
 
 
     public MechakoopaRenderer(EntityRendererFactory.Context ctx) {
-        super(ctx, new MechakoopaModel<>());
-        this.shadowRadius = 0.3F;
+        super(ctx, new MechakoopaModel(ctx.getPart(ModModelLayers.MECHAKOOPA)), 0.3f);
     }
 
     private static void vertex(VertexConsumer vertexConsumer, Matrix4f positionMatrix, Matrix3f normalMatrix, float x, float y, float z, int red, int green, int blue, float u, float v) {
@@ -34,7 +34,7 @@ public class MechakoopaRenderer<T extends MechakoopaEntity> extends GeoEntityRen
     }
 
     @Override
-    public Identifier getTexture(T entity) {
+    public Identifier getTexture(MechakoopaEntity entity) {
         String string = ".png";
         if (entity.isInSittingPose())
             string = "_sit.png";
@@ -46,18 +46,13 @@ public class MechakoopaRenderer<T extends MechakoopaEntity> extends GeoEntityRen
     }
 
     private Vec3d fromLerpedPosition(LivingEntity entity, double yOffset, float delta) {
-        double d = MathHelper.lerp(delta, entity.lastRenderX, entity.getX());
-        double e = MathHelper.lerp(delta, entity.lastRenderY, entity.getY()) + yOffset;
-        double f = MathHelper.lerp(delta, entity.lastRenderZ, entity.getZ());
-        return new Vec3d(d, e, f);
+        double x = MathHelper.lerp(delta, entity.lastRenderX, entity.getX());
+        double y = MathHelper.lerp(delta, entity.lastRenderY, entity.getY()) + yOffset;
+        double z = MathHelper.lerp(delta, entity.lastRenderZ, entity.getZ());
+        return new Vec3d(x, y, z);
     }
 
-    @Override
-    public RenderLayer getRenderType(T animatable, float partialTicks, MatrixStack stack, VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, Identifier textureLocation) {
-        return RenderLayer.getEntityCutoutNoCull(textureLocation);
-    }
-
-    public void render(T entity, float entityYaw, float partialTicks, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
+    public void render(MechakoopaEntity entity, float entityYaw, float partialTicks, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
         super.render(entity, entityYaw, partialTicks, matrixStack, vertexConsumerProvider, i);
         LivingEntity target = entity.getBeamTarget();
         if (target != null) {

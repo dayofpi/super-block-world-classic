@@ -3,7 +3,6 @@ package com.dayofpi.super_block_world.common.entities.passive;
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.Toad;
-import com.dayofpi.super_block_world.common.entities.ToadLookControl;
 import com.dayofpi.super_block_world.common.entities.ToadTrades;
 import com.dayofpi.super_block_world.common.entities.brains.ToadBrain;
 import com.dayofpi.super_block_world.common.entities.hostile.RottenMushroomEntity;
@@ -39,17 +38,10 @@ import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.List;
 
-public class MailtoadEntity extends MerchantEntity implements Toad, IAnimatable {
+public class MailtoadEntity extends MerchantEntity implements Toad {
     protected static final ImmutableList<SensorType<? extends Sensor<? super PassiveEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, Main.TOAD_SPECIFIC_SENSOR);
     protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING);
     private static final TrackedData<Integer> EMOTION;
@@ -64,11 +56,8 @@ public class MailtoadEntity extends MerchantEntity implements Toad, IAnimatable 
         ATTENTION_COOLDOWN = DataTracker.registerData(MailtoadEntity.class, TrackedDataHandlerRegistry.INTEGER);
     }
 
-    final AnimationFactory FACTORY = new AnimationFactory(this);
-
     public MailtoadEntity(EntityType<? extends MerchantEntity> entityType, World world) {
         super(entityType, world);
-        this.lookControl = new ToadLookControl(this);
         ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
     }
 
@@ -339,34 +328,5 @@ public class MailtoadEntity extends MerchantEntity implements Toad, IAnimatable 
 
     public void setToadState(int state) {
         this.dataTracker.set(TOAD_STATE, state);
-    }
-
-    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (event.isMoving() || !(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
-            if (this.isScared())
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("run", true));
-            else
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", true));
-        } else {
-            if (this.isWaving())
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("wave", true));
-            else if (this.isScared())
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("scared", true));
-            else if (this.isCheering())
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("cheer", true));
-            else
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
-        }
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 1, this::predicate));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return FACTORY;
     }
 }

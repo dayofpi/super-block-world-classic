@@ -27,7 +27,7 @@ public class FollowMamaGoal extends Goal {
         if (this.animal.getBreedingAge() >= 0) {
             return false;
         } else {
-            List<? extends LivingEntity> list = this.animal.world.getNonSpectatingEntities(this.animal.getClass(), this.animal.getBoundingBox().expand(HORIZONTAL_CHECK_RANGE, VERTICAL_CHECK_RANGE, HORIZONTAL_CHECK_RANGE));
+            List<? extends LivingEntity> list = this.animal.world.getNonSpectatingEntities(LivingEntity.class, this.animal.getBoundingBox().expand(HORIZONTAL_CHECK_RANGE, VERTICAL_CHECK_RANGE, HORIZONTAL_CHECK_RANGE));
             LivingEntity parent = null;
             double d = 1.79D;
 

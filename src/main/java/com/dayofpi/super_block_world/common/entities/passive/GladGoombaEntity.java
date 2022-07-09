@@ -41,7 +41,6 @@ public class GladGoombaEntity extends TameableEntity {
     public final AnimationState walkingAnimationState = new AnimationState();
     public final AnimationState squishedAnimationState = new AnimationState();
     public final AnimationState sittingAnimationState = new AnimationState();
-    public final AnimationState sitAnimationState = new AnimationState();
 
     static {
         BIG = DataTracker.registerData(GladGoombaEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -239,8 +238,8 @@ public class GladGoombaEntity extends TameableEntity {
     public void tick() {
         if (this.world.isClient()) {
             if (this.isInSittingPose()) {
-                this.sitAnimationState.startIfNotRunning(this.age);
-            } else this.sitAnimationState.stop();
+                this.sittingAnimationState.startIfNotRunning(this.age);
+            } else this.sittingAnimationState.stop();
             if (this.isDead()) {
                 this.squishedAnimationState.startIfNotRunning(this.age);
             } else if (this.shouldWalk()) {

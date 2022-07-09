@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.common.blocks;
 
+import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.projectile.ModFireballEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -105,6 +106,8 @@ public class StoneTorchBlock extends Block implements Waterloggable {
         boolean isProjectileFiery = projectile.isOnFire() || projectile instanceof ModFireballEntity;
         if (!world.isClient && isProjectileFiery && projectile.canModifyAt(world, blockPos) && !(Boolean) state.get(LIT)) {
             world.setBlockState(blockPos, state.with(Properties.LIT, true), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+            if (projectile instanceof ModFireballEntity)
+                projectile.discard();
         }
     }
 
@@ -125,7 +128,7 @@ public class StoneTorchBlock extends Block implements Waterloggable {
             double f = (double) pos.getZ() + 0.5D;
             world.addParticle(ParticleTypes.LARGE_SMOKE, d, e, f, 0.0D, 0.0D, 0.0D);
             if (random.nextInt(10) == 0)
-                world.playSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, SoundEvents.BLOCK_CAMPFIRE_CRACKLE, SoundCategory.BLOCKS, 0.5F, random.nextFloat() * 0.7F, true);
+                world.playSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, Sounds.BLOCK_STONE_TORCH_AMBIENT, SoundCategory.BLOCKS, 0.5F, random.nextFloat() * 0.6F, true);
 
         }
     }

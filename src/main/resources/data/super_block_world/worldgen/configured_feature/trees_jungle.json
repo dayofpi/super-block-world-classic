@@ -3,6 +3,13 @@
   "config": {
     "features": [
       {
+        "chance": 0.1,
+        "feature": {
+          "feature": "super_block_world:huge_yellow_mushroom",
+          "placement": []
+        }
+      },
+      {
         "chance": 0.4,
         "feature": "super_block_world:amanita_large"
       },

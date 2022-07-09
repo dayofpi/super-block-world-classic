@@ -1,0 +1,24 @@
+{
+  "name": "super_block_world:dungeon/main_room",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "super_block_world:dungeon/main_room/bob_omb",
+        "projection": "rigid",
+        "processors": "super_block_world:dungeon"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "super_block_world:dungeon/main_room/mechakoopa",
+        "projection": "rigid",
+        "processors": "super_block_world:dungeon"
+      }
+    }
+  ]
+}

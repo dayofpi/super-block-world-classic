@@ -150,7 +150,7 @@ public class DryBonesShellEntity extends MobEntity implements Mount {
                     List<BlockPos> posList = BlockPos.stream(box).toList();
                     for (BlockPos blockPos : posList) {
                         BlockState blockState = world.getBlockState(blockPos);
-                        if (this.getBlockY() <= blockPos.getY()) {
+                        if (this.getBlockY() >= blockPos.getY()) {
                             if (blockState.getBlock() instanceof ReactiveBlock reactiveBlock) {
                                 reactiveBlock.react(world, blockPos, this);
                             }
