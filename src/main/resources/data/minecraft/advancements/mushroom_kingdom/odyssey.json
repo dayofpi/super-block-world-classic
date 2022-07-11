@@ -36,6 +36,16 @@
         }
       }
     },
+    "bonnetlands": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:bonnetlands"
+          }
+        }
+      }
+    },
     "cherry_fields": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -143,6 +153,9 @@
     ],
     [
       "bell_plains"
+    ],
+    [
+      "bonnetlands"
     ],
     [
       "cherry_fields"

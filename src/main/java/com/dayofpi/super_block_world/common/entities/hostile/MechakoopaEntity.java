@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.RangedAttackMob;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -15,6 +16,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
@@ -31,6 +33,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -287,6 +291,11 @@ public class MechakoopaEntity extends TameableEntity implements RangedAttackMob 
     protected void playStepSound(BlockPos pos, BlockState state) {
         if (!this.isSitting())
             this.playSound(Sounds.ENTITY_MECHAKOOPA_STEP, 0.15F, 1.0F);
+    }
+
+    @SuppressWarnings("unused")
+    public static boolean canMechakoopaSpawn(EntityType<MechakoopaEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos blockPos, Random random) {
+        return HostileEntity.isSpawnDark(world, blockPos, random);
     }
 
     static class MeleeAttackGoal extends net.minecraft.entity.ai.goal.MeleeAttackGoal {

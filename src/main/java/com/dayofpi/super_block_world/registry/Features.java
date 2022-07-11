@@ -12,6 +12,7 @@ public class Features {
     public static final Feature<DefaultFeatureConfig> FREEZE_LAVA = new FreezeLavaFeature(DefaultFeatureConfig.CODEC);
     private static final Feature<DefaultFeatureConfig> STRAWBERRY_CORAL = new StrawberryCoralFeature(DefaultFeatureConfig.CODEC);
     private static final Feature<DefaultFeatureConfig> UNDERWATER_PIPE = new UnderwaterPipeFeature(DefaultFeatureConfig.CODEC);
+    private static final Feature<DefaultFeatureConfig> WARP_PIPE = new WarpPipeFeature(DefaultFeatureConfig.CODEC);
     private static final Feature<RandomPatchFeatureConfig> RANDOM_PATCH = new RandomPatchFeature(RandomPatchFeatureConfig.CODEC);
 
     public static void register() {
@@ -19,6 +20,7 @@ public class Features {
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "freeze_lava"), FREEZE_LAVA);
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "strawberry_coral"), STRAWBERRY_CORAL);
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "underwater_pipe"), UNDERWATER_PIPE);
+        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "warp_pipe"), WARP_PIPE);
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "random_patch_feature"), RANDOM_PATCH);
     }
 }

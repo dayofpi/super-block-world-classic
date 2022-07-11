@@ -39,7 +39,6 @@ public class GladGoombaEntity extends TameableEntity {
     private static final TrackedData<Boolean> BIG;
     private static final Ingredient BREEDING_INGREDIENT;
     public final AnimationState walkingAnimationState = new AnimationState();
-    public final AnimationState squishedAnimationState = new AnimationState();
     public final AnimationState sittingAnimationState = new AnimationState();
 
     static {
@@ -241,7 +240,7 @@ public class GladGoombaEntity extends TameableEntity {
                 this.sittingAnimationState.startIfNotRunning(this.age);
             } else this.sittingAnimationState.stop();
             if (this.isDead()) {
-                this.squishedAnimationState.startIfNotRunning(this.age);
+                this.walkingAnimationState.stop();
             } else if (this.shouldWalk()) {
                 this.walkingAnimationState.startIfNotRunning(this.age);
             } else this.walkingAnimationState.stop();

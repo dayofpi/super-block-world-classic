@@ -2,16 +2,12 @@ package com.dayofpi.super_block_world.common.entities.passive;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.entities.brains.KoopaBrain;
 import com.dayofpi.super_block_world.registry.ModItems;
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.Brain;
-import net.minecraft.entity.ai.brain.MemoryModuleType;
-import net.minecraft.entity.ai.brain.sensor.Sensor;
-import net.minecraft.entity.ai.brain.sensor.SensorType;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
@@ -25,7 +21,6 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtOps;
-import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -54,8 +49,6 @@ import org.slf4j.Logger;
 import java.util.UUID;
 
 public abstract class AbstractKoopa extends PassiveEntity implements VibrationListener.Callback, Saddleable, ItemSteerable, Angerable {
-    private static final ImmutableList<SensorType<? extends Sensor<? super AbstractKoopa>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY);
-    private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.NEAREST_VISIBLE_ADULT);
     static final TrackedData<Boolean> SADDLED;
     static final TrackedData<Integer> BOOST_TIME;
     private static final TrackedData<Integer> KOOPA_COLOR;
@@ -77,13 +70,23 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
         KOOPA_COLOR = DataTracker.registerData(AbstractKoopa.class, TrackedDataHandlerRegistry.INTEGER);
         ANGER_TIME = DataTracker.registerData(AbstractKoopa.class, TrackedDataHandlerRegistry.INTEGER);
         ANGER_TIME_RANGE = TimeHelper.betweenSeconds(10, 20);
-
     }
 
     protected AbstractKoopa(EntityType<? extends PassiveEntity> entityType, World world) {
         super(entityType, world);
         this.saddledComponent = new SaddledComponent(this.dataTracker, BOOST_TIME, SADDLED);
         this.gameEventHandler = new EntityGameEventHandler<>(new VibrationListener(new EntityPositionSource(this, this.getStandingEyeHeight()), 16, this, null, 0.0f, 0));
+    }
+
+    @Override
+    protected void initGoals() {
+        this.goalSelector.add(1, new SwimGoal(this));
+        this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0, true));
+        this.goalSelector.add(3, new WanderAroundFarGoal(this, 1.0));
+        this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0f));
+        this.goalSelector.add(5, new LookAroundGoal(this));
+        this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
     }
 
     private boolean shouldDance() {
@@ -243,16 +246,6 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
         }
     }
 
-    @Override
-    protected Brain.Profile<AbstractKoopa> createBrainProfile() {
-        return Brain.createProfile(MEMORY_MODULES, SENSORS);
-    }
-
-    @Override
-    protected Brain<?> deserializeBrain(Dynamic<?> dynamic) {
-        return KoopaBrain.create(this.createBrainProfile().deserialize(dynamic));
-    }
-
     @SuppressWarnings("unchecked")
     @Override
     public Brain<AbstractKoopa> getBrain() {
@@ -360,23 +353,6 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
         if (event == GameEvent.NOTE_BLOCK_PLAY) {
             world.sendEntityStatus(this, EntityStatuses.EARS_TWITCH);
         }
-    }
-
-    @Override
-    protected void mobTick() {
-        this.world.getProfiler().push("koopaBrain");
-        this.getBrain().tick((ServerWorld) this.world, this);
-        this.world.getProfiler().pop();
-        this.world.getProfiler().push("koopaActivityUpdate");
-        KoopaBrain.updateActivities(this);
-        this.world.getProfiler().pop();
-        super.mobTick();
-    }
-
-    @Override
-    protected void sendAiDebugData() {
-        super.sendAiDebugData();
-        DebugInfoSender.sendBrainDebugData(this);
     }
 
     public boolean isSaddled() {

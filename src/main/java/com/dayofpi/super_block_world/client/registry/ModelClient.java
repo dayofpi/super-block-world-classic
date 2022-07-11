@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.client.registry;
 
 import com.dayofpi.super_block_world.client.renderers.ChinchoTorchRenderer;
 import com.dayofpi.super_block_world.client.renderers.FlagRenderer;
+import com.dayofpi.super_block_world.common.items.WarpLinkItem;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModItems;
 import com.dayofpi.super_block_world.util.StampModelProvider;
@@ -73,6 +74,7 @@ public class ModelClient {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HORSETAIL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GREEN_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.YELLOW_MUSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ORANGE_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.YELLOW_SONGFLOWER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLUE_SONGFLOWER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PINK_SONGFLOWER, RenderLayer.getCutout());
@@ -100,6 +102,7 @@ public class ModelClient {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_HORSETAIL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_GREEN_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_YELLOW_MUSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_ORANGE_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_YELLOW_SONGFLOWER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_BLUE_SONGFLOWER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_PINK_SONGFLOWER, RenderLayer.getCutout());
@@ -119,5 +122,6 @@ public class ModelClient {
                 return 0.0f;
             return livingEntity.isUsingItem() && livingEntity.getActiveItem() == stack ? 1.0F : 0.0F;
         });
+        FabricModelPredicateProviderRegistry.register(ModItems.WARP_LINK, new Identifier("linked"), (stack, world, livingEntity, seed) -> WarpLinkItem.isLinked(stack) ? 1.0F : 0.0F);
     }
 }

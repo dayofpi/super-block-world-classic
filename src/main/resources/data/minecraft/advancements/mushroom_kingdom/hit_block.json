@@ -17,7 +17,7 @@
   "parent": "minecraft:mushroom_kingdom/stomp_mob",
   "criteria": {
     "hit_block": {
-      "trigger": "super_block_world:hit_block_with_head"
+      "trigger": "super_block_world:jump_under_block"
     }
   },
   "requirements": [

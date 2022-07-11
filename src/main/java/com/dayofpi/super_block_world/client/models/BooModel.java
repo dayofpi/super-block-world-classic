@@ -24,6 +24,7 @@ public class BooModel extends SinglePartEntityModel<BooEntity> implements ModelW
 		this.rightArm = this.root.getChild(EntityModelPartNames.RIGHT_ARM);
 		this.leftArm = this.root.getChild(EntityModelPartNames.LEFT_ARM);
 	}
+
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
@@ -52,8 +53,7 @@ public class BooModel extends SinglePartEntityModel<BooEntity> implements ModelW
 			this.rightArm.yaw = -1.3F;
 			this.leftArm.pitch = -1.2F;
 			this.rightArm.pitch = -1.2F;
-		}
-		else {
+		} else {
 			this.leftArm.yaw = 0F;
 			this.rightArm.yaw = 0F;
 			this.leftArm.pitch = 0F;

@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.common.entities.passive;
 
 import com.dayofpi.super_block_world.registry.ModEntities;
+import com.dayofpi.super_block_world.registry.ModTags;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -18,9 +19,15 @@ public class KoopaTroopaEntity extends AbstractKoopa {
         super(entityType, world);
     }
 
+    private static boolean isThereNoLight(WorldAccess world, BlockPos pos) {
+        return !(world.getLightLevel(LightType.BLOCK, pos) > 0);
+    }
+
     @SuppressWarnings("unused")
     public static boolean canKoopaSpawn(EntityType<? extends KoopaTroopaEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return !(world.getLightLevel(LightType.BLOCK, pos) > 0);
+        if (world.getBiome(pos).isIn(ModTags.SURFACE_KOOPA_SPAWN))
+            return isThereNoLight(world, pos);
+        else return isThereNoLight(world, pos) && world.getBlockState(pos.down()).isIn(ModTags.VANILLATE);
     }
 
     @Override

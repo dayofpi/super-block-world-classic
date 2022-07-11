@@ -13,7 +13,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
 public class JumpUnderBlockCriterion extends AbstractCriterion<JumpUnderBlockCriterion.Conditions> {
-    private static final Identifier ID = new Identifier(Main.MOD_ID, "hit_block_with_head");
+    private static final Identifier ID = new Identifier(Main.MOD_ID, "jump_under_block");
 
     @Override
     public Identifier getId() {

@@ -37,6 +37,15 @@
         "projection": "rigid",
         "processors": "super_block_world:dungeon"
       }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "super_block_world:dungeon/corridor_05",
+        "projection": "rigid",
+        "processors": "super_block_world:dungeon"
+      }
     }
   ]
 }

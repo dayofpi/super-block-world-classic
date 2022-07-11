@@ -12,12 +12,16 @@ public class KoopaTroopaModel extends SinglePartEntityModel<AbstractKoopa> {
     private final ModelPart head;
     private final ModelPart rightWing;
     private final ModelPart leftWing;
+    private final ModelPart rightArm;
+    private final ModelPart leftArm;
 
     public KoopaTroopaModel(ModelPart modelPart) {
         this.root = modelPart.getChild("root");
-        this.head = root.getChild("head");
-        this.leftWing = root.getChild("left_wing");
-        this.rightWing = root.getChild("right_wing");
+        this.head = this.root.getChild("head");
+        this.leftArm = this.root.getChild("left_arm");
+        this.rightArm = this.root.getChild("right_arm");
+        this.leftWing = this.root.getChild("left_wing");
+        this.rightWing = this.root.getChild("right_wing");
     }
 
     public static TexturedModelData getTexturedModelData() {
@@ -46,6 +50,11 @@ public class KoopaTroopaModel extends SinglePartEntityModel<AbstractKoopa> {
 
         this.rightWing.pitch = MathHelper.cos(progress) * 0.2F - 0.1F;
         this.leftWing.pitch = MathHelper.cos(progress) * 0.2F - 0.1F;
+
+        if (entity.isAttacking()) {
+            this.leftArm.pitch -= 0.7F;
+            this.rightArm.pitch -= 0.7F;
+        }
 
         this.head.pitch = headPitch * ((float) Math.PI / 180F);
         this.head.yaw = netHeadYaw * ((float) Math.PI / 180F);

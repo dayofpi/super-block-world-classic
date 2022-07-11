@@ -2,5 +2,13 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "super_block_world:item/warp_link"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "linked": 1
+      },
+      "model": "super_block_world:item/warp_link_linked"
+    }
+  ]
 }

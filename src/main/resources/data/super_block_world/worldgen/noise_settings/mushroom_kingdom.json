@@ -423,6 +423,22 @@
                       "if_true": {
                         "type": "minecraft:biome",
                         "biome_is": [
+                          "super_block_world:cheep_cheep_reef",
+                          "super_block_world:autumn_mountain"
+                        ]
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "super_block_world:shoregrass"
+                        }
+                      }
+                    },
+                    {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:biome",
+                        "biome_is": [
                           "super_block_world:dry_dry_desert"
                         ]
                       },
@@ -465,6 +481,41 @@
                             "type": "minecraft:block",
                             "result_state": {
                               "Name": "super_block_world:toadstool_grass"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:biome",
+                        "biome_is": [
+                          "super_block_world:bonnetlands"
+                        ]
+                      },
+                      "then_run": {
+                        "type": "minecraft:sequence",
+                        "sequence": [
+                          {
+                            "type": "minecraft:condition",
+                            "if_true": {
+                              "type": "minecraft:noise_threshold",
+                              "noise": "minecraft:surface",
+                              "min_threshold": -0.05,
+                              "max_threshold": 0.05
+                            },
+                            "then_run": {
+                              "type": "minecraft:block",
+                              "result_state": {
+                                "Name": "super_block_world:toadstool_turf"
+                              }
+                            }
+                          },
+                          {
+                            "type": "minecraft:block",
+                            "result_state": {
+                              "Name": "super_block_world:shoregrass"
                             }
                           }
                         ]
@@ -570,6 +621,23 @@
                       "type": "minecraft:block",
                       "result_state": {
                         "Name": "super_block_world:cherry_soil"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "super_block_world:bonnetlands",
+                        "super_block_world:cheep_cheep_reef",
+                        "super_block_world:autumn_mountain"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "super_block_world:shoresand"
                       }
                     }
                   }

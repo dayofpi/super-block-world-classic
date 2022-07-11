@@ -123,7 +123,7 @@ public class BooEntity extends TameableEntity implements Monster {
         double length = difference.length();
         difference = difference.normalize();
         double product = rotation.dotProduct(difference);
-        return player.isSneaking() && player.canSee(this) && !player.isCreative();
+        return product > 1.0D - 0.1D / length && player.canSee(this) && !player.isCreative();
     }
 
     @Override
@@ -146,7 +146,10 @@ public class BooEntity extends TameableEntity implements Monster {
                             this.heal(2.0F);
                             return ActionResult.CONSUME;
                         }
-                        else if (!this.getMainHandStack().isEmpty()) {
+                        else if (this.getMainHandStack().isEmpty() && !itemStack.isEmpty()) {
+                            this.setStackInHand(Hand.MAIN_HAND, itemStack.split(1));
+                        }
+                        else {
                             player.giveItemStack(this.getMainHandStack().copy());
                             this.setStackInHand(Hand.MAIN_HAND, ItemStack.EMPTY);
                         }
@@ -236,7 +239,6 @@ public class BooEntity extends TameableEntity implements Monster {
         nbt.putBoolean("Shy", this.isShy());
         nbt.putBoolean("Weakened", this.isWeakened());
         nbt.putByte("BooColor", (byte) this.getBooColor().getId());
-
     }
 
     @Override

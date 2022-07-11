@@ -41,6 +41,7 @@ public class FakeBlockEntity extends HostileEntity {
     }
 
     protected void initGoals() {
+        this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));

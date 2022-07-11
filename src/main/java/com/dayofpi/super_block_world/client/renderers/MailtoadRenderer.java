@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.client.features.ToadSkinFeatureRenderer;
 import com.dayofpi.super_block_world.client.models.ToadModel;
 import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.passive.MailtoadEntity;
@@ -12,9 +13,9 @@ import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class MailtoadRenderer extends MobEntityRenderer<MailtoadEntity, ToadModel<MailtoadEntity>> {
-    public MailtoadRenderer(EntityRendererFactory.Context context) {
-        super(context, new ToadModel<>(context.getPart(ModModelLayers.TOAD)), 0.5f);
-        this.shadowRadius = 0.5f;
+    public MailtoadRenderer(EntityRendererFactory.Context ctx) {
+        super(ctx, new ToadModel<>(ctx.getPart(ModModelLayers.TOAD)), 0.5f);
+        this.addFeature(new ToadSkinFeatureRenderer<>(this));
     }
 
     @Override

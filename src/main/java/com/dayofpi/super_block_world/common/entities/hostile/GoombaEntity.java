@@ -36,7 +36,6 @@ public class GoombaEntity extends HostileEntity {
     private static final TrackedData<Boolean> GROWABLE;
     private static final TrackedData<Boolean> GOLD;
     public final AnimationState walkingAnimationState = new AnimationState();
-    public final AnimationState squishedAnimationState = new AnimationState();
 
     static {
         SIZE = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -156,7 +155,6 @@ public class GoombaEntity extends HostileEntity {
         if (this.world.isClient) {
             if (this.deathTime > 0) {
                 this.walkingAnimationState.stop();
-                this.squishedAnimationState.startIfNotRunning(this.age);
             } else if (this.shouldWalk()) {
                 this.walkingAnimationState.startIfNotRunning(this.age);
             }
@@ -203,13 +201,11 @@ public class GoombaEntity extends HostileEntity {
 
     private void initializeGoombaTower(ServerWorldAccess world, LocalDifficulty difficulty) {
         GoombaEntity goombaEntity = ModEntities.GOOMBA.create(world.toServerWorld());
-        for (int i = 0; i < random.nextInt(5) + 1; ++i) {
-            if (goombaEntity != null) {
-                goombaEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0F);
-                goombaEntity.initialize(world, difficulty, SpawnReason.JOCKEY, null, null);
-                goombaEntity.setSize(1);
-                goombaEntity.startRiding(this, true);
-            }
+        if (goombaEntity != null) {
+            goombaEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0F);
+            goombaEntity.initialize(world, difficulty, SpawnReason.JOCKEY, null, null);
+            goombaEntity.setSize(1);
+            goombaEntity.startRiding(this, true);
         }
     }
 
@@ -224,14 +220,6 @@ public class GoombaEntity extends HostileEntity {
             this.setSize(2);
         } else this.initializeGoomba(world, difficulty);
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
-    }
-
-    @Override
-    public void handleStatus(byte status) {
-        if (status == EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES) {
-
-        }
-        super.handleStatus(status);
     }
 
     protected void initializeGoomba(ServerWorldAccess world, LocalDifficulty difficulty) {

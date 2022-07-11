@@ -49,11 +49,9 @@ public class GoombaModel<T extends MobEntity> extends SinglePartEntityModel<T> {
 
         if (entity instanceof GoombaEntity) {
             this.updateAnimation(((GoombaEntity) entity).walkingAnimationState, isWinged ? ModAnimations.Goomba.FLY : ModAnimations.Goomba.WALK, animationProgress);
-            this.updateAnimation(((GoombaEntity) entity).squishedAnimationState, ModAnimations.Goomba.SQUISH, animationProgress);
         }
         else if (entity instanceof GladGoombaEntity) {
             this.updateAnimation(((GladGoombaEntity) entity).walkingAnimationState, isWinged ? ModAnimations.Goomba.FLY : ModAnimations.Goomba.WALK, animationProgress);
-            this.updateAnimation(((GladGoombaEntity) entity).squishedAnimationState, ModAnimations.Goomba.SQUISH, animationProgress);
             this.updateAnimation(((GladGoombaEntity) entity).sittingAnimationState, ModAnimations.Goomba.SIT, animationProgress);
         }
         float progress = animationProgress * 5F * 0.017453292F;

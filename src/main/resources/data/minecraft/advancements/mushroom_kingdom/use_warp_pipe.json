@@ -14,19 +14,10 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:mushroom_kingdom/bronze_age",
+  "parent": "minecraft:mushroom_kingdom/hit_block",
   "criteria": {
     "warp": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "super_block_world:green_warp_pipe"
-            ]
-          }
-        ]
-      }
+      "trigger": "super_block_world:use_warp_pipe"
     }
   },
   "requirements": [

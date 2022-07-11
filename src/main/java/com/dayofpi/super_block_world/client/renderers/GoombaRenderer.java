@@ -12,6 +12,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 
 @Environment(EnvType.CLIENT)
 public class GoombaRenderer<T extends GoombaEntity> extends MobEntityRenderer<T, GoombaModel<T>> {
@@ -24,13 +25,18 @@ public class GoombaRenderer<T extends GoombaEntity> extends MobEntityRenderer<T,
     }
 
     @Override
-    public void render(T entity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
+    public void render(T entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int i) {
         this.shadowRadius = 0.25F * entity.getSize() + 0.25F;
-        super.render(entity, f, g, matrixStack, vertexConsumerProvider, i);
+        super.render(entity, yaw, tickDelta, matrices, vertexConsumerProvider, i);
     }
 
     @Override
     protected void scale(T entity, MatrixStack matrices, float amount) {
+        if (entity.isDead()) {
+            float h = MathHelper.lerp(entity.deathTime * 0.15F, 1.0F, 1.2F);
+            float v = MathHelper.lerp(entity.deathTime * 0.15F, 1.0F, 0.25F);
+            matrices.scale(MathHelper.clamp(h, 1.0F, 1.2F), MathHelper.clamp(v, 0.25F, 1.0F), MathHelper.clamp(h, 1.0F, 1.2F));
+        }
         if (entity.getSize() == 0) {
             matrices.scale(0.5F, 0.5F, 0.5F);
         } else if (entity.getSize() == 2) {

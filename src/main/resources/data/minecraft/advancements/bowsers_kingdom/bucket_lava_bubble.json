@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:lava_bucket"
+    },
+    "title": {
+      "translate": "advancements.sbw.bucket_lava_bubble.title"
+    },
+    "description": {
+      "translate": "advancements.sbw.bucket_lava_bubble.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:bowsers_kingdom/root",
+  "criteria": {
+    "bucket_lava_bubble": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:bucket"
+          ]
+        },
+        "entity": {
+          "type": "super_block_world:lava_bubble"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "bucket_lava_bubble"
+    ]
+  ]
+}

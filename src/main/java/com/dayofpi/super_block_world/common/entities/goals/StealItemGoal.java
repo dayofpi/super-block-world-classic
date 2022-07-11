@@ -8,6 +8,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 
+import java.util.EnumSet;
 import java.util.List;
 
 public class StealItemGoal extends Goal {
@@ -15,6 +16,7 @@ public class StealItemGoal extends Goal {
 
     public StealItemGoal(BooEntity boo) {
         this.boo = boo;
+        this.setControls(EnumSet.of(Goal.Control.MOVE));
     }
 
     @Override

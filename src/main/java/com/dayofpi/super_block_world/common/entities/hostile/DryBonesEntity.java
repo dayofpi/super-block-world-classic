@@ -39,7 +39,6 @@ public class DryBonesEntity extends HostileEntity {
     public final AnimationState walkingAnimationState = new AnimationState();
     public final AnimationState chasingAnimationState = new AnimationState();
     public final AnimationState breakingAnimationState = new AnimationState();
-    public final AnimationState deadAnimationState = new AnimationState();
     public final AnimationState wakingUpAnimationState = new AnimationState();
 
     public DryBonesEntity(EntityType<? extends HostileEntity> entityType, World world) {
@@ -96,7 +95,7 @@ public class DryBonesEntity extends HostileEntity {
                 this.chasingAnimationState.stop();
                 this.idlingAnimationState.stop();
             } else {
-                if (this.isDead()) {
+                if (this.deathTime > 0) {
                     this.idlingAnimationState.stop();
                     this.breakingAnimationState.startIfNotRunning(this.age);
                 }

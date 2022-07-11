@@ -19,6 +19,8 @@ public class ModModelLayers {
         return new EntityModelLayer(new Identifier(Main.MOD_ID, id), name);
     }
 
+    public static final EntityModelLayer LAVA_BUBBLE = createMain("lava_bubble");
+    public static final EntityModelLayer LAVA_BUBBLE_OUTER = create("lava_bubble", "outer");
     public static final EntityModelLayer TOAD = createMain("toad");
     public static final EntityModelLayer MUMMY_ME = createMain("mummy_me");
     public static final EntityModelLayer MECHAKOOPA = createMain("mechakoopa");
@@ -57,6 +59,8 @@ public class ModModelLayers {
     public static final EntityModelLayer UNAGI = createMain("unagi");
 
     public static void register() {
+        EntityModelLayerRegistry.registerModelLayer(LAVA_BUBBLE, LavaBubbleModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(LAVA_BUBBLE_OUTER, LavaBubbleModel::getOuterTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(TOAD, ToadModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(MUMMY_ME, MummyMeModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(MECHAKOOPA, MechakoopaModel::getTexturedModelData);

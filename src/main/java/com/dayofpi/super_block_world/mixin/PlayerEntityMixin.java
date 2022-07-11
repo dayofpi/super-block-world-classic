@@ -1,7 +1,10 @@
 package com.dayofpi.super_block_world.mixin;
 
+import com.dayofpi.super_block_world.common.block_entities.WarpPipeBE;
+import com.dayofpi.super_block_world.common.blocks.WarpPipeBlock;
 import com.dayofpi.super_block_world.util.FormManager;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -28,15 +31,62 @@ import java.util.UUID;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
-    @Shadow @Final private PlayerAbilities abilities;
-
-    @Shadow protected abstract void dropShoulderEntities();
+    @Shadow
+    @Final
+    private PlayerAbilities abilities;
+    private int pipeCooldown;
 
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    @Inject(at=@At("HEAD"), method = "damage", cancellable = true)
+    @Shadow
+    protected abstract void dropShoulderEntities();
+
+    public void setSneaking(boolean sneaking) {
+        if (sneaking) {
+            this.warpToPipe();
+        }
+        super.setSneaking(sneaking);
+    }
+
+    private void warpToPipe() {
+        if (this.getPipeCooldown() != 0)
+            return;
+        BlockPos blockPos = this.getBlockPos();
+        BlockPos floor = blockPos.down();
+        BlockPos originPos = null;
+        if (WarpPipeBlock.canEnterWarpPipe(world, blockPos))
+            originPos = blockPos;
+        else if (WarpPipeBlock.canEnterWarpPipe(world, floor))
+            originPos = floor;
+        if (originPos != null) {
+            this.warpToPipe(originPos);
+        }
+    }
+
+    private void warpToPipe(BlockPos originPos) {
+        BlockPos destinPos = null;
+        BlockEntity blockEntity = world.getBlockEntity(originPos);
+        if (blockEntity instanceof WarpPipeBE warpPipeBE) {
+            destinPos = warpPipeBE.destinPos;
+        }
+        if (destinPos == null)
+            return;
+        WarpPipeBlock.warp((PlayerEntity)(Object)this, destinPos, world);
+        this.setPipeCooldown(20);
+
+    }
+
+    public int getPipeCooldown() {
+        return pipeCooldown;
+    }
+
+    public void setPipeCooldown(int cooldown) {
+        this.pipeCooldown = cooldown;
+    }
+
+    @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
     public void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (this.isGoo()) {
             if (FormManager.isGooMeImmuneTo(source)) {
@@ -47,7 +97,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             }
             this.despawnCounter = 0;
             if (this.isDead()) {
-               cir.setReturnValue(false);
+                cir.setReturnValue(false);
             }
             if (!this.world.isClient) {
                 this.dropShoulderEntities();
@@ -71,11 +121,21 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         }
     }
 
-    @Inject(at=@At("HEAD"), method = "onDeath")
+    @Override
+    public void baseTick() {
+        super.baseTick();
+        if (this.isAlive()) {
+            if (this.getPipeCooldown() > 0) {
+                --this.pipeCooldown;
+            }
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "onDeath")
     public void onDeath(CallbackInfo ci) {
         if (this.isGoo()) {
             if (!this.world.isClient) {
-                Entity entity = ((ServerWorld)this.world).getEntity(this.getGooMeUuid());
+                Entity entity = ((ServerWorld) this.world).getEntity(this.getGooMeUuid());
                 if (entity != null)
                     entity.discard();
             }
@@ -83,19 +143,19 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         }
     }
 
-    @Inject(at=@At("TAIL"), method = "initDataTracker")
+    @Inject(at = @At("TAIL"), method = "initDataTracker")
     protected void initDataTracker(CallbackInfo ci) {
         this.dataTracker.startTracking(FormManager.GOO_ME_UUID, Optional.empty());
     }
 
-    @Inject(at=@At("TAIL"), method = "writeCustomDataToNbt")
+    @Inject(at = @At("TAIL"), method = "writeCustomDataToNbt")
     protected void writeCustomDataToNbt(NbtCompound nbt, CallbackInfo ci) {
         if (this.getGooMeUuid() != null) {
             nbt.putUuid("GooMe", this.getGooMeUuid());
         }
     }
 
-    @Inject(at=@At("TAIL"), method = "readCustomDataFromNbt")
+    @Inject(at = @At("TAIL"), method = "readCustomDataFromNbt")
     protected void readCustomDataFromNbt(NbtCompound nbt, CallbackInfo ci) {
         UUID uUID;
         if (nbt.containsUuid("GooMe")) {
@@ -106,8 +166,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         if (uUID != null) {
             try {
                 this.setGooMeUuid(uUID);
-            }
-            catch (Throwable ignored) {
+            } catch (Throwable ignored) {
             }
         }
     }

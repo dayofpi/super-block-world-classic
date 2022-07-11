@@ -186,17 +186,6 @@ public class KingBooEntity extends ModBossEntity {
             return false;
         return super.damage(source, amount);
     }
-
-    @Override
-    public int getMaxLookPitchChange() {
-        return super.getMaxLookPitchChange();
-    }
-
-    @Override
-    public int getMaxHeadRotation() {
-        return super.getMaxHeadRotation();
-    }
-
     @Override
     public boolean canBreatheInWater() {
         return true;

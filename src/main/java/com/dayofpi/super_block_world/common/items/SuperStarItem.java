@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class SuperStarItem extends Item {
-    private static final StatusEffectInstance STAR_POWER_INSTANCE = new StatusEffectInstance(Main.STAR_POWER, 500, 0, false, false, true);
+    private static final StatusEffectInstance STAR_POWER_INSTANCE = new StatusEffectInstance(Main.STAR_POWER, 490, 0, false, false, true);
 
     public SuperStarItem(Settings settings) {
         super(settings);
@@ -34,7 +34,7 @@ public class SuperStarItem extends Item {
 
         if (!user.hasStatusEffect(Main.STAR_POWER)) {
             world.playSound(null, user.getBlockPos(), Sounds.MUSIC_STARMAN_LEAD, SoundCategory.MUSIC, 1.0F, 1.0F);
-            user.addStatusEffect(new StatusEffectInstance(Main.STAR_POWER, 500, 0, false, false, true));
+            user.addStatusEffect(new StatusEffectInstance(Main.STAR_POWER, 490, 0, false, false, true));
             user.incrementStat(Stats.USED.getOrCreateStat(this));
             if (!user.getAbilities().creativeMode) {
                 itemStack.decrement(1);

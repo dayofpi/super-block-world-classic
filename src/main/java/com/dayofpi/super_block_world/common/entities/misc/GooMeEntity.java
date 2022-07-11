@@ -26,7 +26,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
@@ -126,9 +125,6 @@ public class GooMeEntity extends TameableEntity {
             player.getDataTracker().set(FormManager.GOO_ME_UUID, Optional.of(this.getUuid()));
             this.swap(player, blockPos, playerPos);
             ServerPlayerEntity serverPlayerEntity;
-            if (!(world.isClient || (serverPlayerEntity = (ServerPlayerEntity)player).getSpawnPointDimension() == world.getRegistryKey() && playerPos.equals(serverPlayerEntity.getSpawnPointPosition()))) {
-                serverPlayerEntity.setSpawnPoint(world.getRegistryKey(), new BlockPos(playerPos), 0.0f, false, true);
-            }
             return ActionResult.success(this.world.isClient);
         }
         return ActionResult.PASS;

@@ -1,5 +1,5 @@
 {
-  "temperature": 0.9,
+  "temperature": 2,
   "downfall": 0.4,
   "precipitation": "none",
   "effects": {
@@ -30,12 +30,6 @@
   },
   "spawners": {
     "creature": [
-      {
-        "type": "super_block_world:koopa_troopa",
-        "weight": 5,
-        "minCount": 2,
-        "maxCount": 4
-      }
     ],
     "monster": [
       {
@@ -49,6 +43,18 @@
         "weight": 100,
         "minCount": 2,
         "maxCount": 5
+      },
+      {
+        "type": "super_block_world:koopa_troopa",
+        "weight": 25,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:paratroopa",
+        "weight": 25,
+        "minCount": 3,
+        "maxCount": 4
       },
       {
         "type": "super_block_world:dry_bones",
@@ -67,6 +73,12 @@
         "weight": 25,
         "minCount": 3,
         "maxCount": 4
+      },
+      {
+        "type": "super_block_world:lava_bubble",
+        "weight": 20,
+        "minCount": 2,
+        "maxCount": 3
       }
     ],
     "water_creature": []
@@ -86,10 +98,11 @@
       "super_block_world:ore_royalite"
     ],
     [
-      "super_block_world:block_pile"
+      "super_block_world:block_pile",
+      "super_block_world:block_line_hardstone"
     ],
     [
-      "super_block_world:block_line_hardstone",
+      "super_block_world:warp_pipe",
       "super_block_world:patch_star_cluster_common"
     ],
     [

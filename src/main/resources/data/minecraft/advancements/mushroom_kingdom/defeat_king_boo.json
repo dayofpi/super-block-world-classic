@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:mushroom_kingdom/bottle_ghost",
+  "parent": "minecraft:mushroom_kingdom/ghost_house",
   "criteria": {
     "defeat_king_boo": {
       "trigger": "minecraft:player_killed_entity",

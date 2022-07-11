@@ -20,7 +20,6 @@
     "MinecartEntityMixin",
     "MushroomBlockMixin",
     "PlayerEntityMixin",
-    "RabbitEntityMixin",
     "SensorTypeMixin",
     "SignTypeAccessor",
     "TntBlockInterface",

@@ -50,7 +50,6 @@ public class DryBonesPileBlock extends BlockWithEntity {
 
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-        super.onBlockAdded(state, world, pos, oldState, notify);
         if (world.getBlockState(pos.down()).isIn(BlockTags.SOUL_FIRE_BASE_BLOCKS)) {
             world.createAndScheduleBlockTick(pos, this, 2);
             ((ServerWorld)world).spawnParticles(ParticleTypes.SOUL_FIRE_FLAME, pos.getX() + 0.5D, pos.getY() + 0.25D, pos.getZ() + 0.5D, 4, 0.4D, 0.2D, 0.4D, 0.0D);
@@ -59,10 +58,11 @@ public class DryBonesPileBlock extends BlockWithEntity {
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        super.scheduledTick(state, world, pos, random);
-        world.setBlockState(pos, state.with(ALIVE, true));
-        world.spawnParticles(ParticleTypes.SMOKE, pos.getX() + 0.5D, pos.getY() + 0.25D, pos.getZ() + 0.5D, 4, 0.4D, 0.2D, 0.4D, 0.0D);
-        world.playSound(null, pos, Sounds.ENTITY_DRY_BONES_WAKE, SoundCategory.HOSTILE, 1.0F, 1.0F);
+        if (!state.get(ALIVE)) {
+            world.setBlockState(pos, state.with(ALIVE, true));
+            world.spawnParticles(ParticleTypes.SMOKE, pos.getX() + 0.5D, pos.getY() + 0.25D, pos.getZ() + 0.5D, 4, 0.4D, 0.2D, 0.4D, 0.0D);
+            world.playSound(null, pos, Sounds.ENTITY_DRY_BONES_WAKE, SoundCategory.HOSTILE, 1.0F, 1.0F);
+        }
     }
 
     @Nullable

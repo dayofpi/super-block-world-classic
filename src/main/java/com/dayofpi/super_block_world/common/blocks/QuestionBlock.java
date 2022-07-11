@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.common.blocks;
 
 import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.WorldInit;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.block_entities.QuestionBlockBE;
 import com.dayofpi.super_block_world.registry.ModBlocks;
@@ -85,7 +86,10 @@ public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider 
 
     public static List<ItemStack> defaultItems(ServerWorld world, BlockState state, BlockPos blockPos) {
         LootContext lootContext = new LootContext.Builder(world).parameter(LootContextParameters.BLOCK_STATE, state).parameter(LootContextParameters.TOOL, ItemStack.EMPTY).parameter(LootContextParameters.ORIGIN, Vec3d.ofCenter(blockPos)).build(LootContextTypes.BLOCK);
-        LootTable lootTable = lootContext.getWorld().getServer().getLootManager().getTable(new Identifier(Main.MOD_ID, "question_blocks/default"));
+        Identifier mushroom_kingdom = new Identifier(Main.MOD_ID,"question_blocks/default");
+        Identifier bowsers_kingdom = new Identifier(Main.MOD_ID,"question_blocks/bowsers_kingdom");
+        LootTable lootTable = lootContext.getWorld().getServer().getLootManager().getTable(world.getRegistryKey() == WorldInit.BOWSERS_KINGDOM_WORLD ? bowsers_kingdom : mushroom_kingdom);
+
         return lootTable.generateLoot(lootContext);
     }
 
@@ -193,7 +197,7 @@ public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider 
         if (world.isClient)
             return;
         if (entity instanceof ServerPlayerEntity)
-            ModCriteria.HIT_BLOCK_WITH_HEAD.trigger((ServerPlayerEntity) entity);
+            ModCriteria.JUMP_UNDER_BLOCK.trigger((ServerPlayerEntity) entity);
         world.createAndScheduleBlockTick(blockPos, this, 1);
     }
 

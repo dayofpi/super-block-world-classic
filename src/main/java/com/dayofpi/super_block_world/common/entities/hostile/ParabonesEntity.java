@@ -21,8 +21,6 @@ import net.minecraft.world.World;
 public class ParabonesEntity extends DryBonesEntity implements Flutterer {
     public float flapProgress;
     public float maxWingDeviation;
-    public float prevMaxWingDeviation;
-    public float prevFlapProgress;
     private float flapSpeed = 1.0f;
     private float flapEffectTime = 1.0f;
     public final AnimationState flyingAnimationState = new AnimationState();
@@ -59,8 +57,6 @@ public class ParabonesEntity extends DryBonesEntity implements Flutterer {
     }
 
     private void flapWings() {
-        this.prevFlapProgress = this.flapProgress;
-        this.prevMaxWingDeviation = this.maxWingDeviation;
         this.maxWingDeviation += (float)(this.onGround || this.hasVehicle() ? -1 : 4) * 0.3f;
         this.maxWingDeviation = MathHelper.clamp(this.maxWingDeviation, 0.0f, 1.0f);
         if (!this.onGround && this.flapSpeed < 1.0f) {

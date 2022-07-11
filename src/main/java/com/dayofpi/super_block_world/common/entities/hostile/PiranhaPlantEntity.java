@@ -10,6 +10,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.RevengeGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -51,6 +52,7 @@ public class PiranhaPlantEntity extends HostileEntity {
 
     @Override
     protected void initGoals() {
+        this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(2, new PiranhaPlantAttackGoal(this, 0.0D, false));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, FuzzyEntity.class, false));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, YoshiEntity.class, false));

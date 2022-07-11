@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.brains.FuzzyBrain;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.google.common.collect.ImmutableList;
@@ -40,7 +41,7 @@ public class FuzzyEntity extends HostileEntity {
 
     public FuzzyEntity(EntityType<? extends FuzzyEntity> entityType, World world) {
         super(entityType, world);
-        this.experiencePoints = 1;
+        this.experiencePoints = 3;
         this.moveControl = new FlightMoveControl(this, 10, false);
     }
 
@@ -141,8 +142,7 @@ public class FuzzyEntity extends HostileEntity {
         if (this.isAlive()) {
             List<ItemEntity> list = this.getWorld().getEntitiesByClass(ItemEntity.class, this.getBoundingBox(), EntityPredicates.VALID_ENTITY);
             if (!list.isEmpty()) {
-                this.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1.0F, 0.9F);
-                this.playSound(SoundEvents.ENTITY_ITEM_BREAK, 1.0F, 1.0F);
+                this.playSound(Sounds.ENTITY_FUZZY_BREAK_ITEM, 1.0F, this.getSoundPitch());
                 list.get(0).discard();
             }
         }

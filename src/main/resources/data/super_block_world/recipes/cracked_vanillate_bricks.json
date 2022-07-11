@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "super_block_world:vanillate_bricks"
+  },
+  "result": "super_block_world:cracked_vanillate_bricks",
+  "experience": 0.1,
+  "cookingtime": 200
+}

@@ -27,8 +27,8 @@ public class FreezeLavaFeature extends Feature<DefaultFeatureConfig> {
         BlockPos blockPos = context.getOrigin();
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         BlockPos.Mutable mutable2 = new BlockPos.Mutable();
-        for (int i = 0; i < 16; ++i) {
-            for (int j = 0; j < 16; ++j) {
+        for (int i = 0; i < 32; ++i) {
+            for (int j = 0; j < 32; ++j) {
                 int k = blockPos.getX() + i;
                 int l = blockPos.getZ() + j;
                 int m = blockPos.getY();

@@ -9,7 +9,7 @@
     "description": {
       "translate": "advancements.sbw.wear_princess_crown.description"
     },
-    "frame": "goal",
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false

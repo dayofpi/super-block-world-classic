@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:bowsers_kingdom/root",
+  "parent": "minecraft:bowsers_kingdom/wear_princess_crown",
   "criteria": {
     "king_bob_omb": {
       "trigger": "minecraft:player_killed_entity",

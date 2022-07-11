@@ -19,7 +19,8 @@ public class WorldInit {
     private static final Identifier MUSHROOM_KINGDOM = new Identifier(Main.MOD_ID, "mushroom_kingdom");
     private static final Identifier BOWSERS_KINGDOM = new Identifier(Main.MOD_ID, "bowsers_kingdom");
 
-    private static RegistryKey<World> MUSHROOM_KINGDOM_WORLD;
+    public static RegistryKey<World> MUSHROOM_KINGDOM_WORLD;
+    public static RegistryKey<World> BOWSERS_KINGDOM_WORLD;
     private static final Identifier PORTAL_FRAME_TESTER = new Identifier(Main.MOD_ID, "warp_portal");
 
     public static void initialize() {
@@ -31,6 +32,7 @@ public class WorldInit {
         CustomPortalBuilder.beginPortal().frameBlock(ModBlocks.CORRUPTED_WARP_FRAME).lightWithItem(ModItems.ZTAR).destDimID(WorldInit.BOWSERS_KINGDOM).tintColor(9967931).customFrameTester(PORTAL_FRAME_TESTER).registerInPortalAmbienceSound(playerEntity -> new CPASoundEventData(Sounds.BLOCK_PORTAL_TRIGGER, 1.0F, 1.0F)).registerPostTPPortalAmbience(playerEntity -> new CPASoundEventData(Sounds.BLOCK_DARK_PORTAL_TRAVEL, 1.0F, 1.0F)).registerPortal();
 
         MUSHROOM_KINGDOM_WORLD = RegistryKey.of(Registry.WORLD_KEY, MUSHROOM_KINGDOM);
+        BOWSERS_KINGDOM_WORLD = RegistryKey.of(Registry.WORLD_KEY, BOWSERS_KINGDOM);
         ServerLifecycleEvents.SERVER_STARTED.register(server -> {
             Main.LOGGER.info("Preparing dimension for server");
 

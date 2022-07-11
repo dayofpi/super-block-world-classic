@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": true
   },
-  "parent": "minecraft:mushroom_kingdom/use_warp_pipe",
+  "parent": "minecraft:mushroom_kingdom/bronze_age",
   "criteria": {
     "white_flag": {
       "trigger": "minecraft:item_used_on_block",

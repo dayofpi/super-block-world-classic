@@ -1,20 +1,14 @@
 package com.dayofpi.super_block_world.common.blocks;
 
 import com.dayofpi.super_block_world.registry.ModBlocks;
-import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.block.*;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-
-import java.util.List;
+import net.minecraft.world.WorldEvents;
 
 @SuppressWarnings("deprecation")
 public class SmileySunflowerBlock extends PlantBlock {
@@ -27,11 +21,6 @@ public class SmileySunflowerBlock extends PlantBlock {
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         boolean particles = false;
-        List<ItemEntity> seedList = world.getEntitiesByClass(ItemEntity.class, Box.from(Vec3d.ofCenter(pos)).expand(7, 7, 7), entity -> entity.getStack().isOf(ModItems.SMILEY_SUNFLOWER_SEED));
-
-        if (random.nextInt(8) == 0 && seedList.isEmpty())
-            Block.dropStack(world, pos, new ItemStack(ModItems.SMILEY_SUNFLOWER_SEED));
-
         Iterable<BlockPos> range = BlockPos.iterateOutwards(pos, 7, 7, 7);
         for (BlockPos blockPos : range) {
             if (world.getBlockState(blockPos.up()).isAir()) {
@@ -51,7 +40,7 @@ public class SmileySunflowerBlock extends PlantBlock {
             }
         }
         if (particles)
-            world.syncWorldEvent(1505, pos, 0);
+            world.syncWorldEvent(WorldEvents.BONE_MEAL_USED, pos, 0);
     }
 
     @Override

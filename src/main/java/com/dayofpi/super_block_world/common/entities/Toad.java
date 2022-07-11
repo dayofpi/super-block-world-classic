@@ -10,4 +10,6 @@ public interface Toad {
     void setToadState(int state);
 
     int getAttentionCooldown();
+
+    boolean isToadette();
 }

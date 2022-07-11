@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.client.features.ToadSkinFeatureRenderer;
 import com.dayofpi.super_block_world.client.models.ToadModel;
 import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.passive.ToadEntity;
@@ -25,7 +26,7 @@ import net.minecraft.util.math.Vec3f;
 public class ToadRenderer extends MobEntityRenderer<ToadEntity, ToadModel<ToadEntity>> {
     public ToadRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new ToadModel<>(ctx.getPart(ModModelLayers.TOAD)), 0.5f);
-        this.shadowRadius = 0.5f;
+        this.addFeature(new ToadSkinFeatureRenderer<>(this));
     }
 
     @Override

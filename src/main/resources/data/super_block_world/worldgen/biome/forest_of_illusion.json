@@ -29,12 +29,6 @@
         "weight": 5,
         "minCount": 2,
         "maxCount": 4
-      },
-      {
-        "type": "super_block_world:koopa_troopa",
-        "weight": 5,
-        "minCount": 2,
-        "maxCount": 4
       }
     ],
     "monster": [
@@ -43,6 +37,12 @@
         "weight": 10,
         "minCount": 1,
         "maxCount": 2
+      },
+      {
+        "type": "super_block_world:koopa_troopa",
+        "weight": 50,
+        "minCount": 2,
+        "maxCount": 4
       },
       {
         "type": "super_block_world:goomba",
@@ -158,6 +158,7 @@
     ],
     [
       "super_block_world:patch_star_cluster",
+      "super_block_world:warp_pipe",
       "super_block_world:underwater_pipe"
     ],
     [

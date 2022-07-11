@@ -1,8 +1,12 @@
 package com.dayofpi.super_block_world.mixin;
 
+import com.dayofpi.super_block_world.registry.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomBlock;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemPlacementContext;
@@ -15,6 +19,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.spongepowered.asm.mixin.Mixin;
@@ -37,6 +43,36 @@ public class MushroomBlockMixin extends Block {
     @Inject(at = @At("HEAD"), method = "getStateForNeighborUpdate", cancellable = true)
     private void getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
         cir.setReturnValue(state);
+    }
+
+    private boolean isBouncy(BlockState blockState) {
+        return blockState.isOf(Blocks.RED_MUSHROOM_BLOCK) || blockState.isOf(ModBlocks.ORANGE_MUSHROOM_BLOCK);
+    }
+
+    @Override
+    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+        if (entity.bypassesLandingEffects()) {
+            super.onLandedUpon(world, state, pos, entity, fallDistance);
+        } else if (this.isBouncy(state)) {
+            super.onLandedUpon(world, state, pos, entity, fallDistance * 0.5f);
+        }
+    }
+
+    @Override
+    public void onEntityLand(BlockView world, Entity entity) {
+        if (entity.bypassesLandingEffects()) {
+            super.onEntityLand(world, entity);
+        } else if (this.isBouncy(world.getBlockState(entity.getLandingPos()))){
+            this.bounce(entity);
+        }
+    }
+
+    private void bounce(Entity entity) {
+        Vec3d vec3d = entity.getVelocity();
+        if (vec3d.y < 0.0) {
+            double d = entity instanceof LivingEntity ? 1.0 : 0.8;
+            entity.setVelocity(vec3d.x, -vec3d.y * d, vec3d.z);
+        }
     }
 
     @Override

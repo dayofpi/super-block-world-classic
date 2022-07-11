@@ -58,6 +58,27 @@
           }
         },
         {
+          "biome": "super_block_world:bonnetlands",
+          "parameters": {
+            "temperature": [
+              -0.2,
+              -0.1
+            ],
+            "humidity": [
+              0.0,
+              0.1
+            ],
+            "continentalness": [
+              -0.15,
+              0.0
+            ],
+            "erosion": -0.35,
+            "weirdness": 0.2,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
           "biome": "super_block_world:moo_moo_meadow",
           "parameters": {
             "temperature": [

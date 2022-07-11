@@ -170,11 +170,6 @@ public class DryBonesShellEntity extends MobEntity implements Mount {
         return this.getPrimaryPassenger() instanceof LivingEntity;
     }
 
-    @Override
-    protected void dropInventory() {
-        super.dropInventory();
-    }
-
     @Nullable
     @Override
     public ItemStack getPickBlockStack() {

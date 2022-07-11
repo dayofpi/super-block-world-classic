@@ -53,7 +53,6 @@ public class DryBonesModel extends SinglePartEntityModel<DryBonesEntity> {
         this.updateAnimation(entity.walkingAnimationState, ModAnimations.DryBones.WALK, animationProgress);
         this.updateAnimation(entity.breakingAnimationState, ModAnimations.DryBones.BREAK, animationProgress);
         this.updateAnimation(entity.wakingUpAnimationState, ModAnimations.DryBones.WAKEUP, animationProgress);
-        this.updateAnimation(entity.deadAnimationState, ModAnimations.DryBones.DEAD, animationProgress);
         if (isWinged) {
             this.updateAnimation(((ParabonesEntity) entity).flyingAnimationState, ModAnimations.KoopaTroopa.FLY, animationProgress);
         }

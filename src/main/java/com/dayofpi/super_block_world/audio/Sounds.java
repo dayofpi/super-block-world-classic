@@ -10,7 +10,6 @@ import net.minecraft.util.registry.Registry;
 @Environment(EnvType.CLIENT)
 public class Sounds {
     public static final SoundEvent AMBIENT_CAVE = createSound("ambient.cave");
-    public static final SoundEvent BLOCK_STONE_TORCH_AMBIENT = createSound("block.stone_torch.ambient");
     public static final SoundEvent BLOCK_BELL_CAP_FALL = createSound("block.bell_cap.fall");
     public static final SoundEvent BLOCK_BELL_CAP_HIT = createSound("block.bell_cap.hit");
     public static final SoundEvent BLOCK_BELL_CAP_JINGLE = createSound("block.bell_cap.jingle");
@@ -57,12 +56,14 @@ public class Sounds {
     public static final SoundEvent BLOCK_SHOREGRASS_STEP = createSound("block.shoregrass.step");
     public static final SoundEvent BLOCK_SPIKE_TRAP_EXTEND = createSound("block.spike_trap.extend");
     public static final SoundEvent BLOCK_SPIKE_TRAP_RETRACT = createSound("block.spike_trap.retract");
+    public static final SoundEvent BLOCK_STONE_TORCH_AMBIENT = createSound("block.stone_torch.ambient");
     public static final SoundEvent BLOCK_TOADSTONE_BREAK = createSound("block.toadstone.break");
     public static final SoundEvent BLOCK_TOADSTONE_FALL = createSound("block.toadstone.fall");
     public static final SoundEvent BLOCK_TOADSTONE_HIT = createSound("block.toadstone.hit");
     public static final SoundEvent BLOCK_TOADSTONE_PLACE = createSound("block.toadstone.place");
     public static final SoundEvent BLOCK_TOADSTONE_STEP = createSound("block.toadstone.step");
     public static final SoundEvent BLOCK_TRAMPOLINE_RELEASE = createSound("block.trampoline.release");
+    public static final SoundEvent BLOCK_WARP_PIPE_TELEPORT = createSound("block.warp_pipe.teleport");
     public static final SoundEvent BLOCK_YOSHI_EGG_HATCH = createSound("block.yoshi_egg.hatch");
     public static final SoundEvent ENTITY_BIG_GOOMBA_DEATH = createSound("entity.big_goomba.death");
     public static final SoundEvent ENTITY_BIG_GOOMBA_HURT = createSound("entity.big_goomba.hurt");
@@ -95,6 +96,7 @@ public class Sounds {
     public static final SoundEvent ENTITY_DRY_BONES_WAKE = createSound("entity.dry_bones.wake");
     public static final SoundEvent ENTITY_FIREBALL_BOUNCE = createSound("entity.fireball.bounce");
     public static final SoundEvent ENTITY_FIREBALL_HIT = createSound("entity.fireball.hit");
+    public static final SoundEvent ENTITY_FUZZY_BREAK_ITEM = createSound("entity.fuzzy.break_item");
     public static final SoundEvent ENTITY_GENERIC_EAT = createSound("entity.generic.eat");
     public static final SoundEvent ENTITY_GENERIC_FLUTTER = createSound("entity.generic.flutter");
     public static final SoundEvent ENTITY_GENERIC_JUMP = createSound("entity.generic.jump");
@@ -131,6 +133,9 @@ public class Sounds {
     public static final SoundEvent ENTITY_LAUNCH_STAR_AMBIENT = createSound("entity.launch_star.ambient");
     public static final SoundEvent ENTITY_LAUNCH_STAR_PLACE = createSound("entity.launch_star.place");
     public static final SoundEvent ENTITY_LAUNCH_STAR_USE = createSound("entity.launch_star.use");
+    public static final SoundEvent ENTITY_LAVA_BUBBLE_DEATH = createSound("entity.lava_bubble.death");
+    public static final SoundEvent ENTITY_LAVA_BUBBLE_HURT = createSound("entity.lava_bubble.hurt");
+    public static final SoundEvent ENTITY_LAVA_BUBBLE_JUMP = createSound("entity.lava_bubble.jump");
     public static final SoundEvent ENTITY_MAILTOAD_RESTOCK = createSound("entity.mailtoad.restock");
     public static final SoundEvent ENTITY_MECHAKOOPA_CHARGE = createSound("entity.mechakoopa.charge");
     public static final SoundEvent ENTITY_MECHAKOOPA_DEATH = createSound("entity.mechakoopa.death");
@@ -183,6 +188,10 @@ public class Sounds {
     public static final SoundEvent ITEM_STAR_COIN = createSound("item.star_coin.pickup");
     public static final SoundEvent ITEM_SUPER_HEART = createSound("item.super_heart.heal");
     public static final SoundEvent ITEM_THROW = createSound("item.generic.throw");
+    public static final SoundEvent ITEM_WARP_LINK_BREAK = createSound("item.warp_link.break");
+    public static final SoundEvent ITEM_WARP_LINK_RESET = createSound("item.warp_link.reset");
+    public static final SoundEvent ITEM_WARP_LINK_END = createSound("item.warp_link.end");
+    public static final SoundEvent ITEM_WARP_LINK_START = createSound("item.warp_link.start");
     public static final SoundEvent MUSIC_AMANITA_FOREST = createSound("music.forest");
     public static final SoundEvent MUSIC_BOSS_1 = createSound("music.boss.1");
     public static final SoundEvent MUSIC_BOSS_2 = createSound("music.boss.2");
@@ -212,7 +221,6 @@ public class Sounds {
 
     public static void initSounds() {
         registerSound(AMBIENT_CAVE);
-        registerSound(BLOCK_STONE_TORCH_AMBIENT);
         registerSound(BLOCK_BELL_CAP_FALL);
         registerSound(BLOCK_BELL_CAP_HIT);
         registerSound(BLOCK_BELL_CAP_JINGLE);
@@ -259,12 +267,14 @@ public class Sounds {
         registerSound(BLOCK_SHOREGRASS_STEP);
         registerSound(BLOCK_SPIKE_TRAP_EXTEND);
         registerSound(BLOCK_SPIKE_TRAP_RETRACT);
+        registerSound(BLOCK_STONE_TORCH_AMBIENT);
         registerSound(BLOCK_TOADSTONE_BREAK);
         registerSound(BLOCK_TOADSTONE_FALL);
         registerSound(BLOCK_TOADSTONE_HIT);
         registerSound(BLOCK_TOADSTONE_PLACE);
         registerSound(BLOCK_TOADSTONE_STEP);
         registerSound(BLOCK_TRAMPOLINE_RELEASE);
+        registerSound(BLOCK_WARP_PIPE_TELEPORT);
         registerSound(BLOCK_YOSHI_EGG_HATCH);
         registerSound(ENTITY_BLOCKSTEPPER_ANGRY);
         registerSound(ENTITY_BLOCKSTEPPER_HURT);
@@ -294,6 +304,7 @@ public class Sounds {
         registerSound(ENTITY_DRY_BONES_WAKE);
         registerSound(ENTITY_FIREBALL_BOUNCE);
         registerSound(ENTITY_FIREBALL_HIT);
+        registerSound(ENTITY_FUZZY_BREAK_ITEM);
         registerSound(ENTITY_GENERIC_EAT);
         registerSound(ENTITY_GENERIC_FLUTTER);
         registerSound(ENTITY_GENERIC_JUMP);
@@ -328,6 +339,9 @@ public class Sounds {
         registerSound(ENTITY_LAUNCH_STAR_AMBIENT);
         registerSound(ENTITY_LAUNCH_STAR_PLACE);
         registerSound(ENTITY_LAUNCH_STAR_USE);
+        registerSound(ENTITY_LAVA_BUBBLE_DEATH);
+        registerSound(ENTITY_LAVA_BUBBLE_HURT);
+        registerSound(ENTITY_LAVA_BUBBLE_JUMP);
         registerSound(ENTITY_MAILTOAD_RESTOCK);
         registerSound(ENTITY_MECHAKOOPA_CHARGE);
         registerSound(ENTITY_MECHAKOOPA_DEATH);
@@ -377,6 +391,10 @@ public class Sounds {
         registerSound(ITEM_STAR_COIN);
         registerSound(ITEM_SUPER_HEART);
         registerSound(ITEM_THROW);
+        registerSound(ITEM_WARP_LINK_BREAK);
+        registerSound(ITEM_WARP_LINK_RESET);
+        registerSound(ITEM_WARP_LINK_END);
+        registerSound(ITEM_WARP_LINK_START);
         registerSound(MUSIC_AMANITA_FOREST);
         registerSound(MUSIC_BOSS_1);
         registerSound(MUSIC_BOSS_2);

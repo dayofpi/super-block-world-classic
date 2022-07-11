@@ -1,0 +1,57 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 40,
+          "name": "super_block_world:coin"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 40,
+          "name": "super_block_world:coin",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 64,
+          "name": "super_block_world:super_mushroom"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 50,
+          "name": "super_block_world:fire_flower"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 30,
+          "name": "super_block_world:ice_flower"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "super_block_world:super_leaf"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "super_block_world:one_up"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "super_block_world:super_star"
+        }
+      ]
+    }
+  ]
+}

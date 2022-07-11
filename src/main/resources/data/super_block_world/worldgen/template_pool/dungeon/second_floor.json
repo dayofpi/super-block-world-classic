@@ -1,0 +1,15 @@
+{
+  "name": "super_block_world:dungeon/second_floor",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "super_block_world:dungeon/corridor_06",
+        "projection": "rigid",
+        "processors": "super_block_world:dungeon"
+      }
+    }
+  ]
+}
