@@ -23,6 +23,7 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.BOB_OMB_BUDDY, BobOmbBuddyRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOMB, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOO, BooRenderer::new);
+        EntityRendererRegistry.register(ModEntities.BLOCKSTEPPER, BlockstepperRenderer::new);
         EntityRendererRegistry.register(ModEntities.CHEEP_CHEEP, CheepCheepRenderer::new);
         EntityRendererRegistry.register(ModEntities.DINO_RHINO, DinoRhinoRenderer::new);
         EntityRendererRegistry.register(ModEntities.DRY_BONES, DryBonesRenderer::new);

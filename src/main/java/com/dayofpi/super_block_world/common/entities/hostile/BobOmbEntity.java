@@ -77,7 +77,6 @@ public class BobOmbEntity extends HostileEntity implements BobOmb {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new BobOmbIgniteGoal(this));
         this.goalSelector.add(2, new MeleeAttackGoal(this, 1.0D, false));
         this.goalSelector.add(3, new WanderAroundFarGoal(this, 0.7D));

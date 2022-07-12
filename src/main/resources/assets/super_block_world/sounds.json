@@ -555,6 +555,57 @@
     ],
     "subtitle": "sbw_subtitle.entity.bob_omb.step"
   },
+  "entity.blockstepper.death": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/hurt1"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.death"
+  },
+  "entity.blockstepper.alarm": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/alarm1",
+      "super_block_world:entity/blockstepper/alarm2",
+      "super_block_world:entity/blockstepper/alarm3"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.alarm"
+  },
+  "entity.blockstepper.hurt": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/hurt1",
+      "super_block_world:entity/blockstepper/hurt2",
+      "super_block_world:entity/blockstepper/hurt3",
+      "super_block_world:entity/blockstepper/hurt4"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.hurt"
+  },
+  "entity.blockstepper.panic": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/panic1",
+      "super_block_world:entity/blockstepper/panic2",
+      "super_block_world:entity/blockstepper/panic3",
+      "super_block_world:entity/blockstepper/panic4"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.panic"
+  },
+  "entity.blockstepper.march": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/march1",
+      "super_block_world:entity/blockstepper/march2",
+      "super_block_world:entity/blockstepper/march3",
+      "super_block_world:entity/blockstepper/march4"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.march"
+  },
+  "entity.blockstepper.step": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/step1",
+      "super_block_world:entity/blockstepper/step2",
+      "super_block_world:entity/blockstepper/step3",
+      "super_block_world:entity/blockstepper/step4",
+      "super_block_world:entity/blockstepper/step5"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.step"
+  },
   "entity.boo.ambient": {
     "sounds": [
       "super_block_world:entity/boo/ambient1",

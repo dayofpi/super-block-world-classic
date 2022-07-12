@@ -25,6 +25,7 @@ public class ModEntities {
     public static final EntityType<BlooperEntity> BLOOPER = FabricEntityTypeBuilder.createMob().entityFactory(BlooperEntity::new).spawnGroup(SpawnGroup.WATER_CREATURE).spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BlooperEntity::canBlooperSpawn).defaultAttributes(BlooperEntity::createBlooperAttributes).dimensions(EntityDimensions.changing(0.8F, 0.7F)).build();
     public static final EntityType<BobOmbBuddyEntity> BOB_OMB_BUDDY = FabricEntityTypeBuilder.createMob().entityFactory(BobOmbBuddyEntity::new).spawnGroup(SpawnGroup.MISC).defaultAttributes(BobOmbBuddyEntity::createBobOmbBuddyAttributes).dimensions(EntityDimensions.fixed(0.6F, 0.7F)).build();
     public static final EntityType<BobOmbEntity> BOB_OMB = FabricEntityTypeBuilder.createMob().entityFactory(BobOmbEntity::new).spawnGroup(SpawnGroup.MONSTER).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, BobOmbEntity::canBobOmbSpawn).defaultAttributes(BobOmbEntity::createBobOmbAttributes).dimensions(EntityDimensions.fixed(0.6F, 0.7F)).build();
+    public static final EntityType<BlockstepperEntity> BLOCKSTEPPER = FabricEntityTypeBuilder.createMob().entityFactory(BlockstepperEntity::new).spawnGroup(SpawnGroup.MONSTER).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, BlockstepperEntity::canSpawn).defaultAttributes(BlockstepperEntity::createBlockstepperAttributes).dimensions(EntityDimensions.fixed(0.7F, 0.8F)).build();
     public static final EntityType<BombEntity> BOMB = FabricEntityTypeBuilder.<BombEntity>create(SpawnGroup.MISC, BombEntity::new).dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(4).trackedUpdateRate(10).build();
     public static final EntityType<BooEntity> BOO = FabricEntityTypeBuilder.createMob().entityFactory(BooEntity::new).spawnGroup(SpawnGroup.MONSTER).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BooEntity::canBooSpawn).defaultAttributes(BooEntity::createBooAttributes).dimensions(EntityDimensions.fixed(0.8F, 0.8F)).build();
     public static final EntityType<CheepCheepEntity> CHEEP_CHEEP = FabricEntityTypeBuilder.createMob().entityFactory(CheepCheepEntity::new).spawnGroup(SpawnGroup.WATER_CREATURE).spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, CheepCheepEntity::canCheepCheepSpawn).defaultAttributes(CheepCheepEntity::createCheepCheepAttributes).dimensions(EntityDimensions.fixed(0.6F, 0.6F)).build();
@@ -80,6 +81,7 @@ public class ModEntities {
     public static void register() {
         registerEntity("baby_yoshi", BABY_YOSHI);
         registerEntity("blooper", BLOOPER);
+        registerEntity("blockstepper", BLOCKSTEPPER);
         registerEntity("bob_omb", BOB_OMB);
         registerEntity("bob_omb_buddy", BOB_OMB_BUDDY);
         registerEntity("bomb", BOMB);

@@ -68,8 +68,11 @@ public class Sounds {
     public static final SoundEvent ENTITY_BIG_GOOMBA_DEATH = createSound("entity.big_goomba.death");
     public static final SoundEvent ENTITY_BIG_GOOMBA_HURT = createSound("entity.big_goomba.hurt");
     public static final SoundEvent ENTITY_BIG_GOOMBA_STEP = createSound("entity.big_goomba.step");
-    public static final SoundEvent ENTITY_BLOCKSTEPPER_ANGRY = createSound("entity.blockstepper.angry");
+    public static final SoundEvent ENTITY_BLOCKSTEPPER_PANIC = createSound("entity.blockstepper.angry");
     public static final SoundEvent ENTITY_BLOCKSTEPPER_HURT = createSound("entity.blockstepper.hurt");
+    public static final SoundEvent ENTITY_BLOCKSTEPPER_ALARM = createSound("entity.blockstepper.alarm");
+    public static final SoundEvent ENTITY_BLOCKSTEPPER_DEATH = createSound("entity.blockstepper.death");
+    public static final SoundEvent ENTITY_BLOCKSTEPPER_MARCH = createSound("entity.blockstepper.march");
     public static final SoundEvent ENTITY_BLOCKSTEPPER_STEP = createSound("entity.blockstepper.step");
     public static final SoundEvent ENTITY_BLOOPER_FLOP = createSound("entity.blooper.flop");
     public static final SoundEvent ENTITY_BOB_OMB_AMBIENT = createSound("entity.bob_omb.ambient");
@@ -276,7 +279,9 @@ public class Sounds {
         registerSound(BLOCK_TRAMPOLINE_RELEASE);
         registerSound(BLOCK_WARP_PIPE_TELEPORT);
         registerSound(BLOCK_YOSHI_EGG_HATCH);
-        registerSound(ENTITY_BLOCKSTEPPER_ANGRY);
+        registerSound(ENTITY_BLOCKSTEPPER_DEATH);
+        registerSound(ENTITY_BLOCKSTEPPER_ALARM);
+        registerSound(ENTITY_BLOCKSTEPPER_MARCH);
         registerSound(ENTITY_BLOCKSTEPPER_HURT);
         registerSound(ENTITY_BLOCKSTEPPER_STEP);
         registerSound(ENTITY_BLOOPER_FLOP);

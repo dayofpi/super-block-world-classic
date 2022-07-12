@@ -13,7 +13,7 @@
             "type": "minecraft:weighted_state_provider",
             "entries": [
               {
-                "weight": 3,
+                "weight": 5,
                 "data": {
                   "Name": "super_block_world:question_block",
                   "Properties": {
@@ -22,7 +22,7 @@
                 }
               },
               {
-                "weight": 3,
+                "weight": 5,
                 "data": {
                   "Name": "super_block_world:question_block",
                   "Properties": {
@@ -31,7 +31,7 @@
                 }
               },
               {
-                "weight": 4,
+                "weight": 6,
                 "data": {
                   "Name": "super_block_world:gloomstone_bricks"
                 }

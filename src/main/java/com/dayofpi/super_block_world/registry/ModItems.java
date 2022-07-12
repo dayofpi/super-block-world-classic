@@ -518,6 +518,7 @@ public class ModItems {
         registerItem("paratroopa_spawn_egg", new SpawnEggItem(ModEntities.PARATROOPA, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("shy_guy_spawn_egg", new SpawnEggItem(ModEntities.SHY_GUY, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("bob_omb_spawn_egg", new SpawnEggItem(ModEntities.BOB_OMB, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("blockstepper_spawn_egg", new SpawnEggItem(ModEntities.BLOCKSTEPPER, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("piranha_plant_spawn_egg", new SpawnEggItem(ModEntities.PIRANHA_PLANT, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("putrid_piranha_spawn_egg", new SpawnEggItem(ModEntities.PUTRID_PIRANHA, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("dino_rhino_spawn_egg", new SpawnEggItem(ModEntities.DINO_RHINO, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
