@@ -5,7 +5,7 @@ import com.dayofpi.super_block_world.common.entities.effects.StarPowerEffect;
 import com.dayofpi.super_block_world.common.entities.hostile.FuzzyEntity;
 import com.dayofpi.super_block_world.mixin.SensorTypeMixin;
 import com.dayofpi.super_block_world.registry.*;
-import com.dayofpi.super_block_world.util.ToadSpecificSensor;
+import com.dayofpi.super_block_world.common.entities.ToadSpecificSensor;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.entity.ai.brain.MemoryModuleType;

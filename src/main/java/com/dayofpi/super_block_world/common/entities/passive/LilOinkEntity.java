@@ -5,7 +5,7 @@ import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.brains.LilOinkBrain;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
-import com.dayofpi.super_block_world.util.LilOinkVariant;
+import com.dayofpi.super_block_world.common.entities.LilOinkVariant;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.enchantment.Enchantment;

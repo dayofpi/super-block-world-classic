@@ -31,7 +31,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-@Environment(value = EnvType.CLIENT)
+@Environment(EnvType.CLIENT)
 @Mixin(MinecraftClient.class)
 public abstract class ClientMixin {
     @Shadow

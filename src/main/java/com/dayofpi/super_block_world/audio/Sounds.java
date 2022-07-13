@@ -186,6 +186,8 @@ public class Sounds {
     public static final SoundEvent ITEM_COIN = createSound("item.coin.pickup");
     public static final SoundEvent ITEM_FIRE_FLOWER = createSound("item.fire_flower.shoot");
     public static final SoundEvent ITEM_ICE_FLOWER = createSound("item.ice_flower.shoot");
+    public static final SoundEvent ITEM_SUPER_MUSHROOM = createSound("item.super_mushroom.eat");
+    public static final SoundEvent ITEM_POISON_MUSHROOM = createSound("item.poison_mushroom.eat");
     public static final SoundEvent ITEM_ONE_UP = createSound("item.one_up.eat");
     public static final SoundEvent ITEM_STAR_BIT = createSound("item.star_bit.pickup");
     public static final SoundEvent ITEM_STAR_COIN = createSound("item.star_coin.pickup");
@@ -391,6 +393,8 @@ public class Sounds {
         registerSound(ITEM_COIN);
         registerSound(ITEM_FIRE_FLOWER);
         registerSound(ITEM_ICE_FLOWER);
+        registerSound(ITEM_SUPER_MUSHROOM);
+        registerSound(ITEM_POISON_MUSHROOM);
         registerSound(ITEM_ONE_UP);
         registerSound(ITEM_STAR_BIT);
         registerSound(ITEM_STAR_COIN);

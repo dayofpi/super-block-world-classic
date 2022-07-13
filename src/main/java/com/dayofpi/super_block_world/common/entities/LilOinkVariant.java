@@ -1,4 +1,4 @@
-package com.dayofpi.super_block_world.util;
+package com.dayofpi.super_block_world.common.entities;
 
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.item.Item;

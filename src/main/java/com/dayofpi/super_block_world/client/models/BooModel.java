@@ -76,9 +76,8 @@ public class BooModel extends SinglePartEntityModel<BooEntity> implements ModelW
 	@Override
 	public void setArmAngle(Arm arm, MatrixStack matrices) {
 		this.root.rotate(matrices);
-		matrices.translate(0.0, -0.09375, 0.09375);
-		matrices.multiply(Vec3f.POSITIVE_X.getRadialQuaternion(this.rightArm.pitch + 0.43633232f));
+		matrices.translate(0.0, -0.4, -0.09375);
+		matrices.multiply(Vec3f.POSITIVE_X.getRadialQuaternion(this.rightArm.pitch));
 		matrices.scale(0.7f, 0.7f, 0.7f);
-		matrices.translate(0.0625, -0.5, -1.0);
 	}
 }

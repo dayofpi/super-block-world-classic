@@ -229,6 +229,11 @@ public class BlockstepperEntity extends HostileEntity implements Angerable {
         this.writeAngerToNbt(nbt);
     }
 
+    @Override
+    public int getLimitPerChunk() {
+        return 8;
+    }
+
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
         return 0.0F;
     }

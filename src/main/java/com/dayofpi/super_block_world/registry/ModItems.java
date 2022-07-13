@@ -48,13 +48,13 @@ public class ModItems {
     public static final Item RAW_DINO = new Item(new FabricItemSettings().food(FoodComponents.BEEF).group(Main.ITEM_GROUP));
     public static final Item COOKED_DINO = new Item(new FabricItemSettings().food(FoodComponents.COOKED_BEEF).group(Main.ITEM_GROUP));
     public static final Item SHROOM_SHAKE = new ShroomShakeItem(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.6F).statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 0, false, false), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
-    public static final Item SUPER_MUSHROOM = new SuperMushroomItem(new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 0, false, false), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
-    public static final Item GOLDEN_MUSHROOM = new SuperMushroomItem(new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 0, false, false), 1.0F).statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 500, 1, false, false, true), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
-    public static final Item ONE_UP = new SuperMushroomItem(new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 6000, 4, false, false, true), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16).rarity(Rarity.UNCOMMON));
-    public static final Item POISON_MUSHROOM = new SuperMushroomItem(new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.POISON, 1000, 1), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
+    public static final Item SUPER_MUSHROOM = new SuperMushroomItem(Sounds.ITEM_SUPER_MUSHROOM, new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 0, false, false), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
+    public static final Item GOLDEN_MUSHROOM = new SuperMushroomItem(Sounds.ITEM_SUPER_MUSHROOM, new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 0, false, false), 1.0F).statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 500, 1, false, false, true), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
+    public static final Item ONE_UP = new SuperMushroomItem(Sounds.ITEM_ONE_UP, new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 6000, 4, false, false, true), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16).rarity(Rarity.UNCOMMON));
+    public static final Item POISON_MUSHROOM = new SuperMushroomItem(Sounds.ITEM_POISON_MUSHROOM, new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.POISON, 1000, 1), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
     public static final Item FIRE_FLOWER = new FireFlowerItem(new FabricItemSettings().maxDamage(16).group(Main.ITEM_GROUP));
     public static final Item ICE_FLOWER = new IceFlowerItem(new FabricItemSettings().maxDamage(16).group(Main.ITEM_GROUP));
-    public static final Item SUPER_LEAF = new PowerUpItem(new FabricItemSettings().group(Main.ITEM_GROUP));
+    public static final Item SUPER_LEAF = new PowerUpItem(Sounds.ENTITY_GENERIC_TRANSFORM, new FabricItemSettings().group(Main.ITEM_GROUP));
     public static final Item SUPER_STAR = new SuperStarItem(new FabricItemSettings().group(Main.ITEM_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item HAMMER = new HammerItem(new FabricItemSettings().maxCount(16).group(Main.ITEM_GROUP));
     public static final Item TURNIP = new TurnipItem(new FabricItemSettings().maxCount(16).group(Main.ITEM_GROUP));
@@ -199,6 +199,7 @@ public class ModItems {
         registerItem("charrock", new BlockItem(ModBlocks.CHARROCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cerise_ore", new BlockItem(ModBlocks.CERISE_ORE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("blazing_charrock", new BlockItem(ModBlocks.BLAZING_CHARROCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("dreamwool", new BlockItem(ModBlocks.DREAMWOOL, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cloud_block", new BlockItem(ModBlocks.CLOUD_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("happy_cloud", new BlockItem(ModBlocks.HAPPY_CLOUD, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cloud_slab", new BlockItem(ModBlocks.CLOUD_SLAB, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -281,6 +282,9 @@ public class ModItems {
         registerItem("vanillate_brick_slab", new BlockItem(ModBlocks.VANILLATE_BRICK_SLAB, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("vanillate_brick_stairs", new BlockItem(ModBlocks.VANILLATE_BRICK_STAIRS, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("vanillate_brick_wall", new BlockItem(ModBlocks.VANILLATE_BRICK_WALL, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("frosty_vanillate", new BlockItem(ModBlocks.FROSTY_VANILLATE, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("frosted_vanillate", new BlockItem(ModBlocks.FROSTED_VANILLATE, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("frosty_vanillate_crumble", new BlockItem(ModBlocks.FROSTY_VANILLATE_CRUMBLE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("amanita_log", new BlockItem(ModBlocks.AMANITA_LOG, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("amanita_wood", new BlockItem(ModBlocks.AMANITA_WOOD, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("stripped_amanita_log", new BlockItem(ModBlocks.STRIPPED_AMANITA_LOG, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -402,6 +406,7 @@ public class ModItems {
         registerItem(0.65f,"yellow_songflower", new BlockItem(ModBlocks.YELLOW_SONGFLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"blue_songflower", new BlockItem(ModBlocks.BLUE_SONGFLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"pink_songflower", new BlockItem(ModBlocks.PINK_SONGFLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.65f,"rocket_flower", new BlockItem(ModBlocks.ROCKET_FLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"pawflower", new BlockItem(ModBlocks.PAWFLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"fire_tulip", new BlockItem(ModBlocks.FIRE_TULIP, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f, "yellow_flowerbed", new BlockItem(ModBlocks.YELLOW_FLOWERBED, new FabricItemSettings().group(Main.ITEM_GROUP)));

@@ -16,8 +16,11 @@ public class VanillateBlock extends Block {
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        Block block = ModBlocks.TOPPED_VANILLATE;
+        if (state.isOf(ModBlocks.FROSTY_VANILLATE))
+            block = ModBlocks.FROSTED_VANILLATE;
         if (direction == Direction.UP && world.getFluidState(neighborPos).isIn(FluidTags.LAVA))
-            return ModBlocks.TOPPED_VANILLATE.getDefaultState();
+            return block.getDefaultState();
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 }

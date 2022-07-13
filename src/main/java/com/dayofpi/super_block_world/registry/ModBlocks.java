@@ -115,6 +115,7 @@ public class ModBlocks {
     public static final Block CLOUD_STAIRS = new ModStairsBlock(CLOUD_BLOCK);
     public static final Block CLOUD_SLAB = new CloudSlabBlock(FabricBlockSettings.copyOf(CLOUD_BLOCK));
     public static final Block HAPPY_CLOUD = new HappyCloudBlock(FabricBlockSettings.copyOf(CLOUD_BLOCK));
+    public static final Block DREAMWOOL = new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL));
     public static final Block TOADSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_BROWN).sounds(SoundGroups.TOADSTONE).strength(1.5F, 6.0F).requiresTool());
     public static final Block GRASSY_TOADSTONE = new GrassyStoneBlock(TOADSTONE, FabricBlockSettings.copyOf(TOADSTONE).mapColor(MapColor.DARK_GREEN).sounds(SoundGroups.GRASSY_TOADSTONE));
     public static final Block FAKE_BLOCK = new FakeBlock(FabricBlockSettings.copyOf(TOADSTONE).strength(1.0F, 6.0F));
@@ -182,6 +183,9 @@ public class ModBlocks {
     public static final Block VANILLATE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(VANILLATE));
     public static final Block VANILLATE_BRICK_STAIRS = new ModStairsBlock(VANILLATE);
     public static final Block VANILLATE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(VANILLATE));
+    public static final Block FROSTY_VANILLATE = new VanillateBlock(FabricBlockSettings.copyOf(VANILLATE).mapColor(MapColor.LIGHT_BLUE).sounds(SoundGroups.ICY_STONE).slipperiness(0.8F));
+    public static final Block FROSTY_VANILLATE_CRUMBLE = new SandBlock(15658751, FabricBlockSettings.of(Material.AGGREGATE, MapColor.WHITE).sounds(SoundGroups.ICY_STONE).slipperiness(0.8F).strength(1.2F).requiresTool());
+    public static final Block FROSTED_VANILLATE = new VanillateBlock(FabricBlockSettings.copyOf(FROSTY_VANILLATE).mapColor(MapColor.WHITE).slipperiness(0.96F));
     public static final Block AMANITA_LOG = createLogBlock(MapColor.TERRACOTTA_YELLOW, MapColor.SPRUCE_BROWN);
     public static final Block BELL_LOG = new LogBlock(FabricBlockSettings.copyOf(AMANITA_LOG).mapColor(MapColor.OFF_WHITE));
     public static final Block AMANITA_WOOD = new LogBlock(FabricBlockSettings.copyOf(AMANITA_LOG).mapColor(MapColor.SPRUCE_BROWN));
@@ -304,13 +308,15 @@ public class ModBlocks {
     public static final Block POTTED_YELLOW_MUSHROOM = new FlowerPotBlock(YELLOW_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block ORANGE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), () -> RegistryEntry.of(ConfiguredFeatures.HUGE_ORANGE_MUSHROOM));
     public static final Block POTTED_ORANGE_MUSHROOM = new FlowerPotBlock(ORANGE_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
-    public static final Block YELLOW_SONGFLOWER = new FlowerBlock(StatusEffects.HASTE, 6, FabricBlockSettings.of(Material.PLANT, MapColor.PALE_YELLOW).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
+    public static final Block YELLOW_SONGFLOWER = new FlowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.of(Material.PLANT, MapColor.PALE_YELLOW).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     public static final Block POTTED_YELLOW_SONGFLOWER = new FlowerPotBlock(YELLOW_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block BLUE_SONGFLOWER = new FlowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.of(Material.PLANT, MapColor.LIGHT_BLUE).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     public static final Block POTTED_BLUE_SONGFLOWER = new FlowerPotBlock(BLUE_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
-    public static final Block PINK_SONGFLOWER = new FlowerBlock(StatusEffects.REGENERATION, 6, FabricBlockSettings.of(Material.PLANT, MapColor.PINK).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
+    public static final Block PINK_SONGFLOWER = new FlowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.of(Material.PLANT, MapColor.PINK).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     public static final Block POTTED_PINK_SONGFLOWER = new FlowerPotBlock(PINK_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
-    public static final Block PAWFLOWER = new FlowerBlock(StatusEffects.SPEED, 6, FabricBlockSettings.of(Material.PLANT, MapColor.WHITE).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
+    public static final Block ROCKET_FLOWER = new FlowerBlock(StatusEffects.SPEED, 6, FabricBlockSettings.of(Material.PLANT, MapColor.WHITE).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
+    public static final Block POTTED_ROCKET_FLOWER = new FlowerPotBlock(ROCKET_FLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block PAWFLOWER = new FlowerBlock(StatusEffects.HASTE, 6, FabricBlockSettings.of(Material.PLANT, MapColor.WHITE).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     public static final Block POTTED_PAWFLOWER = new FlowerPotBlock(PAWFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block FIRE_TULIP = new FireTulipBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> 5));
     public static final Block POTTED_FIRE_TULIP = new FlowerPotBlock(FIRE_TULIP, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque().luminance(4));
@@ -333,7 +339,7 @@ public class ModBlocks {
     public static final Block POTTED_MUNCHER = new FlowerPotBlock(MUNCHER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block PIT_PLANT = new PitPlantBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.DARK_GREEN).breakInstantly().sounds(BlockSoundGroup.GRASS));
     public static final Block POTTED_PIT_PLANT = new FlowerPotBlock(PIT_PLANT, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
-    public static final Block PIRANHA_LILY = new PiranhaLilyBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.RED).breakInstantly().sounds(BlockSoundGroup.GRASS));
+    public static final Block PIRANHA_LILY = new PiranhaLilyBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.RED).breakInstantly().sounds(BlockSoundGroup.LILY_PAD));
     public static final Block POTTED_PIRANHA_LILY = new FlowerPotBlock(PIRANHA_LILY, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block FUZZBALL = new FuzzballBlock(FabricBlockSettings.of(Material.PLANT, MapColor.BLACK).offsetType(XYZ).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.SLIME));
     public static final Block FUZZBUSH = new FuzzbushBlock(FabricBlockSettings.of(Material.PLANT, MapColor.LICHEN_GREEN).offsetType(XYZ).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.MOSS_BLOCK));
@@ -447,6 +453,7 @@ public class ModBlocks {
         registerBlock("happy_cloud", HAPPY_CLOUD);
         registerBlock("cloud_slab", CLOUD_SLAB);
         registerBlock("cloud_stairs", CLOUD_STAIRS);
+        registerBlock("dreamwool", DREAMWOOL);
         registerBlock("toadstone", TOADSTONE);
         registerBlock("grassy_toadstone", GRASSY_TOADSTONE);
         registerBlock("smooth_toadstone", SMOOTH_TOADSTONE);
@@ -513,6 +520,9 @@ public class ModBlocks {
         registerBlock("vanillate_brick_stairs", VANILLATE_BRICK_STAIRS);
         registerBlock("vanillate_brick_wall", VANILLATE_BRICK_WALL);
         registerBlock("vanillate_tiles", VANILLATE_TILES);
+        registerBlock("frosty_vanillate", FROSTY_VANILLATE);
+        registerBlock("frosted_vanillate", FROSTED_VANILLATE);
+        registerBlock("frosty_vanillate_crumble", FROSTY_VANILLATE_CRUMBLE);
         registerBlock("amanita_log", AMANITA_LOG, 5, 5);
         registerBlock("amanita_wood", AMANITA_WOOD, 5, 5);
         registerBlock("stripped_amanita_log", STRIPPED_AMANITA_LOG, 5, 5);
@@ -634,6 +644,7 @@ public class ModBlocks {
         registerBlock("yellow_songflower", YELLOW_SONGFLOWER, 60, 100);
         registerBlock("blue_songflower", BLUE_SONGFLOWER, 60, 100);
         registerBlock("pink_songflower", PINK_SONGFLOWER, 60, 100);
+        registerBlock("rocket_flower", ROCKET_FLOWER, 60, 100);
         registerBlock("pawflower", PAWFLOWER, 60, 100);
         registerBlock("fire_tulip", FIRE_TULIP, 60, 0);
         registerBlock("yellow_flowerbed", YELLOW_FLOWERBED, 60, 100);
@@ -661,6 +672,7 @@ public class ModBlocks {
         registerBlock("potted_yellow_songflower", POTTED_YELLOW_SONGFLOWER);
         registerBlock("potted_blue_songflower", POTTED_BLUE_SONGFLOWER);
         registerBlock("potted_pink_songflower", POTTED_PINK_SONGFLOWER);
+        registerBlock("potted_rocket_flower", POTTED_ROCKET_FLOWER);
         registerBlock("potted_pawflower", POTTED_PAWFLOWER);
         registerBlock("potted_fire_tulip", POTTED_FIRE_TULIP);
         registerBlock("potted_amanita_sapling", POTTED_AMANITA_SAPLING);

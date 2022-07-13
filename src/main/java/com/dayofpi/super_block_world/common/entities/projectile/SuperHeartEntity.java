@@ -15,7 +15,6 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.hit.EntityHitResult;
@@ -38,21 +37,12 @@ public class SuperHeartEntity extends ThrownItemEntity {
     public SuperHeartEntity(World world, double x, double y, double z) {
         super(ModEntities.SUPER_HEART, x, y, z, world);
     }
-
-    private ParticleEffect getParticleParameters() {
-        return new ItemStackParticleEffect(ParticleTypes.ITEM, this.getStack());
-    }
-
-    private ParticleEffect getHeartParticleParameters() {
-        return ParticleTypes.HEART;
-    }
-
     public void handleStatus(byte status) {
         super.handleStatus(status);
         if (status != 3)
             return;
-        ParticleEffect particleEffect = this.getParticleParameters();
-        ParticleEffect heartEffect = this.getHeartParticleParameters();
+        ParticleEffect particleEffect = ParticleTypes.POOF;
+        ParticleEffect heartEffect = ParticleTypes.HEART;
         for (int i = 0; i < 4; ++i) {
             this.world.addParticle(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
         }

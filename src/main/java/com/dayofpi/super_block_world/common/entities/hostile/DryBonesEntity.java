@@ -68,9 +68,10 @@ public class DryBonesEntity extends HostileEntity {
     public void remove(RemovalReason reason) {
         super.remove(reason);
         if (this.isDead() && this.getRecentDamageSource() != DamageSource.OUT_OF_WORLD) {
-            if (DRY_BONES_PILE.canPlaceAt(world, this.getBlockPos())) {
-                world.setBlockState(this.getBlockPos(), DRY_BONES_PILE);
-                world.createAndScheduleBlockTick(this.getBlockPos(), world.getBlockState(this.getBlockPos()).getBlock(), 90);
+            BlockPos blockPos = this.getBlockPos();
+            if (world.getBlockState(blockPos).isAir()) {
+                world.setBlockState(blockPos, DRY_BONES_PILE);
+                world.createAndScheduleBlockTick(blockPos, world.getBlockState(blockPos).getBlock(), 90);
             } else this.dropCrushStacks();
         }
     }
@@ -79,7 +80,7 @@ public class DryBonesEntity extends HostileEntity {
         Block.dropStack(world, this.getBlockPos(), new ItemStack(Items.BONE, random.nextInt(2) + 1));
     }
 
-    protected boolean shouldWalk() {
+    private boolean shouldWalk() {
         return this.getVelocity().horizontalLengthSquared() > 1.0E-6;
     }
 

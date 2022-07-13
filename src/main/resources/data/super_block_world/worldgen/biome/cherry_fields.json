@@ -53,8 +53,8 @@
       {
         "type": "super_block_world:blockstepper",
         "weight": 90,
-        "minCount": 8,
-        "maxCount": 10
+        "minCount": 5,
+        "maxCount": 8
       },
       {
         "type": "super_block_world:piranha_plant",

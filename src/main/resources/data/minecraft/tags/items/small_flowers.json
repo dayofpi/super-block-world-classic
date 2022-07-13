@@ -4,7 +4,10 @@
     "super_block_world:yellow_songflower",
     "super_block_world:blue_songflower",
     "super_block_world:pink_songflower",
+    "super_block_world:rocket_flower",
     "super_block_world:pawflower",
-    "super_block_world:fire_tulip"
+    "super_block_world:fire_tulip",
+    "super_block_world:yellow_flowerbed",
+    "super_block_world:white_flowerbed"
   ]
 }

@@ -33,6 +33,11 @@
         {
           "type": "minecraft:item",
           "weight": 1,
+          "name": "super_block_world:freezie"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
           "name": "super_block_world:red_shell"
         }
       ]

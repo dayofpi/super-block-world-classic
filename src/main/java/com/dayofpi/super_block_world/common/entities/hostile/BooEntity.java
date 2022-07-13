@@ -6,7 +6,7 @@ import com.dayofpi.super_block_world.common.entities.goals.BooSitGoal;
 import com.dayofpi.super_block_world.common.entities.goals.StealItemGoal;
 import com.dayofpi.super_block_world.common.entities.misc.GhostEssenceEntity;
 import com.dayofpi.super_block_world.registry.ModItems;
-import com.dayofpi.super_block_world.util.BooFace;
+import com.dayofpi.super_block_world.common.entities.BooFace;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
@@ -32,6 +32,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
@@ -148,10 +149,13 @@ public class BooEntity extends TameableEntity implements Monster {
                         }
                         else if (this.getMainHandStack().isEmpty() && !itemStack.isEmpty()) {
                             this.setStackInHand(Hand.MAIN_HAND, itemStack.split(1));
+                            return ActionResult.CONSUME;
                         }
-                        else {
+                        else if (!this.getMainHandStack().isEmpty() && itemStack.isEmpty()){
                             player.giveItemStack(this.getMainHandStack().copy());
                             this.setStackInHand(Hand.MAIN_HAND, ItemStack.EMPTY);
+                            player.playSound(SoundEvents.ENTITY_ITEM_PICKUP, 0.2F, 1.0F);
+                            return ActionResult.CONSUME;
                         }
 
                         actionResult = super.interactMob(player, hand);

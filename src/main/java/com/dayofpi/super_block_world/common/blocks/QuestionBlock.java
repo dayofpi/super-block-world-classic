@@ -86,7 +86,7 @@ public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider 
 
     public static List<ItemStack> defaultItems(ServerWorld world, BlockState state, BlockPos blockPos) {
         LootContext lootContext = new LootContext.Builder(world).parameter(LootContextParameters.BLOCK_STATE, state).parameter(LootContextParameters.TOOL, ItemStack.EMPTY).parameter(LootContextParameters.ORIGIN, Vec3d.ofCenter(blockPos)).build(LootContextTypes.BLOCK);
-        Identifier mushroom_kingdom = new Identifier(Main.MOD_ID,"question_blocks/default");
+        Identifier mushroom_kingdom = new Identifier(Main.MOD_ID,"question_blocks/mushroom_kingdom");
         Identifier bowsers_kingdom = new Identifier(Main.MOD_ID,"question_blocks/bowsers_kingdom");
         LootTable lootTable = lootContext.getWorld().getServer().getLootManager().getTable(world.getRegistryKey() == WorldInit.BOWSERS_KINGDOM_WORLD ? bowsers_kingdom : mushroom_kingdom);
 

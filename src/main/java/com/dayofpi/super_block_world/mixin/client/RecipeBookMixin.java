@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Environment(value = EnvType.CLIENT)
+@Environment(EnvType.CLIENT)
 @Mixin(ClientRecipeBook.class)
 public abstract class RecipeBookMixin {
 

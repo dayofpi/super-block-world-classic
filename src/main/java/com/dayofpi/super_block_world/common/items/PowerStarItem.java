@@ -29,7 +29,9 @@ public class PowerStarItem extends BlockItem {
     protected BlockState getPlacementState(ItemPlacementContext context) {
         World world = context.getWorld();
         BlockPos blockPos = context.getBlockPos();
-        if (PortalPlacer.attemptPortalLight(world, blockPos, PortalIgnitionSource.ItemUseSource(ModItems.POWER_STAR)) || PortalPlacer.attemptPortalLight(world, blockPos, PortalIgnitionSource.ItemUseSource(ModItems.ZTAR))) {
+        PortalIgnitionSource source1 = PortalIgnitionSource.ItemUseSource(ModItems.POWER_STAR);
+        PortalIgnitionSource source2 = PortalIgnitionSource.ItemUseSource(ModItems.ZTAR);
+        if (PortalPlacer.attemptPortalLight(world, blockPos, source1) || PortalPlacer.attemptPortalLight(world, blockPos, source2)) {
             context.getStack().decrement(1);
             world.playSound(null, blockPos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 1.0F, 1.0F);
             return null;

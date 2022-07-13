@@ -1,14 +1,6 @@
 {
   "processors": [
     {
-      "processor_type": "minecraft:block_ignore",
-      "blocks": [
-        {
-          "Name": "minecraft:air"
-        }
-      ]
-    },
-    {
       "processor_type": "minecraft:rule",
       "rules": [
         {
@@ -17,18 +9,26 @@
           },
           "input_predicate": {
             "predicate_type": "minecraft:random_block_match",
-            "block": "minecraft:white_concrete",
+            "block": "minecraft:purple_concrete",
+            "probability": 0.02
+          },
+          "output_state": {
+            "Name": "minecraft:cobweb"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "super_block_world:dark_amanita_trapdoor",
             "probability": 0.05
           },
           "output_state": {
             "Name": "minecraft:cobweb"
           }
-        }
-      ]
-    },
-    {
-      "processor_type": "minecraft:rule",
-      "rules": [
+        },
         {
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
@@ -42,6 +42,7 @@
             "Name": "minecraft:cracked_deepslate_tiles"
           }
         }
+
       ]
     }
   ]

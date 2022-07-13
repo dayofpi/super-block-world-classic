@@ -1351,6 +1351,18 @@
     ],
     "subtitle": "sbw_subtitle.item.ice_flower.shoot"
   },
+  "item.poison_mushroom.eat": {
+    "sounds": [
+      "super_block_world:item/poison_mushroom"
+    ],
+    "subtitle": "sbw_subtitle.item.poison_mushroom.eat"
+  },
+  "item.super_mushroom.eat": {
+    "sounds": [
+      "super_block_world:item/super_mushroom"
+    ],
+    "subtitle": "sbw_subtitle.item.super_mushroom.eat"
+  },
   "item.one_up.eat": {
     "sounds": [
       "super_block_world:item/one_up"

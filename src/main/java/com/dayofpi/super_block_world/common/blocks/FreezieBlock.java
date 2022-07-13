@@ -96,11 +96,11 @@ public class FreezieBlock extends FallingBlock {
                 } else if (iterableState.isOf(ModBlocks.TOADSTOOL_GRASS)) {
                     //world.setBlockState(iterable, ModBlocks.SNOWY_SHERBET_SOIL.getDefaultState());
                 } else if (iterableState.isOf(ModBlocks.VANILLATE)) {
-                    //world.setBlockState(iterable, ModBlocks.FROSTY_VANILLATE.getDefaultState(), 2);
+                    world.setBlockState(iterable, ModBlocks.FROSTY_VANILLATE.getDefaultState(), 2);
                 } else if (iterableState.isOf(ModBlocks.VANILLATE_CRUMBLE)) {
-                    //world.setBlockState(iterable, ModBlocks.FROSTY_VANILLATE_CRUMBLE.getDefaultState(), 2);
+                    world.setBlockState(iterable, ModBlocks.FROSTY_VANILLATE_CRUMBLE.getDefaultState(), 2);
                 } else if (iterableState.isOf(ModBlocks.TOPPED_VANILLATE)) {
-                    //world.setBlockState(iterable, ModBlocks.FROSTED_VANILLATE.getDefaultState(), 2);
+                    world.setBlockState(iterable, ModBlocks.FROSTED_VANILLATE.getDefaultState(), 2);
                 } else if (iterableFluid.isIn(FluidTags.WATER)) {
                     world.setBlockState(iterable, Blocks.ICE.getDefaultState(), 2);
                 } else if (iterableState.isAir() && world.getBlockState(iterable.down()).isSideSolidFullSquare(world, iterable.down(), Direction.UP)) {
