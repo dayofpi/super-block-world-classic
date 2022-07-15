@@ -30,10 +30,10 @@ public class BlooperModel extends SinglePartEntityModel<BlooperEntity> {
 
         limbs.addChild("right_tentacle", ModelPartBuilder.create().uv(32, 16).cuboid(-1.0F, 0.0F, -2.0F, 2.0F, 6.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(-4.0F, 0.0F, 0.0F));
         limbs.addChild("left_tentacle", ModelPartBuilder.create().uv(32, 16).cuboid(-1.0F, 0.0F, -2.0F, 2.0F, 6.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(4.0F, 0.0F, 0.0F));
-        limbs.addChild("f_r_arm", ModelPartBuilder.create().uv(29, 31).cuboid(-1.5F, -1.0F, -1.5F, 3.0F, 8.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(-1.5F, 1.0F, -2.5F));
-        limbs.addChild("f_l_arm", ModelPartBuilder.create().uv(29, 31).cuboid(-1.5F, -1.0F, -1.5F, 3.0F, 8.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(1.5F, 1.0F, -2.5F));
-        limbs.addChild("b_r_arm", ModelPartBuilder.create().uv(29, 31).cuboid(-1.5F, -1.0F, -1.5F, 3.0F, 8.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(-1.5F, 1.0F, 2.5F));
-        limbs.addChild("b_l_arm", ModelPartBuilder.create().uv(29, 31).cuboid(-1.5F, -1.0F, -1.5F, 3.0F, 8.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(1.5F, 1.0F, 2.5F));
+        limbs.addChild("right_front_arm", ModelPartBuilder.create().uv(29, 31).cuboid(-1.5F, -1.0F, -1.5F, 3.0F, 8.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(-1.5F, 1.0F, -2.5F));
+        limbs.addChild("left_front_arm", ModelPartBuilder.create().uv(29, 31).cuboid(-1.5F, -1.0F, -1.5F, 3.0F, 8.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(1.5F, 1.0F, -2.5F));
+        limbs.addChild("right_hind_arm", ModelPartBuilder.create().uv(29, 31).cuboid(-1.5F, -1.0F, -1.5F, 3.0F, 8.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(-1.5F, 1.0F, 2.5F));
+        limbs.addChild("left_hind_arm", ModelPartBuilder.create().uv(29, 31).cuboid(-1.5F, -1.0F, -1.5F, 3.0F, 8.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(1.5F, 1.0F, 2.5F));
         return TexturedModelData.of(modelData, 64, 64);
     }
 
@@ -44,7 +44,7 @@ public class BlooperModel extends SinglePartEntityModel<BlooperEntity> {
         this.right_tentacle.roll = MathHelper.lerp(animationProgress, entity.prevTentacleAngle, entity.tentacleAngle);
         this.left_tentacle.roll = MathHelper.lerp(animationProgress, entity.prevTentacleAngle, entity.tentacleAngle) * -1;
         for (ModelPart modelPart : this.limbs.traverse().toList()) {
-            modelPart.pitch = MathHelper.lerp(animationProgress, entity.prevTentacleAngle, entity.tentacleAngle) * 0.8F;
+            modelPart.pitch = animationProgress;
         }
     }
 

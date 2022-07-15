@@ -7,8 +7,10 @@ import com.dayofpi.super_block_world.common.entities.projectile.TurnipEntity;
 import com.dayofpi.super_block_world.registry.ModCriteria;
 import com.dayofpi.super_block_world.registry.ModItems;
 import com.dayofpi.super_block_world.registry.ModTags;
+import net.minecraft.command.argument.EntityAnchorArgumentType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -46,6 +48,17 @@ public class ShyGuyEntity extends HostileEntity {
 
     private static boolean isThereNoLight(WorldAccess world, BlockPos pos) {
         return !(world.getLightLevel(LightType.BLOCK, pos) > 0);
+    }
+
+    @Override
+    public void setTarget(@Nullable LivingEntity target) {
+        if (this.isOnGround() && this.getTarget() == null && target != null) {
+            this.playSound(Sounds.ENTITY_GENERIC_SPOT, this.getSoundVolume(), this.getSoundPitch());
+            this.playSound(Sounds.ENTITY_SHY_GUY_AMBIENT, this.getSoundVolume(), this.getSoundPitch());
+            this.lookAt(EntityAnchorArgumentType.EntityAnchor.EYES, target.getPos());
+            this.jump();
+        }
+        super.setTarget(target);
     }
 
     @SuppressWarnings("unused")

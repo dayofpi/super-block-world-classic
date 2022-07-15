@@ -1,10 +1,8 @@
 package com.dayofpi.super_block_world.common.blocks;
 
 import com.dayofpi.super_block_world.registry.ModBlocks;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.Fertilizable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.ItemStack;
@@ -21,7 +19,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
-public class ToadstoolGrassBlock extends Block implements Fertilizable {
+public class ToadstoolGrassBlock extends ToadstoolTurfBlock {
     public ToadstoolGrassBlock(Settings settings) {
         super(settings);
     }

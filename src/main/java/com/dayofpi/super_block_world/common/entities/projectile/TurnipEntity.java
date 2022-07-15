@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
+import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.hit.EntityHitResult;
@@ -28,7 +29,7 @@ public class TurnipEntity extends ThrownItemEntity {
     }
 
     private ParticleEffect getParticleParameters() {
-        return ParticleTypes.POOF;
+        return new ItemStackParticleEffect(ParticleTypes.ITEM, this.getStack());
     }
 
     public void handleStatus(byte status) {

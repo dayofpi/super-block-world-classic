@@ -9,18 +9,26 @@ import com.dayofpi.super_block_world.common.entities.passive.SpindriftEntity;
 import com.dayofpi.super_block_world.common.entities.projectile.ModFireballEntity;
 import com.dayofpi.super_block_world.registry.*;
 import com.dayofpi.super_block_world.util.ModDamageSource;
+import com.google.common.collect.ImmutableList;
+import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.stat.Stats;
 import net.minecraft.tag.TagKey;
+import net.minecraft.util.Hand;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
@@ -85,10 +93,64 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     public abstract float getHealth();
 
+    @Shadow public abstract void setHealth(float health);
+
+    @Shadow public abstract boolean clearStatusEffects();
+
+    @Shadow public abstract ItemStack getStackInHand(Hand hand);
+
     @Inject(at = @At("HEAD"), method = "onDeath")
     private void onDeath(DamageSource source, CallbackInfo info) {
         if (source.getSource() != null && source.getSource() instanceof ModFireballEntity)
             this.setOnFireFor(5);
+    }
+
+    @Inject(at=@At("HEAD"), method = "getPreferredEquipmentSlot", cancellable = true)
+    private static void getPreferredEquipmentSlot(ItemStack stack, CallbackInfoReturnable<EquipmentSlot> cir) {
+        if (stack.isOf(ModBlocks.ROCKET_FLOWER.asItem()))
+            cir.setReturnValue(EquipmentSlot.HEAD);
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    @Inject(at=@At("HEAD"), method = "tryUseTotem", cancellable = true)
+    private void tryUseTotem(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
+        if (source.isOutOfWorld()) {
+            return;
+        }
+        ItemStack itemStack = null;
+        for (Hand hand : Hand.values()) {
+            ItemStack itemStack2 = this.getStackInHand(hand);
+            if (!itemStack2.isOf(ModItems.LIFE_MUSHROOM)) continue;
+            itemStack = itemStack2.copy();
+            itemStack2.decrement(1);
+            break;
+        }
+        if (itemStack != null) {
+            if (((LivingEntity)(Object)this) instanceof ServerPlayerEntity) {
+                ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)(Object)this;
+                serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(ModItems.LIFE_MUSHROOM));
+                Criteria.USED_TOTEM.trigger(serverPlayerEntity, itemStack);
+            }
+            int amplifier = 0;
+            if (((LivingEntity)(Object)this) instanceof PlayerEntity playerEntity) {
+                PlayerInventory inventory = playerEntity.getInventory();
+                for (DefaultedList<ItemStack> defaultedList : ImmutableList.of(inventory.main, inventory.armor, inventory.offHand)) {
+                    for (ItemStack stack : defaultedList) {
+                        if (stack.isOf(ModItems.LIFE_MUSHROOM)) {
+                            stack.decrement(1);
+                            amplifier += 1;
+                        }
+                    }
+                }
+            }
+            this.setHealth(amplifier);
+            this.clearStatusEffects();
+            this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, amplifier));
+            this.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, amplifier));
+            this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 800, 0));
+            this.world.sendEntityStatus(this, EntityStatuses.USE_TOTEM_OF_UNDYING);
+        }
+        cir.setReturnValue(itemStack != null);
     }
 
     @Inject(at = @At("TAIL"), method = "tick")
@@ -100,6 +162,25 @@ public abstract class LivingEntityMixin extends Entity {
         if (this.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.RED_SHELL) && !this.isOnFire() && !this.isInLava()) {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 200, 0, false, false, true));
         }
+        if (this.getEquippedStack(EquipmentSlot.HEAD).isOf(ModBlocks.ROCKET_FLOWER.asItem())) {
+            if (this.isOnWaterSurface()) {
+                double horizontalMultiplier = 1;
+                final double maxSpeed = 0.1D;
+
+                if (this.getVelocity().horizontalLengthSquared() < maxSpeed) {
+                    horizontalMultiplier = 1.25D;
+                }
+                this.setVelocity(this.getVelocity().multiply(horizontalMultiplier, 0.0D, horizontalMultiplier));
+                if (this.world.isClient) {
+                    world.addParticle(ParticleTypes.SPLASH, this.getX(), this.getY() + 0.2D, this.getZ(), 0.0D, 0.0D, 0.0D);
+                    world.addParticle(ParticleTypes.CLOUD, this.getX(), this.getY() + 2.0D, this.getZ(), 0.0D, 0.0D, 0.0D);
+                }
+            }
+        }
+    }
+
+    private boolean isOnWaterSurface() {
+        return !this.jumping && this.isTouchingWater() && !this.isSubmergedInWater() && this.getVelocity().x != 0  && this.getVelocity().z != 0 && world.getFluidState(this.getBlockPos().up()).isEmpty();
     }
 
     public boolean isInPoison() {

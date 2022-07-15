@@ -139,9 +139,11 @@
       "super_block_world:underwater_pipe"
     ],
     [
+      "minecraft:vines",
       "minecraft:seagrass_warm",
       "super_block_world:trees_jungle",
       "super_block_world:yellow_mushroom",
+      "super_block_world:purple_mushroom",
       "super_block_world:patch_grass_2",
       "super_block_world:patch_red_grass",
       "super_block_world:patch_bush",

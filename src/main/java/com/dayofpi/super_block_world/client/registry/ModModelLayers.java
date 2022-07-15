@@ -29,6 +29,7 @@ public class ModModelLayers {
     public static final EntityModelLayer YOSHI = createMain("yoshi");
     public static final EntityModelLayer BOO = createMain("boo");
     public static final EntityModelLayer BLOOPER = createMain("blooper");
+    public static final EntityModelLayer SLEEPY_SHEEP = createMain("sleepy_sheep");
     public static final EntityModelLayer BLOCKSTEPPER = createMain("blockstepper");
     public static final EntityModelLayer BOB_OMB = createMain("bob_omb");
     public static final EntityModelLayer PIRANHA_PLANT = createMain("piranha_plant");
@@ -75,6 +76,7 @@ public class ModModelLayers {
         EntityModelLayerRegistry.registerModelLayer(BOB_OMB, BobOmbModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(CHINCHO_TORCH, ChinchoTorchRenderer::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DINO_RHINO, DinoRhinoModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(SLEEPY_SHEEP, SleepySheepModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(FAKE_BLOCK, FakeBlockModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(FLAG, FlagRenderer::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(CHEEP_CHEEP, CheepCheepModel::getTexturedModelData);

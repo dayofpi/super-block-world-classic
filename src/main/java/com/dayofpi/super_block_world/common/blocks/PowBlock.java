@@ -86,8 +86,6 @@ public class PowBlock extends ReactiveBlock {
             BlockState neighbor = world.getBlockState(mutable);
             if (neighbor.getBlock() instanceof ReactiveBlock reactiveBlock)
                 reactiveBlock.react(world, mutable, null);
-            else if (neighbor.getBlock() instanceof BrickBlock)
-                world.breakBlock(mutable, true);
         }
     }
 

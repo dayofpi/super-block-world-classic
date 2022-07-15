@@ -116,6 +116,7 @@ public class ModBlocks {
     public static final Block CLOUD_SLAB = new CloudSlabBlock(FabricBlockSettings.copyOf(CLOUD_BLOCK));
     public static final Block HAPPY_CLOUD = new HappyCloudBlock(FabricBlockSettings.copyOf(CLOUD_BLOCK));
     public static final Block DREAMWOOL = new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL));
+    public static final Block DREAMWOOL_CARPET = new CarpetBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CARPET));
     public static final Block TOADSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_BROWN).sounds(SoundGroups.TOADSTONE).strength(1.5F, 6.0F).requiresTool());
     public static final Block GRASSY_TOADSTONE = new GrassyStoneBlock(TOADSTONE, FabricBlockSettings.copyOf(TOADSTONE).mapColor(MapColor.DARK_GREEN).sounds(SoundGroups.GRASSY_TOADSTONE));
     public static final Block FAKE_BLOCK = new FakeBlock(FabricBlockSettings.copyOf(TOADSTONE).strength(1.0F, 6.0F));
@@ -233,7 +234,9 @@ public class ModBlocks {
     public static final Block DARKENED_BELL_CAP = createLeavesBlock(MapColor.TERRACOTTA_YELLOW);
     public static final Block GREEN_MUSHROOM_BLOCK = new MushroomBlock(FabricBlockSettings.of(Material.WOOD, MapColor.GREEN).strength(0.2f).sounds(BlockSoundGroup.WOOD).luminance(3));
     public static final Block YELLOW_MUSHROOM_BLOCK = new MushroomBlock(FabricBlockSettings.of(Material.WOOD, MapColor.TERRACOTTA_YELLOW).strength(0.2f).sounds(BlockSoundGroup.WOOD));
+    public static final Block PURPLE_MUSHROOM_BLOCK = new MushroomBlock(FabricBlockSettings.of(Material.WOOD, MapColor.PURPLE).strength(0.2f).sounds(BlockSoundGroup.WOOD));
     public static final Block ORANGE_MUSHROOM_BLOCK = new MushroomBlock(FabricBlockSettings.of(Material.WOOD, MapColor.ORANGE).strength(0.2f).sounds(BlockSoundGroup.WOOD));
+    public static final Block PINK_MUSHROOM_BLOCK = new MushroomBlock(FabricBlockSettings.of(Material.WOOD, MapColor.PINK).strength(0.2f).sounds(BlockSoundGroup.WOOD));
     public static final Block BEANSTALK_BLOCK = new PillarBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_GREEN).strength(4.0F).sounds(BlockSoundGroup.NETHER_STEM));
     public static final Block STRAWBERRY_CORAL_BLOCK = new Block(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PINK).requiresTool().strength(2.5F).sounds(BlockSoundGroup.CORAL));
     public static final Block JELLYBEAM = new JellybeamBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.SLIME).luminance(11));
@@ -306,16 +309,20 @@ public class ModBlocks {
     public static final Block POTTED_GREEN_MUSHROOM = new FlowerPotBlock(GREEN_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block YELLOW_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), () -> RegistryEntry.of(ConfiguredFeatures.HUGE_YELLOW_MUSHROOM));
     public static final Block POTTED_YELLOW_MUSHROOM = new FlowerPotBlock(YELLOW_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block PURPLE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.PURPLE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), () -> RegistryEntry.of(ConfiguredFeatures.HUGE_PURPLE_MUSHROOM));
+    public static final Block POTTED_PURPLE_MUSHROOM = new FlowerPotBlock(PURPLE_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block ORANGE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), () -> RegistryEntry.of(ConfiguredFeatures.HUGE_ORANGE_MUSHROOM));
     public static final Block POTTED_ORANGE_MUSHROOM = new FlowerPotBlock(ORANGE_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block PINK_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.PINK).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), () -> RegistryEntry.of(ConfiguredFeatures.HUGE_PINK_MUSHROOM));
+    public static final Block POTTED_PINK_MUSHROOM = new FlowerPotBlock(PINK_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block YELLOW_SONGFLOWER = new FlowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.of(Material.PLANT, MapColor.PALE_YELLOW).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     public static final Block POTTED_YELLOW_SONGFLOWER = new FlowerPotBlock(YELLOW_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block BLUE_SONGFLOWER = new FlowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.of(Material.PLANT, MapColor.LIGHT_BLUE).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     public static final Block POTTED_BLUE_SONGFLOWER = new FlowerPotBlock(BLUE_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block PINK_SONGFLOWER = new FlowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.of(Material.PLANT, MapColor.PINK).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     public static final Block POTTED_PINK_SONGFLOWER = new FlowerPotBlock(PINK_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
-    public static final Block ROCKET_FLOWER = new FlowerBlock(StatusEffects.SPEED, 6, FabricBlockSettings.of(Material.PLANT, MapColor.WHITE).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
-    public static final Block POTTED_ROCKET_FLOWER = new FlowerPotBlock(ROCKET_FLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block ROCKET_FLOWER = new RocketFlowerBlock(StatusEffects.SPEED, 6, FabricBlockSettings.of(Material.PLANT, MapColor.WHITE).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
+    public static final Block POTTED_ROCKET_FLOWER = new FacingFlowerPotBlock(ROCKET_FLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block PAWFLOWER = new FlowerBlock(StatusEffects.HASTE, 6, FabricBlockSettings.of(Material.PLANT, MapColor.WHITE).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     public static final Block POTTED_PAWFLOWER = new FlowerPotBlock(PAWFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block FIRE_TULIP = new FireTulipBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance((state) -> 5));
@@ -454,6 +461,7 @@ public class ModBlocks {
         registerBlock("cloud_slab", CLOUD_SLAB);
         registerBlock("cloud_stairs", CLOUD_STAIRS);
         registerBlock("dreamwool", DREAMWOOL);
+        registerBlock("dreamwool_carpet", DREAMWOOL_CARPET);
         registerBlock("toadstone", TOADSTONE);
         registerBlock("grassy_toadstone", GRASSY_TOADSTONE);
         registerBlock("smooth_toadstone", SMOOTH_TOADSTONE);
@@ -570,7 +578,9 @@ public class ModBlocks {
         registerBlock("darkened_bell_cap", DARKENED_BELL_CAP, 30, 60);
         registerBlock("green_mushroom_block", GREEN_MUSHROOM_BLOCK);
         registerBlock("yellow_mushroom_block", YELLOW_MUSHROOM_BLOCK);
+        registerBlock("purple_mushroom_block", PURPLE_MUSHROOM_BLOCK);
         registerBlock("orange_mushroom_block", ORANGE_MUSHROOM_BLOCK);
+        registerBlock("pink_mushroom_block", PINK_MUSHROOM_BLOCK);
         registerBlock("beanstalk_block", BEANSTALK_BLOCK, 1, 5);
         registerBlock("strawberry_coral_block", STRAWBERRY_CORAL_BLOCK);
         registerBlock("jellybeam", JELLYBEAM);
@@ -640,7 +650,9 @@ public class ModBlocks {
         registerBlock("horsetail", HORSETAIL, 60, 100);
         registerBlock("green_mushroom", GREEN_MUSHROOM);
         registerBlock("yellow_mushroom", YELLOW_MUSHROOM);
+        registerBlock("purple_mushroom", PURPLE_MUSHROOM);
         registerBlock("orange_mushroom", ORANGE_MUSHROOM);
+        registerBlock("pink_mushroom", PINK_MUSHROOM);
         registerBlock("yellow_songflower", YELLOW_SONGFLOWER, 60, 100);
         registerBlock("blue_songflower", BLUE_SONGFLOWER, 60, 100);
         registerBlock("pink_songflower", PINK_SONGFLOWER, 60, 100);
@@ -668,7 +680,9 @@ public class ModBlocks {
         registerBlock("potted_horsetail", POTTED_HORSETAIL);
         registerBlock("potted_green_mushroom", POTTED_GREEN_MUSHROOM);
         registerBlock("potted_yellow_mushroom", POTTED_YELLOW_MUSHROOM);
+        registerBlock("potted_purple_mushroom", POTTED_PURPLE_MUSHROOM);
         registerBlock("potted_orange_mushroom", POTTED_ORANGE_MUSHROOM);
+        registerBlock("potted_pink_mushroom", POTTED_PINK_MUSHROOM);
         registerBlock("potted_yellow_songflower", POTTED_YELLOW_SONGFLOWER);
         registerBlock("potted_blue_songflower", POTTED_BLUE_SONGFLOWER);
         registerBlock("potted_pink_songflower", POTTED_PINK_SONGFLOWER);

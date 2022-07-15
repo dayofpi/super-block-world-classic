@@ -136,6 +136,16 @@
         }
       }
     },
+    "tall_tall_mountain": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:tall_tall_mountain"
+          }
+        }
+      }
+    },
     "yoshis_island": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -180,6 +190,9 @@
     ],
     [
       "mushroom_hills"
+    ],
+    [
+      "tall_tall_mountain"
     ],
     [
       "soda_jungle"

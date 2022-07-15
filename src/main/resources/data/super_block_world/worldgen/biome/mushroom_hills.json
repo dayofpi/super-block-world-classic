@@ -23,6 +23,12 @@
         "weight": 5,
         "minCount": 2,
         "maxCount": 4
+      },
+      {
+        "type": "super_block_world:sleepy_sheep",
+        "weight": 5,
+        "minCount": 3,
+        "maxCount": 5
       }
     ],
     "monster": [
@@ -135,6 +141,7 @@
       "super_block_world:trees_mushroom_hills",
       "super_block_world:beanstalk_common",
       "super_block_world:brown_mushroom",
+      "super_block_world:pink_mushroom",
       "super_block_world:patch_grass",
       "super_block_world:patch_red_grass",
       "super_block_world:patch_red_grass_common",

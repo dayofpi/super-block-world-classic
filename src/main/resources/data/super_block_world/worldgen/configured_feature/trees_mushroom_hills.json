@@ -3,9 +3,16 @@
   "config": {
     "features": [
       {
-        "chance": 0.7,
+        "chance": 0.35,
         "feature": {
           "feature": "minecraft:huge_brown_mushroom",
+          "placement": []
+        }
+      },
+      {
+        "chance": 0.35,
+        "feature": {
+          "feature": "super_block_world:huge_pink_mushroom",
           "placement": []
         }
       },

@@ -43,13 +43,18 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 2,
+          "weight": 3,
           "name": "super_block_world:one_up"
         },
         {
           "type": "minecraft:item",
           "weight": 2,
           "name": "super_block_world:super_star"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "super_block_world:life_mushroom"
         }
       ]
     }

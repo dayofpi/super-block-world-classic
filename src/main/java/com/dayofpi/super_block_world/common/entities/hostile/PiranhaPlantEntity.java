@@ -80,19 +80,19 @@ public class PiranhaPlantEntity extends HostileEntity {
 
     @Override
     public boolean tryAttack(Entity target) {
-        this.playSound(Sounds.ENTITY_PIRANHA_PLANT_BITE, 1.0F, this.getSoundPitch());
+        this.playSound(Sounds.ENTITY_PIRANHA_PLANT_ATTACK, 1.0F, this.getSoundPitch());
         return super.tryAttack(target);
     }
 
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.isAttacking() ? null : Sounds.ENTITY_PIRANHA_PLANT_SLEEP;
+        return this.isAttacking() ? Sounds.ENTITY_PIRANHA_PLANT_BITE : Sounds.ENTITY_PIRANHA_PLANT_SLEEP;
     }
 
     @Override
     public int getMinAmbientSoundDelay() {
-        return 120;
+        return this.isAttacking() ? super.getMinAmbientSoundDelay() : 120;
     }
 
     @Override

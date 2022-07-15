@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.util;
 
+import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModFluids;
 import com.dayofpi.super_block_world.registry.ModItems;
@@ -14,7 +15,6 @@ import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
@@ -101,7 +101,7 @@ public abstract class PoisonFluid extends FlowableFluid {
                 world.addParticle(ModParticles.POISON_BUBBLE, x, y, z, 0.0, 0.0, 0.0);
             }
             if (random.nextInt(200) == 0) {
-                world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_LAVA_AMBIENT, SoundCategory.BLOCKS, 0.2f + random.nextFloat() * 0.2f, 0.9f + random.nextFloat() * 0.15f, false);
+                world.playSound(pos.getX(), pos.getY(), pos.getZ(), Sounds.BLOCK_POISON_BUBBLE, SoundCategory.BLOCKS, 0.2f + random.nextFloat() * 0.2f, 0.9f + random.nextFloat() * 0.15f, false);
             }
         }
     }

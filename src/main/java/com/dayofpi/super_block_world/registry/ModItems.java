@@ -51,6 +51,7 @@ public class ModItems {
     public static final Item SUPER_MUSHROOM = new SuperMushroomItem(Sounds.ITEM_SUPER_MUSHROOM, new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 0, false, false), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
     public static final Item GOLDEN_MUSHROOM = new SuperMushroomItem(Sounds.ITEM_SUPER_MUSHROOM, new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 0, false, false), 1.0F).statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 500, 1, false, false, true), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
     public static final Item ONE_UP = new SuperMushroomItem(Sounds.ITEM_ONE_UP, new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 6000, 4, false, false, true), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16).rarity(Rarity.UNCOMMON));
+    public static final Item LIFE_MUSHROOM = new SuperMushroomItem(Sounds.ITEM_ONE_UP, new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 6000, 4, false, false, true), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(1).rarity(Rarity.RARE));
     public static final Item POISON_MUSHROOM = new SuperMushroomItem(Sounds.ITEM_POISON_MUSHROOM, new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.POISON, 1000, 1), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
     public static final Item FIRE_FLOWER = new FireFlowerItem(new FabricItemSettings().maxDamage(16).group(Main.ITEM_GROUP));
     public static final Item ICE_FLOWER = new IceFlowerItem(new FabricItemSettings().maxDamage(16).group(Main.ITEM_GROUP));
@@ -200,6 +201,7 @@ public class ModItems {
         registerItem("cerise_ore", new BlockItem(ModBlocks.CERISE_ORE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("blazing_charrock", new BlockItem(ModBlocks.BLAZING_CHARROCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("dreamwool", new BlockItem(ModBlocks.DREAMWOOL, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("dreamwool_carpet", new BlockItem(ModBlocks.DREAMWOOL_CARPET, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cloud_block", new BlockItem(ModBlocks.CLOUD_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("happy_cloud", new BlockItem(ModBlocks.HAPPY_CLOUD, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cloud_slab", new BlockItem(ModBlocks.CLOUD_SLAB, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -335,7 +337,9 @@ public class ModItems {
         registerItem(0.3f, "darkened_bell_cap", new BlockItem(ModBlocks.DARKENED_BELL_CAP, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.85f,"green_mushroom_block", new BlockItem(ModBlocks.GREEN_MUSHROOM_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.85f,"yellow_mushroom_block", new BlockItem(ModBlocks.YELLOW_MUSHROOM_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.85f,"purple_mushroom_block", new BlockItem(ModBlocks.PURPLE_MUSHROOM_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.85f,"orange_mushroom_block", new BlockItem(ModBlocks.ORANGE_MUSHROOM_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.85f,"pink_mushroom_block", new BlockItem(ModBlocks.PINK_MUSHROOM_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"beanstalk_block", new BlockItem(ModBlocks.BEANSTALK_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("strawberry_coral_block", new BlockItem(ModBlocks.STRAWBERRY_CORAL_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("jellybeam", new BlockItem(ModBlocks.JELLYBEAM, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -402,11 +406,13 @@ public class ModItems {
         registerItem(0.5f,"horsetail", new BlockItem(ModBlocks.HORSETAIL, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"green_mushroom", new BlockItem(ModBlocks.GREEN_MUSHROOM, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"yellow_mushroom", new BlockItem(ModBlocks.YELLOW_MUSHROOM, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.65f,"purple_mushroom", new BlockItem(ModBlocks.PURPLE_MUSHROOM, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"orange_mushroom", new BlockItem(ModBlocks.ORANGE_MUSHROOM, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.65f,"pink_mushroom", new BlockItem(ModBlocks.PINK_MUSHROOM, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"yellow_songflower", new BlockItem(ModBlocks.YELLOW_SONGFLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"blue_songflower", new BlockItem(ModBlocks.BLUE_SONGFLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"pink_songflower", new BlockItem(ModBlocks.PINK_SONGFLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
-        registerItem(0.65f,"rocket_flower", new BlockItem(ModBlocks.ROCKET_FLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.65f,"rocket_flower", new PlaceableOnWaterItem(ModBlocks.ROCKET_FLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"pawflower", new BlockItem(ModBlocks.PAWFLOWER, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.65f,"fire_tulip", new BlockItem(ModBlocks.FIRE_TULIP, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f, "yellow_flowerbed", new BlockItem(ModBlocks.YELLOW_FLOWERBED, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -456,6 +462,7 @@ public class ModItems {
         registerItem("super_mushroom", SUPER_MUSHROOM);
         registerItem("golden_mushroom", GOLDEN_MUSHROOM);
         registerItem("one_up", ONE_UP);
+        registerItem("life_mushroom", LIFE_MUSHROOM);
         registerItem("poison_mushroom", POISON_MUSHROOM);
         registerItem("fire_flower", FIRE_FLOWER);
         registerItem("ice_flower", ICE_FLOWER);
@@ -542,5 +549,6 @@ public class ModItems {
         registerItem("spindrift_spawn_egg", new SpawnEggItem(ModEntities.SPINDRIFT, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("lil_oink_spawn_egg", new SpawnEggItem(ModEntities.LIL_OINK, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("moo_moo_spawn_egg", new SpawnEggItem(ModEntities.MOO_MOO, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("sleepy_sheep_spawn_egg", new SpawnEggItem(ModEntities.SLEEPY_SHEEP, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
     }
 }

@@ -59,6 +59,7 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.PUTRID_PIRANHA, PiranhaPlantRenderer::new);
         EntityRendererRegistry.register(ModEntities.ROTTEN_MUSHROOM, RottenMushroomRenderer::new);
         EntityRendererRegistry.register(ModEntities.SHY_GUY, ShyGuyRenderer::new);
+        EntityRendererRegistry.register(ModEntities.SLEEPY_SHEEP, SleepySheepRenderer::new);
         EntityRendererRegistry.register(ModEntities.SPINDRIFT, SpindriftRenderer::new);
         EntityRendererRegistry.register(ModEntities.STAMP, StampRenderer::new);
         EntityRendererRegistry.register(ModEntities.SUPER_HEART, FlyingItemEntityRenderer::new);

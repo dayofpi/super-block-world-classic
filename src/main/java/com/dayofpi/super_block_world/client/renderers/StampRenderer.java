@@ -4,6 +4,7 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.common.entities.misc.StampEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.model.BakedModelManagerHelper;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -12,7 +13,6 @@ import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.model.BakedModelManager;
 import net.minecraft.client.texture.SpriteAtlasTexture;
-import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
@@ -49,19 +49,18 @@ public class StampRenderer<T extends StampEntity> extends EntityRenderer<T> {
         matrixStack.translate((double)direction.getOffsetX() * 0.46875, (double)direction.getOffsetY() * 0.46875, (double)direction.getOffsetZ() * 0.46875);
         matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(stamp.getPitch()));
         matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - stamp.getYaw()));
+
+        int stampRotation = stamp.getRotation();
+        matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion((float)stampRotation * 360.0f / 8.0f));
         boolean bl = stamp.isInvisible();
         if (!bl) {
             BakedModelManager bakedModelManager = this.blockRenderManager.getModels().getModelManager();
-            ModelIdentifier modelIdentifier = this.getModelId(stamp);
+            Identifier identifier = new Identifier(Main.MOD_ID, "block/stamp_" + stamp.getStamp().getName());
             matrixStack.push();
             matrixStack.translate(-0.5, -0.5, -0.5);
-            this.blockRenderManager.getModelRenderer().render(matrixStack.peek(), vertexConsumerProvider.getBuffer(TexturedRenderLayers.getEntitySolid()), null, bakedModelManager.getModel(modelIdentifier), 1.0f, 1.0f, 1.0f, light, OverlayTexture.DEFAULT_UV);
+            this.blockRenderManager.getModelRenderer().render(matrixStack.peek(), vertexConsumerProvider.getBuffer(TexturedRenderLayers.getEntityCutout()), null, BakedModelManagerHelper.getModel(bakedModelManager, identifier), 1.0f, 1.0f, 1.0f, light, OverlayTexture.DEFAULT_UV);
             matrixStack.pop();
         }
         matrixStack.pop();
-    }
-
-    public ModelIdentifier getModelId(T entity) {
-        return new ModelIdentifier(new Identifier(Main.MOD_ID, "stamp"), "stamp=" + entity.getStamp().getName());
     }
 }

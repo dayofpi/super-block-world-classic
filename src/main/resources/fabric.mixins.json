@@ -10,6 +10,7 @@
     "BubbleColumnMixin",
     "CactusMixin",
     "ChestBoatMixin",
+    "EatGrassGoalMixin",
     "EntityMixin",
     "HorizontalConnectingBlockMixin",
     "InstrumentMixin",
@@ -22,6 +23,9 @@
     "PlayerEntityMixin",
     "SensorTypeMixin",
     "SignTypeAccessor",
+    "SnowGolemMixin",
+    "SpawnGroupMixin",
+    "SpawnRestrictionMixin",
     "TntBlockInterface",
     "TntBlockMixin"
   ],

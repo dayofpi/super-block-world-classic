@@ -5,7 +5,9 @@
     "super_block_world:question_box",
     "super_block_world:green_mushroom_block",
     "super_block_world:yellow_mushroom_block",
+    "super_block_world:purple_mushroom_block",
     "super_block_world:orange_mushroom_block",
+    "super_block_world:pink_mushroom_block",
     "super_block_world:beanstalk_block"
   ]
 }

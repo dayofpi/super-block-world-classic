@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.common.entities.passive;
 
+import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.brains.SpindriftBrain;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.google.common.collect.ImmutableList;
@@ -19,6 +20,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -45,6 +47,12 @@ public class SpindriftEntity extends PassiveEntity {
     @SuppressWarnings("unused")
     public static boolean canSpindriftSpawn(EntityType<? extends SpindriftEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return world.getBlockState(pos.down()).isIn(BlockTags.DIRT) && world.getBaseLightLevel(pos, 0) > 8;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return Sounds.ENTITY_SPINDRIFT_DEATH;
     }
 
     @Override

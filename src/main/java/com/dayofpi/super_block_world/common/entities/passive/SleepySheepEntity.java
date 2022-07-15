@@ -33,6 +33,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 public class SleepySheepEntity extends AnimalEntity implements Shearable {
     private static final TrackedData<Boolean> SHEARED = DataTracker.registerData(SleepySheepEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private int eatGrassTimer;
@@ -46,7 +48,6 @@ public class SleepySheepEntity extends AnimalEntity implements Shearable {
         this.eatGrassGoal = new EatGrassGoal(this);
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new EscapeDangerGoal(this, 1.25));
-        this.goalSelector.add(2, new AnimalMateGoal(this, 1.0));
         this.goalSelector.add(3, new TemptGoal(this, 1.1, Ingredient.ofItems(Items.WHEAT), false));
         this.goalSelector.add(4, new FollowParentGoal(this, 1.1));
         this.goalSelector.add(5, this.eatGrassGoal);
@@ -74,6 +75,10 @@ public class SleepySheepEntity extends AnimalEntity implements Shearable {
         if (!this.onGround && vec3d.y < 0.0D) {
             this.setVelocity(vec3d.multiply(1.0D, 0.6D, 1.0D));
         }
+        List<LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, this.getBoundingBox().expand(2.0), entity -> entity.isAlive() && entity.isSleeping());
+        if (!list.isEmpty()) {
+            list.forEach(entity -> entity.heal(1.0F));
+        }
         super.tickMovement();
     }
 
@@ -82,7 +87,7 @@ public class SleepySheepEntity extends AnimalEntity implements Shearable {
     }
 
     public static DefaultAttributeContainer.Builder createSleepySheepAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23000000417232513);
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 6.0).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23000000417232513);
     }
 
     public void handleStatus(byte status) {
@@ -94,14 +99,9 @@ public class SleepySheepEntity extends AnimalEntity implements Shearable {
 
     }
 
-    public float getNeckAngle(float delta) {
-        if (this.eatGrassTimer <= 0) {
-            return 0.0F;
-        } else if (this.eatGrassTimer >= 4 && this.eatGrassTimer <= 36) {
-            return 1.0F;
-        } else {
-            return this.eatGrassTimer < 4 ? ((float)this.eatGrassTimer - delta) / 4.0F : -((float)(this.eatGrassTimer - 40) - delta) / 4.0F;
-        }
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return false;
     }
 
     public float getHeadAngle(float delta) {
@@ -117,8 +117,8 @@ public class SleepySheepEntity extends AnimalEntity implements Shearable {
     public boolean damage(DamageSource source, float amount) {
         Entity entity = source.getAttacker();
         if (entity instanceof LivingEntity) {
-            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 40));
-            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 40));
+            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 100, 2));
+            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 2));
         }
         return super.damage(source, amount);
     }
@@ -198,10 +198,6 @@ public class SleepySheepEntity extends AnimalEntity implements Shearable {
     public void onEatingGrass() {
         super.onEatingGrass();
         this.setSheared(false);
-        if (this.isBaby()) {
-            this.growUp(60);
-        }
-
     }
 
     @Nullable

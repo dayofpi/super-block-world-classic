@@ -22,7 +22,34 @@
         {
           "type": "minecraft:item",
           "weight": 18,
-          "name": "super_block_world:royalite"
+          "name": "super_block_world:royalite",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4,
+                "max": 6
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 18,
+          "name": "super_block_world:royalite_bricks",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4,
+                "max": 6
+              },
+              "add": false
+            }
+          ]
         },
         {
           "type": "minecraft:item",

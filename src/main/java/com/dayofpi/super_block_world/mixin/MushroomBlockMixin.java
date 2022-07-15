@@ -46,7 +46,7 @@ public class MushroomBlockMixin extends Block {
     }
 
     private boolean isBouncy(BlockState blockState) {
-        return blockState.isOf(Blocks.RED_MUSHROOM_BLOCK) || blockState.isOf(ModBlocks.ORANGE_MUSHROOM_BLOCK);
+        return blockState.isOf(Blocks.RED_MUSHROOM_BLOCK) || blockState.isOf(ModBlocks.ORANGE_MUSHROOM_BLOCK) || blockState.isOf(ModBlocks.PINK_MUSHROOM_BLOCK);
     }
 
     @Override

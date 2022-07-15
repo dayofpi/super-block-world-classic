@@ -7,7 +7,7 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.util.math.MathHelper;
 
-@Environment(value= EnvType.CLIENT)
+@Environment(EnvType.CLIENT)
 public class GoKartModel<T extends GoKartEntity> extends SinglePartEntityModel<T> {
     private final ModelPart ROOT;
     private final ModelPart FLAG;
@@ -64,7 +64,9 @@ public class GoKartModel<T extends GoKartEntity> extends SinglePartEntityModel<T
 
     @Override
     public void setAngles(GoKartEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-        this.FLAG.yaw = (MathHelper.cos(animationProgress)) * 0.1f;
+        if (entity.world == null)
+            return;
+        this.FLAG.yaw = MathHelper.cos(entity.world.getTime());
         this.STEERING_WHEEL.setAngles(1.5708f, entity.getYaw() * 0.01f, 0.0f);
         this.STEERING_WHEEL.pivotY = -7.1f;
         this.updateTires(this.FRONT_LEFT_TIRE, entity);

@@ -36,6 +36,7 @@ import net.minecraft.util.math.Vec3f;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -59,6 +60,11 @@ public class MechakoopaEntity extends TameableEntity implements RangedAttackMob 
 
     public static DefaultAttributeContainer.Builder createMechakoopaAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.37D).add(EntityAttributes.GENERIC_MAX_HEALTH, 14.0D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D);
+    }
+
+    @Override
+    public float getPathfindingFavor(BlockPos pos, WorldView world) {
+        return -world.getPhototaxisFavor(pos);
     }
 
     @Override

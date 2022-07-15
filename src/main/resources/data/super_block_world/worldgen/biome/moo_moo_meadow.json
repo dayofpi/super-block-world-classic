@@ -32,7 +32,7 @@
         "maxCount": 5
       },
       {
-        "type": "minecraft:sheep",
+        "type": "super_block_world:sleepy_sheep",
         "weight": 6,
         "minCount": 3,
         "maxCount": 5

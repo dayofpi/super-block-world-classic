@@ -165,6 +165,23 @@
           }
         },
         {
+          "biome": "super_block_world:tall_tall_mountain",
+          "parameters": {
+            "temperature": 0.5,
+            "humidity": -0.4,
+            "continentalness": [
+              0.1, 0.7
+            ],
+            "erosion": [
+              -0.7,
+              -0.5
+            ],
+            "weirdness": 0.4,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
           "biome": "super_block_world:dry_dry_desert",
           "parameters": {
             "temperature": [
@@ -252,7 +269,7 @@
               0.1,
               0.9
             ],
-            "offset": 0.3
+            "offset": 0.175
           }
         }
       ]

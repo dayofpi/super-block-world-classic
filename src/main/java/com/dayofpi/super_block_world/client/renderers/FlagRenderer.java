@@ -104,7 +104,7 @@ public class FlagRenderer implements BlockEntityRenderer<FlagBE> {
         if (world.getBlockState(blockPos).isIn(ModTags.FLAGS))
             rotation = world.getBlockState(blockPos).get(FlagBlock.ROTATION);
         float angle = (rotation * 22.5F) % 360;
-        float wave = (MathHelper.cos(tickDelta)) + angle;
+        float wave = MathHelper.cos(world.getTime()) + angle;
 
         matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(wave));
         this.flag.render(matrices, id.getVertexConsumer(provider, RenderLayer::getEntityCutout), light, overlay);

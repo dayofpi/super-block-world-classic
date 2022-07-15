@@ -22,10 +22,10 @@ import net.minecraft.world.Heightmap;
 
 public class ModEntities {
     public static final EntityType<BabyYoshiEntity> BABY_YOSHI = FabricEntityTypeBuilder.createMob().entityFactory(BabyYoshiEntity::new).spawnGroup(SpawnGroup.MISC).defaultAttributes(BabyYoshiEntity::createBabyYoshiAttributes).dimensions(EntityDimensions.fixed(0.8F, 0.8F)).build();
+    public static final EntityType<BlockstepperEntity> BLOCKSTEPPER = FabricEntityTypeBuilder.createMob().entityFactory(BlockstepperEntity::new).spawnGroup(SpawnGroup.MONSTER).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, BlockstepperEntity::canSpawn).defaultAttributes(BlockstepperEntity::createBlockstepperAttributes).dimensions(EntityDimensions.fixed(0.7F, 0.8F)).build();
     public static final EntityType<BlooperEntity> BLOOPER = FabricEntityTypeBuilder.createMob().entityFactory(BlooperEntity::new).spawnGroup(SpawnGroup.WATER_CREATURE).spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BlooperEntity::canBlooperSpawn).defaultAttributes(BlooperEntity::createBlooperAttributes).dimensions(EntityDimensions.changing(0.8F, 0.7F)).build();
     public static final EntityType<BobOmbBuddyEntity> BOB_OMB_BUDDY = FabricEntityTypeBuilder.createMob().entityFactory(BobOmbBuddyEntity::new).spawnGroup(SpawnGroup.MISC).defaultAttributes(BobOmbBuddyEntity::createBobOmbBuddyAttributes).dimensions(EntityDimensions.fixed(0.6F, 0.7F)).build();
     public static final EntityType<BobOmbEntity> BOB_OMB = FabricEntityTypeBuilder.createMob().entityFactory(BobOmbEntity::new).spawnGroup(SpawnGroup.MONSTER).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, BobOmbEntity::canBobOmbSpawn).defaultAttributes(BobOmbEntity::createBobOmbAttributes).dimensions(EntityDimensions.fixed(0.6F, 0.7F)).build();
-    public static final EntityType<BlockstepperEntity> BLOCKSTEPPER = FabricEntityTypeBuilder.createMob().entityFactory(BlockstepperEntity::new).spawnGroup(SpawnGroup.MONSTER).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, BlockstepperEntity::canSpawn).defaultAttributes(BlockstepperEntity::createBlockstepperAttributes).dimensions(EntityDimensions.fixed(0.7F, 0.8F)).build();
     public static final EntityType<BombEntity> BOMB = FabricEntityTypeBuilder.<BombEntity>create(SpawnGroup.MISC, BombEntity::new).dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(4).trackedUpdateRate(10).build();
     public static final EntityType<BooEntity> BOO = FabricEntityTypeBuilder.createMob().entityFactory(BooEntity::new).spawnGroup(SpawnGroup.MONSTER).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BooEntity::canBooSpawn).defaultAttributes(BooEntity::createBooAttributes).dimensions(EntityDimensions.fixed(0.8F, 0.8F)).build();
     public static final EntityType<CheepCheepEntity> CHEEP_CHEEP = FabricEntityTypeBuilder.createMob().entityFactory(CheepCheepEntity::new).spawnGroup(SpawnGroup.WATER_CREATURE).spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, CheepCheepEntity::canCheepCheepSpawn).defaultAttributes(CheepCheepEntity::createCheepCheepAttributes).dimensions(EntityDimensions.fixed(0.6F, 0.6F)).build();
@@ -63,6 +63,7 @@ public class ModEntities {
     public static final EntityType<PutridPiranhaEntity> PUTRID_PIRANHA = FabricEntityTypeBuilder.createMob().entityFactory(PutridPiranhaEntity::new).spawnGroup(SpawnGroup.MONSTER).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PutridPiranhaEntity::canPiranhaPlantSpawn).defaultAttributes(PiranhaPlantEntity::createPiranhaPlantAttributes).dimensions(EntityDimensions.fixed(0.6F, 1.2F)).build();
     public static final EntityType<RottenMushroomEntity> ROTTEN_MUSHROOM = FabricEntityTypeBuilder.createMob().entityFactory(RottenMushroomEntity::new).spawnGroup(SpawnGroup.MONSTER).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, RottenMushroomEntity::canRottenMushroomSpawn).defaultAttributes(RottenMushroomEntity::createRottenMushroomAttributes).dimensions(EntityDimensions.fixed(0.7F, 0.7F)).build();
     public static final EntityType<ShyGuyEntity> SHY_GUY = FabricEntityTypeBuilder.createMob().entityFactory(ShyGuyEntity::new).spawnGroup(SpawnGroup.MONSTER).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ShyGuyEntity::canShyGuySpawn).defaultAttributes(ShyGuyEntity::createShyGuyAttributes).dimensions(EntityDimensions.fixed(0.8F, 0.8F)).build();
+    public static final EntityType<SleepySheepEntity> SLEEPY_SHEEP = FabricEntityTypeBuilder.createMob().entityFactory(SleepySheepEntity::new).spawnGroup(SpawnGroup.CREATURE).defaultAttributes(SleepySheepEntity::createSleepySheepAttributes).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn).dimensions(EntityDimensions.changing(0.6F, 0.6F)).build();
     public static final EntityType<SpindriftEntity> SPINDRIFT = FabricEntityTypeBuilder.createMob().entityFactory(SpindriftEntity::new).spawnGroup(SpawnGroup.CREATURE).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, SpindriftEntity::canSpindriftSpawn).defaultAttributes(SpindriftEntity::createSpindriftAttributes).dimensions(EntityDimensions.fixed(0.6F, 0.7F)).build();
     public static final EntityType<StampEntity> STAMP = FabricEntityTypeBuilder.<StampEntity>create(SpawnGroup.MISC, StampEntity::new).dimensions(EntityDimensions.fixed(0.5f, 0.5f)).trackRangeChunks(4).trackedUpdateRate(10).build();
     public static final EntityType<SuperHeartEntity> SUPER_HEART = FabricEntityTypeBuilder.<SuperHeartEntity>create(SpawnGroup.MISC, SuperHeartEntity::new).dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(4).trackedUpdateRate(10).build();
@@ -80,8 +81,8 @@ public class ModEntities {
 
     public static void register() {
         registerEntity("baby_yoshi", BABY_YOSHI);
-        registerEntity("blooper", BLOOPER);
         registerEntity("blockstepper", BLOCKSTEPPER);
+        registerEntity("blooper", BLOOPER);
         registerEntity("bob_omb", BOB_OMB);
         registerEntity("bob_omb_buddy", BOB_OMB_BUDDY);
         registerEntity("bomb", BOMB);
@@ -121,6 +122,7 @@ public class ModEntities {
         registerEntity("putrid_piranha", PUTRID_PIRANHA);
         registerEntity("rotten_mushroom", ROTTEN_MUSHROOM);
         registerEntity("shy_guy", SHY_GUY);
+        registerEntity("sleepy_sheep", SLEEPY_SHEEP);
         registerEntity("spindrift", SPINDRIFT);
         registerEntity("stamp", STAMP);
         registerEntity("super_heart", SUPER_HEART);

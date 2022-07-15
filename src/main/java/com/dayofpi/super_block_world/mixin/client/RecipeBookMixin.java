@@ -40,7 +40,7 @@ public abstract class RecipeBookMixin {
         if (itemStack.isOf(ModItems.COIN) || itemStack.isOf(ModItems.STAR_COIN))
             return true;
         else
-            return getBlockInStack(itemStack, ModBlocks.DASH_BLOCK) || getBlockInStack(itemStack, ModBlocks.GLOW_BLOCK) || getBlockInStack(itemStack, ModBlocks.STAR_PANEL) || getBlockInStack(itemStack, ModBlocks.STONE_TORCH) || getBlockInStack(itemStack, ModBlocks.BOO_LANTERN) || getBlockInStack(itemStack, ModBlocks.CHINCHO_TORCH) || getBlockInStack(itemStack, ModBlocks.STRAWBERRY_CORAL) || getBlockInStack(itemStack, ModBlocks.GIRDER) || getBlockInStack(itemStack, ModBlocks.TRAMPOLINE) || getBlockInStack(itemStack, ModBlocks.FLAGPOLE);
+            return getBlockInStack(itemStack, ModBlocks.DREAMWOOL_CARPET) || getBlockInStack(itemStack, ModBlocks.DASH_BLOCK) || getBlockInStack(itemStack, ModBlocks.GLOW_BLOCK) || getBlockInStack(itemStack, ModBlocks.STAR_PANEL) || getBlockInStack(itemStack, ModBlocks.STONE_TORCH) || getBlockInStack(itemStack, ModBlocks.BOO_LANTERN) || getBlockInStack(itemStack, ModBlocks.CHINCHO_TORCH) || getBlockInStack(itemStack, ModBlocks.STRAWBERRY_CORAL) || getBlockInStack(itemStack, ModBlocks.GIRDER) || getBlockInStack(itemStack, ModBlocks.TRAMPOLINE) || getBlockInStack(itemStack, ModBlocks.FLAGPOLE);
     }
 
     @Inject(method = "getGroupForRecipe", at = @At("HEAD"), cancellable = true)

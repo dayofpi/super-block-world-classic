@@ -12,17 +12,53 @@
             "type": "minecraft:weighted_state_provider",
             "entries": [
               {
-                "weight": 1,
+                "weight": 6,
                 "data": {
                   "Name": "minecraft:lily_pad"
                 }
               },
               {
-                "weight": 1,
+                "weight": 6,
                 "data": {
                   "Name": "super_block_world:piranha_lily",
                   "Properties": {
                     "floating": "true"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "super_block_world:rocket_flower",
+                  "Properties": {
+                    "facing": "north"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "super_block_world:rocket_flower",
+                  "Properties": {
+                    "facing": "south"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "super_block_world:rocket_flower",
+                  "Properties": {
+                    "facing": "east"
+                  }
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "super_block_world:rocket_flower",
+                  "Properties": {
+                    "facing": "west"
                   }
                 }
               }

@@ -423,6 +423,51 @@
                       "if_true": {
                         "type": "minecraft:biome",
                         "biome_is": [
+                          "super_block_world:tall_tall_mountain"
+                        ]
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "super_block_world:shroomstone"
+                        }
+                      }
+                    },
+                    {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:biome",
+                        "biome_is": [
+                          "super_block_world:mushroom_gorge"
+                        ]
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "super_block_world:grassy_hardstone"
+                        }
+                      }
+                    },
+                    {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:biome",
+                        "biome_is": [
+                          "super_block_world:fossil_falls"
+                        ]
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "super_block_world:grassy_toadstone"
+                        }
+                      }
+                    },
+                    {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:biome",
+                        "biome_is": [
                           "super_block_world:cheep_cheep_reef",
                           "super_block_world:autumn_mountain"
                         ]
@@ -606,6 +651,51 @@
                       "type": "minecraft:block",
                       "result_state": {
                         "Name": "super_block_world:gritzy_sandstone"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "super_block_world:tall_tall_mountain"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "super_block_world:shroomstone"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "super_block_world:mushroom_gorge"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "super_block_world:hardstone"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "super_block_world:fossil_falls"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "super_block_world:toadstone"
                       }
                     }
                   },

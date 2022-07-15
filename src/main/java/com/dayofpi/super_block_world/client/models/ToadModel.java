@@ -65,13 +65,22 @@ public class ToadModel<T extends PassiveEntity> extends AnimalModel<T> {
             if (((Toad) entity).isScared()) {
                 this.torso.pitch = 0.2F;
             } else this.torso.pitch = 0.0F;
+            if (((Toad) entity).isCheering()) {
+                this.rightArm.pitch = -1.4F;
+                this.leftArm.pitch = -1.4F;
+                this.rightArm.yaw = MathHelper.cos(ageInTicks * 4) * 0.25F;
+                this.leftArm.yaw = MathHelper.cos(ageInTicks * 4) * -0.25F;
+            } else {
+                this.rightArm.pitch = MathHelper.cos(limbSwing * 0.6662F + 3.1415927F) * 1.4F * limbSwingAmount;
+                this.leftArm.pitch = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+                this.rightArm.yaw = 0.0F;
+                this.leftArm.yaw = 0.0F;
+            }
         }
 
         this.head.pitch = headPitch * (MathHelper.PI / 180F);
         this.head.yaw = netHeadYaw * (MathHelper.PI / 180F);
 
-        this.rightArm.pitch = MathHelper.cos(limbSwing * 0.6662F + 3.1415927F) * 1.4F * limbSwingAmount;
-        this.leftArm.pitch = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.rightLeg.pitch = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.leftLeg.pitch = MathHelper.cos(limbSwing * 0.6662F + 3.1415927F) * 1.4F * limbSwingAmount;
     }

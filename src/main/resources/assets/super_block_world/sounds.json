@@ -310,6 +310,13 @@
     ],
     "subtitle": "sbw_subtitle.block.p_switch.on"
   },
+  "block.poison.bubble": {
+    "sounds": [
+      "super_block_world:block/poison/bubble1",
+      "super_block_world:block/poison/bubble2"
+    ],
+    "subtitle": "sbw_subtitle.block.poison.bubble"
+  },
   "block.portal.travel": {
     "sounds": [
       "super_block_world:block/portal/travel"
@@ -513,6 +520,57 @@
     ],
     "subtitle": "sbw_subtitle.entity.big_goomba.step"
   },
+  "entity.blockstepper.alarm": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/alarm1",
+      "super_block_world:entity/blockstepper/alarm2",
+      "super_block_world:entity/blockstepper/alarm3"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.alarm"
+  },
+  "entity.blockstepper.death": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/hurt1"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.death"
+  },
+  "entity.blockstepper.hurt": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/hurt1",
+      "super_block_world:entity/blockstepper/hurt2",
+      "super_block_world:entity/blockstepper/hurt3",
+      "super_block_world:entity/blockstepper/hurt4"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.hurt"
+  },
+  "entity.blockstepper.march": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/march1",
+      "super_block_world:entity/blockstepper/march2",
+      "super_block_world:entity/blockstepper/march3",
+      "super_block_world:entity/blockstepper/march4"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.march"
+  },
+  "entity.blockstepper.panic": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/panic1",
+      "super_block_world:entity/blockstepper/panic2",
+      "super_block_world:entity/blockstepper/panic3",
+      "super_block_world:entity/blockstepper/panic4"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.panic"
+  },
+  "entity.blockstepper.step": {
+    "sounds": [
+      "super_block_world:entity/blockstepper/step1",
+      "super_block_world:entity/blockstepper/step2",
+      "super_block_world:entity/blockstepper/step3",
+      "super_block_world:entity/blockstepper/step4",
+      "super_block_world:entity/blockstepper/step5"
+    ],
+    "subtitle": "sbw_subtitle.entity.blockstepper.step"
+  },
   "entity.blooper.flop": {
     "sounds": [
       "entity/fish/flop1",
@@ -554,57 +612,6 @@
       "super_block_world:entity/bob_omb/step2"
     ],
     "subtitle": "sbw_subtitle.entity.bob_omb.step"
-  },
-  "entity.blockstepper.death": {
-    "sounds": [
-      "super_block_world:entity/blockstepper/hurt1"
-    ],
-    "subtitle": "sbw_subtitle.entity.blockstepper.death"
-  },
-  "entity.blockstepper.alarm": {
-    "sounds": [
-      "super_block_world:entity/blockstepper/alarm1",
-      "super_block_world:entity/blockstepper/alarm2",
-      "super_block_world:entity/blockstepper/alarm3"
-    ],
-    "subtitle": "sbw_subtitle.entity.blockstepper.alarm"
-  },
-  "entity.blockstepper.hurt": {
-    "sounds": [
-      "super_block_world:entity/blockstepper/hurt1",
-      "super_block_world:entity/blockstepper/hurt2",
-      "super_block_world:entity/blockstepper/hurt3",
-      "super_block_world:entity/blockstepper/hurt4"
-    ],
-    "subtitle": "sbw_subtitle.entity.blockstepper.hurt"
-  },
-  "entity.blockstepper.panic": {
-    "sounds": [
-      "super_block_world:entity/blockstepper/panic1",
-      "super_block_world:entity/blockstepper/panic2",
-      "super_block_world:entity/blockstepper/panic3",
-      "super_block_world:entity/blockstepper/panic4"
-    ],
-    "subtitle": "sbw_subtitle.entity.blockstepper.panic"
-  },
-  "entity.blockstepper.march": {
-    "sounds": [
-      "super_block_world:entity/blockstepper/march1",
-      "super_block_world:entity/blockstepper/march2",
-      "super_block_world:entity/blockstepper/march3",
-      "super_block_world:entity/blockstepper/march4"
-    ],
-    "subtitle": "sbw_subtitle.entity.blockstepper.march"
-  },
-  "entity.blockstepper.step": {
-    "sounds": [
-      "super_block_world:entity/blockstepper/step1",
-      "super_block_world:entity/blockstepper/step2",
-      "super_block_world:entity/blockstepper/step3",
-      "super_block_world:entity/blockstepper/step4",
-      "super_block_world:entity/blockstepper/step5"
-    ],
-    "subtitle": "sbw_subtitle.entity.blockstepper.step"
   },
   "entity.boo.ambient": {
     "sounds": [
@@ -1133,6 +1140,12 @@
     ],
     "subtitle": "sbw_subtitle.entity.mummy_me.mummify"
   },
+  "entity.piranha_plant.attack": {
+    "sounds": [
+      "super_block_world:entity/piranha_plant/attack"
+    ],
+    "subtitle": "sbw_subtitle.entity.piranha_plant.attack"
+  },
   "entity.piranha_plant.bite": {
     "sounds": [
       "super_block_world:entity/piranha_plant/bite"
@@ -1192,6 +1205,12 @@
       "super_block_world:entity/shy_guy/hurt3"
     ],
     "subtitle": "sbw_subtitle.entity.shy_guy.hurt"
+  },
+  "entity.spindrift.death": {
+    "sounds": [
+      "super_block_world:entity/sm64_enemy_down1"
+    ],
+    "subtitle": "sbw_subtitle.entity.spindrift.death"
   },
   "entity.stamp.break": {
     "sounds": [
@@ -1351,23 +1370,23 @@
     ],
     "subtitle": "sbw_subtitle.item.ice_flower.shoot"
   },
-  "item.poison_mushroom.eat": {
+  "item.life_mushroom.use": {
     "sounds": [
-      "super_block_world:item/poison_mushroom"
+      "super_block_world:item/life_mushroom"
     ],
-    "subtitle": "sbw_subtitle.item.poison_mushroom.eat"
-  },
-  "item.super_mushroom.eat": {
-    "sounds": [
-      "super_block_world:item/super_mushroom"
-    ],
-    "subtitle": "sbw_subtitle.item.super_mushroom.eat"
+    "subtitle": "sbw_subtitle.item.life_mushroom.use"
   },
   "item.one_up.eat": {
     "sounds": [
       "super_block_world:item/one_up"
     ],
     "subtitle": "sbw_subtitle.item.one_up.eat"
+  },
+  "item.poison_mushroom.eat": {
+    "sounds": [
+      "super_block_world:item/poison_mushroom"
+    ],
+    "subtitle": "sbw_subtitle.item.poison_mushroom.eat"
   },
   "item.star_bit.pickup": {
     "sounds": [
@@ -1386,6 +1405,12 @@
       "super_block_world:item/super_heart"
     ],
     "subtitle": "sbw_subtitle.item.super_heart.heal"
+  },
+  "item.super_mushroom.eat": {
+    "sounds": [
+      "super_block_world:item/super_mushroom"
+    ],
+    "subtitle": "sbw_subtitle.item.super_mushroom.eat"
   },
   "item.warp_link.break": {
     "sounds": [
@@ -1472,7 +1497,7 @@
       {
         "name": "super_block_world:music/toxicity",
         "stream": true,
-        "weight": 8
+        "weight": 5
       },
       {
         "name": "super_block_world:music/waltz_of_the_lost",

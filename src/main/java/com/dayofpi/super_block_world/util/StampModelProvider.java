@@ -1,20 +1,25 @@
 package com.dayofpi.super_block_world.util;
 
 import com.dayofpi.super_block_world.Main;
-import net.fabricmc.fabric.api.client.model.ModelProviderContext;
-import net.fabricmc.fabric.api.client.model.ModelResourceProvider;
-import net.minecraft.client.render.model.UnbakedModel;
+import com.dayofpi.super_block_world.common.entities.misc.StampEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.model.ExtraModelProvider;
+import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
 
-public class StampModelProvider implements ModelResourceProvider {
-    public static final Identifier STAMP = new Identifier(Main.MOD_ID, "block/stamp_arrow");
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
 
+@Environment(EnvType.CLIENT)
+public class StampModelProvider implements ExtraModelProvider {
     @Override
-    public @Nullable UnbakedModel loadModelResource(Identifier resourceId, ModelProviderContext context) {
-        if (resourceId.equals(STAMP)) {
-            return context.loadModel(STAMP);
+    public void provideExtraModels(ResourceManager manager, Consumer<Identifier> out) {
+        List<StampEntity.Stamp> list = Arrays.stream(StampEntity.Stamp.values()).toList();
+        for (StampEntity.Stamp stamp : list) {
+            Identifier identifier = new Identifier(Main.MOD_ID, "block/stamp_" + stamp.asString());
+            out.accept(identifier);
         }
-        else return null;
     }
 }

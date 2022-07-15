@@ -79,6 +79,11 @@
         {
           "type": "minecraft:item",
           "weight": 2,
+          "name": "minecraft:iron_pickaxe"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
           "name": "minecraft:iron_pickaxe",
           "functions": [
             {

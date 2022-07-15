@@ -36,7 +36,9 @@ public class LavaBubbleRenderer extends MobEntityRenderer<LavaBubbleEntity, Lava
     @Override
     protected void setupTransforms(LavaBubbleEntity entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta) {
         super.setupTransforms(entity, matrices, animationProgress, bodyYaw, tickDelta);
-        matrices.multiply(Vec3f.NEGATIVE_X.getRadialQuaternion(entity.angle * bodyYaw));
+        matrices.push();
+        matrices.multiply(Vec3f.NEGATIVE_X.getDegreesQuaternion(entity.angle));
+        matrices.pop();
     }
 
     @Override
