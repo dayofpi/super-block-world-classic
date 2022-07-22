@@ -3,7 +3,7 @@
   "biomes": [
     "super_block_world:moo_moo_meadow",
     "super_block_world:mushroom_grasslands",
-    "super_block_world:tall_tall_mountain"
+    "super_block_world:autumn_mountain"
   ],
   "max_distance_from_center": 80,
   "project_start_to_heightmap": "WORLD_SURFACE_WG",

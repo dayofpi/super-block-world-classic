@@ -2,6 +2,8 @@
   "replace": "false",
   "values": [
     "super_block_world:amanita_forest",
+    "super_block_world:autumn_forest",
+    "super_block_world:autumn_mountain",
     "super_block_world:bowsers_badlands",
     "super_block_world:dry_dry_desert",
     "super_block_world:forest_of_illusion",

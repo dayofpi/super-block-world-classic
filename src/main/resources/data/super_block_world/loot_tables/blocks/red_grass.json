@@ -42,18 +42,23 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "weight": 5,
+          "name": "super_block_world:syrup_bottle"
+        },
+        {
+          "type": "minecraft:item",
           "weight": 8,
           "name": "super_block_world:red_shell"
         },
         {
           "type": "minecraft:item",
           "weight": 8,
-          "name": "super_block_world:bomb"
+          "name": "super_block_world:super_heart"
         },
         {
           "type": "minecraft:item",
-          "weight": 8,
-          "name": "super_block_world:super_heart"
+          "weight": 10,
+          "name": "super_block_world:bomb"
         },
         {
           "type": "minecraft:item",

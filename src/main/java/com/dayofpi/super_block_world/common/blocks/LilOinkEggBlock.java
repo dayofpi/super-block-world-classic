@@ -5,6 +5,7 @@ import com.dayofpi.super_block_world.registry.ModEntities;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -41,6 +42,7 @@ public class LilOinkEggBlock extends Block {
                 world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
                 LilOinkEntity lilOinkEntity = ModEntities.LIL_OINK.create(world);
                 if (lilOinkEntity != null) {
+                    lilOinkEntity.initialize(world, world.getLocalDifficulty(pos), SpawnReason.BREEDING, null, null);
                     lilOinkEntity.setBreedingAge(-24000);
                     lilOinkEntity.refreshPositionAndAngles((double) pos.getX() + 0.5, pos.getY(), (double) pos.getZ() + 0.5, 0.0f, 0.0f);
                     world.spawnEntity(lilOinkEntity);

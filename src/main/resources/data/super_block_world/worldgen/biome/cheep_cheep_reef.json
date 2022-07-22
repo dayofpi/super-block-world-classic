@@ -1,0 +1,194 @@
+{
+  "temperature": 0.6,
+  "downfall": 0.4,
+  "precipitation": "rain",
+  "effects": {
+    "sky_color": 11134462,
+    "fog_color": 12050150,
+    "water_color": 4059903,
+    "water_fog_color": 4059903,
+    "grass_color": 12779325,
+    "foliage_color": 14482996,
+    "mood_sound": {
+      "sound": "super_block_world:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    },
+    "music": {
+      "sound": "super_block_world:music.water",
+      "min_delay": 8000,
+      "max_delay": 19900,
+      "replace_current_music": false
+    }
+  },
+  "spawners": {
+    "creature": [
+      {
+        "type": "minecraft:rabbit",
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:cat",
+        "weight": 8,
+        "minCount": 3,
+        "maxCount": 5
+      }
+    ],
+    "monster": [
+      {
+        "type": "super_block_world:koopa_troopa",
+        "weight": 100,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:paratroopa",
+        "weight": 60,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:goomba",
+        "weight": 80,
+        "minCount": 2,
+        "maxCount": 5
+      },
+      {
+        "type": "super_block_world:paragoomba",
+        "weight": 80,
+        "minCount": 2,
+        "maxCount": 5
+      },
+      {
+        "type": "super_block_world:shy_guy",
+        "weight": 80,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:bob_omb",
+        "weight": 50,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:piranha_plant",
+        "weight": 40,
+        "minCount": 2,
+        "maxCount": 5
+      },
+      {
+        "type": "super_block_world:putrid_piranha",
+        "weight": 30,
+        "minCount": 2,
+        "maxCount": 5
+      },
+      {
+        "type": "super_block_world:blockstepper",
+        "weight": 20,
+        "minCount": 5,
+        "maxCount": 8
+      },
+      {
+        "type": "super_block_world:spiny",
+        "weight": 20,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:thwomp",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "super_block_world:unagi",
+        "weight": 50,
+        "minCount": 3,
+        "maxCount": 4
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:dolphin",
+        "weight": 15,
+        "minCount": 4,
+        "maxCount": 6
+      },
+      {
+        "type": "super_block_world:cheep_cheep",
+        "weight": 20,
+        "minCount": 3,
+        "maxCount": 5
+      },
+      {
+        "type": "super_block_world:blooper",
+        "weight": 7,
+        "minCount": 4,
+        "maxCount": 5
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [
+      "super_block_world:spring_water"
+    ],
+    [
+      "super_block_world:topped_vanillate"
+    ],
+    [
+      "super_block_world:disk_sand",
+      "super_block_world:disk_seastone",
+      "super_block_world:disk_coral",
+      "super_block_world:ore_coal",
+      "super_block_world:ore_amethyst",
+      "super_block_world:ore_iron",
+      "super_block_world:ore_gold",
+      "super_block_world:ore_bronze",
+      "super_block_world:ore_crumble",
+      "super_block_world:ore_toadstone",
+      "super_block_world:ore_gloomstone"
+    ],
+    [
+      "super_block_world:beanstalk_underground",
+      "super_block_world:block_line",
+      "super_block_world:block_line_deep",
+      "super_block_world:block_pile",
+      "super_block_world:crystal_pile"
+    ],
+    [
+      "super_block_world:patch_star_cluster",
+      "super_block_world:warp_pipe",
+      "super_block_world:underwater_pipe",
+      "super_block_world:underwater_pipe_common"
+    ],
+    [
+      "minecraft:warm_ocean_vegetation",
+      "minecraft:seagrass_warm",
+      "super_block_world:amanita_carpet",
+      "super_block_world:trees_reef",
+      "super_block_world:beanstalk",
+      "super_block_world:patch_grass",
+      "super_block_world:patch_red_grass",
+      "super_block_world:patch_bush",
+      "super_block_world:patch_stump",
+      "super_block_world:patch_songflower",
+      "super_block_world:patch_pawflower",
+      "super_block_world:patch_flowerbed",
+      "super_block_world:patch_water_plants",
+      "super_block_world:patch_muncher",
+      "super_block_world:strawberry_coral"
+    ]
+  ]
+}

@@ -91,4 +91,11 @@ public class ParatroopaEntity extends AbstractKoopa implements Flutterer {
     public boolean isInAir() {
         return !this.isOnGround();
     }
+
+    @Override
+    public void onStomped() {
+        KoopaTroopaEntity koopaTroopa = this.convertTo(ModEntities.KOOPA_TROOPA, true);
+        if (koopaTroopa != null)
+            koopaTroopa.setKoopaColor(this.getKoopaColor());
+    }
 }

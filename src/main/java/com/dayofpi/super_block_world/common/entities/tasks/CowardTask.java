@@ -22,14 +22,8 @@ public class CowardTask extends Task<PassiveEntity> {
 
     @Override
     protected boolean shouldRun(ServerWorld world, PassiveEntity entity) {
-        MobEntity playerEntity = this.getNearestNemesis(entity);
-        return entity.isInRange(playerEntity, this.executionRange.getMax() + 1) && !entity.isInRange(playerEntity, this.executionRange.getMin()) && playerEntity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.PRINCESS_CROWN);
-    }
-
-    @Override
-    protected void finishRunning(ServerWorld world, PassiveEntity entity, long time) {
-        if (entity instanceof Toad)
-            ((Toad) entity).setToadState(0);
+        MobEntity nemesis = this.getNearestNemesis(entity);
+        return entity.isInRange(nemesis, this.executionRange.getMax() + 1) && !entity.isInRange(nemesis, this.executionRange.getMin()) && nemesis.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.PRINCESS_CROWN);
     }
 
     @Override

@@ -10,7 +10,7 @@ import net.minecraft.sound.SoundEvents;
 public class RedShellArmorMaterial implements ArmorMaterial {
     @Override
     public int getDurability(EquipmentSlot slot) {
-        return 100;
+        return 40;
     }
 
     @Override

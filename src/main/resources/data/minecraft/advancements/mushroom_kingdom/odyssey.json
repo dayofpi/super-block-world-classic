@@ -26,6 +26,26 @@
         }
       }
     },
+    "autumn_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:autumn_forest"
+          }
+        }
+      }
+    },
+    "autumn_mountain": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:autumn_mountain"
+          }
+        }
+      }
+    },
     "bell_plains": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -42,6 +62,16 @@
         "player": {
           "location": {
             "biome": "super_block_world:bonnetlands"
+          }
+        }
+      }
+    },
+    "cheep_cheep_reef": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:cheep_cheep_reef"
           }
         }
       }
@@ -162,10 +192,19 @@
       "amanita_forest"
     ],
     [
+      "autumn_forest"
+    ],
+    [
+      "autumn_mountain"
+    ],
+    [
       "bell_plains"
     ],
     [
       "bonnetlands"
+    ],
+    [
+      "cheep_cheep_reef"
     ],
     [
       "cherry_fields"

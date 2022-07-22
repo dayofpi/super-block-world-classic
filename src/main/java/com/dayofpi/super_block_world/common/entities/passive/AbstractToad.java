@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.common.entities.passive;
 
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.common.entities.Stompable;
 import com.dayofpi.super_block_world.common.entities.Toad;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
@@ -13,7 +14,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class AbstractToad extends PassiveEntity implements Toad {
+public abstract class AbstractToad extends PassiveEntity implements Toad, Stompable {
     private static final TrackedData<Integer> COINS_RECEIVED;
     private static final TrackedData<Integer> COINS_WANTED;
     private static final TrackedData<Integer> ATTENTION_COOLDOWN;

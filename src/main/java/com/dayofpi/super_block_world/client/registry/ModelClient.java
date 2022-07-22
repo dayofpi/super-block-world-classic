@@ -28,10 +28,10 @@ public class ModelClient {
 
     private static void renderColors() {
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GRASS_COLOR, ModBlocks.TOADSTOOL_GRASS, ModBlocks.GRASSY_TOADSTONE, ModBlocks.GRASSY_HARDSTONE, ModBlocks.SHOREGRASS, ModBlocks.TOADSTOOL_TURF, ModBlocks.SHORT_GRASS);
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FOLIAGE_COLOR, ModBlocks.AMANITA_LEAVES, ModBlocks.FRUITING_AMANITA_LEAVES, ModBlocks.DARK_AMANITA_LEAVES, ModBlocks.FRUITING_DARK_AMANITA_LEAVES, ModBlocks.BUSH);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FOLIAGE_COLOR, ModBlocks.AMANITA_CARPET, ModBlocks.AMANITA_LEAVES, ModBlocks.FRUITING_AMANITA_LEAVES, ModBlocks.DARK_AMANITA_LEAVES, ModBlocks.FRUITING_DARK_AMANITA_LEAVES, ModBlocks.BUSH);
 
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GRASS_COLOR, ModBlocks.TOADSTOOL_GRASS, ModBlocks.GRASSY_TOADSTONE, ModBlocks.GRASSY_HARDSTONE, ModBlocks.SHOREGRASS, ModBlocks.TOADSTOOL_TURF, ModBlocks.SHORT_GRASS);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FOLIAGE_COLOR, ModBlocks.AMANITA_LEAVES, ModBlocks.FRUITING_AMANITA_LEAVES, ModBlocks.DARK_AMANITA_LEAVES, ModBlocks.FRUITING_DARK_AMANITA_LEAVES, ModBlocks.BUSH);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FOLIAGE_COLOR, ModBlocks.AMANITA_CARPET, ModBlocks.AMANITA_LEAVES, ModBlocks.FRUITING_AMANITA_LEAVES, ModBlocks.DARK_AMANITA_LEAVES, ModBlocks.FRUITING_DARK_AMANITA_LEAVES, ModBlocks.BUSH);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableItem) stack.getItem()).getColor(stack), ModItems.PLUMBER_CAP);
     }
 
@@ -72,6 +72,7 @@ public class ModelClient {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RED_GRASS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HORSETAIL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AMANITA_CARPET, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GREEN_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.YELLOW_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ORANGE_MUSHROOM, RenderLayer.getCutout());

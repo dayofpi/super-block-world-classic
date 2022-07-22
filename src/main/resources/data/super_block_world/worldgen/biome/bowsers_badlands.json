@@ -57,6 +57,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:spiny",
+        "weight": 25,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:dry_bones",
         "weight": 50,
         "minCount": 3,
@@ -79,6 +85,12 @@
         "weight": 20,
         "minCount": 2,
         "maxCount": 3
+      },
+      {
+        "type": "super_block_world:thwomp",
+        "weight": 16,
+        "minCount": 1,
+        "maxCount": 2
       }
     ],
     "water_creature": []

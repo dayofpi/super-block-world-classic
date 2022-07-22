@@ -54,7 +54,7 @@ import java.util.Map;
 public class ToadEntity extends AbstractToad {
     public static final Map<Integer, Identifier> TEXTURES;
     protected static final ImmutableList<SensorType<? extends Sensor<? super PassiveEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, Main.TOAD_SPECIFIC_SENSOR);
-    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING, MemoryModuleType.NEAREST_VISIBLE_NEMESIS);
+    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING, MemoryModuleType.NEAREST_VISIBLE_NEMESIS, MemoryModuleType.HOME);
     private static final TrackedData<Integer> COLOR;
     private static final TrackedData<Integer> EMOTION;
     private static final TrackedData<Integer> TOAD_STATE;
@@ -116,6 +116,7 @@ public class ToadEntity extends AbstractToad {
         this.setToadette(random.nextBoolean());
         this.setColor(random.nextInt(6));
         this.setWantedCoins(UniformIntProvider.create(20, 40).get(random));
+        ToadBrain.setCurrentPosAsHome(this);
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
@@ -309,5 +310,10 @@ public class ToadEntity extends AbstractToad {
             babie.setColor(((ToadEntity) parent).getColor());
         }
         return babie;
+    }
+
+    @Override
+    public void onStomped() {
+        this.setEmotion(2);
     }
 }

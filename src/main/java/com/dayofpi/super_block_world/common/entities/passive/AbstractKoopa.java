@@ -2,7 +2,8 @@ package com.dayofpi.super_block_world.common.entities.passive;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.registry.ModItems;
+import com.dayofpi.super_block_world.common.entities.KoopaVariant;
+import com.dayofpi.super_block_world.common.entities.Stompable;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -30,6 +31,7 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TimeHelper;
+import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
@@ -46,14 +48,19 @@ import net.minecraft.world.event.listener.VibrationListener;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
+import java.util.Optional;
 import java.util.UUID;
 
-public abstract class AbstractKoopa extends PassiveEntity implements VibrationListener.Callback, Saddleable, ItemSteerable, Angerable {
+public abstract class AbstractKoopa extends PassiveEntity implements VibrationListener.Callback, Saddleable, ItemSteerable, Stompable, Angerable {
     static final TrackedData<Boolean> SADDLED;
     static final TrackedData<Integer> BOOST_TIME;
     private static final TrackedData<Integer> KOOPA_COLOR;
     private static final TrackedData<Integer> ANGER_TIME;
     private static final UniformIntProvider ANGER_TIME_RANGE;
+    private static final int GREEN = 0;
+    private static final int RED = 1;
+    private static final int BLUE = 2;
+    private static final int GOLD = 3;
     private static final Logger logger = Main.LOGGER;
     public final AnimationState idlingAnimationState = new AnimationState();
     public final AnimationState walkingAnimationState = new AnimationState();
@@ -87,6 +94,11 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
         this.goalSelector.add(5, new LookAroundGoal(this));
         this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
+    }
+
+    private Optional<Integer> chooseKoopaColor() {
+        DataPool<Integer> variantPool = DataPool.<Integer>builder().add(GREEN, 25).add(RED, 10).add(BLUE, 5).add(GOLD, 1).build();
+        return variantPool.getDataOrEmpty(this.random);
     }
 
     private boolean shouldDance() {
@@ -223,7 +235,7 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
 
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        if (random.nextInt(10) == 0) this.setKoopaColor(1);
+        this.setKoopaColor(this.chooseKoopaColor().orElse(GREEN));
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
@@ -233,8 +245,7 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
             this.dropItem(Items.SADDLE);
         }
         if (this.random.nextInt(6) == 0) {
-            if (this.getKoopaColor() == 0) this.dropItem(ModItems.GREEN_SHELL);
-            if (this.getKoopaColor() == 1) this.dropItem(ModItems.RED_SHELL);
+            this.dropItem(KoopaVariant.getShell(this.getKoopaColor()));
         }
     }
 

@@ -1,6 +1,8 @@
 package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.common.entities.Stompable;
+import com.dayofpi.super_block_world.registry.ModEntities;
 import net.minecraft.block.Block;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
@@ -18,7 +20,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class ParabonesEntity extends DryBonesEntity implements Flutterer {
+public class ParabonesEntity extends DryBonesEntity implements Flutterer, Stompable {
     public float flapProgress;
     public float maxWingDeviation;
     private float flapSpeed = 1.0f;
@@ -94,5 +96,10 @@ public class ParabonesEntity extends DryBonesEntity implements Flutterer {
     @Override
     public boolean isInAir() {
         return !this.isOnGround();
+    }
+
+    @Override
+    public void onStomped() {
+        this.convertTo(ModEntities.DRY_BONES, true);
     }
 }

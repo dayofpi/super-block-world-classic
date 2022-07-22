@@ -71,7 +71,7 @@ public class BooEntity extends TameableEntity implements Monster {
     }
 
     @SuppressWarnings("unused")
-    public static boolean canBooSpawn(EntityType<BooEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<BooEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return HostileEntity.isSpawnDark((ServerWorldAccess) world, pos, random) && pos.getY() >= 63;
     }
 

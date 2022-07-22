@@ -8,14 +8,12 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerAbilities;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -24,7 +22,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -84,41 +81,6 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     public void setPipeCooldown(int cooldown) {
         this.pipeCooldown = cooldown;
-    }
-
-    @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
-    public void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (this.isGoo()) {
-            if (FormManager.isGooMeImmuneTo(source)) {
-                cir.setReturnValue(false);
-            }
-            if (this.abilities.invulnerable && !source.isOutOfWorld()) {
-                cir.setReturnValue(false);
-            }
-            this.despawnCounter = 0;
-            if (this.isDead()) {
-                cir.setReturnValue(false);
-            }
-            if (!this.world.isClient) {
-                this.dropShoulderEntities();
-            }
-            amount = amount * 2.0f;
-            if (source.isScaledWithDifficulty()) {
-                if (this.world.getDifficulty() == Difficulty.PEACEFUL) {
-                    amount = 0.0f;
-                }
-                if (this.world.getDifficulty() == Difficulty.EASY) {
-                    amount = Math.min(amount / 2.0f + 1.0f, amount);
-                }
-                if (this.world.getDifficulty() == Difficulty.HARD) {
-                    amount = amount * 3.0f / 2.0f;
-                }
-            }
-            if (amount == 0.0f) {
-                cir.setReturnValue(false);
-            }
-            cir.setReturnValue(super.damage(source, amount));
-        }
     }
 
     @Override

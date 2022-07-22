@@ -3,6 +3,7 @@ package com.dayofpi.super_block_world.client.renderers;
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.models.KoopaTroopaModel;
 import com.dayofpi.super_block_world.client.registry.ModModelLayers;
+import com.dayofpi.super_block_world.common.entities.KoopaVariant;
 import com.dayofpi.super_block_world.common.entities.passive.AbstractKoopa;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -13,10 +14,6 @@ import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class KoopaTroopaRenderer extends MobEntityRenderer<AbstractKoopa, KoopaTroopaModel> {
-    private static final Identifier GREEN = new Identifier(Main.MOD_ID, "textures/entity/koopa/green.png");
-    private static final Identifier GREEN_ANGRY = new Identifier(Main.MOD_ID, "textures/entity/koopa/green_angry.png");
-    private static final Identifier RED = new Identifier(Main.MOD_ID, "textures/entity/koopa/red.png");
-    private static final Identifier RED_ANGRY = new Identifier(Main.MOD_ID, "textures/entity/koopa/red_angry.png");
     private static final Identifier SADDLE = new Identifier(Main.MOD_ID, "textures/entity/koopa/saddle.png");
 
     public KoopaTroopaRenderer(EntityRendererFactory.Context context) {
@@ -26,9 +23,10 @@ public class KoopaTroopaRenderer extends MobEntityRenderer<AbstractKoopa, KoopaT
 
     @Override
     public Identifier getTexture(AbstractKoopa entity) {
-        if (entity.getKoopaColor() == 0)
-            return entity.hasAngerTime() ? GREEN_ANGRY : GREEN;
-        else
-            return entity.hasAngerTime() ? RED_ANGRY : RED;
+        String end = ".png";
+        if (entity.hasAngerTime())
+            end = "_angry.png";
+        int koopaColor = entity.getKoopaColor();
+        return new Identifier(Main.MOD_ID, "textures/entity/koopa/" + KoopaVariant.getName(koopaColor) + end);
     }
 }

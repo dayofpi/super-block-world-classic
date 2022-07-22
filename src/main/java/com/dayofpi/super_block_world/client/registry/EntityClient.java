@@ -17,6 +17,7 @@ public class EntityClient {
         BlockEntityRendererRegistry.register(ModBlockEntities.DRY_BONES_PILE, DryBonesPileRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.FLAG, FlagRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.PLACED_ITEM, ctx -> new PlacedItemRenderer());
+        EntityRendererRegistry.register(ModEntities.STINGBY, StingbyRenderer::new);
         EntityRendererRegistry.register(ModEntities.BABY_YOSHI, BabyYoshiRenderer::new);
         EntityRendererRegistry.register(ModEntities.BLOOPER, BlooperRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOB_OMB, BobOmbRenderer::new);
@@ -31,6 +32,7 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.FAKE_BLOCK, FakeBlockRenderer::new);
         EntityRendererRegistry.register(ModEntities.FIREBALL, ModFireballRenderer::new);
         EntityRendererRegistry.register(ModEntities.FUZZY, FuzzyRenderer::new);
+        EntityRendererRegistry.register(ModEntities.STAR_BIT, EmptyEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.GHOST_ESSENCE, EmptyEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.GLAD_GOOMBA, GladGoombaRenderer::new);
         EntityRendererRegistry.register(ModEntities.GLAD_PARAGOOMBA, GladGoombaRenderer::new);
@@ -41,6 +43,7 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.ICEBALL, IceballRenderer::new);
         EntityRendererRegistry.register(ModEntities.KING_BOB_OMB, KingBobOmbRenderer::new);
         EntityRendererRegistry.register(ModEntities.KING_BOO, KingBooRenderer::new);
+        EntityRendererRegistry.register(ModEntities.KOOPA_SHELL, KoopaShellRenderer::new);
         EntityRendererRegistry.register(ModEntities.KOOPA_TROOPA, KoopaTroopaRenderer::new);
         EntityRendererRegistry.register(ModEntities.LAUNCH_STAR, LaunchStarRenderer::new);
         EntityRendererRegistry.register(ModEntities.LAVA_BUBBLE, LavaBubbleRenderer::new);
@@ -61,9 +64,11 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.SHY_GUY, ShyGuyRenderer::new);
         EntityRendererRegistry.register(ModEntities.SLEEPY_SHEEP, SleepySheepRenderer::new);
         EntityRendererRegistry.register(ModEntities.SPINDRIFT, SpindriftRenderer::new);
+        EntityRendererRegistry.register(ModEntities.SPINY, SpinyRenderer::new);
         EntityRendererRegistry.register(ModEntities.STAMP, StampRenderer::new);
         EntityRendererRegistry.register(ModEntities.SUPER_HEART, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.SUPER_PICKAX, SuperPickaxRenderer::new);
+        EntityRendererRegistry.register(ModEntities.THWOMP, ThwompRenderer::new);
         EntityRendererRegistry.register(ModEntities.TOAD, ToadRenderer::new);
         EntityRendererRegistry.register(ModEntities.TRAMPOLINE_MINECART, TrampolineMinecartRenderer::new);
         EntityRendererRegistry.register(ModEntities.TURNIP, FlyingItemEntityRenderer::new);

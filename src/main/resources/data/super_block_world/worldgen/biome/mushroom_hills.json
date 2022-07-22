@@ -7,8 +7,8 @@
     "fog_color": 16167935,
     "water_color": 4046591,
     "water_fog_color": 4046591,
-    "grass_color": 6225725,
-    "foliage_color": 1696058,
+    "grass_color": 6879535,
+    "foliage_color": 6408218,
     "mood_sound": {
       "sound": "super_block_world:ambient.cave",
       "tick_delay": 6000,
@@ -20,7 +20,7 @@
     "creature": [
       {
         "type": "minecraft:rabbit",
-        "weight": 5,
+        "weight": 1,
         "minCount": 2,
         "maxCount": 4
       },
@@ -73,6 +73,18 @@
         "weight": 20,
         "minCount": 2,
         "maxCount": 5
+      },
+      {
+        "type": "super_block_world:spiny",
+        "weight": 20,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:thwomp",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
       },
       {
         "type": "super_block_world:unagi",

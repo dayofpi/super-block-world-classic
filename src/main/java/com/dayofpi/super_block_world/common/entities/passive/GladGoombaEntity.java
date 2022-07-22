@@ -4,6 +4,7 @@ import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.hostile.GoombaEntity;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
+import net.minecraft.block.BlockState;
 import net.minecraft.command.argument.EntityAnchorArgumentType;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
@@ -28,11 +29,13 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.UUID;
 
 public class GladGoombaEntity extends TameableEntity {
@@ -215,6 +218,25 @@ public class GladGoombaEntity extends TameableEntity {
         } else if (!this.isInSittingPose()) {
             sittingTimer = 6;
         }
+        if (this.isAlive()) {
+            if (!this.isBig() && !world.isClient) {
+                List<ItemEntity> list = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ModItems.SUPER_MUSHROOM));
+                if (!list.isEmpty()) {
+                    this.setBig(true);
+                    this.playSound(Sounds.ENTITY_GENERIC_POWER_UP, 2.0F, 1.0F);
+                    list.get(0).discard();
+                    if (!world.isSpaceEmpty(this)) {
+                        for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 3, 3, 3)) {
+                            BlockState blockState = world.getBlockState(blockPos);
+                            if (blockState.shouldSuffocate(world, blockPos)) {
+                                world.breakBlock(blockPos, true);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     @Nullable

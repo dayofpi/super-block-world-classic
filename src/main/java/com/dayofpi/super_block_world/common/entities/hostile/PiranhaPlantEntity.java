@@ -92,7 +92,7 @@ public class PiranhaPlantEntity extends HostileEntity {
 
     @Override
     public int getMinAmbientSoundDelay() {
-        return this.isAttacking() ? super.getMinAmbientSoundDelay() : 120;
+        return this.isAttacking() ? 50 : 120;
     }
 
     @Override

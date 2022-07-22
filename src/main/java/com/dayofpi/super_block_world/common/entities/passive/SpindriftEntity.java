@@ -17,10 +17,13 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BoneMealItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -29,7 +32,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldEvents;
 import org.jetbrains.annotations.Nullable;
 
 public class SpindriftEntity extends PassiveEntity {
@@ -75,7 +77,6 @@ public class SpindriftEntity extends PassiveEntity {
     protected ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
         if (itemStack.isOf(Items.BONE_MEAL)) {
-            world.syncWorldEvent(player, WorldEvents.BONE_MEAL_USED, this.getBlockPos(), 0);
             itemStack.decrement(1);
             if (random.nextInt(3) == 0) {
                 SpindriftEntity spindrift = ModEntities.SPINDRIFT.create(world);
@@ -83,6 +84,10 @@ public class SpindriftEntity extends PassiveEntity {
                     spindrift.updatePosition(this.getX(), this.getY(), this.getZ());
                     world.spawnEntity(spindrift);
                 }
+            }
+            if (!world.isClient) {
+                this.world.playSoundFromEntity(null, this, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.PLAYERS, 1.0f, 1.0f);
+                BoneMealItem.createParticles(this.world, this.getBlockPos(), 0);
             }
             return ActionResult.success(world.isClient);
         }

@@ -27,7 +27,7 @@ public class LandPathNodeMixin {
                     pos.set(x + l, y + m, z + n);
                     BlockState blockState = world.getBlockState(pos);
                     FluidState fluidState = world.getFluidState(pos);
-                    if (blockState.isOf(ModBlocks.JELLYBEAM)) {
+                    if (blockState.isOf(ModBlocks.JELLYBEAM) || blockState.isOf(ModBlocks.QUICKSAND)) {
                         cir.setReturnValue(PathNodeType.DANGER_OTHER);
                     }
                     if (blockState.isOf(ModBlocks.MUNCHER)) {
@@ -54,21 +54,17 @@ public class LandPathNodeMixin {
     private static void getCommonNodeType(BlockView world, BlockPos pos, CallbackInfoReturnable<PathNodeType> cir) {
         BlockState blockState = world.getBlockState(pos);
         FluidState fluidState = world.getFluidState(pos);
-        if (blockState.isOf(ModBlocks.JELLYBEAM)) {
+        if (blockState.isOf(ModBlocks.JELLYBEAM) || blockState.isOf(ModBlocks.QUICKSAND)) {
             cir.setReturnValue(PathNodeType.DAMAGE_OTHER);
-            cir.cancel();
         }
         if (blockState.isOf(ModBlocks.MUNCHER)) {
             cir.setReturnValue(PathNodeType.DAMAGE_OTHER);
-            cir.cancel();
         }
         if (blockState.isOf(ModBlocks.PIT_PLANT)) {
             cir.setReturnValue(PathNodeType.DAMAGE_OTHER);
-            cir.cancel();
         }
         if (fluidState.isIn(ModTags.POISON)) {
             cir.setReturnValue(PathNodeType.DAMAGE_OTHER);
-            cir.cancel();
         }
     }
 }

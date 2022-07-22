@@ -68,7 +68,11 @@ public class BlockstepperEntity extends HostileEntity implements Angerable {
 
     @SuppressWarnings("unused")
     public static boolean canSpawn(EntityType<BlockstepperEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return world.getDifficulty() != Difficulty.PEACEFUL && world.getBlockState(pos.down()).isOf(ModBlocks.CHERRY_GRASS);
+        return world.getDifficulty() != Difficulty.PEACEFUL && canSpawn(world.getBlockState(pos.down()));
+    }
+
+    private static boolean canSpawn(BlockState blockState) {
+        return blockState.isOf(ModBlocks.CHERRY_GRASS) || blockState.isOf(ModBlocks.SHOREGRASS);
     }
 
     @Override

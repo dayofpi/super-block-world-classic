@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": [
+    {
+      "item": "super_block_world:frosty_vanillate_bricks"
+    },
+    {
+      "item": "super_block_world:frosty_vanillate"
+    }
+  ],
+  "result": "super_block_world:frosty_vanillate_tiles",
+  "count": 1
+}

@@ -5,6 +5,7 @@ import com.dayofpi.super_block_world.common.blocks.BrickBlock;
 import com.dayofpi.super_block_world.common.blocks.FakeBlock;
 import com.dayofpi.super_block_world.common.blocks.ReactiveBlock;
 import com.dayofpi.super_block_world.registry.ModItems;
+import com.dayofpi.super_block_world.registry.ModTags;
 import com.google.common.collect.Sets;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -117,7 +118,7 @@ public class DryBonesShellEntity extends MobEntity implements Mount {
                     }
 
                     blockPos = var17.next();
-                } while(this.world.getFluidState(blockPos).isIn(FluidTags.LAVA));
+                } while(this.world.getFluidState(blockPos).isIn(FluidTags.LAVA) || this.world.getFluidState(blockPos).isIn(ModTags.POISON));
 
                 g = this.world.getDismountHeight(blockPos);
             } while(!Dismounting.canDismountInBlock(g));
@@ -137,8 +138,8 @@ public class DryBonesShellEntity extends MobEntity implements Mount {
     @Override
     public void tickMovement() {
         super.tickMovement();
-        if (this.updateMovementInFluid(FluidTags.LAVA, 0.014)) {
-            if (this.getFluidHeight(FluidTags.LAVA) > 0.05D)
+        if (this.updateMovementInFluid(FluidTags.LAVA, 0.014) || this.updateMovementInFluid(ModTags.POISON, 0.014)) {
+            if (this.getFluidHeight(FluidTags.LAVA) > 0.05D || this.getFluidHeight(ModTags.POISON) > 0.05D)
                 this.addVelocity(0.0D, 0.1D, 0.0D);
             else {
                 if (this.getVelocity().horizontalLengthSquared() < 0.5) {

@@ -119,7 +119,7 @@ public class ModBlocks {
     public static final Block DREAMWOOL_CARPET = new CarpetBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CARPET));
     public static final Block TOADSTONE = new Block(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_BROWN).sounds(SoundGroups.TOADSTONE).strength(1.5F, 6.0F).requiresTool());
     public static final Block GRASSY_TOADSTONE = new GrassyStoneBlock(TOADSTONE, FabricBlockSettings.copyOf(TOADSTONE).mapColor(MapColor.DARK_GREEN).sounds(SoundGroups.GRASSY_TOADSTONE));
-    public static final Block FAKE_BLOCK = new FakeBlock(FabricBlockSettings.copyOf(TOADSTONE).strength(1.0F, 6.0F));
+    public static final Block FAKE_BLOCK = new FakeBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_BROWN).sounds(SoundGroups.TOADSTONE).strength(0.6F, 3.0F));
     public static final Block TOADSTONE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(TOADSTONE));
     public static final Block TOADSTONE_BRICK_STAIRS = new ModStairsBlock(TOADSTONE);
     public static final Block TOADSTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(TOADSTONE));
@@ -186,7 +186,12 @@ public class ModBlocks {
     public static final Block VANILLATE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(VANILLATE));
     public static final Block FROSTY_VANILLATE = new VanillateBlock(FabricBlockSettings.copyOf(VANILLATE).mapColor(MapColor.LIGHT_BLUE).sounds(SoundGroups.ICY_STONE).slipperiness(0.8F));
     public static final Block FROSTY_VANILLATE_CRUMBLE = new SandBlock(15658751, FabricBlockSettings.of(Material.AGGREGATE, MapColor.WHITE).sounds(SoundGroups.ICY_STONE).slipperiness(0.8F).strength(1.2F).requiresTool());
-    public static final Block FROSTED_VANILLATE = new VanillateBlock(FabricBlockSettings.copyOf(FROSTY_VANILLATE).mapColor(MapColor.WHITE).slipperiness(0.96F));
+    public static final Block FROSTY_VANILLATE_BRICKS = new Block(FabricBlockSettings.copyOf(FROSTY_VANILLATE));
+    public static final Block FROSTY_VANILLATE_TILES = new Block(FabricBlockSettings.copyOf(FROSTY_VANILLATE));
+    public static final Block FROSTY_VANILLATE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(FROSTY_VANILLATE));
+    public static final Block FROSTY_VANILLATE_BRICK_STAIRS = new ModStairsBlock(FROSTY_VANILLATE);
+    public static final Block FROSTY_VANILLATE_BRICK_WALL = new WallBlock(FabricBlockSettings.copyOf(FROSTY_VANILLATE));
+    public static final Block FROSTED_VANILLATE = new Block(FabricBlockSettings.copyOf(FROSTY_VANILLATE).mapColor(MapColor.WHITE).slipperiness(0.96F));
     public static final Block AMANITA_LOG = createLogBlock(MapColor.TERRACOTTA_YELLOW, MapColor.SPRUCE_BROWN);
     public static final Block BELL_LOG = new LogBlock(FabricBlockSettings.copyOf(AMANITA_LOG).mapColor(MapColor.OFF_WHITE));
     public static final Block AMANITA_WOOD = new LogBlock(FabricBlockSettings.copyOf(AMANITA_LOG).mapColor(MapColor.SPRUCE_BROWN));
@@ -221,6 +226,7 @@ public class ModBlocks {
     public static final Block AMANITA_BUTTON = new WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD));
     public static final Block AMANITA_LEAVES = createLeavesBlock();
     public static final Block FRUITING_AMANITA_LEAVES = createLeavesBlock();
+    public static final Block AMANITA_CARPET = new AmanitaCarpetBlock(FabricBlockSettings.copyOf(Blocks.VINE));
     public static final Block DARK_AMANITA_LOG = createLogBlock(MapColor.SPRUCE_BROWN, MapColor.DIRT_BROWN);
     public static final Block STRIPPED_DARK_AMANITA_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD, MapColor.DIRT_BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD));
     public static final Block STRIPPED_BELL_WOOD = new PillarBlock(FabricBlockSettings.copyOf(STRIPPED_DARK_AMANITA_LOG));
@@ -352,6 +358,13 @@ public class ModBlocks {
     public static final Block FUZZBUSH = new FuzzbushBlock(FabricBlockSettings.of(Material.PLANT, MapColor.LICHEN_GREEN).offsetType(XYZ).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.MOSS_BLOCK));
     public static final Block STRAWBERRY_CORAL = new StrawberryCoralBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.PINK).requiresTool().strength(1.0F).sounds(BlockSoundGroup.CORAL));
     public static final Block POTTED_STRAWBERRY_CORAL = new FlowerPotBlock(STRAWBERRY_CORAL, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
+    public static final Block BROWN_TOAD_STOOL = new Block(FabricBlockSettings.of(Material.DECORATION, MapColor.DIRT_BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
+    public static final Block ORANGE_TOAD_STOOL = new Block(FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.ORANGE));
+    public static final Block PURPLE_TOAD_STOOL = new Block( FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.PURPLE));
+    public static final Block PINK_TOAD_STOOL = new Block( FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.PINK));
+    public static final Block GREEN_TOAD_STOOL = new Block(FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.EMERALD_GREEN));
+    public static final Block YELLOW_TOAD_STOOL = new Block(FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.YELLOW));
+    public static final Block RED_TOAD_STOOL = new Block(FabricBlockSettings.copyOf(BROWN_TOAD_STOOL).mapColor(MapColor.RED));
     public static final Block STAR_CLUSTER = new AmethystClusterBlock(10, 3, FabricBlockSettings.of(Material.AMETHYST, MapColor.CYAN).sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).nonOpaque().luminance(6));
     public static final Block DRY_BONES_PILE = new DryBonesPileBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.WHITE_GRAY).sounds(BlockSoundGroup.BONE).strength(1.0f).nonOpaque());
     public static final Block POISON = new PoisonBlock(FabricBlockSettings.of(Material.WATER, MapColor.PURPLE).noCollision().strength(100.0F).dropsNothing());
@@ -531,6 +544,11 @@ public class ModBlocks {
         registerBlock("frosty_vanillate", FROSTY_VANILLATE);
         registerBlock("frosted_vanillate", FROSTED_VANILLATE);
         registerBlock("frosty_vanillate_crumble", FROSTY_VANILLATE_CRUMBLE);
+        registerBlock("frosty_vanillate_brick_slab", FROSTY_VANILLATE_BRICK_SLAB);
+        registerBlock("frosty_vanillate_brick_stairs", FROSTY_VANILLATE_BRICK_STAIRS);
+        registerBlock("frosty_vanillate_brick_wall", FROSTY_VANILLATE_BRICK_WALL);
+        registerBlock("frosty_vanillate_bricks", FROSTY_VANILLATE_BRICKS);
+        registerBlock("frosty_vanillate_tiles", FROSTY_VANILLATE_TILES);
         registerBlock("amanita_log", AMANITA_LOG, 5, 5);
         registerBlock("amanita_wood", AMANITA_WOOD, 5, 5);
         registerBlock("stripped_amanita_log", STRIPPED_AMANITA_LOG, 5, 5);
@@ -546,6 +564,7 @@ public class ModBlocks {
         registerBlock("amanita_pressure_plate", AMANITA_PRESSURE_PLATE);
         registerBlock("amanita_leaves", AMANITA_LEAVES, 30, 60);
         registerBlock("fruiting_amanita_leaves", FRUITING_AMANITA_LEAVES, 30, 60);
+        registerBlock("amanita_carpet", AMANITA_CARPET, 15, 100);
         registerBlock("dark_amanita_log", DARK_AMANITA_LOG, 5, 5);
         registerBlock("dark_amanita_wood", DARK_AMANITA_WOOD, 5, 5);
         registerBlock("stripped_dark_amanita_log", STRIPPED_DARK_AMANITA_LOG, 5, 5);
@@ -698,6 +717,13 @@ public class ModBlocks {
         registerBlock("potted_pit_plant", POTTED_PIT_PLANT);
         registerBlock("potted_piranha_lily", POTTED_PIRANHA_LILY);
         registerBlock("potted_strawberry_coral", POTTED_STRAWBERRY_CORAL);
+        registerBlock("brown_toad_stool", BROWN_TOAD_STOOL);
+        registerBlock("red_toad_stool", RED_TOAD_STOOL);
+        registerBlock("green_toad_stool", GREEN_TOAD_STOOL);
+        registerBlock("yellow_toad_stool", YELLOW_TOAD_STOOL);
+        registerBlock("orange_toad_stool", ORANGE_TOAD_STOOL);
+        registerBlock("purple_toad_stool", PURPLE_TOAD_STOOL);
+        registerBlock("pink_toad_stool", PINK_TOAD_STOOL);
         registerBlock("poison", POISON);
         registerBlock("amanita_sign", AMANITA_SIGN);
         registerBlock("amanita_wall_sign", AMANITA_WALL_SIGN);

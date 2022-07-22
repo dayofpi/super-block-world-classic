@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#super_block_world:flags",
+    "super_block_world:amanita_carpet",
     "super_block_world:flagpole",
     "super_block_world:smiley_stem",
     "super_block_world:beanstalk_stem"

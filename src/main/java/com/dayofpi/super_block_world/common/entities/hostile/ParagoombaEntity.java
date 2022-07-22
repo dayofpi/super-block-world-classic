@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.common.entities.Stompable;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
@@ -22,7 +23,7 @@ import net.minecraft.world.*;
 
 import java.util.List;
 
-public class ParagoombaEntity extends GoombaEntity implements Flutterer {
+public class ParagoombaEntity extends GoombaEntity implements Flutterer, Stompable {
     public float flapProgress;
     public float maxWingDeviation;
     private float flapSpeed = 1.0f;
@@ -126,6 +127,13 @@ public class ParagoombaEntity extends GoombaEntity implements Flutterer {
             this.setVelocity(vec3d.multiply(1.0, 0.8, 1.0));
         }
         this.flapProgress += this.flapSpeed * 2.0f;
+    }
+
+    @Override
+    public void onStomped() {
+        GoombaEntity goomba = this.convertTo(ModEntities.GOOMBA, true);
+        if (goomba != null)
+            goomba.setSize(this.getSize());
     }
 
     protected void addFlapEffects() {

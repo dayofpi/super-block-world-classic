@@ -166,15 +166,15 @@ public class KingBobOmbEntity extends ModBossEntity {
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putInt("ThrowCooldown", this.getThrowCooldown());
-        nbt.putBoolean("isSummoning", this.isSummoning());
-        nbt.putBoolean("isLaughing", this.isLaughing());
+        nbt.putBoolean("IsSummoning", this.isSummoning());
+        nbt.putBoolean("IsLaughing", this.isLaughing());
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         this.setThrowCooldown(nbt.getInt("ThrowCooldown"));
-        this.setSummoning(nbt.getBoolean("isSummoning"));
-        this.setLaughing(nbt.getBoolean("isLaughing"));
+        this.setSummoning(nbt.getBoolean("IsSummoning"));
+        this.setLaughing(nbt.getBoolean("IsLaughing"));
         if (this.hasCustomName()) {
             this.bossBar.setName(this.getDisplayName());
         }

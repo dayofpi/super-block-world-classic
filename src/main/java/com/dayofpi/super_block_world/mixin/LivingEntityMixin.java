@@ -5,6 +5,7 @@ import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.blocks.BrickBlock;
 import com.dayofpi.super_block_world.common.blocks.FakeBlock;
 import com.dayofpi.super_block_world.common.blocks.ReactiveBlock;
+import com.dayofpi.super_block_world.common.entities.Stompable;
 import com.dayofpi.super_block_world.common.entities.passive.SpindriftEntity;
 import com.dayofpi.super_block_world.common.entities.projectile.ModFireballEntity;
 import com.dayofpi.super_block_world.registry.*;
@@ -143,7 +144,7 @@ public abstract class LivingEntityMixin extends Entity {
                     }
                 }
             }
-            this.setHealth(amplifier);
+            this.setHealth(amplifier + 1.0F);
             this.clearStatusEffects();
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, amplifier));
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, amplifier));
@@ -159,10 +160,16 @@ public abstract class LivingEntityMixin extends Entity {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 200, 0, false, false, true));
         }
 
-        if (this.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.RED_SHELL) && !this.isOnFire() && !this.isInLava()) {
+        if (this.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.RED_SHELL)) {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 200, 0, false, false, true));
         }
-        if (this.getEquippedStack(EquipmentSlot.HEAD).isOf(ModBlocks.ROCKET_FLOWER.asItem())) {
+        else if (this.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.BLUE_SHELL)) {
+            this.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 200, 0, false, false, true));
+        }
+        else if (this.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.GOLD_SHELL)) {
+            this.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 200, 0, false, false, true));
+        }
+        else if (this.getEquippedStack(EquipmentSlot.HEAD).isOf(ModBlocks.ROCKET_FLOWER.asItem())) {
             if (this.isOnWaterSurface()) {
                 double horizontalMultiplier = 1;
                 final double maxSpeed = 0.1D;
@@ -221,7 +228,9 @@ public abstract class LivingEntityMixin extends Entity {
     private void stomp(LivingEntity livingEntity) {
         Vec3d vec3d = this.getVelocity();
         this.stompCooldown = 5;
-        if (this.isSneaking() || livingEntity.getType().isIn(ModTags.STOMP_IGNORED) || livingEntity.getType().isIn(ModTags.STOMP_IMMUNE)) {
+        if (livingEntity instanceof Stompable)
+            ((Stompable) livingEntity).onStomped();
+        if (this.isSneaking() || livingEntity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.BUZZY_SHELL) || livingEntity.getType().isIn(ModTags.STOMP_IGNORED) || livingEntity.getType().isIn(ModTags.STOMP_IMMUNE)) {
             double d = 0.5D;
             if (livingEntity instanceof SpindriftEntity)
                 d = 1.45D;

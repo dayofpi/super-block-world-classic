@@ -107,6 +107,7 @@ public class Sounds {
     public static final SoundEvent ENTITY_GENERIC_JUMP_ATTACK = createSound("entity.generic.jump_attack");
     public static final SoundEvent ENTITY_GENERIC_JUMP_BOUNCE = createSound("entity.generic.jump_bounce");
     public static final SoundEvent ENTITY_GENERIC_POWER_DOWN = createSound("entity.generic.power_down");
+    public static final SoundEvent ENTITY_GENERIC_POWER_UP = createSound("entity.generic.power_up");
     public static final SoundEvent ENTITY_GENERIC_SPOT = createSound("entity.generic.spot");
     public static final SoundEvent ENTITY_GENERIC_TAIL_ATTACK = createSound("entity.generic.tail_attack");
     public static final SoundEvent ENTITY_GENERIC_TRANSFORM = createSound("entity.generic.transform");
@@ -168,12 +169,19 @@ public class Sounds {
     public static final SoundEvent ENTITY_SHY_GUY_DEATH = createSound("entity.shy_guy.death");
     public static final SoundEvent ENTITY_SHY_GUY_HURT = createSound("entity.shy_guy.hurt");
     public static final SoundEvent ENTITY_SPINDRIFT_DEATH = createSound("entity.spindrift.death");
+    public static final SoundEvent ENTITY_SPINY_DEATH = createSound("entity.spiny.death");
+    public static final SoundEvent ENTITY_SPINY_HURT = createSound("entity.spiny.hurt");
     public static final SoundEvent ENTITY_STAMP_BREAK = createSound("entity.stamp.break");
     public static final SoundEvent ENTITY_STAMP_PLACE = createSound("entity.stamp.place");
     public static final SoundEvent ENTITY_TOAD_AMBIENT = createSound("entity.toad.ambient");
     public static final SoundEvent ENTITY_TOAD_CHEER = createSound("entity.toad.cheer");
     public static final SoundEvent ENTITY_TOAD_DEATH = createSound("entity.toad.death");
     public static final SoundEvent ENTITY_TOAD_HURT = createSound("entity.toad.hurt");
+    public static final SoundEvent ENTITY_THWOMP_FALL = createSound("entity.thwomp.fall");
+    public static final SoundEvent ENTITY_THWOMP_LAND = createSound("entity.thwomp.land");
+    public static final SoundEvent ENTITY_THWOMP_REST = createSound("entity.thwomp.rest");
+    public static final SoundEvent ENTITY_THWOMP_HURT = createSound("entity.thwomp.hurt");
+    public static final SoundEvent ENTITY_THWOMP_DEATH = createSound("entity.thwomp.death");
     public static final SoundEvent ENTITY_UNAGI_DEATH = createSound("entity.unagi.death");
     public static final SoundEvent ENTITY_UNAGI_FLOP = createSound("entity.unagi.flop");
     public static final SoundEvent ENTITY_YOSHI_AMBIENT = createSound("entity.yoshi.ambient");
@@ -201,6 +209,7 @@ public class Sounds {
     public static final SoundEvent ITEM_WARP_LINK_END = createSound("item.warp_link.end");
     public static final SoundEvent ITEM_WARP_LINK_RESET = createSound("item.warp_link.reset");
     public static final SoundEvent ITEM_WARP_LINK_START = createSound("item.warp_link.start");
+    public static final SoundEvent MUSIC_WATER = createSound("music.water");
     public static final SoundEvent MUSIC_AMANITA_FOREST = createSound("music.forest");
     public static final SoundEvent MUSIC_BOSS_1 = createSound("music.boss.1");
     public static final SoundEvent MUSIC_BOSS_2 = createSound("music.boss.2");
@@ -219,6 +228,9 @@ public class Sounds {
     public static final SoundEvent NOTE_BLOCK_CHOIR = createSound("block.note_block.choir");
     public static final SoundEvent NOTE_BLOCK_DINODRUM = createSound("block.note_block.dinodrum");
     public static final SoundEvent NOTE_BLOCK_PAN_FLUTE = createSound("block.note_block.pan_flute");
+    public static final SoundEvent ENTITY_STINGBY_HURT = createSound("entity.stingby.hurt");
+    public static final SoundEvent ENTITY_STINGBY_DEATH = createSound("entity.stingby.death");
+    public static final SoundEvent ENTITY_STINGBY_AMBIENT = createSound("entity.stingby.ambient");
 
     private static SoundEvent createSound(String string) {
         return new SoundEvent(new Identifier(Main.MOD_ID, string));
@@ -323,6 +335,7 @@ public class Sounds {
         registerSound(ENTITY_GENERIC_JUMP_ATTACK);
         registerSound(ENTITY_GENERIC_JUMP_BOUNCE);
         registerSound(ENTITY_GENERIC_POWER_DOWN);
+        registerSound(ENTITY_GENERIC_POWER_UP);
         registerSound(ENTITY_GENERIC_SPOT);
         registerSound(ENTITY_GENERIC_TAIL_ATTACK);
         registerSound(ENTITY_GENERIC_TRANSFORM);
@@ -380,12 +393,19 @@ public class Sounds {
         registerSound(ENTITY_SHY_GUY_DEATH);
         registerSound(ENTITY_SHY_GUY_HURT);
         registerSound(ENTITY_SPINDRIFT_DEATH);
+        registerSound(ENTITY_SPINY_DEATH);
+        registerSound(ENTITY_SPINY_HURT);
         registerSound(ENTITY_STAMP_BREAK);
         registerSound(ENTITY_STAMP_PLACE);
         registerSound(ENTITY_TOAD_AMBIENT);
         registerSound(ENTITY_TOAD_CHEER);
         registerSound(ENTITY_TOAD_DEATH);
         registerSound(ENTITY_TOAD_HURT);
+        registerSound(ENTITY_THWOMP_DEATH);
+        registerSound(ENTITY_THWOMP_FALL);
+        registerSound(ENTITY_THWOMP_REST);
+        registerSound(ENTITY_THWOMP_LAND);
+        registerSound(ENTITY_THWOMP_HURT);
         registerSound(ENTITY_UNAGI_DEATH);
         registerSound(ENTITY_UNAGI_FLOP);
         registerSound(ENTITY_YOSHI_DEATH);
@@ -412,6 +432,7 @@ public class Sounds {
         registerSound(ITEM_WARP_LINK_END);
         registerSound(ITEM_WARP_LINK_RESET);
         registerSound(ITEM_WARP_LINK_START);
+        registerSound(MUSIC_WATER);
         registerSound(MUSIC_AMANITA_FOREST);
         registerSound(MUSIC_BOSS_1);
         registerSound(MUSIC_BOSS_2);
@@ -430,5 +451,8 @@ public class Sounds {
         registerSound(NOTE_BLOCK_CHOIR);
         registerSound(NOTE_BLOCK_DINODRUM);
         registerSound(NOTE_BLOCK_PAN_FLUTE);
+        registerSound(ENTITY_STINGBY_AMBIENT);
+        registerSound(ENTITY_STINGBY_DEATH);
+        registerSound(ENTITY_STINGBY_HURT);
     }
 }

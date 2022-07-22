@@ -11,7 +11,8 @@ import net.minecraft.world.gen.feature.HugeMushroomFeatureConfig;
 public class Features {
     public static final Feature<DefaultFeatureConfig> BELL_TREE = new BellTreeFeature(DefaultFeatureConfig.CODEC);
     public static final Feature<HugeMushroomFeatureConfig> TALL_MUSHROOM = new TallMushroomFeature(HugeMushroomFeatureConfig.CODEC);
-    public static final Feature<DefaultFeatureConfig> FREEZE_LAVA = new FreezeLavaFeature(DefaultFeatureConfig.CODEC);
+    public static final Feature<HugeMushroomFeatureConfig> MUSHROOM_CAP = new MushroomCapFeature(HugeMushroomFeatureConfig.CODEC);
+    private static final Feature<DefaultFeatureConfig> FREEZE_LAVA = new FreezeLavaFeature(DefaultFeatureConfig.CODEC);
     private static final Feature<DefaultFeatureConfig> STRAWBERRY_CORAL = new StrawberryCoralFeature(DefaultFeatureConfig.CODEC);
     private static final Feature<DefaultFeatureConfig> UNDERWATER_PIPE = new UnderwaterPipeFeature(DefaultFeatureConfig.CODEC);
     private static final Feature<DefaultFeatureConfig> WARP_PIPE = new WarpPipeFeature(DefaultFeatureConfig.CODEC);
@@ -20,6 +21,7 @@ public class Features {
     public static void register() {
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "bell_tree"), BELL_TREE);
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "tall_mushroom"), TALL_MUSHROOM);
+        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "mushroom_cap"), MUSHROOM_CAP);
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "freeze_lava"), FREEZE_LAVA);
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "strawberry_coral"), STRAWBERRY_CORAL);
         Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "underwater_pipe"), UNDERWATER_PIPE);

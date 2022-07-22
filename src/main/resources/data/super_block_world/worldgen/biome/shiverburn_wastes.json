@@ -44,6 +44,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:spiny",
+        "weight": 25,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:goomba",
         "weight": 50,
         "minCount": 2,
@@ -72,6 +78,12 @@
         "weight": 20,
         "minCount": 2,
         "maxCount": 3
+      },
+      {
+        "type": "super_block_world:thwomp",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 2
       },
       {
         "type": "minecraft:enderman",

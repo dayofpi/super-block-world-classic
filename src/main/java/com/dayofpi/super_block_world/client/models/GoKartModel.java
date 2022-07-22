@@ -66,7 +66,7 @@ public class GoKartModel<T extends GoKartEntity> extends SinglePartEntityModel<T
     public void setAngles(GoKartEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         if (entity.world == null)
             return;
-        this.FLAG.yaw = MathHelper.cos(entity.world.getTime());
+        this.FLAG.yaw = MathHelper.cos(entity.world.getTime() * 0.2F) * 0.2F;
         this.STEERING_WHEEL.setAngles(1.5708f, entity.getYaw() * 0.01f, 0.0f);
         this.STEERING_WHEEL.pivotY = -7.1f;
         this.updateTires(this.FRONT_LEFT_TIRE, entity);

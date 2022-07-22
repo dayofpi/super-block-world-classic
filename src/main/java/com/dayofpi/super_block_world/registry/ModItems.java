@@ -47,6 +47,7 @@ public class ModItems {
     public static final Item HORSETAIL_TART = new Item(new FabricItemSettings().food(new FoodComponent.Builder().hunger(5).saturationModifier(0.5F).build()).group(Main.ITEM_GROUP));
     public static final Item RAW_DINO = new Item(new FabricItemSettings().food(FoodComponents.BEEF).group(Main.ITEM_GROUP));
     public static final Item COOKED_DINO = new Item(new FabricItemSettings().food(FoodComponents.COOKED_BEEF).group(Main.ITEM_GROUP));
+    public static final Item SYRUP_BOTTLE = new SyrupBottleItem(new FabricItemSettings().food(new FoodComponent.Builder().hunger(5).saturationModifier(0.8F).build()).group(Main.ITEM_GROUP).maxCount(16));
     public static final Item SHROOM_SHAKE = new ShroomShakeItem(new FabricItemSettings().food(new FoodComponent.Builder().hunger(3).saturationModifier(0.6F).statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 0, false, false), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
     public static final Item SUPER_MUSHROOM = new SuperMushroomItem(Sounds.ITEM_SUPER_MUSHROOM, new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 0, false, false), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
     public static final Item GOLDEN_MUSHROOM = new SuperMushroomItem(Sounds.ITEM_SUPER_MUSHROOM, new FabricItemSettings().food(new FoodComponent.Builder().alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 2, 0, false, false), 1.0F).statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 500, 1, false, false, true), 1.0F).build()).group(Main.ITEM_GROUP).maxCount(16));
@@ -77,13 +78,13 @@ public class ModItems {
     public static final Item LAUNCH_STAR = new LaunchStarItem(new FabricItemSettings().group(Main.ITEM_GROUP).rarity(Rarity.RARE));
     public static final Item MECHAKOOPA = new MechakoopaItem(new FabricItemSettings().group(Main.ITEM_GROUP));
     public static final Item GOO_ME = new GooMeItem(new FabricItemSettings().group(Main.ITEM_GROUP).maxCount(16));
-    public static final Item MUSIC_DISC_FIRE_FACTORY = new MusicDiscItem(1, Sounds.MUSIC_BOSS_1, new FabricItemSettings().group(Main.ITEM_GROUP).maxCount(1).rarity(Rarity.RARE)) {
+    public static final Item MUSIC_DISC_FIRE_FACTORY = new MusicDiscItem(1, Sounds.MUSIC_BOSS_1, new FabricItemSettings().group(Main.ITEM_GROUP).maxCount(1).rarity(Rarity.RARE), 60) {
     };
-    public static final Item MUSIC_DISC_WALTZ_OF_THE_LOST = new MusicDiscItem(11, Sounds.MUSIC_DISC_WALTZ_OF_THE_LOST, new FabricItemSettings().group(Main.ITEM_GROUP).maxCount(1).rarity(Rarity.RARE)) {
+    public static final Item MUSIC_DISC_WALTZ_OF_THE_LOST = new MusicDiscItem(11, Sounds.MUSIC_DISC_WALTZ_OF_THE_LOST, new FabricItemSettings().group(Main.ITEM_GROUP).maxCount(1).rarity(Rarity.RARE), 115) {
     };
-    public static final Item MUSIC_DISC_MY_SONG = new MusicDiscItem(13, Sounds.MUSIC_DISC_MY_SONG, new FabricItemSettings().group(Main.ITEM_GROUP).maxCount(1).rarity(Rarity.RARE)) {
+    public static final Item MUSIC_DISC_MY_SONG = new MusicDiscItem(13, Sounds.MUSIC_DISC_MY_SONG, new FabricItemSettings().group(Main.ITEM_GROUP).maxCount(1).rarity(Rarity.RARE), 72) {
     };
-    public static final Item MUSIC_DISC_TRAPPED = new MusicDiscItem(0, Sounds.MUSIC_DISC_TRAPPED, new FabricItemSettings().group(Main.ITEM_GROUP).maxCount(1).rarity(Rarity.EPIC)) {
+    public static final Item MUSIC_DISC_TRAPPED = new MusicDiscItem(0, Sounds.MUSIC_DISC_TRAPPED, new FabricItemSettings().group(Main.ITEM_GROUP).maxCount(1).rarity(Rarity.EPIC), 109) {
     };
     public static final Item ARROW_STAMP = new StampItem(StampEntity.Stamp.ARROW, new FabricItemSettings().group(Main.ITEM_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item BLOOPER_STAMP = new StampItem(StampEntity.Stamp.BLOOPER, new FabricItemSettings().group(Main.ITEM_GROUP).rarity(Rarity.UNCOMMON));
@@ -110,11 +111,15 @@ public class ModItems {
     private static final ArmorMaterial CLOUD_ARMOR = new CloudArmorMaterial();
     public static final Item CLOUD_BOOTS = new CloudBootsItem(CLOUD_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
     private static final ArmorMaterial GREEN_SHELL_ARMOR = new GreenShellArmorMaterial();
-    public static final Item GREEN_SHELL = new ShellItem(GREEN_SHELL_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
+    public static final Item GREEN_SHELL = new ShellItem(0, GREEN_SHELL_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
     private static final ArmorMaterial RED_SHELL_ARMOR = new RedShellArmorMaterial();
-    public static final Item RED_SHELL = new ShellItem(RED_SHELL_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
+    public static final Item RED_SHELL = new ShellItem(1, RED_SHELL_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
+    private static final ArmorMaterial BLUE_SHELL_ARMOR = new BlueShellArmorMaterial();
+    public static final Item BLUE_SHELL = new ShellItem(2, BLUE_SHELL_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
+    private static final ArmorMaterial GOLD_SHELL_ARMOR = new GoldShellArmorMaterial();
+    public static final Item GOLD_SHELL = new ShellItem(3, GOLD_SHELL_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
     private static final ArmorMaterial BUZZY_SHELL_ARMOR = new BuzzyArmorMaterial();
-    public static final Item BUZZY_SHELL = new ShellItem(BUZZY_SHELL_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
+    public static final Item BUZZY_SHELL = new ShellItem(-1, BUZZY_SHELL_ARMOR, new FabricItemSettings().group(Main.ITEM_GROUP));
     private static final ArmorMaterial SHY_GUY_ARMOR = new ShyGuyArmorMaterial();
     public static final Item SHY_GUY_MASK = new ArmorItem(SHY_GUY_ARMOR, EquipmentSlot.HEAD, new FabricItemSettings().group(Main.ITEM_GROUP));
 
@@ -287,6 +292,11 @@ public class ModItems {
         registerItem("frosty_vanillate", new BlockItem(ModBlocks.FROSTY_VANILLATE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("frosted_vanillate", new BlockItem(ModBlocks.FROSTED_VANILLATE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("frosty_vanillate_crumble", new BlockItem(ModBlocks.FROSTY_VANILLATE_CRUMBLE, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("frosty_vanillate_bricks", new BlockItem(ModBlocks.FROSTY_VANILLATE_BRICKS, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("frosty_vanillate_tiles", new BlockItem(ModBlocks.FROSTY_VANILLATE_TILES, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("frosty_vanillate_brick_slab", new BlockItem(ModBlocks.FROSTY_VANILLATE_BRICK_SLAB, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("frosty_vanillate_brick_stairs", new BlockItem(ModBlocks.FROSTY_VANILLATE_BRICK_STAIRS, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("frosty_vanillate_brick_wall", new BlockItem(ModBlocks.FROSTY_VANILLATE_BRICK_WALL, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("amanita_log", new BlockItem(ModBlocks.AMANITA_LOG, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("amanita_wood", new BlockItem(ModBlocks.AMANITA_WOOD, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("stripped_amanita_log", new BlockItem(ModBlocks.STRIPPED_AMANITA_LOG, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -316,9 +326,9 @@ public class ModItems {
         registerItem("dark_amanita_fence", new BlockItem(ModBlocks.DARK_AMANITA_FENCE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("dark_amanita_fence_gate", new BlockItem(ModBlocks.DARK_AMANITA_FENCE_GATE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("dark_amanita_button", new BlockItem(ModBlocks.DARK_AMANITA_BUTTON, new FabricItemSettings().group(Main.ITEM_GROUP)));
-        registerItem(0.3f, "dark_amanita_pressure_plate", new BlockItem(ModBlocks.DARK_AMANITA_PRESSURE_PLATE, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("dark_amanita_pressure_plate", new BlockItem(ModBlocks.DARK_AMANITA_PRESSURE_PLATE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f, "dark_amanita_leaves", new BlockItem(ModBlocks.DARK_AMANITA_LEAVES, new FabricItemSettings().group(Main.ITEM_GROUP)));
-        registerItem("fruiting_dark_amanita_leaves", new BlockItem(ModBlocks.FRUITING_DARK_AMANITA_LEAVES, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.3f, "fruiting_dark_amanita_leaves", new BlockItem(ModBlocks.FRUITING_DARK_AMANITA_LEAVES, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("bell_log", new BlockItem(ModBlocks.BELL_LOG, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("bell_wood", new BlockItem(ModBlocks.BELL_WOOD, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("stripped_bell_log", new BlockItem(ModBlocks.STRIPPED_BELL_LOG, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -335,6 +345,13 @@ public class ModItems {
         registerItem("bell_pressure_plate", new BlockItem(ModBlocks.BELL_PRESSURE_PLATE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f, "bell_cap", new BlockItem(ModBlocks.BELL_CAP, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f, "darkened_bell_cap", new BlockItem(ModBlocks.DARKENED_BELL_CAP, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.65f,"brown_toad_stool", new BlockItem(ModBlocks.BROWN_TOAD_STOOL, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.65f,"red_toad_stool", new BlockItem(ModBlocks.RED_TOAD_STOOL, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.65f,"green_toad_stool", new BlockItem(ModBlocks.GREEN_TOAD_STOOL, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.65f,"yellow_toad_stool", new BlockItem(ModBlocks.YELLOW_TOAD_STOOL, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.65f,"purple_toad_stool", new BlockItem(ModBlocks.PURPLE_TOAD_STOOL, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.65f,"orange_toad_stool", new BlockItem(ModBlocks.ORANGE_TOAD_STOOL, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.65f,"pink_toad_stool", new BlockItem(ModBlocks.PINK_TOAD_STOOL, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.85f,"green_mushroom_block", new BlockItem(ModBlocks.GREEN_MUSHROOM_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.85f,"yellow_mushroom_block", new BlockItem(ModBlocks.YELLOW_MUSHROOM_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.85f,"purple_mushroom_block", new BlockItem(ModBlocks.PURPLE_MUSHROOM_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -417,6 +434,7 @@ public class ModItems {
         registerItem(0.65f,"fire_tulip", new BlockItem(ModBlocks.FIRE_TULIP, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f, "yellow_flowerbed", new BlockItem(ModBlocks.YELLOW_FLOWERBED, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f, "white_flowerbed", new BlockItem(ModBlocks.WHITE_FLOWERBED, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem(0.3f, "amanita_carpet", new BlockItem(ModBlocks.AMANITA_CARPET, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f,"amanita_sapling", new BlockItem(ModBlocks.AMANITA_SAPLING, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f,"dark_amanita_sapling", new BlockItem(ModBlocks.DARK_AMANITA_SAPLING, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem(0.3f,"bell_sapling", new BlockItem(ModBlocks.BELL_SAPLING, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -458,6 +476,7 @@ public class ModItems {
         registerItem("horsetail_tart", HORSETAIL_TART);
         registerItem("raw_dino", RAW_DINO);
         registerItem("cooked_dino", COOKED_DINO);
+        registerItem("syrup_bottle", SYRUP_BOTTLE);
         registerItem("shroom_shake", SHROOM_SHAKE);
         registerItem("super_mushroom", SUPER_MUSHROOM);
         registerItem("golden_mushroom", GOLDEN_MUSHROOM);
@@ -475,6 +494,8 @@ public class ModItems {
         registerItem("super_pickax", SUPER_PICKAX);
         registerItem("green_shell", GREEN_SHELL);
         registerItem("red_shell", RED_SHELL);
+        registerItem("blue_shell", BLUE_SHELL);
+        registerItem("gold_shell", GOLD_SHELL);
         registerItem("buzzy_shell", BUZZY_SHELL);
         registerItem("plumber_cap", PLUMBER_CAP);
         registerItem("princess_crown", PRINCESS_CROWN);
@@ -530,10 +551,13 @@ public class ModItems {
         registerItem("paratroopa_spawn_egg", new SpawnEggItem(ModEntities.PARATROOPA, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("shy_guy_spawn_egg", new SpawnEggItem(ModEntities.SHY_GUY, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("bob_omb_spawn_egg", new SpawnEggItem(ModEntities.BOB_OMB, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("spiny_spawn_egg", new SpawnEggItem(ModEntities.SPINY, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("blockstepper_spawn_egg", new SpawnEggItem(ModEntities.BLOCKSTEPPER, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("piranha_plant_spawn_egg", new SpawnEggItem(ModEntities.PIRANHA_PLANT, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("putrid_piranha_spawn_egg", new SpawnEggItem(ModEntities.PUTRID_PIRANHA, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("stingby_spawn_egg", new SpawnEggItem(ModEntities.STINGBY, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("dino_rhino_spawn_egg", new SpawnEggItem(ModEntities.DINO_RHINO, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("thwomp_spawn_egg", new SpawnEggItem(ModEntities.THWOMP, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("boo_spawn_egg", new SpawnEggItem(ModEntities.BOO, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("dry_bones_spawn_egg", new SpawnEggItem(ModEntities.DRY_BONES, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("parabones_spawn_egg", new SpawnEggItem(ModEntities.PARABONES, 16777215, 16777215, new FabricItemSettings().group(Main.ITEM_GROUP)));

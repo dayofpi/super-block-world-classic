@@ -2,6 +2,7 @@
   "replace": "false",
   "values": [
     "minecraft:guardian",
-    "minecraft:elder_guardian"
+    "minecraft:elder_guardian",
+    "super_block_world:spiny"
   ]
 }

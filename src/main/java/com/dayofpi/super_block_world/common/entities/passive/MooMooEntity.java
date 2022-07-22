@@ -87,8 +87,21 @@ public class MooMooEntity extends CowEntity {
 
     @Nullable
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        EntityData data = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
         this.setMooMooType(world.getRandom().nextInt(3));
-        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+        return data;
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putInt("Type", this.getMooMooType());
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        this.setMooMooType(nbt.getInt("Type"));
     }
 
     @Override

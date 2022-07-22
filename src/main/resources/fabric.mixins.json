@@ -12,6 +12,7 @@
     "ChestBoatMixin",
     "EatGrassGoalMixin",
     "EntityMixin",
+    "FlowerPotBlockMixin",
     "HorizontalConnectingBlockMixin",
     "InstrumentMixin",
     "ItemEntityMixin",

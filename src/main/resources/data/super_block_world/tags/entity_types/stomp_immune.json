@@ -3,6 +3,7 @@
   "values": [
     "super_block_world:toad",
     "super_block_world:yoshi",
-    "super_block_world:spindrift"
+    "super_block_world:spindrift",
+    "super_block_world:fake_block"
   ]
 }

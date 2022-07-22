@@ -47,6 +47,6 @@ public class KartSoundInstance extends MovingSoundInstance {
             return;
         }
         float f = (float)this.kart.getVelocity().horizontalLength();
-        this.volume = f >= 0.01f ? MathHelper.clampedLerp(0.0f, 0.75f, f) : 0.0f;
+        this.volume = f >= 0.01f ? MathHelper.clampedLerp(0.0f, 1.0f, f) : 0.0f;
     }
 }

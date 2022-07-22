@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.common.items;
 
+import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.util.TooltipUtil;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.client.item.TooltipContext;
@@ -41,7 +42,7 @@ public class ShroomShakeItem extends Item {
             Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack);
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
-
+        user.playSound(Sounds.ITEM_SUPER_MUSHROOM, 1.0F, user.getSoundPitch());
         if (!world.isClient) {
             user.removeStatusEffect(StatusEffects.POISON);
         }

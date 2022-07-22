@@ -20,12 +20,6 @@
   "spawners": {
     "creature": [
       {
-        "type": "minecraft:rabbit",
-        "weight": 5,
-        "minCount": 2,
-        "maxCount": 4
-      },
-      {
         "type": "super_block_world:moo_moo",
         "weight": 30,
         "minCount": 3,
@@ -33,7 +27,7 @@
       },
       {
         "type": "super_block_world:sleepy_sheep",
-        "weight": 6,
+        "weight": 10,
         "minCount": 3,
         "maxCount": 5
       }
@@ -74,6 +68,18 @@
         "weight": 15,
         "minCount": 2,
         "maxCount": 5
+      },
+      {
+        "type": "super_block_world:spiny",
+        "weight": 20,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:thwomp",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
       },
       {
         "type": "super_block_world:unagi",

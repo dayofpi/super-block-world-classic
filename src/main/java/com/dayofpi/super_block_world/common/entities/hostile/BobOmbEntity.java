@@ -67,7 +67,7 @@ public class BobOmbEntity extends HostileEntity implements BobOmb {
     }
 
     @SuppressWarnings("unused")
-    public static boolean canBobOmbSpawn(EntityType<BobOmbEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos blockPos, Random random) {
+    public static boolean canSpawn(EntityType<BobOmbEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos blockPos, Random random) {
         return !(world.getLightLevel(LightType.BLOCK, blockPos) > 0);
     }
 

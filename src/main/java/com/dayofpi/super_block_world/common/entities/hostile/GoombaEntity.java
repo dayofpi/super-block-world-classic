@@ -173,6 +173,7 @@ public class GoombaEntity extends HostileEntity {
                 List<ItemEntity> list = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ModItems.SUPER_MUSHROOM));
                 if (!list.isEmpty()) {
                     this.setSize(this.getSize() + 1);
+                    this.playSound(Sounds.ENTITY_GENERIC_POWER_UP, 2.0F, 1.0F);
                     list.get(0).discard();
                     if (!world.isSpaceEmpty(this)) {
                         for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 3, 3, 3)) {

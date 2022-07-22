@@ -48,7 +48,7 @@ public class DryBonesEntity extends HostileEntity {
     }
 
     @SuppressWarnings("unused")
-    public static boolean canDryBonesSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return canSpawn(world.getBlockState(pos.down())) && isSpawnDark((ServerWorldAccess) world, pos, random);
     }
 

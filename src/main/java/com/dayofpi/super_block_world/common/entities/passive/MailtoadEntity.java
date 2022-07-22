@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.common.entities.passive;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.common.entities.Stompable;
 import com.dayofpi.super_block_world.common.entities.Toad;
 import com.dayofpi.super_block_world.common.entities.ToadTrades;
 import com.dayofpi.super_block_world.common.entities.brains.ToadBrain;
@@ -41,7 +42,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class MailtoadEntity extends MerchantEntity implements Toad {
+public class MailtoadEntity extends MerchantEntity implements Toad, Stompable {
     protected static final ImmutableList<SensorType<? extends Sensor<? super PassiveEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, Main.TOAD_SPECIFIC_SENSOR);
     protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING);
     private static final TrackedData<Integer> EMOTION;
@@ -328,5 +329,10 @@ public class MailtoadEntity extends MerchantEntity implements Toad {
 
     public void setToadState(int state) {
         this.dataTracker.set(TOAD_STATE, state);
+    }
+
+    @Override
+    public void onStomped() {
+        this.setEmotion(2);
     }
 }

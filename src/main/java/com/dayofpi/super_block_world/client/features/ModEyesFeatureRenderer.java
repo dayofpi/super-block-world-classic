@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.client.features;
 
 import com.dayofpi.super_block_world.common.entities.hostile.DryBonesEntity;
+import com.dayofpi.super_block_world.common.entities.misc.KoopaShellEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.EyesFeatureRenderer;
@@ -26,6 +27,8 @@ public class ModEyesFeatureRenderer<T extends LivingEntity, M extends EntityMode
     @Override
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
         if (entity instanceof DryBonesEntity && ((DryBonesEntity) entity).blockEntityContext)
+            return;
+        if (entity instanceof KoopaShellEntity && !((KoopaShellEntity) entity).isOccupied())
             return;
         super.render(matrices, vertexConsumers, light, entity, limbAngle, limbDistance, tickDelta, animationProgress, headYaw, headPitch);
     }

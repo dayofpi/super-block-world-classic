@@ -51,8 +51,8 @@ public class RottenMushroomEntity extends HostileEntity {
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0D, false));
         this.goalSelector.add(2, new AvoidSunlightGoal(this));
         this.goalSelector.add(3, new WanderAroundFarGoal(this, 1.0D));
-        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
-        this.targetSelector.add(2, new RevengeGoal(this));
+        this.targetSelector.add(1, new RevengeGoal(this));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
     private boolean shouldWalk() {

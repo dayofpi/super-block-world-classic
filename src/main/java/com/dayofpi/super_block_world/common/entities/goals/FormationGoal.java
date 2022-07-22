@@ -4,7 +4,6 @@ import com.dayofpi.super_block_world.common.entities.hostile.BlockstepperEntity;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.goal.FormCaravanGoal;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.decoration.LeashKnotEntity;
 import net.minecraft.util.math.Vec3d;
@@ -73,7 +72,7 @@ public class FormationGoal extends Goal {
         if (d > 676.0) {
             if (this.speed <= 3.0) {
                 this.speed *= 1.2;
-                this.counter = FormCaravanGoal.toGoalTicks(40);
+                this.counter = FormationGoal.toGoalTicks(40);
                 return true;
             }
             if (this.counter == 0) {

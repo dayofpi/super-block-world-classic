@@ -803,6 +803,12 @@
     ],
     "subtitle": "sbw_subtitle.entity.generic.power_down"
   },
+  "entity.generic.power_up": {
+    "sounds": [
+      "super_block_world:entity/power_up"
+    ],
+    "subtitle": "sbw_subtitle.entity.generic.power_up"
+  },
   "entity.generic.spot": {
     "sounds": [
       "super_block_world:entity/spotted"
@@ -1148,7 +1154,8 @@
   },
   "entity.piranha_plant.bite": {
     "sounds": [
-      "super_block_world:entity/piranha_plant/bite"
+      "super_block_world:entity/piranha_plant/bite1",
+      "super_block_world:entity/piranha_plant/bite2"
     ],
     "subtitle": "sbw_subtitle.entity.piranha_plant.bite"
   },
@@ -1212,6 +1219,20 @@
     ],
     "subtitle": "sbw_subtitle.entity.spindrift.death"
   },
+  "entity.spiny.death": {
+    "sounds": [
+      "super_block_world:entity/spiny/death"
+    ],
+    "subtitle": "sbw_subtitle.entity.spiny.death"
+  },
+  "entity.spiny.hurt": {
+    "sounds": [
+      "super_block_world:entity/spiny/hurt1",
+      "super_block_world:entity/spiny/hurt2",
+      "super_block_world:entity/spiny/hurt3"
+    ],
+    "subtitle": "sbw_subtitle.entity.spiny.hurt"
+  },
   "entity.stamp.break": {
     "sounds": [
       "super_block_world:entity/stamp/break1",
@@ -1226,6 +1247,59 @@
       "super_block_world:entity/stamp/stamp3"
     ],
     "subtitle": "sbw_subtitle.entity.stamp.place"
+  },
+  "entity.stingby.ambient": {
+    "sounds": [
+      "mob/bee/aggressive1",
+      "mob/bee/aggressive2",
+      "mob/bee/aggressive3"
+    ],
+    "subtitle": "sbw_subtitle.entity.stingby.ambient"
+  },
+  "entity.stingby.death": {
+    "sounds": [
+      "mob/bee/death1",
+      "mob/bee/death2"
+    ],
+    "subtitle": "sbw_subtitle.entity.stingby.death"
+  },
+  "entity.stingby.hurt": {
+    "sounds": [
+      "mob/bee/hurt1",
+      "mob/bee/hurt2",
+      "mob/bee/hurt3"
+    ],
+    "subtitle": "sbw_subtitle.entity.stingby.hurt"
+  },
+  "entity.thwomp.death": {
+    "sounds": [
+      "super_block_world:entity/thwomp/death"
+    ],
+    "subtitle": "sbw_subtitle.entity.thwomp.death"
+  },
+  "entity.thwomp.fall": {
+    "sounds": [
+      "super_block_world:entity/thwomp/fall"
+    ],
+    "subtitle": "sbw_subtitle.entity.thwomp.fall"
+  },
+  "entity.thwomp.hurt": {
+    "sounds": [
+      "super_block_world:entity/thwomp/hurt"
+    ],
+    "subtitle": "sbw_subtitle.entity.thwomp.hurt"
+  },
+  "entity.thwomp.land": {
+    "sounds": [
+      "super_block_world:entity/thwomp/ourgh"
+    ],
+    "subtitle": "sbw_subtitle.entity.thwomp.land"
+  },
+  "entity.thwomp.rest": {
+    "sounds": [
+      "super_block_world:entity/thwomp/rest"
+    ],
+    "subtitle": "sbw_subtitle.entity.thwomp.rest"
   },
   "entity.toad.ambient": {
     "sounds": [
@@ -1537,6 +1611,14 @@
     "sounds": [
       {
         "name": "super_block_world:music/starman_lead",
+        "stream": true
+      }
+    ]
+  },
+  "music.water": {
+    "sounds": [
+      {
+        "name": "super_block_world:music/siren_song",
         "stream": true
       }
     ]

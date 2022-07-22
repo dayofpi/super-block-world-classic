@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.common.entities.passive;
 
+import com.dayofpi.super_block_world.common.entities.misc.KoopaShellEntity;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModTags;
 import net.minecraft.entity.EntityType;
@@ -44,5 +45,12 @@ public class KoopaTroopaEntity extends AbstractKoopa {
     @Override
     protected boolean shouldWalk() {
         return super.shouldWalk() && this.onGround;
+    }
+
+    @Override
+    public void onStomped() {
+        KoopaShellEntity koopaShell = this.convertTo(ModEntities.KOOPA_SHELL, false);
+        if (koopaShell != null)
+            koopaShell.setVariant(this.getKoopaColor());
     }
 }
