@@ -7,7 +7,7 @@
   ],
   "key": {
     "S": {
-      "item": "minecraft:string"
+      "item": "super_block_world:subcon_thread"
     },
     "G": {
       "item": "super_block_world:green_star_bit"

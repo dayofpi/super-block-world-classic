@@ -92,7 +92,7 @@ public class PiranhaPlantEntity extends HostileEntity {
 
     @Override
     public int getMinAmbientSoundDelay() {
-        return this.isAttacking() ? 50 : 120;
+        return this.isAttacking() ? 10 : 120;
     }
 
     @Override
@@ -121,13 +121,13 @@ public class PiranhaPlantEntity extends HostileEntity {
         super.tick();
         Stream<BlockState> stream = world.getStatesInBox(this.getBoundingBox().expand(4));
         this.songPlaying = stream.anyMatch(blockState -> blockState.isOf(Blocks.JUKEBOX) && blockState.get(JukeboxBlock.HAS_RECORD));
+        if (this.isSleeping() && random.nextInt(100) == 0) {
+            world.addParticle(ParticleTypes.BUBBLE, this.getParticleX(1.0D), this.getY() + 1.0D, this.getParticleZ(1.0D), 0.0D, 0.05D, 0.0D);
+        }
 
         if (!world.isClient())
             return;
         this.tickAnimation();
-        if (this.isSleeping() && random.nextInt(10) == 0) {
-            world.addParticle(ParticleTypes.BUBBLE, this.getParticleX(1.0D), this.getY() + 1.0D, this.getParticleZ(1.0D), 0.0D, 0.05D, 0.0D);
-        }
     }
 
     protected void tickAnimation() {

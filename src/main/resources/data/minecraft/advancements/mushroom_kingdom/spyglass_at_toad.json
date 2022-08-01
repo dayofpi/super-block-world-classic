@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": true
   },
-  "parent": "minecraft:mushroom_kingdom/hit_block",
+  "parent": "minecraft:mushroom_kingdom/surprise_robberies",
   "criteria": {
     "spyglass_at_toad": {
       "trigger": "minecraft:using_item",

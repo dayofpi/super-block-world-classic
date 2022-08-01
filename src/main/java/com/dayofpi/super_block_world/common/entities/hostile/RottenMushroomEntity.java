@@ -33,7 +33,7 @@ public class RottenMushroomEntity extends HostileEntity {
     }
 
     @SuppressWarnings("unused")
-    public static boolean canRottenMushroomSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         boolean isDirt = world.getBlockState(pos.down()).isIn(BlockTags.DIRT);
         return isDirt && isSpawnDark((ServerWorldAccess) world, pos, random);
     }

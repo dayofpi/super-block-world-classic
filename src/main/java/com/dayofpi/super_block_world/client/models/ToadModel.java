@@ -13,6 +13,7 @@ public class ToadModel<T extends PassiveEntity> extends AnimalModel<T> {
     protected static final String TORSO = "torso";
     private static final String LEFT_TWINTAIL = "left_twintail";
     private static final String RIGHT_TWINTAIL = "right_twintail";
+    private final ModelPart body;
     private final ModelPart leftLeg;
     private final ModelPart rightLeg;
     private final ModelPart torso;
@@ -26,7 +27,7 @@ public class ToadModel<T extends PassiveEntity> extends AnimalModel<T> {
         super(true, 13.0f, 0.0f, 2.0f, 2.0f, 24.0f);
         this.leftLeg = root.getChild(EntityModelPartNames.LEFT_LEG);
         this.rightLeg = root.getChild(EntityModelPartNames.RIGHT_LEG);
-        ModelPart body = root.getChild(EntityModelPartNames.BODY);
+        this.body = root.getChild(EntityModelPartNames.BODY);
         this.leftArm = body.getChild(EntityModelPartNames.LEFT_ARM);
         this.rightArm = body.getChild(EntityModelPartNames.RIGHT_ARM);
         this.torso = body.getChild(ToadModel.TORSO);
@@ -63,18 +64,25 @@ public class ToadModel<T extends PassiveEntity> extends AnimalModel<T> {
         }
         if (entity instanceof Toad) {
             if (((Toad) entity).isScared()) {
-                this.torso.pitch = 0.2F;
-            } else this.torso.pitch = 0.0F;
-            if (((Toad) entity).isCheering()) {
-                this.rightArm.pitch = -1.4F;
-                this.leftArm.pitch = -1.4F;
-                this.rightArm.yaw = MathHelper.cos(ageInTicks * 4) * 0.25F;
-                this.leftArm.yaw = MathHelper.cos(ageInTicks * 4) * -0.25F;
+                this.body.pitch = 0.3F;
+                this.rightArm.pitch = -1.5F;
+                this.leftArm.pitch = -1.5F;
+                this.rightArm.yaw = 0.5F;
+                this.leftArm.yaw = -0.5F;
             } else {
-                this.rightArm.pitch = MathHelper.cos(limbSwing * 0.6662F + 3.1415927F) * 1.4F * limbSwingAmount;
-                this.leftArm.pitch = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-                this.rightArm.yaw = 0.0F;
-                this.leftArm.yaw = 0.0F;
+                this.body.pitch = 0.0F;
+                if (((Toad) entity).isCheering()) {
+                    this.rightArm.pitch = -1.4F;
+                    this.leftArm.pitch = -1.4F;
+                    float progress = ageInTicks * 5F * 0.04F;
+                    this.rightArm.yaw = MathHelper.cos(progress * 4) * 0.5F;
+                    this.leftArm.yaw = MathHelper.cos(progress * 4) * -0.5F;
+                } else {
+                    this.rightArm.pitch = MathHelper.cos(limbSwing * 0.6662F + 3.1415927F) * 1.4F * limbSwingAmount;
+                    this.leftArm.pitch = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+                    this.rightArm.yaw = 0.0F;
+                    this.leftArm.yaw = 0.0F;
+                }
             }
         }
 

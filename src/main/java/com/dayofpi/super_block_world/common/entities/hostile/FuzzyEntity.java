@@ -1,18 +1,12 @@
 package com.dayofpi.super_block_world.common.entities.hostile;
 
-import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.entities.brains.FuzzyBrain;
+import com.dayofpi.super_block_world.common.entities.goals.FuzzyWanderGoal;
 import com.dayofpi.super_block_world.registry.ModEntities;
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.brain.Brain;
-import net.minecraft.entity.ai.brain.MemoryModuleType;
-import net.minecraft.entity.ai.brain.sensor.Sensor;
-import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.control.FlightMoveControl;
+import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -22,7 +16,6 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
-import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -31,13 +24,12 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 
 import java.util.List;
 
 public class FuzzyEntity extends HostileEntity {
     public final AnimationState idlingAnimationState = new AnimationState();
-    private static final ImmutableList<SensorType<? extends Sensor<? super FuzzyEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS);
-    private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.LOOK_TARGET, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, Main.NEAREST_FUZZY);
 
     public FuzzyEntity(EntityType<? extends FuzzyEntity> entityType, World world) {
         super(entityType, world);
@@ -54,6 +46,10 @@ public class FuzzyEntity extends HostileEntity {
         return isSpawnDark((ServerWorldAccess) world, pos, random);
     }
 
+    public float getPathfindingFavor(BlockPos pos, WorldView world) {
+        return world.getBlockState(pos).isAir() ? 10.0F : 0.0F;
+    }
+
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
         return false;
     }
@@ -63,25 +59,9 @@ public class FuzzyEntity extends HostileEntity {
     }
 
     @Override
-    protected Brain.Profile<FuzzyEntity> createBrainProfile() {
-        return Brain.createProfile(MEMORY_MODULES, SENSORS);
-    }
-
-    @Override
-    protected Brain<?> deserializeBrain(Dynamic<?> dynamic) {
-        return FuzzyBrain.create(this.createBrainProfile().deserialize(dynamic));
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public Brain<FuzzyEntity> getBrain() {
-        return (Brain<FuzzyEntity>) super.getBrain();
-    }
-
-    @Override
-    protected void sendAiDebugData() {
-        super.sendAiDebugData();
-        DebugInfoSender.sendBrainDebugData(this);
+    protected void initGoals() {
+        this.goalSelector.add(0, new SwimGoal(this));
+        this.goalSelector.add(1, new FuzzyWanderGoal(this));
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -115,17 +95,6 @@ public class FuzzyEntity extends HostileEntity {
             fuzzyEntity.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1.0F, other.getSoundPitch());
         }
         return bl;
-    }
-
-    @Override
-    protected void mobTick() {
-        this.world.getProfiler().push("fuzzyBrain");
-        this.getBrain().tick((ServerWorld) this.world, this);
-        this.world.getProfiler().pop();
-        this.world.getProfiler().push("fuzzyActivityUpdate");
-        FuzzyBrain.updateActivities(this);
-        this.world.getProfiler().pop();
-        super.mobTick();
     }
 
     public void tick() {

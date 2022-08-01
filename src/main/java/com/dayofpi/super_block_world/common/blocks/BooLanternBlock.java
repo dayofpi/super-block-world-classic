@@ -2,6 +2,8 @@ package com.dayofpi.super_block_world.common.blocks;
 
 import com.dayofpi.super_block_world.common.block_entities.BooLanternBE;
 import com.dayofpi.super_block_world.registry.ModBlockEntities;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -118,6 +120,7 @@ public class BooLanternBlock extends BlockWithEntity {
     }
 
     @Override
+    @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         if (state.get(LIT)) {
             double x = (double) pos.getX() + random.nextFloat();

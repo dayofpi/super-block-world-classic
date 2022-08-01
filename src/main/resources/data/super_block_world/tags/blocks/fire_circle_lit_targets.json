@@ -1,0 +1,8 @@
+{
+  "replace": "false",
+  "values": [
+    "minecraft:campfire",
+    "minecraft:soul_campfire",
+    "super_block_world:stone_torch"
+  ]
+}

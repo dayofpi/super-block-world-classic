@@ -1,6 +1,0 @@
-{
-	"parent": "super_block_world:block/template_stamp",
-	"textures": {
-		"stamp": "super_block_world:stamp/cheep_cheep"
-	}
-}

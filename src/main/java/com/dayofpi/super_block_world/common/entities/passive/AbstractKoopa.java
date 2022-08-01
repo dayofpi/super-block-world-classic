@@ -30,6 +30,7 @@ import net.minecraft.tag.GameEventTags;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.TimeHelper;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.BlockPos;
@@ -37,9 +38,13 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.event.EntityPositionSource;
 import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.event.listener.EntityGameEventHandler;
@@ -96,7 +101,11 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
     }
 
-    private Optional<Integer> chooseKoopaColor() {
+    private Optional<Integer> chooseKoopaColor(ServerWorldAccess world, Random random) {
+        RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Main.MOD_ID, "sherbet_land"));
+        if (world.getBiome(this.getBlockPos()).matchesKey(key) && random.nextInt(4) == 0) {
+            return Optional.of(BLUE);
+        }
         DataPool<Integer> variantPool = DataPool.<Integer>builder().add(GREEN, 25).add(RED, 10).add(BLUE, 5).add(GOLD, 1).build();
         return variantPool.getDataOrEmpty(this.random);
     }
@@ -139,24 +148,29 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
         }
     }
 
+    @Override
     public void travel(Vec3d movementInput) {
         this.travel(this, this.saddledComponent, movementInput);
     }
 
+    @Override
     public float getSaddledSpeed() {
         return (float) this.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED) * 0.225F + (this.getKoopaColor() * 0.1F);
     }
 
+    @Override
     public void setMovementInput(Vec3d movementInput) {
         super.travel(movementInput);
     }
 
+    @Override
     public boolean consumeOnAStickItem() {
         return this.saddledComponent.boost(this.getRandom());
     }
 
+    @Override
     public boolean canBeSaddled() {
-        return this.isAlive() && !this.isBaby() && !this.hasAngerTime();
+        return this.isAlive() && !this.isSaddled() && !this.isBaby() && !this.hasAngerTime();
     }
 
     @Override
@@ -192,6 +206,7 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
         return super.getMountedHeightOffset() - 0.7D;
     }
 
+    @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         if (this.isSaddled() && !this.hasPassengers() && !player.shouldCancelInteraction()) {
             if (!this.world.isClient) {
@@ -235,10 +250,11 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
 
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        this.setKoopaColor(this.chooseKoopaColor().orElse(GREEN));
+        this.setKoopaColor(this.chooseKoopaColor(world, world.getRandom()).orElse(GREEN));
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
+    @Override
     protected void dropInventory() {
         super.dropInventory();
         if (this.isSaddled()) {
@@ -303,6 +319,7 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
     }
 
 
+    @Override
     public void onTrackedDataSet(TrackedData<?> data) {
         if (BOOST_TIME.equals(data) && this.world.isClient) {
             this.saddledComponent.boost();
@@ -366,10 +383,12 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
         }
     }
 
+    @Override
     public boolean isSaddled() {
         return this.saddledComponent.isSaddled();
     }
 
+    @Override
     public void saddle(@Nullable SoundCategory sound) {
         this.saddledComponent.setSaddled(true);
         if (sound != null) {

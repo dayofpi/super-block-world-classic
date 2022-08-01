@@ -3,7 +3,6 @@ package com.dayofpi.super_block_world.common.entities.boss;
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.goals.PickUpTargetGoal;
-import com.dayofpi.super_block_world.common.entities.goals.StayByArenaGoal;
 import com.dayofpi.super_block_world.common.entities.goals.SummonBobOmbsGoal;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.block.BlockState;
@@ -24,6 +23,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.sound.SoundEvent;
@@ -56,19 +56,11 @@ public class KingBobOmbEntity extends ModBossEntity {
 
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(1, new StayByArenaGoal(this));
         this.goalSelector.add(2, new SummonBobOmbsGoal(this));
         this.goalSelector.add(3, new PickUpTargetGoal(this));
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(5, new LookAroundGoal(this));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, false));
-    }
-
-    @Override
-    protected void dropEquipment(DamageSource source, int lootingMultiplier, boolean allowDrops) {
-        super.dropEquipment(source, lootingMultiplier, allowDrops);
-        if (random.nextInt(3) == 0)
-            this.dropItem(ModItems.MUSIC_DISC_FIRE_FACTORY);
     }
 
     protected void initDataTracker() {
@@ -183,6 +175,11 @@ public class KingBobOmbEntity extends ModBossEntity {
     @Override
     public MusicSound getBossMusic() {
         return ModMusic.BOSS_1;
+    }
+
+    @Override
+    protected Item getRareItem() {
+        return ModItems.MUSIC_DISC_FIRE_FACTORY;
     }
 
 }

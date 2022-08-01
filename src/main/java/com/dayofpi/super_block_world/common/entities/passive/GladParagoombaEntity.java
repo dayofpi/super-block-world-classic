@@ -1,7 +1,6 @@
 package com.dayofpi.super_block_world.common.entities.passive;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.registry.ModEntities;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Flutterer;
 import net.minecraft.entity.ai.control.FlightMoveControl;
@@ -11,14 +10,11 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.passive.TameableEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SpawnEggItem;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 public class GladParagoombaEntity extends GladGoombaEntity implements Flutterer {
     public float flapProgress;
@@ -52,11 +48,6 @@ public class GladParagoombaEntity extends GladGoombaEntity implements Flutterer 
             world.addParticle(new DustParticleEffect(new Vec3f(Vec3d.unpackRgb(0xFFFFFF)), 1.0F), this.getX() + 0.5D, this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
             world.addParticle(new DustParticleEffect(new Vec3f(Vec3d.unpackRgb(0xFFFFFF)), 1.0F), this.getX() - 0.5D, this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
         }
-    }
-
-    @Nullable
-    public ItemStack getPickBlockStack() {
-        return new ItemStack(SpawnEggItem.forEntity(ModEntities.GLAD_GOOMBA));
     }
 
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {

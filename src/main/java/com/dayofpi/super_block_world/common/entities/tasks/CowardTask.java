@@ -16,7 +16,7 @@ public class CowardTask extends Task<PassiveEntity> {
     private final UniformIntProvider executionRange;
 
     public CowardTask(UniformIntProvider executionRange) {
-        super(ImmutableMap.of(MemoryModuleType.NEAREST_VISIBLE_NEMESIS, MemoryModuleState.VALUE_PRESENT, MemoryModuleType.WALK_TARGET, MemoryModuleState.VALUE_ABSENT));
+        super(ImmutableMap.of(MemoryModuleType.NEAREST_VISIBLE_NEMESIS, MemoryModuleState.VALUE_PRESENT));
         this.executionRange = executionRange;
     }
 

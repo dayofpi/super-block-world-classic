@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "super_block_world:darkened_bell_cap",
+              "name": "super_block_world:bell_cap",
               "conditions": [
                 {
                   "condition": "minecraft:alternative",
@@ -68,8 +68,19 @@
       "bonus_rolls": 0,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "minecraft:stick",
+          "type": "minecraft:group",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "weight": 4,
+              "name": "minecraft:stick"
+            },
+            {
+              "type": "minecraft:item",
+              "weight": 1,
+              "name": "super_block_world:super_bell"
+            }
+          ],
           "functions": [
             {
               "function": "minecraft:set_count",

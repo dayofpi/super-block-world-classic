@@ -88,7 +88,7 @@ public class IceballEntity extends PersistentProjectileEntity {
             this.discard();
         }
 
-        if ((world.getBlockState(this.getBlockPos()).isOf(Blocks.WATER))) {
+        if ((world.getBlockState(this.getBlockPos()).isOf(Blocks.WATER)) && world.getBlockState(this.getBlockPos().up()).isAir()) {
             this.playSound(Sounds.ENTITY_ICEBALL_FREEZE, 1.0F, 1.0F + this.random.nextFloat());
             world.setBlockState(this.getBlockPos(), Blocks.FROSTED_ICE.getDefaultState());
             this.discard();

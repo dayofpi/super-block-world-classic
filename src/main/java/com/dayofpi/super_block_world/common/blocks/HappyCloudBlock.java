@@ -1,5 +1,7 @@
 package com.dayofpi.super_block_world.common.blocks;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.FallingBlockEntity;
@@ -36,6 +38,7 @@ public class HappyCloudBlock extends HorizontalFacingBlock {
     }
 
     @Override
+    @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         if (!state.get(SAD))
             return;

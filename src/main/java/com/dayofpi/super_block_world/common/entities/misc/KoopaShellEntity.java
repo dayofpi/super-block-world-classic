@@ -4,12 +4,14 @@ import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.blocks.BrickBlock;
 import com.dayofpi.super_block_world.common.blocks.ReactiveBlock;
 import com.dayofpi.super_block_world.common.entities.KoopaVariant;
+import com.dayofpi.super_block_world.common.entities.hostile.BuzzyBeetleEntity;
 import com.dayofpi.super_block_world.common.entities.passive.KoopaTroopaEntity;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -56,9 +58,30 @@ public class KoopaShellEntity extends MobEntity {
 
     protected void leaveShell() {
         if (this.getVariant() >= 0) {
-            KoopaTroopaEntity koopaEntity = this.convertTo(ModEntities.KOOPA_TROOPA, true);
-            if (koopaEntity != null)
+            KoopaTroopaEntity koopaEntity = ModEntities.KOOPA_TROOPA.create(this.world);
+            if (koopaEntity != null) {
                 koopaEntity.setKoopaColor(this.getVariant());
+                koopaEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
+                koopaEntity.setAiDisabled(this.isAiDisabled());
+                if (this.hasCustomName()) {
+                    koopaEntity.setCustomName(this.getCustomName());
+                    koopaEntity.setCustomNameVisible(this.isCustomNameVisible());
+                }
+                world.spawnEntity(koopaEntity);
+                this.discard();
+            }
+        } else {
+            BuzzyBeetleEntity buzzyBeetle = ModEntities.BUZZY_BEETLE.create(this.world);
+            if (buzzyBeetle != null) {
+                buzzyBeetle.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
+                buzzyBeetle.setAiDisabled(this.isAiDisabled());
+                if (this.hasCustomName()) {
+                    buzzyBeetle.setCustomName(this.getCustomName());
+                    buzzyBeetle.setCustomNameVisible(this.isCustomNameVisible());
+                }
+                world.spawnEntity(buzzyBeetle);
+                this.discard();
+            }
         }
     }
 
@@ -83,7 +106,7 @@ public class KoopaShellEntity extends MobEntity {
         }
 
         if (this.isAlive() && this.getVelocity().horizontalLengthSquared() > 0.02D) {
-            List<Entity> damageable = world.getOtherEntities(this, this.getBoundingBox().contract(0.D, 0.2D, 0.D).expand(0.15D, 0.0D, 0.15D), Entity::isLiving);
+            List<Entity> damageable = world.getOtherEntities(this, this.getBoundingBox().contract(0.D, 0.2D, 0.D).expand(0.15D, 0.0D, 0.15D), entity -> entity instanceof LivingEntity && !(entity instanceof KoopaShellEntity));
             damageable.forEach(entity -> entity.damage(DamageSource.thrownProjectile(this, this), 4));
 
             for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 1, 0, 1)) {
@@ -100,6 +123,11 @@ public class KoopaShellEntity extends MobEntity {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean canBreatheInWater() {
+        return true;
     }
 
     @Override
@@ -200,7 +228,7 @@ public class KoopaShellEntity extends MobEntity {
         this.setExitTime(nbt.getInt(EXIT_TIME_KEY));
     }
 
-    private void setOccupied(boolean occupied) {
+    public void setOccupied(boolean occupied) {
         this.dataTracker.set(OCCUPIED, occupied);
     }
 

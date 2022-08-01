@@ -31,7 +31,7 @@ public class BombEntity extends ThrownItemEntity {
     }
 
     @Override
-    public boolean collides() {
+    public boolean canHit() {
         return true;
     }
 

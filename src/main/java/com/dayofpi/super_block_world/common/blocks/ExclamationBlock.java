@@ -39,7 +39,7 @@ public class ExclamationBlock extends ReactiveBlock {
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos blockPos, Random random) {
-        if (!state.get(POWERED) && !world.isReceivingRedstonePower(blockPos))
+        if (state.get(POWERED) && !world.isReceivingRedstonePower(blockPos))
             world.createAndScheduleBlockTick(blockPos, this, 2);
         world.setBlockState(blockPos, state.cycle(POWERED));
     }

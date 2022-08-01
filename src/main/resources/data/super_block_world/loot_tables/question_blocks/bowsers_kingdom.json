@@ -38,8 +38,23 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 30,
+          "name": "super_block_world:boomerang_flower"
+        },
+        {
+          "type": "minecraft:item",
           "weight": 10,
           "name": "super_block_world:super_leaf"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "super_block_world:super_bell"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "super_block_world:bee_mushroom"
         },
         {
           "type": "minecraft:item",

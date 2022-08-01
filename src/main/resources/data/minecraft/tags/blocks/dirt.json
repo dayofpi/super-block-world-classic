@@ -9,6 +9,8 @@
     "super_block_world:grassy_hardstone",
     "super_block_world:cherry_soil",
     "super_block_world:cherry_grass",
+    "super_block_world:sherbet_soil",
+    "super_block_world:snowy_sherbet_soil",
     "super_block_world:shoregrass"
   ]
 }

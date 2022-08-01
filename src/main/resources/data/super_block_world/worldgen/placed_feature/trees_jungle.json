@@ -21,7 +21,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "minecraft:oak_sapling",
+          "Name": "super_block_world:amanita_sapling",
           "Properties": {
             "stage": "0"
           }

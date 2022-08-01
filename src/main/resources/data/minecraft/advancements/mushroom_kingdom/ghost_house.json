@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:mushroom_kingdom/bronze_age",
+  "parent": "minecraft:mushroom_kingdom/enter_kingdom",
   "criteria": {
     "enter_ghost_house": {
       "trigger": "minecraft:location",

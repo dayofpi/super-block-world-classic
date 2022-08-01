@@ -4,15 +4,21 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.brains.KingBooBrain;
+import com.dayofpi.super_block_world.common.entities.tasks.FireCircleTask;
+import com.dayofpi.super_block_world.registry.ModItems;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.AnimationState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.ai.brain.sensor.Sensor;
 import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.control.FlightMoveControl;
+import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -27,6 +33,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.GameStateChangeS2CPacket;
 import net.minecraft.server.network.DebugInfoSender;
@@ -44,8 +51,7 @@ import java.util.List;
 
 public class KingBooEntity extends ModBossEntity {
     private static final ImmutableList<SensorType<? extends Sensor<? super KingBooEntity>>> SENSOR_TYPES = ImmutableList.of(SensorType.NEAREST_PLAYERS);
-    private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.PATH, MemoryModuleType.MOBS, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.WALK_TARGET, MemoryModuleType.ATTACK_TARGET, MemoryModuleType.ATTACK_COOLING_DOWN, MemoryModuleType.NEAREST_ATTACKABLE);
-
+    private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.PATH, MemoryModuleType.MOBS, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.NEAREST_PLAYERS, MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.WALK_TARGET, MemoryModuleType.ATTACK_TARGET, MemoryModuleType.ATTACK_COOLING_DOWN, MemoryModuleType.NEAREST_ATTACKABLE, MemoryModuleType.SONIC_BOOM_COOLDOWN, MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN, MemoryModuleType.SONIC_BOOM_SOUND_DELAY);
     private static final TrackedData<Boolean> WEAKENED;
     private static final float MIN_ALPHA = 0.5F;
 
@@ -53,11 +59,13 @@ public class KingBooEntity extends ModBossEntity {
          WEAKENED = DataTracker.registerData(KingBooEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
+    public AnimationState chargingAnimationState = new AnimationState();
     private float alpha;
 
     public KingBooEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new FlightMoveControl(this, 10, true);
+        this.lookControl = new YawAdjustingLookControl(this, 10);
         this.bossBar = new ServerBossBar(this.getDisplayName(), BossBar.Color.PURPLE, BossBar.Style.PROGRESS);
         this.experiencePoints = 35;
     }
@@ -67,8 +75,27 @@ public class KingBooEntity extends ModBossEntity {
     }
 
     @Override
+    public void handleStatus(byte status) {
+        if (status == EntityStatuses.SONIC_BOOM) {
+            this.chargingAnimationState.start(this.age);
+        } else {
+            super.handleStatus(status);
+        }
+    }
+
+    @Override
     public MusicSound getBossMusic() {
         return ModMusic.BOSS_2;
+    }
+
+    @Override
+    protected Item getStar() {
+        return ModItems.ZTAR;
+    }
+
+    @Override
+    protected Item getRareItem() {
+        return null;
     }
 
     @Override
@@ -94,6 +121,13 @@ public class KingBooEntity extends ModBossEntity {
     }
 
     @Override
+    public boolean tryAttack(Entity target) {
+        System.out.print("King Boo trying to attack");
+        FireCircleTask.cooldown(this, 40);
+        return super.tryAttack(target);
+    }
+
+    @Override
     protected void mobTick() {
         if ((this.age + this.getId()) % 1200 == 0) {
             StatusEffectInstance statusEffectInstance = new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 6000, 2);
@@ -106,7 +140,6 @@ public class KingBooEntity extends ModBossEntity {
         this.world.getProfiler().push("kingBooActivityUpdate");
         KingBooBrain.updateActivities(this);
         this.world.getProfiler().pop();
-        this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
         super.mobTick();
     }
 
@@ -157,6 +190,16 @@ public class KingBooEntity extends ModBossEntity {
         if (weakened != this.dataTracker.get(WEAKENED) && weakened)
             this.playSound(Sounds.ENTITY_KING_BOO_WEAKENED, 1.0F, this.getSoundPitch());
         this.dataTracker.set(WEAKENED, weakened);
+    }
+
+    @Override
+    public int getMaxLookPitchChange() {
+        return 1;
+    }
+
+    @Override
+    public int getMaxHeadRotation() {
+        return 1;
     }
 
     @Override

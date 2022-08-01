@@ -75,7 +75,7 @@ public class MummyMeEntity extends HostileEntity {
         return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.4D);
     }
 
-    public static boolean canMummyMeSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         boolean isBlockValid = world.getBlockState(pos.down()).isIn(BlockTags.DIRT) || world.getBlockState(pos.down()).isIn(BlockTags.SAND);
         return isBlockValid && isSpawnDark((ServerWorldAccess) world, pos, random);
     }
@@ -183,7 +183,7 @@ public class MummyMeEntity extends HostileEntity {
                     itemStack.decrement(1);
                 }
                 if (!this.world.isClient) {
-                    this.setConverting(player.getUuid(), this.random.nextInt(2401) + 3600);
+                    this.setConverting(player.getUuid(), this.random.nextInt(2401) + 64);
                 }
                 return ActionResult.SUCCESS;
             }

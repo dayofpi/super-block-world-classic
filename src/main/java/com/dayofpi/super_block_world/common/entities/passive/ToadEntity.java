@@ -52,13 +52,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 
 public class ToadEntity extends AbstractToad {
-    public static final Map<Integer, Identifier> TEXTURES;
-    protected static final ImmutableList<SensorType<? extends Sensor<? super PassiveEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, Main.TOAD_SPECIFIC_SENSOR);
-    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING, MemoryModuleType.NEAREST_VISIBLE_NEMESIS, MemoryModuleType.HOME);
+    private static final TrackedData<Boolean> TOADETTE;
     private static final TrackedData<Integer> COLOR;
     private static final TrackedData<Integer> EMOTION;
     private static final TrackedData<Integer> TOAD_STATE;
-    private static final TrackedData<Boolean> TOADETTE;
+    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING, MemoryModuleType.NEAREST_VISIBLE_NEMESIS, MemoryModuleType.HOME);
+    protected static final ImmutableList<SensorType<? extends Sensor<? super PassiveEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, Main.TOAD_SPECIFIC_SENSOR);
+    private static final Map<Integer, Identifier> TEXTURES;
 
     static {
         COLOR = DataTracker.registerData(ToadEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -204,9 +204,9 @@ public class ToadEntity extends AbstractToad {
                             }
                     }
                 }
-                if (!this.isHappy() && this.random.nextFloat() < 0.003F) {
+                if (!this.isHappy() && this.random.nextFloat() < 0.001F) {
                     this.setEmotion(1);
-                } else if (this.random.nextFloat() < 0.005F) {
+                } else if (this.random.nextFloat() < 0.001F) {
                     this.setEmotion(0);
                 }
             }

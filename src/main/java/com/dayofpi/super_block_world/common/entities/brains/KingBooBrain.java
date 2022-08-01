@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.common.entities.brains;
 
 import com.dayofpi.super_block_world.common.entities.boss.KingBooEntity;
 import com.dayofpi.super_block_world.common.entities.boss.ModBossEntity;
+import com.dayofpi.super_block_world.common.entities.tasks.FireCircleTask;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -36,10 +37,10 @@ public class KingBooBrain {
     }
 
     private static void addIdleActivities(Brain<KingBooEntity> brain) {
-        brain.setTaskList(Activity.IDLE, ImmutableList.of(Pair.of(0, new UpdateAttackTargetTask<>(ModBossEntity::getAttackTarget)), Pair.of(1, new TimeLimitedTask<LivingEntity>(new FollowMobTask(EntityType.PLAYER, 6.0f), UniformIntProvider.create(30, 60))), Pair.of(2, new CompositeTask<>(ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryModuleState.VALUE_ABSENT), ImmutableSet.of(), CompositeTask.Order.ORDERED, CompositeTask.RunMode.TRY_ALL, ImmutableList.of(Pair.of(new NoPenaltyStrollTask(1.0F), 2), Pair.of(new GoTowardsLookTarget(1.0F, 3), 3), Pair.of(new WaitTask(30, 60), 5))))));
+        brain.setTaskList(Activity.IDLE, ImmutableList.of(Pair.of(0, new UpdateAttackTargetTask<>(ModBossEntity::getAttackTarget)), Pair.of(1, new TimeLimitedTask<LivingEntity>(new FollowMobTask(EntityType.PLAYER, 6.0f), UniformIntProvider.create(30, 60))), Pair.of(2, new CompositeTask<>(ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryModuleState.VALUE_ABSENT), ImmutableSet.of(), CompositeTask.Order.ORDERED, CompositeTask.RunMode.TRY_ALL, ImmutableList.of(Pair.of(new NoPenaltyStrollTask(1.0F), 2), Pair.of(new GoTowardsLookTarget(1.0F, 3), 3), Pair.of(new GoToNearbyPositionTask(MemoryModuleType.HOME, 1.0f, 2, 100), 1), Pair.of(new WaitTask(30, 60), 5))))));
     }
 
     private static void addFightActivities(Brain<KingBooEntity> brain) {
-        brain.setTaskList(Activity.FIGHT, 0, ImmutableList.of(new ForgetAttackTargetTask<>(), new RangedApproachTask(1.5f), new MeleeAttackTask(20)), MemoryModuleType.ATTACK_TARGET);
+        brain.setTaskList(Activity.FIGHT, 0, ImmutableList.of(new ForgetAttackTargetTask<>(), new RangedApproachTask(1.5f), new FireCircleTask(), new MeleeAttackTask(20)), MemoryModuleType.ATTACK_TARGET);
     }
 }

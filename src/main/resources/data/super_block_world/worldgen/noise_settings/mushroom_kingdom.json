@@ -423,13 +423,13 @@
                       "if_true": {
                         "type": "minecraft:biome",
                         "biome_is": [
-                          "super_block_world:tall_tall_mountain"
+                          "super_block_world:sherbet_land"
                         ]
                       },
                       "then_run": {
                         "type": "minecraft:block",
                         "result_state": {
-                          "Name": "super_block_world:shroomstone"
+                          "Name": "super_block_world:snowy_sherbet_soil"
                         }
                       }
                     },
@@ -438,13 +438,13 @@
                       "if_true": {
                         "type": "minecraft:biome",
                         "biome_is": [
-                          "super_block_world:mushroom_gorge"
+                          "super_block_world:tall_tall_mountain"
                         ]
                       },
                       "then_run": {
                         "type": "minecraft:block",
                         "result_state": {
-                          "Name": "super_block_world:grassy_hardstone"
+                          "Name": "super_block_world:shroomstone"
                         }
                       }
                     },
@@ -572,6 +572,41 @@
                       "if_true": {
                         "type": "minecraft:biome",
                         "biome_is": [
+                          "super_block_world:mushroom_gorge"
+                        ]
+                      },
+                      "then_run": {
+                        "type": "minecraft:sequence",
+                        "sequence": [
+                          {
+                            "type": "minecraft:condition",
+                            "if_true": {
+                              "type": "minecraft:noise_threshold",
+                              "noise": "minecraft:surface",
+                              "min_threshold": -0.05,
+                              "max_threshold": 0.05
+                            },
+                            "then_run": {
+                              "type": "minecraft:block",
+                              "result_state": {
+                                "Name": "minecraft:sand"
+                              }
+                            }
+                          },
+                          {
+                            "type": "minecraft:block",
+                            "result_state": {
+                              "Name": "super_block_world:grassy_hardstone"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:biome",
+                        "biome_is": [
                           "super_block_world:cherry_fields"
                         ]
                       },
@@ -661,6 +696,21 @@
                     "if_true": {
                       "type": "minecraft:biome",
                       "biome_is": [
+                        "super_block_world:sherbet_land"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "super_block_world:sherbet_soil"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
                         "super_block_world:tall_tall_mountain"
                       ]
                     },
@@ -676,13 +726,13 @@
                     "if_true": {
                       "type": "minecraft:biome",
                       "biome_is": [
-                        "super_block_world:mushroom_gorge"
+                        "super_block_world:fossil_falls"
                       ]
                     },
                     "then_run": {
                       "type": "minecraft:block",
                       "result_state": {
-                        "Name": "super_block_world:hardstone"
+                        "Name": "super_block_world:toadstone"
                       }
                     }
                   },
@@ -691,13 +741,13 @@
                     "if_true": {
                       "type": "minecraft:biome",
                       "biome_is": [
-                        "super_block_world:fossil_falls"
+                        "super_block_world:mushroom_gorge"
                       ]
                     },
                     "then_run": {
                       "type": "minecraft:block",
                       "result_state": {
-                        "Name": "super_block_world:toadstone"
+                        "Name": "super_block_world:hardstone"
                       }
                     }
                   },

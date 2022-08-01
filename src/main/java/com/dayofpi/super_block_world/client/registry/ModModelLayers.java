@@ -4,6 +4,7 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.models.*;
 import com.dayofpi.super_block_world.client.renderers.ChinchoTorchRenderer;
 import com.dayofpi.super_block_world.client.renderers.FlagRenderer;
+import com.dayofpi.super_block_world.client.renderers.SuperPickaxRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.MinecartEntityModel;
@@ -24,9 +25,11 @@ public class ModModelLayers {
     public static final EntityModelLayer BLOOPER = createMain("blooper");
     public static final EntityModelLayer BOB_OMB = createMain("bob_omb");
     public static final EntityModelLayer BOO = createMain("boo");
-    public static final EntityModelLayer BUZZY = createMain("buzzy");
-    public static final EntityModelLayer BUZZY_SADDLE = create("buzzy", "saddle");
+    public static final EntityModelLayer SPIKE_TOP = createMain("spike_top");
+    public static final EntityModelLayer BUZZY_BEETLE = createMain("buzzy_beetle");
+    public static final EntityModelLayer BUZZY_BEETLE_SADDLE = create("buzzy_beetle", "saddle");
     public static final EntityModelLayer CHEEP_CHEEP = createMain("cheep_cheep");
+    public static final EntityModelLayer SUPER_PICKAX = createMain("super_pickax");
     public static final EntityModelLayer CHINCHO_TORCH = createMain("chincho_torch");
     public static final EntityModelLayer DINO_RHINO = createMain("dino_rhino");
     public static final EntityModelLayer DRY_BONES = createMain("dry_bones");
@@ -42,6 +45,7 @@ public class ModModelLayers {
     public static final EntityModelLayer KOOPA_TROOPA = createMain("koopa_troopa");
     public static final EntityModelLayer KOOPA_TROOPA_SADDLE = create("koopa_troopa", "saddle");
     public static final EntityModelLayer LAUNCH_STAR = createMain("launch_star");
+    public static final EntityModelLayer POWER_UP = createMain("power_up");
     public static final EntityModelLayer LAVA_BUBBLE = createMain("lava_bubble");
     public static final EntityModelLayer LAVA_BUBBLE_OUTER = create("lava_bubble", "outer");
     public static final EntityModelLayer LIL_OINK = createMain("lil_oink");
@@ -57,7 +61,6 @@ public class ModModelLayers {
     public static final EntityModelLayer SPINDRIFT = createMain("spindrift");
     public static final EntityModelLayer SPINY = createMain("spiny");
     public static final EntityModelLayer STINGBY = createMain("stingby");
-    public static final EntityModelLayer SUPER_PICKAX = createMain("super_pickax");
     public static final EntityModelLayer THWOMP = createMain("thwomp");
     public static final EntityModelLayer TOAD = createMain("toad");
     public static final EntityModelLayer TRAMPOLINE_MINECART = createMain("trampoline_minecart");
@@ -85,7 +88,11 @@ public class ModModelLayers {
         EntityModelLayerRegistry.registerModelLayer(KOOPA_SHELL, KoopaShellModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(KOOPA_TROOPA, KoopaTroopaModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(KOOPA_TROOPA_SADDLE, KoopaTroopaModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(BUZZY_BEETLE, BuzzyBeetleModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(BUZZY_BEETLE_SADDLE, BuzzyBeetleModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(SPIKE_TOP, BuzzyBeetleModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(LAUNCH_STAR, LaunchStarModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(POWER_UP, PowerUpModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(LAVA_BUBBLE, LavaBubbleModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(LAVA_BUBBLE_OUTER, LavaBubbleModel::getOuterTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(LIL_OINK, LilOinkModel::getTexturedModelData);
@@ -101,7 +108,7 @@ public class ModModelLayers {
         EntityModelLayerRegistry.registerModelLayer(SPINDRIFT, SpindriftModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(SPINY, SpinyModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(STINGBY, StingbyModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(SUPER_PICKAX, SuperPickaxModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(SUPER_PICKAX, SuperPickaxRenderer::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(THWOMP, ThwompModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(TOAD, ToadModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(TRAMPOLINE_MINECART, MinecartEntityModel::getTexturedModelData);

@@ -67,12 +67,12 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 52,
+          "weight": 50,
           "name": "super_block_world:coin"
         },
         {
           "type": "minecraft:item",
-          "weight": 100,
+          "weight": 80,
           "name": "super_block_world:turnip"
         },
         {

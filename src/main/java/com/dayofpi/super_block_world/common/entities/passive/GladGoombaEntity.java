@@ -56,7 +56,7 @@ public class GladGoombaEntity extends TameableEntity {
     }
 
     public static DefaultAttributeContainer.Builder createGladGoombaAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3f).add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0);
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.22D).add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0);
     }
 
     @Override
@@ -66,11 +66,11 @@ public class GladGoombaEntity extends TameableEntity {
         this.goalSelector.add(5, new MeleeAttackGoal(this, 1.0, true));
         this.goalSelector.add(6, new FollowOwnerGoal(this, 1.0, 10.0f, 2.0f, false));
         this.goalSelector.add(7, new AnimalMateGoal(this, 1.0));
-        this.goalSelector.add(8, new WanderAroundFarGoal(this, 0.86));
+        this.goalSelector.add(8, new TemptGoal(this, 1.2D, BREEDING_INGREDIENT, false));
+        this.goalSelector.add(9, new WanderAroundFarGoal(this, 0.86));
         this.goalSelector.add(10, new LookAtEntityGoal(this, PlayerEntity.class, 8.0f));
         this.goalSelector.add(10, new LookAtEntityGoal(this, GoombaEntity.class, 8.0f));
         this.goalSelector.add(10, new LookAroundGoal(this));
-        this.goalSelector.add(3, new TemptGoal(this, 1.2D, BREEDING_INGREDIENT, true));
         this.targetSelector.add(1, new TrackOwnerAttackerGoal(this));
         this.targetSelector.add(2, new AttackWithOwnerGoal(this));
     }
@@ -91,11 +91,11 @@ public class GladGoombaEntity extends TameableEntity {
             EntityAttributeInstance speed = this.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
             EntityAttributeInstance attackDamage = this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
             if (health != null)
-                health.addPersistentModifier(new EntityAttributeModifier("Big health", 1.5, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                health.addPersistentModifier(new EntityAttributeModifier("Big health", 1.5, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
             if (speed != null)
-                speed.addPersistentModifier(new EntityAttributeModifier("Big speed", 0.7, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                speed.addPersistentModifier(new EntityAttributeModifier("Big speed", 0.7, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
             if (attackDamage != null)
-                attackDamage.addPersistentModifier(new EntityAttributeModifier("Big damage", 1.5, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+                attackDamage.addPersistentModifier(new EntityAttributeModifier("Big damage", 1.5, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
         }
         this.dataTracker.set(BIG, big);
     }
@@ -129,6 +129,18 @@ public class GladGoombaEntity extends TameableEntity {
         if (this.isBig())
             return super.getDimensions(pose).scaled(1.5F);
         return super.getDimensions(pose);
+    }
+
+    public void onTrackedDataSet(TrackedData<?> data) {
+        if (BIG.equals(data)) {
+            this.calculateDimensions();
+            this.setYaw(this.headYaw);
+            this.bodyYaw = this.headYaw;
+            if (this.isTouchingWater() && this.random.nextInt(20) == 0) {
+                this.onSwimmingStart();
+            }
+        }
+        super.onTrackedDataSet(data);
     }
 
     @Override
@@ -211,6 +223,19 @@ public class GladGoombaEntity extends TameableEntity {
     }
 
     @Override
+    protected void playStepSound(BlockPos pos, BlockState state) {
+        this.playSound(this.getStepSound(), 1.0F, this.getSoundPitch());
+    }
+
+    protected SoundEvent getStepSound() {
+        if (this.isBig())
+            return Sounds.ENTITY_BIG_GOOMBA_STEP;
+        else if (this.isBaby())
+            return Sounds.ENTITY_MINI_GOOMBA_STEP;
+        else return Sounds.ENTITY_GOOMBA_STEP;
+    }
+
+    @Override
     public void tickMovement() {
         super.tickMovement();
         if (this.isInSittingPose() && sittingTimer > 0) {
@@ -226,7 +251,7 @@ public class GladGoombaEntity extends TameableEntity {
                     this.playSound(Sounds.ENTITY_GENERIC_POWER_UP, 2.0F, 1.0F);
                     list.get(0).discard();
                     if (!world.isSpaceEmpty(this)) {
-                        for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 3, 3, 3)) {
+                        for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 1, 1, 1)) {
                             BlockState blockState = world.getBlockState(blockPos);
                             if (blockState.shouldSuffocate(world, blockPos)) {
                                 world.breakBlock(blockPos, true);

@@ -32,6 +32,11 @@
         {
           "type": "minecraft:item",
           "weight": 40,
+          "name": "minecraft:map"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 40,
           "name": "super_block_world:amanita_planks",
           "functions": [
             {

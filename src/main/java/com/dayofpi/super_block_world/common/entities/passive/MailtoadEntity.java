@@ -1,6 +1,5 @@
 package com.dayofpi.super_block_world.common.entities.passive;
 
-import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.Stompable;
 import com.dayofpi.super_block_world.common.entities.Toad;
@@ -8,19 +7,15 @@ import com.dayofpi.super_block_world.common.entities.ToadTrades;
 import com.dayofpi.super_block_world.common.entities.brains.ToadBrain;
 import com.dayofpi.super_block_world.common.entities.hostile.RottenMushroomEntity;
 import com.dayofpi.super_block_world.registry.ModEntities;
-import com.google.common.collect.ImmutableList;
+import com.dayofpi.super_block_world.registry.ModItems;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.Brain;
-import net.minecraft.entity.ai.brain.MemoryModuleType;
-import net.minecraft.entity.ai.brain.sensor.Sensor;
-import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.pathing.MobNavigation;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -40,11 +35,7 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-
 public class MailtoadEntity extends MerchantEntity implements Toad, Stompable {
-    protected static final ImmutableList<SensorType<? extends Sensor<? super PassiveEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, Main.TOAD_SPECIFIC_SENSOR);
-    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.IS_PANICKING);
     private static final TrackedData<Integer> EMOTION;
     private static final TrackedData<Integer> TOAD_STATE;
     private static final TrackedData<Boolean> TOADETTE;
@@ -64,7 +55,7 @@ public class MailtoadEntity extends MerchantEntity implements Toad, Stompable {
 
     @Override
     protected Brain.Profile<PassiveEntity> createBrainProfile() {
-        return Brain.createProfile(MEMORY_MODULES, SENSORS);
+        return Brain.createProfile(ToadEntity.MEMORY_MODULES, ToadEntity.SENSORS);
     }
 
     @Override
@@ -127,6 +118,7 @@ public class MailtoadEntity extends MerchantEntity implements Toad, Stompable {
     @Override
     public void onStruckByLightning(ServerWorld world, LightningEntity lightning) {
         if (world.getDifficulty() != Difficulty.PEACEFUL) {
+            this.dropItem(ModItems.ZOMBIE_STAMP);
             RottenMushroomEntity rottenMushroomEntity = ModEntities.ROTTEN_MUSHROOM.create(world);
             if (rottenMushroomEntity != null) {
                 rottenMushroomEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
@@ -147,7 +139,6 @@ public class MailtoadEntity extends MerchantEntity implements Toad, Stompable {
     public void tickMovement() {
         super.tickMovement();
         if (this.isAlive()) {
-            List<Entity> baddies = world.getOtherEntities(this, this.getBoundingBox().expand(4, 4, 4), entity -> entity instanceof HostileEntity);
             if (!this.isScared()) {
                 if (this.isCheering() || this.forwardSpeed != 0) {
                     if (!this.world.isClient && this.random.nextFloat() < 0.005F) {
@@ -163,16 +154,11 @@ public class MailtoadEntity extends MerchantEntity implements Toad, Stompable {
                     }
                 }
 
-                if (!baddies.isEmpty()) {
-                    this.setToadState(2);
-                }
-                if (!this.isHappy() && this.random.nextFloat() < 0.003F) {
+                if (!this.isHappy() && this.random.nextFloat() < 0.001F) {
                     this.setEmotion(1);
-                } else if (this.random.nextFloat() < 0.005F) {
+                } else if (this.random.nextFloat() < 0.001F) {
                     this.setEmotion(0);
                 }
-            } else if (baddies.isEmpty()) {
-                this.setToadState(0);
             }
         }
     }

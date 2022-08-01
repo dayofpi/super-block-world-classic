@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:mushroom_kingdom/hit_block",
+  "parent": "minecraft:mushroom_kingdom/ghost_house",
   "criteria": {
     "bottle_ghost": {
       "trigger": "minecraft:inventory_changed",

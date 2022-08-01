@@ -57,6 +57,11 @@
         {
           "type": "minecraft:item",
           "weight": 2,
+          "name": "super_block_world:star_coin"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
           "name": "super_block_world:luigi_stamp"
         }
       ]

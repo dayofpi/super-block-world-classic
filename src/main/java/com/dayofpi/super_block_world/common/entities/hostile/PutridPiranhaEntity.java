@@ -9,11 +9,13 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.LightType;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
@@ -32,6 +34,12 @@ public class PutridPiranhaEntity extends PiranhaPlantEntity {
     @SuppressWarnings("unused")
     public static boolean canSpawn(EntityType<? extends PiranhaPlantEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos blockPos, Random random) {
         return !world.isSkyVisible(blockPos) && !(world.getLightLevel(LightType.BLOCK, blockPos) > 0);
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return this.isAttacking() ? Sounds.ENTITY_PIRANHA_PLANT_BITE : Sounds.ENTITY_PUTRID_PIRANHA_SLEEP;
     }
 
     @Override

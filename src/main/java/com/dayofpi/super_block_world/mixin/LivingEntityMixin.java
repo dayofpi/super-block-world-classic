@@ -149,7 +149,7 @@ public abstract class LivingEntityMixin extends Entity {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, amplifier));
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, amplifier));
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 800, 0));
-            this.world.sendEntityStatus(this, EntityStatuses.USE_TOTEM_OF_UNDYING);
+            world.sendEntityStatus(this, EntityStatuses.USE_TOTEM_OF_UNDYING);
         }
         cir.setReturnValue(itemStack != null);
     }
@@ -230,11 +230,21 @@ public abstract class LivingEntityMixin extends Entity {
         this.stompCooldown = 5;
         if (livingEntity instanceof Stompable)
             ((Stompable) livingEntity).onStomped();
-        if (this.isSneaking() || livingEntity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.BUZZY_SHELL) || livingEntity.getType().isIn(ModTags.STOMP_IGNORED) || livingEntity.getType().isIn(ModTags.STOMP_IMMUNE)) {
-            double d = 0.5D;
+        ItemStack itemStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
+        boolean hasBuzzyShell = itemStack.isOf(ModItems.BUZZY_SHELL);
+
+        if (this.isSneaking() || hasBuzzyShell || livingEntity.getType().isIn(ModTags.STOMP_IGNORED) || livingEntity.getType().isIn(ModTags.STOMP_IMMUNE)) {
+            double strength = 0.5D;
             if (livingEntity instanceof SpindriftEntity)
-                d = 1.45D;
-            this.setVelocity(vec3d.x, d, vec3d.z);
+                strength = 1.45D;
+            if (hasBuzzyShell) {
+                itemStack.setDamage(itemStack.getDamage() + 2);
+                if (itemStack.getDamage() >= itemStack.getMaxDamage()) {
+                    livingEntity.sendEquipmentBreakStatus(EquipmentSlot.HEAD);
+                    this.equipStack(EquipmentSlot.HEAD, ItemStack.EMPTY);
+                }
+            }
+            this.setVelocity(vec3d.x, strength, vec3d.z);
             this.playSound(Sounds.ENTITY_GENERIC_JUMP_BOUNCE, 1.0F, 1.0F);
             return;
         }
@@ -283,6 +293,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
         if (this.hasBuzzyShell() && source.isProjectile() && entity.getY() > this.getY() + 0.5D) {
             entity.pushAwayFrom(this);
+            this.playSound(Sounds.ENTITY_BUZZY_BEETLE_DEFLECT, 1.0F, 1.0F);
             this.getEquippedStack(EquipmentSlot.HEAD).damage(5, (LivingEntity) (Object) this, p -> p.sendEquipmentBreakStatus(EquipmentSlot.HEAD));
             cir.setReturnValue(false);
         }

@@ -4,7 +4,7 @@ import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
-import com.dayofpi.super_block_world.util.EnumUtil;
+import com.dayofpi.super_block_world.util.EnumAddons;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -167,7 +167,7 @@ public class TrampolineMinecartEntity extends TntMinecartEntity {
 
     @Override
     public Type getMinecartType() {
-        return EnumUtil.TRAMPOLINE;
+        return EnumAddons.TRAMPOLINE;
     }
 
     @Override

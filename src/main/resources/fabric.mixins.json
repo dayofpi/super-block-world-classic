@@ -4,11 +4,13 @@
   "package": "com.dayofpi.super_block_world.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BeeEntityMixin",
     "BlockEntityTypeMixin",
     "BoatMixin",
     "BoatTypeMixin",
     "BubbleColumnMixin",
     "CactusMixin",
+    "CatEntityMixin",
     "ChestBoatMixin",
     "EatGrassGoalMixin",
     "EntityMixin",
@@ -23,6 +25,7 @@
     "MushroomBlockMixin",
     "PlayerEntityMixin",
     "SensorTypeMixin",
+    "ServerWorldMixin",
     "SignTypeAccessor",
     "SnowGolemMixin",
     "SpawnGroupMixin",
@@ -33,7 +36,9 @@
   "client": [
     "client.ClientMixin",
     "client.ClientPlayerMixin",
+    "client.InGameHudMixin",
     "client.NetworkHandlerMixin",
+    "client.PlayerRendererMixin",
     "client.RabbitSkin",
     "client.RecipeBookMixin"
   ],

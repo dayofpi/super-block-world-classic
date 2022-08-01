@@ -17,6 +17,8 @@ public class ModTags {
     public static TagKey<Biome> SURFACE_GOOMBA_SPAWN;
     public static TagKey<Biome> SURFACE_KOOPA_SPAWN;
     public static TagKey<Biome> SURFACE_SHY_GUY_SPAWN;
+    public static TagKey<Block> FIRE_CIRCLE_LIT_TARGETS;
+    public static TagKey<Block> FIRE_CIRCLE_BREAK_TARGETS;
     public static TagKey<Block> FLAGS;
     public static TagKey<Block> PIPE_BODIES;
     public static TagKey<Block> ROYALITE;
@@ -28,32 +30,50 @@ public class ModTags {
     public static TagKey<Fluid> POISON;
     public static TagKey<Item> SHELLMETS;
     public static TagKey<Item> STAR_BITS;
-    public static TagKey<Structure> BOSS_ARENAS;
     public static TagKey<Structure> GHOST_HOUSE;
-    public static TagKey<Structure> ON_YOSHIS_ISLAND_MAP;
+    public static TagKey<Structure> ON_ARENA_FINDER_MAP;
+    public static TagKey<Structure> ON_ISLAND_EXPLORER_MAP;
 
     private static <T> TagKey<T> registerTag(RegistryKey<? extends Registry<T>> registry, String id) {
         return TagKey.of(registry, new Identifier(Main.MOD_ID, id));
     }
 
-    public static void register() {
-        BOSS_ARENAS = registerTag(Registry.STRUCTURE_KEY, "boss_arenas");
-        FLAGS = registerTag(Registry.BLOCK_KEY, "flags");
-        GHOST_HOUSE = registerTag(Registry.STRUCTURE_KEY, "ghost_house");
-        ON_YOSHIS_ISLAND_MAP = registerTag(Registry.STRUCTURE_KEY, "on_yoshis_island_map");
-        PIPE_BODIES = registerTag(Registry.BLOCK_KEY, "pipe_bodies");
-        POISON = registerTag(Registry.FLUID_KEY, "poison");
-        POISON_IMMUNE = registerTag(Registry.ENTITY_TYPE_KEY, "poison_immune");
-        ROYALITE = registerTag(Registry.BLOCK_KEY, "royalite");
-        SHELLMETS = registerTag(Registry.ITEM_KEY, "shellmets");
-        STAR_BITS = registerTag(Registry.ITEM_KEY, "star_bits");
-        STOMP_IGNORED = registerTag(Registry.ENTITY_TYPE_KEY, "stomp_ignored");
-        STOMP_IMMUNE = registerTag(Registry.ENTITY_TYPE_KEY, "stomp_immune");
+    private static void registerBiomeTags() {
         SURFACE_BIOMES = registerTag(Registry.BIOME_KEY, "surface_biomes");
         SURFACE_GOOMBA_SPAWN = registerTag(Registry.BIOME_KEY, "surface_goomba_spawn");
         SURFACE_KOOPA_SPAWN = registerTag(Registry.BIOME_KEY, "surface_koopa_spawn");
         SURFACE_SHY_GUY_SPAWN = registerTag(Registry.BIOME_KEY, "surface_shy_guy_spawn");
+    }
+
+    private static void registerBlockTags() {
+        FIRE_CIRCLE_BREAK_TARGETS = registerTag(Registry.BLOCK_KEY, "fire_circle_break_targets");
+        FIRE_CIRCLE_LIT_TARGETS = registerTag(Registry.BLOCK_KEY, "fire_circle_lit_targets");
+        FLAGS = registerTag(Registry.BLOCK_KEY, "flags");
+        PIPE_BODIES = registerTag(Registry.BLOCK_KEY, "pipe_bodies");
+        ROYALITE = registerTag(Registry.BLOCK_KEY, "royalite");
         VANILLATE = registerTag(Registry.BLOCK_KEY, "vanillate");
         WARP_PIPES = registerTag(Registry.BLOCK_KEY, "warp_pipes");
+    }
+
+    private static void registerEntityTags() {
+        POISON_IMMUNE = registerTag(Registry.ENTITY_TYPE_KEY, "poison_immune");
+        STOMP_IGNORED = registerTag(Registry.ENTITY_TYPE_KEY, "stomp_ignored");
+        STOMP_IMMUNE = registerTag(Registry.ENTITY_TYPE_KEY, "stomp_immune");
+    }
+
+    private static void registerStructureTags() {
+        GHOST_HOUSE = registerTag(Registry.STRUCTURE_KEY, "ghost_house");
+        ON_ARENA_FINDER_MAP = registerTag(Registry.STRUCTURE_KEY, "on_arena_finder_map");
+        ON_ISLAND_EXPLORER_MAP = registerTag(Registry.STRUCTURE_KEY, "on_island_explorer_map");
+    }
+
+    public static void register() {
+        POISON = registerTag(Registry.FLUID_KEY, "poison");
+        registerBiomeTags();
+        registerBlockTags();
+        registerEntityTags();
+        registerStructureTags();
+        SHELLMETS = registerTag(Registry.ITEM_KEY, "shellmets");
+        STAR_BITS = registerTag(Registry.ITEM_KEY, "star_bits");
     }
 }

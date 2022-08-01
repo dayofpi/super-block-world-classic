@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:mushroom_kingdom/ghost_house",
+  "parent": "minecraft:mushroom_kingdom/enter_kingdom",
   "criteria": {
     "tame_boo": {
       "trigger": "minecraft:tame_animal",

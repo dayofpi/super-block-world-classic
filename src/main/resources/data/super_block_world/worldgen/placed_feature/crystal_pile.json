@@ -2,7 +2,7 @@
   "feature": {
     "type": "minecraft:random_patch",
     "config": {
-      "tries": 62,
+      "tries": 60,
       "xz_spread": 4,
       "y_spread": 1,
       "feature": {
@@ -19,6 +19,8 @@
               ],
               "blocks": [
                 "super_block_world:cherry_grass",
+                "super_block_world:grassy_hardstone",
+                "super_block_world:grassy_toadstone",
                 "super_block_world:topped_vanillate",
                 "super_block_world:vanillate"
               ]

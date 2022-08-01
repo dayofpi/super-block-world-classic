@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:syrup_bottle"
+    },
+    "X": {
+      "item": "super_block_world:super_mushroom"
+    }
+  },
+  "result": {
+    "item": "super_block_world:bee_mushroom"
+  }
+}

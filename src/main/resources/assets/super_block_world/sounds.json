@@ -500,6 +500,13 @@
     ],
     "subtitle": "sbw_subtitle.block.yoshi_egg.hatch"
   },
+  "block.ztar.ambient": {
+    "sounds": [
+      "super_block_world:block/ztar/shine1",
+      "super_block_world:block/ztar/shine2"
+    ],
+    "subtitle": "sbw_subtitle.block.ztar.ambient"
+  },
   "entity.big_goomba.death": {
     "sounds": [
       "super_block_world:entity/goomba/big/death"
@@ -658,6 +665,12 @@
     ],
     "subtitle": "sbw_subtitle.entity.boo.steal"
   },
+  "entity.projectile.hit": {
+    "sounds": [
+      "super_block_world:entity/projectile/hit"
+    ],
+    "subtitle": "sbw_subtitle.entity.projectile.hit"
+  },
   "entity.bullet.impact": {
     "sounds": [
       "super_block_world:entity/bullet/impact"
@@ -669,6 +682,18 @@
       "super_block_world:entity/bullet/fire"
     ],
     "subtitle": "sbw_subtitle.entity.bullet.shoot"
+  },
+  "entity.buzzy_beetle.deflect": {
+    "sounds": [
+      "super_block_world:entity/buzzy_beetle/deflect"
+    ],
+    "subtitle": "sbw_subtitle.entity.buzzy_beetle.deflect"
+  },
+  "entity.buzzy_beetle.impact": {
+    "sounds": [
+      "super_block_world:entity/buzzy_beetle/impact"
+    ],
+    "subtitle": "sbw_subtitle.entity.buzzy_beetle.impact"
   },
   "entity.cheep_cheep.death": {
     "sounds": [
@@ -777,6 +802,18 @@
       "mob/parrot/fly8"
     ],
     "subtitle": "sbw_subtitle.entity.generic.flutter"
+  },
+  "entity.generic.flutter_bee": {
+    "sounds": [
+      "super_block_world:entity/buzz"
+    ],
+    "subtitle": "sbw_subtitle.entity.generic.flutter_bee"
+  },
+  "entity.generic.flutter_tanooki": {
+    "sounds": [
+      "super_block_world:entity/float"
+    ],
+    "subtitle": "sbw_subtitle.entity.generic.flutter_tanooki"
   },
   "entity.generic.jump": {
     "sounds": [
@@ -1184,6 +1221,13 @@
     ],
     "subtitle": "sbw_subtitle.entity.piranha_plant.sleep"
   },
+  "entity.putrid_piranha.sleep": {
+    "sounds": [
+      "super_block_world:entity/piranha_plant/poison_sleep1",
+      "super_block_world:entity/piranha_plant/poison_sleep2"
+    ],
+    "subtitle": "sbw_subtitle.entity.putrid_piranha.sleep"
+  },
   "entity.shell.hit": {
     "sounds": [
       "super_block_world:entity/shell/hit"
@@ -1250,9 +1294,18 @@
   },
   "entity.stingby.ambient": {
     "sounds": [
-      "mob/bee/aggressive1",
-      "mob/bee/aggressive2",
-      "mob/bee/aggressive3"
+      {
+        "name": "mob/bee/aggressive1",
+        "volume": 0.5
+      },
+      {
+        "name": "mob/bee/aggressive2",
+        "volume": 0.5
+      },
+      {
+        "name": "mob/bee/aggressive3",
+        "volume": 0.5
+      }
     ],
     "subtitle": "sbw_subtitle.entity.stingby.ambient"
   },
@@ -1420,6 +1473,12 @@
     ],
     "subtitle": "sbw_subtitle.entity.yoshi.swallow"
   },
+  "item.boomerang_flower.shoot": {
+    "sounds": [
+      "super_block_world:item/boomerang_flower"
+    ],
+    "subtitle": "sbw_subtitle.item.boomerang_flower.shoot"
+  },
   "item.coin.pickup": {
     "sounds": [
       "super_block_world:item/coin"
@@ -1437,6 +1496,12 @@
       "random/bow"
     ],
     "subtitle": "sbw_subtitle.item.generic.throw"
+  },
+  "item.hammer.throw": {
+    "sounds": [
+      "super_block_world:item/hammer"
+    ],
+    "subtitle": "sbw_subtitle.item.hammer.throw"
   },
   "item.ice_flower.shoot": {
     "sounds": [

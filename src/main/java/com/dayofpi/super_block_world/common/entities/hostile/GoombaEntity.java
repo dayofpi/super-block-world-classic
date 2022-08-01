@@ -176,7 +176,7 @@ public class GoombaEntity extends HostileEntity {
                     this.playSound(Sounds.ENTITY_GENERIC_POWER_UP, 2.0F, 1.0F);
                     list.get(0).discard();
                     if (!world.isSpaceEmpty(this)) {
-                        for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 3, 3, 3)) {
+                        for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 1, 1, 1)) {
                             BlockState blockState = world.getBlockState(blockPos);
                             if (blockState.shouldSuffocate(world, blockPos)) {
                                 world.breakBlock(blockPos, true);

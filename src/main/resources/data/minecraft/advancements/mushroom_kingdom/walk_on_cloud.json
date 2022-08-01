@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "super_block_world:happy_cloud"
+      "item": "super_block_world:cloud_boots"
     },
     "title": {
       "translate": "advancements.sbw.walk_on_cloud.title"

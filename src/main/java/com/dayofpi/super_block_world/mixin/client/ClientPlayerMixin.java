@@ -28,9 +28,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(ClientPlayerEntity.class)
 public abstract class ClientPlayerMixin extends AbstractClientPlayerEntity {
     @Shadow private boolean riding;
-
     @Shadow public Input input;
-
     @Shadow @Final protected MinecraftClient client;
 
     public ClientPlayerMixin(ClientWorld world, GameProfile profile, @Nullable PlayerPublicKey publicKey) {

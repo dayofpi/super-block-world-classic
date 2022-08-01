@@ -142,11 +142,11 @@ public class StampEntity extends AbstractDecorationEntity {
             case CAT -> {
                 return ModItems.CAT_STAMP;
             }
-            case CHEEP_CHEEP -> {
-                return ModItems.CHEEP_CHEEP_STAMP;
-            }
             case CLOUD -> {
                 return ModItems.CLOUD_STAMP;
+            }
+            case FISH -> {
+                return ModItems.FISH_STAMP;
             }
             case FLOWER -> {
                 return ModItems.FLOWER_STAMP;
@@ -177,6 +177,9 @@ public class StampEntity extends AbstractDecorationEntity {
             }
             case SMILEY -> {
                 return ModItems.SMILEY_STAMP;
+            }
+            case ZOMBIE -> {
+                return ModItems.ZOMBIE_STAMP;
             }
         }
         return ModItems.ARROW_STAMP;
@@ -264,8 +267,8 @@ public class StampEntity extends AbstractDecorationEntity {
         BOO("boo"),
         BUZZY("buzzy"),
         CAT("cat"),
-        CHEEP_CHEEP("cheep_cheep"),
         CLOUD("cloud"),
+        FISH("fish"),
         FLOWER("flower"),
         FUZZY("fuzzy"),
         GOOMBA("goomba"),
@@ -275,7 +278,8 @@ public class StampEntity extends AbstractDecorationEntity {
         MOM("mom"),
         MUSHROOM("mushroom"),
         PRINCESS("princess"),
-        SMILEY("smiley");
+        SMILEY("smiley"),
+        ZOMBIE("zombie");
 
         private final String name;
 

@@ -19,6 +19,11 @@ public class MailtoadRenderer extends MobEntityRenderer<MailtoadEntity, ToadMode
     }
 
     @Override
+    protected boolean isShaking(MailtoadEntity entity) {
+        return super.isShaking(entity) || entity.isScared();
+    }
+
+    @Override
     public Identifier getTexture(MailtoadEntity entity) {
         if (entity.isScared())
             return new Identifier(Main.MOD_ID, "textures/entity/toad/toad_scared.png");

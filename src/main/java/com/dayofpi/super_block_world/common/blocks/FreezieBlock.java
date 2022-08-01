@@ -92,9 +92,9 @@ public class FreezieBlock extends FallingBlock {
                 } else if (iterableFluid.isIn(FluidTags.LAVA)) {
                     world.setBlockState(iterable, Blocks.OBSIDIAN.getDefaultState(), 2);
                 } else if (iterableState.isOf(ModBlocks.TOADSTOOL_SOIL)) {
-                    //world.setBlockState(iterable, ModBlocks.SHERBET_SOIL.getDefaultState());
+                    world.setBlockState(iterable, ModBlocks.SHERBET_SOIL.getDefaultState());
                 } else if (iterableState.isOf(ModBlocks.TOADSTOOL_GRASS)) {
-                    //world.setBlockState(iterable, ModBlocks.SNOWY_SHERBET_SOIL.getDefaultState());
+                    world.setBlockState(iterable, ModBlocks.SNOWY_SHERBET_SOIL.getDefaultState());
                 } else if (iterableState.isOf(ModBlocks.VANILLATE)) {
                     world.setBlockState(iterable, ModBlocks.FROSTY_VANILLATE.getDefaultState(), 2);
                 } else if (iterableState.isOf(ModBlocks.VANILLATE_CRUMBLE)) {

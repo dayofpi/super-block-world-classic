@@ -26,10 +26,10 @@ public abstract class ItemEntityMixin extends Entity {
             BlockState state = world.getBlockState(blockPos);
             if (state.isOf(ModBlocks.PULL_BLOCK) && state.get(Properties.POWERED)) {
                 this.setNoGravity(true);
-                Vec3d vec3d;
-                double d;
-                if ((d = (vec3d = new Vec3d(blockPos.getX() - this.getX(), blockPos.getY() - this.getY(), blockPos.getZ() - this.getZ())).lengthSquared()) < 64.0) {
-                    double e = 1.0 - Math.sqrt(d) / 8.0;
+                Vec3d vec3d = new Vec3d(blockPos.getX() - this.getX(), blockPos.getY() - this.getY(), blockPos.getZ() - this.getZ());
+                double lengthSquared = vec3d.lengthSquared();
+                if (lengthSquared < 64.0) {
+                    double e = 1.0 - Math.sqrt(lengthSquared) / 8.0;
                     this.setVelocity(this.getVelocity().add(vec3d.normalize().multiply(e * e * 0.2)));
                 }
             } else {

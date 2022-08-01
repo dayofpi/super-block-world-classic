@@ -30,6 +30,18 @@
         ]
       }
     },
+    "has_thread": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:subcon_thread"
+            ]
+          }
+        ]
+      }
+    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
@@ -41,6 +53,7 @@
     [
       "has_green",
       "has_yellow",
+      "has_thread",
       "has_the_recipe"
     ]
   ]

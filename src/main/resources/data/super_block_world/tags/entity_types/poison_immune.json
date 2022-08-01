@@ -1,23 +1,23 @@
 {
   "replace": "false",
   "values": [
-    "minecraft:zombie",
-    "minecraft:husk",
     "minecraft:drowned",
-    "minecraft:zombie_villager",
-    "minecraft:skeleton",
-    "minecraft:stray",
-    "minecraft:wither_skeleton",
-    "minecraft:zombie_horse",
-    "minecraft:skeleton_horse",
-    "minecraft:zombified_piglin",
-    "minecraft:zoglin",
+    "minecraft:husk",
     "minecraft:phantom",
+    "minecraft:skeleton",
+    "minecraft:skeleton_horse",
+    "minecraft:stray",
     "minecraft:wither",
-    "super_block_world:mud_trooper",
-    "super_block_world:rotten_mushroom",
+    "minecraft:wither_skeleton",
+    "minecraft:zoglin",
+    "minecraft:zombie",
+    "minecraft:zombie_horse",
+    "minecraft:zombie_villager",
+    "minecraft:zombified_piglin",
     "super_block_world:dry_bones",
     "super_block_world:dry_bones_shell",
-    "super_block_world:parabones"
+    "super_block_world:mud_trooper",
+    "super_block_world:parabones",
+    "super_block_world:rotten_mushroom"
   ]
 }

@@ -9,6 +9,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.item.Items;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LightType;
@@ -49,8 +50,21 @@ public class KoopaTroopaEntity extends AbstractKoopa {
 
     @Override
     public void onStomped() {
-        KoopaShellEntity koopaShell = this.convertTo(ModEntities.KOOPA_SHELL, false);
-        if (koopaShell != null)
+        KoopaShellEntity koopaShell = ModEntities.KOOPA_SHELL.create(this.world);
+        if (koopaShell != null) {
+            if (this.isSaddled()) {
+                this.dropItem(Items.SADDLE);
+            }
             koopaShell.setVariant(this.getKoopaColor());
+            koopaShell.setOccupied(true);
+            koopaShell.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
+            koopaShell.setAiDisabled(this.isAiDisabled());
+            if (this.hasCustomName()) {
+                koopaShell.setCustomName(this.getCustomName());
+                koopaShell.setCustomNameVisible(this.isCustomNameVisible());
+            }
+            world.spawnEntity(koopaShell);
+            this.discard();
+        }
     }
 }

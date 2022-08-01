@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.common.entities.projectile;
 
+import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.entity.Entity;
@@ -54,6 +55,7 @@ public class TurnipEntity extends ThrownItemEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
         entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 3);
+        this.playSound(Sounds.ENTITY_PROJECTILE_HIT, 1.0F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
     }
 
     @Override

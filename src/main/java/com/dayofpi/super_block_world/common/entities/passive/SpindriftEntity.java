@@ -47,7 +47,7 @@ public class SpindriftEntity extends PassiveEntity {
     }
 
     @SuppressWarnings("unused")
-    public static boolean canSpindriftSpawn(EntityType<? extends SpindriftEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<? extends SpindriftEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return world.getBlockState(pos.down()).isIn(BlockTags.DIRT) && world.getBaseLightLevel(pos, 0) > 8;
     }
 

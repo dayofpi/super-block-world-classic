@@ -19,7 +19,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -124,7 +123,6 @@ public class GooMeEntity extends TameableEntity {
             this.setOwner(player);
             player.getDataTracker().set(FormManager.GOO_ME_UUID, Optional.of(this.getUuid()));
             this.swap(player, blockPos, playerPos);
-            ServerPlayerEntity serverPlayerEntity;
             return ActionResult.success(this.world.isClient);
         }
         return ActionResult.PASS;

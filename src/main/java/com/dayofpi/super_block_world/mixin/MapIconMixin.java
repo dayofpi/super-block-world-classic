@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin;
 
-import com.dayofpi.super_block_world.util.EnumUtil;
+import com.dayofpi.super_block_world.util.EnumAddons;
 import net.minecraft.item.map.MapIcon;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
@@ -39,8 +39,8 @@ public class MapIconMixin {
         var boss_arena = newType("BOSS_ARENA", last.ordinal() + 1, true, 12334173, false);
         var yoshi = newType("YOSHI", last.ordinal() + 2, true, 6880830, false);
 
-        EnumUtil.BOSS_ARENA = boss_arena;
-        EnumUtil.YOSHI = yoshi;
+        EnumAddons.BOSS_ARENA = boss_arena;
+        EnumAddons.YOSHI = yoshi;
 
         variants.add(boss_arena);
         variants.add(yoshi);

@@ -1,6 +1,8 @@
 package com.dayofpi.super_block_world.common.blocks;
 
+import com.dayofpi.super_block_world.common.entities.PowerUp;
 import com.dayofpi.super_block_world.registry.ModItems;
+import com.dayofpi.super_block_world.util.FormManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.EntityShapeContext;
@@ -9,6 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -22,6 +25,8 @@ public class CloudBlock extends Block {
     }
 
     public static boolean canWalkOnCloud(Entity entity) {
+        if (entity instanceof PlayerEntity && entity.getDataTracker().get(FormManager.POWER_UP).equals(PowerUp.BEE.asString()))
+            return true;
         if (entity instanceof LivingEntity) {
             return ((LivingEntity) entity).getEquippedStack(EquipmentSlot.FEET).isOf(ModItems.CLOUD_BOOTS);
         }

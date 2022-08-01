@@ -105,8 +105,14 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:buzzy_beetle",
+        "weight": 84,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:spiny",
-        "weight": 20,
+        "weight": 40,
         "minCount": 2,
         "maxCount": 4
       },
@@ -194,6 +200,7 @@
       "super_block_world:patch_water_plants",
       "super_block_world:patch_muncher",
       "super_block_world:patch_muncher_common",
+      "super_block_world:patch_cave_mushrooms",
       "super_block_world:strawberry_coral"
     ]
   ]

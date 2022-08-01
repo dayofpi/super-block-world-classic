@@ -68,8 +68,10 @@ public class ShellItem extends ArmorItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.translatable("tooltip.super_block_world.brick_breaking").formatted(Formatting.GOLD));
-        if (stack.isOf(ModItems.BUZZY_SHELL))
+        if (stack.isOf(ModItems.BUZZY_SHELL)) {
             tooltip.add(Text.translatable("tooltip.super_block_world.projectile_deflection").formatted(Formatting.GOLD));
+            tooltip.add(Text.translatable("tooltip.super_block_world.stomping_protection").formatted(Formatting.GOLD));
+        }
         if (stack.isOf(ModItems.RED_SHELL))
             TooltipUtil.tooltipFromEffect(tooltip, redShellEffect, 1);
         if (stack.isOf(ModItems.BLUE_SHELL))

@@ -13,18 +13,19 @@ import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 @Environment(EnvType.CLIENT)
 public class EntityClient {
     public static void renderEntities() {
+        BlockEntityRendererRegistry.register(ModBlockEntities.SUPER_PICKAX, SuperPickaxRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.CHINCHO_TORCH, ChinchoTorchRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.DRY_BONES_PILE, DryBonesPileRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.FLAG, FlagRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.PLACED_ITEM, ctx -> new PlacedItemRenderer());
-        EntityRendererRegistry.register(ModEntities.STINGBY, StingbyRenderer::new);
         EntityRendererRegistry.register(ModEntities.BABY_YOSHI, BabyYoshiRenderer::new);
+        EntityRendererRegistry.register(ModEntities.BLOCKSTEPPER, BlockstepperRenderer::new);
         EntityRendererRegistry.register(ModEntities.BLOOPER, BlooperRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOB_OMB, BobOmbRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOB_OMB_BUDDY, BobOmbBuddyRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOMB, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.BOO, BooRenderer::new);
-        EntityRendererRegistry.register(ModEntities.BLOCKSTEPPER, BlockstepperRenderer::new);
+        EntityRendererRegistry.register(ModEntities.BUZZY_BEETLE, BuzzyBeetleRenderer::new);
         EntityRendererRegistry.register(ModEntities.CHEEP_CHEEP, CheepCheepRenderer::new);
         EntityRendererRegistry.register(ModEntities.DINO_RHINO, DinoRhinoRenderer::new);
         EntityRendererRegistry.register(ModEntities.DRY_BONES, DryBonesRenderer::new);
@@ -32,13 +33,13 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.FAKE_BLOCK, FakeBlockRenderer::new);
         EntityRendererRegistry.register(ModEntities.FIREBALL, ModFireballRenderer::new);
         EntityRendererRegistry.register(ModEntities.FUZZY, FuzzyRenderer::new);
-        EntityRendererRegistry.register(ModEntities.STAR_BIT, EmptyEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.GHOST_ESSENCE, EmptyEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.GLAD_GOOMBA, GladGoombaRenderer::new);
         EntityRendererRegistry.register(ModEntities.GLAD_PARAGOOMBA, GladGoombaRenderer::new);
-        EntityRendererRegistry.register(ModEntities.GOOMBA, GoombaRenderer::new);
-        EntityRendererRegistry.register(ModEntities.GOO_ME, GooMeRenderer::new);
+        EntityRendererRegistry.register(ModEntities.BOOMERANG, BoomerangRenderer::new);
         EntityRendererRegistry.register(ModEntities.GO_KART, GoKartRenderer::new);
+        EntityRendererRegistry.register(ModEntities.GOO_ME, GooMeRenderer::new);
+        EntityRendererRegistry.register(ModEntities.GOOMBA, GoombaRenderer::new);
         EntityRendererRegistry.register(ModEntities.HAMMER, HammerRenderer::new);
         EntityRendererRegistry.register(ModEntities.ICEBALL, IceballRenderer::new);
         EntityRendererRegistry.register(ModEntities.KING_BOB_OMB, KingBobOmbRenderer::new);
@@ -63,11 +64,13 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.ROTTEN_MUSHROOM, RottenMushroomRenderer::new);
         EntityRendererRegistry.register(ModEntities.SHY_GUY, ShyGuyRenderer::new);
         EntityRendererRegistry.register(ModEntities.SLEEPY_SHEEP, SleepySheepRenderer::new);
+        EntityRendererRegistry.register(ModEntities.SPIKE_TOP, SpikeTopRenderer::new);
         EntityRendererRegistry.register(ModEntities.SPINDRIFT, SpindriftRenderer::new);
         EntityRendererRegistry.register(ModEntities.SPINY, SpinyRenderer::new);
         EntityRendererRegistry.register(ModEntities.STAMP, StampRenderer::new);
+        EntityRendererRegistry.register(ModEntities.STAR_BIT, EmptyEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.STINGBY, StingbyRenderer::new);
         EntityRendererRegistry.register(ModEntities.SUPER_HEART, FlyingItemEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntities.SUPER_PICKAX, SuperPickaxRenderer::new);
         EntityRendererRegistry.register(ModEntities.THWOMP, ThwompRenderer::new);
         EntityRendererRegistry.register(ModEntities.TOAD, ToadRenderer::new);
         EntityRendererRegistry.register(ModEntities.TRAMPOLINE_MINECART, TrampolineMinecartRenderer::new);

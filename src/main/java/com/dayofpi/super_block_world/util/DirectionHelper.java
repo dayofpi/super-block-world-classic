@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.util;
 import net.minecraft.entity.LivingEntity;
 
 /**
- * Created by lorinthio on 3/3/2018.
+ * Originally created by lorinthio on 3/3/2018.
  */
 public class DirectionHelper {
 

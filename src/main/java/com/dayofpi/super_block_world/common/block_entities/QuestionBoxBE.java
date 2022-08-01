@@ -6,7 +6,7 @@ package com.dayofpi.super_block_world.common.block_entities;
 import com.dayofpi.super_block_world.common.blocks.QuestionBoxBlock;
 import com.dayofpi.super_block_world.registry.ModBlockEntities;
 import com.dayofpi.super_block_world.registry.ModTags;
-import com.dayofpi.super_block_world.util.EnumUtil;
+import com.dayofpi.super_block_world.util.EnumAddons;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -115,14 +115,14 @@ public class QuestionBoxBE extends LootableContainerBlockEntity {
         }
         BlockPos blockPos;
         String nameKey = "map.super_block_world.boss_arena";
-        MapIcon.Type iconType = EnumUtil.BOSS_ARENA;
+        MapIcon.Type iconType = EnumAddons.BOSS_ARENA;
 
         if (serverWorld.random.nextInt(5) == 0) {
-            blockPos = serverWorld.locateStructure(ModTags.ON_YOSHIS_ISLAND_MAP, blockEntity.getPos(), 100, false);
+            blockPos = serverWorld.locateStructure(ModTags.ON_ISLAND_EXPLORER_MAP, blockEntity.getPos(), 100, false);
             nameKey = "map.super_block_world.yoshi";
-            iconType = EnumUtil.YOSHI;
+            iconType = EnumAddons.YOSHI;
         } else {
-            blockPos = serverWorld.locateStructure(ModTags.BOSS_ARENAS, blockEntity.getPos(), 100, true);
+            blockPos = serverWorld.locateStructure(ModTags.ON_ARENA_FINDER_MAP, blockEntity.getPos(), 100, true);
         }
 
         if (blockPos != null) {

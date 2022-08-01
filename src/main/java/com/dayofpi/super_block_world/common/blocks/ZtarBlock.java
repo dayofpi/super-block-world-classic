@@ -47,7 +47,7 @@ public class ZtarBlock extends Block implements BlockEntityProvider {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         if (random.nextInt(10) == 0)
-            world.playSound(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, Sounds.BLOCK_POWER_STAR_AMBIENT, SoundCategory.BLOCKS, 0.5F, random.nextFloat() * 0.2F, true);
+            world.playSound(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, Sounds.BLOCK_ZTAR_AMBIENT, SoundCategory.BLOCKS, 0.5F, random.nextFloat() * 0.2F, true);
     }
 
     @Override

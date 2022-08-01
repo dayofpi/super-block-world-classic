@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.client.models;
 
+import com.dayofpi.super_block_world.client.registry.ModAnimations;
 import com.dayofpi.super_block_world.common.entities.boss.KingBooEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -47,6 +48,7 @@ public class KingBooModel extends SinglePartEntityModel<KingBooEntity> {
     public void setAngles(KingBooEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         this.alpha = entity.getAlpha();
         this.getPart().traverse().forEach(ModelPart::resetTransform);
+        this.updateAnimation(entity.chargingAnimationState, ModAnimations.KingBoo.CHARGE, animationProgress);
         float progress = animationProgress * 5F * 0.04F;
         this.tongue.yaw = MathHelper.cos(progress * 0.5F) * 0.05F;
         this.tongue.pitch = 0.2F + MathHelper.cos(progress * 0.5F) * 0.05F;

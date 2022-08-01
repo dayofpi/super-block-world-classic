@@ -1,14 +1,6 @@
 {
   "processors": [
     {
-      "processor_type": "minecraft:block_ignore",
-      "blocks": [
-        {
-          "Name": "minecraft:air"
-        }
-      ]
-    },
-    {
       "processor_type": "minecraft:rule",
       "rules": [
         {

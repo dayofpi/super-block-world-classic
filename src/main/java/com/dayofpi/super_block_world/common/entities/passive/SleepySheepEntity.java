@@ -115,7 +115,7 @@ public class SleepySheepEntity extends AnimalEntity implements Shearable {
 
     @Override
     public boolean damage(DamageSource source, float amount) {
-        Entity entity = source.getAttacker();
+        Entity entity = source.getSource();
         if (entity instanceof LivingEntity) {
             ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 100, 2));
             ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 2));

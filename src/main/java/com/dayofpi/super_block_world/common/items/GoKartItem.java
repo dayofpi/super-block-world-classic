@@ -30,7 +30,7 @@ import java.util.function.Predicate;
 
 public class GoKartItem extends Item {
     public static final String COLOR_KEY = "Color";
-    private static final Predicate<Entity> RIDERS = EntityPredicates.EXCEPT_SPECTATOR.and(Entity::collides);
+    private static final Predicate<Entity> RIDERS = EntityPredicates.EXCEPT_SPECTATOR.and(Entity::canHit);
 
     public GoKartItem(FabricItemSettings settings) {
         super(settings);

@@ -37,8 +37,6 @@ import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-
-@SuppressWarnings("deprecation, unused")
 public class ThwompEntity extends GolemEntity {
     private static final TrackedData<Integer> STAGE;
     private static final TrackedData<Integer> HOME_LEVEL;
@@ -66,7 +64,7 @@ public class ThwompEntity extends GolemEntity {
 
     @Override
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
-        return 0.5F - world.getBrightness(pos);
+        return 0.5F - world.getLightLevel(pos);
     }
 
     @Override
@@ -96,6 +94,7 @@ public class ThwompEntity extends GolemEntity {
         this.setDirection(nbt.getInt("Direction"));
     }
 
+    @SuppressWarnings("unused")
     public static boolean canSpawn(EntityType<? extends ThwompEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return !(world.getLightLevel(pos) > 0) && !world.isSkyVisible(pos) && world.isSpaceEmpty(type.getDimensions().getBoxAt(Vec3d.ofCenter(pos)).expand(0, 4, 0).offset(0, -4, 0));
     }

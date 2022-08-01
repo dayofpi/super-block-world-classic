@@ -20,6 +20,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 @SuppressWarnings("deprecation")
 public class ToadstoolSoilBlock extends Block implements Fertilizable {
@@ -33,11 +34,13 @@ public class ToadstoolSoilBlock extends Block implements Fertilizable {
 
         if (itemStack.getItem() instanceof ShovelItem) {
             world.setBlockState(blockPos, ModBlocks.TOADSTOOL_PATH.getDefaultState(), 1);
+            world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(player, state));
             world.playSound(player, blockPos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0f, 1.0f);
             itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
             return ActionResult.success(world.isClient);
         } else if (itemStack.getItem() instanceof HoeItem) {
             world.setBlockState(blockPos, Blocks.FARMLAND.getDefaultState(), 1);
+            world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(player, state));
             world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
             itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
             return ActionResult.success(world.isClient);

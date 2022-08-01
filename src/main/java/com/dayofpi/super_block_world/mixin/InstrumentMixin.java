@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.mixin;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModTags;
-import com.dayofpi.super_block_world.util.EnumUtil;
+import com.dayofpi.super_block_world.util.EnumAddons;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.sound.SoundEvent;
@@ -45,11 +45,11 @@ public class InstrumentMixin {
         var pan_flute = newInstrument("PAN_FLUTE", last.ordinal() + 4, "pan_flute", Sounds.NOTE_BLOCK_PAN_FLUTE);
         var dinodrum = newInstrument("DINODRUM", last.ordinal() + 5, "dinodrum", Sounds.NOTE_BLOCK_DINODRUM);
 
-        EnumUtil.BLING = bling;
-        EnumUtil.BLOCK = block;
-        EnumUtil.CHOIR = choir;
-        EnumUtil.PAN_FLUTE = pan_flute;
-        EnumUtil.DINODRUM = dinodrum;
+        EnumAddons.BLING = bling;
+        EnumAddons.BLOCK = block;
+        EnumAddons.CHOIR = choir;
+        EnumAddons.PAN_FLUTE = pan_flute;
+        EnumAddons.DINODRUM = dinodrum;
 
         variants.add(bling);
         variants.add(block);
@@ -63,19 +63,19 @@ public class InstrumentMixin {
     @Inject(method = "fromBlockState(Lnet/minecraft/block/BlockState;)Lnet/minecraft/block/enums/Instrument;", at = @At("HEAD"), cancellable = true)
     private static void fromBlockState(BlockState state, CallbackInfoReturnable<Instrument> info) {
         if (state.isOf(ModBlocks.QUESTION_BLOCK)) {
-            info.setReturnValue(EnumUtil.BLING);
+            info.setReturnValue(EnumAddons.BLING);
         }
         if (state.isOf(ModBlocks.EMPTY_BLOCK)) {
-            info.setReturnValue(EnumUtil.BLOCK);
+            info.setReturnValue(EnumAddons.BLOCK);
         }
         if (state.isOf(ModBlocks.WARP_FRAME)) {
-            info.setReturnValue(EnumUtil.CHOIR);
+            info.setReturnValue(EnumAddons.CHOIR);
         }
         if (state.isIn(ModTags.ROYALITE)) {
-            info.setReturnValue(EnumUtil.PAN_FLUTE);
+            info.setReturnValue(EnumAddons.PAN_FLUTE);
         }
         if (state.isOf(ModBlocks.YOSHI_EGG)) {
-            info.setReturnValue(EnumUtil.DINODRUM);
+            info.setReturnValue(EnumAddons.DINODRUM);
         }
     }
 }

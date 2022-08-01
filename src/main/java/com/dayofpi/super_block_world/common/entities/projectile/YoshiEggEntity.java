@@ -4,6 +4,7 @@ import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -12,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -50,6 +52,12 @@ public class YoshiEggEntity extends ThrownItemEntity {
     }
 
     @Override
+    protected void onEntityHit(EntityHitResult entityHitResult) {
+        this.playSound(Sounds.ENTITY_PROJECTILE_HIT, 1.0F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+        entityHitResult.getEntity().damage(DamageSource.thrownProjectile(this, this.getOwner()), 0.0F);
+    }
+
+    @Override
     public void handleStatus(byte status) {
         if (status == 3) {
             double d = 0.08;
@@ -60,7 +68,7 @@ public class YoshiEggEntity extends ThrownItemEntity {
     }
 
     @Override
-    public boolean collides() {
+    public boolean canHit() {
         return true;
     }
 

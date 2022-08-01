@@ -73,6 +73,11 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 2,
+          "name": "super_block_world:boomerang_flower"
+        },
+        {
+          "type": "minecraft:item",
           "weight": 3,
           "name": "super_block_world:star_coin"
         },

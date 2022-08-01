@@ -16,8 +16,23 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
+          "weight": 8,
           "name": "minecraft:writable_book"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "minecraft:ink_sac"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "minecraft:feather"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "super_block_world:troop_hide"
         },
         {
           "type": "minecraft:item",

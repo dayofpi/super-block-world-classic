@@ -36,7 +36,7 @@ public class ShyGuyEntity extends HostileEntity {
     }
 
     public static DefaultAttributeContainer.Builder createShyGuyAttributes() {
-        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_FOLLOW_RANGE, 7.0D).add(EntityAttributes.GENERIC_MAX_HEALTH, 20.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D);
+        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_FOLLOW_RANGE, 7.0D).add(EntityAttributes.GENERIC_MAX_HEALTH, 18.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class ShyGuyEntity extends HostileEntity {
     }
 
     @SuppressWarnings("unused")
-    public static boolean canShyGuySpawn(EntityType<? extends ShyGuyEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<? extends ShyGuyEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         if (world.getBiome(pos).isIn(ModTags.SURFACE_SHY_GUY_SPAWN))
             return isThereNoLight(world, pos);
         else return isThereNoLight(world, pos) && world.getBlockState(pos.down()).isIn(ModTags.VANILLATE);

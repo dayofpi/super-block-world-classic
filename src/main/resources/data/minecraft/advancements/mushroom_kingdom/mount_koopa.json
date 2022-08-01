@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:mushroom_kingdom/stomp_mob",
+  "parent": "minecraft:mushroom_kingdom/enter_kingdom",
   "criteria": {
     "mounted_koopa": {
       "trigger": "minecraft:started_riding",

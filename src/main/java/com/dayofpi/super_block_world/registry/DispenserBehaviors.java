@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.registry;
 
 import com.dayofpi.super_block_world.common.entities.projectile.*;
 import com.dayofpi.super_block_world.util.AmmoDispenserBehavior;
-import com.dayofpi.super_block_world.util.EnumUtil;
+import com.dayofpi.super_block_world.util.EnumAddons;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.BlockPlacementDispenserBehavior;
 import net.minecraft.block.dispenser.BoatDispenserBehavior;
@@ -23,16 +23,18 @@ import net.minecraft.world.event.GameEvent;
 
 public class DispenserBehaviors {
     public static void register() {
-        DispenserBlock.registerBehavior(ModItems.AMANITA_BOAT, new BoatDispenserBehavior(EnumUtil.AMANITA_BOAT));
-        DispenserBlock.registerBehavior(ModItems.DARK_AMANITA_BOAT, new BoatDispenserBehavior(EnumUtil.DARK_AMANITA_BOAT));
-        DispenserBlock.registerBehavior(ModItems.BELL_BOAT, new BoatDispenserBehavior(EnumUtil.BELL_BOAT));
-        DispenserBlock.registerBehavior(ModItems.AMANITA_CHEST_BOAT, new BoatDispenserBehavior(EnumUtil.AMANITA_BOAT, true));
-        DispenserBlock.registerBehavior(ModItems.DARK_AMANITA_CHEST_BOAT, new BoatDispenserBehavior(EnumUtil.DARK_AMANITA_BOAT, true));
-        DispenserBlock.registerBehavior(ModItems.BELL_CHEST_BOAT, new BoatDispenserBehavior(EnumUtil.BELL_BOAT, true));
+        DispenserBlock.registerBehavior(ModItems.AMANITA_BOAT, new BoatDispenserBehavior(EnumAddons.AMANITA_BOAT));
+        DispenserBlock.registerBehavior(ModItems.DARK_AMANITA_BOAT, new BoatDispenserBehavior(EnumAddons.DARK_AMANITA_BOAT));
+        DispenserBlock.registerBehavior(ModItems.BELL_BOAT, new BoatDispenserBehavior(EnumAddons.BELL_BOAT));
+        DispenserBlock.registerBehavior(ModItems.AMANITA_CHEST_BOAT, new BoatDispenserBehavior(EnumAddons.AMANITA_BOAT, true));
+        DispenserBlock.registerBehavior(ModItems.DARK_AMANITA_CHEST_BOAT, new BoatDispenserBehavior(EnumAddons.DARK_AMANITA_BOAT, true));
+        DispenserBlock.registerBehavior(ModItems.BELL_CHEST_BOAT, new BoatDispenserBehavior(EnumAddons.BELL_BOAT, true));
 
         DispenserBlock.registerBehavior(ModBlocks.TRAMPOLINE.asItem(), new BlockPlacementDispenserBehavior());
+        DispenserBlock.registerBehavior(ModBlocks.SUPER_PICKAX.asItem(), new BlockPlacementDispenserBehavior());
         DispenserBlock.registerBehavior(ModItems.FIRE_FLOWER, new AmmoDispenserBehavior.FireFlower());
         DispenserBlock.registerBehavior(ModItems.ICE_FLOWER, new AmmoDispenserBehavior.IceFlower());
+        DispenserBlock.registerBehavior(ModItems.BOOMERANG_FLOWER, new AmmoDispenserBehavior.BoomerangFlower());
 
         DispenserBlock.registerBehavior(ModBlocks.YOSHI_EGG.asItem(), new ProjectileDispenserBehavior() {
             protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {

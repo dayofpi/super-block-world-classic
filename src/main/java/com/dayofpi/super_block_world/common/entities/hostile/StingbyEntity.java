@@ -1,6 +1,8 @@
 package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.common.entities.PowerUp;
+import com.dayofpi.super_block_world.util.FormManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.AboveGroundTargeting;
@@ -59,7 +61,17 @@ public class StingbyEntity extends HostileEntity implements Flutterer {
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0D, false));
         this.goalSelector.add(2, new StingbyWanderGoal());
         this.targetSelector.add(1, new RevengeGoal(this));
-        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true, true));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, false, this::shouldAttack));
+    }
+
+    private boolean shouldAttack(LivingEntity entity) {
+        if (!this.canTarget(entity)) {
+            return false;
+        }
+        if (entity instanceof PlayerEntity) {
+            return !entity.getDataTracker().get(FormManager.POWER_UP).equals(PowerUp.BEE.asString());
+        }
+        return false;
     }
 
     protected EntityNavigation createNavigation(World world) {

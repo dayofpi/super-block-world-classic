@@ -50,7 +50,7 @@ public abstract class ClientMixin {
         MusicTracker musicTracker = this.getMusicTracker();
         if (this.player != null) {
             StatusEffectInstance starPower = this.player.getStatusEffect(Main.STAR_POWER);
-            if (starPower != null && starPower.getDuration() < 490) {
+            if (starPower != null && starPower.getDuration() < 490 && starPower.getDuration() > 10) {
                 if (!musicTracker.isPlayingType(ModMusic.STAR))
                     musicTracker.play(ModMusic.STAR);
             } else if (musicTracker.isPlayingType(ModMusic.STAR)) {
@@ -72,7 +72,6 @@ public abstract class ClientMixin {
             MusicSound bossMusic = modBossEntity.getBossMusic();
             if (modBossEntity.canTarget(this.player) && bossMusic != null) {
                 cir.setReturnValue(modBossEntity.getBossMusic());
-                cir.cancel();
             }
         }
 
@@ -83,14 +82,12 @@ public abstract class ClientMixin {
             BlockPos structurePos = serverWorld.locateStructure(ModTags.GHOST_HOUSE, pos, 0, false);
             if (structurePos != null) {
                 cir.setReturnValue(ModMusic.GHOST_HOUSE);
-                cir.cancel();
             }
         }
 
         RegistryEntry<Biome> registryEntry = this.player.world.getBiome(pos);
         if (world.getBiome(pos).isIn(ModTags.SURFACE_BIOMES)) {
             cir.setReturnValue(registryEntry.value().getMusic().orElse(getEnvironmentMusic(world, pos)));
-            cir.cancel();
         }
     }
 

@@ -61,7 +61,6 @@ public class EmptyBlock extends Block implements InventoryProvider {
                 itemStack.setCount(0);
 
             Random random = world.getRandom();
-
             for (int i = 0; i < 4; ++i) {
                 ((ServerWorld) world).spawnParticles(ParticleTypes.POOF, blockPos.getX() + 0.5D + (0.5D * (random.nextBoolean() ? 1 : -1)), blockPos.getY() + 0.5D, blockPos.getZ() + 0.5D + (0.5D * (random.nextBoolean() ? 1 : -1)), 1, 0.0D, 0.0D, 0.0D, 0.0D);
             }

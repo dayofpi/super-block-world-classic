@@ -21,7 +21,7 @@ public class ToadTrades {
                     new SellStampFactory(new ItemStack(ModItems.FIRE_FLOWER), new ItemStack(ModItems.FLOWER_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModItems.FUZZBALL), new ItemStack(ModItems.FUZZY_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(Items.BROWN_MUSHROOM), new ItemStack(ModItems.GOOMBA_STAMP), 8, 2),
-                    new SellStampFactory(new ItemStack(Items.FEATHER), new ItemStack(ModItems.CHEEP_CHEEP_STAMP), 8, 2),
+                    new SellStampFactory(new ItemStack(Items.FEATHER), new ItemStack(ModItems.FISH_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModBlocks.SMILEY_SUNFLOWER), new ItemStack(ModItems.SMILEY_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModItems.SUPER_MUSHROOM), new ItemStack(ModItems.MUSHROOM_STAMP), 8, 2),
             }, 2, new TradeOffers.Factory[]{

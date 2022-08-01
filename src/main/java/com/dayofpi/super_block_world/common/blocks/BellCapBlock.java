@@ -1,6 +1,8 @@
 package com.dayofpi.super_block_world.common.blocks;
 
 import com.dayofpi.super_block_world.audio.Sounds;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.entity.BlockEntity;
@@ -41,6 +43,7 @@ public class BellCapBlock extends LeavesBlock {
     }
 
     @Override
+    @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos blockPos, Random random) {
         super.randomDisplayTick(state, world, blockPos, random);
         if (random.nextInt(80) == 0)

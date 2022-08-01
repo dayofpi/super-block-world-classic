@@ -5,13 +5,12 @@ import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
@@ -20,7 +19,10 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.GlobalPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -30,12 +32,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public abstract class ModBossEntity extends HostileEntity {
-    private static final TrackedData<BlockPos> ARENA_POS;
-
-    static {
-        ARENA_POS = DataTracker.registerData(ModBossEntity.class, TrackedDataHandlerRegistry.BLOCK_POS);
-    }
-
     protected ServerBossBar bossBar;
 
     protected ModBossEntity(EntityType<? extends HostileEntity> entityType, World world) {
@@ -46,55 +42,45 @@ public abstract class ModBossEntity extends HostileEntity {
         return boss.getBrain().getOptionalMemory(MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER);
     }
 
-    @Override
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(ARENA_POS, BlockPos.ORIGIN);
+    private void setCurrentPosAsHome() {
+        GlobalPos globalPos = GlobalPos.create(this.world.getRegistryKey(), this.getBlockPos());
+        this.getBrain().remember(MemoryModuleType.HOME, globalPos);
     }
 
     @Nullable
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        this.setArenaPos(this.getBlockPos());
+        this.setCurrentPosAsHome();
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
-    public BlockPos getArenaPos() {
-        return this.dataTracker.get(ARENA_POS);
-    }
-
-    private void setArenaPos(BlockPos arenaPos) {
-        this.dataTracker.set(ARENA_POS, arenaPos);
+    @Override
+    protected void mobTick() {
+        this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
+        if (this.world instanceof ServerWorld) {
+            for (ServerPlayerEntity player : this.bossBar.getPlayers()) {
+                if (player.distanceTo(this) > 32) {
+                    this.bossBar.removePlayer(player);
+                }
+            }
+            for (PlayerEntity player : world.getPlayers(TargetPredicate.createNonAttackable(), this, Box.from(BlockBox.create(this.getBlockPos().add(30, 10, 30), this.getBlockPos().add(-30, -10, -30))))) {
+                if (player instanceof ServerPlayerEntity) {
+                    this.bossBar.addPlayer((ServerPlayerEntity) player);
+                }
+            }
+        }
+        super.mobTick();
     }
 
     @Override
-    public void writeCustomDataToNbt(NbtCompound nbt) {
-        super.writeCustomDataToNbt(nbt);
-        nbt.putInt("ArenaX", this.getArenaPos().getX());
-        nbt.putInt("ArenaY", this.getArenaPos().getY());
-        nbt.putInt("ArenaZ", this.getArenaPos().getZ());
-    }
-
-    @Override
-    public void readCustomDataFromNbt(NbtCompound nbt) {
-        super.readCustomDataFromNbt(nbt);
-        this.setArenaPos(new BlockPos(nbt.getInt("ArenaX"), nbt.getInt("ArenaY"), nbt.getInt("ArenaZ")));
-
+    public void onStoppedTrackingBy(ServerPlayerEntity player) {
+        super.onStoppedTrackingBy(player);
+        this.bossBar.removePlayer(player);
     }
 
     public void setCustomName(@Nullable Text name) {
         super.setCustomName(name);
         this.bossBar.setName(this.getDisplayName());
-    }
-
-    public void onStartedTrackingBy(ServerPlayerEntity player) {
-        super.onStartedTrackingBy(player);
-        this.bossBar.addPlayer(player);
-    }
-
-    public void onStoppedTrackingBy(ServerPlayerEntity player) {
-        super.onStoppedTrackingBy(player);
-        this.bossBar.removePlayer(player);
     }
 
     public abstract MusicSound getBossMusic();
@@ -114,19 +100,26 @@ public abstract class ModBossEntity extends HostileEntity {
         }
     }
 
+    protected Item getStar() {
+        return ModItems.POWER_STAR;
+    }
+
+    @Nullable
+    protected abstract Item getRareItem();
+
     protected void dropEquipment(DamageSource source, int lootingMultiplier, boolean allowDrops) {
         super.dropEquipment(source, lootingMultiplier, allowDrops);
-        Item item = ModItems.POWER_STAR;
-        if (this instanceof KingBooEntity)
-            item = ModItems.ZTAR;
-        ItemEntity itemEntity = this.dropItem(item);
+        ItemEntity itemEntity = this.dropItem(this.getStar());
         if (itemEntity != null) {
             itemEntity.setCovetedItem();
         }
         if (!world.isClient)
             this.openLocks();
+        if (this.getRareItem() != null && random.nextInt(3) == 0)
+            this.dropItem(this.getRareItem());
     }
 
+    @Override
     public void checkDespawn() {
         if (this.world.getDifficulty() == Difficulty.PEACEFUL && this.isDisallowedInPeaceful()) {
             this.discard();

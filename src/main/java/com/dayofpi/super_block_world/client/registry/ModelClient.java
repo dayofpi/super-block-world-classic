@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.client.registry;
 
 import com.dayofpi.super_block_world.client.renderers.ChinchoTorchRenderer;
 import com.dayofpi.super_block_world.client.renderers.FlagRenderer;
+import com.dayofpi.super_block_world.client.renderers.SuperPickaxRenderer;
 import com.dayofpi.super_block_world.common.items.WarpLinkItem;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModItems;
@@ -13,8 +14,15 @@ import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import net.fabricmc.fabric.impl.client.rendering.ColorProviderRegistryImpl;
+import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
+import net.kyrptonaught.customportalapi.mixin.client.ChunkRendererRegionAccessor;
+import net.kyrptonaught.customportalapi.util.CustomPortalHelper;
+import net.kyrptonaught.customportalapi.util.PortalLink;
+import net.minecraft.block.Block;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.chunk.ChunkRendererRegion;
 import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.item.DyeableItem;
@@ -33,9 +41,19 @@ public class ModelClient {
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GRASS_COLOR, ModBlocks.TOADSTOOL_GRASS, ModBlocks.GRASSY_TOADSTONE, ModBlocks.GRASSY_HARDSTONE, ModBlocks.SHOREGRASS, ModBlocks.TOADSTOOL_TURF, ModBlocks.SHORT_GRASS);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FOLIAGE_COLOR, ModBlocks.AMANITA_CARPET, ModBlocks.AMANITA_LEAVES, ModBlocks.FRUITING_AMANITA_LEAVES, ModBlocks.DARK_AMANITA_LEAVES, ModBlocks.FRUITING_DARK_AMANITA_LEAVES, ModBlocks.BUSH);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableItem) stack.getItem()).getColor(stack), ModItems.PLUMBER_CAP);
+
+        ColorProviderRegistryImpl.BLOCK.register((state, world, pos, tintIndex) -> {
+            if (pos != null && world instanceof ChunkRendererRegion) {
+                Block block = CustomPortalHelper.getPortalBase(((ChunkRendererRegionAccessor) world).getWorld(), pos);
+                PortalLink link = CustomPortalApiRegistry.getPortalLinkFromBase(block);
+                if (link != null) return link.colorID;
+            }
+            return 1908001;
+        }, ModBlocks.WARP_PORTAL);
     }
 
     private static void addToAtlas() {
+        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(SuperPickaxRenderer.TEXTURE.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(ChinchoTorchRenderer.TEXTURE.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.POLE_TEXTURE.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.RAINBOW_FLAG.getTextureId()));
@@ -73,6 +91,8 @@ public class ModelClient {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HORSETAIL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AMANITA_CARPET, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CAVE_MUSHROOMS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLUE_CAVE_MUSHROOMS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GREEN_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.YELLOW_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ORANGE_MUSHROOM, RenderLayer.getCutout());
@@ -95,6 +115,7 @@ public class ModelClient {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BEANSTALK_STEM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BEANSTALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MUNCHER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARP_PORTAL, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FROZEN_MUNCHER, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PIT_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PIRANHA_LILY, RenderLayer.getCutout());

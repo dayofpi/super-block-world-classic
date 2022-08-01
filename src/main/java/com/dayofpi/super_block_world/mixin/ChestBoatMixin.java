@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin;
 
 import com.dayofpi.super_block_world.registry.ModItems;
-import com.dayofpi.super_block_world.util.EnumUtil;
+import com.dayofpi.super_block_world.util.EnumAddons;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.entity.vehicle.ChestBoatEntity;
@@ -21,11 +21,11 @@ public abstract class ChestBoatMixin extends BoatEntity {
 
     @Inject(at = @At("HEAD"), method = "asItem", cancellable = true)
     private void asItem(CallbackInfoReturnable<Item> info) {
-        if (this.getBoatType() == EnumUtil.AMANITA_BOAT) {
+        if (this.getBoatType() == EnumAddons.AMANITA_BOAT) {
             info.setReturnValue(ModItems.AMANITA_CHEST_BOAT);
-        } else if (this.getBoatType() == EnumUtil.DARK_AMANITA_BOAT) {
+        } else if (this.getBoatType() == EnumAddons.DARK_AMANITA_BOAT) {
             info.setReturnValue(ModItems.DARK_AMANITA_CHEST_BOAT);
-        } else if (this.getBoatType() == EnumUtil.BELL_BOAT) {
+        } else if (this.getBoatType() == EnumAddons.BELL_BOAT) {
             info.setReturnValue(ModItems.BELL_CHEST_BOAT);
         }
     }

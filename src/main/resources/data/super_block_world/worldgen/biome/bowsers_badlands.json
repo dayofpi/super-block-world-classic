@@ -63,6 +63,18 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:buzzy_beetle",
+        "weight": 25,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:spike_top",
+        "weight": 45,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:dry_bones",
         "weight": 50,
         "minCount": 3,
