@@ -44,6 +44,18 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:fire_bro",
+        "weight": 30,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
+        "type": "super_block_world:ice_bro",
+        "weight": 30,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
         "type": "super_block_world:spiny",
         "weight": 25,
         "minCount": 2,

@@ -33,6 +33,18 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:hammer_bro",
+        "weight": 12,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
+        "type": "super_block_world:fire_bro",
+        "weight": 12,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
         "type": "super_block_world:goomba",
         "weight": 100,
         "minCount": 2,

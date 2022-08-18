@@ -146,7 +146,8 @@
     [
       "super_block_world:patch_star_cluster",
       "super_block_world:warp_pipe",
-      "super_block_world:underwater_pipe"
+      "super_block_world:underwater_pipe",
+      "super_block_world:jellybeam"
     ],
     [
       "minecraft:seagrass_warm",

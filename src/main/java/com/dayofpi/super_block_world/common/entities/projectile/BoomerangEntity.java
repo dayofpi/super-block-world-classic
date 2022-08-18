@@ -54,7 +54,7 @@ public class BoomerangEntity extends ThrownEntity {
             this.world.sendEntityStatus(this, (byte) 3);
             this.discard();
         }
-        if (this.getOwner() != null && this.age >= 10) {
+        if (this.getOwner() != null && this.age >= 15) {
             Vec3d pos = this.getOwner().getPos();
             Vec3d vec3d = new Vec3d(pos.getX() - this.getX(), (pos.getY() + 0.5) - this.getY(), pos.getZ() - this.getZ());
             this.setVelocity(vec3d.normalize());
@@ -80,6 +80,7 @@ public class BoomerangEntity extends ThrownEntity {
         }
     }
 
+    @Override
     protected float getGravity() {
         return 0.0F;
     }

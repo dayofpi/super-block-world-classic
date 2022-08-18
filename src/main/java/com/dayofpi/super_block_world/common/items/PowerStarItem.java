@@ -5,6 +5,7 @@ import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
 import net.kyrptonaught.customportalapi.portal.PortalPlacer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -31,10 +32,24 @@ public class PowerStarItem extends BlockItem {
         BlockPos blockPos = context.getBlockPos();
         PortalIgnitionSource source1 = PortalIgnitionSource.ItemUseSource(ModItems.POWER_STAR);
         PortalIgnitionSource source2 = PortalIgnitionSource.ItemUseSource(ModItems.ZTAR);
-        if (PortalPlacer.attemptPortalLight(world, blockPos, source1) || PortalPlacer.attemptPortalLight(world, blockPos, source2)) {
-            context.getStack().decrement(1);
-            world.playSound(null, blockPos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+        PlayerEntity player = context.getPlayer();
+        if (player == null)
             return null;
+        if (this == ModItems.POWER_STAR) {
+            if (PortalPlacer.attemptPortalLight(world, blockPos, source1)) {
+                context.getStack().decrement(1);
+                player.swingHand(context.getHand());
+                world.playSound(null, blockPos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                return null;
+            }
+        }
+        else {
+            if (PortalPlacer.attemptPortalLight(world, blockPos, source2)) {
+                context.getStack().decrement(1);
+                player.swingHand(context.getHand());
+                world.playSound(null, blockPos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                return null;
+            }
         }
         return super.getPlacementState(context);
     }

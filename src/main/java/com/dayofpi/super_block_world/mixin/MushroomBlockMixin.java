@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.mixin;
 
+import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -70,6 +71,8 @@ public class MushroomBlockMixin extends Block {
     private void bounce(Entity entity) {
         Vec3d vec3d = entity.getVelocity();
         if (vec3d.y < 0.0) {
+            if (entity.fallDistance > 0)
+                entity.world.playSound(null, entity.getBlockPos(), Sounds.BLOCK_MUSHROOM_BLOCK_BOUNCE, SoundCategory.BLOCKS, 0.2F, 1.0F);
             double d = entity instanceof LivingEntity ? 1.0 : 0.8;
             entity.setVelocity(vec3d.x, -vec3d.y * d, vec3d.z);
         }
@@ -94,7 +97,7 @@ public class MushroomBlockMixin extends Block {
             capSide = MushroomBlock.SOUTH;
         }
         if (itemStack.getItem() instanceof AxeItem) {
-            world.playSound(player, pos, SoundEvents.BLOCK_WART_BLOCK_BREAK, SoundCategory.BLOCKS, 0.6F, 1.2F);
+            world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 0.6F, 1.2F);
             world.setBlockState(pos, state.cycle(capSide), 2);
             itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
             return ActionResult.success(world.isClient);

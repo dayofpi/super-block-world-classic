@@ -21,7 +21,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class ParabonesEntity extends DryBonesEntity implements Flutterer, Stompable {
-    public float flapProgress;
     public float maxWingDeviation;
     private float flapSpeed = 1.0f;
     private float flapEffectTime = 1.0f;
@@ -69,7 +68,6 @@ public class ParabonesEntity extends DryBonesEntity implements Flutterer, Stompa
         if (!this.onGround && vec3d.y < 0.0) {
             this.setVelocity(vec3d.multiply(1.0, 0.8, 1.0));
         }
-        this.flapProgress += this.flapSpeed * 2.0f;
     }
 
     @Override

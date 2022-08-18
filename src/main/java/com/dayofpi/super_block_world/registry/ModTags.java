@@ -24,7 +24,6 @@ public class ModTags {
     public static TagKey<Block> ROYALITE;
     public static TagKey<Block> VANILLATE;
     public static TagKey<Block> WARP_PIPES;
-    public static TagKey<EntityType<?>> POISON_IMMUNE;
     public static TagKey<EntityType<?>> STOMP_IGNORED;
     public static TagKey<EntityType<?>> STOMP_IMMUNE;
     public static TagKey<Fluid> POISON;
@@ -56,7 +55,6 @@ public class ModTags {
     }
 
     private static void registerEntityTags() {
-        POISON_IMMUNE = registerTag(Registry.ENTITY_TYPE_KEY, "poison_immune");
         STOMP_IGNORED = registerTag(Registry.ENTITY_TYPE_KEY, "stomp_ignored");
         STOMP_IMMUNE = registerTag(Registry.ENTITY_TYPE_KEY, "stomp_immune");
     }

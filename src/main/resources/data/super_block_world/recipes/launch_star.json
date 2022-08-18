@@ -1,16 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "X#X",
-    "#*#",
-    "X#X"
+    "XXX",
+    "X*X",
+    "XXX"
   ],
   "key": {
     "X": {
-      "tag": "super_block_world:star_bits"
-    },
-    "#": {
-      "item": "super_block_world:stellar_shard"
+      "item": "super_block_world:yellow_star_bit"
     },
     "*": {
       "item": "super_block_world:power_star"

@@ -46,10 +46,12 @@ public class FuzzyEntity extends HostileEntity {
         return isSpawnDark((ServerWorldAccess) world, pos, random);
     }
 
+    @Override
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
         return world.getBlockState(pos).isAir() ? 10.0F : 0.0F;
     }
 
+    @Override
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
         return false;
     }
@@ -64,6 +66,7 @@ public class FuzzyEntity extends HostileEntity {
         this.goalSelector.add(1, new FuzzyWanderGoal(this));
     }
 
+    @Override
     protected EntityNavigation createNavigation(World world) {
         BirdNavigation birdNavigation = new BirdNavigation(this, world);
         birdNavigation.setCanPathThroughDoors(false);
@@ -83,6 +86,7 @@ public class FuzzyEntity extends HostileEntity {
         }
     }
 
+    @Override
     public boolean onKilledOther(ServerWorld world, LivingEntity other) {
         boolean bl = super.onKilledOther(world, other);
         FuzzyEntity fuzzyEntity = ModEntities.FUZZY.create(world);
@@ -97,6 +101,7 @@ public class FuzzyEntity extends HostileEntity {
         return bl;
     }
 
+    @Override
     public void tick() {
         if (this.world.isClient) {
             this.idlingAnimationState.startIfNotRunning(this.age);

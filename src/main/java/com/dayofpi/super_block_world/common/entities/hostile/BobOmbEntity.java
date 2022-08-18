@@ -155,7 +155,7 @@ public class BobOmbEntity extends HostileEntity implements BobOmb {
 
             int i = this.getFuseSpeed();
             if (i > 0 && this.currentFuseTime == 0) {
-                this.playSound(Sounds.ENTITY_BOB_OMB_FUSE, 1.0F, 0.7F);
+                this.playSound(Sounds.ENTITY_BOB_OMB_FUSE, 1.0F, 1.2F);
                 this.emitGameEvent(GameEvent.PRIME_FUSE);
             }
 
@@ -258,7 +258,6 @@ public class BobOmbEntity extends HostileEntity implements BobOmb {
             this.discard();
             this.spawnEffectsCloud();
         }
-
     }
 
     private void spawnEffectsCloud() {

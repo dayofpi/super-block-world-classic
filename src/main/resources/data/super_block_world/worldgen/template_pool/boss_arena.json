@@ -1,13 +1,13 @@
 {
-  "name": "super_block_world:boss_arena/king_bob_omb",
+  "name": "super_block_world:boss_arena",
   "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "super_block_world:boss_arena",
         "projection": "rigid",
+        "location": "super_block_world:boss_arena",
         "processors": "super_block_world:boss_arena"
       }
     }

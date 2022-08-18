@@ -311,7 +311,7 @@ public class GoKartEntity extends Entity {
         }
         if (world.isClient) {
             if (getVelocity().horizontalLengthSquared() > 1.0E-6)
-                tirePitch += 0.2;
+                tirePitch += 0.4;
         }
         super.tick();
         this.updatePositionAndRotation();

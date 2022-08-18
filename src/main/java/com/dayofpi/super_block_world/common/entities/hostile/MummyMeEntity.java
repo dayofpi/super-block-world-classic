@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.goals.MummyMeTargetGoal;
+import com.dayofpi.super_block_world.common.entities.passive.MailtoadEntity;
 import com.dayofpi.super_block_world.common.entities.passive.ToadEntity;
 import com.dayofpi.super_block_world.registry.ModCriteria;
 import com.dayofpi.super_block_world.registry.ModEntities;
@@ -93,6 +94,7 @@ public class MummyMeEntity extends HostileEntity {
         this.targetSelector.add(1, new RevengeGoal(this));
         this.targetSelector.add(2, new MummyMeTargetGoal<>(this, PlayerEntity.class));
         this.targetSelector.add(3, new MummyMeTargetGoal<>(this, ToadEntity.class, true, toadEntity -> !toadEntity.isBaby()));
+        this.targetSelector.add(3, new MummyMeTargetGoal<>(this, MailtoadEntity.class, true, toadEntity -> !toadEntity.isBaby()));
     }
 
     @Override

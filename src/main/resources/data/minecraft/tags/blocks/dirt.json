@@ -1,16 +1,17 @@
 {
   "replace": false,
   "values": [
-    "super_block_world:toadstool_soil",
-    "super_block_world:coarse_toadstool_soil",
-    "super_block_world:toadstool_grass",
-    "super_block_world:toadstool_turf",
-    "super_block_world:grassy_toadstone",
-    "super_block_world:grassy_hardstone",
-    "super_block_world:cherry_soil",
+    "super_block_world:chocolate_ground",
     "super_block_world:cherry_grass",
+    "super_block_world:cherry_soil",
+    "super_block_world:coarse_toadstool_soil",
+    "super_block_world:grassy_hardstone",
+    "super_block_world:grassy_toadstone",
     "super_block_world:sherbet_soil",
+    "super_block_world:shoregrass",
     "super_block_world:snowy_sherbet_soil",
-    "super_block_world:shoregrass"
+    "super_block_world:toadstool_grass",
+    "super_block_world:toadstool_soil",
+    "super_block_world:toadstool_turf"
   ]
 }

@@ -1,6 +1,8 @@
 package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.common.entities.GoombaVariant;
+import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
 import com.dayofpi.super_block_world.registry.ModTags;
@@ -19,9 +21,13 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.entity.passive.OcelotEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
+import net.minecraft.util.Hand;
+import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -31,16 +37,18 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class GoombaEntity extends HostileEntity {
     private static final TrackedData<Integer> SIZE;
     private static final TrackedData<Boolean> GROWABLE;
-    private static final TrackedData<Boolean> GOLD;
+    private static final TrackedData<String> VARIANT;
     public final AnimationState walkingAnimationState = new AnimationState();
+    private static final DataPool<Item> TOWER_ITEMS = DataPool.<Item>builder().add(ModItems.COIN, 3).add(ModItems.SUPER_MUSHROOM, 3).add(ModItems.FIRE_FLOWER, 2).add(ModItems.STAR_COIN, 1).add(ModItems.SUPER_BELL, 1).build();
 
     static {
         SIZE = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.INTEGER);
         GROWABLE = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-        GOLD = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+        VARIANT = DataTracker.registerData(GoombaEntity.class, TrackedDataHandlerRegistry.STRING);
     }
 
     public GoombaEntity(EntityType<? extends HostileEntity> entityType, World world) {
@@ -59,7 +67,7 @@ public class GoombaEntity extends HostileEntity {
     public static boolean canGoombaSpawn(EntityType<? extends GoombaEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         if (world.getBiome(pos).isIn(ModTags.SURFACE_GOOMBA_SPAWN))
             return isThereNoLight(world, pos);
-        else return isThereNoLight(world, pos) && world.getBlockState(pos.down()).isIn(ModTags.VANILLATE);
+        else return isThereNoLight(world, pos) && (world.getBlockState(pos.down()).isIn(ModTags.VANILLATE) || world.getBlockState(pos.down()).isOf(ModBlocks.VANILLATE_BRICKS));
     }
 
     public void initGoals() {
@@ -79,7 +87,7 @@ public class GoombaEntity extends HostileEntity {
         super.initDataTracker();
         this.dataTracker.startTracking(SIZE, 1);
         this.dataTracker.startTracking(GROWABLE, true);
-        this.dataTracker.startTracking(GOLD, false);
+        this.dataTracker.startTracking(VARIANT, GoombaVariant.GOOMBA.asString());
     }
 
     @Override
@@ -135,15 +143,15 @@ public class GoombaEntity extends HostileEntity {
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putInt("Size", this.getSize());
-        nbt.putBoolean("Gold", this.isGold());
         nbt.putBoolean("Growable", this.isGrowable());
+        nbt.putString("Variant", this.getVariant().asString());
     }
 
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         this.setSize(nbt.getInt("Size"));
-        this.setGold(nbt.getBoolean("Gold"));
         this.setGrowable(nbt.getBoolean("Growable"));
+        this.setVariant(GoombaVariant.fromName(nbt.getString("Variant")));
         super.readCustomDataFromNbt(nbt);
     }
 
@@ -169,8 +177,8 @@ public class GoombaEntity extends HostileEntity {
     public void tickMovement() {
         super.tickMovement();
         if (this.isAlive()) {
-            if (this.getSize() < 2 && !world.isClient) {
-                List<ItemEntity> list = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ModItems.SUPER_MUSHROOM));
+            if (this.getSize() < 2 && !world.isClient && this.isGrowable()) {
+                List<ItemEntity> list = this.world.getEntitiesByClass(ItemEntity.class, this.getBoundingBox().expand(0.7), itemEntity -> itemEntity.getStack().isOf(ModItems.SUPER_MUSHROOM) && !itemEntity.hasVehicle());
                 if (!list.isEmpty()) {
                     this.setSize(this.getSize() + 1);
                     this.playSound(Sounds.ENTITY_GENERIC_POWER_UP, 2.0F, 1.0F);
@@ -202,30 +210,64 @@ public class GoombaEntity extends HostileEntity {
 
     private void initializeGoombaTower(ServerWorldAccess world, LocalDifficulty difficulty) {
         GoombaEntity goombaEntity = ModEntities.GOOMBA.create(world.toServerWorld());
-        if (goombaEntity != null) {
+        if (goombaEntity != null && !this.hasPassengers() && this.getMainHandStack().isEmpty()) {
             goombaEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0F);
             goombaEntity.initialize(world, difficulty, SpawnReason.JOCKEY, null, null);
             goombaEntity.setSize(1);
             goombaEntity.startRiding(this, true);
+            if (goombaEntity.hasPassengers() || !goombaEntity.getMainHandStack().isEmpty())
+                return;
+            if (random.nextBoolean()) {
+                AbstractBro broEntity = ModEntities.HAMMER_BRO.create(world.toServerWorld());
+                if (random.nextInt(5) == 0)
+                    broEntity = ModEntities.FIRE_BRO.create(world.toServerWorld());
+                if (broEntity != null) {
+                    broEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0F);
+                    broEntity.initialize(world, difficulty, SpawnReason.JOCKEY, null, null);
+                    broEntity.startRiding(goombaEntity, true);
+                }
+            } else {
+                goombaEntity.setStackInHand(Hand.MAIN_HAND, new ItemStack(TOWER_ITEMS.getDataOrEmpty(this.random).orElse(ModItems.COIN)));
+                goombaEntity.updateDropChances(EquipmentSlot.MAINHAND);
+            }
         }
+    }
+
+    protected boolean isDark() {
+        return false;
     }
 
     @Nullable
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        if (this.random.nextInt(100) == 0) {
-            this.setGold(true);
+        if (!this.isDark()) {
+            if (this.random.nextInt(100) == 0) {
+                this.setVariant(GoombaVariant.GOLD);
+            } else if (!world.isSkyVisible(this.getBlockPos()) && this.getBlockPos().getY() < world.getSeaLevel()) {
+                this.setVariant(GoombaVariant.GLOOMBA);
+            }
         }
-        if (random.nextFloat() > 0.5F) {
+        if (random.nextFloat() > 0.75F) {
             this.setSize(0);
-        } else if (random.nextFloat() > 0.5F && world.isSpaceEmpty(this.getBoundingBox().offset(0, 2, 0).expand(2))) {
+        } else if (random.nextFloat() > 0.75F && world.isSpaceEmpty(this.getBoundingBox().offset(0, 2, 0).expand(2))) {
             this.setSize(2);
         } else this.initializeGoomba(world, difficulty);
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
+    public GoombaVariant getVariant() {
+        if (this.isDark())
+            return GoombaVariant.DARK;
+        return GoombaVariant.fromName(this.dataTracker.get(VARIANT));
+    }
+
+    public void setVariant(GoombaVariant variant) {
+        this.dataTracker.set(VARIANT, variant.asString());
+    }
+
+
     protected void initializeGoomba(ServerWorldAccess world, LocalDifficulty difficulty) {
         this.setSize(1);
-        if (this.random.nextInt(4) == 0) {
+        if (this.random.nextInt(3) == 0) {
             this.initializeGoombaTower(world, difficulty);
         }
     }
@@ -261,16 +303,20 @@ public class GoombaEntity extends HostileEntity {
             this.experiencePoints = 1;
         } else if (clampedSize == 1) {
             health.setBaseValue(4.0D);
-            speed.setBaseValue(0.22D);
+            speed.setBaseValue(0.22D * this.getSpeedMultiplier());
             attackDamage.setBaseValue(3.0D);
             this.experiencePoints = 3;
         } else if (clampedSize == 2) {
             health.setBaseValue(7.0D);
-            speed.setBaseValue(0.18D);
+            speed.setBaseValue(0.18D * this.getSpeedMultiplier());
             attackDamage.setBaseValue(6.0D);
             this.experiencePoints = 5;
         }
         this.setHealth(this.getMaxHealth());
+    }
+
+    private double getSpeedMultiplier() {
+        return this.isDark() ? 1.7D : 1.0D;
     }
 
     public boolean isGrowable() {
@@ -282,11 +328,7 @@ public class GoombaEntity extends HostileEntity {
     }
 
     public boolean isGold() {
-        return this.dataTracker.get(GOLD);
-    }
-
-    public void setGold(boolean gold) {
-        this.dataTracker.set(GOLD, gold);
+        return this.dataTracker.get(VARIANT).equals(GoombaVariant.GOLD.asString());
     }
 
     @Override
@@ -335,7 +377,7 @@ public class GoombaEntity extends HostileEntity {
                         goombaEntity.setCustomName(text);
                         goombaEntity.setAiDisabled(this.isAiDisabled());
                         goombaEntity.setInvulnerable(this.isInvulnerable());
-                        goombaEntity.setGold(this.isGold());
+                        goombaEntity.setVariant(this.getVariant());
                         goombaEntity.setSize(1);
                         goombaEntity.setGrowable(false);
                         goombaEntity.refreshPositionAndAngles(this.getX() + (double) g, this.getY() + 0.5D, this.getZ() + (double) h, this.random.nextFloat() * 360.0F, 0.0F);
@@ -350,7 +392,9 @@ public class GoombaEntity extends HostileEntity {
 
     @Override
     public double getMountedHeightOffset() {
-        return this.getDimensions(getPose()).height - 0.1D;
+        if (this.getFirstPassenger() instanceof GoombaEntity)
+            return this.getDimensions(getPose()).height - 0.1D;
+        return super.getMountedHeightOffset() - 0.5D;
     }
 
     @Override

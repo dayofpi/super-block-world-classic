@@ -14,8 +14,8 @@ public class ThrownItem extends Item {
         super(settings);
     }
 
-    protected void playSound(World world, Vec3d pos, SoundEvent soundEvent, float volume, float pitch) {
-        world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundEvent, SoundCategory.NEUTRAL, volume, pitch);
+    protected void playSound(World world, Vec3d pos, SoundEvent soundEvent, float pitch) {
+        world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundEvent, SoundCategory.NEUTRAL, (float) 0.5, pitch);
     }
 
     protected void useStack(PlayerEntity user, ItemStack itemStack) {

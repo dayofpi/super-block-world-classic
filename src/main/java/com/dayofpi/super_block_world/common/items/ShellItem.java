@@ -39,6 +39,10 @@ public class ShellItem extends ArmorItem {
         this.variant = variant;
     }
 
+    public int getVariant() {
+        return variant;
+    }
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);

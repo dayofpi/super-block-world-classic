@@ -57,6 +57,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:hammer_bro",
+        "weight": 12,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
         "type": "super_block_world:goomba",
         "weight": 90,
         "minCount": 2,
@@ -189,7 +195,8 @@
     [
       "super_block_world:patch_star_cluster",
       "super_block_world:warp_pipe",
-      "super_block_world:underwater_pipe"
+      "super_block_world:underwater_pipe",
+      "super_block_world:jellybeam"
     ],
     [
       "minecraft:seagrass_warm",

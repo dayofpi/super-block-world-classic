@@ -1,13 +1,16 @@
 package com.dayofpi.super_block_world.mixin;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.entities.PowerUp;
 import com.dayofpi.super_block_world.common.entities.misc.DryBonesShellEntity;
+import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModTags;
 import com.dayofpi.super_block_world.util.FormManager;
 import com.dayofpi.super_block_world.util.ModDamageSource;
+import com.dayofpi.super_block_world.util.PowerUp;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.fluid.Fluid;
@@ -62,6 +65,8 @@ public abstract class EntityMixin {
 
     @Shadow public abstract double getZ();
 
+    @Shadow public abstract boolean isLiving();
+
     @Inject(at = @At("TAIL"), method = "baseTick")
     private void baseTick(CallbackInfo ci) {
         if (this.isInPoison()) {
@@ -80,8 +85,9 @@ public abstract class EntityMixin {
         return this.updateMovementInFluid(ModTags.POISON, 0.0023);
     }
 
+    @SuppressWarnings("ConstantConditions")
     private boolean isPoisonImmune() {
-        return this.getType().isIn(ModTags.POISON_IMMUNE);
+        return this.getType() == ModEntities.DRY_BONES_SHELL || this.isLiving() && ((LivingEntity) (Object) this).getGroup() == EntityGroup.UNDEAD;
     }
 
     private void doPoisonDamage() {

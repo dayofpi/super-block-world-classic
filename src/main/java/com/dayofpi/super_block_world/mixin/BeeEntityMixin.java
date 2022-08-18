@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin;
 
-import com.dayofpi.super_block_world.common.entities.PowerUp;
+import com.dayofpi.super_block_world.util.PowerUp;
 import com.dayofpi.super_block_world.common.entities.goals.FollowPowerGoal;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.PathAwareEntity;

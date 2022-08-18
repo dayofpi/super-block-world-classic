@@ -45,6 +45,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:hammer_bro",
+        "weight": 12,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
         "type": "super_block_world:goomba",
         "weight": 100,
         "minCount": 2,
@@ -154,7 +160,8 @@
       "super_block_world:patch_amethyst_cluster",
       "super_block_world:patch_star_cluster_gorge",
       "super_block_world:warp_pipe",
-      "super_block_world:underwater_pipe"
+      "super_block_world:underwater_pipe",
+      "super_block_world:jellybeam"
     ],
     [
       "minecraft:seagrass_warm",
@@ -166,7 +173,7 @@
       "super_block_world:patch_red_grass",
       "super_block_world:patch_bush",
       "super_block_world:patch_stump",
-      "super_block_world:patch_songflower",
+      "super_block_world:patch_songflower_pink",
       "super_block_world:patch_muncher",
       "super_block_world:patch_cave_mushrooms",
       "super_block_world:strawberry_coral"

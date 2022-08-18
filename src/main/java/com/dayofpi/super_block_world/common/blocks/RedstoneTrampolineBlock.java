@@ -1,12 +1,13 @@
 package com.dayofpi.super_block_world.common.blocks;
 
+import com.dayofpi.super_block_world.audio.Sounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvents;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -87,8 +88,8 @@ public class RedstoneTrampolineBlock extends Block {
         BlockPos blockPos = entity.getSteppingPos();
         double jumpPower = world.getReceivedRedstonePower(blockPos);
         if (world.getBlockState(blockPos).get(POWERED)) {
-            entity.playSound(SoundEvents.BLOCK_WART_BLOCK_STEP, 1.0F, 1.0F);
-            entity.setVelocity(vec3d.x, (jumpPower * 0.12D), vec3d.z);
+            entity.world.playSound(null, entity.getBlockPos(), Sounds.BLOCK_MUSHROOM_BLOCK_BOUNCE, SoundCategory.BLOCKS, 1.0F, (float) (1.35F - (jumpPower * 0.05)));
+            entity.setVelocity(vec3d.x, jumpPower * 0.12D, vec3d.z);
         }
     }
 }

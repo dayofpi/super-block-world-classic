@@ -1,8 +1,11 @@
 package com.dayofpi.super_block_world.registry;
 
+import com.dayofpi.super_block_world.common.entities.misc.KoopaShellEntity;
 import com.dayofpi.super_block_world.common.entities.projectile.*;
+import com.dayofpi.super_block_world.common.items.ShellItem;
 import com.dayofpi.super_block_world.util.AmmoDispenserBehavior;
 import com.dayofpi.super_block_world.util.EnumAddons;
+import com.google.common.collect.ImmutableList;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.BlockPlacementDispenserBehavior;
 import net.minecraft.block.dispenser.BoatDispenserBehavior;
@@ -12,6 +15,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Util;
@@ -21,7 +25,10 @@ import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
+import java.util.List;
+
 public class DispenserBehaviors {
+    public static final List<Item> shellItemList = ImmutableList.of(ModItems.GREEN_SHELL, ModItems.RED_SHELL, ModItems.BLUE_SHELL, ModItems.GOLD_SHELL, ModItems.BUZZY_SHELL);
     public static void register() {
         DispenserBlock.registerBehavior(ModItems.AMANITA_BOAT, new BoatDispenserBehavior(EnumAddons.AMANITA_BOAT));
         DispenserBlock.registerBehavior(ModItems.DARK_AMANITA_BOAT, new BoatDispenserBehavior(EnumAddons.DARK_AMANITA_BOAT));
@@ -35,6 +42,7 @@ public class DispenserBehaviors {
         DispenserBlock.registerBehavior(ModItems.FIRE_FLOWER, new AmmoDispenserBehavior.FireFlower());
         DispenserBlock.registerBehavior(ModItems.ICE_FLOWER, new AmmoDispenserBehavior.IceFlower());
         DispenserBlock.registerBehavior(ModItems.BOOMERANG_FLOWER, new AmmoDispenserBehavior.BoomerangFlower());
+        DispenserBlock.registerBehavior(ModItems.GOLD_FLOWER, new AmmoDispenserBehavior.GoldFlower());
 
         DispenserBlock.registerBehavior(ModBlocks.YOSHI_EGG.asItem(), new ProjectileDispenserBehavior() {
             protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
@@ -67,6 +75,28 @@ public class DispenserBehaviors {
                 return Util.make(new SuperHeartEntity(world, position.getX(), position.getY(), position.getZ()), (superHeartEntity) -> superHeartEntity.setItem(stack));
             }
         });
+
+        for (Item item : shellItemList) {
+            DispenserBlock.registerBehavior(item, new ItemDispenserBehavior() {
+                public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
+                    Direction direction = pointer.getBlockState().get(DispenserBlock.FACING);
+                    EntityType<?> entityType = ModEntities.KOOPA_SHELL;
+
+                    try {
+                        KoopaShellEntity koopaShell = (KoopaShellEntity) entityType.spawnFromItemStack(pointer.getWorld(), stack, null, pointer.getPos().offset(direction), SpawnReason.DISPENSER, direction != Direction.UP, false);
+                        if (koopaShell != null)
+                            koopaShell.setVariant(((ShellItem)item).getVariant());
+                    } catch (Exception exception) {
+                        LOGGER.error("Error while dispensing Mechakoopa from dispenser at {}", pointer.getPos(), exception);
+                        return ItemStack.EMPTY;
+                    }
+
+                    stack.decrement(1);
+                    pointer.getWorld().emitGameEvent(null, GameEvent.ENTITY_PLACE, pointer.getPos());
+                    return stack;
+                }
+            });
+        }
 
         DispenserBlock.registerBehavior(ModItems.MECHAKOOPA, new ItemDispenserBehavior() {
             public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {

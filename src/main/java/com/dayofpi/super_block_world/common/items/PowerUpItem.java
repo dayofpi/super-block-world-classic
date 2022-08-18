@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.common.items;
 
-import com.dayofpi.super_block_world.common.entities.PowerUp;
+import com.dayofpi.super_block_world.util.PowerUp;
 import com.dayofpi.super_block_world.util.FormManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;

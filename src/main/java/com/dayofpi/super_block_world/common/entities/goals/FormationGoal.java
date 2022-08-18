@@ -65,7 +65,7 @@ public class FormationGoal extends Goal {
 
     @Override
     public boolean shouldContinue() {
-        if (!(this.blockstepper.isFollowing() && this.blockstepper.getFollowing().isAlive() && this.canFollow(this.blockstepper, 0))) {
+        if (!(this.blockstepper.getFollowing() != null && this.blockstepper.getFollowing().isAlive() && this.canFollow(this.blockstepper, 0))) {
             return false;
         }
         double d = this.blockstepper.squaredDistanceTo(this.blockstepper.getFollowing());
@@ -100,8 +100,9 @@ public class FormationGoal extends Goal {
             return;
         }
         BlockstepperEntity blockstepperEntity = this.blockstepper.getFollowing();
+        if (blockstepperEntity == null)
+            return;
         double d = this.blockstepper.distanceTo(blockstepperEntity);
-        float f = 2.0f;
         Vec3d vec3d = new Vec3d(blockstepperEntity.getX() - this.blockstepper.getX(), blockstepperEntity.getY() - this.blockstepper.getY(), blockstepperEntity.getZ() - this.blockstepper.getZ()).normalize().multiply(Math.max(d - 2.0, 0.0));
         this.blockstepper.getNavigation().startMovingTo(this.blockstepper.getX() + vec3d.x, this.blockstepper.getY() + vec3d.y, this.blockstepper.getZ() + vec3d.z, this.speed);
     }
@@ -110,7 +111,7 @@ public class FormationGoal extends Goal {
         if (length > MAX_LENGTH) {
             return false;
         }
-        if (blockstepper.isFollowing()) {
+        if (blockstepper.getFollowing() != null) {
             if (blockstepper.getFollowing().isLeader()) {
                 return true;
             }

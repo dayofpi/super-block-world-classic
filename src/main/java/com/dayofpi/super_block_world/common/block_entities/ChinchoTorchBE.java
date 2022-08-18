@@ -49,6 +49,7 @@ public class ChinchoTorchBE extends BlockEntity {
         for (LivingEntity entity : list) {
             if (entity.damage(DamageSource.MAGIC, 2.0F) && world instanceof ServerWorld) {
                 ((ServerWorld) world).spawnParticles(ParticleTypes.SOUL_FIRE_FLAME, blockPos.getX() + random.nextFloat(), blockPos.getY() + 1.0D, blockPos.getZ() + random.nextFloat(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
+                ((ServerWorld) world).spawnParticles(ParticleTypes.SOUL_FIRE_FLAME, entity.getX() + random.nextFloat(), entity.getY() + 1.0D, entity.getZ() + random.nextFloat(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
             }
         }
     }

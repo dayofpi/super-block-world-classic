@@ -4,7 +4,7 @@
         "bottom": "super_block_world:block/hardstone",
         "top": "super_block_world:block/grassy_toadstone_top",
         "side": "super_block_world:block/grassy_hardstone",
-        "overlay": "super_block_world:block/grassy_toadstone_overlay"
+        "overlay": "super_block_world:block/grassy_hardstone_overlay"
     },
     "elements": [
         {

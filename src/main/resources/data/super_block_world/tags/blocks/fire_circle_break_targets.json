@@ -1,6 +1,8 @@
 {
   "replace": "false",
   "values": [
+    "minecraft:fire",
+    "minecraft:soul_fire",
     "minecraft:lantern",
     "minecraft:redstone_torch",
     "minecraft:soul_lantern",

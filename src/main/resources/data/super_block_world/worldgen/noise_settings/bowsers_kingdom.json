@@ -1,5 +1,5 @@
 {
-  "sea_level": 32,
+  "sea_level": 48,
   "disable_mob_generation": false,
   "aquifers_enabled": false,
   "ore_veins_enabled": false,
@@ -70,16 +70,16 @@
                 },
                 "argument2": {
                   "type": "minecraft:add",
-                  "argument1": -2.5,
+                  "argument1": -2.6,
                   "argument2": {
                     "type": "minecraft:add",
                     "argument1": 0.9375,
                     "argument2": {
-                      "type": "minecraft:mul",
+                      "type": "minecraft:min",
                       "argument1": {
                         "type": "minecraft:y_clamped_gradient",
                         "from_y": 104,
-                        "to_y": 128,
+                        "to_y": 300,
                         "from_value": 1,
                         "to_value": 0
                       },
@@ -115,28 +115,6 @@
           },
           "false_at_and_above": {
             "above_bottom": 5
-          }
-        },
-        "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "minecraft:bedrock"
-          }
-        }
-      },
-      {
-        "type": "minecraft:condition",
-        "if_true": {
-          "type": "minecraft:not",
-          "invert": {
-            "type": "minecraft:vertical_gradient",
-            "random_name": "minecraft:bedrock_roof",
-            "true_at_and_below": {
-              "below_top": 5
-            },
-            "false_at_and_above": {
-              "below_top": 0
-            }
           }
         },
         "then_run": {

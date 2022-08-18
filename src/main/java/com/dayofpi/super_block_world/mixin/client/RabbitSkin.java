@@ -15,8 +15,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Environment(EnvType.CLIENT)
 @Mixin(RabbitEntityRenderer.class)
 public class RabbitSkin {
-    private static final Identifier MIPS_TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/mips.png");
-    private static final Identifier IRIS_TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/irislikestodraw.png");
+    private static final Identifier MIPS_TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/rabbit/mips.png");
+    private static final Identifier IRIS_TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/rabbit/irislikestodraw.png");
 
     @Inject(at = @At("HEAD"), method = "getTexture(Lnet/minecraft/entity/passive/RabbitEntity;)Lnet/minecraft/util/Identifier;", cancellable = true)
     private void getTexture(RabbitEntity rabbitEntity, CallbackInfoReturnable<Identifier> info) {

@@ -357,7 +357,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     private boolean hasJumpBoots() {
         ItemStack boots = this.getEquippedStack(EquipmentSlot.FEET);
-        return (boots.isOf(ModItems.JUMP_BOOTS));
+        return (boots.isOf(ModItems.JUMP_BOOTS)) || this.getType() == ModEntities.HAMMER_BRO || this.getType() == ModEntities.FIRE_BRO || this.getType() == ModEntities.ICE_BRO;
     }
 
     private boolean hasBuzzyShell() {

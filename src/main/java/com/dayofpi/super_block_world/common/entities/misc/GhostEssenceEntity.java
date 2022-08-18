@@ -32,7 +32,8 @@ public class GhostEssenceEntity extends Entity {
         super(type, world);
     }
 
-    public boolean collides() {
+    @Override
+    public boolean canHit() {
         return true;
     }
 

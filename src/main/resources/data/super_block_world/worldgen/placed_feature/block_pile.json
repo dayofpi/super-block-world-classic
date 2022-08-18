@@ -19,12 +19,17 @@
               ],
               "blocks": [
                 "minecraft:sand",
+                "super_block_world:charrock",
+                "super_block_world:gloomstone",
+                "super_block_world:grassy_hardstone",
+                "super_block_world:grassy_toadstone",
+                "super_block_world:gritzy_sand",
+                "super_block_world:hardstone",
+                "super_block_world:shroomstone",
+                "super_block_world:toadstone",
                 "super_block_world:toadstool_grass",
                 "super_block_world:toadstool_turf",
-                "super_block_world:gritzy_sand",
-                "super_block_world:shroomstone",
-                "super_block_world:vanillate",
-                "super_block_world:charrock"
+                "super_block_world:vanillate"
               ]
             }
           }

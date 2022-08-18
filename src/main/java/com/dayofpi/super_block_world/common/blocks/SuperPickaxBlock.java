@@ -6,6 +6,7 @@ import com.dayofpi.super_block_world.util.ModDamageSource;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -69,7 +70,8 @@ public class SuperPickaxBlock extends HorizontalFacingBlock implements BlockEnti
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (state.get(ACTIVE) && entity instanceof LivingEntity) entity.damage(ModDamageSource.POW, 5.0F);
+        if (state.get(ACTIVE) && (entity instanceof LivingEntity || entity instanceof FallingBlockEntity))
+            entity.damage(ModDamageSource.POW, 5.0F);
     }
 
     @Override
@@ -96,6 +98,8 @@ public class SuperPickaxBlock extends HorizontalFacingBlock implements BlockEnti
             world.breakBlock(pos, false);
             world.playSound(null, pos, SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
         } else {
+            if (target.isOf(this))
+                return;
             float hardness = target.getHardness(world, targetPos);
             if (hardness > -1.0F && hardness < 50.0F) {
                 world.breakBlock(targetPos, true);

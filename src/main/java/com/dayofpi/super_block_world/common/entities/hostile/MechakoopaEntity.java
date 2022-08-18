@@ -93,7 +93,7 @@ public class MechakoopaEntity extends TameableEntity implements RangedAttackMob 
         MechakoopaMissileEntity missileEntity = new MechakoopaMissileEntity(world, this, target);
         missileEntity.setVelocity(this, this.getPitch(), this.getHeadYaw(), 0.0F, 0.12F, 0.0F);
         world.spawnEntity(missileEntity);
-        this.playSound(Sounds.ENTITY_BULLET_SHOOT, 1.0F, 1.2F);
+        this.playSound(Sounds.ENTITY_BULLET_FIRE, 1.0F, 1.2F);
     }
 
     protected void initDataTracker() {

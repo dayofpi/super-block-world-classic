@@ -86,6 +86,16 @@
         }
       }
     },
+    "choco_mountain": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:choco_mountain"
+          }
+        }
+      }
+    },
     "deep_woods": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -116,6 +126,26 @@
         }
       }
     },
+    "fossil_falls": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:fossil_falls"
+          }
+        }
+      }
+    },
+    "frosty_caves": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:frosty_caves"
+          }
+        }
+      }
+    },
     "fuzzbush_caves": {
       "trigger": "minecraft:location",
       "conditions": {
@@ -132,6 +162,16 @@
         "player": {
           "location": {
             "biome": "super_block_world:moo_moo_meadow"
+          }
+        }
+      }
+    },
+    "mushroom_gorge": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "location": {
+            "biome": "super_block_world:mushroom_gorge"
           }
         }
       }
@@ -220,6 +260,9 @@
       "cherry_fields"
     ],
     [
+      "choco_mountain"
+    ],
+    [
       "deep_woods"
     ],
     [
@@ -229,10 +272,19 @@
       "forest_of_illusion"
     ],
     [
+      "fossil_falls"
+    ],
+    [
+      "frosty_caves"
+    ],
+    [
       "fuzzbush_caves"
     ],
     [
       "moo_moo_meadow"
+    ],
+    [
+      "mushroom_gorge"
     ],
     [
       "mushroom_grasslands"

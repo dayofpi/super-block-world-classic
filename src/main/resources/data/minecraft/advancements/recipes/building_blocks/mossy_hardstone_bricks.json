@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "super_block_world:mossy_hardstone_bricks_from_moss_block",
+      "super_block_world:mossy_hardstone_bricks_from_vine"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_block_world:hardstone_bricks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_moss_block_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "super_block_world:mossy_hardstone_bricks_from_moss_block"
+      }
+    },
+    "has_the_vine_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "super_block_world:mossy_hardstone_bricks_from_vine"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_material",
+      "has_the_moss_block_recipe",
+      "has_the_vine_recipe"
+    ]
+  ]
+}

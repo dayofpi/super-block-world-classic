@@ -35,8 +35,10 @@ public class ModBlocks {
     public static final Block ZTAR = new ZtarBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.BLACK).sounds(BlockSoundGroup.METAL).luminance(2).breakInstantly().nonOpaque().noCollision());
     public static final Block SUPER_PICKAX = new SuperPickaxBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.WOOD).breakInstantly().nonOpaque().noCollision());
     public static final Block WARP_FRAME = new WarpFrameBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).sounds(BlockSoundGroup.METAL).strength(10.0F, 1200.0F).requiresTool());
-    public static final Block CORRUPTED_WARP_FRAME = new PillarBlock(FabricBlockSettings.of(Material.METAL, MapColor.GRAY).sounds(BlockSoundGroup.METAL).luminance(5).strength(-1, 1200.0F));
+    public static final Block CORRUPTED_WARP_FRAME = new PillarBlock(FabricBlockSettings.of(Material.METAL, MapColor.BLACK).sounds(BlockSoundGroup.METAL).luminance(5).strength(-1, 1200.0F));
     public static final Block BOWSER_LOCK = new Block(FabricBlockSettings.of(Material.METAL, MapColor.BLACK).sounds(BlockSoundGroup.METAL).strength(-1, 3600000.0F).allowsSpawning((state, world, pos, type) -> false));
+    public static final Block GOOP_BLOCK = new QuicksandBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.BROWN).sounds(BlockSoundGroup.SLIME).noCollision().strength(1.0F).velocityMultiplier(0.1F).jumpVelocityMultiplier(0.3F));
+    public static final Block GOOP = new SnowBlock(FabricBlockSettings.of(Material.SNOW_LAYER, MapColor.BROWN).sounds(BlockSoundGroup.SLIME).strength(1.0F).velocityMultiplier(0.1F).jumpVelocityMultiplier(0.3F));
     public static final Block EMPTY_BLOCK = new EmptyBlock(FabricBlockSettings.of(Material.METAL, MapColor.BROWN).sounds(BlockSoundGroup.METAL).strength(2.5F, 1200.0F).requiresTool());
     public static final Block QUESTION_BLOCK = new QuestionBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).nonOpaque().sounds(BlockSoundGroup.METAL).strength(2.5F, 2.0F).requiresTool());
     public static final Block EXCLAMATION_BLOCK = new ExclamationBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).sounds(BlockSoundGroup.METAL).strength(2.5F, 2.0F).requiresTool());
@@ -94,6 +96,9 @@ public class ModBlocks {
     public static final Block COARSE_TOADSTOOL_SOIL = new Block(FabricBlockSettings.copyOf(TOADSTOOL_SOIL));
     public static final Block TOADSTOOL_GRASS = new ToadstoolGrassBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.LIME).strength(0.8F).sounds(BlockSoundGroup.GRASS));
     public static final Block TOADSTOOL_TURF = new Block(FabricBlockSettings.copyOf(TOADSTOOL_GRASS));
+    public static final Block CHOCOLATE_GROUND = new Block(FabricBlockSettings.of(Material.SOIL, MapColor.BROWN).strength(1.4F).sounds(BlockSoundGroup.ROOTED_DIRT));
+    public static final Block SMOOTH_CHOCOLATE_GROUND = new Block(FabricBlockSettings.copyOf(CHOCOLATE_GROUND));
+    public static final Block DARK_CHOCOLATE_GROUND = new Block(FabricBlockSettings.copyOf(CHOCOLATE_GROUND));
     public static final Block SHERBET_SOIL = new SherbetSoilBlock(FabricBlockSettings.of(Material.SOIL, MapColor.LIGHT_BLUE).strength(0.6F).sounds(SoundGroups.ICY_SOIL));
     public static final Block SNOWY_SHERBET_SOIL = new Block(FabricBlockSettings.of(Material.SOIL, MapColor.WHITE).strength(0.8F).sounds(SoundGroups.SNOWY_ICY_SOIL));
     public static final Block CHERRY_SOIL = new CherrySoilBlock(FabricBlockSettings.of(Material.SOIL, MapColor.PALE_GREEN).strength(0.6F).sounds(SoundGroups.ICY_SOIL));
@@ -154,6 +159,7 @@ public class ModBlocks {
     public static final Block HARDSTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block CRACKED_HARDSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block CHISELED_HARDSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(HARDSTONE));
+    public static final Block MOSSY_HARDSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block HARDSTONE_BRICKS = new Block(FabricBlockSettings.copyOf(HARDSTONE));
     public static final Block POLISHED_HARDSTONE_STAIRS = new ModStairsBlock(HARDSTONE);
     public static final Block POLISHED_HARDSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(HARDSTONE));
@@ -404,6 +410,8 @@ public class ModBlocks {
         registerBlock("warp_frame", WARP_FRAME);
         registerBlock("corrupted_warp_frame", CORRUPTED_WARP_FRAME);
         registerBlock("bowser_lock", BOWSER_LOCK);
+        registerBlock("goop_block", GOOP_BLOCK);
+        registerBlock("goop", GOOP);
         registerBlock("empty_block", EMPTY_BLOCK);
         registerBlock("question_block", QUESTION_BLOCK);
         registerBlock("exclamation_block", EXCLAMATION_BLOCK);
@@ -462,6 +470,9 @@ public class ModBlocks {
         registerBlock("toadstool_grass", TOADSTOOL_GRASS);
         registerBlock("toadstool_path", TOADSTOOL_PATH);
         registerBlock("toadstool_turf", TOADSTOOL_TURF);
+        registerBlock("chocolate_ground", CHOCOLATE_GROUND);
+        registerBlock("smooth_chocolate_ground", SMOOTH_CHOCOLATE_GROUND);
+        registerBlock("dark_chocolate_ground", DARK_CHOCOLATE_GROUND);
         registerBlock("sherbet_soil", SHERBET_SOIL);
         registerBlock("snowy_sherbet_soil", SNOWY_SHERBET_SOIL);
         registerBlock("cherry_soil", CHERRY_SOIL);
@@ -525,6 +536,7 @@ public class ModBlocks {
         registerBlock("polished_hardstone_stairs", POLISHED_HARDSTONE_STAIRS);
         registerBlock("hardstone_bricks", HARDSTONE_BRICKS);
         registerBlock("chiseled_hardstone_bricks", CHISELED_HARDSTONE_BRICKS);
+        registerBlock("mossy_hardstone_bricks", MOSSY_HARDSTONE_BRICKS);
         registerBlock("cracked_hardstone_bricks", CRACKED_HARDSTONE_BRICKS);
         registerBlock("hardstone_brick_slab", HARDSTONE_BRICK_SLAB);
         registerBlock("hardstone_brick_stairs", HARDSTONE_BRICK_STAIRS);

@@ -20,6 +20,7 @@ import net.minecraft.util.math.Vec3f;
 @Environment(EnvType.CLIENT)
 public class ModFireballRenderer extends EntityRenderer<ModFireballEntity> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/item/fireball.png");
+    private static final Identifier ENEMY_TEXTURE = new Identifier(Main.MOD_ID, "textures/item/enemy_fireball.png");
     private static final RenderLayer LAYER;
 
     static {
@@ -56,6 +57,6 @@ public class ModFireballRenderer extends EntityRenderer<ModFireballEntity> {
     }
 
     public Identifier getTexture(ModFireballEntity entity) {
-        return TEXTURE;
+        return entity.isFromEnemy() ? ENEMY_TEXTURE : TEXTURE;
     }
 }

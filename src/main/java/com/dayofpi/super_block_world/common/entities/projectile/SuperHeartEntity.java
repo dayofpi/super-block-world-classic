@@ -2,8 +2,8 @@ package com.dayofpi.super_block_world.common.entities.projectile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.hostile.BobOmbEntity;
+import com.dayofpi.super_block_world.common.entities.hostile.DarkGoombaEntity;
 import com.dayofpi.super_block_world.common.entities.hostile.GoombaEntity;
-import com.dayofpi.super_block_world.common.entities.hostile.ParagoombaEntity;
 import com.dayofpi.super_block_world.common.entities.passive.GladGoombaEntity;
 import com.dayofpi.super_block_world.registry.ModEntities;
 import com.dayofpi.super_block_world.registry.ModItems;
@@ -81,30 +81,43 @@ public class SuperHeartEntity extends ThrownItemEntity {
                 if (livingEntity == entity) {
                     e = 1.0;
                 }
-                if (livingEntity instanceof BobOmbEntity) {
+                EntityType<?> entityType = livingEntity.getType();
+                if (entityType == ModEntities.BOB_OMB) {
                     ((BobOmbEntity) livingEntity).convertTo(ModEntities.BOB_OMB_BUDDY, false);
                     livingEntity.dropItem(Items.STRING);
-                } else if (livingEntity instanceof ParagoombaEntity paragoomba) {
-                    GladGoombaEntity gladGoomba = paragoomba.convertTo(ModEntities.GLAD_PARAGOOMBA, false);
-                    if (gladGoomba == null)
-                        return;
-                    if (paragoomba.getSize() == 0)
-                        gladGoomba.setBaby(true);
-                    else if (paragoomba.getSize() > 1)
-                        gladGoomba.setBig(true);
-                } else if (livingEntity instanceof GoombaEntity goomba) {
-                    GladGoombaEntity gladGoomba = goomba.convertTo(ModEntities.GLAD_GOOMBA, false);
-                    if (gladGoomba == null)
-                        return;
-                    if (goomba.getSize() == 0)
-                        gladGoomba.setBaby(true);
-                    else if (goomba.getSize() > 1)
-                        gladGoomba.setBig(true);
+                }
+                else if (entityType == ModEntities.DARK_GOOMBA) {
+                    convertToGoomba((DarkGoombaEntity) livingEntity, ModEntities.GOOMBA);
+                }
+                else if (entityType == ModEntities.PARAGOOMBA) {
+                    convertToFriend((GoombaEntity) livingEntity, ModEntities.GLAD_PARAGOOMBA);
+                }
+                else if (entityType == ModEntities.GOOMBA) {
+                    convertToFriend((GoombaEntity) livingEntity, ModEntities.GLAD_GOOMBA);
                 }
                 StatusEffect statusEffect = StatusEffects.INSTANT_HEALTH;
                 statusEffect.applyInstantEffect(this, this.getOwner(), livingEntity, 1, e);
             }
         }
+    }
+
+    private static void convertToGoomba(DarkGoombaEntity entity, EntityType<? extends GoombaEntity> entityType) {
+        GoombaEntity goomba = entity.convertTo(entityType, false);
+        if (goomba == null)
+            return;
+        goomba.setSize(entity.getSize());
+        goomba.setGrowable(entity.isGrowable());
+        goomba.setVariant(entity.getVariant());
+    }
+
+    private static void convertToFriend(GoombaEntity entity, EntityType<? extends GladGoombaEntity> entityType) {
+        GladGoombaEntity gladGoomba = entity.convertTo(entityType, false);
+        if (gladGoomba == null)
+            return;
+        if (entity.getSize() == 0)
+            gladGoomba.setBaby(true);
+        else if (entity.getSize() > 1)
+            gladGoomba.setBig(true);
     }
 
     @Override

@@ -15,7 +15,7 @@ public class SuperHeartItem extends ThrownItem {
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
-        this.playSound(world, user.getPos(), Sounds.ITEM_THROW, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+        this.playSound(world, user.getPos(), Sounds.ITEM_THROW, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
         user.getItemCooldownManager().set(this, 5);
         if (!world.isClient) {
             SuperHeartEntity heartEntity = new SuperHeartEntity(world, user);

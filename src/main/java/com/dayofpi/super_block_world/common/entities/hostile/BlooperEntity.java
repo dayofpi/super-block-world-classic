@@ -39,8 +39,8 @@ public class BlooperEntity extends SquidEntity {
     }
 
     @SuppressWarnings("unused")
-    public static boolean canSpawn(EntityType<? extends BlooperEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
-        return !(world.getLightLevel(LightType.BLOCK, pos) > 0) && world.getBlockState(pos).isOf(Blocks.WATER) && pos.getY() < 60;
+    public static boolean canBlooperSpawn(EntityType<BlooperEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
+        return !(world.getLightLevel(LightType.BLOCK, pos) > 0) && world.getBlockState(pos).isOf(Blocks.WATER) && pos.getY() < 63;
     }
 
     @Override

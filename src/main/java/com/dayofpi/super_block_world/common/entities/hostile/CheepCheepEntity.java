@@ -56,7 +56,7 @@ public class CheepCheepEntity extends WaterCreatureEntity {
 
     @SuppressWarnings("unused")
     public static boolean canCheepCheepSpawn(EntityType<? extends CheepCheepEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
-        return world.getBlockState(pos).isOf(Blocks.WATER) && pos.getY() > 0;
+        return world.getBlockState(pos).isOf(Blocks.WATER) && pos.getY() > -10;
     }
 
     public static DefaultAttributeContainer.Builder createCheepCheepAttributes() {

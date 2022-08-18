@@ -30,6 +30,7 @@ public class ToadTrades {
                     new SellStampFactory(new ItemStack(Items.WHITE_DYE), new ItemStack(ModItems.PRINCESS_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(Items.ARROW), new ItemStack(ModItems.ARROW_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(Items.INK_SAC), new ItemStack(ModItems.BLOOPER_STAMP), 8, 2),
+                    new SellStampFactory(new ItemStack(ModItems.GOOP_BALL), new ItemStack(ModItems.GRAFFITI_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModItems.BOTTLED_GHOST), new ItemStack(ModItems.BOO_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModItems.BUZZY_SHELL_PIECE), new ItemStack(ModItems.BUZZY_STAMP), 8, 2),
                     new SellStampFactory(new ItemStack(ModItems.PURPLE_STAR_BIT), new ItemStack(ModItems.MOM_STAMP), 8, 2)

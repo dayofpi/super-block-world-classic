@@ -49,8 +49,13 @@ public class KingBooModel extends SinglePartEntityModel<KingBooEntity> {
         this.alpha = entity.getAlpha();
         this.getPart().traverse().forEach(ModelPart::resetTransform);
         this.updateAnimation(entity.chargingAnimationState, ModAnimations.KingBoo.CHARGE, animationProgress);
+
+        this.root.pitch = headPitch * (MathHelper.PI / 180F) * 0.2F;
+        this.root.yaw = headYaw * (MathHelper.PI / 180F) * 0.2F;
+        this.root.roll = MathHelper.cos(limbAngle * 0.6662F + 3.1415927F) * 0.2F * limbDistance;
+
         float progress = animationProgress * 5F * 0.04F;
-        this.tongue.yaw = MathHelper.cos(progress * 0.5F) * 0.05F;
+        this.tongue.yaw = MathHelper.cos(progress * 0.5F) * 0.1F;
         this.tongue.pitch = 0.2F + MathHelper.cos(progress * 0.5F) * 0.05F;
     }
 }

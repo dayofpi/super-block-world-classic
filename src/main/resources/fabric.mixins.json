@@ -4,6 +4,7 @@
   "package": "com.dayofpi.super_block_world.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "AmethystClusterBlockMixin",
     "BeeEntityMixin",
     "BlockEntityTypeMixin",
     "BoatMixin",

@@ -30,6 +30,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
@@ -102,7 +103,7 @@ public class ThwompEntity extends GolemEntity {
     @Override
     @Nullable
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        DirectionHelper.Direction direction = DirectionHelper.getCardinalDirection(this);
+        Direction direction = DirectionHelper.getCardinalDirection(this);
         this.setDirection(DirectionHelper.directionToInt(direction));
         this.setYaw(this.getDirection());
         this.headYaw = this.getYaw();
@@ -224,13 +225,14 @@ public class ThwompEntity extends GolemEntity {
             double rand = this.random.nextBoolean() ? 0.05 : -0.05;
             world.addParticle(ParticleTypes.POOF, this.getX(), this.getY(), this.getZ(), i * rand, 0.02D, i * rand);
         }
-
-        for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos().down(), 1, 0, 1)) {
-            BlockState state = world.getBlockState(blockPos);
-            if (state.getBlock() instanceof BrickBlock || state.getBlock() instanceof FakeBlock) {
-                world.breakBlock(blockPos, true);
-            } else if (state.getBlock() instanceof ReactiveBlock reactiveBlock) {
-                reactiveBlock.react(world, blockPos, null);
+        if (world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
+            for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos().down(), 1, 0, 1)) {
+                BlockState state = world.getBlockState(blockPos);
+                if (state.getBlock() instanceof BrickBlock || state.getBlock() instanceof FakeBlock) {
+                    world.breakBlock(blockPos, true);
+                } else if (state.getBlock() instanceof ReactiveBlock reactiveBlock) {
+                    reactiveBlock.react(world, blockPos, null);
+                }
             }
         }
     }
@@ -292,6 +294,11 @@ public class ThwompEntity extends GolemEntity {
             Vec3d vec3d = entity.getVelocity();
             entity.setVelocity(vec3d.x, this.getVelocity().y, vec3d.z);
         }
+    }
+
+    @Override
+    public boolean canImmediatelyDespawn(double distanceSquared) {
+        return true;
     }
 
     @Override

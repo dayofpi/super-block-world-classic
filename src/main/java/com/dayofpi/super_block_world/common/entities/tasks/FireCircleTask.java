@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.common.entities.tasks;
 
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.boss.KingBooEntity;
+import com.dayofpi.super_block_world.common.entities.boss.ModBossEntity;
 import com.dayofpi.super_block_world.registry.ModTags;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.BlockState;
@@ -21,6 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,6 +37,8 @@ public class FireCircleTask extends Task<KingBooEntity> {
 
     @Override
     protected boolean shouldRun(ServerWorld serverWorld, KingBooEntity entity) {
+        if (entity.getNextAttack() != 0)
+            return false;
         Optional<LivingEntity> optionalMemory = entity.getBrain().getOptionalMemory(MemoryModuleType.ATTACK_TARGET);
         return optionalMemory.filter(livingEntity -> entity.isInRange(livingEntity, 15.0, 2.0)).isPresent();
     }
@@ -61,13 +65,13 @@ public class FireCircleTask extends Task<KingBooEntity> {
         entity.getBrain().remember(MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN, Unit.INSTANCE, RUN_TIME - SOUND_DELAY);
         entity.playSound(Sounds.ENTITY_KING_BOO_UNLEASH, 3.0F, 1.0F);
         List<Entity> list = world.getOtherEntities(entity, Box.from(Vec3d.ofCenter(entity.getBlockPos())).expand(10, 1, 10), EntityPredicates.VALID_LIVING_ENTITY);
-        for (int i = 0; i < 100; ++i) {
-            world.spawnParticles(ParticleTypes.SOUL_FIRE_FLAME, entity.getX(), entity.getY(), entity.getZ(), 0, i, 0.0D, i, 0.1D);
+        for (int i = 0; i < 50; ++i) {
+            world.spawnParticles(ParticleTypes.SOUL_FIRE_FLAME, entity.getX(), entity.getY(), entity.getZ(), 0, 10, 0.0D, 10, 0.1D);
         }
         for (Entity target : list) {
             target.damage(DamageSource.magic(entity, entity), 5);
         }
-        for (BlockPos blockPos : BlockPos.iterateOutwards(entity.getBlockPos(), 10, 1, 10)) {
+        for (BlockPos blockPos : BlockPos.iterateOutwards(entity.getBlockPos(), 10, 2, 10)) {
             BlockState blockState = world.getBlockState(blockPos);
             if (blockState.isIn(ModTags.FIRE_CIRCLE_BREAK_TARGETS)) {
                 world.breakBlock(blockPos, true);
@@ -79,10 +83,11 @@ public class FireCircleTask extends Task<KingBooEntity> {
 
     @Override
     protected void finishRunning(ServerWorld serverWorld, KingBooEntity entity, long l) {
-        FireCircleTask.cooldown(entity, 200);
-    }
-
-    public static void cooldown(LivingEntity entity, int cooldown) {
-        entity.getBrain().remember(MemoryModuleType.SONIC_BOOM_COOLDOWN, Unit.INSTANCE, cooldown);
+        ModBossEntity.cooldown(entity, 80);
+        Random random = entity.getRandom();
+        if (random.nextInt(5) == 0)
+            entity.setNextAttack(2);
+        else
+            entity.setNextAttack(entity.getRandom().nextInt(entity.getMaxAttacks()));
     }
 }

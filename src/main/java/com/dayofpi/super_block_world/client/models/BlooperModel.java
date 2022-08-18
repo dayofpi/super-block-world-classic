@@ -37,10 +37,14 @@ public class BlooperModel extends SinglePartEntityModel<BlooperEntity> {
         return TexturedModelData.of(modelData, 64, 64);
     }
 
-
-
     @Override
     public void setAngles(BlooperEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+        this.getPart().traverse().forEach(ModelPart::resetTransform);
+        if (entity.isBaby()) {
+            this.root.xScale = 0.5F;
+            this.root.yScale = 0.5F;
+            this.root.zScale = 0.5F;
+        }
         this.right_tentacle.roll = MathHelper.lerp(animationProgress, entity.prevTentacleAngle, entity.tentacleAngle);
         this.left_tentacle.roll = MathHelper.lerp(animationProgress, entity.prevTentacleAngle, entity.tentacleAngle) * -1;
         for (ModelPart modelPart : this.limbs.traverse().toList()) {

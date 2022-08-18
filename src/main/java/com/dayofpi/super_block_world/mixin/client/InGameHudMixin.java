@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin.client;
 
-import com.dayofpi.super_block_world.common.entities.PowerUp;
+import com.dayofpi.super_block_world.util.PowerUp;
 import com.dayofpi.super_block_world.util.FormManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.EnvType;

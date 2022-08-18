@@ -15,26 +15,28 @@ import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3f;
 
 @SuppressWarnings("deprecation")
 @Environment(EnvType.CLIENT)
 public class ChinchoTorchRenderer implements BlockEntityRenderer<ChinchoTorchBE> {
-    public static final SpriteIdentifier TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(Main.MOD_ID, "entity/chincho_torch"));
+    public static final SpriteIdentifier ACTIVE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(Main.MOD_ID, "entity/chincho_torch/active"));
+    public static final SpriteIdentifier INACTIVE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(Main.MOD_ID, "entity/chincho_torch/inactive"));
     private final ModelPart root;
     private final ModelPart orb;
 
     public ChinchoTorchRenderer(BlockEntityRendererFactory.Context ctx) {
         ModelPart modelPart = ctx.getLayerModelPart(ModModelLayers.CHINCHO_TORCH);
         this.root = modelPart.getChild("root");
-        this.orb = this.root.getChild("orb");
+        this.orb = modelPart.getChild("orb");
     }
 
     public static TexturedModelData getTexturedModelData() {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
-        ModelPartData root = modelPartData.addChild("root", ModelPartBuilder.create().uv(0, 8).cuboid(-1.0F, -10.0F, -1.0F, 2.0F, 10.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
+        modelPartData.addChild("root", ModelPartBuilder.create().uv(0, 8).cuboid(-1.0F, -10.0F, -1.0F, 2.0F, 10.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
 
-        ModelPartData orb = root.addChild("orb", ModelPartBuilder.create().uv(0, 0).cuboid(-2.0F, -15.0F, -2.0F, 4.0F, 4.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+        ModelPartData orb = modelPartData.addChild("orb", ModelPartBuilder.create().uv(0, 0).cuboid(-2.0F, -15.0F, -2.0F, 4.0F, 4.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 
         ModelPartData stars = orb.addChild("stars", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 1.0F, 0.0F));
 
@@ -50,13 +52,35 @@ public class ChinchoTorchRenderer implements BlockEntityRenderer<ChinchoTorchBE>
         stars.addChild("bone2", ModelPartBuilder.create().uv(8, 8).cuboid(-2.5F, -2.5F, 0.0F, 5.0F, 5.0F, 0.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -14.0F, -2.5F));
         return TexturedModelData.of(modelData, 32, 32);
     }
+
     @Override
     public void render(ChinchoTorchBE entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        matrices.push();
-        matrices.scale(-1.0F, -1.0F, 1.0F);
-        matrices.translate(-0.5, -1.5, 0.5);
-        VertexConsumer consumer = TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityTranslucent);
-        this.root.render(matrices, consumer, light, overlay);
-        matrices.pop();
+        if (entity.isLit()) {
+            VertexConsumer consumer = ACTIVE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityTranslucent);
+
+            matrices.push();
+            matrices.scale(-1.0F, -1.0F, 1.0F);
+            matrices.translate(-0.5, -1.5, 0.5);
+
+            this.root.render(matrices, consumer, light, overlay);
+
+            matrices.translate(0.0, 1.5, 0.0);
+            if (entity.getWorld() != null)
+                matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(entity.getWorld().getTime()));
+            this.orb.render(matrices, consumer, light, overlay);
+            matrices.pop();
+        } else {
+            VertexConsumer consumer = INACTIVE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityTranslucent);
+
+            matrices.push();
+            matrices.scale(-1.0F, -1.0F, 1.0F);
+            matrices.translate(-0.5, -1.5, 0.5);
+
+            this.root.render(matrices, consumer, light, overlay);
+
+            matrices.translate(0.0, 1.5, 0.0);
+            this.orb.render(matrices, consumer, light, overlay);
+            matrices.pop();
+        }
     }
 }

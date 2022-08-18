@@ -11,11 +11,12 @@
     "hole_count": 1,
     "requires_block_below": true,
     "valid_blocks": [
-      "super_block_world:vanillate",
-      "super_block_world:toadstool_soil",
       "super_block_world:cherry_soil",
+      "super_block_world:gritzy_sandstone",
       "super_block_world:shroomstone",
-      "super_block_world:gritzy_sandstone"
+      "super_block_world:toadstone",
+      "super_block_world:toadstool_soil",
+      "super_block_world:vanillate"
     ]
   }
 }

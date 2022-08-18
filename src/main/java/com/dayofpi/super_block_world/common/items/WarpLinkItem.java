@@ -10,7 +10,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.item.Vanishable;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtHelper;
 import net.minecraft.nbt.NbtOps;
@@ -30,7 +29,7 @@ import org.slf4j.Logger;
 
 import java.util.Optional;
 
-public class WarpLinkItem extends Item implements Vanishable {
+public class WarpLinkItem extends Item {
     private static final String WARP_PIPE_POS_KEY = "WarpPipePos";
     private static final String WARP_PIPE_DIMENSION_KEY = "WarpPipeDimension";
     private static final Logger LOGGER = LogUtils.getLogger();

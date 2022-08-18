@@ -49,7 +49,7 @@ public class KingBooCurseParticle extends Particle {
         immediate.draw();
     }
 
-    @Environment(value=EnvType.CLIENT)
+    @Environment(EnvType.CLIENT)
     public static class Factory implements ParticleFactory<DefaultParticleType> {
         @Override
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {

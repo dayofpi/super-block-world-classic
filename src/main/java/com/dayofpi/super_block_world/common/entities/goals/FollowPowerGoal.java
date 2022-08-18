@@ -3,7 +3,7 @@
  */
 package com.dayofpi.super_block_world.common.entities.goals;
 
-import com.dayofpi.super_block_world.common.entities.PowerUp;
+import com.dayofpi.super_block_world.util.PowerUp;
 import com.dayofpi.super_block_world.util.FormManager;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.TargetPredicate;

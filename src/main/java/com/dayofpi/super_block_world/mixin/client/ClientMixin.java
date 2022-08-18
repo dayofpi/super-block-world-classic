@@ -65,6 +65,7 @@ public abstract class ClientMixin {
             return;
         World world = this.player.world;
         BlockPos pos = this.player.getBlockPos();
+
         List<Entity> bossList = world.getOtherEntities(this.player, new Box(pos).expand(16, 16, 16), entity -> entity instanceof ModBossEntity);
 
         if (!bossList.isEmpty()) {

@@ -90,20 +90,20 @@ public abstract class AbstractToad extends PassiveEntity implements Toad, Stompa
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        if (this instanceof ToadEntity toadEntity)
-            return toadEntity.isCheering() || toadEntity.isScared() ? null : Sounds.ENTITY_TOAD_AMBIENT;
-        return Sounds.ENTITY_TOAD_AMBIENT;
+        if (this.isCheering() || this.isScared())
+            return null;
+        return this.isToadette() ? Sounds.ENTITY_TOADETTE_AMBIENT : Sounds.ENTITY_TOAD_AMBIENT;
     }
 
     @Nullable
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return Sounds.ENTITY_TOAD_HURT;
+        return this.isToadette() ? Sounds.ENTITY_TOADETTE_HURT : Sounds.ENTITY_TOAD_HURT;
     }
 
     @Nullable
     @Override
     protected SoundEvent getDeathSound() {
-        return Sounds.ENTITY_TOAD_DEATH;
+        return this.isToadette() ? Sounds.ENTITY_TOADETTE_DEATH : Sounds.ENTITY_TOAD_DEATH;
     }
 }

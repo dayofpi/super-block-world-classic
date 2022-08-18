@@ -27,6 +27,12 @@
     ],
     "monster": [
       {
+        "type": "super_block_world:fire_bro",
+        "weight": 50,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
         "type": "super_block_world:koopa_troopa",
         "weight": 50,
         "minCount": 2,

@@ -13,14 +13,15 @@
     "target": {
       "type": "minecraft:matching_blocks",
       "blocks": [
-        "super_block_world:shoresand",
-        "super_block_world:shoregrass",
-        "super_block_world:sherbet_soil",
-        "super_block_world:snowy_sherbet_soil",
-        "super_block_world:cherry_soil",
         "super_block_world:cherry_grass",
-        "super_block_world:toadstool_soil",
+        "super_block_world:cherry_soil",
+        "super_block_world:chocolate_ground",
+        "super_block_world:sherbet_soil",
+        "super_block_world:shoregrass",
+        "super_block_world:shoresand",
+        "super_block_world:snowy_sherbet_soil",
         "super_block_world:toadstool_grass",
+        "super_block_world:toadstool_soil",
         "super_block_world:toadstool_turf"
       ]
     },

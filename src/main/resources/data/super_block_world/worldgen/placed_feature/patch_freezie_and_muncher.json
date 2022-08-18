@@ -1,0 +1,36 @@
+{
+  "feature": {
+    "type": "minecraft:random_boolean_selector",
+    "config": {
+      "feature_false": {
+        "feature": "super_block_world:patch_freezie",
+        "placement": []
+      },
+      "feature_true": {
+        "feature": "super_block_world:patch_frozen_muncher",
+        "placement": []
+      }
+    }
+  },
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 2
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "absolute": -16
+        },
+        "max_inclusive": {
+          "absolute": 200
+        }
+      }
+    }
+  ]
+}

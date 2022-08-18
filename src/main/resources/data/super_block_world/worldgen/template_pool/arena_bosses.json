@@ -1,24 +1,24 @@
 {
+  "name": "super_block_world:arena_bosses",
+  "fallback": "minecraft:empty",
   "elements": [
     {
+      "weight": 1,
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
         "location": "super_block_world:bosses/king_bob_omb",
-        "processors": "minecraft:empty",
-        "projection": "rigid"
-      },
-      "weight": 1
+        "processors": "minecraft:empty"
+      }
     },
     {
+      "weight": 1,
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
         "location": "super_block_world:bosses/petey_piranha",
-        "processors": "minecraft:empty",
-        "projection": "rigid"
-      },
-      "weight": 1
+        "processors": "minecraft:empty"
+      }
     }
-  ],
-  "fallback": "minecraft:empty",
-  "name": "super_block_world:arena_bosses"
+  ]
 }

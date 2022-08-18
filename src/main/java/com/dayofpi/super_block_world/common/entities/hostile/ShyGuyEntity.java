@@ -1,36 +1,43 @@
 package com.dayofpi.super_block_world.common.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.common.entities.goals.CoinTemptGoal;
 import com.dayofpi.super_block_world.common.entities.passive.BabyYoshiEntity;
 import com.dayofpi.super_block_world.common.entities.passive.YoshiEntity;
-import com.dayofpi.super_block_world.common.entities.projectile.TurnipEntity;
 import com.dayofpi.super_block_world.registry.ModCriteria;
 import com.dayofpi.super_block_world.registry.ModItems;
 import com.dayofpi.super_block_world.registry.ModTags;
 import net.minecraft.command.argument.EntityAnchorArgumentType;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.LightType;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class ShyGuyEntity extends HostileEntity {
+    private static final DataPool<Item> RED_TRADE_ITEMS = DataPool.<Item>builder().add(ModItems.TURNIP, 100).add(Items.COAL, 100).add(ModItems.BOMB, 85).add(ModItems.STELLAR_SHARD, 70).add(Items.IRON_PICKAXE, 80).add(Items.IRON_NUGGET, 80).build();
+    private static final DataPool<Item> BLUE_TRADE_ITEMS = DataPool.<Item>builder().add(ModItems.TURNIP, 100).add(Items.COAL, 100).add(ModItems.BOMB, 85).add(ModItems.STELLAR_SHARD, 70).add(Items.GOLDEN_PICKAXE, 80).add(Items.GOLD_NUGGET, 80).build();
+    private static final TrackedData<String> TYPE = DataTracker.registerData(ShyGuyEntity.class, TrackedDataHandlerRegistry.STRING);
     public ShyGuyEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -39,15 +46,38 @@ public class ShyGuyEntity extends HostileEntity {
         return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_FOLLOW_RANGE, 7.0D).add(EntityAttributes.GENERIC_MAX_HEALTH, 18.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D);
     }
 
-    @Override
-    public void onDeath(DamageSource damageSource) {
-        if (damageSource.getSource() instanceof TurnipEntity)
-            this.dropStack(new ItemStack(ModItems.COIN));
-        super.onDeath(damageSource);
-    }
-
     private static boolean isThereNoLight(WorldAccess world, BlockPos pos) {
         return !(world.getLightLevel(LightType.BLOCK, pos) > 0);
+    }
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(TYPE, Type.RED.name);
+    }
+
+    public Type getShyGuyType() {
+        return Type.fromName(this.dataTracker.get(TYPE));
+    }
+
+    private void setShyGuyType(Type type) {
+        this.dataTracker.set(TYPE, type.name);
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putString("Type", this.getShyGuyType().name);
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        this.setShyGuyType(Type.fromName(nbt.getString("Type")));
+    }
+
+    public DataPool<Item> getTradeItems() {
+        return this.getShyGuyType() == Type.BLUE ? BLUE_TRADE_ITEMS : RED_TRADE_ITEMS;
     }
 
     @Override
@@ -70,7 +100,7 @@ public class ShyGuyEntity extends HostileEntity {
 
     @Override
     public boolean canBeLeashedBy(PlayerEntity player) {
-        return !this.isLeashed();
+        return player.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.SHY_GUY_MASK);
     }
 
     @Override
@@ -84,11 +114,44 @@ public class ShyGuyEntity extends HostileEntity {
         super.tick();
     }
 
+    @Nullable
+    @Override
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        this.initEquipment(random, difficulty);
+        if (random.nextBoolean())
+            this.setShyGuyType(Type.BLUE);
+        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    @Override
+    protected void initEquipment(Random random, LocalDifficulty localDifficulty) {
+        if (random.nextInt(3) == 0)
+            this.equipStack(EquipmentSlot.MAINHAND, new ItemStack(this.getTradeItems().getDataOrEmpty(random).orElse(ModItems.TURNIP)));
+    }
+
+    @Override
+    protected ActionResult interactMob(PlayerEntity player, Hand hand) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        ItemStack itemStack2 = player.getEquippedStack(EquipmentSlot.HEAD);
+        if (itemStack.isOf(ModItems.COIN) && itemStack2.isOf(ModItems.SHY_GUY_MASK) && !this.getStackInHand(Hand.MAIN_HAND).isEmpty()) {
+            if (!player.getAbilities().creativeMode) {
+                itemStack.decrement(1);
+            }
+            this.playAmbientSound();
+            this.dropStack(this.getMainHandStack().copy());
+            this.setStackInHand(Hand.MAIN_HAND, ItemStack.EMPTY);
+            this.setTarget(null);
+            return ActionResult.success(world.isClient());
+        }
+        return super.interactMob(player, hand);
+    }
+
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new FleeEntityGoal<>(this, YoshiEntity.class, 6.0f, 1.2, 1.4));
         this.goalSelector.add(1, new FleeEntityGoal<>(this, BabyYoshiEntity.class, 6.0f, 1.2, 1.4));
-        this.goalSelector.add(2, new MeleeAttackGoal(this, 1.1D, false));
+        this.goalSelector.add(2, new CoinTemptGoal(this, 1.2D));
+        this.goalSelector.add(3, new MeleeAttackGoal(this, 1.1D, false));
         this.goalSelector.add(3, new EscapeDangerGoal(this, 1.0D));
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 7.0F));
         this.goalSelector.add(5, new LookAroundGoal(this));
@@ -111,5 +174,24 @@ public class ShyGuyEntity extends HostileEntity {
     @Override
     protected SoundEvent getDeathSound() {
         return Sounds.ENTITY_SHY_GUY_DEATH;
+    }
+
+    public enum Type {
+        RED("red"),
+        BLUE("blue");
+
+        final String name;
+
+        Type(String name) {
+            this.name = name;
+        }
+
+        static Type fromName(String name) {
+            for (ShyGuyEntity.Type type : ShyGuyEntity.Type.values()) {
+                if (!type.name.equals(name)) continue;
+                return type;
+            }
+            return RED;
+        }
     }
 }

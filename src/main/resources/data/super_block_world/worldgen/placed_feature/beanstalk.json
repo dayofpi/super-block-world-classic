@@ -22,8 +22,10 @@
           {
             "blocks": [
               "super_block_world:toadstool_grass",
+              "super_block_world:toadstool_turf",
+              "super_block_world:grassy_hardstone",
               "super_block_world:gritzy_sand",
-              "super_block_world:cherry_soil"
+              "super_block_world:cherry_grass"
             ],
             "offset": [
               0,

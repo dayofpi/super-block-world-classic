@@ -28,8 +28,6 @@ public abstract class EatGrassGoalMixin extends Goal {
 
     @Shadow @Final private static Predicate<BlockState> GRASS_PREDICATE;
 
-    @Shadow private int timer;
-
     @Inject(at=@At("TAIL"), method = "canStart", cancellable = true)
     public void canStart(CallbackInfoReturnable<Boolean> cir) {
         BlockPos blockPos = this.mob.getBlockPos();
@@ -37,7 +35,7 @@ public abstract class EatGrassGoalMixin extends Goal {
             cir.setReturnValue(true);
     }
 
-    @Inject(at=@At("TAIL"), method = "tick", cancellable = true)
+    @Inject(at=@At("TAIL"), method = "tick")
     public void tick(CallbackInfo ci) {
         BlockPos blockPos = this.mob.getBlockPos();
         if (GRASS_PREDICATE.test(this.world.getBlockState(blockPos))) {

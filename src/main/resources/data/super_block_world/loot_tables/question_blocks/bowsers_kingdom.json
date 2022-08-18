@@ -70,6 +70,11 @@
           "type": "minecraft:item",
           "weight": 2,
           "name": "super_block_world:life_mushroom"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "super_block_world:gold_flower"
         }
       ]
     }

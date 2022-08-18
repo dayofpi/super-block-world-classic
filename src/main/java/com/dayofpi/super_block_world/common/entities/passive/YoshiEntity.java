@@ -3,7 +3,9 @@ package com.dayofpi.super_block_world.common.entities.passive;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.block_entities.YoshiEggBE;
 import com.dayofpi.super_block_world.common.entities.boss.ModBossEntity;
+import com.dayofpi.super_block_world.common.entities.goals.YoshiEatGoal;
 import com.dayofpi.super_block_world.common.entities.hostile.FuzzyEntity;
+import com.dayofpi.super_block_world.common.entities.hostile.ShyGuyEntity;
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModCriteria;
 import com.dayofpi.super_block_world.registry.ModEntities;
@@ -87,9 +89,11 @@ public class YoshiEntity extends AnimalEntity implements JumpingMount {
         this.goalSelector.add(1, new EscapeDangerGoal(this, 2.0));
         this.goalSelector.add(2, new AnimalMateGoal(this, 1.0D));
         this.goalSelector.add(3, new TemptGoal(this, 1.25, BREEDING_INGREDIENT, false));
+        this.goalSelector.add(4, new YoshiEatGoal(this, 1.3, true));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 1.0));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 6.0f));
         this.goalSelector.add(7, new LookAroundGoal(this));
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, ShyGuyEntity.class, true));
     }
 
     protected void initDataTracker() {
@@ -204,7 +208,7 @@ public class YoshiEntity extends AnimalEntity implements JumpingMount {
         this.playSound(Sounds.ENTITY_YOSHI_REACH, 1.0F, 1.0F);
         Entity passenger = this.getPrimaryPassenger();
         BlockPos blockPos = this.getBlockPos().offset(this.getHorizontalFacing());
-        List<Entity> list = world.getOtherEntities(this, Box.from(Vec3d.ofCenter(blockPos)).expand(0.5D), entity -> entity != passenger);
+        List<Entity> list = world.getOtherEntities(this, Box.from(Vec3d.ofCenter(blockPos)).expand(0.7D), entity -> entity != passenger);
         if (list.isEmpty()) return;
         Entity entity = list.get(0);
         if (isEdible(entity) && !world.isClient) {
@@ -242,7 +246,7 @@ public class YoshiEntity extends AnimalEntity implements JumpingMount {
 
         BlockPos blockPos = range.iterator().next();
         this.setEggLayTime(this.maxEggLayTime);
-        if (world.isSpaceEmpty(Box.from(Vec3d.ofCenter(blockPos))) && world.getBlockState(blockPos.down()).isSideSolidFullSquare(world, blockPos, Direction.UP)) {
+        if (world.isSpaceEmpty(Box.from(Vec3d.ofCenter(blockPos))) && world.getBlockState(blockPos).isAir() && world.getBlockState(blockPos.down()).isSideSolidFullSquare(world, blockPos, Direction.UP)) {
             world.setBlockState(blockPos, ModBlocks.YOSHI_EGG.getDefaultState());
             BlockEntity blockEntity = world.getBlockEntity(blockPos);
             if (blockEntity instanceof YoshiEggBE) {

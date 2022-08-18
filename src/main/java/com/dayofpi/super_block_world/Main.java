@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.entities.PowerUp;
+import com.dayofpi.super_block_world.util.PowerUp;
 import com.dayofpi.super_block_world.common.entities.ToadSpecificSensor;
 import com.dayofpi.super_block_world.common.entities.effects.StarPowerEffect;
 import com.dayofpi.super_block_world.mixin.SensorTypeMixin;

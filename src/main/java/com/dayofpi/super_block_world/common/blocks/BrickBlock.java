@@ -16,8 +16,11 @@ public class BrickBlock extends Block {
 
     @Override
     public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
-        if (!world.isClient)
+        if (world.isClient())
+            return;
+        if (projectile.canModifyAt(world, hit.getBlockPos())) {
             if (projectile instanceof HammerEntity || projectile instanceof ExplosiveProjectileEntity)
                 world.breakBlock(hit.getBlockPos(), true);
+        }
     }
 }

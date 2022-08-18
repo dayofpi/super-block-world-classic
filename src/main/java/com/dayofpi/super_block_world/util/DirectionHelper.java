@@ -1,15 +1,12 @@
 package com.dayofpi.super_block_world.util;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.math.Direction;
 
 /**
  * Originally created by lorinthio on 3/3/2018.
  */
 public class DirectionHelper {
-
-    public enum Direction {
-        NORTH, EAST, SOUTH, WEST
-    }
 
     /**
      * Get the cardinal compass direction of an entity.

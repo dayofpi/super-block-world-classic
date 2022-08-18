@@ -8,7 +8,7 @@
     "water_color": 4046591,
     "water_fog_color": 4046591,
     "grass_color": 6263838,
-    "foliage_color": 10005806,
+    "foliage_color": 3905369,
     "mood_sound": {
       "sound": "super_block_world:ambient.cave",
       "tick_delay": 6000,
@@ -17,8 +17,8 @@
     },
     "music": {
       "sound": "super_block_world:music.forest",
-      "min_delay": 8000,
-      "max_delay": 19900,
+      "min_delay": 9000,
+      "max_delay": 20000,
       "replace_current_music": false
     }
   },
@@ -127,6 +127,12 @@
         "weight": 16,
         "minCount": 3,
         "maxCount": 4
+      },
+      {
+        "type": "super_block_world:fuzzy",
+        "weight": 16,
+        "minCount": 1,
+        "maxCount": 1
       }
     ],
     "water_creature": [

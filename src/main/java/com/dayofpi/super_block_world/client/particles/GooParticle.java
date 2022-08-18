@@ -12,7 +12,6 @@ import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.MathHelper;
 
 @Environment(value = EnvType.CLIENT)
 public class GooParticle extends SpriteBillboardParticle {
@@ -125,8 +124,7 @@ public class GooParticle extends SpriteBillboardParticle {
             if (this.onGround) {
                 this.markDead();
                 this.world.addParticle(this.nextParticle, this.x, this.y, this.z, 0.0, 0.0, 0.0);
-                float f = MathHelper.nextBetween(this.random, 0.3f, 1.0f);
-                this.world.playSound(this.x, this.y, this.z, SoundEvents.BLOCK_MUD_FALL, SoundCategory.BLOCKS, f, 0.15f, false);
+                this.world.playSound(this.x, this.y, this.z, SoundEvents.BLOCK_MUD_FALL, SoundCategory.BLOCKS, 0.05F, 0.15F, false);
             }
         }
     }

@@ -4,6 +4,7 @@ import com.dayofpi.super_block_world.common.entities.boss.KingBobOmbEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
+import net.minecraft.client.render.entity.model.CrossbowPosing;
 import net.minecraft.client.render.entity.model.EntityModelPartNames;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.util.math.MathHelper;
@@ -11,16 +12,16 @@ import net.minecraft.util.math.MathHelper;
 @Environment(EnvType.CLIENT)
 public class KingBobOmbModel extends SinglePartEntityModel<KingBobOmbEntity> {
     private final ModelPart root;
-    private final ModelPart right_leg;
-    private final ModelPart left_leg;
-    private final ModelPart right_arm;
-    private final ModelPart left_arm;
+    private final ModelPart rightLeg;
+    private final ModelPart leftLeg;
+    private final ModelPart rightArm;
+    private final ModelPart leftArm;
     public KingBobOmbModel(ModelPart root) {
-        this.root = root.getChild("root");
-        this.right_arm = this.root.getChild(EntityModelPartNames.RIGHT_ARM);
-        this.left_arm = this.root.getChild(EntityModelPartNames.LEFT_ARM);
-        this.right_leg = this.root.getChild(EntityModelPartNames.RIGHT_LEG);
-        this.left_leg = this.root.getChild(EntityModelPartNames.LEFT_LEG);
+        this.root = root.getChild(EntityModelPartNames.ROOT);
+        this.rightArm = this.root.getChild(EntityModelPartNames.RIGHT_ARM);
+        this.leftArm = this.root.getChild(EntityModelPartNames.LEFT_ARM);
+        this.rightLeg = this.root.getChild(EntityModelPartNames.RIGHT_LEG);
+        this.leftLeg = this.root.getChild(EntityModelPartNames.LEFT_LEG);
     }
     public static TexturedModelData getTexturedModelData() {
         ModelData modelData = new ModelData();
@@ -52,16 +53,17 @@ public class KingBobOmbModel extends SinglePartEntityModel<KingBobOmbEntity> {
     @Override
     public void setAngles(KingBobOmbEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         float progress = ageInTicks * 2F * 0.01F;
-        right_arm.roll = ((MathHelper.cos(progress) * 0.2F) + 0.5F);
-        left_arm.roll = ((MathHelper.cos(progress) * -0.2F) - 0.5F);
-
-        if (entity.getThrowCooldown() < 40 && !entity.isLaughing()) {
-            right_arm.pitch = (MathHelper.cos(entity.limbAngle * 0.6662F + 3.1415927F) * 1.4F * entity.limbDistance);
-            if (!entity.isSummoning())
-                left_arm.pitch = (MathHelper.cos(entity.limbAngle * 0.6662F) * 1.4F * entity.limbDistance);
+        rightLeg.pitch = (MathHelper.cos(entity.limbAngle * 0.6662F) * 1.4F * entity.limbDistance);
+        leftLeg.pitch = (MathHelper.cos(entity.limbAngle * 0.6662F + 3.1415927F) * 1.4F * entity.limbDistance);
+        if (entity.hasPassengers())
+            CrossbowPosing.meleeAttack(this.rightArm, this.leftArm, true, this.handSwingProgress, ageInTicks);
+        else if (entity.isAttacking()) {
+            CrossbowPosing.meleeAttack(this.rightArm, this.leftArm, entity, this.handSwingProgress, ageInTicks);
+        } else {
+            this.rightArm.pitch = 0.0F;
+            this.leftArm.pitch = 0.0F;
         }
-        right_leg.pitch = (MathHelper.cos(entity.limbAngle * 0.6662F) * 1.4F * entity.limbDistance);
-        left_leg.pitch = (MathHelper.cos(entity.limbAngle * 0.6662F + 3.1415927F) * 1.4F * entity.limbDistance);
-
+        rightArm.roll = ((MathHelper.cos(progress) * 0.3F) + 0.5F);
+        leftArm.roll = ((MathHelper.cos(progress) * -0.3F) - 0.5F);
     }
 }

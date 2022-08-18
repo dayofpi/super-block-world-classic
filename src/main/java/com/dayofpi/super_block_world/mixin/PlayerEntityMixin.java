@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.mixin;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.block_entities.WarpPipeBE;
 import com.dayofpi.super_block_world.common.blocks.WarpPipeBlock;
-import com.dayofpi.super_block_world.common.entities.PowerUp;
+import com.dayofpi.super_block_world.util.PowerUp;
 import com.dayofpi.super_block_world.util.FormManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -140,11 +140,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                 this.canAirJump = true;
             }
             if (this.shouldFloat() && !this.isOnGround()) {
+                this.fallDistance = 0.0F;
                 if (PowerUp.hasPowerUp(this, PowerUp.TANOOKI)) {
                     ++this.airJumpTimer;
                 }
                 ++this.flutterSoundTimer;
-                if (this.flutterSoundTimer >= 60) {
+                if (this.flutterSoundTimer >= 40 && (this.jumping || this.getVelocity().y > 0)) {
                     this.playSound(this.getFloatingSound(), 1.0F, this.getSoundPitch());
                     this.flutterSoundTimer = 0;
                 }
@@ -223,6 +224,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         }
     }
 
+    @Override
+    protected void fall(double heightDifference, boolean onGround, BlockState state, BlockPos landedPosition) {
+        if (!this.shouldFloat())
+            super.fall(heightDifference, onGround, state, landedPosition);
+    }
+
     @Inject(at=@At("HEAD"), method = "handleFallDamage", cancellable = true)
     public void handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> cir) {
         if (shouldFloat()) {
@@ -231,11 +238,13 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     }
 
     private boolean shouldFloat() {
-        return PowerUp.hasPowerUp(this, PowerUp.BEE) || PowerUp.hasPowerUp(this, PowerUp.TANOOKI) && this.jumping;
+        return PowerUp.hasPowerUp(this, PowerUp.BEE) || (PowerUp.hasPowerUp(this, PowerUp.TANOOKI) && this.jumping);
     }
 
     @Inject(at = @At("HEAD"), method = "applyDamage")
     protected void applyDamage(DamageSource source, float amount, CallbackInfo ci) {
+        if (!this.hasPowerUp())
+            return;
         if (this.getPowerHealth() > 0) {
             this.setPowerHealth(this.getPowerHealth() - 1);
         }

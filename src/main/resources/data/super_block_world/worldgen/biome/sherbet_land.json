@@ -1,5 +1,5 @@
 {
-  "temperature": 0,
+  "temperature": -0.5,
   "downfall": 0.5,
   "precipitation": "snow",
   "effects": {
@@ -20,7 +20,13 @@
     "creature": [
       {
         "type": "minecraft:rabbit",
-        "weight": 2,
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:spindrift",
+        "weight": 5,
         "minCount": 2,
         "maxCount": 4
       },
@@ -45,6 +51,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:ice_bro",
+        "weight": 20,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
         "type": "super_block_world:goomba",
         "weight": 60,
         "minCount": 2,
@@ -64,7 +76,7 @@
       },
       {
         "type": "super_block_world:bob_omb",
-        "weight": 100,
+        "weight": 50,
         "minCount": 3,
         "maxCount": 4
       },
@@ -157,8 +169,10 @@
     ],
     [
       "super_block_world:patch_star_cluster",
+      "super_block_world:patch_freezie_and_muncher",
       "super_block_world:warp_pipe",
-      "super_block_world:underwater_pipe"
+      "super_block_world:underwater_pipe",
+      "super_block_world:jellybeam"
     ],
     [
       "minecraft:seagrass_warm",
@@ -172,6 +186,10 @@
       "super_block_world:patch_cave_mushrooms",
       "super_block_world:strawberry_coral"
     ],
+    [],
+    [],
+    [],
+    [],
     [
       "minecraft:freeze_top_layer"
     ]

@@ -21,6 +21,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -45,13 +46,15 @@ public class MechakoopaMissileEntity extends PersistentProjectileEntity {
     }
 
     private void blow() {
-        for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 1, 1, 1)) {
-            BlockState blockState = world.getBlockState(blockPos);
-            Block block = blockState.getBlock();
-            if (block instanceof BrickBlock)
-                world.breakBlock(blockPos, true);
-            else if (block instanceof ReactiveBlock reactiveBlock)
-                reactiveBlock.react(world, blockPos, null);
+        if (world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
+            for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 1, 1, 1)) {
+                BlockState blockState = world.getBlockState(blockPos);
+                Block block = blockState.getBlock();
+                if (block instanceof BrickBlock)
+                    world.breakBlock(blockPos, true);
+                else if (block instanceof ReactiveBlock reactiveBlock)
+                    reactiveBlock.react(world, blockPos, null);
+            }
         }
 
         Box box = this.getBoundingBox().expand(0.7D, 0.5D, 0.7D);

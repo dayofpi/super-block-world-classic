@@ -2,6 +2,7 @@ package com.dayofpi.super_block_world.client.renderers;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.features.FlushedFeatureRenderer;
+import com.dayofpi.super_block_world.client.features.GoombaItemRenderer;
 import com.dayofpi.super_block_world.client.models.GoombaModel;
 import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.common.entities.hostile.GoombaEntity;
@@ -16,12 +17,10 @@ import net.minecraft.util.math.MathHelper;
 
 @Environment(EnvType.CLIENT)
 public class GoombaRenderer<T extends GoombaEntity> extends MobEntityRenderer<T, GoombaModel<T>> {
-    private static final Identifier COMMON = new Identifier(Main.MOD_ID, "textures/entity/goomba/goomba.png");
-    private static final Identifier GOLD = new Identifier(Main.MOD_ID, "textures/entity/goomba/gold_goomba.png");
-
-    public GoombaRenderer(EntityRendererFactory.Context context) {
-        super(context, new GoombaModel<>(context.getPart(ModModelLayers.GOOMBA)), 0.5f);
+    public GoombaRenderer(EntityRendererFactory.Context ctx) {
+        super(ctx, new GoombaModel<>(ctx.getPart(ModModelLayers.GOOMBA)), 0.5f);
         this.addFeature(new FlushedFeatureRenderer<>(this));
+        this.addFeature(new GoombaItemRenderer<>(this, ctx.getHeldItemRenderer()));
     }
 
     @Override
@@ -53,6 +52,6 @@ public class GoombaRenderer<T extends GoombaEntity> extends MobEntityRenderer<T,
 
     @Override
     public Identifier getTexture(GoombaEntity entity) {
-        return entity.isGold() ? GOLD : COMMON;
+        return new Identifier(Main.MOD_ID, "textures/entity/goomba/" + entity.getVariant().asString() + ".png");
     }
 }

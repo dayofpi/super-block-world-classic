@@ -14,12 +14,6 @@
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2
-    },
-    "music": {
-      "sound": "super_block_world:music.forest",
-      "min_delay": 8000,
-      "max_delay": 19900,
-      "replace_current_music": false
     }
   },
   "spawners": {
@@ -55,6 +49,12 @@
         "weight": 10,
         "minCount": 2,
         "maxCount": 4
+      },
+      {
+        "type": "super_block_world:hammer_bro",
+        "weight": 12,
+        "minCount": 2,
+        "maxCount": 2
       },
       {
         "type": "super_block_world:goomba",
@@ -109,6 +109,12 @@
         "weight": 40,
         "minCount": 3,
         "maxCount": 4
+      },
+      {
+        "type": "super_block_world:forager",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 1
       },
       {
         "type": "super_block_world:buzzy_beetle",
@@ -189,7 +195,8 @@
     [
       "super_block_world:patch_star_cluster",
       "super_block_world:warp_pipe",
-      "super_block_world:underwater_pipe"
+      "super_block_world:underwater_pipe",
+      "super_block_world:jellybeam"
     ],
     [
       "minecraft:seagrass_warm",

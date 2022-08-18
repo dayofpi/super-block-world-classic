@@ -19,6 +19,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 @SuppressWarnings("deprecation")
 public class DashBlock extends HorizontalFacingBlock {
@@ -40,6 +41,7 @@ public class DashBlock extends HorizontalFacingBlock {
         if (!world.getBlockState(pos).get(USED)) {
             if (!world.isClient) {
                 world.setBlockState(pos, state.with(USED, true));
+                world.emitGameEvent(null, GameEvent.BLOCK_CHANGE, pos);
                 world.createAndScheduleBlockTick(pos, this, 20);
             }
             Vec3d vec3d = entity.getVelocity();
@@ -62,6 +64,7 @@ public class DashBlock extends HorizontalFacingBlock {
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         world.setBlockState(pos, state.with(USED, false));
+        world.emitGameEvent(null, GameEvent.BLOCK_CHANGE, pos);
     }
 
     @Override

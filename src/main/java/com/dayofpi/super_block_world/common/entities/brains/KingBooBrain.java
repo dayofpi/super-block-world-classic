@@ -2,7 +2,10 @@ package com.dayofpi.super_block_world.common.entities.brains;
 
 import com.dayofpi.super_block_world.common.entities.boss.KingBooEntity;
 import com.dayofpi.super_block_world.common.entities.boss.ModBossEntity;
+import com.dayofpi.super_block_world.common.entities.tasks.DarkLightningTask;
 import com.dayofpi.super_block_world.common.entities.tasks.FireCircleTask;
+import com.dayofpi.super_block_world.common.entities.tasks.HomingFlameTask;
+import com.dayofpi.super_block_world.common.entities.tasks.MeleeAttackFixTask;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -41,6 +44,6 @@ public class KingBooBrain {
     }
 
     private static void addFightActivities(Brain<KingBooEntity> brain) {
-        brain.setTaskList(Activity.FIGHT, 0, ImmutableList.of(new ForgetAttackTargetTask<>(), new RangedApproachTask(1.5f), new FireCircleTask(), new MeleeAttackTask(20)), MemoryModuleType.ATTACK_TARGET);
+        brain.setTaskList(Activity.FIGHT, 0, ImmutableList.of(new ForgetAttackTargetTask<>(), new RangedApproachTask(1.6f), new FireCircleTask(), new DarkLightningTask(), new HomingFlameTask(), new MeleeAttackFixTask(20)), MemoryModuleType.ATTACK_TARGET);
     }
 }

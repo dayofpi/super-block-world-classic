@@ -11,13 +11,12 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.LightType;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
 
 public class PutridPiranhaEntity extends PiranhaPlantEntity {
     private static final TrackedData<Integer> POISON_TIME;
@@ -32,7 +31,7 @@ public class PutridPiranhaEntity extends PiranhaPlantEntity {
     }
 
     @SuppressWarnings("unused")
-    public static boolean canSpawn(EntityType<? extends PiranhaPlantEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos blockPos, Random random) {
+    public static boolean canSpawn(EntityType<? extends PutridPiranhaEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos blockPos, Random random) {
         return !world.isSkyVisible(blockPos) && !(world.getLightLevel(LightType.BLOCK, blockPos) > 0);
     }
 

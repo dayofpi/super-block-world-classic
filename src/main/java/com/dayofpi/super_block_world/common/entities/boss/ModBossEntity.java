@@ -7,8 +7,12 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
+import net.minecraft.entity.ai.brain.task.LookTargetUtil;
 import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -19,6 +23,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
+import net.minecraft.util.Unit;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -33,9 +38,18 @@ import java.util.Optional;
 
 public abstract class ModBossEntity extends HostileEntity {
     protected ServerBossBar bossBar;
+    private static final TrackedData<Integer> NEXT_ATTACK;
 
+    static {
+        NEXT_ATTACK = DataTracker.registerData(ModBossEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    }
     protected ModBossEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
+    }
+
+    @Override
+    protected float getSoundVolume() {
+        return 3.0f;
     }
 
     public static Optional<? extends LivingEntity> getAttackTarget(ModBossEntity boss) {
@@ -47,11 +61,42 @@ public abstract class ModBossEntity extends HostileEntity {
         this.getBrain().remember(MemoryModuleType.HOME, globalPos);
     }
 
+    public static void cooldown(LivingEntity entity, int cooldown) {
+        entity.getBrain().remember(MemoryModuleType.SONIC_BOOM_COOLDOWN, Unit.INSTANCE, cooldown);
+    }
+
     @Nullable
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         this.setCurrentPosAsHome();
+        this.setNextAttack(random.nextInt(this.getMaxAttacks()));
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(NEXT_ATTACK, 0);
+    }
+
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        boolean bl = super.damage(source, amount);
+        if (this.world.isClient) {
+            return false;
+        }
+        if (this.brain.hasMemoryModule(MemoryModuleType.ATTACK_TARGET) || !bl || !(source.getAttacker() instanceof LivingEntity livingEntity)) {
+            return bl;
+        }
+        if (this.canTarget(livingEntity) && !LookTargetUtil.isNewTargetTooFar(this, livingEntity, 4.0)) {
+            this.setAttackTarget(livingEntity);
+        }
+        return true;
+    }
+
+    private void setAttackTarget(LivingEntity entity) {
+        this.brain.forget(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
+        this.brain.remember(MemoryModuleType.ATTACK_TARGET, entity, 200L);
     }
 
     @Override
@@ -59,7 +104,7 @@ public abstract class ModBossEntity extends HostileEntity {
         this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
         if (this.world instanceof ServerWorld) {
             for (ServerPlayerEntity player : this.bossBar.getPlayers()) {
-                if (player.distanceTo(this) > 32) {
+                if (player.distanceTo(this) > 48) {
                     this.bossBar.removePlayer(player);
                 }
             }
@@ -69,6 +114,7 @@ public abstract class ModBossEntity extends HostileEntity {
                 }
             }
         }
+        this.setAttacking(this.brain.hasMemoryModule(MemoryModuleType.ATTACK_TARGET));
         super.mobTick();
     }
 
@@ -117,6 +163,31 @@ public abstract class ModBossEntity extends HostileEntity {
             this.openLocks();
         if (this.getRareItem() != null && random.nextInt(3) == 0)
             this.dropItem(this.getRareItem());
+    }
+
+    public abstract int getMaxAttacks();
+
+    public int getNextAttack() {
+        return this.dataTracker.get(NEXT_ATTACK);
+    }
+
+    public void setNextAttack(int nextAttack) {
+        this.dataTracker.set(NEXT_ATTACK, nextAttack);
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putInt("NextAttack", this.getNextAttack());
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        if (this.hasCustomName()) {
+            this.bossBar.setName(this.getDisplayName());
+        }
+        this.setNextAttack(nbt.getInt("NextAttack"));
     }
 
     @Override

@@ -118,8 +118,17 @@ public class DinoRhinoEntity extends AnimalEntity implements Monster {
     @Override
     @Nullable
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        if (world.getRandom().nextFloat() < 0.3f) {
+        Random random = world.getRandom();
+        if (random.nextFloat() < 0.3f) {
             this.setBaby(true);
+        }
+        if (random.nextInt(20) == 0) {
+            ForagerEntity forager = ModEntities.FORAGER.create(this.world);
+            if (forager != null) {
+                forager.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0f);
+                forager.initialize(world, difficulty, spawnReason, null, null);
+                forager.startRiding(this);
+            }
         }
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }

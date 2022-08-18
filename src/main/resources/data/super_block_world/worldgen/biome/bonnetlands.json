@@ -1,13 +1,13 @@
 {
-  "temperature": 0.15,
+  "temperature": 0.3,
   "downfall": 0.3,
   "precipitation": "rain",
   "effects": {
-    "sky_color": 5526612,
+    "sky_color": 3289652,
     "fog_color": 14606046,
-    "water_color": 11591671,
-    "water_fog_color": 10406624,
-    "grass_color": 4539717,
+    "water_color": 4046591,
+    "water_fog_color": 4046591,
+    "grass_color": 6052956,
     "foliage_color": 4539717,
     "mood_sound": {
       "sound": "super_block_world:ambient.cave",
@@ -19,6 +19,12 @@
   "spawners": {
     "creature": [
       {
+        "type": "minecraft:rabbit",
+        "weight": 2,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
         "type": "minecraft:frog",
         "weight": 5,
         "minCount": 2,
@@ -28,25 +34,31 @@
     "monster": [
       {
         "type": "super_block_world:koopa_troopa",
-        "weight": 50,
+        "weight": 30,
         "minCount": 2,
         "maxCount": 4
       },
       {
         "type": "super_block_world:goomba",
-        "weight": 100,
+        "weight": 30,
         "minCount": 2,
         "maxCount": 5
       },
       {
         "type": "super_block_world:paragoomba",
         "weight": 100,
-        "minCount": 2,
+        "minCount": 3,
         "maxCount": 5
       },
       {
         "type": "super_block_world:shy_guy",
-        "weight": 100,
+        "weight": 20,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
+        "type": "super_block_world:boo",
+        "weight": 20,
         "minCount": 3,
         "maxCount": 4
       },
@@ -146,7 +158,8 @@
     [
       "super_block_world:patch_star_cluster",
       "super_block_world:warp_pipe",
-      "super_block_world:underwater_pipe"
+      "super_block_world:underwater_pipe",
+      "super_block_world:jellybeam"
     ],
     [
       "minecraft:seagrass_warm",
@@ -156,9 +169,7 @@
       "super_block_world:patch_red_grass",
       "super_block_world:patch_bush_2",
       "super_block_world:patch_stump",
-      "super_block_world:patch_songflower",
       "super_block_world:patch_lily_of_the_valley",
-      "super_block_world:patch_flowerbed",
       "super_block_world:patch_muncher",
       "super_block_world:patch_cave_mushrooms",
       "super_block_world:strawberry_coral"

@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 public class DryBonesPileRenderer implements BlockEntityRenderer<DryBonesPileBE> {
     private final EntityRenderDispatcher entityRenderDispatcher;
     public DryBonesPileRenderer(BlockEntityRendererFactory.Context ctx) {
-        this.entityRenderDispatcher = ctx.getEntityRenderDIspatcher();
+        this.entityRenderDispatcher = ctx.getEntityRenderDispatcher();
     }
 
     @Override

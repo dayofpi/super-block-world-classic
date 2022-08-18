@@ -7,6 +7,15 @@
       {
         "target": {
           "predicate_type": "minecraft:tag_match",
+          "tag": "super_block_world:frosty_vanillate"
+        },
+        "state": {
+          "Name": "super_block_world:frosty_vanillate_crumble"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:tag_match",
           "tag": "super_block_world:vanillate"
         },
         "state": {

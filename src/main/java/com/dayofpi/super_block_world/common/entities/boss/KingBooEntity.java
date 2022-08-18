@@ -4,7 +4,6 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.brains.KingBooBrain;
-import com.dayofpi.super_block_world.common.entities.tasks.FireCircleTask;
 import com.dayofpi.super_block_world.registry.ModItems;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
@@ -59,7 +58,7 @@ public class KingBooEntity extends ModBossEntity {
          WEAKENED = DataTracker.registerData(KingBooEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
-    public AnimationState chargingAnimationState = new AnimationState();
+    public final AnimationState chargingAnimationState = new AnimationState();
     private float alpha;
 
     public KingBooEntity(EntityType<? extends HostileEntity> entityType, World world) {
@@ -67,11 +66,13 @@ public class KingBooEntity extends ModBossEntity {
         this.moveControl = new FlightMoveControl(this, 10, true);
         this.lookControl = new YawAdjustingLookControl(this, 10);
         this.bossBar = new ServerBossBar(this.getDisplayName(), BossBar.Color.PURPLE, BossBar.Style.PROGRESS);
+        this.bossBar.setDarkenSky(true);
+        this.bossBar.setThickenFog(true);
         this.experiencePoints = 35;
     }
 
     public static DefaultAttributeContainer.Builder createKingBooAttributes() {
-        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0D).add(EntityAttributes.GENERIC_MAX_HEALTH, 70.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.23D).add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.6D).add(EntityAttributes.GENERIC_ARMOR, 20.0D);
+        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 6.0D).add(EntityAttributes.GENERIC_MAX_HEALTH, 70.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.3D).add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.6D).add(EntityAttributes.GENERIC_ARMOR, 20.0D);
     }
 
     @Override
@@ -99,6 +100,11 @@ public class KingBooEntity extends ModBossEntity {
     }
 
     @Override
+    public int getMaxAttacks() {
+        return 3;
+    }
+
+    @Override
     protected Brain.Profile<KingBooEntity> createBrainProfile() {
         return Brain.createProfile(MEMORY_MODULES, SENSOR_TYPES);
     }
@@ -122,8 +128,7 @@ public class KingBooEntity extends ModBossEntity {
 
     @Override
     public boolean tryAttack(Entity target) {
-        System.out.print("King Boo trying to attack");
-        FireCircleTask.cooldown(this, 40);
+        ModBossEntity.cooldown(this, 40);
         return super.tryAttack(target);
     }
 
@@ -190,16 +195,6 @@ public class KingBooEntity extends ModBossEntity {
         if (weakened != this.dataTracker.get(WEAKENED) && weakened)
             this.playSound(Sounds.ENTITY_KING_BOO_WEAKENED, 1.0F, this.getSoundPitch());
         this.dataTracker.set(WEAKENED, weakened);
-    }
-
-    @Override
-    public int getMaxLookPitchChange() {
-        return 1;
-    }
-
-    @Override
-    public int getMaxHeadRotation() {
-        return 1;
     }
 
     @Override

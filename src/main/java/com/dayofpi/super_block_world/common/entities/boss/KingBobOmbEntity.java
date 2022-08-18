@@ -2,17 +2,18 @@ package com.dayofpi.super_block_world.common.entities.boss;
 
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.entities.goals.PickUpTargetGoal;
-import com.dayofpi.super_block_world.common.entities.goals.SummonBobOmbsGoal;
+import com.dayofpi.super_block_world.common.entities.brains.KingBobOmbBrain;
 import com.dayofpi.super_block_world.registry.ModItems;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.brain.Brain;
+import net.minecraft.entity.ai.brain.MemoryModuleType;
+import net.minecraft.entity.ai.brain.sensor.Sensor;
+import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.control.YawAdjustingLookControl;
-import net.minecraft.entity.ai.goal.ActiveTargetGoal;
-import net.minecraft.entity.ai.goal.LookAroundGoal;
-import net.minecraft.entity.ai.goal.LookAtEntityGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
@@ -22,63 +23,67 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.network.DebugInfoSender;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class KingBobOmbEntity extends ModBossEntity {
-    private static final TrackedData<Integer> THROW_COOLDOWN;
-    private static final TrackedData<Boolean> SUMMONING;
-    private static final TrackedData<Boolean> LAUGHING;
+import java.util.Optional;
+import java.util.UUID;
 
-    static {
-        THROW_COOLDOWN = DataTracker.registerData(KingBobOmbEntity.class, TrackedDataHandlerRegistry.INTEGER);
-        SUMMONING = DataTracker.registerData(KingBobOmbEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-        LAUGHING = DataTracker.registerData(KingBobOmbEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-    }
+public class KingBobOmbEntity extends ModBossEntity {
+    private static final ImmutableList<SensorType<? extends Sensor<? super KingBobOmbEntity>>> SENSOR_TYPES = ImmutableList.of(SensorType.NEAREST_PLAYERS);
+    private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.PATH, MemoryModuleType.MOBS, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.NEAREST_PLAYERS, MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.WALK_TARGET, MemoryModuleType.ATTACK_TARGET, MemoryModuleType.ATTACK_COOLING_DOWN, MemoryModuleType.NEAREST_ATTACKABLE, MemoryModuleType.SONIC_BOOM_COOLDOWN);
+    private static final TrackedData<Optional<UUID>> CARRIED_ENTITY = DataTracker.registerData(KingBobOmbEntity.class, TrackedDataHandlerRegistry.OPTIONAL_UUID);
 
     public KingBobOmbEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
         this.lookControl = new YawAdjustingLookControl(this, 10);
         this.bossBar = new ServerBossBar(this.getDisplayName(), BossBar.Color.YELLOW, BossBar.Style.PROGRESS);
         this.stepHeight = 1.0F;
-        this.experiencePoints = 20;
+        this.experiencePoints = 25;
+    }
+
+    @Override
+    public double getMountedHeightOffset() {
+        return super.getMountedHeightOffset() + 1.0;
     }
 
     public static DefaultAttributeContainer.Builder createKingBobOmbAttributes() {
         return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 64.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.18D).add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.6D).add(EntityAttributes.GENERIC_ARMOR, 20.0D);
     }
 
-    protected void initGoals() {
-        this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(2, new SummonBobOmbsGoal(this));
-        this.goalSelector.add(3, new PickUpTargetGoal(this));
-        this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(5, new LookAroundGoal(this));
-        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, false));
+    @Override
+    protected Brain.Profile<KingBobOmbEntity> createBrainProfile() {
+        return Brain.createProfile(MEMORY_MODULES, SENSOR_TYPES);
     }
 
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(THROW_COOLDOWN, 0);
-        this.dataTracker.startTracking(SUMMONING, false);
-        this.dataTracker.startTracking(LAUGHING, false);
+    @Override
+    protected Brain<?> deserializeBrain(Dynamic<?> dynamic) {
+        return KingBobOmbBrain.create(this.createBrainProfile().deserialize(dynamic));
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Brain<KingBobOmbEntity> getBrain() {
+        return (Brain<KingBobOmbEntity>) super.getBrain();
+    }
+
+    @Override
+    protected void sendAiDebugData() {
+        super.sendAiDebugData();
+        DebugInfoSender.sendBrainDebugData(this);
     }
 
     @Override
     public boolean canBreatheInWater() {
         return true;
-    }
-
-    @Nullable
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return this.isLaughing() ? Sounds.ENTITY_KING_BOB_OMB_LAUGH : null;
     }
 
     @Override
@@ -91,85 +96,72 @@ public class KingBobOmbEntity extends ModBossEntity {
         return Sounds.ENTITY_KING_BOB_OMB_DEATH;
     }
 
+    @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
         this.playSound(Sounds.ENTITY_KING_BOB_OMB_STEP, 0.8F, 1.0F);
     }
 
     @Override
-    protected float getSoundVolume() {
-        return 3.0f;
-    }
-
-    public int getThrowCooldown() {
-        return this.dataTracker.get(THROW_COOLDOWN);
-    }
-
-    private void setThrowCooldown(int time) {
-        this.dataTracker.set(THROW_COOLDOWN, time);
-    }
-
-    public boolean isSummoning() {
-        return this.dataTracker.get(SUMMONING);
-    }
-
-    public void setSummoning(boolean summoning) {
-        this.dataTracker.set(SUMMONING, summoning);
-    }
-
-    public boolean isLaughing() {
-        return this.dataTracker.get(LAUGHING);
-    }
-
-    public void setLaughing(boolean funny) {
-        this.dataTracker.set(LAUGHING, funny);
-    }
-
-    private void throwEntity(LivingEntity entity) {
-        this.setThrowCooldown(50);
-        BlockPos blockPos = this.getBlockPos().offset(this.getHorizontalFacing(), 3);
-        entity.requestTeleportAndDismount(blockPos.getX(), blockPos.getY() + 6.0D, blockPos.getZ());
-        entity.setAttacker(this);
-        this.playSound(Sounds.ENTITY_KING_BOB_OMB_THROW, 1.0F, 1.0F);
-    }
-
-    @Override
-    protected float getJumpVelocity() {
-        return super.getJumpVelocity() * 1.5F;
-    }
-
-    @Override
     protected void mobTick() {
-        this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
-        super.mobTick();
-        if (!this.isAlive())
-            return;
-        if (this.getFirstPassenger() instanceof LivingEntity livingEntity) {
-            this.throwEntity(livingEntity);
+        Entity entity = this.getCarriedEntity();
+        if (entity != null && entity.distanceTo(this) < 5) {
+            if (!this.hasPassengers()) {
+                entity.playSound(SoundEvents.ENTITY_ITEM_PICKUP, 2.0F, 0.8F);
+                entity.startRiding(this, true);
+            }
         } else {
-            if (this.getThrowCooldown() > 0)
-                this.setThrowCooldown(this.getThrowCooldown() - 1);
+            this.setCarriedEntity(null);
         }
-        if (this.getTarget() != null) {
-            if (this.getTarget().isDead() && !this.isLaughing())
-                this.setLaughing(true);
-        }
+        this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
+        this.world.getProfiler().push("kingBobOmbBrain");
+        this.getBrain().tick((ServerWorld) this.world, this);
+        this.world.getProfiler().pop();
+        this.world.getProfiler().push("kingBobOmbActivityUpdate");
+        KingBobOmbBrain.updateActivities(this);
+        this.world.getProfiler().pop();
+        super.mobTick();
     }
 
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(CARRIED_ENTITY, Optional.empty());
+    }
+
+    @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        nbt.putInt("ThrowCooldown", this.getThrowCooldown());
-        nbt.putBoolean("IsSummoning", this.isSummoning());
-        nbt.putBoolean("IsLaughing", this.isLaughing());
+        if (this.getCarriedEntity() != null)
+            nbt.putUuid("CarriedEntity", this.getCarriedEntityUuid());
+    }
+
+    @Nullable
+    public UUID getCarriedEntityUuid() {
+        return this.dataTracker.get(CARRIED_ENTITY).orElse(null);
+    }
+
+    @Nullable
+    public Entity getCarriedEntity() {
+        try {
+            UUID uUID = this.getCarriedEntityUuid();
+            if (uUID == null || this.world.isClient()) {
+                return null;
+            }
+            return ((ServerWorld)world).getEntity(uUID);
+        }
+        catch (IllegalArgumentException illegalArgumentException) {
+            return null;
+        }
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        this.setThrowCooldown(nbt.getInt("ThrowCooldown"));
-        this.setSummoning(nbt.getBoolean("IsSummoning"));
-        this.setLaughing(nbt.getBoolean("IsLaughing"));
-        if (this.hasCustomName()) {
-            this.bossBar.setName(this.getDisplayName());
-        }
+        if (nbt.containsUuid("CarriedEntity"))
+            this.setCarriedEntity(nbt.getUuid("CarriedEntity"));
+    }
+
+    public void setCarriedEntity(@Nullable UUID carriedEntity) {
+        this.dataTracker.set(CARRIED_ENTITY, Optional.ofNullable(carriedEntity));
     }
 
     @Override
@@ -180,6 +172,11 @@ public class KingBobOmbEntity extends ModBossEntity {
     @Override
     protected Item getRareItem() {
         return ModItems.MUSIC_DISC_FIRE_FACTORY;
+    }
+
+    @Override
+    public int getMaxAttacks() {
+        return 2;
     }
 
 }

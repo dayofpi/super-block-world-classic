@@ -34,6 +34,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -140,7 +141,7 @@ public class ToadEntity extends AbstractToad {
         this.setToadState(3);
         if (!this.world.isClient) {
             this.setReceivedCoins(0);
-            this.playSound(Sounds.ENTITY_TOAD_CHEER, 1.0F, 1.0F);
+            this.playSound(this.getCheerSound(), 1.0F, 1.0F);
             world.setBlockState(blockPos, ModBlocks.QUESTION_BOX.getDefaultState().with(QuestionBoxBlock.TEMPORARY, true));
             world.playSound(null, blockPos, Sounds.BLOCK_QUESTION_BOX_SPAWN, SoundCategory.BLOCKS, 1.0F, 1.0F);
             String commonLoot = "question_boxes/common";
@@ -159,6 +160,10 @@ public class ToadEntity extends AbstractToad {
                 world.addParticle(ParticleTypes.CLOUD, blockPos.getX() + modifier, blockPos.getY() + modifier, blockPos.getZ() + modifier, 0.0D, 0.0D, 0.0D);
             }
         }
+    }
+
+    private SoundEvent getCheerSound() {
+        return this.isToadette() ? Sounds.ENTITY_TOADETTE_CHEER : Sounds.ENTITY_TOAD_CHEER;
     }
 
     @Override

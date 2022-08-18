@@ -3,6 +3,8 @@
   "values": [
     "super_block_world:green_shell",
     "super_block_world:red_shell",
+    "super_block_world:blue_shell",
+    "super_block_world:gold_shell",
     "super_block_world:buzzy_shell",
     "super_block_world:plumber_cap"
   ]

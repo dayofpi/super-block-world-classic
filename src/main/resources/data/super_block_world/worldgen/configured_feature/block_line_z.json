@@ -4,7 +4,7 @@
     "tries": 46,
     "x_spread": 0,
     "y_spread": 0,
-    "z_spread": 6,
+    "z_spread": 5,
     "feature": {
       "feature": {
         "type": "minecraft:simple_block",

@@ -15,6 +15,8 @@
     "super_block_world:quicksand",
     "super_block_world:shoresand",
     "super_block_world:shoregrass",
+    "super_block_world:goop_block",
+    "super_block_world:goop",
     "#super_block_world:cloud"
   ]
 }

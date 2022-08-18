@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 1,
+          "data": {
+            "Name": "super_block_world:jellybeam",
+            "Properties": {
+              "facing": "north"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "super_block_world:jellybeam",
+            "Properties": {
+              "facing": "south"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "super_block_world:jellybeam",
+            "Properties": {
+              "facing": "west"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "super_block_world:jellybeam",
+            "Properties": {
+              "facing": "east"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

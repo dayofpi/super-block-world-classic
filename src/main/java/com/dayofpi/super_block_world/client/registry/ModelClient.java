@@ -54,7 +54,8 @@ public class ModelClient {
 
     private static void addToAtlas() {
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(SuperPickaxRenderer.TEXTURE.getTextureId()));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(ChinchoTorchRenderer.TEXTURE.getTextureId()));
+        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(ChinchoTorchRenderer.ACTIVE.getTextureId()));
+        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(ChinchoTorchRenderer.INACTIVE.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.POLE_TEXTURE.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.RAINBOW_FLAG.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.TRANS_FLAG.getTextureId()));

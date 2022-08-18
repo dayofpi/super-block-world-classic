@@ -20,7 +20,7 @@ public class CheepCheepRenderer<T extends CheepCheepEntity> extends MobEntityRen
     @Override
     public Identifier getTexture(T entity) {
         if (entity.isSnowy())
-            return new Identifier(Main.MOD_ID, "textures/entity/cheep_cheep_snow.png");
-        return new Identifier(Main.MOD_ID, "textures/entity/cheep_cheep.png");
+            return new Identifier(Main.MOD_ID, "textures/entity/cheep_cheep/cheep_cheep_snow.png");
+        return new Identifier(Main.MOD_ID, "textures/entity/cheep_cheep/cheep_cheep.png");
     }
 }

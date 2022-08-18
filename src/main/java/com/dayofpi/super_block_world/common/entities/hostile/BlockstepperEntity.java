@@ -101,7 +101,7 @@ public class BlockstepperEntity extends HostileEntity implements Angerable {
         this.goalSelector.add(1, new BlockstepperPanicGoal(this, 1.0D));
         this.goalSelector.add(2, new BlockstepperAttackGoal(this, 1.0D, false));
         this.goalSelector.add(3, new FormationGoal(this, 0.7D));
-        this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.7D, 0.2F));
+        this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.7D, 0.0F));
         this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
         this.targetSelector.add(3, new UniversalAngerGoal<>(this, true));

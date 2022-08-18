@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.mixin.client;
 
+import com.dayofpi.super_block_world.client.features.BeeWingsFeatureRenderer;
 import com.dayofpi.super_block_world.client.features.PowerUpFeatureRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -23,5 +24,6 @@ public abstract class PlayerRendererMixin extends LivingEntityRenderer<AbstractC
     @Inject(at=@At("TAIL"), method = "<init>")
     private void init(EntityRendererFactory.Context ctx, boolean slim, CallbackInfo ci) {
         this.addFeature(new PowerUpFeatureRenderer<>(this, ctx.getModelLoader()));
+        this.addFeature(new BeeWingsFeatureRenderer<>(this, ctx.getModelLoader()));
     }
 }

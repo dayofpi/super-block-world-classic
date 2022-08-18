@@ -56,6 +56,11 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 1,
+          "name": "super_block_world:music_disc_toxicity"
+        },
+        {
+          "type": "minecraft:item",
           "weight": 2,
           "name": "super_block_world:boo_stamp"
         }

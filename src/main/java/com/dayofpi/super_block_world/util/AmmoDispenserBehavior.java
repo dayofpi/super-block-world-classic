@@ -4,6 +4,7 @@
 package com.dayofpi.super_block_world.util;
 
 import com.dayofpi.super_block_world.common.entities.projectile.BoomerangEntity;
+import com.dayofpi.super_block_world.common.entities.projectile.GoldFireballEntity;
 import com.dayofpi.super_block_world.common.entities.projectile.IceballEntity;
 import com.dayofpi.super_block_world.common.entities.projectile.ModFireballEntity;
 import net.minecraft.block.DispenserBlock;
@@ -55,6 +56,13 @@ public abstract class AmmoDispenserBehavior extends ItemDispenserBehavior {
         @Override
         protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
             return new BoomerangEntity(world, position.getX(), position.getY(), position.getZ());
+        }
+    }
+
+    public static class GoldFlower extends AmmoDispenserBehavior {
+        @Override
+        protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+            return new GoldFireballEntity(world, position.getX(), position.getY(), position.getZ());
         }
     }
 }

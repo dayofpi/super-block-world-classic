@@ -4,6 +4,7 @@ import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.blocks.BrickBlock;
 import com.dayofpi.super_block_world.common.blocks.ReactiveBlock;
 import com.dayofpi.super_block_world.registry.ModBlocks;
+import com.dayofpi.super_block_world.registry.ModTags;
 import com.dayofpi.super_block_world.util.ModDamageSource;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -30,6 +31,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
@@ -59,7 +61,7 @@ public abstract class AbstractBuzzy extends AnimalEntity {
     }
 
     public static boolean isSpawnBlockValid(WorldAccess world, BlockPos pos) {
-        return world.getBlockState(pos).isOf(ModBlocks.VANILLATE) || world.getBlockState(pos).isOf(ModBlocks.TOPPED_VANILLATE) || world.getBlockState(pos).isOf(ModBlocks.CHARROCK);
+        return world.getBlockState(pos).isIn(ModTags.VANILLATE) || world.getBlockState(pos).isOf(ModBlocks.CHARROCK);
     }
 
     @Override
@@ -82,7 +84,7 @@ public abstract class AbstractBuzzy extends AnimalEntity {
             this.playSound(Sounds.ENTITY_BUZZY_BEETLE_IMPACT, this.getSoundVolume(), this.getSoundPitch());
             ((ServerWorld) world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
         }
-        if (fallDistance > 0.0F) {
+        if (fallDistance > 0.0F && world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
             for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos().down(), 1, 0, 1)) {
                 BlockState state = world.getBlockState(blockPos);
                 if (world.getBlockState(blockPos).getBlock() instanceof BrickBlock) {

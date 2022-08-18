@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.mixin;
 
+import com.dayofpi.super_block_world.registry.ModBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -18,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(SpawnRestriction.class)
 public class SpawnRestrictionMixin {
     private static boolean canSnowGolemSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return world.isSkyVisible(pos) && (/*world.getBlockState(pos.down()).isOf(ModBlocks.SNOWY_SHERBET_SOIL) ||*/ world.getBlockState(pos.down()).isOf(Blocks.ICE));
+        return world.isSkyVisible(pos) && (world.getBlockState(pos.down()).isOf(ModBlocks.SNOWY_SHERBET_SOIL) || world.getBlockState(pos.down()).isOf(Blocks.ICE));
     }
 
     @Inject(at = @At("HEAD"), method = "canSpawn", cancellable = true)

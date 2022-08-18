@@ -67,7 +67,7 @@ public class MudTrooperEntity extends HostileEntity {
             if (this.isAffectedByDaylight())
                 this.setOnFireFor(8);
 
-            if (this.world.isClient && random.nextFloat() > 0.94F) {
+            if (this.world.isClient && random.nextFloat() > 0.95F) {
                 for (int i = 0; i < 2; ++i) {
                     this.world.addParticle(ModParticles.FALLING_GOO, this.getParticleX(0.5), this.getRandomBodyY(), this.getParticleZ(0.5), 0, 0, 0);
                 }

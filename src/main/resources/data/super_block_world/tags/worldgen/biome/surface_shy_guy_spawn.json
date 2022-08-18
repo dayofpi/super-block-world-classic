@@ -2,9 +2,11 @@
   "replace": "false",
   "values": [
     "super_block_world:autumn_mountain",
+    "super_block_world:choco_mountain",
     "super_block_world:forest_of_illusion",
     "super_block_world:mushroom_gorge",
     "super_block_world:mushroom_hills",
+    "super_block_world:sherbet_land",
     "super_block_world:tall_tall_mountain",
     "super_block_world:yoshis_island"
   ]

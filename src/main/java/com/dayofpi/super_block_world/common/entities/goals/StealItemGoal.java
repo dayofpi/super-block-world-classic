@@ -13,6 +13,8 @@ import java.util.List;
 
 public class StealItemGoal extends Goal {
     private final BooEntity boo;
+    private LivingEntity owner;
+    private MobEntity target;
 
     public StealItemGoal(BooEntity boo) {
         this.boo = boo;
@@ -24,26 +26,33 @@ public class StealItemGoal extends Goal {
         if (!this.boo.isTamed() || this.boo.isSitting()) {
             return false;
         }
-        LivingEntity owner = this.boo.getOwner();
-        if (owner == null) {
+        LivingEntity livingEntity = this.boo.getOwner();
+        if (livingEntity == null) {
             return false;
         }
+        this.owner = livingEntity;
         if (!this.boo.getMainHandStack().isEmpty())
             return false;
-        List<MobEntity> list = boo.world.getEntitiesByClass(MobEntity.class, this.boo.getBoundingBox().expand(6.0), entity -> !entity.getMainHandStack().isEmpty() && entity.getTarget() != null && entity.getTarget() == owner);
+        List<MobEntity> list = boo.world.getEntitiesByClass(MobEntity.class, this.boo.getBoundingBox().expand(6.0), entity -> !entity.getMainHandStack().isEmpty() && entity.getTarget() != null && entity.getTarget() == livingEntity);
         return !list.isEmpty();
     }
 
     @Override
     public void start() {
-        LivingEntity owner = this.boo.getOwner();
-        List<MobEntity> list = boo.world.getEntitiesByClass(MobEntity.class, this.boo.getBoundingBox().expand(6.0), entity -> entity.getTarget() != null  && entity.getTarget() == owner);
+        List<MobEntity> list = this.boo.world.getEntitiesByClass(MobEntity.class, this.boo.getBoundingBox().expand(6.0), entity -> entity.getTarget() != null  && entity.getTarget() == this.owner);
         if (!list.isEmpty()) {
-            MobEntity entity = list.get(0);
-            this.boo.getNavigation().startMovingTo(entity, 1.2D);
-            if (this.boo.distanceTo(entity) < 2) {
-                this.boo.setStackInHand(Hand.MAIN_HAND, entity.getMainHandStack().copy());
-                entity.setStackInHand(Hand.MAIN_HAND, ItemStack.EMPTY);
+            this.target = list.get(0);
+            this.boo.getNavigation().startMovingTo(this.target, 1.2D);
+        }
+    }
+
+    @Override
+    public void tick() {
+        if (this.target != null) {
+            this.boo.getNavigation().startMovingTo(this.target, 1.2D);
+            if (this.target.distanceTo(this.boo) < 1.75f) {
+                this.boo.setStackInHand(Hand.MAIN_HAND, this.target.getMainHandStack().copy());
+                this.target.setStackInHand(Hand.MAIN_HAND, ItemStack.EMPTY);
                 this.boo.playSound(Sounds.ENTITY_BOO_STEAL, 1.0F, this.boo.getSoundPitch());
             }
         }

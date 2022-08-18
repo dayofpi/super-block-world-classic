@@ -11,13 +11,11 @@ public class SpindriftModel<T extends SpindriftEntity> extends SinglePartEntityM
     private final ModelPart root;
     private final ModelPart head;
     private final ModelPart blossom;
-    private final ModelPart body;
 
     public SpindriftModel(ModelPart modelPart) {
         this.root = modelPart.getChild("root");
         this.head = root.getChild("head");
         this.blossom = head.getChild("blossom");
-        this.body = root.getChild("body");
     }
 
     public static TexturedModelData getTexturedModelData() {

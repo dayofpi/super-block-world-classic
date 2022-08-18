@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.common.blocks;
 
-import com.dayofpi.super_block_world.common.entities.PowerUp;
+import com.dayofpi.super_block_world.util.PowerUp;
 import com.dayofpi.super_block_world.registry.ModItems;
 import com.dayofpi.super_block_world.util.FormManager;
 import net.minecraft.block.Block;

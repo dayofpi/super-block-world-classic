@@ -17,10 +17,7 @@ import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
 
 public class GladParagoombaEntity extends GladGoombaEntity implements Flutterer {
-    public float flapProgress;
     public float maxWingDeviation;
-    public float prevMaxWingDeviation;
-    public float prevFlapProgress;
     private float flapSpeed = 1.0f;
     private float flapEffectTime = 1.0f;
     public GladParagoombaEntity(EntityType<? extends TameableEntity> entityType, World world) {
@@ -59,8 +56,6 @@ public class GladParagoombaEntity extends GladGoombaEntity implements Flutterer 
     }
 
     private void flapWings() {
-        this.prevFlapProgress = this.flapProgress;
-        this.prevMaxWingDeviation = this.maxWingDeviation;
         this.maxWingDeviation += (float)(this.onGround || this.hasVehicle() ? -1 : 4) * 0.3f;
         this.maxWingDeviation = MathHelper.clamp(this.maxWingDeviation, 0.0f, 1.0f);
         if (!this.onGround && this.flapSpeed < 1.0f) {
@@ -71,7 +66,6 @@ public class GladParagoombaEntity extends GladGoombaEntity implements Flutterer 
         if (!this.onGround && vec3d.y < 0.0) {
             this.setVelocity(vec3d.multiply(1.0, 0.8, 1.0));
         }
-        this.flapProgress += this.flapSpeed * 2.0f;
     }
 
     protected void addFlapEffects() {

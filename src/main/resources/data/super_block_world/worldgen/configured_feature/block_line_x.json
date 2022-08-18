@@ -2,7 +2,7 @@
   "type": "super_block_world:random_patch_feature",
   "config": {
     "tries": 46,
-    "x_spread": 6,
+    "x_spread": 5,
     "y_spread": 0,
     "z_spread": 0,
     "feature": {
