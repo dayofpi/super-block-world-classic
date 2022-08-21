@@ -27,14 +27,19 @@ public class GoopEntity extends ThrownEntity {
     }
 
     public GoopEntity(World world, LivingEntity owner) {
-        super(ModEntities.GOOP, owner, world);
+        this(ModEntities.GOOP, owner, world);
+    }
+
+    protected GoopEntity(EntityType<? extends ThrownEntity> type, LivingEntity owner, World world) {
+        super(type, owner.getX(), owner.getEyeY() - (double)0.1f, owner.getZ(), world);
+        this.setOwner(owner);
     }
 
     @Override
     public void tick() {
         super.tick();
         Vec3d velocity = this.getVelocity();
-        this.setVelocity(velocity.multiply(0.6F));
+        this.setVelocity(velocity.multiply(0.8F));
 
     }
 
@@ -55,12 +60,20 @@ public class GoopEntity extends ThrownEntity {
             blockState.onProjectileHit(this.world, blockState, blockHitResult, this);
 
             if (blockState.isIn(BlockTags.MOSS_REPLACEABLE)) {
-                world.setBlockState(blockPos, ModBlocks.GOOP_BLOCK.getDefaultState());
+                world.setBlockState(blockPos, this.getBlockState());
             }
             if (GoopEntity.canPlaceAt(this.getWorld(), blockPos.up())) {
-                world.setBlockState(blockPos.up(), ModBlocks.GOOP.getDefaultState());
+                world.setBlockState(blockPos.up(), this.getLayerState());
             }
         }
+    }
+
+    protected BlockState getLayerState() {
+        return ModBlocks.GOOP.getDefaultState();
+    }
+
+    protected BlockState getBlockState() {
+        return ModBlocks.GOOP_BLOCK.getDefaultState();
     }
 
     public static boolean canPlaceAt(WorldView world, BlockPos pos) {
@@ -78,7 +91,7 @@ public class GoopEntity extends ThrownEntity {
 
     @Override
     protected float getGravity() {
-        return 0.05F;
+        return 0.08F;
     }
 
     @Override

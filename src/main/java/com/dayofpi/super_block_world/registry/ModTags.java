@@ -29,6 +29,7 @@ public class ModTags {
     public static TagKey<Fluid> POISON;
     public static TagKey<Item> SHELLMETS;
     public static TagKey<Item> STAR_BITS;
+    public static TagKey<Item> PAINT;
     public static TagKey<Structure> GHOST_HOUSE;
     public static TagKey<Structure> ON_ARENA_FINDER_MAP;
     public static TagKey<Structure> ON_ISLAND_EXPLORER_MAP;
@@ -73,5 +74,6 @@ public class ModTags {
         registerStructureTags();
         SHELLMETS = registerTag(Registry.ITEM_KEY, "shellmets");
         STAR_BITS = registerTag(Registry.ITEM_KEY, "star_bits");
+        PAINT = registerTag(Registry.ITEM_KEY, "paint");
     }
 }

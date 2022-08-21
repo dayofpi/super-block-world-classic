@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:black_paint_ball"
+    }
+  },
+  "result": {
+    "item": "super_block_world:black_paint_block",
+    "count": 1
+  }
+}

@@ -46,6 +46,8 @@ public class PeteyPiranhaEntity extends ModBossEntity {
 
     @Override
     public boolean tryAttack(Entity target) {
+        ModBossEntity.cooldown(this, 40);
+
         this.playSound(Sounds.ENTITY_PETEY_PIRANHA_ATTACK, 1.0F, 1.0F);
         return super.tryAttack(target);
     }

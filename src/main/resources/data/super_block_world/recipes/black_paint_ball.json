@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "super_block_world:fuzzball"
+    },
+    "X": {
+      "item": "super_block_world:goop_ball"
+    }
+  },
+  "result": {
+    "item": "super_block_world:black_paint_ball"
+  }
+}

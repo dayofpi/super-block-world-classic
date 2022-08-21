@@ -1252,6 +1252,19 @@
     ],
     "subtitle": "sbw_subtitle.entity.mummy_me.mummify"
   },
+  "entity.petey_piranha.stockpile": {
+    "sounds": [
+      "super_block_world:entity/petey_piranha/stockpile"
+    ],
+    "subtitle": "sbw_subtitle.entity.petey_piranha.stockpile"
+  },
+  "entity.petey_piranha.spit": {
+    "sounds": [
+      "super_block_world:entity/petey_piranha/attack1",
+      "super_block_world:entity/petey_piranha/attack2"
+    ],
+    "subtitle": "sbw_subtitle.entity.petey_piranha.spit"
+  },
   "entity.petey_piranha.step": {
     "sounds": [
       "super_block_world:entity/petey_piranha/step1",

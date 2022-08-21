@@ -36,6 +36,7 @@ public class ModItems {
     public static final Item CLOUD_PUFF = new Item(new FabricItemSettings().group(Main.ITEM_GROUP));
     public static final Item SUBCON_THREAD = new Item(new FabricItemSettings().group(Main.ITEM_GROUP));
     public static final Item GOOP_BALL = new Item(new FabricItemSettings().group(Main.ITEM_GROUP));
+    public static final Item BLACK_PAINT = new Item(new FabricItemSettings().group(Main.ITEM_GROUP));
     public static final Item FUZZBALL = new BlockItem(ModBlocks.FUZZBALL, new FabricItemSettings().group(Main.ITEM_GROUP));
     public static final Item BUZZY_SHELL_PIECE = new Item(new FabricItemSettings().group(Main.ITEM_GROUP));
     public static final Item POISON_BUCKET = new BucketItem(ModFluids.POISON, new FabricItemSettings().group(Main.ITEM_GROUP));
@@ -61,7 +62,8 @@ public class ModItems {
     public static final Item ICE_FLOWER = new IceFlowerItem(new FabricItemSettings().maxDamage(32).group(Main.ITEM_GROUP));
     public static final Item BOOMERANG_FLOWER = new BoomerangFlowerItem(new FabricItemSettings().maxDamage(48).group(Main.ITEM_GROUP));
     public static final Item GOLD_FLOWER = new GoldFlowerItem(new FabricItemSettings().maxDamage(24).rarity(Rarity.UNCOMMON).group(Main.ITEM_GROUP));
-    public static final Item MAGIC_WAND = new MagicWandItem(new FabricItemSettings().maxDamage(24).rarity(Rarity.UNCOMMON).group(Main.ITEM_GROUP));
+    public static final Item MAGIC_WAND = new MagicWandItem(new FabricItemSettings().maxDamage(24).group(Main.ITEM_GROUP));
+    public static final Item MAGIC_PAINTBRUSH = new MagicPaintbrushItem(new FabricItemSettings().maxDamage(24).group(Main.ITEM_GROUP));
     public static final Item BEE_MUSHROOM = new PowerUpItem(PowerUp.BEE, Sounds.ENTITY_GENERIC_POWER_UP, new FabricItemSettings().maxCount(16).group(Main.ITEM_GROUP));
     public static final Item SUPER_LEAF = new PowerUpItem(PowerUp.TANOOKI, Sounds.ENTITY_GENERIC_TRANSFORM, new FabricItemSettings().maxCount(16).group(Main.ITEM_GROUP));
     public static final Item SUPER_BELL = new PowerUpItem(PowerUp.CAT, Sounds.ENTITY_GENERIC_POWER_UP, new FabricItemSettings().maxCount(16).group(Main.ITEM_GROUP));
@@ -225,8 +227,8 @@ public class ModItems {
         registerItem("blazing_charrock", new BlockItem(ModBlocks.BLAZING_CHARROCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("goop_block", new BlockItem(ModBlocks.GOOP_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("goop", new BlockItem(ModBlocks.GOOP, new FabricItemSettings().group(Main.ITEM_GROUP)));
-        registerItem("dreamwool", new BlockItem(ModBlocks.DREAMWOOL, new FabricItemSettings().group(Main.ITEM_GROUP)));
-        registerItem("dreamwool_carpet", new BlockItem(ModBlocks.DREAMWOOL_CARPET, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("black_paint_block", new BlockItem(ModBlocks.BLACK_PAINT_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("black_paint", new BlockItem(ModBlocks.BLACK_PAINT, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cloud_block", new BlockItem(ModBlocks.CLOUD_BLOCK, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("happy_cloud", new BlockItem(ModBlocks.HAPPY_CLOUD, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("cloud_slab", new BlockItem(ModBlocks.CLOUD_SLAB, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -235,6 +237,8 @@ public class ModItems {
         registerItem("rainbow_tile_slab", new BlockItem(ModBlocks.RAINBOW_TILE_SLAB, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("rainbow_tile_stairs", new BlockItem(ModBlocks.RAINBOW_TILE_STAIRS, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("rainbow_tile_wall", new BlockItem(ModBlocks.RAINBOW_TILE_WALL, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("dreamwool", new BlockItem(ModBlocks.DREAMWOOL, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("dreamwool_carpet", new BlockItem(ModBlocks.DREAMWOOL_CARPET, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("toadstone", new BlockItem(ModBlocks.TOADSTONE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("smooth_toadstone", new BlockItem(ModBlocks.SMOOTH_TOADSTONE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("toadstone_bricks", new BlockItem(ModBlocks.TOADSTONE_BRICKS, new FabricItemSettings().group(Main.ITEM_GROUP)));
@@ -486,6 +490,7 @@ public class ModItems {
         registerItem("cloud_puff", CLOUD_PUFF);
         registerItem("subcon_thread", SUBCON_THREAD);
         registerItem("goop_ball", GOOP_BALL);
+        registerItem("black_paint_ball", BLACK_PAINT);
         registerItem("fuzzball", FUZZBALL);
         registerItem("buzzy_shell_piece", BUZZY_SHELL_PIECE);
         registerItem("poison_bucket", POISON_BUCKET);
@@ -512,6 +517,7 @@ public class ModItems {
         registerItem("boomerang_flower", BOOMERANG_FLOWER);
         registerItem("gold_flower", GOLD_FLOWER);
         registerItem("magic_wand", MAGIC_WAND);
+        registerItem("magic_paintbrush", MAGIC_PAINTBRUSH);
         registerItem("bee_mushroom", BEE_MUSHROOM);
         registerItem("super_leaf", SUPER_LEAF);
         registerItem("super_bell", SUPER_BELL);

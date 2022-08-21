@@ -18,8 +18,8 @@ import net.minecraft.util.math.random.Random;
 import java.util.Optional;
 
 public class SpitGoopTask extends Task<PeteyPiranhaEntity> {
-    private static final int SOUND_DELAY = MathHelper.ceil(34.0);
-    private static final int RUN_TIME = MathHelper.ceil(10.0f);
+    private static final int SOUND_DELAY = MathHelper.ceil(16.0);
+    private static final int RUN_TIME = MathHelper.ceil(30.0f);
 
     public SpitGoopTask() {
         super(ImmutableMap.of(MemoryModuleType.ATTACK_TARGET, MemoryModuleState.VALUE_PRESENT, MemoryModuleType.SONIC_BOOM_COOLDOWN, MemoryModuleState.VALUE_ABSENT, MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN, MemoryModuleState.REGISTERED, MemoryModuleType.SONIC_BOOM_SOUND_DELAY, MemoryModuleState.REGISTERED), RUN_TIME);
@@ -55,14 +55,18 @@ public class SpitGoopTask extends Task<PeteyPiranhaEntity> {
         entity.getBrain().remember(MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN, Unit.INSTANCE, RUN_TIME - SOUND_DELAY);
         entity.playSound(Sounds.ENTITY_PETEY_PIRANHA_SPIT, 3.0F, 1.0F);
         GoopEntity goopEntity = new GoopEntity(world, entity);
-        goopEntity.setVelocity(entity, entity.getPitch(), entity.getYaw(), 0.0F, 1.0F, 3.0F);
+        goopEntity.setVelocity(entity, entity.getPitch(), entity.getYaw(), 0.0F, 1.0F, 2.0F);
         world.spawnEntity(goopEntity);
     }
 
     @Override
     protected void finishRunning(ServerWorld serverWorld, PeteyPiranhaEntity entity, long l) {
-        ModBossEntity.cooldown(entity, 50);
         Random random = entity.getRandom();
-        entity.setNextAttack(random.nextInt(entity.getMaxAttacks()));
+        if (random.nextInt(5) == 0) {
+            ModBossEntity.cooldown(entity, 50);
+            entity.setNextAttack(random.nextInt(entity.getMaxAttacks()));
+        } else {
+            this.run(serverWorld, entity, l);
+        }
     }
 }

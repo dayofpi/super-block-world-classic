@@ -49,7 +49,7 @@ public abstract class ModBossEntity extends HostileEntity {
 
     @Override
     protected float getSoundVolume() {
-        return 3.0f;
+        return 2.0f;
     }
 
     public static Optional<? extends LivingEntity> getAttackTarget(ModBossEntity boss) {

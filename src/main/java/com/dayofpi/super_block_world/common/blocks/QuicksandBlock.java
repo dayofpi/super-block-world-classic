@@ -1,5 +1,6 @@
 package com.dayofpi.super_block_world.common.blocks;
 
+import com.dayofpi.super_block_world.registry.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SandBlock;
 import net.minecraft.entity.Entity;
@@ -11,18 +12,24 @@ import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
 public class QuicksandBlock extends SandBlock {
-    public QuicksandBlock(Settings settings) {
-        super(14324025, settings);
+    public QuicksandBlock(int color, Settings settings) {
+        super(color, settings);
     }
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (entity.getBlockX() == pos.getX() && entity.getBlockZ() == pos.getZ() && entity.getY() < pos.getY() - 0.55) {
+        if (shouldDamage(state, pos, entity)) {
             if (entity instanceof LivingEntity) {
                 entity.damage(DamageSource.IN_WALL, 2.0F);
             }
         }
         if (entity.getY() + 0.55 > pos.getY())
             entity.slowMovement(state, new Vec3d(0.25, 0.6, 0.25));
+    }
+
+    private static boolean shouldDamage(BlockState state, BlockPos pos, Entity entity) {
+        if (state.isOf(ModBlocks.BLACK_PAINT_BLOCK))
+            return true;
+        return entity.getBlockX() == pos.getX() && entity.getBlockZ() == pos.getZ() && entity.getY() < pos.getY() - 0.55;
     }
 }

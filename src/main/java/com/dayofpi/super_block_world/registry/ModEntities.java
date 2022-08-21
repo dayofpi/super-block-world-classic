@@ -442,6 +442,9 @@ public class ModEntities {
     public static final EntityType<GoopEntity> GOOP = createEntity(
             GoopEntity::new, 0.8F, 0.8F, 4, 10, false
     );
+    public static final EntityType<BlackPaintEntity> BLACK_PAINT = createEntity(
+            BlackPaintEntity::new, 0.8F, 0.8F, 4, 10, false
+    );
     public static final EntityType<StarBitEntity> STAR_BIT = createEntity(
             StarBitEntity::new, 0.25F, 0.25F, 8, 10, false
     );
@@ -518,6 +521,7 @@ public class ModEntities {
         registerEntity("lil_oink", LIL_OINK);
         registerEntity("magic_beam", MAGIC_BEAM);
         registerEntity("goop", GOOP);
+        registerEntity("black_paint", BLACK_PAINT);
         registerEntity("mailtoad", MAILTOAD);
         registerEntity("mechakoopa", MECHAKOOPA);
         registerEntity("mechakoopa_missile", MECHAKOOPA_MISSILE);

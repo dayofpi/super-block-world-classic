@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "0",
+    "/"
+  ],
+  "key": {
+    "0": {
+      "item": "super_block_world:bronze_ingot"
+    },
+    "#": {
+      "item": "super_block_world:dreamwool"
+    },
+    "/": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "super_block_world:magic_paintbrush"
+  }
+}

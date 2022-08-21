@@ -37,8 +37,10 @@ public class ModBlocks {
     public static final Block WARP_FRAME = new WarpFrameBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).sounds(BlockSoundGroup.METAL).strength(10.0F, 1200.0F).requiresTool());
     public static final Block CORRUPTED_WARP_FRAME = new PillarBlock(FabricBlockSettings.of(Material.METAL, MapColor.BLACK).sounds(BlockSoundGroup.METAL).luminance(5).strength(-1, 1200.0F));
     public static final Block BOWSER_LOCK = new Block(FabricBlockSettings.of(Material.METAL, MapColor.BLACK).sounds(BlockSoundGroup.METAL).strength(-1, 3600000.0F).allowsSpawning((state, world, pos, type) -> false));
-    public static final Block GOOP_BLOCK = new QuicksandBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.BROWN).sounds(BlockSoundGroup.SLIME).noCollision().strength(1.0F).velocityMultiplier(0.1F).jumpVelocityMultiplier(0.3F));
+    public static final Block GOOP_BLOCK = new QuicksandBlock(14188339, FabricBlockSettings.of(Material.POWDER_SNOW, MapColor.BROWN).sounds(BlockSoundGroup.SLIME).noCollision().strength(1.0F).velocityMultiplier(0.1F).jumpVelocityMultiplier(0.3F));
     public static final Block GOOP = new SnowBlock(FabricBlockSettings.of(Material.SNOW_LAYER, MapColor.BROWN).sounds(BlockSoundGroup.SLIME).strength(1.0F).velocityMultiplier(0.1F).jumpVelocityMultiplier(0.3F));
+    public static final Block BLACK_PAINT_BLOCK = new QuicksandBlock(0x191919, FabricBlockSettings.copyOf(GOOP_BLOCK).mapColor(MapColor.BLACK));
+    public static final Block BLACK_PAINT = new SnowBlock(FabricBlockSettings.copyOf(GOOP).mapColor(MapColor.BLACK));
     public static final Block EMPTY_BLOCK = new EmptyBlock(FabricBlockSettings.of(Material.METAL, MapColor.BROWN).sounds(BlockSoundGroup.METAL).strength(2.5F, 1200.0F).requiresTool());
     public static final Block QUESTION_BLOCK = new QuestionBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).nonOpaque().sounds(BlockSoundGroup.METAL).strength(2.5F, 2.0F).requiresTool());
     public static final Block EXCLAMATION_BLOCK = new ExclamationBlock(FabricBlockSettings.of(Material.METAL, MapColor.GOLD).sounds(BlockSoundGroup.METAL).strength(2.5F, 2.0F).requiresTool());
@@ -106,7 +108,7 @@ public class ModBlocks {
     public static final Block SHORESAND = new SandBlock(15722710, FabricBlockSettings.of(Material.AGGREGATE, MapColor.OFF_WHITE).strength(1.0F, 3.0F).sounds(BlockSoundGroup.SAND));
     public static final Block SHOREGRASS = new GrassyStoneBlock(SHORESAND, FabricBlockSettings.copyOf(SHORESAND).sounds(SoundGroups.SHOREGRASS));
     public static final Block GRITZY_SAND = new SandBlock(16372053, FabricBlockSettings.of(Material.AGGREGATE, MapColor.YELLOW).strength(1.0F, 3.0F).sounds(BlockSoundGroup.SAND));
-    public static final Block QUICKSAND = new QuicksandBlock(FabricBlockSettings.of(Material.SOIL, MapColor.ORANGE).strength(0.5F).sounds(BlockSoundGroup.SAND).noCollision().allowsSpawning((state, world, pos, type) -> false));
+    public static final Block QUICKSAND = new QuicksandBlock(14324025, FabricBlockSettings.of(Material.SOIL, MapColor.ORANGE).strength(0.5F).sounds(BlockSoundGroup.SAND).noCollision().allowsSpawning((state, world, pos, type) -> false));
     public static final Block GRITZY_SANDSTONE = new Block(FabricBlockSettings.of(Material.AGGREGATE, MapColor.YELLOW).strength(1.0F, 3.0F).requiresTool());
     public static final Block GRITZY_SANDSTONE_STAIRS = new ModStairsBlock(GRITZY_SANDSTONE);
     public static final Block GRITZY_SANDSTONE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(GRITZY_SANDSTONE));
@@ -412,6 +414,8 @@ public class ModBlocks {
         registerBlock("bowser_lock", BOWSER_LOCK);
         registerBlock("goop_block", GOOP_BLOCK);
         registerBlock("goop", GOOP);
+        registerBlock("black_paint_block", BLACK_PAINT_BLOCK);
+        registerBlock("black_paint", BLACK_PAINT);
         registerBlock("empty_block", EMPTY_BLOCK);
         registerBlock("question_block", QUESTION_BLOCK);
         registerBlock("exclamation_block", EXCLAMATION_BLOCK);
