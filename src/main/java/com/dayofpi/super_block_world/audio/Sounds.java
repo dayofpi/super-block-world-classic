@@ -1,13 +1,10 @@
 package com.dayofpi.super_block_world.audio;
 
 import com.dayofpi.super_block_world.Main;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-@Environment(EnvType.CLIENT)
 public class Sounds {
     public static final SoundEvent AMBIENT_CAVE = createSound("ambient.cave");
     public static final SoundEvent BLOCK_BELL_CAP_FALL = createSound("block.bell_cap.fall");
