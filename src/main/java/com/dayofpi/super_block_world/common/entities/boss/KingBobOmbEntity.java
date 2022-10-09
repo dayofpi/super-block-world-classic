@@ -23,6 +23,7 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.DebugInfoSender;
@@ -105,7 +106,10 @@ public class KingBobOmbEntity extends ModBossEntity {
     protected void mobTick() {
         Entity entity = this.getCarriedEntity();
         if (entity != null && entity.distanceTo(this) < 5) {
-            if (!this.hasPassengers()) {
+            boolean canBeCaught = true;
+            if (this.getCarriedEntity() instanceof PlayerEntity playerEntity)
+                canBeCaught = !playerEntity.getAbilities().allowFlying;
+            if (!this.hasPassengers() && canBeCaught) {
                 entity.playSound(SoundEvents.ENTITY_ITEM_PICKUP, 2.0F, 0.8F);
                 entity.startRiding(this, true);
             }

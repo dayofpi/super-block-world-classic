@@ -209,7 +209,9 @@
       "super_block_world:patch_water_plants",
       "super_block_world:patch_muncher",
       "super_block_world:patch_cave_mushrooms",
-      "super_block_world:strawberry_coral"
+      "super_block_world:strawberry_coral",
+      "super_block_world:goop",
+      "super_block_world:black_paint"
     ]
   ]
 }

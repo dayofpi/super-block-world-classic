@@ -36,7 +36,8 @@ public class GladGoombaRenderer<T extends GladGoombaEntity> extends MobEntityRen
         }
         if (entity.isBaby()) {
             matrices.scale(0.5F, 0.5F, 0.5F);
-        } else if (entity.isBig()) {
+        }
+        if (entity.isBig()) {
             matrices.scale(2.5F, 2.5F, 2.5F);
         }
     }

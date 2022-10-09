@@ -13,9 +13,6 @@ import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class ShyGuyRenderer extends MobEntityRenderer<ShyGuyEntity, ShyGuyModel> {
-    private static final Identifier RED = new Identifier(Main.MOD_ID, "textures/entity/shy_guy/red.png");
-    private static final Identifier BLUE = new Identifier(Main.MOD_ID, "textures/entity/shy_guy/blue.png");
-
     public ShyGuyRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new ShyGuyModel(ctx.getPart(ModModelLayers.SHY_GUY)), 0.4f);
         this.addFeature(new ShyGuyItemRenderer<>(this, ctx.getHeldItemRenderer()));
@@ -23,6 +20,6 @@ public class ShyGuyRenderer extends MobEntityRenderer<ShyGuyEntity, ShyGuyModel>
 
     @Override
     public Identifier getTexture(ShyGuyEntity entity) {
-        return entity.getShyGuyType() == ShyGuyEntity.Type.BLUE ? BLUE : RED;
+        return new Identifier(Main.MOD_ID, "textures/entity/shy_guy/" + entity.getShyGuyType().asString() + ".png");
     }
 }

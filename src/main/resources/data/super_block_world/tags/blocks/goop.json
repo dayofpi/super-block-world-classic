@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "super_block_world:black_paint",
+    "super_block_world:black_paint_block",
+    "super_block_world:goop",
+    "super_block_world:goop_block"
+  ]
+}

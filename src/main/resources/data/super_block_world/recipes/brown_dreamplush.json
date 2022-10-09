@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "dreamplush",
+  "ingredients": [
+    {
+      "item": "minecraft:brown_dye"
+    },
+    {
+      "item": "super_block_world:dreamwool"
+    }
+  ],
+  "result": {
+    "item": "super_block_world:brown_dreamplush"
+  }
+}

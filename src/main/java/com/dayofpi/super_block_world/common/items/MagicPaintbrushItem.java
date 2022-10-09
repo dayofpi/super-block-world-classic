@@ -40,16 +40,16 @@ public class MagicPaintbrushItem extends RangedWeaponItem {
         return TypedActionResult.fail(itemStack);
     }
 
-    public static ItemStack getPaintType(PlayerEntity playerEntity, ItemStack stack) {
+    public ItemStack getPaintType(PlayerEntity playerEntity, ItemStack stack) {
         if (!(stack.getItem() instanceof RangedWeaponItem)) {
             return ItemStack.EMPTY;
         }
-        Predicate<ItemStack> predicate = ((RangedWeaponItem)stack.getItem()).getHeldProjectiles();
+        Predicate<ItemStack> predicate = this.getProjectiles();
         ItemStack itemStack = RangedWeaponItem.getHeldProjectile(playerEntity, predicate);
         if (!itemStack.isEmpty()) {
             return itemStack;
         }
-        predicate = ((RangedWeaponItem)stack.getItem()).getProjectiles();
+        predicate = this.getProjectiles();
         for (int i = 0; i < playerEntity.getInventory().size(); ++i) {
             ItemStack itemStack2 = playerEntity.getInventory().getStack(i);
             if (!predicate.test(itemStack2)) continue;
@@ -65,9 +65,9 @@ public class MagicPaintbrushItem extends RangedWeaponItem {
         if (!(user instanceof PlayerEntity playerEntity)) {
             return;
         }
-        boolean bl = playerEntity.getAbilities().creativeMode || EnchantmentHelper.getLevel(Enchantments.INFINITY, stack) > 0;
+        boolean isInfinite = playerEntity.getAbilities().creativeMode || EnchantmentHelper.getLevel(Enchantments.INFINITY, stack) > 0;
         ItemStack itemStack = getPaintType(playerEntity, stack);
-        if (itemStack.isEmpty() && !bl) {
+        if (itemStack.isEmpty() && !isInfinite) {
             return;
         }
         if (itemStack.isEmpty()) {
@@ -76,7 +76,7 @@ public class MagicPaintbrushItem extends RangedWeaponItem {
         if ((double)(f = BowItem.getPullProgress(this.getMaxUseTime(stack) - remainingUseTicks)) < 0.1) {
             return;
         }
-        bl2 = bl && itemStack.isOf(ModItems.GOOP_BALL);
+        bl2 = isInfinite && itemStack.isOf(ModItems.GOOP_BALL);
         if (!world.isClient) {
             GoopEntity goopEntity;
             if (itemStack.isOf(ModItems.BLACK_PAINT))

@@ -26,6 +26,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -35,8 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class ShyGuyEntity extends HostileEntity {
-    private static final DataPool<Item> RED_TRADE_ITEMS = DataPool.<Item>builder().add(ModItems.TURNIP, 100).add(Items.COAL, 100).add(ModItems.BOMB, 85).add(ModItems.STELLAR_SHARD, 70).add(Items.IRON_PICKAXE, 80).add(Items.IRON_NUGGET, 80).build();
-    private static final DataPool<Item> BLUE_TRADE_ITEMS = DataPool.<Item>builder().add(ModItems.TURNIP, 100).add(Items.COAL, 100).add(ModItems.BOMB, 85).add(ModItems.STELLAR_SHARD, 70).add(Items.GOLDEN_PICKAXE, 80).add(Items.GOLD_NUGGET, 80).build();
+    private static final DataPool<Item> TRADE_ITEMS = DataPool.<Item>builder().add(ModItems.TURNIP, 100).add(Items.COAL, 100).add(ModItems.BOMB, 85).add(ModItems.STELLAR_SHARD, 70).add(Items.IRON_PICKAXE, 80).add(Items.IRON_NUGGET, 80).build();
     private static final TrackedData<String> TYPE = DataTracker.registerData(ShyGuyEntity.class, TrackedDataHandlerRegistry.STRING);
     public ShyGuyEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
@@ -77,7 +77,7 @@ public class ShyGuyEntity extends HostileEntity {
     }
 
     public DataPool<Item> getTradeItems() {
-        return this.getShyGuyType() == Type.BLUE ? BLUE_TRADE_ITEMS : RED_TRADE_ITEMS;
+        return TRADE_ITEMS;
     }
 
     @Override
@@ -105,10 +105,11 @@ public class ShyGuyEntity extends HostileEntity {
 
     @Override
     public void tick() {
-        if (this.isLeashed()) {
-            List<BooEntity> list = world.getEntitiesByClass(BooEntity.class, this.getBoundingBox().expand(2.0D), booEntity -> booEntity.getHoldingEntity() != null && booEntity.getHoldingEntity() == this.getHoldingEntity());
-            if (!list.isEmpty() && this.getHoldingEntity() instanceof ServerPlayerEntity) {
-                ModCriteria.SOULMATES.trigger((ServerPlayerEntity) this.getHoldingEntity());
+        if (this.isLeashed() && !this.world.isClient) {
+            Entity holdingEntity = this.getHoldingEntity();
+            List<BooEntity> list = world.getEntitiesByClass(BooEntity.class, this.getBoundingBox().expand(2.0D), booEntity -> booEntity.getHoldingEntity() != null && booEntity.getHoldingEntity() == holdingEntity);
+            if (!list.isEmpty() && holdingEntity instanceof ServerPlayerEntity) {
+                ModCriteria.SOULMATES.trigger((ServerPlayerEntity) holdingEntity);
             }
         }
         super.tick();
@@ -118,22 +119,21 @@ public class ShyGuyEntity extends HostileEntity {
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         this.initEquipment(random, difficulty);
-        if (random.nextBoolean())
-            this.setShyGuyType(Type.BLUE);
+        this.setShyGuyType(Type.fromId(random.nextBetween(0, Type.values().length)));
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
     @Override
     protected void initEquipment(Random random, LocalDifficulty localDifficulty) {
-        if (random.nextInt(3) == 0)
+        if (random.nextFloat() > 0.57F)
             this.equipStack(EquipmentSlot.MAINHAND, new ItemStack(this.getTradeItems().getDataOrEmpty(random).orElse(ModItems.TURNIP)));
     }
 
     @Override
     protected ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
-        ItemStack itemStack2 = player.getEquippedStack(EquipmentSlot.HEAD);
-        if (itemStack.isOf(ModItems.COIN) && itemStack2.isOf(ModItems.SHY_GUY_MASK) && !this.getStackInHand(Hand.MAIN_HAND).isEmpty()) {
+        ItemStack headStack = player.getEquippedStack(EquipmentSlot.HEAD);
+        if (itemStack.isOf(ModItems.COIN) && headStack.isOf(ModItems.SHY_GUY_MASK) && !this.getStackInHand(Hand.MAIN_HAND).isEmpty()) {
             if (!player.getAbilities().creativeMode) {
                 itemStack.decrement(1);
             }
@@ -176,14 +176,23 @@ public class ShyGuyEntity extends HostileEntity {
         return Sounds.ENTITY_SHY_GUY_DEATH;
     }
 
-    public enum Type {
-        RED("red"),
-        BLUE("blue");
+    public enum Type implements StringIdentifiable {
+        RED("red", 0),
+        BLUE("blue", 1),
+        LIGHT_BLUE("light_blue", 2),
+        BLACK("black", 2),
+        PINK("pink", 3),
+        ORANGE("orange", 4),
+        YELLOW("yellow", 5),
+        GREEN("green", 6),
+        WHITE("white", 7);
 
         final String name;
+        final int id;
 
-        Type(String name) {
+        Type(String name, int id) {
             this.name = name;
+            this.id = id;
         }
 
         static Type fromName(String name) {
@@ -192,6 +201,19 @@ public class ShyGuyEntity extends HostileEntity {
                 return type;
             }
             return RED;
+        }
+
+        static Type fromId(int id) {
+            for (ShyGuyEntity.Type type : ShyGuyEntity.Type.values()) {
+                if (!(type.id == id)) continue;
+                return type;
+            }
+            return RED;
+        }
+
+        @Override
+        public String asString() {
+            return this.name;
         }
     }
 }

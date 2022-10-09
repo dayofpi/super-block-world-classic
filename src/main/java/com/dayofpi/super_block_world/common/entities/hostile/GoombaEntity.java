@@ -65,9 +65,10 @@ public class GoombaEntity extends HostileEntity {
 
     @SuppressWarnings("unused")
     public static boolean canGoombaSpawn(EntityType<? extends GoombaEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        boolean noLight = isThereNoLight(world, pos);
         if (world.getBiome(pos).isIn(ModTags.SURFACE_GOOMBA_SPAWN))
-            return isThereNoLight(world, pos);
-        else return isThereNoLight(world, pos) && (world.getBlockState(pos.down()).isIn(ModTags.VANILLATE) || world.getBlockState(pos.down()).isOf(ModBlocks.VANILLATE_BRICKS));
+            return noLight;
+        else return noLight && (world.getBlockState(pos.down()).isIn(ModTags.VANILLATE) || world.getBlockState(pos.down()).isOf(ModBlocks.VANILLATE_BRICKS));
     }
 
     public void initGoals() {
@@ -331,11 +332,17 @@ public class GoombaEntity extends HostileEntity {
         return this.dataTracker.get(VARIANT).equals(GoombaVariant.GOLD.asString());
     }
 
+    public boolean isGloomba() {
+        return this.dataTracker.get(VARIANT).equals(GoombaVariant.GLOOMBA.asString());
+    }
+
     @Override
     protected void dropInventory() {
         super.dropInventory();
         if (this.isGold()) {
             this.dropItem(ModItems.COIN);
+        } else if (this.isGloomba() && random.nextInt(3) == 0) {
+            this.dropItem(ModBlocks.BLUE_CAVE_MUSHROOMS);
         }
     }
 

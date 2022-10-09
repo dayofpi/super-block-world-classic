@@ -17,9 +17,10 @@ public class ModTags {
     public static TagKey<Biome> SURFACE_GOOMBA_SPAWN;
     public static TagKey<Biome> SURFACE_KOOPA_SPAWN;
     public static TagKey<Biome> SURFACE_SHY_GUY_SPAWN;
-    public static TagKey<Block> FIRE_CIRCLE_LIT_TARGETS;
     public static TagKey<Block> FIRE_CIRCLE_BREAK_TARGETS;
+    public static TagKey<Block> FIRE_CIRCLE_LIT_TARGETS;
     public static TagKey<Block> FLAGS;
+    public static TagKey<Block> GOOP;
     public static TagKey<Block> PIPE_BODIES;
     public static TagKey<Block> ROYALITE;
     public static TagKey<Block> VANILLATE;
@@ -49,6 +50,7 @@ public class ModTags {
         FIRE_CIRCLE_BREAK_TARGETS = registerTag(Registry.BLOCK_KEY, "fire_circle_break_targets");
         FIRE_CIRCLE_LIT_TARGETS = registerTag(Registry.BLOCK_KEY, "fire_circle_lit_targets");
         FLAGS = registerTag(Registry.BLOCK_KEY, "flags");
+        GOOP = registerTag(Registry.BLOCK_KEY, "goop");
         PIPE_BODIES = registerTag(Registry.BLOCK_KEY, "pipe_bodies");
         ROYALITE = registerTag(Registry.BLOCK_KEY, "royalite");
         VANILLATE = registerTag(Registry.BLOCK_KEY, "vanillate");

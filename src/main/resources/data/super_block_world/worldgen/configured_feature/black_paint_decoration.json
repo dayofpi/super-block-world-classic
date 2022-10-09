@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 5,
+          "data": {
+            "Name": "super_block_world:fuzzball",
+            "Properties": {
+              "powered": "false"
+            }
+          }
+        },
+        {
+          "weight": 10,
+          "data": {
+            "Name": "super_block_world:black_paint",
+            "Properties": {
+              "layers": "1"
+            }
+          }
+        },
+        {
+          "weight": 4,
+          "data": {
+            "Name": "super_block_world:black_paint",
+            "Properties": {
+              "layers": "2"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

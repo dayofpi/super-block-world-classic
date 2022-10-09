@@ -1,6 +1,7 @@
 package com.dayofpi.super_block_world.common.blocks;
 
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.common.entities.projectile.BoomerangEntity;
 import com.dayofpi.super_block_world.common.entities.projectile.ModFireballEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -116,6 +117,11 @@ public class StoneTorchBlock extends Block implements Waterloggable {
         if (state.get(LIT)) {
             if (!entity.isFireImmune() && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entity)) {
                 entity.damage(DamageSource.IN_FIRE, 1F);
+            }
+            if (entity instanceof BoomerangEntity) {
+                world.setBlockState(pos, state.with(LIT, false));
+                world.syncWorldEvent(null, WorldEvents.FIRE_EXTINGUISHED, pos, 0);
+                world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(entity, state));
             }
         }
     }

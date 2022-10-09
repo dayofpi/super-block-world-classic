@@ -176,6 +176,7 @@ public class Sounds {
     public static final SoundEvent ENTITY_MUMMY_ME_MUMMIFY = createSound("entity.mummy_me.mummify");
     public static final SoundEvent ENTITY_PETEY_PIRANHA_AMBIENT = createSound("entity.petey_piranha.ambient");
     public static final SoundEvent ENTITY_PETEY_PIRANHA_ATTACK = createSound("entity.petey_piranha.attack");
+    public static final SoundEvent ENTITY_PETEY_PIRANHA_SPIN = createSound("entity.petey_piranha.spin");
     public static final SoundEvent ENTITY_PETEY_PIRANHA_SPIT = createSound("entity.petey_piranha.spit");
     public static final SoundEvent ENTITY_PETEY_PIRANHA_STEP = createSound("entity.petey_piranha.step");
     public static final SoundEvent ENTITY_PETEY_PIRANHA_STOCKPILE = createSound("entity.petey_piranha.stockpile");
@@ -433,6 +434,7 @@ public class Sounds {
         registerSound(ENTITY_MUMMY_ME_MUMMIFY);
         registerSound(ENTITY_PETEY_PIRANHA_AMBIENT);
         registerSound(ENTITY_PETEY_PIRANHA_ATTACK);
+        registerSound(ENTITY_PETEY_PIRANHA_SPIN);
         registerSound(ENTITY_PETEY_PIRANHA_SPIT);
         registerSound(ENTITY_PETEY_PIRANHA_STEP);
         registerSound(ENTITY_PETEY_PIRANHA_STOCKPILE);

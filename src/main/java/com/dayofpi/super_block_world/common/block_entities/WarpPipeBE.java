@@ -23,7 +23,7 @@ public class WarpPipeBE extends BlockEntity {
     }
 
     public void setDestinationPos(@Nullable BlockPos blockPos) {
-        destinPos = blockPos;
+        this.destinPos = blockPos;
         if (this.world != null) {
             BlockState blockState = this.getCachedState();
             this.world.setBlockState(this.getPos(), blockState.with(WarpPipeBlock.LINKED, destinPos != null));
@@ -32,7 +32,8 @@ public class WarpPipeBE extends BlockEntity {
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        if (nbt.contains(DESTINATION_POS) && world != null) {
+        this.destinPos = null;
+        if (nbt.contains(DESTINATION_POS)) {
             this.setDestinationPos(NbtHelper.toBlockPos(nbt.getCompound(DESTINATION_POS)));
         }
     }

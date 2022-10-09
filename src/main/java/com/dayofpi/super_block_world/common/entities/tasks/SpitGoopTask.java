@@ -30,7 +30,7 @@ public class SpitGoopTask extends Task<PeteyPiranhaEntity> {
         if (entity.getNextAttack() != 0)
             return false;
         Optional<LivingEntity> optionalMemory = entity.getBrain().getOptionalMemory(MemoryModuleType.ATTACK_TARGET);
-        return optionalMemory.filter(livingEntity -> entity.isInRange(livingEntity, 10.0, 2.0)).isPresent();
+        return optionalMemory.filter(livingEntity -> entity.isInRange(livingEntity, 10.0, 10.0)).isPresent();
     }
 
     @Override
@@ -55,18 +55,15 @@ public class SpitGoopTask extends Task<PeteyPiranhaEntity> {
         entity.getBrain().remember(MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN, Unit.INSTANCE, RUN_TIME - SOUND_DELAY);
         entity.playSound(Sounds.ENTITY_PETEY_PIRANHA_SPIT, 3.0F, 1.0F);
         GoopEntity goopEntity = new GoopEntity(world, entity);
-        goopEntity.setVelocity(entity, entity.getPitch(), entity.getYaw(), 0.0F, 1.0F, 2.0F);
+        goopEntity.setVelocity(entity, entity.getPitch(), entity.getYaw(), 0.0F, 1.0F, 1.8F);
         world.spawnEntity(goopEntity);
     }
 
     @Override
     protected void finishRunning(ServerWorld serverWorld, PeteyPiranhaEntity entity, long l) {
         Random random = entity.getRandom();
-        if (random.nextInt(5) == 0) {
-            ModBossEntity.cooldown(entity, 50);
+        ModBossEntity.cooldown(entity, 50);
+        if (random.nextBoolean())
             entity.setNextAttack(random.nextInt(entity.getMaxAttacks()));
-        } else {
-            this.run(serverWorld, entity, l);
-        }
     }
 }

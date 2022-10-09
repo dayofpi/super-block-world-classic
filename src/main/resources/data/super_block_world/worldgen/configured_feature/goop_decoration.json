@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 10,
+          "data": {
+            "Name": "super_block_world:goop",
+            "Properties": {
+              "layers": "1"
+            }
+          }
+        },
+        {
+          "weight": 4,
+          "data": {
+            "Name": "super_block_world:goop",
+            "Properties": {
+              "layers": "2"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

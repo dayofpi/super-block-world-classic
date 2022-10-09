@@ -3,13 +3,14 @@ package com.dayofpi.super_block_world.common.entities.boss;
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.entities.brains.PeteyPiranhaBrain;
-import com.dayofpi.super_block_world.registry.ModBlocks;
 import com.dayofpi.super_block_world.registry.ModItems;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.*;
+import net.minecraft.entity.AnimationState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityStatuses;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.ai.brain.sensor.Sensor;
@@ -19,6 +20,9 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
 import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
@@ -26,18 +30,20 @@ import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.LocalDifficulty;
-import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class PeteyPiranhaEntity extends ModBossEntity {
     private static final ImmutableList<SensorType<? extends Sensor<? super PeteyPiranhaEntity>>> SENSOR_TYPES = ImmutableList.of(SensorType.NEAREST_PLAYERS, SensorType.NEAREST_LIVING_ENTITIES);
     private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.PATH, MemoryModuleType.MOBS, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.NEAREST_PLAYERS, MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.WALK_TARGET, MemoryModuleType.ATTACK_TARGET, MemoryModuleType.ATTACK_COOLING_DOWN, MemoryModuleType.NEAREST_ATTACKABLE, MemoryModuleType.SONIC_BOOM_COOLDOWN, MemoryModuleType.SONIC_BOOM_SOUND_DELAY, MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN);
+    private static final TrackedData<Boolean> SPINNING;
     public final AnimationState chargingAnimationState = new AnimationState();
+
+    static {
+        SPINNING = DataTracker.registerData(PeteyPiranhaEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    }
     public PeteyPiranhaEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
         this.bossBar = new ServerBossBar(this.getDisplayName(), BossBar.Color.YELLOW, BossBar.Style.PROGRESS);
@@ -45,10 +51,37 @@ public class PeteyPiranhaEntity extends ModBossEntity {
     }
 
     @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(SPINNING, false);
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putBoolean("IsSpinning", this.isSpinning());
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        this.setSpinning(nbt.getBoolean("IsSpinning"));
+    }
+
+    public boolean isSpinning() {
+        return this.dataTracker.get(SPINNING);
+    }
+
+    public void setSpinning(boolean spinning) {
+        this.dataTracker.set(SPINNING, spinning);
+    }
+
+
+    @Override
     public boolean tryAttack(Entity target) {
         ModBossEntity.cooldown(this, 40);
 
-        this.playSound(Sounds.ENTITY_PETEY_PIRANHA_ATTACK, 1.0F, 1.0F);
+        this.playSound(Sounds.ENTITY_PETEY_PIRANHA_ATTACK, 1.0F, this.getSoundPitch());
         return super.tryAttack(target);
     }
 
@@ -99,18 +132,6 @@ public class PeteyPiranhaEntity extends ModBossEntity {
     }
 
     @Override
-    public @Nullable EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        if (spawnReason == SpawnReason.STRUCTURE) {
-            for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 6, 1, 6)) {
-                if (world.getBlockState(blockPos).isIn(BlockTags.WOOL_CARPETS) && world.getRandom().nextInt(3) == 0) {
-                    world.setBlockState(blockPos, ModBlocks.GOOP.getDefaultState(), Block.NOTIFY_ALL);
-                }
-            }
-        }
-        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
-    }
-
-    @Override
     public void handleStatus(byte status) {
         if (status == EntityStatuses.SONIC_BOOM) {
             this.chargingAnimationState.start(this.age);
@@ -153,6 +174,6 @@ public class PeteyPiranhaEntity extends ModBossEntity {
 
     @Override
     public int getMaxAttacks() {
-        return 1;
+        return 3;
     }
 }

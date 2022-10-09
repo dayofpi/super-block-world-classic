@@ -1,10 +1,12 @@
 package com.dayofpi.super_block_world.common.blocks;
 
+import com.dayofpi.super_block_world.audio.Sounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -50,6 +52,7 @@ public abstract class ReactiveBlock extends Block {
         BlockPos blockPos = hit.getBlockPos();
         if (projectile.canModifyAt(world, blockPos)) {
             react(world, blockPos, null);
+            world.playSound(null, blockPos, Sounds.ENTITY_PROJECTILE_HIT, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
     }
 }

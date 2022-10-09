@@ -10,6 +10,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3f;
 
 @Environment(EnvType.CLIENT)
 public class PeteyPiranhaRenderer extends MobEntityRenderer<PeteyPiranhaEntity, PeteyPiranhaModel> {
@@ -17,6 +18,13 @@ public class PeteyPiranhaRenderer extends MobEntityRenderer<PeteyPiranhaEntity, 
 
     public PeteyPiranhaRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new PeteyPiranhaModel(ctx.getPart(ModModelLayers.PETEY_PIRANHA)), 0.8F);
+    }
+
+    @Override
+    protected void setupTransforms(PeteyPiranhaEntity entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta) {
+        super.setupTransforms(entity, matrices, animationProgress, bodyYaw, tickDelta);
+        if (entity.isSpinning())
+            matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(animationProgress * 100));
     }
 
     @Override

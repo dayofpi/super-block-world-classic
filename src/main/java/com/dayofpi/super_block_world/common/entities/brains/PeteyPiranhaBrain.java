@@ -2,7 +2,9 @@ package com.dayofpi.super_block_world.common.entities.brains;
 
 import com.dayofpi.super_block_world.common.entities.boss.ModBossEntity;
 import com.dayofpi.super_block_world.common.entities.boss.PeteyPiranhaEntity;
+import com.dayofpi.super_block_world.common.entities.tasks.SpinTask;
 import com.dayofpi.super_block_world.common.entities.tasks.SpitGoopTask;
+import com.dayofpi.super_block_world.common.entities.tasks.TweesterTask;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -72,7 +74,9 @@ public class PeteyPiranhaBrain {
                         new ForgetAttackTargetTask<>(),
                         new RangedApproachTask(1.5F),
                         new MeleeAttackTask(18),
-                        new SpitGoopTask()
+                        new SpitGoopTask(),
+                        new SpinTask(),
+                        new TweesterTask()
                 ),
                 MemoryModuleType.ATTACK_TARGET
         );

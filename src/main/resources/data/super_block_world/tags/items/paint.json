@@ -1,7 +1,7 @@
 {
   "replace": "false",
   "values": [
-    "super_block_world:black_paint",
+    "super_block_world:black_paint_ball",
     "super_block_world:goop_ball"
   ]
 }

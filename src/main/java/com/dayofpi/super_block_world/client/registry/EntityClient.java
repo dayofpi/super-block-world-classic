@@ -30,7 +30,7 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.BUZZY_BEETLE, BuzzyBeetleRenderer::new);
         EntityRendererRegistry.register(ModEntities.CHEEP_CHEEP, CheepCheepRenderer::new);
         EntityRendererRegistry.register(ModEntities.DARK_GOOMBA, GoombaRenderer::new);
-        EntityRendererRegistry.register(ModEntities.BLACK_PAINT, BlackPaintRenderer::new);
+        EntityRendererRegistry.register(ModEntities.BLACK_PAINT, GoopRenderer::new);
         EntityRendererRegistry.register(ModEntities.DARK_PARAGOOMBA, GoombaRenderer::new);
         EntityRendererRegistry.register(ModEntities.DINO_RHINO, DinoRhinoRenderer::new);
         EntityRendererRegistry.register(ModEntities.DRY_BONES, DryBonesRenderer::new);
@@ -48,6 +48,7 @@ public class EntityClient {
         EntityRendererRegistry.register(ModEntities.GOO_ME, GooMeRenderer::new);
         EntityRendererRegistry.register(ModEntities.GOOMBA, GoombaRenderer::new);
         EntityRendererRegistry.register(ModEntities.GOOP, GoopRenderer::new);
+        EntityRendererRegistry.register(ModEntities.TWEESTER, TweesterRenderer::new);
         EntityRendererRegistry.register(ModEntities.HAMMER, HammerRenderer::new);
         EntityRendererRegistry.register(ModEntities.HAMMER_BRO, HammerBroRenderer::new);
         EntityRendererRegistry.register(ModEntities.HOMING_FLAME, HomingFlameRenderer::new);

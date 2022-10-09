@@ -3,6 +3,7 @@ package com.dayofpi.super_block_world.mixin;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.common.block_entities.WarpPipeBE;
 import com.dayofpi.super_block_world.common.blocks.WarpPipeBlock;
+import com.dayofpi.super_block_world.common.entities.boss.KingBobOmbEntity;
 import com.dayofpi.super_block_world.util.PowerUp;
 import com.dayofpi.super_block_world.util.FormManager;
 import net.minecraft.block.BlockState;
@@ -12,6 +13,7 @@ import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerAbilities;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
@@ -23,7 +25,9 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -34,6 +38,7 @@ import java.util.UUID;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
+    @Shadow @Final private PlayerAbilities abilities;
     private int pipeCooldown;
     private int powerTickTimer;
     private int flutterSoundTimer;
@@ -46,6 +51,8 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     }
 
     public void setSneaking(boolean sneaking) {
+        if (this.getVehicle() instanceof KingBobOmbEntity && !this.abilities.creativeMode)
+            return;
         if (sneaking) {
             this.warpToPipe();
         }

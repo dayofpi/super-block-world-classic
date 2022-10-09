@@ -2,18 +2,31 @@ package com.dayofpi.super_block_world.common.blocks;
 
 import com.dayofpi.super_block_world.registry.ModBlocks;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.EntityShapeContext;
 import net.minecraft.block.SandBlock;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
 public class QuicksandBlock extends SandBlock {
     public QuicksandBlock(int color, Settings settings) {
         super(color, settings);
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        if (context instanceof EntityShapeContext && ((EntityShapeContext) context).getEntity() instanceof FallingBlockEntity)
+            return VoxelShapes.fullCube();
+        return VoxelShapes.empty();
     }
 
     @Override

@@ -35,7 +35,7 @@ public class ForagerEntity extends SpellcastingIllagerEntity {
     }
 
     public static DefaultAttributeContainer.Builder createForagerAttributes() {
-        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.35f).add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0).add(EntityAttributes.GENERIC_MAX_HEALTH, 24.0).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5.0);
+        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.35f).add(EntityAttributes.GENERIC_FOLLOW_RANGE, 12.0).add(EntityAttributes.GENERIC_MAX_HEALTH, 24.0).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0);
     }
 
     @Override
@@ -43,7 +43,6 @@ public class ForagerEntity extends SpellcastingIllagerEntity {
         super.initGoals();
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new SpellcastingIllagerEntity.LookAtTargetGoal());
-        this.goalSelector.add(2, new IllagerEntity.LongDoorInteractGoal(this));
         this.goalSelector.add(3, new RaiderEntity.PatrolApproachGoal(this, 10.0f));
         this.goalSelector.add(4, new ForagerEntity.CastSpellGoal());
         this.goalSelector.add(5, new MeleeAttackGoal(this, 1.0D, false));

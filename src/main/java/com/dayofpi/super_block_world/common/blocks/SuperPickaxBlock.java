@@ -27,6 +27,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -85,6 +86,7 @@ public class SuperPickaxBlock extends HorizontalFacingBlock implements BlockEnti
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         state = state.cycle(ACTIVE);
         world.setBlockState(pos, state, Block.NOTIFY_LISTENERS);
+        world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
         world.createAndScheduleBlockTick(pos, this, 4);
         return ActionResult.success(world.isClient);
     }

@@ -156,6 +156,21 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(at = @At("TAIL"), method = "tick")
     private void tick(CallbackInfo info) {
+        if (this.hasJumpBoots() || this.isYoshi()) {
+            if (stompCooldown > 0) --stompCooldown;
+            if (this.hasVehicle() || this.isOnGround() || this.isInSwimmingPose()) return;
+            if (stompCooldown == 0) {
+                List<Entity> list = world.getOtherEntities(this, this.getBoundingBox(), EntityPredicates.VALID_LIVING_ENTITY);
+                if (!list.isEmpty()) {
+                    list.forEach(entity -> {
+                        if (this.canStomp(entity)) {
+                            this.stomp((LivingEntity) entity);
+                        }
+                    });
+                }
+            }
+        }
+
         if (this.getEquippedStack(EquipmentSlot.FEET).isOf(ModItems.CLOUD_BOOTS)) {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 200, 0, false, false, true));
         }
@@ -228,12 +243,10 @@ public abstract class LivingEntityMixin extends Entity {
     private void stomp(LivingEntity livingEntity) {
         Vec3d vec3d = this.getVelocity();
         this.stompCooldown = 5;
-        if (livingEntity instanceof Stompable)
-            ((Stompable) livingEntity).onStomped();
         ItemStack itemStack = livingEntity.getEquippedStack(EquipmentSlot.HEAD);
         boolean hasBuzzyShell = itemStack.isOf(ModItems.BUZZY_SHELL);
-
-        if (this.isSneaking() || hasBuzzyShell || livingEntity.getType().isIn(ModTags.STOMP_IGNORED) || livingEntity.getType().isIn(ModTags.STOMP_IMMUNE)) {
+        boolean isPet = livingEntity instanceof Tameable && ((Tameable) livingEntity).getOwner() == this;
+        if (isPet || this.isSneaking() || hasBuzzyShell || livingEntity.getType().isIn(ModTags.STOMP_IGNORED) || livingEntity.getType().isIn(ModTags.STOMP_IMMUNE)) {
             double strength = 0.5D;
             if (livingEntity instanceof SpindriftEntity)
                 strength = 1.45D;
@@ -248,7 +261,9 @@ public abstract class LivingEntityMixin extends Entity {
             this.playSound(Sounds.ENTITY_GENERIC_JUMP_BOUNCE, 1.0F, 1.0F);
             return;
         }
-        livingEntity.damage(ModDamageSource.stomp((LivingEntity) (Object) this), 5);
+        if (livingEntity instanceof Stompable)
+            ((Stompable) livingEntity).onStomped();
+        else livingEntity.damage(ModDamageSource.stomp((LivingEntity) (Object) this), 5);
         this.setVelocity(vec3d.x, 0.6D, vec3d.z);
         this.playSound(Sounds.ENTITY_GENERIC_JUMP_ATTACK, 1.0F, 1.0F);
     }
@@ -328,21 +343,6 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
         this.world.getProfiler().pop();
-
-        if (this.hasJumpBoots() || this.isYoshi()) {
-            if (stompCooldown > 0) --stompCooldown;
-            if (this.hasVehicle() || this.isOnGround() || this.isInSwimmingPose()) return;
-            if (stompCooldown == 0) {
-                List<Entity> list = world.getOtherEntities(this, this.getBoundingBox(), EntityPredicates.VALID_LIVING_ENTITY);
-                if (!list.isEmpty()) {
-                    list.forEach(entity -> {
-                        if (this.canStomp(entity)) {
-                            this.stomp((LivingEntity) entity);
-                        }
-                    });
-                }
-            }
-        }
     }
 
     private boolean canStomp(Entity entity) {

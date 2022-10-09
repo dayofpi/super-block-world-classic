@@ -1252,26 +1252,6 @@
     ],
     "subtitle": "sbw_subtitle.entity.mummy_me.mummify"
   },
-  "entity.petey_piranha.stockpile": {
-    "sounds": [
-      "super_block_world:entity/petey_piranha/stockpile"
-    ],
-    "subtitle": "sbw_subtitle.entity.petey_piranha.stockpile"
-  },
-  "entity.petey_piranha.spit": {
-    "sounds": [
-      "super_block_world:entity/petey_piranha/attack1",
-      "super_block_world:entity/petey_piranha/attack2"
-    ],
-    "subtitle": "sbw_subtitle.entity.petey_piranha.spit"
-  },
-  "entity.petey_piranha.step": {
-    "sounds": [
-      "super_block_world:entity/petey_piranha/step1",
-      "super_block_world:entity/petey_piranha/step2"
-    ],
-    "subtitle": "sbw_subtitle.entity.petey_piranha.step"
-  },
   "entity.petey_piranha.ambient": {
     "sounds": [
       "super_block_world:entity/petey_piranha/ambient1",
@@ -1299,6 +1279,32 @@
       "super_block_world:entity/petey_piranha/hurt3"
     ],
     "subtitle": "sbw_subtitle.entity.petey_piranha.hurt"
+  },
+  "entity.petey_piranha.spin": {
+    "sounds": [
+      "super_block_world:entity/petey_piranha/spin"
+    ],
+    "subtitle": "sbw_subtitle.entity.petey_piranha.spin"
+  },
+  "entity.petey_piranha.spit": {
+    "sounds": [
+      "super_block_world:entity/petey_piranha/spit1",
+      "super_block_world:entity/petey_piranha/spit2"
+    ],
+    "subtitle": "sbw_subtitle.entity.petey_piranha.spit"
+  },
+  "entity.petey_piranha.step": {
+    "sounds": [
+      "super_block_world:entity/petey_piranha/step1",
+      "super_block_world:entity/petey_piranha/step2"
+    ],
+    "subtitle": "sbw_subtitle.entity.petey_piranha.step"
+  },
+  "entity.petey_piranha.stockpile": {
+    "sounds": [
+      "super_block_world:entity/petey_piranha/stockpile"
+    ],
+    "subtitle": "sbw_subtitle.entity.petey_piranha.stockpile"
   },
   "entity.piranha_plant.attack": {
     "sounds": [

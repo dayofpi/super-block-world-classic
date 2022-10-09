@@ -11,6 +11,12 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.world.World;
 
 public class StarBitEntity extends ThrownEntity {
+    /* Each star bit color represents a theme
+    * Yellow - Space
+    * Green - Linking
+    * Blue - Attraction
+    * Purple - Energy */
+
     private static final ImmutableList<Item> STAR_BITS = ImmutableList.of(ModItems.PURPLE_STAR_BIT, ModItems.BLUE_STAR_BIT, ModItems.GREEN_STAR_BIT, ModItems.YELLOW_STAR_BIT);
 
     public StarBitEntity(EntityType<StarBitEntity> entityType, World world) {

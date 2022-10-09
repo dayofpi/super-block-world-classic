@@ -142,7 +142,7 @@ public class SleepySheepEntity extends AnimalEntity implements Shearable {
     public void sheared(SoundCategory shearedSoundCategory) {
         this.world.playSoundFromEntity(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
         this.setSheared(true);
-        int i = 1 + this.random.nextInt(3);
+        int i = 1 + this.random.nextInt(2);
 
         for(int j = 0; j < i; ++j) {
             ItemEntity itemEntity = this.dropItem(ModBlocks.DREAMWOOL, 1);

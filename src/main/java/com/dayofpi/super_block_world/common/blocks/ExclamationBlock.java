@@ -29,7 +29,12 @@ public class ExclamationBlock extends ReactiveBlock {
 
     @Override
     public void react(World world, BlockPos blockPos, LivingEntity entity) {
-        world.createAndScheduleBlockTick(blockPos, this, 4);
+        BlockState state = world.getBlockState(blockPos);
+        boolean isPowered = state.get(POWERED);
+        if (!isPowered) {
+            world.setBlockState(blockPos, state.cycle(POWERED), Block.NOTIFY_ALL);
+            world.createAndScheduleBlockTick(blockPos, this, 4);
+        }
         if (!world.isClient()) {
             Random random = world.getRandom();
             ((ServerWorld) world).spawnParticles(new DustParticleEffect(DustParticleEffect.RED, 1.0F), blockPos.getX() + 0.5D + (0.5D * (random.nextBoolean() ? 1 : -1)), blockPos.getY() + 0.5D, blockPos.getZ() + 0.5D + (0.5D * (random.nextBoolean() ? 1 : -1)), 1, 0.0D, 0.0D, 0.0D, 0.0D);
@@ -39,8 +44,6 @@ public class ExclamationBlock extends ReactiveBlock {
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos blockPos, Random random) {
-        if (state.get(POWERED) && !world.isReceivingRedstonePower(blockPos))
-            world.createAndScheduleBlockTick(blockPos, this, 2);
         world.setBlockState(blockPos, state.cycle(POWERED));
     }
 

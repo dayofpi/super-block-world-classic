@@ -315,7 +315,7 @@ public class ModEntities {
     public static final EntityType<KingBobOmbEntity> KING_BOB_OMB = createMob(
             KingBobOmbEntity::new, SpawnGroup.MISC,
             KingBobOmbEntity::createKingBobOmbAttributes,
-            2.6F, 3.2F
+            2.6F, 3.4F
     );
     public static final EntityType<KingBooEntity> KING_BOO = createMob(
             KingBooEntity::new, SpawnGroup.MISC,
@@ -408,7 +408,9 @@ public class ModEntities {
             PiranhaPlantEntity::createPiranhaPlantAttributes,
             0.6F, 1.2F
     );
-
+    public static final EntityType<TweesterEntity> TWEESTER = createEntity(
+            TweesterEntity::new, 0.8F, 1.8F, 8, 3, true
+    );
     public static final EntityType<HammerEntity> HAMMER = createEntity(
             HammerEntity::new, 0.45F, 0.45F, 4, 10, false
     );
@@ -506,6 +508,7 @@ public class ModEntities {
         registerEntity("gold_fireball", GOLD_FIREBALL);
         registerEntity("goo_me", GOO_ME);
         registerEntity("goomba", GOOMBA);
+        registerEntity("tweester", TWEESTER);
         registerEntity("hammer", HAMMER);
         registerEntity("hammer_bro", HAMMER_BRO);
         registerEntity("homing_flame", HOMING_FLAME);

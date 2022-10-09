@@ -391,6 +391,8 @@ public class ModItems {
         registerItem("star_panel", new BlockItem(ModBlocks.STAR_PANEL, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("yoshi_egg", new BlockItem(ModBlocks.YOSHI_EGG, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("lil_oink_egg", new BlockItem(ModBlocks.LIL_OINK_EGG, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("light_gray_dreamplush", new BlockItem(ModBlocks.LIGHT_GRAY_DREAMPLUSH, new FabricItemSettings().group(Main.ITEM_GROUP)));
+        registerItem("brown_dreamplush", new BlockItem(ModBlocks.BROWN_DREAMPLUSH, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("white_warp_pipe", new BlockItem(ModBlocks.WHITE_WARP_PIPE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("orange_warp_pipe", new BlockItem(ModBlocks.ORANGE_WARP_PIPE, new FabricItemSettings().group(Main.ITEM_GROUP)));
         registerItem("magenta_warp_pipe", new BlockItem(ModBlocks.MAGENTA_WARP_PIPE, new FabricItemSettings().group(Main.ITEM_GROUP)));

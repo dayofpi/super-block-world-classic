@@ -12,6 +12,11 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.thrown.ThrownEntity;
+import net.minecraft.particle.BlockStateParticleEffect;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.property.Properties;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
@@ -40,7 +45,10 @@ public class GoopEntity extends ThrownEntity {
         super.tick();
         Vec3d velocity = this.getVelocity();
         this.setVelocity(velocity.multiply(0.8F));
-
+        if (!world.isClient) {
+            ServerWorld serverWorld = (ServerWorld)world;
+            serverWorld.spawnParticles(new BlockStateParticleEffect(ParticleTypes.BLOCK, this.getBlockState()), this.getBlockPos().getX(), this.getBlockPos().getY(), this.getBlockPos().getZ(), 1, 0.0, 0.0, 0.0, 1.0);
+        }
     }
 
     @Override
@@ -54,16 +62,30 @@ public class GoopEntity extends ThrownEntity {
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
         this.discard();
+        this.playSound(SoundEvents.BLOCK_SLIME_BLOCK_PLACE, 1.0F, 1.2F);
         if (!world.isClient()) {
             BlockPos blockPos = blockHitResult.getBlockPos();
-            BlockState blockState = this.world.getBlockState(blockPos);
-            blockState.onProjectileHit(this.world, blockState, blockHitResult, this);
+            for (BlockPos pos : BlockPos.iterateOutwards(blockPos, 1, 1, 1)) {
+                BlockState blockState = this.world.getBlockState(pos);
+                blockState.onProjectileHit(this.world, blockState, blockHitResult, this);
 
-            if (blockState.isIn(BlockTags.MOSS_REPLACEABLE)) {
-                world.setBlockState(blockPos, this.getBlockState());
-            }
-            if (GoopEntity.canPlaceAt(this.getWorld(), blockPos.up())) {
-                world.setBlockState(blockPos.up(), this.getLayerState());
+                if (blockState.isIn(BlockTags.MOSS_REPLACEABLE)) {
+                    world.setBlockState(pos, this.getBlockState());
+                }
+                if (pos == blockPos || this.random.nextFloat() > 0.3F) {
+                    if (GoopEntity.canPlaceAt(this.getWorld(), pos.up())) {
+                        world.setBlockState(pos.up(), this.getLayerState());
+                    }
+                    else if (blockState.isOf(this.getLayerState().getBlock()) && blockState.get(Properties.LAYERS) < 8) {
+                        world.setBlockState(pos, blockState.with(Properties.LAYERS, blockState.get(Properties.LAYERS) + 1));
+                    }
+                }
+                if (!world.isClient) {
+                    ServerWorld serverWorld = (ServerWorld)world;
+                    for (int i = 0; i < 3; ++i) {
+                        serverWorld.spawnParticles(new BlockStateParticleEffect(ParticleTypes.BLOCK, this.getBlockState()), (double)pos.getX() + world.random.nextDouble(), pos.getY() + 1, (double)pos.getZ() + world.random.nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
+                    }
+                }
             }
         }
     }
@@ -72,7 +94,7 @@ public class GoopEntity extends ThrownEntity {
         return ModBlocks.GOOP.getDefaultState();
     }
 
-    protected BlockState getBlockState() {
+    public BlockState getBlockState() {
         return ModBlocks.GOOP_BLOCK.getDefaultState();
     }
 
@@ -86,7 +108,7 @@ public class GoopEntity extends ThrownEntity {
         if (blockState.isIn(BlockTags.SNOW_LAYER_CAN_SURVIVE_ON)) {
             return true;
         }
-        return Block.isFaceFullSquare(blockState.getCollisionShape(world, pos.down()), Direction.UP) || blockState.isOf(ModBlocks.GOOP) && blockState.get(SnowBlock.LAYERS) == 8;
+        return Block.isFaceFullSquare(blockState.getCollisionShape(world, pos), Direction.UP) || blockState.isOf(ModBlocks.GOOP) && blockState.get(SnowBlock.LAYERS) == 8;
     }
 
     @Override

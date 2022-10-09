@@ -46,6 +46,7 @@ public class ModModelLayers {
     public static final EntityModelLayer KOOPA_SHELL = createMain("koopa_shell");
     public static final EntityModelLayer KOOPA_TROOPA = createMain("koopa_troopa");
     public static final EntityModelLayer KOOPA_TROOPA_SADDLE = create("koopa_troopa", "saddle");
+    public static final EntityModelLayer TWEESTER = createMain("tweester");
     public static final EntityModelLayer LAUNCH_STAR = createMain("launch_star");
     public static final EntityModelLayer LAVA_BUBBLE = createMain("lava_bubble");
     public static final EntityModelLayer LAVA_BUBBLE_OUTER = create("lava_bubble", "outer");
@@ -98,6 +99,7 @@ public class ModModelLayers {
         EntityModelLayerRegistry.registerModelLayer(KOOPA_SHELL, KoopaShellModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(KOOPA_TROOPA, KoopaTroopaModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(KOOPA_TROOPA_SADDLE, KoopaTroopaModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(TWEESTER, TweesterModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(LAUNCH_STAR, LaunchStarModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(LAVA_BUBBLE, LavaBubbleModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(LAVA_BUBBLE_OUTER, LavaBubbleModel::getOuterTexturedModelData);

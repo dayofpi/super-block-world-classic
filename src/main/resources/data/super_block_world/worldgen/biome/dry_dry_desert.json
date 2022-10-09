@@ -45,6 +45,12 @@
         "maxCount": 2
       },
       {
+        "type": "super_block_world:lava_bubble",
+        "weight": 12,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
         "type": "super_block_world:goomba",
         "weight": 100,
         "minCount": 2,

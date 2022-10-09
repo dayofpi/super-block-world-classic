@@ -16,6 +16,14 @@
   },
   "parent": "minecraft:bowsers_kingdom/wear_princess_crown",
   "criteria": {
+    "petey_piranha": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "super_block_world:petey_piranha"
+        }
+      }
+    },
     "king_bob_omb": {
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
@@ -34,6 +42,9 @@
     }
   },
   "requirements": [
+    [
+      "petey_piranha"
+    ],
     [
       "king_bob_omb"
     ],

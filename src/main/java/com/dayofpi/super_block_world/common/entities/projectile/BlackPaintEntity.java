@@ -24,7 +24,7 @@ public class BlackPaintEntity extends GoopEntity {
     }
 
     @Override
-    protected BlockState getBlockState() {
+    public BlockState getBlockState() {
         return ModBlocks.BLACK_PAINT_BLOCK.getDefaultState();
     }
 }

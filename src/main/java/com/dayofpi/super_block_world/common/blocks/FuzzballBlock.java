@@ -44,7 +44,7 @@ public class FuzzballBlock extends PlantBlock {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isSideSolidFullSquare(world, pos, Direction.UP);
+        return floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isIn(BlockTags.SNOW_LAYER_CAN_SURVIVE_ON);
     }
 
     @Override
