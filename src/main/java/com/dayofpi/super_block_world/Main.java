@@ -1,12 +1,18 @@
 package com.dayofpi.super_block_world;
 
-import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.util.PowerUp;
-import com.dayofpi.super_block_world.common.entities.ToadSpecificSensor;
-import com.dayofpi.super_block_world.common.entities.effects.StarPowerEffect;
+import com.dayofpi.super_block_world.block.ModBlockEntities;
+import com.dayofpi.super_block_world.block.ModBlocks;
+import com.dayofpi.super_block_world.criterion.ModCriteria;
+import com.dayofpi.super_block_world.entity.ModEntities;
+import com.dayofpi.super_block_world.entity.entities.ToadSpecificSensor;
+import com.dayofpi.super_block_world.entity.entities.effects.StarPowerEffect;
+import com.dayofpi.super_block_world.item.ModItems;
 import com.dayofpi.super_block_world.mixin.SensorTypeMixin;
-import com.dayofpi.super_block_world.registry.*;
+import com.dayofpi.super_block_world.util.DispenserBehaviors;
+import com.dayofpi.super_block_world.util.PowerUp;
 import com.dayofpi.super_block_world.util.PowerUpCommand;
+import com.dayofpi.super_block_world.world.ModFluids;
+import com.dayofpi.super_block_world.world.WorldInit;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
@@ -37,13 +43,11 @@ public class Main implements ModInitializer {
     public static final StatusEffect STAR_POWER = new StarPowerEffect().addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, UUID.randomUUID().toString(), 0.3D, EntityAttributeModifier.Operation.MULTIPLY_TOTAL).addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, UUID.randomUUID().toString(), 3.0, EntityAttributeModifier.Operation.ADDITION);
 
     public static final SensorType<ToadSpecificSensor> TOAD_SPECIFIC_SENSOR = SensorTypeMixin.register("toad_specific_sensor", ToadSpecificSensor::new);
-
     public static final GameStateChangeS2CPacket.Reason KING_BOO_CURSE = new GameStateChangeS2CPacket.Reason(64);
 
     @Override
     public void onInitialize() {
         Registry.register(Registry.STATUS_EFFECT, new Identifier(Main.MOD_ID, "star_power"), STAR_POWER);
-        Sounds.initSounds();
         ModParticles.register();
         ModEntities.register();
         ModFluids.register();

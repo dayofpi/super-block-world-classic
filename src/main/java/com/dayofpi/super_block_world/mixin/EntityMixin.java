@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.mixin;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.entities.misc.DryBonesShellEntity;
-import com.dayofpi.super_block_world.registry.ModEntities;
-import com.dayofpi.super_block_world.registry.ModTags;
+import com.dayofpi.super_block_world.entity.entities.misc.DryBonesShellEntity;
+import com.dayofpi.super_block_world.entity.ModEntities;
+import com.dayofpi.super_block_world.ModTags;
 import com.dayofpi.super_block_world.util.FormManager;
 import com.dayofpi.super_block_world.util.ModDamageSource;
 import com.dayofpi.super_block_world.util.PowerUp;

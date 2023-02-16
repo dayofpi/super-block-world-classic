@@ -2,11 +2,11 @@ package com.dayofpi.super_block_world.client.registry;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.blocks.BrickBlock;
-import com.dayofpi.super_block_world.common.blocks.FakeBlock;
-import com.dayofpi.super_block_world.common.blocks.ReactiveBlock;
-import com.dayofpi.super_block_world.common.entities.hostile.FakeBlockEntity;
-import com.dayofpi.super_block_world.registry.ModEntities;
+import com.dayofpi.super_block_world.block.blocks.BrickBlock;
+import com.dayofpi.super_block_world.block.blocks.FakeBlock;
+import com.dayofpi.super_block_world.block.blocks.ReactiveBlock;
+import com.dayofpi.super_block_world.entity.entities.hostile.FakeBlockEntity;
+import com.dayofpi.super_block_world.entity.ModEntities;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.Block;

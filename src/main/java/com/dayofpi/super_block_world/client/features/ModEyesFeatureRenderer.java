@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.features;
 
-import com.dayofpi.super_block_world.common.entities.hostile.DryBonesEntity;
-import com.dayofpi.super_block_world.common.entities.misc.KoopaShellEntity;
+import com.dayofpi.super_block_world.entity.entities.hostile.DryBonesEntity;
+import com.dayofpi.super_block_world.entity.entities.misc.KoopaShellEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.EyesFeatureRenderer;

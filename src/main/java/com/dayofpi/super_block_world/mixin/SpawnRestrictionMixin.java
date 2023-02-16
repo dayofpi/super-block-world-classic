@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin;
 
-import com.dayofpi.super_block_world.registry.ModBlocks;
+import com.dayofpi.super_block_world.block.ModBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;

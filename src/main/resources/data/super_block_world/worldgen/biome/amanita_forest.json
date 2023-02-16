@@ -111,7 +111,7 @@
         "maxCount": 4
       },
       {
-        "type": "super_block_world:forager",
+        "type": "super_block_world:magikoopa",
         "weight": 15,
         "minCount": 1,
         "maxCount": 1

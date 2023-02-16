@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin;
 
-import com.dayofpi.super_block_world.common.entities.projectile.ModFireballEntity;
+import com.dayofpi.super_block_world.entity.entities.projectile.ModFireballEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TntBlock;
 import net.minecraft.entity.Entity;

@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.mixin.client;
 
 import com.dayofpi.super_block_world.audio.KartSoundInstance;
-import com.dayofpi.super_block_world.client.renderers.GooMeRenderer;
-import com.dayofpi.super_block_world.common.entities.misc.GoKartEntity;
+import com.dayofpi.super_block_world.entity.renderers.GooMeRenderer;
+import com.dayofpi.super_block_world.entity.entities.misc.GoKartEntity;
 import com.dayofpi.super_block_world.util.FormManager;
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.api.EnvType;

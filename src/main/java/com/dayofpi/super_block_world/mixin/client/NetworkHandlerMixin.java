@@ -2,9 +2,9 @@ package com.dayofpi.super_block_world.mixin.client;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.registry.ModItems;
-import com.dayofpi.super_block_world.registry.ModParticles;
-import com.dayofpi.super_block_world.registry.ModTags;
+import com.dayofpi.super_block_world.item.ModItems;
+import com.dayofpi.super_block_world.ModParticles;
+import com.dayofpi.super_block_world.ModTags;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;

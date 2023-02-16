@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.client.features;
 
-import com.dayofpi.super_block_world.client.models.LavaBubbleModel;
+import com.dayofpi.super_block_world.entity.models.LavaBubbleModel;
 import com.dayofpi.super_block_world.client.registry.ModModelLayers;
-import com.dayofpi.super_block_world.common.entities.hostile.LavaBubbleEntity;
+import com.dayofpi.super_block_world.entity.entities.hostile.LavaBubbleEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;

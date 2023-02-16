@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.features;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.models.PowerUpModel;
+import com.dayofpi.super_block_world.entity.models.PowerUpModel;
 import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

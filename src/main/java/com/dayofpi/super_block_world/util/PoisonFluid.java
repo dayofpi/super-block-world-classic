@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.util;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.registry.ModBlocks;
-import com.dayofpi.super_block_world.registry.ModFluids;
-import com.dayofpi.super_block_world.registry.ModItems;
-import com.dayofpi.super_block_world.registry.ModParticles;
+import com.dayofpi.super_block_world.block.ModBlocks;
+import com.dayofpi.super_block_world.world.ModFluids;
+import com.dayofpi.super_block_world.item.ModItems;
+import com.dayofpi.super_block_world.ModParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;

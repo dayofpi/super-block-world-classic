@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.util;
 
-import com.dayofpi.super_block_world.registry.ConfiguredFeatures;
+import com.dayofpi.super_block_world.world.ConfiguredFeatures;
 import net.minecraft.block.sapling.LargeTreeSaplingGenerator;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.RegistryEntry;

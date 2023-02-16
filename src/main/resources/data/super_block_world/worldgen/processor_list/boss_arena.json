@@ -21,43 +21,7 @@
             "probability": 0.2
           },
           "output_state": {
-            "Name": "super_block_world:mossy_hardstone_bricks"
-          }
-        }
-      ]
-    },
-    {
-      "processor_type": "minecraft:rule",
-      "rules": [
-        {
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "input_predicate": {
-            "predicate_type": "minecraft:random_block_match",
-            "block": "super_block_world:hardstone_bricks",
-            "probability": 0.2
-          },
-          "output_state": {
             "Name": "super_block_world:cracked_hardstone_bricks"
-          }
-        }
-      ]
-    },
-    {
-      "processor_type": "minecraft:rule",
-      "rules": [
-        {
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "input_predicate": {
-            "predicate_type": "minecraft:random_block_match",
-            "block": "super_block_world:hardstone_brick_stairs",
-            "probability": 0.3
-          },
-          "output_state": {
-            "Name": "minecraft:air"
           }
         }
       ]

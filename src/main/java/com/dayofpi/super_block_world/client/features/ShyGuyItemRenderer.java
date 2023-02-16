@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.client.features;
 
-import com.dayofpi.super_block_world.common.entities.hostile.ShyGuyEntity;
+import com.dayofpi.super_block_world.entity.entities.hostile.ShyGuyEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.VertexConsumerProvider;

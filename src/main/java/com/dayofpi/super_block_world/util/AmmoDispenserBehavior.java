@@ -3,10 +3,10 @@
  */
 package com.dayofpi.super_block_world.util;
 
-import com.dayofpi.super_block_world.common.entities.projectile.BoomerangEntity;
-import com.dayofpi.super_block_world.common.entities.projectile.GoldFireballEntity;
-import com.dayofpi.super_block_world.common.entities.projectile.IceballEntity;
-import com.dayofpi.super_block_world.common.entities.projectile.ModFireballEntity;
+import com.dayofpi.super_block_world.entity.entities.projectile.BoomerangEntity;
+import com.dayofpi.super_block_world.entity.entities.projectile.GoldFireballEntity;
+import com.dayofpi.super_block_world.entity.entities.projectile.IceballEntity;
+import com.dayofpi.super_block_world.entity.entities.projectile.ModFireballEntity;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.ItemDispenserBehavior;
 import net.minecraft.entity.projectile.ProjectileEntity;

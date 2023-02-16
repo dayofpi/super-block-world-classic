@@ -1,14 +1,18 @@
 package com.dayofpi.super_block_world.mixin;
 
 import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.criterion.ModCriteria;
+import com.dayofpi.super_block_world.ModTags;
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.blocks.BrickBlock;
-import com.dayofpi.super_block_world.common.blocks.FakeBlock;
-import com.dayofpi.super_block_world.common.blocks.ReactiveBlock;
-import com.dayofpi.super_block_world.common.entities.Stompable;
-import com.dayofpi.super_block_world.common.entities.passive.SpindriftEntity;
-import com.dayofpi.super_block_world.common.entities.projectile.ModFireballEntity;
-import com.dayofpi.super_block_world.registry.*;
+import com.dayofpi.super_block_world.block.ModBlocks;
+import com.dayofpi.super_block_world.block.blocks.BrickBlock;
+import com.dayofpi.super_block_world.block.blocks.FakeBlock;
+import com.dayofpi.super_block_world.block.blocks.ReactiveBlock;
+import com.dayofpi.super_block_world.entity.entities.Stompable;
+import com.dayofpi.super_block_world.entity.entities.passive.SpindriftEntity;
+import com.dayofpi.super_block_world.entity.entities.projectile.ModFireballEntity;
+import com.dayofpi.super_block_world.entity.ModEntities;
+import com.dayofpi.super_block_world.item.ModItems;
 import com.dayofpi.super_block_world.util.ModDamageSource;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.advancement.criterion.Criteria;
@@ -150,8 +154,9 @@ public abstract class LivingEntityMixin extends Entity {
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, amplifier));
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 800, 0));
             world.sendEntityStatus(this, EntityStatuses.USE_TOTEM_OF_UNDYING);
+            cir.setReturnValue(true);
         }
-        cir.setReturnValue(itemStack != null);
+
     }
 
     @Inject(at = @At("TAIL"), method = "tick")

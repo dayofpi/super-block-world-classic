@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.mixin;
 
-import com.dayofpi.super_block_world.common.blocks.QuicksandBlock;
-import com.dayofpi.super_block_world.registry.ModBlocks;
-import com.dayofpi.super_block_world.registry.ModTags;
+import com.dayofpi.super_block_world.block.blocks.QuicksandBlock;
+import com.dayofpi.super_block_world.block.ModBlocks;
+import com.dayofpi.super_block_world.ModTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.ai.pathing.LandPathNodeMaker;
 import net.minecraft.entity.ai.pathing.PathNodeType;

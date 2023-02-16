@@ -1,11 +1,12 @@
 package com.dayofpi.super_block_world.client.registry;
 
-import com.dayofpi.super_block_world.client.renderers.ChinchoTorchRenderer;
-import com.dayofpi.super_block_world.client.renderers.FlagRenderer;
-import com.dayofpi.super_block_world.client.renderers.SuperPickaxRenderer;
-import com.dayofpi.super_block_world.common.items.WarpLinkItem;
-import com.dayofpi.super_block_world.registry.ModBlocks;
-import com.dayofpi.super_block_world.registry.ModItems;
+import com.dayofpi.super_block_world.block.renderers.ChinchoTorchRenderer;
+import com.dayofpi.super_block_world.block.renderers.FlagRenderer;
+import com.dayofpi.super_block_world.block.renderers.SpikeTrapRenderer;
+import com.dayofpi.super_block_world.block.renderers.SuperPickaxRenderer;
+import com.dayofpi.super_block_world.item.items.WarpLinkItem;
+import com.dayofpi.super_block_world.block.ModBlocks;
+import com.dayofpi.super_block_world.item.ModItems;
 import com.dayofpi.super_block_world.util.StampModelProvider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -53,6 +54,8 @@ public class ModelClient {
     }
 
     private static void addToAtlas() {
+        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(SpikeTrapRenderer.TEXTURE.getTextureId()));
+        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(SpikeTrapRenderer.POWERED_TEXTURE.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(SuperPickaxRenderer.TEXTURE.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(ChinchoTorchRenderer.ACTIVE.getTextureId()));
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(ChinchoTorchRenderer.INACTIVE.getTextureId()));

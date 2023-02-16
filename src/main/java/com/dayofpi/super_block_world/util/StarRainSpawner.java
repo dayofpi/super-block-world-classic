@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.util;
 
-import com.dayofpi.super_block_world.WorldInit;
-import com.dayofpi.super_block_world.common.entities.misc.StarBitEntity;
-import com.dayofpi.super_block_world.registry.ModEntities;
+import com.dayofpi.super_block_world.world.WorldInit;
+import com.dayofpi.super_block_world.entity.entities.misc.StarBitEntity;
+import com.dayofpi.super_block_world.entity.ModEntities;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;

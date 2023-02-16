@@ -69,6 +69,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:pokey",
+        "weight": 50,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:piranha_plant",
         "weight": 40,
         "minCount": 2,

@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.mixin;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.common.block_entities.WarpPipeBE;
-import com.dayofpi.super_block_world.common.blocks.WarpPipeBlock;
-import com.dayofpi.super_block_world.common.entities.boss.KingBobOmbEntity;
+import com.dayofpi.super_block_world.block.block_entities.WarpPipeBE;
+import com.dayofpi.super_block_world.block.blocks.WarpPipeBlock;
+import com.dayofpi.super_block_world.entity.entities.boss.KingBobOmbEntity;
 import com.dayofpi.super_block_world.util.PowerUp;
 import com.dayofpi.super_block_world.util.FormManager;
 import net.minecraft.block.BlockState;
@@ -39,11 +39,15 @@ import java.util.UUID;
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow @Final private PlayerAbilities abilities;
+
+    @Shadow public abstract void jump();
+
     private int pipeCooldown;
     private int powerTickTimer;
     private int flutterSoundTimer;
     private int airJumpTimer;
     private boolean canAirJump;
+    private boolean shouldFloat;
     private static final EntityAttributeModifier CAT_SPEED_BOOST = new EntityAttributeModifier(FormManager.CAT_SPEED_BOOST_ID, "Attacking speed boost", 0.04, EntityAttributeModifier.Operation.ADDITION);
 
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
@@ -146,15 +150,21 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             if (this.airJumpTimer >= 40 && !this.jumping) {
                 this.canAirJump = true;
             }
-            if (this.shouldFloat() && !this.isOnGround()) {
+            if (PowerUp.hasPowerUp(this, PowerUp.BEE)) {
+                this.shouldFloat = true;
+            }
+            else this.shouldFloat = PowerUp.hasPowerUp(this, PowerUp.TANOOKI) && this.jumping;
+            if (this.shouldFloat) {
                 this.fallDistance = 0.0F;
-                if (PowerUp.hasPowerUp(this, PowerUp.TANOOKI)) {
-                    ++this.airJumpTimer;
-                }
-                ++this.flutterSoundTimer;
-                if (this.flutterSoundTimer >= 40 && (this.jumping || this.getVelocity().y > 0)) {
-                    this.playSound(this.getFloatingSound(), 1.0F, this.getSoundPitch());
-                    this.flutterSoundTimer = 0;
+                if (!this.isOnGround()) {
+                    if (PowerUp.hasPowerUp(this, PowerUp.TANOOKI)) {
+                        ++this.airJumpTimer;
+                    }
+                    ++this.flutterSoundTimer;
+                    if (this.flutterSoundTimer >= 40 && (this.jumping || this.getVelocity().y > 0)) {
+                        this.playSound(this.getFloatingSound(), 1.0F, this.getSoundPitch());
+                        this.flutterSoundTimer = 0;
+                    }
                 }
             }
             Vec3d vec3d = this.getVelocity();
@@ -184,10 +194,11 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                 this.playSound(Sounds.ENTITY_GENERIC_TAIL_ATTACK, 0.5F, 1.0F);
                 this.canAirJump = false;
             }
-            else if (shouldFloat()) {
+            else if (this.shouldFloat) {
                 this.canAirJump = false;
-                if (!this.onGround && vec3d.y < 0.0D)
+                if (!this.onGround && vec3d.y < 0.0D) {
                     this.setVelocity(vec3d.multiply(1.0D, 0.6D, 1.0D));
+                }
             }
             if (this.shouldDecreasePowerLevel()) {
                 ++this.powerTickTimer;
@@ -233,19 +244,15 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Override
     protected void fall(double heightDifference, boolean onGround, BlockState state, BlockPos landedPosition) {
-        if (!this.shouldFloat())
+        if (!this.shouldFloat)
             super.fall(heightDifference, onGround, state, landedPosition);
     }
 
     @Inject(at=@At("HEAD"), method = "handleFallDamage", cancellable = true)
     public void handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource, CallbackInfoReturnable<Boolean> cir) {
-        if (shouldFloat()) {
+        if (shouldFloat) {
             cir.setReturnValue(false);
         }
-    }
-
-    private boolean shouldFloat() {
-        return PowerUp.hasPowerUp(this, PowerUp.BEE) || (PowerUp.hasPowerUp(this, PowerUp.TANOOKI) && this.jumping);
     }
 
     @Inject(at = @At("HEAD"), method = "applyDamage")

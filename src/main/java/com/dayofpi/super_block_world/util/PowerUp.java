@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.util;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.registry.ModItems;
+import com.dayofpi.super_block_world.item.ModItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;

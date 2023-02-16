@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin;
 
-import com.dayofpi.super_block_world.common.entities.projectile.BoomerangEntity;
-import com.dayofpi.super_block_world.common.entities.projectile.HammerEntity;
+import com.dayofpi.super_block_world.entity.entities.projectile.BoomerangEntity;
+import com.dayofpi.super_block_world.entity.entities.projectile.HammerEntity;
 import net.minecraft.block.AmethystBlock;
 import net.minecraft.block.AmethystClusterBlock;
 import net.minecraft.block.BlockState;

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin;
 
-import com.dayofpi.super_block_world.common.entities.misc.TrampolineMinecartEntity;
+import com.dayofpi.super_block_world.entity.entities.misc.TrampolineMinecartEntity;
 import com.dayofpi.super_block_world.util.EnumAddons;
 import net.minecraft.entity.vehicle.AbstractMinecartEntity;
 import net.minecraft.world.World;

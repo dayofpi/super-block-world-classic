@@ -3,6 +3,7 @@
   "values": [
     "minecraft:elder_guardian",
     "minecraft:guardian",
+    "super_block_world:pokey",
     "super_block_world:spike_top",
     "super_block_world:spiny"
   ]

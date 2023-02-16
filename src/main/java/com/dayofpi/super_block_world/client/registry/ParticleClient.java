@@ -2,9 +2,8 @@ package com.dayofpi.super_block_world.client.registry;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.particles.GooParticle;
-import com.dayofpi.super_block_world.client.particles.KingBooCurseParticle;
 import com.dayofpi.super_block_world.client.particles.LeafParticle;
-import com.dayofpi.super_block_world.registry.ModParticles;
+import com.dayofpi.super_block_world.ModParticles;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
@@ -23,7 +22,7 @@ public class ParticleClient {
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> registry.register(new Identifier(Main.MOD_ID, "particle/star_bit_0"))));
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_GOO, GooParticle.FallingGooFactory::new);
-        ParticleFactoryRegistry.getInstance().register(ModParticles.KING_BOO_CURSE, new KingBooCurseParticle.Factory());
+        ParticleFactoryRegistry.getInstance().register(ModParticles.KING_BOO_CURSE, SoulParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.LANDING_GOO, GooParticle.LandingGooFactory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.LEAF, LeafParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.MAGIC, FlameParticle.Factory::new);

@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.features;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.common.entities.passive.GladGoombaEntity;
+import com.dayofpi.super_block_world.entity.entities.passive.GladGoombaEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;

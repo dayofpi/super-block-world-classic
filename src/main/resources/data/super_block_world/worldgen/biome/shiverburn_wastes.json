@@ -44,6 +44,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:snow_pokey",
+        "weight": 30,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:fire_bro",
         "weight": 30,
         "minCount": 2,

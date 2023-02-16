@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.client.registry;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.registry.ModFluids;
+import com.dayofpi.super_block_world.world.ModFluids;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;

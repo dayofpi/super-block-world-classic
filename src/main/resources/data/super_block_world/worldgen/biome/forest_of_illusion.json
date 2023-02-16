@@ -39,6 +39,12 @@
         "maxCount": 2
       },
       {
+        "type": "super_block_world:magikoopa",
+        "weight": 20,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:boo",
         "weight": 20,
         "minCount": 2,

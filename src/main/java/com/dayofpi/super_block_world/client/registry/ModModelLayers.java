@@ -1,10 +1,11 @@
 package com.dayofpi.super_block_world.client.registry;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.models.*;
-import com.dayofpi.super_block_world.client.renderers.ChinchoTorchRenderer;
-import com.dayofpi.super_block_world.client.renderers.FlagRenderer;
-import com.dayofpi.super_block_world.client.renderers.SuperPickaxRenderer;
+import com.dayofpi.super_block_world.block.renderers.SpikeTrapRenderer;
+import com.dayofpi.super_block_world.entity.models.*;
+import com.dayofpi.super_block_world.block.renderers.ChinchoTorchRenderer;
+import com.dayofpi.super_block_world.block.renderers.FlagRenderer;
+import com.dayofpi.super_block_world.block.renderers.SuperPickaxRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.IllagerEntityModel;
@@ -67,13 +68,22 @@ public class ModModelLayers {
     public static final EntityModelLayer SPINY = createMain("spiny");
     public static final EntityModelLayer STINGBY = createMain("stingby");
     public static final EntityModelLayer SUPER_PICKAX = createMain("super_pickax");
+    public static final EntityModelLayer SPIKE_TRAP = createMain("spike_trap");
     public static final EntityModelLayer THWOMP = createMain("thwomp");
     public static final EntityModelLayer TOAD = createMain("toad");
     public static final EntityModelLayer TRAMPOLINE_MINECART = createMain("trampoline_minecart");
     public static final EntityModelLayer UNAGI = createMain("unagi");
     public static final EntityModelLayer YOSHI = createMain("yoshi");
+    public static final EntityModelLayer POKEY = createMain("pokey");
+    public static final EntityModelLayer SNOW_POKEY = createMain("snow_pokey");
+    public static final EntityModelLayer POKEY_SEGMENT = createMain("pokey_segment");
+    public static final EntityModelLayer MAGIKOOPA = createMain("magikoopa");
 
     public static void register() {
+        EntityModelLayerRegistry.registerModelLayer(POKEY, PokeyModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(SNOW_POKEY, SnowPokeyModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(POKEY_SEGMENT, PokeySegmentModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(MAGIKOOPA, MagikoopaModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(BABY_YOSHI, BabyYoshiModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(BLOCKSTEPPER, BlockstepperModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(BLOOPER, BlooperModel::getTexturedModelData);
@@ -121,6 +131,7 @@ public class ModModelLayers {
         EntityModelLayerRegistry.registerModelLayer(SPINY, SpinyModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(STINGBY, StingbyModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(SUPER_PICKAX, SuperPickaxRenderer::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(SPIKE_TRAP, SpikeTrapRenderer::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(THWOMP, ThwompModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(TOAD, ToadModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(TRAMPOLINE_MINECART, MinecartEntityModel::getTexturedModelData);

@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.mixin;
 
-import com.dayofpi.super_block_world.registry.ModItems;
+import com.dayofpi.super_block_world.item.ModItems;
 import com.dayofpi.super_block_world.util.EnumAddons;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;

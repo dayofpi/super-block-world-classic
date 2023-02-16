@@ -1,6 +1,6 @@
 package com.dayofpi.super_block_world.audio;
 
-import com.dayofpi.super_block_world.common.entities.misc.GoKartEntity;
+import com.dayofpi.super_block_world.entity.entities.misc.GoKartEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.sound.MovingSoundInstance;

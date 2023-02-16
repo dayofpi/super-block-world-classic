@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.mixin;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.registry.ModBlocks;
-import com.dayofpi.super_block_world.registry.ModTags;
+import com.dayofpi.super_block_world.block.ModBlocks;
+import com.dayofpi.super_block_world.ModTags;
 import com.dayofpi.super_block_world.util.EnumAddons;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.Instrument;

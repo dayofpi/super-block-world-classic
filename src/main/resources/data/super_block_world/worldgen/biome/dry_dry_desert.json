@@ -75,6 +75,12 @@
         "maxCount": 4
       },
       {
+        "type": "super_block_world:pokey",
+        "weight": 80,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
         "type": "super_block_world:dry_bones",
         "weight": 70,
         "minCount": 3,

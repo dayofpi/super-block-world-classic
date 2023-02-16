@@ -1,13 +1,14 @@
 package com.dayofpi.super_block_world.util;
 
-import com.dayofpi.super_block_world.registry.ModBlocks;
+import com.dayofpi.super_block_world.block.ModBlocks;
 import net.kyrptonaught.customportalapi.portal.frame.FlatPortalAreaHelper;
+import net.kyrptonaught.customportalapi.portal.frame.VanillaPortalAreaHelper;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-public class ModFrameTester extends FlatPortalAreaHelper {
+public class ModFrameTester extends VanillaPortalAreaHelper {
     public ModFrameTester() {
     }
 

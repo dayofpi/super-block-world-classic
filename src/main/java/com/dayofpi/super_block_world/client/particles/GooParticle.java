@@ -3,7 +3,7 @@
  */
 package com.dayofpi.super_block_world.client.particles;
 
-import com.dayofpi.super_block_world.registry.ModParticles;
+import com.dayofpi.super_block_world.ModParticles;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
