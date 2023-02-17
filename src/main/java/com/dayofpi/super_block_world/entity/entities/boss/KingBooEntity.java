@@ -3,12 +3,15 @@ package com.dayofpi.super_block_world.entity.entities.boss;
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.entity.brains.KingBooBrain;
 import com.dayofpi.super_block_world.item.ModItems;
+import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
@@ -28,6 +31,7 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.GameStateChangeS2CPacket;
+import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.MusicSound;
@@ -59,6 +63,25 @@ public class KingBooEntity extends ModBossEntity {
         this.bossBar.setDarkenSky(true);
         this.bossBar.setThickenFog(true);
         this.experiencePoints = 35;
+    }
+
+    protected Brain.Profile<KingBooEntity> createBrainProfile() {
+        return KingBooBrain.createProfile();
+    }
+
+    @Override
+    protected Brain<?> deserializeBrain(Dynamic<?> dynamic) {
+        return KingBooBrain.create(this.createBrainProfile().deserialize(dynamic));
+    }
+
+    public Brain<KingBooEntity> getBrain() {
+        return (Brain<KingBooEntity>) super.getBrain();
+    }
+
+    @Override
+    protected void sendAiDebugData() {
+        super.sendAiDebugData();
+        DebugInfoSender.sendBrainDebugData(this);
     }
 
     public static DefaultAttributeContainer.Builder createKingBooAttributes() {
@@ -107,6 +130,12 @@ public class KingBooEntity extends ModBossEntity {
             List<ServerPlayerEntity> list = StatusEffectUtil.addEffectToPlayersWithinDistance((ServerWorld)this.world, this, this.getPos(), 50.0, statusEffectInstance, 1200);
             list.forEach(serverPlayerEntity -> serverPlayerEntity.networkHandler.sendPacket(new GameStateChangeS2CPacket(Main.KING_BOO_CURSE, this.isSilent() ? GameStateChangeS2CPacket.DEMO_OPEN_SCREEN : (int)1.0f)));
         }
+        this.world.getProfiler().push("kingBooBrain");
+        this.getBrain().tick((ServerWorld)this.world, this);
+        this.world.getProfiler().pop();
+        this.world.getProfiler().push("kingBooActivityUpdate");
+        KingBooBrain.updateActivities(this);
+        this.world.getProfiler().pop();
         super.mobTick();
     }
 

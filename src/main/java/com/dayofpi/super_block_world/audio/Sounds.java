@@ -269,7 +269,7 @@ public class Sounds {
     public static final RegistryEntry.Reference<SoundEvent> NOTE_BLOCK_PAN_FLUTE = registerReference("block.note_block.pan_flute");
 
     private static RegistryEntry.Reference<SoundEvent> registerReference(String id) {
-        return Sounds.registerReference(new Identifier(id));
+        return Sounds.registerReference(new Identifier(Main.MOD_ID, id));
     }
 
     private static RegistryEntry.Reference<SoundEvent> registerReference(Identifier id) {

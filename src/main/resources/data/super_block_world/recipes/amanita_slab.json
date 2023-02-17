@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building_blocks",
   "group": "wooden_slab",
   "key": {
     "#": {

@@ -35,7 +35,6 @@ public abstract class AbstractBro extends HostileEntity implements RangedAttackM
         this.goalSelector.add(2, new BroAttackGoal(this, 1.0F, 20, 40, 10.0F));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8D));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(5, new LookAtEntityGoal(this, HostileEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.targetSelector.add(1, new RevengeGoal(this ));
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));

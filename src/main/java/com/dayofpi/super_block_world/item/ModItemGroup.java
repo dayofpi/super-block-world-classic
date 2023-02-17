@@ -128,41 +128,6 @@ public class ModItemGroup {
         entries.add(ModBlocks.TOADSTOOL_SOIL);
         entries.add(ModBlocks.COARSE_TOADSTOOL_SOIL);
         entries.add(ModBlocks.TOADSTOOL_PATH);
-
-        entries.add(ModBlocks.CHOCOLATE_GROUND);
-        entries.add(ModBlocks.SMOOTH_CHOCOLATE_GROUND);
-        entries.add(ModBlocks.DARK_CHOCOLATE_GROUND);
-
-        entries.add(ModBlocks.SNOWY_SHERBET_SOIL);
-        entries.add(ModBlocks.SHERBET_SOIL);
-        entries.add(ModBlocks.SHERBET_BRICKS);
-        entries.add(ModBlocks.SHERBET_BRICK_STAIRS);
-        entries.add(ModBlocks.SHERBET_BRICK_SLAB);
-
-        entries.add(ModBlocks.CHERRY_GRASS);
-        entries.add(ModBlocks.CHERRY_SOIL);
-
-        entries.add(ModBlocks.SHOREGRASS);
-        entries.add(ModBlocks.SHORESAND);
-
-        entries.add(ModBlocks.GRITZY_SAND);
-        entries.add(ModBlocks.QUICKSAND);
-        entries.add(ModBlocks.GRITZY_SANDSTONE);
-        entries.add(ModBlocks.GRITZY_SANDSTONE_STAIRS);
-        entries.add(ModBlocks.GRITZY_SANDSTONE_SLAB);
-        entries.add(ModBlocks.GRITZY_SANDSTONE_WALL);
-        entries.add(ModBlocks.GRITZY_SANDSTONE_WALL);
-        entries.add(ModBlocks.CHISELED_GRITZY_SANDSTONE);
-        entries.add(ModBlocks.SMOOTH_GRITZY_SANDSTONE);
-        entries.add(ModBlocks.CUT_GRITZY_SANDSTONE);
-
-        entries.add(ModBlocks.SHROOMSTONE);
-        entries.add(ModBlocks.COBBLED_SHROOMSTONE);
-        entries.add(ModBlocks.EXPOSED_SHROOMSTONE);
-
-        entries.add(ModBlocks.CHARROCK);
-        entries.add(ModBlocks.BLAZING_CHARROCK);
-
         entries.add(ModBlocks.TOADSTONE);
         entries.add(ModBlocks.GRASSY_TOADSTONE);
         entries.add(ModBlocks.SMOOTH_TOADSTONE);
@@ -181,6 +146,63 @@ public class ModItemGroup {
         entries.add(ModBlocks.CRYSTAL_BRICK_STAIRS);
         entries.add(ModBlocks.CRYSTAL_BRICK_SLAB);
         entries.add(ModBlocks.CRYSTAL_BRICK_WALL);
+
+        entries.add(ModBlocks.SNOWY_SHERBET_SOIL);
+        entries.add(ModBlocks.SHERBET_SOIL);
+        entries.add(ModBlocks.SHERBET_BRICKS);
+        entries.add(ModBlocks.SHERBET_BRICK_STAIRS);
+        entries.add(ModBlocks.SHERBET_BRICK_SLAB);
+
+        entries.add(ModBlocks.CHERRY_GRASS);
+        entries.add(ModBlocks.CHERRY_SOIL);
+
+        entries.add(ModBlocks.SHOREGRASS);
+        entries.add(ModBlocks.SHORESAND);
+
+        entries.add(ModBlocks.GRITZY_SAND);
+        entries.add(ModBlocks.GRITZY_SANDSTONE);
+        entries.add(ModBlocks.GRITZY_SANDSTONE_STAIRS);
+        entries.add(ModBlocks.GRITZY_SANDSTONE_SLAB);
+        entries.add(ModBlocks.GRITZY_SANDSTONE_WALL);
+        entries.add(ModBlocks.GRITZY_SANDSTONE_WALL);
+        entries.add(ModBlocks.CHISELED_GRITZY_SANDSTONE);
+        entries.add(ModBlocks.SMOOTH_GRITZY_SANDSTONE);
+        entries.add(ModBlocks.CUT_GRITZY_SANDSTONE);
+        entries.add(ModBlocks.QUICKSAND);
+
+        entries.add(ModBlocks.CHOCOLATE_GROUND);
+        entries.add(ModBlocks.SMOOTH_CHOCOLATE_GROUND);
+        entries.add(ModBlocks.DARK_CHOCOLATE_GROUND);
+
+        entries.add(ModBlocks.SHROOMSTONE);
+        entries.add(ModBlocks.COBBLED_SHROOMSTONE);
+        entries.add(ModBlocks.EXPOSED_SHROOMSTONE);
+
+        entries.add(ModBlocks.CHARROCK);
+        entries.add(ModBlocks.BLAZING_CHARROCK);
+
+        entries.add(ModBlocks.VANILLATE);
+        entries.add(ModBlocks.VANILLATE_CRUMBLE);
+        entries.add(ModBlocks.TOPPED_VANILLATE);
+        entries.add(ModBlocks.COAL_TOPPED_VANILLATE);
+        entries.add(ModBlocks.IRON_TOPPED_VANILLATE);
+        entries.add(ModBlocks.GOLD_TOPPED_VANILLATE);
+        entries.add(ModBlocks.AMETHYST_TOPPED_VANILLATE);
+        entries.add(ModBlocks.VANILLATE_BRICKS);
+        entries.add(ModBlocks.CRACKED_VANILLATE_BRICKS);
+        entries.add(ModBlocks.VANILLATE_BRICK_STAIRS);
+        entries.add(ModBlocks.VANILLATE_BRICK_SLAB);
+        entries.add(ModBlocks.VANILLATE_BRICK_WALL);
+        entries.add(ModBlocks.VANILLATE_TILES);
+
+        entries.add(ModBlocks.FROSTY_VANILLATE);
+        entries.add(ModBlocks.FROSTY_VANILLATE_CRUMBLE);
+        entries.add(ModBlocks.FROSTED_VANILLATE);
+        entries.add(ModBlocks.FROSTY_VANILLATE_BRICKS);
+        entries.add(ModBlocks.FROSTY_VANILLATE_BRICK_STAIRS);
+        entries.add(ModBlocks.FROSTY_VANILLATE_BRICK_SLAB);
+        entries.add(ModBlocks.FROSTY_VANILLATE_BRICK_WALL);
+        entries.add(ModBlocks.FROSTY_VANILLATE_TILES);
 
         entries.add(ModBlocks.GLOOMSTONE);
         entries.add(ModBlocks.SMOOTH_GLOOMSTONE);
@@ -227,29 +249,6 @@ public class ModItemGroup {
         entries.add(ModBlocks.CERISE_TILE_STAIRS);
         entries.add(ModBlocks.CERISE_TILE_SLAB);
         entries.add(ModBlocks.CERISE_TILE_WALL);
-
-        entries.add(ModBlocks.VANILLATE);
-        entries.add(ModBlocks.VANILLATE_CRUMBLE);
-        entries.add(ModBlocks.TOPPED_VANILLATE);
-        entries.add(ModBlocks.COAL_TOPPED_VANILLATE);
-        entries.add(ModBlocks.IRON_TOPPED_VANILLATE);
-        entries.add(ModBlocks.GOLD_TOPPED_VANILLATE);
-        entries.add(ModBlocks.AMETHYST_TOPPED_VANILLATE);
-        entries.add(ModBlocks.VANILLATE_BRICKS);
-        entries.add(ModBlocks.CRACKED_VANILLATE_BRICKS);
-        entries.add(ModBlocks.VANILLATE_BRICK_STAIRS);
-        entries.add(ModBlocks.VANILLATE_BRICK_SLAB);
-        entries.add(ModBlocks.VANILLATE_BRICK_WALL);
-        entries.add(ModBlocks.VANILLATE_TILES);
-
-        entries.add(ModBlocks.FROSTY_VANILLATE);
-        entries.add(ModBlocks.FROSTY_VANILLATE_CRUMBLE);
-        entries.add(ModBlocks.FROSTED_VANILLATE);
-        entries.add(ModBlocks.FROSTY_VANILLATE_BRICKS);
-        entries.add(ModBlocks.FROSTY_VANILLATE_BRICK_STAIRS);
-        entries.add(ModBlocks.FROSTY_VANILLATE_BRICK_SLAB);
-        entries.add(ModBlocks.FROSTY_VANILLATE_BRICK_WALL);
-        entries.add(ModBlocks.FROSTY_VANILLATE_TILES);
 
         entries.add(ModBlocks.BRONZE_ORE);
         entries.add(ModBlocks.RAW_BRONZE_BLOCK);
@@ -397,6 +396,17 @@ public class ModItemGroup {
         entries.add(ModBlocks.DARK_AMANITA_SAPLING);
         entries.add(ModBlocks.BELL_SAPLING);
 
+        entries.add(ModItems.PLUMBER_CAP);
+        entries.add(ModItems.PRINCESS_CROWN);
+        entries.add(ModItems.GREEN_SHELL);
+        entries.add(ModItems.RED_SHELL);
+        entries.add(ModItems.BLUE_SHELL);
+        entries.add(ModItems.GOLD_SHELL);
+        entries.add(ModItems.BUZZY_SHELL);
+        entries.add(ModItems.SHY_GUY_MASK);
+        entries.add(ModItems.JUMP_BOOTS);
+        entries.add(ModItems.CLOUD_BOOTS);
+
         entries.add(ModItems.RAW_BRONZE);
         entries.add(ModItems.BRONZE_INGOT);
         entries.add(ModItems.CERISE);
@@ -430,16 +440,19 @@ public class ModItemGroup {
         entries.add(ModItems.ONE_UP);
         entries.add(ModItems.POISON_MUSHROOM);
         entries.add(ModItems.LIFE_MUSHROOM);
+
+        entries.add(ModItems.BEE_MUSHROOM);
+        entries.add(ModItems.SUPER_LEAF);
+        entries.add(ModItems.SUPER_BELL);
+        entries.add(ModItems.SUPER_STAR);
+
         entries.add(ModItems.FIRE_FLOWER);
         entries.add(ModItems.ICE_FLOWER);
         entries.add(ModItems.BOOMERANG_FLOWER);
         entries.add(ModItems.GOLD_FLOWER);
         entries.add(ModItems.MAGIC_WAND);
         entries.add(ModItems.MAGIC_PAINTBRUSH);
-        entries.add(ModItems.BEE_MUSHROOM);
-        entries.add(ModItems.SUPER_LEAF);
-        entries.add(ModItems.SUPER_BELL);
-        entries.add(ModItems.SUPER_STAR);
+
         entries.add(ModItems.HAMMER);
         entries.add(ModItems.TURNIP);
         entries.add(ModItems.BOMB);
@@ -482,16 +495,6 @@ public class ModItemGroup {
         entries.add(ModItems.PRINCESS_STAMP);
         entries.add(ModItems.SMILEY_STAMP);
         entries.add(ModItems.ZOMBIE_STAMP);
-        entries.add(ModItems.PLUMBER_CAP);
-        entries.add(ModItems.PRINCESS_CROWN);
-        entries.add(ModItems.GREEN_SHELL);
-        entries.add(ModItems.RED_SHELL);
-        entries.add(ModItems.BLUE_SHELL);
-        entries.add(ModItems.GOLD_SHELL);
-        entries.add(ModItems.BUZZY_SHELL);
-        entries.add(ModItems.SHY_GUY_MASK);
-        entries.add(ModItems.JUMP_BOOTS);
-        entries.add(ModItems.CLOUD_BOOTS);
 
         entries.add(SpawnEggItem.forEntity(ModEntities.PETEY_PIRANHA));
         entries.add(SpawnEggItem.forEntity(ModEntities.KING_BOB_OMB));

@@ -2,10 +2,13 @@ package com.dayofpi.super_block_world.entity.entities.boss;
 
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.entity.brains.KingBobOmbBrain;
 import com.dayofpi.super_block_world.item.ModItems;
+import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -19,6 +22,7 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.sound.SoundEvent;
@@ -39,6 +43,29 @@ public class KingBobOmbEntity extends ModBossEntity {
         this.bossBar = new ServerBossBar(this.getDisplayName(), BossBar.Color.YELLOW, BossBar.Style.PROGRESS);
         this.stepHeight = 1.0F;
         this.experiencePoints = 25;
+    }
+
+    protected Brain.Profile<KingBobOmbEntity> createBrainProfile() {
+        return KingBobOmbBrain.createProfile();
+    }
+
+    private boolean isCarryingEntity() {
+        return this.getCarriedEntity() != null;
+    }
+
+    @Override
+    protected Brain<?> deserializeBrain(Dynamic<?> dynamic) {
+        return KingBobOmbBrain.create(this.createBrainProfile().deserialize(dynamic));
+    }
+
+    public Brain<KingBobOmbEntity> getBrain() {
+        return (Brain<KingBobOmbEntity>) super.getBrain();
+    }
+
+    @Override
+    protected void sendAiDebugData() {
+        super.sendAiDebugData();
+        DebugInfoSender.sendBrainDebugData(this);
     }
 
     @Override
@@ -84,6 +111,12 @@ public class KingBobOmbEntity extends ModBossEntity {
         } else {
             this.setCarriedEntity(null);
         }
+        this.world.getProfiler().push("kingBobOmbBrain");
+        this.getBrain().tick((ServerWorld)this.world, this);
+        this.world.getProfiler().pop();
+        this.world.getProfiler().push("kingBobOmbActivityUpdate");
+        KingBobOmbBrain.updateActivities(this);
+        this.world.getProfiler().pop();
         super.mobTick();
     }
 

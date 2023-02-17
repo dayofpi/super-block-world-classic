@@ -1,0 +1,22 @@
+{
+  "sources": [
+    {
+      "type": "directory",
+      "source": "entity/dreamplush",
+      "prefix": "entity/dreamplush/"
+    },
+    {
+      "type": "directory",
+      "source": "entity/flag",
+      "prefix": "entity/flag/"
+    },
+    {
+      "type": "single",
+      "resource": "super_block_world:entity/spike_trap"
+    },
+    {
+      "type": "single",
+      "resource": "super_block_world:entity/spike_trap_on"
+    }
+  ]
+}

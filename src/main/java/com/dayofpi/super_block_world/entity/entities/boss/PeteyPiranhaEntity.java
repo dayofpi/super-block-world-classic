@@ -2,12 +2,16 @@ package com.dayofpi.super_block_world.entity.entities.boss;
 
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.entity.brains.KingBooBrain;
+import com.dayofpi.super_block_world.entity.brains.PeteyPiranhaBrain;
 import com.dayofpi.super_block_world.item.ModItems;
+import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
@@ -19,6 +23,8 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.network.DebugInfoSender;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
@@ -37,6 +43,25 @@ public class PeteyPiranhaEntity extends ModBossEntity {
         super(entityType, world);
         this.bossBar = new ServerBossBar(this.getDisplayName(), BossBar.Color.YELLOW, BossBar.Style.PROGRESS);
         this.experiencePoints = 25;
+    }
+
+    protected Brain.Profile<PeteyPiranhaEntity> createBrainProfile() {
+        return PeteyPiranhaBrain.createProfile();
+    }
+
+    @Override
+    protected Brain<?> deserializeBrain(Dynamic<?> dynamic) {
+        return PeteyPiranhaBrain.create(this.createBrainProfile().deserialize(dynamic));
+    }
+
+    public Brain<PeteyPiranhaEntity> getBrain() {
+        return (Brain<PeteyPiranhaEntity>) super.getBrain();
+    }
+
+    @Override
+    protected void sendAiDebugData() {
+        super.sendAiDebugData();
+        DebugInfoSender.sendBrainDebugData(this);
     }
 
     @Override
@@ -107,6 +132,12 @@ public class PeteyPiranhaEntity extends ModBossEntity {
     @Override
     protected void mobTick() {
         this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
+        this.world.getProfiler().push("peteyPiranhaBrain");
+        this.getBrain().tick((ServerWorld)this.world, this);
+        this.world.getProfiler().pop();
+        this.world.getProfiler().push("peteyPiranhaActivityUpdate");
+        PeteyPiranhaBrain.updateActivities(this);
+        this.world.getProfiler().pop();
         super.mobTick();
     }
 
