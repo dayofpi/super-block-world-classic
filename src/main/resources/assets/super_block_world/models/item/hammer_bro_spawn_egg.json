@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "super_block_world:spawn_egg/hammer_bro"
+    "layer0": "super_block_world:item/hammer_bro_spawn_egg"
   }
 }

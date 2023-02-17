@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.entity.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.entity.entities.goals.CoinTemptGoal;
+import com.dayofpi.super_block_world.entity.goals.CoinTemptGoal;
 import com.dayofpi.super_block_world.entity.entities.passive.BabyYoshiEntity;
 import com.dayofpi.super_block_world.entity.entities.passive.YoshiEntity;
 import com.dayofpi.super_block_world.criterion.ModCriteria;

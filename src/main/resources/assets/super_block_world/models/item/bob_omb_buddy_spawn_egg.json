@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "super_block_world:spawn_egg/bob_omb_buddy"
+    "layer0": "super_block_world:item/bob_omb_buddy_spawn_egg"
   }
 }

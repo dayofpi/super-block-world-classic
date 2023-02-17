@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.mixin;
 
 import com.dayofpi.super_block_world.util.PowerUp;
-import com.dayofpi.super_block_world.entity.entities.goals.FollowPowerGoal;
+import com.dayofpi.super_block_world.entity.goals.FollowPowerGoal;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.CatEntity;

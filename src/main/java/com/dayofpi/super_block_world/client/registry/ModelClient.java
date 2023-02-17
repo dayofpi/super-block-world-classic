@@ -1,19 +1,14 @@
 package com.dayofpi.super_block_world.client.registry;
 
-import com.dayofpi.super_block_world.block.renderers.ChinchoTorchRenderer;
-import com.dayofpi.super_block_world.block.renderers.FlagRenderer;
-import com.dayofpi.super_block_world.block.renderers.SpikeTrapRenderer;
-import com.dayofpi.super_block_world.block.renderers.SuperPickaxRenderer;
-import com.dayofpi.super_block_world.item.items.WarpLinkItem;
 import com.dayofpi.super_block_world.block.ModBlocks;
 import com.dayofpi.super_block_world.item.ModItems;
+import com.dayofpi.super_block_world.item.items.WarpLinkItem;
 import com.dayofpi.super_block_world.util.StampModelProvider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.fabricmc.fabric.impl.client.rendering.ColorProviderRegistryImpl;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
@@ -24,8 +19,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.chunk.ChunkRendererRegion;
-import net.minecraft.client.texture.SpriteAtlasTexture;
-import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.item.DyeableItem;
 import net.minecraft.util.Identifier;
 
@@ -53,25 +46,8 @@ public class ModelClient {
         }, ModBlocks.WARP_PORTAL);
     }
 
-    private static void addToAtlas() {
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(SpikeTrapRenderer.TEXTURE.getTextureId()));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(SpikeTrapRenderer.POWERED_TEXTURE.getTextureId()));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(SuperPickaxRenderer.TEXTURE.getTextureId()));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(ChinchoTorchRenderer.ACTIVE.getTextureId()));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(ChinchoTorchRenderer.INACTIVE.getTextureId()));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.POLE_TEXTURE.getTextureId()));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.RAINBOW_FLAG.getTextureId()));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.TRANS_FLAG.getTextureId()));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.BI_FLAG.getTextureId()));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FlagRenderer.LESBIAN_FLAG.getTextureId()));
-        for (SpriteIdentifier spriteIdentifier : FlagRenderer.COLOR_TEXTURES) {
-            ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(spriteIdentifier.getTextureId()));
-        }
-    }
-
     public static void renderBlocksAndItems() {
         renderColors();
-        addToAtlas();
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new StampModelProvider());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPIKE_TRAP, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DOTTED_LINE_BLOCK, RenderLayer.getCutout());

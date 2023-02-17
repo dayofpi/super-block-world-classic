@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.util;
 
-import com.dayofpi.super_block_world.world.ConfiguredFeatures;
+import com.dayofpi.super_block_world.world.ModConfiguredFeatures;
 import net.minecraft.block.sapling.LargeTreeSaplingGenerator;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,13 +13,13 @@ public class AmanitaGenerator extends LargeTreeSaplingGenerator {
 
     @Nullable
     @Override
-    protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getLargeTreeFeature(Random random) {
-        return RegistryEntry.of(ConfiguredFeatures.AMANITA_LARGE);
+    protected RegistryKey<ConfiguredFeature<?, ?>> getLargeTreeFeature(Random random) {
+        return ModConfiguredFeatures.AMANITA_LARGE;
     }
 
     @Nullable
     @Override
-    protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-        return RegistryEntry.of(ConfiguredFeatures.AMANITA);
+    protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
+        return ModConfiguredFeatures.AMANITA;
     }
 }

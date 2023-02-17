@@ -64,7 +64,7 @@ public class PSwitchBlock extends AbstractPressurePlateBlock {
             world.emitGameEvent(entity, GameEvent.BLOCK_ACTIVATE, pos);
         }
         if (bl2) {
-            world.createAndScheduleBlockTick(new BlockPos(pos), this, this.getTickRate(state));
+            world.scheduleBlockTick(new BlockPos(pos), this, this.getTickRate(state));
         }
     }
 

@@ -15,7 +15,7 @@ import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 
 @SuppressWarnings("deprecation")
 @Environment(EnvType.CLIENT)
@@ -66,7 +66,7 @@ public class ChinchoTorchRenderer implements BlockEntityRenderer<ChinchoTorchBE>
 
             matrices.translate(0.0, 1.5, 0.0);
             if (entity.getWorld() != null)
-                matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(entity.getWorld().getTime()));
+                matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.getWorld().getTime()));
             this.orb.render(matrices, consumer, light, overlay);
             matrices.pop();
         } else {

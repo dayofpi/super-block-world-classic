@@ -4,11 +4,11 @@
 package com.dayofpi.super_block_world.entity.entities.misc;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.block.blocks.FlagBlock;
-import com.dayofpi.super_block_world.item.items.GoKartItem;
 import com.dayofpi.super_block_world.block.ModBlocks;
+import com.dayofpi.super_block_world.block.blocks.FlagBlock;
 import com.dayofpi.super_block_world.entity.ModEntities;
 import com.dayofpi.super_block_world.item.ModItems;
+import com.dayofpi.super_block_world.item.items.GoKartItem;
 import com.google.common.collect.Lists;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LilyPadBlock;
@@ -28,11 +28,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.network.Packet;
+import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.predicate.entity.EntityPredicates;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.tag.FluidTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
@@ -44,7 +45,6 @@ import net.minecraft.world.BlockLocating;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
-import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -635,7 +635,7 @@ public class GoKartEntity extends Entity {
 
     private void breakKart() {
         this.kill();
-        this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), 1.6F, Explosion.DestructionType.NONE);
+        this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), 1.6F, World.ExplosionSourceType.NONE);
         if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
             int i;
             for (i = 0; i < 3; ++i) {
@@ -711,7 +711,7 @@ public class GoKartEntity extends Entity {
     }
 
     @Override
-    public Packet<?> createSpawnPacket() {
+    public Packet<ClientPlayPacketListener> createSpawnPacket() {
         return new EntitySpawnS2CPacket(this);
     }
 

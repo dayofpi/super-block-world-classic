@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "super_block_world:spawn_egg/putrid_piranha"
+    "layer0": "super_block_world:item/putrid_piranha_spawn_egg"
   }
 }

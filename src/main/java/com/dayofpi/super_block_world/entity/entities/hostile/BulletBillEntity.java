@@ -135,7 +135,7 @@ public class BulletBillEntity extends HostileEntity {
             serverWorld.spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 0, 0.0D, 0.0D, 0.0D, 0.0D);
         List<Entity> livingEntities = world.getOtherEntities(this, this.getBoundingBox().expand(0.2), EntityPredicates.VALID_LIVING_ENTITY);
         for (Entity entity : livingEntities) {
-            entity.damage(DamageSource.explosion(this), 4.0F);
+            entity.damage(DamageSource.explosion(null), 4.0F);
         }
         if (world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
             for (BlockPos blockPos : BlockPos.iterateOutwards(this.getBlockPos(), 1, 1, 1)) {

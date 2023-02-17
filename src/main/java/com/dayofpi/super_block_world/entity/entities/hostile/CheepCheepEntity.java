@@ -1,18 +1,13 @@
 package com.dayofpi.super_block_world.entity.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.entity.entities.brains.CheepCheepBrain;
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
+import com.dayofpi.super_block_world.entity.goals.CheepCheepJumpGoal;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.brain.Brain;
-import net.minecraft.entity.ai.brain.MemoryModuleType;
-import net.minecraft.entity.ai.brain.sensor.Sensor;
-import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.control.YawAdjustingLookControl;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.SwimNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -25,14 +20,12 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.network.DebugInfoSender;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -41,8 +34,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class CheepCheepEntity extends WaterCreatureEntity {
     private static final TrackedData<Boolean> SNOWY;
-    private static final ImmutableList<? extends SensorType<? extends Sensor<? super CheepCheepEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_PLAYERS, SensorType.IS_IN_WATER);
-    private static final ImmutableList<? extends MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER, MemoryModuleType.LOOK_TARGET, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.ATTACK_TARGET, MemoryModuleType.ATTACK_COOLING_DOWN);
 
     static {
         SNOWY = DataTracker.registerData(CheepCheepEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -52,6 +43,16 @@ public class CheepCheepEntity extends WaterCreatureEntity {
         super(entityType, world);
         this.moveControl = new AquaticMoveControl(this, 85, 10, 0.02f, 0.1f, true);
         this.lookControl = new YawAdjustingLookControl(this, 10);
+    }
+
+    @Override
+    protected void initGoals() {
+        this.goalSelector.add(0, new MoveIntoWaterGoal(this));
+        this.goalSelector.add(4, new SwimAroundGoal(this, 1.0, 10));
+        this.goalSelector.add(4, new LookAroundGoal(this));
+        this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0f));
+        this.goalSelector.add(5, new CheepCheepJumpGoal(this, 10));
+        this.goalSelector.add(8, new ChaseBoatGoal(this));
     }
 
     @SuppressWarnings("unused")
@@ -72,23 +73,6 @@ public class CheepCheepEntity extends WaterCreatureEntity {
     public boolean canBeLeashedBy(PlayerEntity player) {
         return !this.isLeashed();
     }
-
-    @Override
-    protected Brain.Profile<CheepCheepEntity> createBrainProfile() {
-        return Brain.createProfile(MEMORY_MODULES, SENSORS);
-    }
-
-    @Override
-    protected Brain<?> deserializeBrain(Dynamic<?> dynamic) {
-        return CheepCheepBrain.create(this.createBrainProfile().deserialize(dynamic));
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public Brain<CheepCheepEntity> getBrain() {
-        return (Brain<CheepCheepEntity>) super.getBrain();
-    }
-
 
     @Nullable
     @Override
@@ -133,12 +117,6 @@ public class CheepCheepEntity extends WaterCreatureEntity {
         return new SwimNavigation(this, world);
     }
 
-    @Override
-    protected void sendAiDebugData() {
-        super.sendAiDebugData();
-        DebugInfoSender.sendBrainDebugData(this);
-    }
-
     public void travel(Vec3d movementInput) {
         if (this.canMoveVoluntarily() && this.isTouchingWater()) {
             this.updateVelocity(0.01F, movementInput);
@@ -162,17 +140,6 @@ public class CheepCheepEntity extends WaterCreatureEntity {
         this.velocityDirty = true;
         this.playSound(Sounds.ENTITY_CHEEP_CHEEP_FLOP, this.getSoundVolume(), this.getSoundPitch() * 0.8F);
 
-    }
-
-    @Override
-    protected void mobTick() {
-        this.world.getProfiler().push("cheepCheepBrain");
-        this.getBrain().tick((ServerWorld) this.world, this);
-        this.world.getProfiler().pop();
-        this.world.getProfiler().push("cheepCheepActivityUpdate");
-        CheepCheepBrain.updateActivities(this);
-        this.world.getProfiler().pop();
-        super.mobTick();
     }
 
     public void tickMovement() {

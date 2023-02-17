@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.entity.entities.hostile;
 
+import com.dayofpi.super_block_world.ModTags;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.entity.entities.passive.YoshiEntity;
-import com.dayofpi.super_block_world.ModTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.JukeboxBlock;
@@ -17,8 +17,8 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LightType;

@@ -12,7 +12,7 @@ import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 
 @Environment(EnvType.CLIENT)
 public class ShyGuyItemRenderer <T extends ShyGuyEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
@@ -39,8 +39,8 @@ public class ShyGuyItemRenderer <T extends ShyGuyEntity, M extends EntityModel<T
             return;
         }
         matrices.push();
-        matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(180.0f));
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f));
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180.0f));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f));
         matrices.scale(0.7F, 0.7F, 0.7F);
         matrices.translate((float) 1 / 16.0f, -2.4f, -0.05);
         this.heldItemRenderer.renderItem(entity, stack, ModelTransformation.Mode.HEAD, false, matrices, vertexConsumers, light);

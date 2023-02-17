@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.mixin;
 
-import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.entity.entities.misc.DryBonesShellEntity;
-import com.dayofpi.super_block_world.entity.ModEntities;
 import com.dayofpi.super_block_world.ModTags;
+import com.dayofpi.super_block_world.audio.Sounds;
+import com.dayofpi.super_block_world.entity.ModEntities;
+import com.dayofpi.super_block_world.entity.entities.misc.DryBonesShellEntity;
 import com.dayofpi.super_block_world.util.FormManager;
 import com.dayofpi.super_block_world.util.ModDamageSource;
 import com.dayofpi.super_block_world.util.PowerUp;
@@ -15,11 +15,11 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.tag.FluidTags;
-import net.minecraft.tag.TagKey;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;

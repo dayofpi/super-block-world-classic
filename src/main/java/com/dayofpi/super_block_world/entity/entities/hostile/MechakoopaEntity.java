@@ -32,12 +32,12 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3f;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 
 import java.util.EnumSet;
 
@@ -220,7 +220,7 @@ public class MechakoopaEntity extends TameableEntity implements RangedAttackMob 
 
                     while (d < sqrt) {
                         d += 1.8D - progress + this.random.nextDouble() * (1.7D - progress);
-                        this.world.addParticle(new DustParticleEffect(new Vec3f(Vec3d.unpackRgb(4897023)), 1.0F), this.getX() + targetX * d, this.getEyeY() + targetY * d, this.getZ() + targetZ * d, 0.0D, 0.0D, 0.0D);
+                        this.world.addParticle(new DustParticleEffect(new Vector3f(Vec3d.unpackRgb(4897023).toVector3f()), 1.0F), this.getX() + targetX * d, this.getEyeY() + targetY * d, this.getZ() + targetZ * d, 0.0D, 0.0D, 0.0D);
                     }
                 }
             }

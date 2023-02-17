@@ -55,7 +55,7 @@ public class PowBlock extends ReactiveBlock {
     public void react(World world, BlockPos blockPos, @Nullable LivingEntity entity) {
         if (entity instanceof ServerPlayerEntity)
             player = (ServerPlayerEntity) entity;
-        world.createAndScheduleBlockTick(blockPos, this, 2);
+        world.scheduleBlockTick(blockPos, this, 2);
     }
 
     private void pow(BlockState state, ServerWorld world, BlockPos blockPos, Random random) {
@@ -76,7 +76,7 @@ public class PowBlock extends ReactiveBlock {
 
         if (state.get(LEVEL) < 2) {
             world.setBlockState(blockPos, state.with(LEVEL, state.get(LEVEL) + 1).with(POWERED, true));
-            world.createAndScheduleBlockTick(blockPos, this, 4);
+            world.scheduleBlockTick(blockPos, this, 4);
         } else
             world.removeBlock(blockPos, false);
 
@@ -113,7 +113,7 @@ public class PowBlock extends ReactiveBlock {
             boolean bl = state.get(POWERED);
             if (bl != world.isReceivingRedstonePower(blockPos)) {
                 if (bl) {
-                    world.createAndScheduleBlockTick(blockPos, this, 4);
+                    world.scheduleBlockTick(blockPos, this, 4);
                 } else {
                     world.setBlockState(blockPos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
                     pow(state, (ServerWorld) world, blockPos, world.getRandom());

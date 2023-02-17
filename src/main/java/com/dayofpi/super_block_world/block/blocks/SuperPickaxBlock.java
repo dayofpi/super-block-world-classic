@@ -87,7 +87,7 @@ public class SuperPickaxBlock extends HorizontalFacingBlock implements BlockEnti
         state = state.cycle(ACTIVE);
         world.setBlockState(pos, state, Block.NOTIFY_LISTENERS);
         world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-        world.createAndScheduleBlockTick(pos, this, 4);
+        world.scheduleBlockTick(pos, this, 4);
         return ActionResult.success(world.isClient);
     }
 
@@ -106,7 +106,7 @@ public class SuperPickaxBlock extends HorizontalFacingBlock implements BlockEnti
             if (hardness > -1.0F && hardness < 50.0F) {
                 world.breakBlock(targetPos, true);
                 world.setBlockState(targetPos, state.with(USES, state.get(USES) + 1));
-                world.createAndScheduleBlockTick(targetPos, this, 4);
+                world.scheduleBlockTick(targetPos, this, 4);
                 world.removeBlock(pos, false);
             }
         }

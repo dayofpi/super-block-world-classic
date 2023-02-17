@@ -13,15 +13,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BoatEntity.class)
 public abstract class BoatMixin {
     @Shadow
-    public abstract BoatEntity.Type getBoatType();
+    public abstract BoatEntity.Type getVariant();
 
     @Inject(at = @At("HEAD"), method = "asItem", cancellable = true)
     private void asItem(CallbackInfoReturnable<Item> info) {
-        if (this.getBoatType() == EnumAddons.AMANITA_BOAT) {
+        if (this.getVariant() == EnumAddons.AMANITA_BOAT) {
             info.setReturnValue(ModItems.AMANITA_BOAT);
-        } else if (this.getBoatType() == EnumAddons.DARK_AMANITA_BOAT) {
+        } else if (this.getVariant() == EnumAddons.DARK_AMANITA_BOAT) {
             info.setReturnValue(ModItems.DARK_AMANITA_BOAT);
-        } else if (this.getBoatType() == EnumAddons.BELL_BOAT) {
+        } else if (this.getVariant() == EnumAddons.BELL_BOAT) {
             info.setReturnValue(ModItems.BELL_BOAT);
         }
     }

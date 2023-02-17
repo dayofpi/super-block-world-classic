@@ -1,11 +1,11 @@
 package com.dayofpi.super_block_world.mixin.client;
 
 import com.dayofpi.super_block_world.Main;
+import com.dayofpi.super_block_world.ModTags;
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.entity.entities.boss.ModBossEntity;
 import com.dayofpi.super_block_world.entity.entities.misc.GoKartEntity;
 import com.dayofpi.super_block_world.entity.entities.passive.YoshiEntity;
-import com.dayofpi.super_block_world.ModTags;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -14,11 +14,11 @@ import net.minecraft.client.network.ClientPlayerInteractionManager;
 import net.minecraft.client.sound.MusicTracker;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.MusicSound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;

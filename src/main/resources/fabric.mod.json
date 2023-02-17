@@ -27,6 +27,7 @@
   "mixins": [
     "fabric.mixins.json"
   ],
+  "accessWidener": "super_block_world.accesswidener",
   "depends": {
     "fabricloader": ">=0.12.12",
     "fabric": "*",

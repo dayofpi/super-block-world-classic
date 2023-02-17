@@ -62,10 +62,10 @@ public class BillBlasterBlock extends Block {
         boolean isPowered = state.get(POWERED);
         if (isPowered != world.isReceivingRedstonePower(blockPos)) {
             if (isPowered) {
-                world.createAndScheduleBlockTick(blockPos, this, 30);
+                world.scheduleBlockTick(blockPos, this, 30);
             } else {
                 world.setBlockState(blockPos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
-                world.createAndScheduleBlockTick(blockPos, this, 30);
+                world.scheduleBlockTick(blockPos, this, 30);
             }
 
         }
@@ -79,7 +79,7 @@ public class BillBlasterBlock extends Block {
                 return;
             }
         } else return;
-        world.createAndScheduleBlockTick(pos, this, 30);
+        world.scheduleBlockTick(pos, this, 30);
         Box box = Box.from(Vec3d.ofCenter(pos)).expand(32);
         List<BulletBillEntity> bulletBillEntities = world.getEntitiesByClass(BulletBillEntity.class, box, bulletBillEntity -> bulletBillEntity.getHomePos() == pos);
         if (!bulletBillEntities.isEmpty()) return;
@@ -162,6 +162,6 @@ public class BillBlasterBlock extends Block {
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        world.createAndScheduleBlockTick(pos, this, 10);
+        world.scheduleBlockTick(pos, this, 10);
     }
 }

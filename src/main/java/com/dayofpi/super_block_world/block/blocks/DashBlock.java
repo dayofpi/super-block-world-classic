@@ -42,7 +42,7 @@ public class DashBlock extends HorizontalFacingBlock {
             if (!world.isClient) {
                 world.setBlockState(pos, state.with(USED, true));
                 world.emitGameEvent(null, GameEvent.BLOCK_CHANGE, pos);
-                world.createAndScheduleBlockTick(pos, this, 20);
+                world.scheduleBlockTick(pos, this, 20);
             }
             Vec3d vec3d = entity.getVelocity();
             double boost = 1.0D;

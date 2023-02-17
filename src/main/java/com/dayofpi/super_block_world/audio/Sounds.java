@@ -1,9 +1,11 @@
 package com.dayofpi.super_block_world.audio;
 
 import com.dayofpi.super_block_world.Main;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class Sounds {
     public static final SoundEvent AMBIENT_CAVE = registerSound("ambient.cave");
@@ -245,29 +247,41 @@ public class Sounds {
     public static final SoundEvent ITEM_WARP_LINK_END = registerSound("item.warp_link.end");
     public static final SoundEvent ITEM_WARP_LINK_RESET = registerSound("item.warp_link.reset");
     public static final SoundEvent ITEM_WARP_LINK_START = registerSound("item.warp_link.start");
-    public static final SoundEvent MUSIC_AMANITA_FOREST = registerSound("music.forest");
-    public static final SoundEvent MUSIC_BOSS_1 = registerSound("music.boss.1");
-    public static final SoundEvent MUSIC_BOSS_2 = registerSound("music.boss.2");
-    public static final SoundEvent MUSIC_CAVE = registerSound("music.cave");
-    public static final SoundEvent MUSIC_DAYTIME = registerSound("music.day");
+    public static final RegistryEntry.Reference<SoundEvent> MUSIC_AMANITA_FOREST = registerReference("music.forest");
+    public static final RegistryEntry.Reference<SoundEvent> MUSIC_BOSS_1 = registerReference("music.boss.1");
+    public static final RegistryEntry.Reference<SoundEvent> MUSIC_BOSS_2 = registerReference("music.boss.2");
+    public static final RegistryEntry.Reference<SoundEvent> MUSIC_CAVE = registerReference("music.cave");
+    public static final RegistryEntry.Reference<SoundEvent> MUSIC_DAYTIME = registerReference("music.day");
     public static final SoundEvent MUSIC_DISC_MY_SONG = registerSound("music.disc.my_song");
     public static final SoundEvent MUSIC_DISC_TOXICITY = registerSound("music.disc.toxicity");
     public static final SoundEvent MUSIC_DISC_TRAPPED = registerSound("music.disc.trapped");
     public static final SoundEvent MUSIC_DISC_WALTZ_OF_THE_LOST = registerSound("music.disc.waltz_of_the_lost");
-    public static final SoundEvent MUSIC_GHOST_HOUSE = registerSound("music.ghost_house");
-    public static final SoundEvent MUSIC_LAVA = registerSound("music.lava");
-    public static final SoundEvent MUSIC_NIGHTTIME = registerSound("music.night");
-    public static final SoundEvent MUSIC_STARMAN = registerSound("music.starman");
+    public static final RegistryEntry.Reference<SoundEvent> MUSIC_GHOST_HOUSE = registerReference("music.ghost_house");
+    public static final RegistryEntry.Reference<SoundEvent> MUSIC_LAVA = registerReference("music.lava");
+    public static final RegistryEntry.Reference<SoundEvent> MUSIC_NIGHTTIME = registerReference("music.night");
+    public static final RegistryEntry.Reference<SoundEvent> MUSIC_STARMAN = registerReference("music.starman");
     public static final SoundEvent MUSIC_STARMAN_LEAD = registerSound("music.starman_lead");
     public static final SoundEvent MUSIC_WATER = registerSound("music.water");
-    public static final SoundEvent NOTE_BLOCK_BLING = registerSound("block.note_block.bling");
-    public static final SoundEvent NOTE_BLOCK_BLOCK = registerSound("block.note_block.block");
-    public static final SoundEvent NOTE_BLOCK_CHOIR = registerSound("block.note_block.choir");
-    public static final SoundEvent NOTE_BLOCK_DINODRUM = registerSound("block.note_block.dinodrum");
-    public static final SoundEvent NOTE_BLOCK_PAN_FLUTE = registerSound("block.note_block.pan_flute");
+    public static final RegistryEntry.Reference<SoundEvent> NOTE_BLOCK_BLING = registerReference("block.note_block.bling");
+    public static final RegistryEntry.Reference<SoundEvent> NOTE_BLOCK_BLOCK = registerReference("block.note_block.block");
+    public static final RegistryEntry.Reference<SoundEvent> NOTE_BLOCK_CHOIR = registerReference("block.note_block.choir");
+    public static final RegistryEntry.Reference<SoundEvent> NOTE_BLOCK_DINODRUM = registerReference("block.note_block.dinodrum");
+    public static final RegistryEntry.Reference<SoundEvent> NOTE_BLOCK_PAN_FLUTE = registerReference("block.note_block.pan_flute");
+
+    private static RegistryEntry.Reference<SoundEvent> registerReference(String id) {
+        return Sounds.registerReference(new Identifier(id));
+    }
+
+    private static RegistryEntry.Reference<SoundEvent> registerReference(Identifier id) {
+        return Sounds.registerReference(id, id);
+    }
+
+    private static RegistryEntry.Reference<SoundEvent> registerReference(Identifier id, Identifier soundId) {
+        return Registry.registerReference(Registries.SOUND_EVENT, id, SoundEvent.of(soundId));
+    }
 
     private static SoundEvent registerSound(String string) {
         Identifier id = new Identifier(Main.MOD_ID, string);
-        return Registry.register(Registry.SOUND_EVENT, id, new SoundEvent(id));
+        return Registry.register(Registries.SOUND_EVENT, id, SoundEvent.of(id));
     }
 }

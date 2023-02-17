@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.block.blocks;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.block.block_entities.DryBonesPileBE;
 import com.dayofpi.super_block_world.block.ModBlockEntities;
+import com.dayofpi.super_block_world.block.block_entities.DryBonesPileBE;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -12,13 +12,13 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
@@ -51,7 +51,7 @@ public class DryBonesPileBlock extends BlockWithEntity {
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         if (world.getBlockState(pos.down()).isIn(BlockTags.SOUL_FIRE_BASE_BLOCKS)) {
-            world.createAndScheduleBlockTick(pos, this, 2);
+            world.scheduleBlockTick(pos, this, 2);
             ((ServerWorld)world).spawnParticles(ParticleTypes.SOUL_FIRE_FLAME, pos.getX() + 0.5D, pos.getY() + 0.25D, pos.getZ() + 0.5D, 4, 0.4D, 0.2D, 0.4D, 0.0D);
         }
     }

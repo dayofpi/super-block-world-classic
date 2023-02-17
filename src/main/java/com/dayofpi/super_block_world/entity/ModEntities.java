@@ -18,8 +18,9 @@ import net.minecraft.entity.mob.PatrolEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.passive.PigEntity;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
 
 import java.util.function.Supplier;
@@ -509,7 +510,7 @@ public class ModEntities {
     );
 
     private static void registerEntity(String name, EntityType<?> entity) {
-        Registry.register(Registry.ENTITY_TYPE, new Identifier(Main.MOD_ID, name), entity);
+        Registry.register(Registries.ENTITY_TYPE, new Identifier(Main.MOD_ID, name), entity);
     }
 
     public static void register() {

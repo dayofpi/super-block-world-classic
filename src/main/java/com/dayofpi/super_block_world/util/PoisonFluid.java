@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.util;
 
+import com.dayofpi.super_block_world.ModParticles;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.block.ModBlocks;
-import com.dayofpi.super_block_world.world.ModFluids;
 import com.dayofpi.super_block_world.item.ModItems;
-import com.dayofpi.super_block_world.ModParticles;
+import com.dayofpi.super_block_world.world.ModFluids;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
@@ -14,9 +14,9 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
-import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -35,7 +35,7 @@ public abstract class PoisonFluid extends FlowableFluid {
     }
 
     @Override
-    protected boolean isInfinite() {
+    protected boolean isInfinite(World world) {
         return false;
     }
 

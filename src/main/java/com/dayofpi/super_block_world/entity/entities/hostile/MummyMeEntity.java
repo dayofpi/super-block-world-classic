@@ -1,11 +1,11 @@
 package com.dayofpi.super_block_world.entity.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.entity.entities.goals.MummyMeTargetGoal;
-import com.dayofpi.super_block_world.entity.entities.passive.MailtoadEntity;
-import com.dayofpi.super_block_world.entity.entities.passive.ToadEntity;
 import com.dayofpi.super_block_world.criterion.ModCriteria;
 import com.dayofpi.super_block_world.entity.ModEntities;
+import com.dayofpi.super_block_world.entity.goals.MummyMeTargetGoal;
+import com.dayofpi.super_block_world.entity.entities.passive.MailtoadEntity;
+import com.dayofpi.super_block_world.entity.entities.passive.ToadEntity;
 import com.dayofpi.super_block_world.item.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -25,11 +25,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;

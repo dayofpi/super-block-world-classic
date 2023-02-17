@@ -4,7 +4,6 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.entity.entities.KoopaVariant;
 import com.dayofpi.super_block_world.entity.entities.Stompable;
-import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.Brain;
@@ -20,14 +19,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.nbt.NbtOps;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.tag.GameEventTags;
-import net.minecraft.tag.TagKey;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -39,24 +36,16 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.event.EntityPositionSource;
-import net.minecraft.world.event.GameEvent;
-import net.minecraft.world.event.listener.EntityGameEventHandler;
-import net.minecraft.world.event.listener.GameEventListener;
-import net.minecraft.world.event.listener.VibrationListener;
 import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
 
 import java.util.Optional;
 import java.util.UUID;
 
-public abstract class AbstractKoopa extends PassiveEntity implements VibrationListener.Callback, Saddleable, ItemSteerable, Stompable, Angerable {
+public abstract class AbstractKoopa extends PassiveEntity implements Saddleable, ItemSteerable, Stompable, Angerable {
     static final TrackedData<Boolean> SADDLED;
     static final TrackedData<Integer> BOOST_TIME;
     private static final TrackedData<Integer> KOOPA_COLOR;
@@ -66,12 +55,10 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
     private static final int RED = 1;
     private static final int BLUE = 2;
     private static final int GOLD = 3;
-    private static final Logger logger = Main.LOGGER;
     public final AnimationState idlingAnimationState = new AnimationState();
     public final AnimationState walkingAnimationState = new AnimationState();
     public final AnimationState dancingAnimationState = new AnimationState();
     final SaddledComponent saddledComponent;
-    private final EntityGameEventHandler<VibrationListener> gameEventHandler;
     private int danceTime;
     @Nullable
     private UUID targetUuid;
@@ -87,7 +74,6 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
     protected AbstractKoopa(EntityType<? extends PassiveEntity> entityType, World world) {
         super(entityType, world);
         this.saddledComponent = new SaddledComponent(this.dataTracker, BOOST_TIME, SADDLED);
-        this.gameEventHandler = new EntityGameEventHandler<>(new VibrationListener(new EntityPositionSource(this, this.getStandingEyeHeight()), 16, this, null, 0.0f, 0));
     }
 
     @Override
@@ -102,7 +88,7 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
     }
 
     private Optional<Integer> chooseKoopaColor(ServerWorldAccess world, Random random) {
-        RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Main.MOD_ID, "sherbet_land"));
+        RegistryKey<Biome> key = RegistryKey.of(RegistryKeys.BIOME, new Identifier(Main.MOD_ID, "sherbet_land"));
         if (world.getBiome(this.getBlockPos()).matchesKey(key) && random.nextInt(4) == 0) {
             return Optional.of(BLUE);
         }
@@ -242,9 +228,6 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
                 this.walkingAnimationState.stop();
             }
         }
-        else {
-            this.gameEventHandler.getListener().tick(this.world);
-        }
         super.tick();
     }
 
@@ -340,7 +323,6 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
         this.saddledComponent.writeNbt(nbt);
         nbt.putInt("KoopaColor", this.getKoopaColor());
         this.writeAngerToNbt(nbt);
-        VibrationListener.createCodec(this).encodeStart(NbtOps.INSTANCE, this.gameEventHandler.getListener()).resultOrPartial(logger::error).ifPresent(nbtElement -> nbt.put("listener", nbtElement));
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
@@ -348,9 +330,6 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
         this.saddledComponent.readNbt(nbt);
         this.setKoopaColor(nbt.getInt("KoopaColor"));
         this.readAngerFromNbt(this.world, nbt);
-        if (nbt.contains("listener", NbtElement.COMPOUND_TYPE)) {
-            VibrationListener.createCodec(this).parse(new Dynamic<>(NbtOps.INSTANCE, nbt.getCompound("listener"))).resultOrPartial(logger::error).ifPresent(vibrationListener -> this.gameEventHandler.setListener(vibrationListener, this.world));
-        }
     }
 
     @Nullable
@@ -360,27 +339,10 @@ public abstract class AbstractKoopa extends PassiveEntity implements VibrationLi
     }
 
     @Override
-    public TagKey<GameEvent> getTag() {
-        return GameEventTags.ALLAY_CAN_LISTEN;
-    }
-
-    @Override
-    public boolean accepts(ServerWorld world, GameEventListener listener, BlockPos pos, GameEvent event, GameEvent.Emitter emitter) {
-        return this.world == world && !this.isRemoved() && !this.isAiDisabled();
-    }
-
-    @Override
     public void handleStatus(byte status) {
         if (status == EntityStatuses.EARS_TWITCH)
             this.danceTime = 60;
         else super.handleStatus(status);
-    }
-
-    @Override
-    public void accept(ServerWorld world, GameEventListener listener, BlockPos pos, GameEvent event, @Nullable Entity entity, @Nullable Entity sourceEntity, float distance) {
-        if (event == GameEvent.NOTE_BLOCK_PLAY) {
-            world.sendEntityStatus(this, EntityStatuses.EARS_TWITCH);
-        }
     }
 
     @Override

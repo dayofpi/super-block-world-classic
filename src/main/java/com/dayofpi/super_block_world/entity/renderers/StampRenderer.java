@@ -17,7 +17,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 
 @SuppressWarnings("deprecation")
 @Environment(value= EnvType.CLIENT)
@@ -47,11 +47,11 @@ public class StampRenderer<T extends StampEntity> extends EntityRenderer<T> {
         Vec3d vec3d = this.getPositionOffset(stamp, tickDelta);
         matrixStack.translate(-vec3d.getX(), -vec3d.getY(), -vec3d.getZ());
         matrixStack.translate((double)direction.getOffsetX() * 0.46875, (double)direction.getOffsetY() * 0.46875, (double)direction.getOffsetZ() * 0.46875);
-        matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(stamp.getPitch()));
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - stamp.getYaw()));
+        matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(stamp.getPitch()));
+        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f - stamp.getYaw()));
 
         int stampRotation = stamp.getRotation();
-        matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion((float)stampRotation * 360.0f / 8.0f));
+        matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees((float)stampRotation * 360.0f / 8.0f));
         boolean bl = stamp.isInvisible();
         if (!bl) {
             BakedModelManager bakedModelManager = this.blockRenderManager.getModels().getModelManager();

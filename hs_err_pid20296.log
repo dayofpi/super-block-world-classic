@@ -1,0 +1,88 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x000002b5c63c7285, pid=20296, tid=23228
+#
+# JRE version: OpenJDK Runtime Environment Corretto-17.0.5.8.1 (17.0.5+8) (build 17.0.5+8-LTS)
+# Java VM: OpenJDK 64-Bit Server VM Corretto-17.0.5.8.1 (17.0.5+8-LTS, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# Problematic frame:
+# J 4240 c2 java.util.HashMap.get(Ljava/lang/Object;)Ljava/lang/Object; java.base@17.0.5 (19 bytes) @ 0x000002b5c63c7285 [0x000002b5c63c6ee0+0x00000000000003a5]
+#
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   https://github.com/corretto/corretto-17/issues/
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED -Xmx2G -Dfile.encoding=windows-1252 -Duser.country=BR -Duser.language=pt -Duser.variant org.gradle.launcher.daemon.bootstrap.GradleDaemon 7.4
+
+Host: Intel(R) Core(TM) i3-1005G1 CPU @ 1.20GHz, 4 cores, 11G,  Windows 11 , 64 bit Build 22621 (10.0.22621.1105)
+Time: Thu Feb 16 02:40:20 2023 Hora Padrão da Bahia elapsed time: 5362.738230 seconds (0d 1h 29m 22s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000002b5d715adb0):  JavaThread "Daemon worker Thread 8" [_thread_in_Java, id=23228, stack(0x000000ced1000000,0x000000ced1100000)]
+
+Stack: [0x000000ced1000000,0x000000ced1100000],  sp=0x000000ced10fa650,  free space=1001k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  0x000002b5c63c7285
+
+
+siginfo: EXCEPTION_ACCESS_VIOLATION (0xc0000005), reading address 0x000000000000000f
+
+
+Register to memory mapping:
+
+RIP=0x000002b5c63c7285 is at entry_point+933 in (nmethod*)0x000002b5c63c6d10
+RAX=0x0 is NULL
+RBX={method} {0x00000008004298c8} 'equals' '(Ljava/lang/Object;)Z' in 'java/lang/String'
+RCX=0x000000080000e970 is a pointer to class: 
+java.lang.String {0x000000080000e978}
+ - instance size:     3
+ - klass size:        83
+ - access:            public final synchronized 
+ - state:             fully_initialized
+ - name:              'java/lang/String'
+ - super:             'java/lang/Object'
+ - sub:               
+ - arrays:            'java/lang/String'[]
+ - methods:           Array<T>(0x0000000800b2b3e0)
+ - method ordering:   Array<T>(0x0000000800b2b128)
+ - default_methods:   Array<T>(0x0000000000000000)
+ - local interfaces:  Array<T>(0x0000000800b2b3b0)
+ - trans. interfaces: Array<T>(0x0000000800b2b3b0)
+ - constants:         constant pool [1396]/operands[28] {0x0000000800b28178} for 'java/lang/String' cache=0x00000008004265a0
+ - class loader data:  loader data: 0x000002b5b6c4ef30 of 'bootstrap'
+ - source file:       'String.java'
+ - class annotations:       Array<T>(0x0000000000000000)
+ - class type annotations:  Array<T>(0x0000000000000000)
+ - field annotations:       Array<T>(0x0000000800b32c18)
+ - field type annotations:  Array<T>(0x0000000000000000)
+ - generic signature: 'Ljava/lang/Object;Ljava/io/Serializable;Ljava/lang/Comparable<Ljava/lang/String;>;Ljava/lang/CharSequence;Ljava/lang/constant/Constable;Ljava/lang/constant/ConstantDesc;'
+ - inner classes:     Array<T>(0x0000000800b32bb8)
+ - nest members:     Array<T>(0x0000000800b28118)
+ - permitted subclasses:     Array<T>(0x00000008005cf960)
+ - java mirror:       a 'java/lang/Class'{0x000000008047ea50} = 'java/lang/String'
+ - vtable length      5  (start addr: 0x000000080000eb38)
+ - itable length      20 (start addr: 0x000000080000eb60)
+ - ---- static fields (3 words):
+ - private static final 'serialVersionUID' 'J' @120 
+ - static final 'COMPACT_STRINGS' 'Z' @130 
+ - private static final 'serialPersistentFields' '[Ljava/io/ObjectStreamField;' @112 
+ - private static final 'REPL' 'C' @128 
+ - public static final 'CASE_INSENSITIVE_ORDER' 'Ljava/util/Comparator;' @116 
+ - static final 'LATIN1' 'B' @131 
+ - static final 'UTF16' 'B' @132 
+ - ---- non-static fields (3 words):
+ - private 'hash' 'I' @12 
+ - private final 'coder' 'B' @16 
+ - private 'hashIsZero' 'Z' @17 
+ - private final synchronized 'value' '[B' @20 
+ - non-static oop maps: 20-20 
+RDX=0x00000000989c30a8 is an oop: java.lang.String 
+{0x00000000989c30a8} - klass: 'java/lang/String'
+ - string: "C:\Users\Lukeu\OneDrive\Documentos\GitHub\super-block-world\.gradle\7.4\dependencies-accessors\executionHistory.bin"
+RSP=0x000000ced10fa650 is pointing into the stack for thread: 0x000002b5d715adb0
+RBP=

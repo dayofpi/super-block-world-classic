@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "super_block_world:spawn_egg/stingby"
+    "layer0": "super_block_world:item/stingby_spawn_egg"
   }
 }

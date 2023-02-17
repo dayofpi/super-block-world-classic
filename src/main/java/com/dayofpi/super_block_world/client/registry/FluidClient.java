@@ -4,8 +4,6 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.world.ModFluids;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
-import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
-import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.util.Identifier;
 
 @SuppressWarnings("deprecation")
@@ -15,8 +13,5 @@ public class FluidClient {
 
     public static void renderFluids() {
         FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.POISON, ModFluids.FLOWING_POISON, new SimpleFluidRenderHandler(POISON_TEXTURE, FLOWING_POISON_TEXTURE));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(POISON_TEXTURE));
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(FLOWING_POISON_TEXTURE));
-
     }
 }

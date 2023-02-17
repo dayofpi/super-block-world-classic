@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "super_block_world:spawn_egg/mud_trooper"
+    "layer0": "super_block_world:item/mud_trooper_spawn_egg"
   }
 }

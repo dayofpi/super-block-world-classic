@@ -1,16 +1,16 @@
 package com.dayofpi.super_block_world.block.blocks;
 
-import com.dayofpi.super_block_world.entity.entities.hostile.FuzzyEntity;
 import com.dayofpi.super_block_world.block.ModBlocks;
+import com.dayofpi.super_block_world.entity.entities.hostile.FuzzyEntity;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;

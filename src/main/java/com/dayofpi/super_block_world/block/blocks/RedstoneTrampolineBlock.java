@@ -42,7 +42,7 @@ public class RedstoneTrampolineBlock extends Block {
             boolean bl = state.get(POWERED);
             if (bl != world.isReceivingRedstonePower(blockPos)) {
                 if (bl) {
-                    world.createAndScheduleBlockTick(blockPos, this, 4);
+                    world.scheduleBlockTick(blockPos, this, 4);
                 } else {
                     world.setBlockState(blockPos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
                 }

@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.mixin;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CactusBlock;
-import net.minecraft.tag.BlockTags;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldView;
 import org.spongepowered.asm.mixin.Mixin;

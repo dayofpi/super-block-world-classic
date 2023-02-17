@@ -21,11 +21,11 @@ public abstract class ChestBoatMixin extends BoatEntity {
 
     @Inject(at = @At("HEAD"), method = "asItem", cancellable = true)
     private void asItem(CallbackInfoReturnable<Item> info) {
-        if (this.getBoatType() == EnumAddons.AMANITA_BOAT) {
+        if (this.getVariant() == EnumAddons.AMANITA_BOAT) {
             info.setReturnValue(ModItems.AMANITA_CHEST_BOAT);
-        } else if (this.getBoatType() == EnumAddons.DARK_AMANITA_BOAT) {
+        } else if (this.getVariant() == EnumAddons.DARK_AMANITA_BOAT) {
             info.setReturnValue(ModItems.DARK_AMANITA_CHEST_BOAT);
-        } else if (this.getBoatType() == EnumAddons.BELL_BOAT) {
+        } else if (this.getVariant() == EnumAddons.BELL_BOAT) {
             info.setReturnValue(ModItems.BELL_CHEST_BOAT);
         }
     }

@@ -2,8 +2,8 @@ package com.dayofpi.super_block_world.block.blocks;
 
 import com.dayofpi.super_block_world.block.ModBlocks;
 import net.minecraft.block.*;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;

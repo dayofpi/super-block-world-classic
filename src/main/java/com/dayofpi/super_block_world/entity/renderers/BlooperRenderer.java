@@ -11,7 +11,7 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 
 @Environment(EnvType.CLIENT)
 public class BlooperRenderer extends MobEntityRenderer<BlooperEntity, BlooperModel> {
@@ -31,9 +31,9 @@ public class BlooperRenderer extends MobEntityRenderer<BlooperEntity, BlooperMod
         float i = MathHelper.lerp(h, entity.prevTiltAngle, entity.tiltAngle);
         float j = MathHelper.lerp(h, entity.prevRollAngle, entity.rollAngle);
         matrixStack.translate(0.0, 0.5, 0.0);
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - g));
-        matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(i));
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(j));
+        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f - g));
+        matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(i));
+        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(j));
         matrixStack.translate(0.0, -1.2f, 0.0);
     }
 

@@ -3,7 +3,7 @@ package com.dayofpi.super_block_world.entity.entities.passive;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.block.block_entities.YoshiEggBE;
 import com.dayofpi.super_block_world.entity.entities.boss.ModBossEntity;
-import com.dayofpi.super_block_world.entity.entities.goals.YoshiEatGoal;
+import com.dayofpi.super_block_world.entity.goals.YoshiEatGoal;
 import com.dayofpi.super_block_world.entity.entities.hostile.FuzzyEntity;
 import com.dayofpi.super_block_world.entity.entities.hostile.ShyGuyEntity;
 import com.dayofpi.super_block_world.block.ModBlocks;
@@ -181,6 +181,11 @@ public class YoshiEntity extends AnimalEntity implements JumpingMount {
     public void setJumpStrength(int strength) {
         if (strength < 0) strength = 0;
         this.jumpStrength = strength >= 90 ? 1.0f : 0.4f + 0.4f * (float) strength / 90.0f;
+    }
+
+    @Override
+    public boolean canJump(PlayerEntity player) {
+        return this.isOnGround() || this.canFlutter();
     }
 
     @Override
@@ -506,11 +511,6 @@ public class YoshiEntity extends AnimalEntity implements JumpingMount {
             } while ((double) mutable.getY() < g);
         }
         return null;
-    }
-
-    @Override
-    public boolean canJump() {
-        return this.isOnGround() || this.canFlutter();
     }
 
     @Override

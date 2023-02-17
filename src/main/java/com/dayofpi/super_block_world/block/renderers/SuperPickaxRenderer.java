@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.block.renderers;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.registry.ModModelLayers;
+import com.dayofpi.super_block_world.block.ModBlocks;
 import com.dayofpi.super_block_world.block.block_entities.SuperPickaxBE;
 import com.dayofpi.super_block_world.block.blocks.SuperPickaxBlock;
-import com.dayofpi.super_block_world.block.ModBlocks;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
@@ -20,7 +20,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.World;
 
 @SuppressWarnings("deprecation")
@@ -55,11 +55,11 @@ public class SuperPickaxRenderer implements BlockEntityRenderer<SuperPickaxBE>  
         float rotation = blockState.get(SuperPickaxBlock.FACING).rotateYClockwise().asRotation();
 
         matrices.translate(0.5, 0.0, 0.5);
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-rotation));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-rotation));
 
         if (hasWorld && blockState.get(SuperPickaxBlock.ACTIVE)) {
             float progress = world.getTime() * 2F * 0.1F;
-            matrices.multiply(Vec3f.POSITIVE_Z.getRadialQuaternion(MathHelper.cos(progress)));
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotation(MathHelper.cos(progress)));
         }
         matrices.scale(-1.0F, -1.0F, 1.0F);
         matrices.translate(0.0, -1.5, 0.0);

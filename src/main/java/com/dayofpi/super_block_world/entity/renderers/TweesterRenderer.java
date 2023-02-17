@@ -14,7 +14,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 
 @Environment(EnvType.CLIENT)
 public class TweesterRenderer<T extends TweesterEntity> extends EntityRenderer<T> {
@@ -38,9 +38,9 @@ public class TweesterRenderer<T extends TweesterEntity> extends EntityRenderer<T
     @Override
     public void render(T entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int light) {
         matrices.push();
-        matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(entity.getPitch()));
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(entity.getPitch()));
         matrices.scale(-1.0f, -1.0f, 1.0f);
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - entity.getYaw()));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f - entity.getYaw()));
         matrices.translate(0.0, -1.5, 0.5);
         this.model.setAngles(entity, tickDelta, 0.0f, this.getAnimationProgress(entity, tickDelta), 0.0f, 0.0f);
 

@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.entity.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.entity.entities.goals.BooAttackGoal;
-import com.dayofpi.super_block_world.entity.entities.goals.BooSitGoal;
-import com.dayofpi.super_block_world.entity.entities.goals.StealItemGoal;
+import com.dayofpi.super_block_world.entity.goals.BooAttackGoal;
+import com.dayofpi.super_block_world.entity.goals.BooSitGoal;
+import com.dayofpi.super_block_world.entity.goals.StealItemGoal;
 import com.dayofpi.super_block_world.entity.entities.misc.GhostEssenceEntity;
 import com.dayofpi.super_block_world.item.ModItems;
 import com.dayofpi.super_block_world.entity.entities.BooFace;

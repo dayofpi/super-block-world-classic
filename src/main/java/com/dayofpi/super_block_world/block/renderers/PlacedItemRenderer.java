@@ -1,7 +1,7 @@
 package com.dayofpi.super_block_world.block.renderers;
 
-import com.dayofpi.super_block_world.block.block_entities.PlacedItemBE;
 import com.dayofpi.super_block_world.block.ModBlocks;
+import com.dayofpi.super_block_world.block.block_entities.PlacedItemBE;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
@@ -13,7 +13,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.World;
 
 @Environment(EnvType.CLIENT)
@@ -33,7 +33,7 @@ public class PlacedItemRenderer implements BlockEntityRenderer<PlacedItemBE> {
                 light = 15728850;
             matrices.translate(0.5, 0.5, 0.5);
             matrices.scale(0.8f, 0.8f, 0.8f);
-            matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion((world.getTime() + tickDelta) * 4));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((world.getTime() + tickDelta) * 4));
             MinecraftClient.getInstance().getItemRenderer().renderItem(block.asItem().getDefaultStack(), ModelTransformation.Mode.GUI, light, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, 0);
         }
     }

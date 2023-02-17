@@ -4,7 +4,7 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.block.block_entities.QuestionBoxBE;
 import com.dayofpi.super_block_world.block.blocks.QuestionBoxBlock;
-import com.dayofpi.super_block_world.entity.entities.brains.ToadBrain;
+import com.dayofpi.super_block_world.entity.brains.ToadBrain;
 import com.dayofpi.super_block_world.entity.entities.hostile.RottenMushroomEntity;
 import com.dayofpi.super_block_world.block.ModBlocks;
 import com.dayofpi.super_block_world.entity.ModEntities;

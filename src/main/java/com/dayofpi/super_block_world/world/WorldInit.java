@@ -10,18 +10,18 @@ import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.event.CPASoundEventData;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
 
 public class WorldInit {
     private static final Identifier MUSHROOM_KINGDOM = new Identifier(Main.MOD_ID, "mushroom_kingdom");
     private static final Identifier BOWSERS_KINGDOM = new Identifier(Main.MOD_ID, "bowsers_kingdom");
 
-    public static final RegistryKey<World> MUSHROOM_KINGDOM_WORLD = RegistryKey.of(Registry.WORLD_KEY, MUSHROOM_KINGDOM);
-    public static final RegistryKey<World> BOWSERS_KINGDOM_WORLD = RegistryKey.of(Registry.WORLD_KEY, BOWSERS_KINGDOM);
+    public static final RegistryKey<World> MUSHROOM_KINGDOM_WORLD = RegistryKey.of(RegistryKeys.WORLD, MUSHROOM_KINGDOM);
+    public static final RegistryKey<World> BOWSERS_KINGDOM_WORLD = RegistryKey.of(RegistryKeys.WORLD, BOWSERS_KINGDOM);
     public static ServerWorld DIMENSION;
     private static final Identifier PORTAL_FRAME_TESTER = new Identifier(Main.MOD_ID, "warp_portal");
 
@@ -29,7 +29,6 @@ public class WorldInit {
         CustomPortalApiRegistry.registerPortalFrameTester(PORTAL_FRAME_TESTER, ModFrameTester::new);
 
         Features.register();
-        ConfiguredFeatures.register();
 
         ServerLifecycleEvents.SERVER_STARTED.register(server -> {
             DIMENSION = server.getWorld(MUSHROOM_KINGDOM_WORLD);

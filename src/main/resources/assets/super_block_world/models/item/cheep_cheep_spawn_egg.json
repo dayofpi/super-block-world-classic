@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "super_block_world:spawn_egg/cheep_cheep"
+    "layer0": "super_block_world:item/cheep_cheep_spawn_egg"
   }
 }

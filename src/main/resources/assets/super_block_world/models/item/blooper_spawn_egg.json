@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "super_block_world:spawn_egg/blooper"
+    "layer0": "super_block_world:item/blooper_spawn_egg"
   }
 }

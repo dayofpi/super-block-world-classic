@@ -38,7 +38,7 @@ public class OnOffSwitchBlock extends Block {
         boolean bl = state.get(POWERED);
         if (bl != world.isReceivingRedstonePower(pos)) {
             if (bl) {
-                world.createAndScheduleBlockTick(pos, this, 4);
+                world.scheduleBlockTick(pos, this, 4);
             } else {
                 world.playSound(null, pos, Sounds.BLOCK_ON_OFF_SWITCH, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.setBlockState(pos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);

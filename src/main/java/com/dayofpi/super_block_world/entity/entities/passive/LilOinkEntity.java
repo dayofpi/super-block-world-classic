@@ -2,10 +2,10 @@ package com.dayofpi.super_block_world.entity.entities.passive;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.entity.entities.brains.LilOinkBrain;
 import com.dayofpi.super_block_world.entity.ModEntities;
-import com.dayofpi.super_block_world.item.ModItems;
 import com.dayofpi.super_block_world.entity.entities.LilOinkVariant;
+import com.dayofpi.super_block_world.entity.brains.LilOinkBrain;
+import com.dayofpi.super_block_world.item.ModItems;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.enchantment.Enchantment;
@@ -29,6 +29,7 @@ import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.Registries;
 import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -39,7 +40,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -188,7 +188,7 @@ public class LilOinkEntity extends AnimalEntity {
     }
 
     private ItemStack getEnchantedBookStack() {
-        List<Enchantment> list = Registry.ENCHANTMENT.stream().filter(this::getEnchantmentOptions).toList();
+        List<Enchantment> list = Registries.ENCHANTMENT.stream().filter(this::getEnchantmentOptions).toList();
         Enchantment enchantment = list.get(random.nextInt(list.size()));
 
         return EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(enchantment, enchantment.getMinLevel()));

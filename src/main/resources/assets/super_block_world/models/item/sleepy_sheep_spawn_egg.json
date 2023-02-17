@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "super_block_world:spawn_egg/sleepy_sheep"
+    "layer0": "super_block_world:item/sleepy_sheep_spawn_egg"
   }
 }

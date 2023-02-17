@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtHelper;
 import net.minecraft.predicate.entity.EntityPredicates;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
@@ -150,7 +151,7 @@ public class TrampolineMinecartEntity extends TntMinecartEntity {
     protected void readCustomDataFromNbt(NbtCompound nbt) {
         this.setSquashed(nbt.getBoolean("Squashed"));
         if (nbt.getBoolean("CustomDisplayTile")) {
-            this.setCustomBlock(NbtHelper.toBlockState(nbt.getCompound("DisplayState")));
+            this.setCustomBlock(NbtHelper.toBlockState(this.world.createCommandRegistryWrapper(RegistryKeys.BLOCK), nbt.getCompound("DisplayState")));
             this.setCustomBlockOffset(nbt.getInt("DisplayOffset"));
         }
     }

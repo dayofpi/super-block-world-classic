@@ -5,8 +5,8 @@ import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.block.blocks.BrickBlock;
 import com.dayofpi.super_block_world.block.blocks.FakeBlock;
 import com.dayofpi.super_block_world.block.blocks.ReactiveBlock;
-import com.dayofpi.super_block_world.entity.entities.hostile.FakeBlockEntity;
 import com.dayofpi.super_block_world.entity.ModEntities;
+import com.dayofpi.super_block_world.entity.entities.hostile.FakeBlockEntity;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.Block;
@@ -15,11 +15,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.predicate.entity.EntityPredicates;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class GlobalReceivers {
             int entityId = buf.readInt();
             Identifier worldId = buf.readIdentifier();
 
-            ServerWorld serverWorld = server.getWorld(RegistryKey.of(Registry.WORLD_KEY, worldId));
+            ServerWorld serverWorld = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, worldId));
 
             if (serverWorld != null)
                 server.execute(() -> {

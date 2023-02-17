@@ -2,8 +2,9 @@ package com.dayofpi.super_block_world.world;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.world.features.*;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.HugeMushroomFeatureConfig;
@@ -19,13 +20,13 @@ public class Features {
     private static final Feature<RandomPatchFeatureConfig> RANDOM_PATCH = new RandomPatchFeature(RandomPatchFeatureConfig.CODEC);
 
     public static void register() {
-        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "bell_tree"), BELL_TREE);
-        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "tall_mushroom"), TALL_MUSHROOM);
-        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "mushroom_cap"), MUSHROOM_CAP);
-        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "freeze_lava"), FREEZE_LAVA);
-        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "strawberry_coral"), STRAWBERRY_CORAL);
-        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "underwater_pipe"), UNDERWATER_PIPE);
-        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "warp_pipe"), WARP_PIPE);
-        Registry.register(Registry.FEATURE, new Identifier(Main.MOD_ID, "random_patch_feature"), RANDOM_PATCH);
+        Registry.register(Registries.FEATURE, new Identifier(Main.MOD_ID, "bell_tree"), BELL_TREE);
+        Registry.register(Registries.FEATURE, new Identifier(Main.MOD_ID, "tall_mushroom"), TALL_MUSHROOM);
+        Registry.register(Registries.FEATURE, new Identifier(Main.MOD_ID, "mushroom_cap"), MUSHROOM_CAP);
+        Registry.register(Registries.FEATURE, new Identifier(Main.MOD_ID, "freeze_lava"), FREEZE_LAVA);
+        Registry.register(Registries.FEATURE, new Identifier(Main.MOD_ID, "strawberry_coral"), STRAWBERRY_CORAL);
+        Registry.register(Registries.FEATURE, new Identifier(Main.MOD_ID, "underwater_pipe"), UNDERWATER_PIPE);
+        Registry.register(Registries.FEATURE, new Identifier(Main.MOD_ID, "warp_pipe"), WARP_PIPE);
+        Registry.register(Registries.FEATURE, new Identifier(Main.MOD_ID, "random_patch_feature"), RANDOM_PATCH);
     }
 }

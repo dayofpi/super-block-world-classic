@@ -4,25 +4,27 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.SoundGroups;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.block.blocks.*;
-import com.dayofpi.super_block_world.world.ConfiguredFeatures;
 import com.dayofpi.super_block_world.entity.ModEntities;
 import com.dayofpi.super_block_world.util.AmanitaGenerator;
 import com.dayofpi.super_block_world.util.BellGenerator;
 import com.dayofpi.super_block_world.util.DarkAmanitaGenerator;
 import com.dayofpi.super_block_world.util.EnumAddons;
+import com.dayofpi.super_block_world.world.ModConfiguredFeatures;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryEntry;
 
 import java.util.function.ToIntFunction;
 
@@ -122,7 +124,7 @@ public class ModBlocks {
     public static final Block COBBLED_SHROOMSTONE = new Block(FabricBlockSettings.copyOf(SHROOMSTONE));
     public static final Block EXPOSED_SHROOMSTONE = new Block(FabricBlockSettings.copyOf(SHROOMSTONE));
     public static final Block CHARROCK = new Block(FabricBlockSettings.of(Material.STONE, MapColor.DARK_CRIMSON).strength(1.4F, 5.0F).requiresTool());
-    public static final Block CERISE_ORE = new OreBlock(FabricBlockSettings.copyOf(CHARROCK), UniformIntProvider.create(0, 2));
+    public static final Block CERISE_ORE = new ExperienceDroppingBlock(FabricBlockSettings.copyOf(CHARROCK), UniformIntProvider.create(0, 2));
     public static final Block BLAZING_CHARROCK = new MagmaBlock(FabricBlockSettings.copyOf(CHARROCK).luminance(3).ticksRandomly().postProcess((state, world, pos) -> true));
     public static final Block CLOUD_BLOCK = new CloudBlock(FabricBlockSettings.of(Material.POWDER_SNOW).strength(0.2F).sounds(BlockSoundGroup.POWDER_SNOW));
     public static final Block CLOUD_STAIRS = new ModStairsBlock(CLOUD_BLOCK);
@@ -193,10 +195,10 @@ public class ModBlocks {
     public static final Block CRYSTAL_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(CRYSTAL_BRICKS));
     public static final Block VANILLATE = new VanillateBlock(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_LIGHT_BLUE).strength(1.5F, 6.0F).requiresTool());
     public static final Block TOPPED_VANILLATE = new ToppedVanillateBlock(FabricBlockSettings.copyOf(VANILLATE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY));
-    public static final Block AMETHYST_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE), UniformIntProvider.create(0, 2));
-    public static final Block GOLD_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE), UniformIntProvider.create(0, 2));
-    public static final Block IRON_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE), UniformIntProvider.create(0, 2));
-    public static final Block COAL_TOPPED_VANILLATE = new OreBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE), UniformIntProvider.create(0, 2));
+    public static final Block AMETHYST_TOPPED_VANILLATE = new ExperienceDroppingBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE), UniformIntProvider.create(0, 2));
+    public static final Block GOLD_TOPPED_VANILLATE = new ExperienceDroppingBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE), UniformIntProvider.create(0, 2));
+    public static final Block IRON_TOPPED_VANILLATE = new ExperienceDroppingBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE), UniformIntProvider.create(0, 2));
+    public static final Block COAL_TOPPED_VANILLATE = new ExperienceDroppingBlock(FabricBlockSettings.copyOf(TOPPED_VANILLATE), UniformIntProvider.create(0, 2));
     public static final Block VANILLATE_CRUMBLE = new SandBlock(12176828, FabricBlockSettings.of(Material.AGGREGATE, MapColor.TERRACOTTA_LIGHT_BLUE).strength(1.2F).requiresTool());
     public static final Block VANILLATE_BRICKS = new Block(FabricBlockSettings.copyOf(VANILLATE));
     public static final Block CRACKED_VANILLATE_BRICKS = new Block(FabricBlockSettings.copyOf(VANILLATE));
@@ -221,29 +223,29 @@ public class ModBlocks {
     public static final Block STRIPPED_AMANITA_WOOD = new PillarBlock(FabricBlockSettings.copyOf(STRIPPED_AMANITA_LOG));
     public static final Block AMANITA_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD, MapColor.TERRACOTTA_YELLOW).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD));
     public static final Block BELL_PLANKS = new Block(FabricBlockSettings.copyOf(AMANITA_PLANKS).mapColor(MapColor.OFF_WHITE));
-    public static final Block BELL_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(BELL_PLANKS).strength(0.5F).noCollision());
-    public static final Block BELL_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(BELL_PLANKS));
+    public static final Block BELL_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(BELL_PLANKS).strength(0.5F).noCollision(), SoundEvents.BLOCK_WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON);
+    public static final Block BELL_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(BELL_PLANKS), SoundEvents.BLOCK_FENCE_GATE_CLOSE, SoundEvents.BLOCK_FENCE_GATE_OPEN);
     public static final Block BELL_FENCE = new FenceBlock(FabricBlockSettings.copyOf(BELL_PLANKS));
-    public static final Block BELL_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(BELL_PLANKS).strength(3.0F).nonOpaque().allowsSpawning((state, world, pos, type) -> false));
-    public static final Block BELL_DOOR = new DoorBlock(FabricBlockSettings.copyOf(BELL_PLANKS).strength(3.0F));
+    public static final Block BELL_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(BELL_PLANKS).strength(3.0F).nonOpaque().allowsSpawning((state, world, pos, type) -> false), SoundEvents.BLOCK_WOODEN_TRAPDOOR_CLOSE, SoundEvents.BLOCK_WOODEN_TRAPDOOR_OPEN);
+    public static final Block BELL_DOOR = new DoorBlock(FabricBlockSettings.copyOf(BELL_PLANKS).strength(3.0F), SoundEvents.BLOCK_WOODEN_DOOR_CLOSE, SoundEvents.BLOCK_WOODEN_DOOR_OPEN);
     public static final Block BELL_STAIRS = new ModStairsBlock(BELL_PLANKS);
     public static final Block BELL_SLAB = new SlabBlock(FabricBlockSettings.copyOf(BELL_PLANKS));
     public static final Block DARK_AMANITA_PLANKS = new Block(FabricBlockSettings.copyOf(AMANITA_PLANKS).mapColor(MapColor.SPRUCE_BROWN));
-    public static final Block DARK_AMANITA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(DARK_AMANITA_PLANKS).strength(0.5F).noCollision());
-    public static final Block DARK_AMANITA_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(DARK_AMANITA_PLANKS));
+    public static final Block DARK_AMANITA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(DARK_AMANITA_PLANKS).strength(0.5F).noCollision(), SoundEvents.BLOCK_WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON);
+    public static final Block DARK_AMANITA_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(DARK_AMANITA_PLANKS), SoundEvents.BLOCK_FENCE_GATE_CLOSE, SoundEvents.BLOCK_FENCE_GATE_OPEN);
     public static final Block DARK_AMANITA_FENCE = new FenceBlock(FabricBlockSettings.copyOf(DARK_AMANITA_PLANKS));
-    public static final Block DARK_AMANITA_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(DARK_AMANITA_PLANKS).strength(3.0F).nonOpaque().allowsSpawning((state, world, pos, type) -> false));
-    public static final Block DARK_AMANITA_DOOR = new DoorBlock(FabricBlockSettings.copyOf(DARK_AMANITA_PLANKS).strength(3.0F));
+    public static final Block DARK_AMANITA_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(DARK_AMANITA_PLANKS).strength(3.0F).nonOpaque().allowsSpawning((state, world, pos, type) -> false), SoundEvents.BLOCK_WOODEN_TRAPDOOR_CLOSE, SoundEvents.BLOCK_WOODEN_TRAPDOOR_OPEN);
+    public static final Block DARK_AMANITA_DOOR = new DoorBlock(FabricBlockSettings.copyOf(DARK_AMANITA_PLANKS).strength(3.0F), SoundEvents.BLOCK_WOODEN_DOOR_CLOSE, SoundEvents.BLOCK_WOODEN_DOOR_OPEN);
     public static final Block DARK_AMANITA_STAIRS = new ModStairsBlock(DARK_AMANITA_PLANKS);
     public static final Block DARK_AMANITA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(DARK_AMANITA_PLANKS));
-    public static final Block AMANITA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(0.5F).noCollision());
-    public static final Block AMANITA_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS));
+    public static final Block AMANITA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(0.5F).noCollision(), SoundEvents.BLOCK_WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON);
+    public static final Block AMANITA_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS), SoundEvents.BLOCK_FENCE_GATE_CLOSE, SoundEvents.BLOCK_FENCE_GATE_OPEN);
     public static final Block AMANITA_FENCE = new FenceBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS));
-    public static final Block AMANITA_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(3.0F).nonOpaque().allowsSpawning((state, world, pos, type) -> false));
-    public static final Block AMANITA_DOOR = new DoorBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(3.0F));
+    public static final Block AMANITA_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(3.0F).nonOpaque().allowsSpawning((state, world, pos, type) -> false), SoundEvents.BLOCK_WOODEN_TRAPDOOR_CLOSE, SoundEvents.BLOCK_WOODEN_TRAPDOOR_OPEN);
+    public static final Block AMANITA_DOOR = new DoorBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS).strength(3.0F), SoundEvents.BLOCK_WOODEN_DOOR_CLOSE, SoundEvents.BLOCK_WOODEN_DOOR_OPEN);
     public static final Block AMANITA_STAIRS = new ModStairsBlock(AMANITA_PLANKS);
     public static final Block AMANITA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(AMANITA_PLANKS));
-    public static final Block AMANITA_BUTTON = new WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD));
+    public static final Block AMANITA_BUTTON = ModBlocks.createWoodenButtonBlock();
     public static final Block AMANITA_LEAVES = createLeavesBlock();
     public static final Block FRUITING_AMANITA_LEAVES = createLeavesBlock();
     public static final Block AMANITA_CARPET = new AmanitaCarpetBlock(FabricBlockSettings.copyOf(Blocks.VINE));
@@ -251,11 +253,11 @@ public class ModBlocks {
     public static final Block STRIPPED_DARK_AMANITA_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD, MapColor.DIRT_BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD));
     public static final Block STRIPPED_BELL_WOOD = new PillarBlock(FabricBlockSettings.copyOf(STRIPPED_DARK_AMANITA_LOG));
     public static final Block STRIPPED_DARK_AMANITA_WOOD = new PillarBlock(FabricBlockSettings.copyOf(STRIPPED_DARK_AMANITA_LOG));
-    public static final Block DARK_AMANITA_BUTTON = new WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD));
+    public static final Block DARK_AMANITA_BUTTON = ModBlocks.createWoodenButtonBlock();
     public static final Block DARK_AMANITA_LEAVES = createLeavesBlock();
     public static final Block FRUITING_DARK_AMANITA_LEAVES = createLeavesBlock();
     public static final Block STRIPPED_BELL_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD, MapColor.OFF_WHITE).strength(2.0F).sounds(BlockSoundGroup.WOOD));
-    public static final Block BELL_BUTTON = new WoodenButtonBlock(FabricBlockSettings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD));
+    public static final Block BELL_BUTTON = ModBlocks.createWoodenButtonBlock();
     public static final Block BELL_CAP = createLeavesBlock(MapColor.PALE_YELLOW);
     public static final Block DARKENED_BELL_CAP = createLeavesBlock(MapColor.TERRACOTTA_YELLOW);
     public static final Block GREEN_MUSHROOM_BLOCK = new MushroomBlock(FabricBlockSettings.of(Material.WOOD, MapColor.GREEN).strength(0.2f).sounds(BlockSoundGroup.WOOD).luminance(3));
@@ -333,15 +335,15 @@ public class ModBlocks {
     public static final Block POTTED_HORSETAIL = new FlowerPotBlock(HORSETAIL, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block CAVE_MUSHROOMS = new CaveMushroomsBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.DULL_RED).noCollision().breakInstantly().sounds(BlockSoundGroup.MOSS_CARPET).offsetType(XYZ));
     public static final Block BLUE_CAVE_MUSHROOMS = new CaveMushroomsBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT, MapColor.DARK_AQUA).noCollision().breakInstantly().sounds(BlockSoundGroup.MOSS_CARPET).offsetType(XYZ));
-    public static final Block GREEN_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.GREEN).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance(3).postProcess((state, world, pos) -> true), () -> RegistryEntry.of(ConfiguredFeatures.HUGE_GREEN_MUSHROOM));
+    public static final Block GREEN_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.GREEN).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).luminance(3).postProcess((state, world, pos) -> true), ModConfiguredFeatures.HUGE_GREEN_MUSHROOM);
     public static final Block POTTED_GREEN_MUSHROOM = new FlowerPotBlock(GREEN_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
-    public static final Block YELLOW_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), () -> RegistryEntry.of(ConfiguredFeatures.HUGE_YELLOW_MUSHROOM));
+    public static final Block YELLOW_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.YELLOW).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), ModConfiguredFeatures.HUGE_YELLOW_MUSHROOM);
     public static final Block POTTED_YELLOW_MUSHROOM = new FlowerPotBlock(YELLOW_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
-    public static final Block PURPLE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.PURPLE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), () -> RegistryEntry.of(ConfiguredFeatures.HUGE_PURPLE_MUSHROOM));
+    public static final Block PURPLE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.PURPLE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), ModConfiguredFeatures.HUGE_PURPLE_MUSHROOM);
     public static final Block POTTED_PURPLE_MUSHROOM = new FlowerPotBlock(PURPLE_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
-    public static final Block ORANGE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), () -> RegistryEntry.of(ConfiguredFeatures.HUGE_ORANGE_MUSHROOM));
+    public static final Block ORANGE_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), ModConfiguredFeatures.HUGE_ORANGE_MUSHROOM);
     public static final Block POTTED_ORANGE_MUSHROOM = new FlowerPotBlock(ORANGE_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
-    public static final Block PINK_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.PINK).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), () -> RegistryEntry.of(ConfiguredFeatures.HUGE_PINK_MUSHROOM));
+    public static final Block PINK_MUSHROOM = new MushroomPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.PINK).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS), ModConfiguredFeatures.HUGE_PINK_MUSHROOM);
     public static final Block POTTED_PINK_MUSHROOM = new FlowerPotBlock(PINK_MUSHROOM, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
     public static final Block YELLOW_SONGFLOWER = new FlowerBlock(StatusEffects.JUMP_BOOST, 6, FabricBlockSettings.of(Material.PLANT, MapColor.PALE_YELLOW).offsetType(XZ).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     public static final Block POTTED_YELLOW_SONGFLOWER = new FlowerPotBlock(YELLOW_SONGFLOWER, FabricBlockSettings.of(Material.DECORATION).breakInstantly().nonOpaque());
@@ -397,12 +399,19 @@ public class ModBlocks {
     public static final Block DARK_AMANITA_WALL_SIGN = new WallSignBlock(FabricBlockSettings.copyOf(DARK_AMANITA_PLANKS).noCollision().strength(1.0f), EnumAddons.DARK_AMANITA_SIGN);
     public static final Block BELL_WALL_SIGN = new WallSignBlock(FabricBlockSettings.copyOf(BELL_PLANKS).noCollision().strength(1.0f), EnumAddons.BELL_SIGN);
 
+    private static ButtonBlock createWoodenButtonBlock() {
+        return ModBlocks.createWoodenButtonBlock(BlockSoundGroup.WOOD, SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_OFF, SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON);
+    }
+
+    private static ButtonBlock createWoodenButtonBlock(BlockSoundGroup soundGroup, SoundEvent clickOffSound, SoundEvent clickOnSound) {
+        return new ButtonBlock(AbstractBlock.Settings.of(Material.DECORATION).noCollision().strength(0.5f).sounds(soundGroup), 30, true, clickOffSound, clickOnSound);
+    }
     private static void registerBlock(String name, Block block) {
-        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, name), block);
+        Registry.register(Registries.BLOCK, new Identifier(Main.MOD_ID, name), block);
     }
 
     private static void registerBlock(String name, Block block, int burn, int spread) {
-        Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, name), block);
+        Registry.register(Registries.BLOCK, new Identifier(Main.MOD_ID, name), block);
         FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);
     }
 

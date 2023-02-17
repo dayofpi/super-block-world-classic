@@ -14,7 +14,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.FlyingItemEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 
 @Environment(EnvType.CLIENT)
 public class HammerRenderer<T extends Entity & FlyingItemEntity> extends EntityRenderer<T> {
@@ -42,8 +42,8 @@ public class HammerRenderer<T extends Entity & FlyingItemEntity> extends EntityR
             matrices.push();
             matrices.scale(this.scale, this.scale, this.scale);
             matrices.multiply(this.dispatcher.getRotation());
-            matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
-            matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.age * 20));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F));
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(entity.age * 20));
             this.itemRenderer.renderItem(entity.getStack(), ModelTransformation.Mode.GROUND, light, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getId());
             matrices.pop();
             super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);

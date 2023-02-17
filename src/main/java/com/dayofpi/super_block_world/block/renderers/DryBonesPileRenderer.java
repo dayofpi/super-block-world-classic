@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.block.renderers;
 
+import com.dayofpi.super_block_world.block.ModBlocks;
 import com.dayofpi.super_block_world.block.block_entities.DryBonesPileBE;
 import com.dayofpi.super_block_world.block.blocks.DryBonesPileBlock;
-import com.dayofpi.super_block_world.entity.entities.hostile.DryBonesEntity;
-import com.dayofpi.super_block_world.block.ModBlocks;
 import com.dayofpi.super_block_world.entity.ModEntities;
+import com.dayofpi.super_block_world.entity.entities.hostile.DryBonesEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
@@ -13,7 +13,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.World;
 
 @Environment(EnvType.CLIENT)
@@ -39,7 +39,7 @@ public class DryBonesPileRenderer implements BlockEntityRenderer<DryBonesPileBE>
             BlockState blockState = blockEntity.getCachedState();
             float h = 22.5f * (float) blockState.get(DryBonesPileBlock.ROTATION);
             entity.setHeadYaw(0.0f);
-            matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(h));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(h));
             matrices.translate(0.0, -0.2f, 0.0);
             this.entityRenderDispatcher.render(entity, 0.0, 0.0, 0.0, 0.0f, tickDelta, matrices, vertexConsumers, light);
         }

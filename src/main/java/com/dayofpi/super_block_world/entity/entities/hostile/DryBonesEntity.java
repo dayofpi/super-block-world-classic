@@ -71,7 +71,7 @@ public class DryBonesEntity extends HostileEntity {
             BlockPos blockPos = this.getBlockPos();
             if (world.getBlockState(blockPos).isAir()) {
                 world.setBlockState(blockPos, DRY_BONES_PILE);
-                world.createAndScheduleBlockTick(blockPos, world.getBlockState(blockPos).getBlock(), 90);
+                world.scheduleBlockTick(blockPos, world.getBlockState(blockPos).getBlock(), 90);
             } else this.dropCrushStacks();
         }
     }

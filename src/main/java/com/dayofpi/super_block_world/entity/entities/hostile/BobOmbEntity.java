@@ -2,7 +2,7 @@ package com.dayofpi.super_block_world.entity.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.entity.entities.BobOmb;
-import com.dayofpi.super_block_world.entity.entities.goals.BobOmbIgniteGoal;
+import com.dayofpi.super_block_world.entity.goals.BobOmbIgniteGoal;
 import com.dayofpi.super_block_world.entity.entities.passive.BobOmbBuddyEntity;
 import com.dayofpi.super_block_world.entity.entities.projectile.ModFireballEntity;
 import net.minecraft.block.BlockState;
@@ -33,9 +33,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.*;
+import net.minecraft.world.LightType;
+import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
-import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
@@ -252,9 +254,8 @@ public class BobOmbEntity extends HostileEntity implements BobOmb {
 
     private void explode() {
         if (!this.world.isClient) {
-            Explosion.DestructionType destructionType = this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING) ? Explosion.DestructionType.DESTROY : Explosion.DestructionType.NONE;
             this.dead = true;
-            this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), (float) this.explosionRadius, destructionType);
+            this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), (float) this.explosionRadius, World.ExplosionSourceType.MOB);
             this.discard();
             this.spawnEffectsCloud();
         }

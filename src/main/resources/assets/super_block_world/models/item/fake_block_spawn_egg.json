@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "super_block_world:spawn_egg/fake_block"
+    "layer0": "super_block_world:item/fake_block_spawn_egg"
   }
 }

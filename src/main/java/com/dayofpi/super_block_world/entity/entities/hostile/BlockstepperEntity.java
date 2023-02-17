@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.entity.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.entity.entities.goals.BlockstepperAttackGoal;
-import com.dayofpi.super_block_world.entity.entities.goals.BlockstepperPanicGoal;
-import com.dayofpi.super_block_world.entity.entities.goals.FormationGoal;
+import com.dayofpi.super_block_world.entity.goals.BlockstepperAttackGoal;
+import com.dayofpi.super_block_world.entity.goals.BlockstepperPanicGoal;
+import com.dayofpi.super_block_world.entity.goals.FormationGoal;
 import com.dayofpi.super_block_world.block.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.command.argument.EntityAnchorArgumentType;

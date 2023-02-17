@@ -1,11 +1,11 @@
 package com.dayofpi.super_block_world.entity.entities.misc;
 
+import com.dayofpi.super_block_world.ModTags;
 import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.block.blocks.BrickBlock;
 import com.dayofpi.super_block_world.block.blocks.FakeBlock;
 import com.dayofpi.super_block_world.block.blocks.ReactiveBlock;
 import com.dayofpi.super_block_world.item.ModItems;
-import com.dayofpi.super_block_world.ModTags;
 import com.google.common.collect.Sets;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -16,8 +16,8 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.tag.FluidTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.*;

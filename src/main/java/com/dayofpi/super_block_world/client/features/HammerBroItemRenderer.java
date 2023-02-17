@@ -13,7 +13,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Arm;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 @Environment(EnvType.CLIENT)
 public class HammerBroItemRenderer<T extends LivingEntity, M extends EntityModel<T> & ModelWithArms> extends FeatureRenderer<T, M> {
     private final HeldItemRenderer heldItemRenderer;
@@ -40,8 +40,8 @@ public class HammerBroItemRenderer<T extends LivingEntity, M extends EntityModel
         if (!stack.isEmpty()) {
             matrices.push();
             this.getContextModel().setArmAngle(arm, matrices);
-            matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-90.0F));
-            matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-90.0F));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F));
             boolean bl = arm == Arm.LEFT;
             matrices.translate((float)(bl ? -1 : 1) / 16.0F, 0.125D, -0.5D);
             this.heldItemRenderer.renderItem(entity, stack, transformationMode, bl, matrices, vertexConsumers, light);

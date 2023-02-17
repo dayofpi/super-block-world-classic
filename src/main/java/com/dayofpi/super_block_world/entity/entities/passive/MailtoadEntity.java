@@ -4,7 +4,7 @@ import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.entity.entities.Stompable;
 import com.dayofpi.super_block_world.entity.entities.Toad;
 import com.dayofpi.super_block_world.entity.entities.ToadTrades;
-import com.dayofpi.super_block_world.entity.entities.brains.ToadBrain;
+import com.dayofpi.super_block_world.entity.brains.ToadBrain;
 import com.dayofpi.super_block_world.entity.entities.hostile.RottenMushroomEntity;
 import com.dayofpi.super_block_world.entity.ModEntities;
 import com.dayofpi.super_block_world.item.ModItems;

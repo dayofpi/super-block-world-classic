@@ -50,7 +50,7 @@ public class PullBlock extends Block {
         boolean isPowered = state.get(POWERED);
         if (isPowered != world.isReceivingRedstonePower(blockPos)) {
             if (isPowered) {
-                world.createAndScheduleBlockTick(blockPos, this, 4);
+                world.scheduleBlockTick(blockPos, this, 4);
             } else activate(state, world, blockPos);
         }
     }

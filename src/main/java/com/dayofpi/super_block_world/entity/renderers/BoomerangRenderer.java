@@ -12,9 +12,9 @@ import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Matrix3f;
-import net.minecraft.util.math.Matrix4f;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
 @Environment(EnvType.CLIENT)
 public class BoomerangRenderer extends EntityRenderer<BoomerangEntity> {
@@ -37,9 +37,9 @@ public class BoomerangRenderer extends EntityRenderer<BoomerangEntity> {
         matrixStack.push();
         matrixStack.scale(1.0F, 1.0F, 1.0F);
         matrixStack.multiply(this.dispatcher.getRotation());
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
-        matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(entity.age * 10));
-        matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(45.0F));
+        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F));
+        matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(entity.age * 10));
+        matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(45.0F));
         MatrixStack.Entry entry = matrixStack.peek();
         Matrix4f matrix4f = entry.getPositionMatrix();
         Matrix3f matrix3f = entry.getNormalMatrix();

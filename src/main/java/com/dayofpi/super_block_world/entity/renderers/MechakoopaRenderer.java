@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.entity.renderers;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.entity.models.MechakoopaModel;
 import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.entity.entities.hostile.MechakoopaEntity;
+import com.dayofpi.super_block_world.entity.models.MechakoopaModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
@@ -15,7 +15,11 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RotationAxis;
+import net.minecraft.util.math.Vec3d;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
 @Environment(EnvType.CLIENT)
 public class MechakoopaRenderer extends MobEntityRenderer<MechakoopaEntity, MechakoopaModel> {
@@ -68,8 +72,8 @@ public class MechakoopaRenderer extends MobEntityRenderer<MechakoopaEntity, Mech
             diff = diff.normalize();
             float acos = (float) Math.acos(diff.y);
             float atan2 = (float) Math.atan2(diff.z, diff.x);
-            matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion((1.5707964F - atan2) * 57.295776F));
-            matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(acos * 57.295776F));
+            matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((1.5707964F - atan2) * 57.295776F));
+            matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(acos * 57.295776F));
             float invertedTime = time * 0.05F * -1.5F;
             float r = beamProgress * beamProgress;
             int s = 64 + (int) (r * 191.0F);

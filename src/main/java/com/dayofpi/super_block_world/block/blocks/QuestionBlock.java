@@ -198,7 +198,7 @@ public class QuestionBlock extends ReactiveBlock implements BlockEntityProvider 
             return;
         if (entity instanceof ServerPlayerEntity)
             ModCriteria.JUMP_UNDER_BLOCK.trigger((ServerPlayerEntity) entity);
-        world.createAndScheduleBlockTick(blockPos, this, 1);
+        world.scheduleBlockTick(blockPos, this, 1);
     }
 
     @Override

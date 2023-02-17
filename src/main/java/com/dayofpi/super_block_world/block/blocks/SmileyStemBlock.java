@@ -12,6 +12,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 
 @SuppressWarnings("deprecation")
 public class SmileyStemBlock extends PlantBlock implements Fertilizable {
@@ -46,7 +47,7 @@ public class SmileyStemBlock extends PlantBlock implements Fertilizable {
     }
 
     @Override
-    public boolean isFertilizable(BlockView world, BlockPos blockPos, BlockState state, boolean isClient) {
+    public boolean isFertilizable(WorldView world, BlockPos blockPos, BlockState state, boolean isClient) {
         BlockState blockState = world.getBlockState(blockPos.up());
         return blockState.isAir() || blockState.isOf(this) && isFertilizable(world, blockPos.up(), blockState, isClient);
     }

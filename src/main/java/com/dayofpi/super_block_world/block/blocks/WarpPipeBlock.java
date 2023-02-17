@@ -79,7 +79,7 @@ public class WarpPipeBlock extends AbstractPipe implements BlockEntityProvider {
                 this.checkConnection(world, blockPos, state);
             }
             if (state.get(WATERLOGGED)) {
-                world.createAndScheduleBlockTick(blockPos, this, 20);
+                world.scheduleBlockTick(blockPos, this, 20);
             }
         }
     }
@@ -87,7 +87,7 @@ public class WarpPipeBlock extends AbstractPipe implements BlockEntityProvider {
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos blockPos, BlockPos neighborPos) {
         if (direction == Direction.UP && neighborState.isOf(Blocks.WATER)) {
-            world.createAndScheduleBlockTick(blockPos, this, 20);
+            world.scheduleBlockTick(blockPos, this, 20);
         }
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, blockPos, neighborPos);
     }

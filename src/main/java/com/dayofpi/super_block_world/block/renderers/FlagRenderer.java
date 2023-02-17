@@ -1,10 +1,10 @@
 package com.dayofpi.super_block_world.block.renderers;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.client.registry.ModModelLayers;
+import com.dayofpi.super_block_world.ModTags;
 import com.dayofpi.super_block_world.block.block_entities.FlagBE;
 import com.dayofpi.super_block_world.block.blocks.FlagBlock;
-import com.dayofpi.super_block_world.ModTags;
+import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
@@ -21,7 +21,7 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.World;
 
 import java.util.Arrays;
@@ -106,7 +106,7 @@ public class FlagRenderer implements BlockEntityRenderer<FlagBE> {
         float angle = (rotation * 22.5F) % 360;
         float wave = MathHelper.cos(world.getTime()) + angle;
 
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(wave));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(wave));
         this.flag.render(matrices, id.getVertexConsumer(provider, RenderLayer::getEntityCutout), light, overlay);
         matrices.pop();
     }

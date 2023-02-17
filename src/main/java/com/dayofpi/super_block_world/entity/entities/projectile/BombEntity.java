@@ -15,7 +15,6 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
 
 public class BombEntity extends ThrownItemEntity {
     public BombEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
@@ -59,7 +58,7 @@ public class BombEntity extends ThrownItemEntity {
 
     private void goBoom() {
         boolean bl = this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING) || this.getOwner() instanceof PlayerEntity;
-        world.createExplosion(this, this.getX(), this.getY(), this.getZ(), 1.8F, bl ? Explosion.DestructionType.BREAK : Explosion.DestructionType.NONE);
+        world.createExplosion(this, this.getX(), this.getY(), this.getZ(), 1.8F, World.ExplosionSourceType.TNT);
         this.discard();
     }
 

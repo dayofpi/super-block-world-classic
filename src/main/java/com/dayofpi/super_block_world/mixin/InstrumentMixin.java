@@ -6,6 +6,7 @@ import com.dayofpi.super_block_world.ModTags;
 import com.dayofpi.super_block_world.util.EnumAddons;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.Instrument;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
@@ -30,7 +31,7 @@ public class InstrumentMixin {
     Instrument[] field_12652;
 
     @Invoker("<init>")
-    private static Instrument newInstrument(String internalName, int internalId, String name, SoundEvent sound) {
+    private static Instrument newInstrument(String internalName, int internalId, String name, RegistryEntry<SoundEvent> sound, Instrument.Type type) {
         throw new AssertionError();
     }
 
@@ -39,11 +40,11 @@ public class InstrumentMixin {
         var variants = new ArrayList<>(Arrays.asList(field_12652));
         var last = variants.get(variants.size() - 1);
 
-        var bling = newInstrument("BLING", last.ordinal() + 1, "bling", Sounds.NOTE_BLOCK_BLING);
-        var block = newInstrument("BLOCK", last.ordinal() + 2, "block", Sounds.NOTE_BLOCK_BLOCK);
-        var choir = newInstrument("CHOIR", last.ordinal() + 3, "choir", Sounds.NOTE_BLOCK_CHOIR);
-        var pan_flute = newInstrument("PAN_FLUTE", last.ordinal() + 4, "pan_flute", Sounds.NOTE_BLOCK_PAN_FLUTE);
-        var dinodrum = newInstrument("DINODRUM", last.ordinal() + 5, "dinodrum", Sounds.NOTE_BLOCK_DINODRUM);
+        var bling = newInstrument("BLING", last.ordinal() + 1, "bling", Sounds.NOTE_BLOCK_BLING, Instrument.Type.BASE_BLOCK);
+        var block = newInstrument("BLOCK", last.ordinal() + 2, "block", Sounds.NOTE_BLOCK_BLOCK, Instrument.Type.BASE_BLOCK);
+        var choir = newInstrument("CHOIR", last.ordinal() + 3, "choir", Sounds.NOTE_BLOCK_CHOIR, Instrument.Type.BASE_BLOCK);
+        var pan_flute = newInstrument("PAN_FLUTE", last.ordinal() + 4, "pan_flute", Sounds.NOTE_BLOCK_PAN_FLUTE, Instrument.Type.BASE_BLOCK);
+        var dinodrum = newInstrument("DINODRUM", last.ordinal() + 5, "dinodrum", Sounds.NOTE_BLOCK_DINODRUM, Instrument.Type.BASE_BLOCK);
 
         EnumAddons.BLING = bling;
         EnumAddons.BLOCK = block;
@@ -60,8 +61,8 @@ public class InstrumentMixin {
         field_12652 = variants.toArray(new Instrument[0]);
     }
 
-    @Inject(method = "fromBlockState(Lnet/minecraft/block/BlockState;)Lnet/minecraft/block/enums/Instrument;", at = @At("HEAD"), cancellable = true)
-    private static void fromBlockState(BlockState state, CallbackInfoReturnable<Instrument> info) {
+    @Inject(method = "fromBelowState(Lnet/minecraft/block/BlockState;)Lnet/minecraft/block/enums/Instrument;", at = @At("HEAD"), cancellable = true)
+    private static void fromBelowState(BlockState state, CallbackInfoReturnable<Instrument> info) {
         if (state.isOf(ModBlocks.QUESTION_BLOCK)) {
             info.setReturnValue(EnumAddons.BLING);
         }

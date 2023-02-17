@@ -22,6 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 @Environment(value= EnvType.CLIENT)
+@SuppressWarnings("deprecation")
 public class SpikeTrapRenderer implements BlockEntityRenderer<SpikeTrapBE> {
     public static final SpriteIdentifier TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(Main.MOD_ID, "entity/spike_trap"));
     public static final SpriteIdentifier POWERED_TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(Main.MOD_ID, "entity/spike_trap_on"));

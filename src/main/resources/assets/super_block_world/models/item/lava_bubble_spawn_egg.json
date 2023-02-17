@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "super_block_world:spawn_egg/lava_bubble"
+    "layer0": "super_block_world:item/lava_bubble_spawn_egg"
   }
 }

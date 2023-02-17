@@ -7,7 +7,7 @@ import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Arm;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 
 public class MagikoopaModel extends SinglePartEntityModel<MagikoopaEntity> implements ModelWithArms {
     private final ModelPart root;
@@ -71,7 +71,7 @@ public class MagikoopaModel extends SinglePartEntityModel<MagikoopaEntity> imple
         this.root.rotate(matrices);
         this.rightArm.rotate(matrices);
         matrices.translate(0.0, 0.09375, -0.09375);
-        matrices.multiply(Vec3f.POSITIVE_X.getRadialQuaternion(this.rightArm.pitch - 0.2f));
+        matrices.multiply(RotationAxis.POSITIVE_X.rotation(this.rightArm.pitch - 0.2f));
         matrices.scale(0.7f, 0.7f, 0.7f);
         matrices.translate(0.0625, 0.0, 0.0);
     }

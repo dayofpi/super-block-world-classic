@@ -1,14 +1,14 @@
 package com.dayofpi.super_block_world;
 
-import com.dayofpi.super_block_world.Main;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.structure.Structure;
 
@@ -40,42 +40,42 @@ public class ModTags {
     }
 
     private static void registerBiomeTags() {
-        SURFACE_BIOMES = registerTag(Registry.BIOME_KEY, "surface_biomes");
-        SURFACE_GOOMBA_SPAWN = registerTag(Registry.BIOME_KEY, "surface_goomba_spawn");
-        SURFACE_KOOPA_SPAWN = registerTag(Registry.BIOME_KEY, "surface_koopa_spawn");
-        SURFACE_SHY_GUY_SPAWN = registerTag(Registry.BIOME_KEY, "surface_shy_guy_spawn");
+        SURFACE_BIOMES = registerTag(RegistryKeys.BIOME, "surface_biomes");
+        SURFACE_GOOMBA_SPAWN = registerTag(RegistryKeys.BIOME, "surface_goomba_spawn");
+        SURFACE_KOOPA_SPAWN = registerTag(RegistryKeys.BIOME, "surface_koopa_spawn");
+        SURFACE_SHY_GUY_SPAWN = registerTag(RegistryKeys.BIOME, "surface_shy_guy_spawn");
     }
 
     private static void registerBlockTags() {
-        FIRE_CIRCLE_BREAK_TARGETS = registerTag(Registry.BLOCK_KEY, "fire_circle_break_targets");
-        FIRE_CIRCLE_LIT_TARGETS = registerTag(Registry.BLOCK_KEY, "fire_circle_lit_targets");
-        FLAGS = registerTag(Registry.BLOCK_KEY, "flags");
-        GOOP = registerTag(Registry.BLOCK_KEY, "goop");
-        PIPE_BODIES = registerTag(Registry.BLOCK_KEY, "pipe_bodies");
-        ROYALITE = registerTag(Registry.BLOCK_KEY, "royalite");
-        VANILLATE = registerTag(Registry.BLOCK_KEY, "vanillate");
-        WARP_PIPES = registerTag(Registry.BLOCK_KEY, "warp_pipes");
+        FIRE_CIRCLE_BREAK_TARGETS = registerTag(RegistryKeys.BLOCK, "fire_circle_break_targets");
+        FIRE_CIRCLE_LIT_TARGETS = registerTag(RegistryKeys.BLOCK, "fire_circle_lit_targets");
+        FLAGS = registerTag(RegistryKeys.BLOCK, "flags");
+        GOOP = registerTag(RegistryKeys.BLOCK, "goop");
+        PIPE_BODIES = registerTag(RegistryKeys.BLOCK, "pipe_bodies");
+        ROYALITE = registerTag(RegistryKeys.BLOCK, "royalite");
+        VANILLATE = registerTag(RegistryKeys.BLOCK, "vanillate");
+        WARP_PIPES = registerTag(RegistryKeys.BLOCK, "warp_pipes");
     }
 
     private static void registerEntityTags() {
-        STOMP_IGNORED = registerTag(Registry.ENTITY_TYPE_KEY, "stomp_ignored");
-        STOMP_IMMUNE = registerTag(Registry.ENTITY_TYPE_KEY, "stomp_immune");
+        STOMP_IGNORED = registerTag(RegistryKeys.ENTITY_TYPE, "stomp_ignored");
+        STOMP_IMMUNE = registerTag(RegistryKeys.ENTITY_TYPE, "stomp_immune");
     }
 
     private static void registerStructureTags() {
-        GHOST_HOUSE = registerTag(Registry.STRUCTURE_KEY, "ghost_house");
-        ON_ARENA_FINDER_MAP = registerTag(Registry.STRUCTURE_KEY, "on_arena_finder_map");
-        ON_ISLAND_EXPLORER_MAP = registerTag(Registry.STRUCTURE_KEY, "on_island_explorer_map");
+        GHOST_HOUSE = registerTag(RegistryKeys.STRUCTURE, "ghost_house");
+        ON_ARENA_FINDER_MAP = registerTag(RegistryKeys.STRUCTURE, "on_arena_finder_map");
+        ON_ISLAND_EXPLORER_MAP = registerTag(RegistryKeys.STRUCTURE, "on_island_explorer_map");
     }
 
     public static void register() {
-        POISON = registerTag(Registry.FLUID_KEY, "poison");
+        POISON = registerTag(RegistryKeys.FLUID, "poison");
         registerBiomeTags();
         registerBlockTags();
         registerEntityTags();
         registerStructureTags();
-        SHELLMETS = registerTag(Registry.ITEM_KEY, "shellmets");
-        STAR_BITS = registerTag(Registry.ITEM_KEY, "star_bits");
-        PAINT = registerTag(Registry.ITEM_KEY, "paint");
+        SHELLMETS = registerTag(RegistryKeys.ITEM, "shellmets");
+        STAR_BITS = registerTag(RegistryKeys.ITEM, "star_bits");
+        PAINT = registerTag(RegistryKeys.ITEM, "paint");
     }
 }

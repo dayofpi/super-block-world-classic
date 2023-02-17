@@ -1,9 +1,9 @@
 package com.dayofpi.super_block_world.entity.renderers;
 
 import com.dayofpi.super_block_world.Main;
-import com.dayofpi.super_block_world.entity.models.GoKartModel;
 import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.entity.entities.misc.GoKartEntity;
+import com.dayofpi.super_block_world.entity.models.GoKartModel;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -15,7 +15,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 
 import java.util.OptionalInt;
 
@@ -47,7 +47,7 @@ public class GoKartRenderer extends EntityRenderer<GoKartEntity> {
     public void render(GoKartEntity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider provider, int light) {
         matrices.push();
         matrices.translate(0.0, 1.5, 0.0);
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0f - yaw));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f - yaw));
 
         float wobbleTicks = (float)entity.getDamageWobbleTicks() - tickDelta;
         float wobbleStrength = entity.getDamageWobbleStrength() - tickDelta;
@@ -56,7 +56,7 @@ public class GoKartRenderer extends EntityRenderer<GoKartEntity> {
             wobbleStrength = 0.0f;
         }
         if (wobbleTicks > 0.0f) {
-            matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(MathHelper.sin(wobbleTicks) * wobbleTicks * wobbleStrength / 10.0f * (float)entity.getDamageWobbleSide()));
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.sin(wobbleTicks) * wobbleTicks * wobbleStrength / 10.0f * (float)entity.getDamageWobbleSide()));
         }
 
         matrices.scale(-1.0f, -1.0f, 1.0f);

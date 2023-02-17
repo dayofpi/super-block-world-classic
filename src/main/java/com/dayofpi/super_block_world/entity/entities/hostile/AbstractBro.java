@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.entity.entities.hostile;
 
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.entity.entities.goals.BroAttackGoal;
-import com.dayofpi.super_block_world.entity.entities.goals.BroJumpGoal;
+import com.dayofpi.super_block_world.entity.goals.BroAttackGoal;
+import com.dayofpi.super_block_world.entity.goals.BroJumpGoal;
 import com.dayofpi.super_block_world.entity.entities.passive.MailtoadEntity;
 import com.dayofpi.super_block_world.entity.entities.passive.ToadEntity;
 import com.dayofpi.super_block_world.block.ModBlocks;

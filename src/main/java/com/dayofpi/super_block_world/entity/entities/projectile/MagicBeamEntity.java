@@ -1,12 +1,12 @@
 package com.dayofpi.super_block_world.entity.entities.projectile;
 
 
+import com.dayofpi.super_block_world.ModParticles;
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.entity.entities.hostile.FakeBlockEntity;
-import com.dayofpi.super_block_world.entity.entities.hostile.MudTrooperEntity;
 import com.dayofpi.super_block_world.block.ModBlocks;
 import com.dayofpi.super_block_world.entity.ModEntities;
-import com.dayofpi.super_block_world.ModParticles;
+import com.dayofpi.super_block_world.entity.entities.hostile.FakeBlockEntity;
+import com.dayofpi.super_block_world.entity.entities.hostile.MudTrooperEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -15,8 +15,8 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.projectile.thrown.ThrownEntity;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;

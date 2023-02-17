@@ -12,7 +12,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 
 public class LavaBubbleRenderer extends MobEntityRenderer<LavaBubbleEntity, LavaBubbleModel> {
     private static final Identifier TEXTURE = new Identifier(Main.MOD_ID, "textures/entity/lava_bubble.png");
@@ -37,7 +37,7 @@ public class LavaBubbleRenderer extends MobEntityRenderer<LavaBubbleEntity, Lava
     protected void setupTransforms(LavaBubbleEntity entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta) {
         super.setupTransforms(entity, matrices, animationProgress, bodyYaw, tickDelta);
         matrices.push();
-        matrices.multiply(Vec3f.NEGATIVE_X.getDegreesQuaternion(entity.angle));
+        matrices.multiply(RotationAxis.NEGATIVE_X.rotationDegrees(entity.angle));
         matrices.pop();
     }
 

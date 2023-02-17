@@ -4,8 +4,9 @@ import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.block.block_entities.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class ModBlockEntities {
     public static final BlockEntityType<BooLanternBE> BOO_LANTERN = FabricBlockEntityTypeBuilder.create(BooLanternBE::new, ModBlocks.BOO_LANTERN).build();
@@ -21,16 +22,16 @@ public class ModBlockEntities {
     public static final BlockEntityType<YoshiEggBE> YOSHI_EGG = FabricBlockEntityTypeBuilder.create(YoshiEggBE::new, ModBlocks.YOSHI_EGG).build();
 
     public static void register() {
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "boo_lantern"), BOO_LANTERN);
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "chincho_torch"), CHINCHO_TORCH);
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "spike_trap"), SPIKE_TRAP);
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "dry_bones_pile"), DRY_BONES_PILE);
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "flag"), FLAG);
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "placed_item"), PLACED_ITEM);
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "question_block"), QUESTION_BLOCK);
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "question_box"), QUESTION_BOX);
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "super_pickax"), SUPER_PICKAX);
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "warp_pipe"), WARP_PIPE);
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "yoshi_egg"), YOSHI_EGG);
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "boo_lantern"), BOO_LANTERN);
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "chincho_torch"), CHINCHO_TORCH);
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "spike_trap"), SPIKE_TRAP);
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "dry_bones_pile"), DRY_BONES_PILE);
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "flag"), FLAG);
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "placed_item"), PLACED_ITEM);
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "question_block"), QUESTION_BLOCK);
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "question_box"), QUESTION_BOX);
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "super_pickax"), SUPER_PICKAX);
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "warp_pipe"), WARP_PIPE);
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Main.MOD_ID, "yoshi_egg"), YOSHI_EGG);
     }
 }

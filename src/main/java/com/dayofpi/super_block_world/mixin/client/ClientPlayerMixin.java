@@ -1,8 +1,8 @@
 package com.dayofpi.super_block_world.mixin.client;
 
 import com.dayofpi.super_block_world.audio.KartSoundInstance;
-import com.dayofpi.super_block_world.entity.renderers.GooMeRenderer;
 import com.dayofpi.super_block_world.entity.entities.misc.GoKartEntity;
+import com.dayofpi.super_block_world.entity.renderers.GooMeRenderer;
 import com.dayofpi.super_block_world.util.FormManager;
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.api.EnvType;
@@ -13,9 +13,7 @@ import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
-import net.minecraft.network.encryption.PlayerPublicKey;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -31,8 +29,8 @@ public abstract class ClientPlayerMixin extends AbstractClientPlayerEntity {
     @Shadow public Input input;
     @Shadow @Final protected MinecraftClient client;
 
-    public ClientPlayerMixin(ClientWorld world, GameProfile profile, @Nullable PlayerPublicKey publicKey) {
-        super(world, profile, publicKey);
+    public ClientPlayerMixin(ClientWorld world, GameProfile profile) {
+        super(world, profile);
     }
 
     @Override

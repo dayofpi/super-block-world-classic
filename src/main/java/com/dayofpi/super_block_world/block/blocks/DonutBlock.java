@@ -85,7 +85,7 @@ public class DonutBlock extends FallingBlock implements Waterloggable {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos blockPos, Entity entity) {
         if (isEntityAbove(blockPos, entity) && !state.get(WILL_FALL) && !world.isReceivingRedstonePower(blockPos)) {
-            world.createAndScheduleBlockTick(blockPos, this, this.getFallDelay());
+            world.scheduleBlockTick(blockPos, this, this.getFallDelay());
         }
     }
 
@@ -100,7 +100,7 @@ public class DonutBlock extends FallingBlock implements Waterloggable {
                 world.playSound(null, blockPos, Sounds.BLOCK_DONUT_BLOCK_TRIGGER, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.spawnParticles(ParticleTypes.POOF, blockPos.getX() + 0.5, blockPos.getY() + 1.0, blockPos.getZ() + 0.5, 3, 0.0D, 0.0D, 0.0D, 0.0D);
                 world.emitGameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);
-                world.createAndScheduleBlockTick(blockPos, this, 12);
+                world.scheduleBlockTick(blockPos, this, 12);
             } else if (state.get(WILL_FALL)) {
                 FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, blockPos, state);
                 world.emitGameEvent(null, GameEvent.BLOCK_CHANGE, blockPos);

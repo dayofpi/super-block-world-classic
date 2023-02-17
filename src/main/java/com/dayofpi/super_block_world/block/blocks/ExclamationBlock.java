@@ -33,7 +33,7 @@ public class ExclamationBlock extends ReactiveBlock {
         boolean isPowered = state.get(POWERED);
         if (!isPowered) {
             world.setBlockState(blockPos, state.cycle(POWERED), Block.NOTIFY_ALL);
-            world.createAndScheduleBlockTick(blockPos, this, 4);
+            world.scheduleBlockTick(blockPos, this, 4);
         }
         if (!world.isClient()) {
             Random random = world.getRandom();

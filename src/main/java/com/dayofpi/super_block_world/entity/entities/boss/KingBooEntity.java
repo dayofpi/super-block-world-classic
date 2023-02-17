@@ -3,19 +3,12 @@ package com.dayofpi.super_block_world.entity.entities.boss;
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.audio.ModMusic;
 import com.dayofpi.super_block_world.audio.Sounds;
-import com.dayofpi.super_block_world.entity.entities.brains.KingBooBrain;
 import com.dayofpi.super_block_world.item.ModItems;
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.brain.Brain;
-import net.minecraft.entity.ai.brain.MemoryModuleType;
-import net.minecraft.entity.ai.brain.sensor.Sensor;
-import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
@@ -35,7 +28,6 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.GameStateChangeS2CPacket;
-import net.minecraft.server.network.DebugInfoSender;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.MusicSound;
@@ -49,8 +41,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class KingBooEntity extends ModBossEntity {
-    private static final ImmutableList<SensorType<? extends Sensor<? super KingBooEntity>>> SENSOR_TYPES = ImmutableList.of(SensorType.NEAREST_PLAYERS);
-    private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.PATH, MemoryModuleType.MOBS, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.NEAREST_PLAYERS, MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.LOOK_TARGET, MemoryModuleType.WALK_TARGET, MemoryModuleType.ATTACK_TARGET, MemoryModuleType.ATTACK_COOLING_DOWN, MemoryModuleType.NEAREST_ATTACKABLE, MemoryModuleType.SONIC_BOOM_COOLDOWN, MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN, MemoryModuleType.SONIC_BOOM_SOUND_DELAY);
     private static final TrackedData<Boolean> WEAKENED;
     private static final float MIN_ALPHA = 0.5F;
 
@@ -105,28 +95,6 @@ public class KingBooEntity extends ModBossEntity {
     }
 
     @Override
-    protected Brain.Profile<KingBooEntity> createBrainProfile() {
-        return Brain.createProfile(MEMORY_MODULES, SENSOR_TYPES);
-    }
-
-    @Override
-    protected Brain<?> deserializeBrain(Dynamic<?> dynamic) {
-        return KingBooBrain.create(this.createBrainProfile().deserialize(dynamic));
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public Brain<KingBooEntity> getBrain() {
-        return (Brain<KingBooEntity>) super.getBrain();
-    }
-
-    @Override
-    protected void sendAiDebugData() {
-        super.sendAiDebugData();
-        DebugInfoSender.sendBrainDebugData(this);
-    }
-
-    @Override
     public boolean tryAttack(Entity target) {
         ModBossEntity.cooldown(this, 40);
         return super.tryAttack(target);
@@ -139,12 +107,6 @@ public class KingBooEntity extends ModBossEntity {
             List<ServerPlayerEntity> list = StatusEffectUtil.addEffectToPlayersWithinDistance((ServerWorld)this.world, this, this.getPos(), 50.0, statusEffectInstance, 1200);
             list.forEach(serverPlayerEntity -> serverPlayerEntity.networkHandler.sendPacket(new GameStateChangeS2CPacket(Main.KING_BOO_CURSE, this.isSilent() ? GameStateChangeS2CPacket.DEMO_OPEN_SCREEN : (int)1.0f)));
         }
-        this.world.getProfiler().push("kingBooBrain");
-        this.getBrain().tick((ServerWorld) this.world, this);
-        this.world.getProfiler().pop();
-        this.world.getProfiler().push("kingBooActivityUpdate");
-        KingBooBrain.updateActivities(this);
-        this.world.getProfiler().pop();
         super.mobTick();
     }
 

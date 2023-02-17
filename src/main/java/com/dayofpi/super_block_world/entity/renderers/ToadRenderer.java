@@ -2,9 +2,9 @@ package com.dayofpi.super_block_world.entity.renderers;
 
 import com.dayofpi.super_block_world.Main;
 import com.dayofpi.super_block_world.client.features.ToadSkinFeatureRenderer;
-import com.dayofpi.super_block_world.entity.models.ToadModel;
 import com.dayofpi.super_block_world.client.registry.ModModelLayers;
 import com.dayofpi.super_block_world.entity.entities.passive.ToadEntity;
+import com.dayofpi.super_block_world.entity.models.ToadModel;
 import com.dayofpi.super_block_world.item.ModItems;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -19,8 +19,8 @@ import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Matrix4f;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
+import org.joml.Matrix4f;
 
 @Environment(EnvType.CLIENT)
 public class ToadRenderer extends MobEntityRenderer<ToadEntity, ToadModel<ToadEntity>> {
@@ -58,7 +58,7 @@ public class ToadRenderer extends MobEntityRenderer<ToadEntity, ToadModel<ToadEn
         matrices.pop();
         matrices.push();
         matrices.translate(0.0, coinY, 0.0);
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(entity.age * 10));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.age * 10));
         matrices.scale(0.4f, 0.4f, 0.4f);
         MinecraftClient.getInstance().getItemRenderer().renderItem(ModItems.COIN.getDefaultStack(), ModelTransformation.Mode.GUI, light, OverlayTexture.DEFAULT_UV, matrices, provider, 0);
         matrices.pop();
