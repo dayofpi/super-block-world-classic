@@ -67,8 +67,8 @@ public class PeteyPiranhaModel extends SinglePartEntityModel<PeteyPiranhaEntity>
 		this.updateAnimation(entity.chargingAnimationState, ModAnimations.PeteyPiranha.STOCKPILE, ageInTicks);
 
 		float progress = ageInTicks * 2F * 0.01F;
-		this.rightArm.roll += ((MathHelper.cos(progress) * 0.4F) - 0.4F);
-		this.leftArm.roll += ((MathHelper.cos(progress) * -0.4F) + 0.4F);
+		this.rightArm.roll += ((MathHelper.cos(progress) * 0.4F) - 0.6F);
+		this.leftArm.roll += ((MathHelper.cos(progress) * -0.4F) + 0.6F);
 
 		if (!entity.chargingAnimationState.isRunning()) {
 			this.rightArm.yaw = MathHelper.cos(limbSwing * 0.6662F + 3.1415927F) * 1.4F * limbSwingAmount;
