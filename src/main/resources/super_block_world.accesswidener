@@ -1,2 +1,3 @@
 accessWidener v1 named
 accessible class net/minecraft/block/enums/Instrument$Type
+accessible field net/minecraft/entity/LivingEntity climbingPos Ljava/util/Optional;

@@ -74,7 +74,7 @@ public class Sounds {
     public static final SoundEvent ENTITY_BLOCKSTEPPER_DEATH = registerSound("entity.blockstepper.death");
     public static final SoundEvent ENTITY_BLOCKSTEPPER_HURT = registerSound("entity.blockstepper.hurt");
     public static final SoundEvent ENTITY_BLOCKSTEPPER_MARCH = registerSound("entity.blockstepper.march");
-    public static final SoundEvent ENTITY_BLOCKSTEPPER_PANIC = registerSound("entity.blockstepper.angry");
+    public static final SoundEvent ENTITY_BLOCKSTEPPER_PANIC = registerSound("entity.blockstepper.panic");
     public static final SoundEvent ENTITY_BLOCKSTEPPER_STEP = registerSound("entity.blockstepper.step");
     public static final SoundEvent ENTITY_BLOOPER_FLOP = registerSound("entity.blooper.flop");
     public static final SoundEvent ENTITY_BOB_OMB_AMBIENT = registerSound("entity.bob_omb.ambient");

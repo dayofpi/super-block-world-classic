@@ -17,6 +17,10 @@
     {
       "type": "single",
       "resource": "super_block_world:entity/spike_trap_on"
+    },
+    {
+      "type": "single",
+      "resource": "super_block_world:entity/super_pickax"
     }
   ]
 }

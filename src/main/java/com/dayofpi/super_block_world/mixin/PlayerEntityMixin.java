@@ -4,9 +4,10 @@ import com.dayofpi.super_block_world.audio.Sounds;
 import com.dayofpi.super_block_world.block.block_entities.WarpPipeBE;
 import com.dayofpi.super_block_world.block.blocks.WarpPipeBlock;
 import com.dayofpi.super_block_world.entity.entities.boss.KingBobOmbEntity;
-import com.dayofpi.super_block_world.util.PowerUp;
 import com.dayofpi.super_block_world.util.FormManager;
+import com.dayofpi.super_block_world.util.PowerUp;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
@@ -99,6 +100,14 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Override
     public boolean isClimbing() {
+        if (this.getPowerLevel() > 0 && PowerUp.hasPowerUp(this, PowerUp.BEE)) {
+            BlockPos blockPos = this.getBlockPos();
+            BlockState blockState = this.getBlockStateAtPos();
+            if (blockState.isOf(Blocks.HONEYCOMB_BLOCK)) {
+                this.climbingPos = Optional.of(blockPos);
+                return true;
+            }
+        }
         return super.isClimbing() || this.horizontalCollision && this.getPowerLevel() > 0 && PowerUp.hasPowerUp(this, PowerUp.CAT);
     }
 
